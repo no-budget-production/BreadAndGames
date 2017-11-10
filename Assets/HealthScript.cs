@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HealthScript : MonoBehaviour
+{
+
+    public float health;
+    public float healthMax;
+    public float armor;
+
+    private bool dead;
+
+    public void LoseHealth(float loseHealth)
+    {
+        loseHealth -= armor;
+        health -= Mathf.Clamp(loseHealth, 0, loseHealth);
+    }
+
+    public void GainHealth(float gainHealth)
+    {
+        health += Mathf.Clamp(gainHealth, 0, gainHealth);
+    }
+
+    public void ArmorBuff(float armorArg)
+    {
+        armor += Mathf.Clamp(armorArg, 0, armorArg);
+    }
+}
+
