@@ -17,6 +17,7 @@ public class HealthScript : MonoBehaviour
     public void LoseHealth(float loseHealth){
         loseHealth -= armor;
         health -= Mathf.Clamp(loseHealth, 0, loseHealth);
+        Debug.Log(health);
 
         if(health <= 0)
         {
