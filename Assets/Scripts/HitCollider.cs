@@ -4,22 +4,40 @@ using UnityEngine;
 
 public class HitCollider : MonoBehaviour {
 
-    private HealthScript _healthScript;
+    private Health _healthScript;
+    private GameObject _originGameObject;
+
+    private float _bonusDamage;
 
     public float Lifetime;
 
+    public GameObject OriginGameObject
+    {
+        get { return _originGameObject; }
+        set { _originGameObject = value; }
+    }
+
+    public float BonusDamage
+    {
+        get { return _bonusDamage; }
+        set { _bonusDamage = value; }
+    }
+
     void Start()
     {
+
         Destroy(gameObject, Lifetime);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent("HealthScript") as HealthScript != null)
+        if (other.GetComponent("Health") as Health != null)
         {
-            _healthScript = (HealthScript)other.GetComponent(typeof(HealthScript));
-            _healthScript.LoseHealth(20.0f);
+            _healthScript = (Health)other.(typeof(Health));
+            _healthScript.LoseHealth(_bonusDamage);
         }
         Destroy(gameObject);
     }
+
+
 }

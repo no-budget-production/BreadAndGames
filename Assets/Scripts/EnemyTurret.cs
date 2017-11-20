@@ -6,7 +6,8 @@ public class EnemyTurret : MonoBehaviour {
 
     public GameObject BulletSpawn;
     public GameObject BulletPrefab;
-    
+
+    public float DamageBonus; 
 
     void Start()
     {
@@ -19,9 +20,10 @@ public class EnemyTurret : MonoBehaviour {
         //The Bullet instantiation happens here.
         GameObject TemporaryBulletHandler;
         TemporaryBulletHandler = Instantiate(BulletPrefab, BulletSpawn.transform.position, BulletSpawn.transform.rotation) as GameObject;
-        
-        //TemporaryBulletHandler.transform.Rotate(Vector3.left * 90);
-        
+        var HitCollider = TemporaryBulletHandler.GetComponent<HitCollider>();
+        HitCollider.OriginGameObject = gameObject;
+        HitCollider.BonusDamage = DamageBonus;
+
 
     }
 }
