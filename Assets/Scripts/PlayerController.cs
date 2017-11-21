@@ -54,11 +54,6 @@ public class PlayerController : MonoBehaviour
             Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
             myVector = inputRotation * myVector;
 
-        if (myVector.magnitude < deadzone)
-        {
-            myVector = Vector3.zero;
-        }
-
         lookVector.z += Input.GetAxis("HorizontalLook1");
         temporarylookVector.x = Input.GetAxis("HorizontalLook1");
         lookVector.x += Input.GetAxis("VerticalLook1");
