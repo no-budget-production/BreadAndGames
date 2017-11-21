@@ -39,9 +39,10 @@ GameObject:
   - component: {fileID: 33350527513211210}
   - component: {fileID: 136603254643082468}
   - component: {fileID: 23247488380689560}
-  - component: {fileID: 114420630381971808}
   - component: {fileID: 54447200351489860}
   - component: {fileID: 114682499244684856}
+  - component: {fileID: 114526918121504622}
+  - component: {fileID: 143904208008952134}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -217,12 +218,12 @@ Rigidbody:
   m_GameObject: {fileID: 1584756593326210}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &114089546494241978
 MonoBehaviour:
@@ -261,7 +262,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114420630381971808
+--- !u!114 &114526918121504622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -269,20 +270,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1584756593326210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dbece9d50e6478428fe8b2d7fa6bb01, type: 3}
+  m_Script: {fileID: 11500000, guid: aa00c48485a761846a6c50553dfbbd5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
-  XboxController: 0
-  playerRigidbody: {fileID: 54447200351489860}
-  movementAxisHorizontalName: Horizontal
-  movementAxisVerticalName: Vertical
-  movementAxisHorizontalXboxName: HorizontalXbox
-  movementAxisVerticalXboxName: VerticalXbox
-  movementInputValueHorizontal: 0
-  movementInputValueVertical: 0
-  movementSpeed: 6
-  movement: {x: 0, y: 0, z: 0}
+  myController: {fileID: 143904208008952134}
+  PlayerTrigger: {fileID: 136603254643082468}
+  moveSpeed: 1
+  jumpSpeed: 20
+  maxJumpSpeed: 20
+  gravityStrength: 15
+  increaseJumpSpeed: 10
+  dust: {fileID: 0}
+  includeChildren: 1
+  airTime: -2
+  canJump: 1
+  playerCamera: {fileID: 0}
+  houseCamera: {fileID: 0}
+  run: {fileID: 0}
+  jumpsnd: {fileID: 0}
+  doublejumpsnd: {fileID: 0}
+  jumpland: {fileID: 0}
+  coinSound: []
+  candouble: 0
+  acceleration: 1.2
+  temporaryVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114618887639407282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +402,23 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &143904208008952134
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222217646597434258
 CanvasRenderer:
