@@ -7,20 +7,11 @@ public class PlayerController : MonoBehaviour
     public CharacterController myController;
     public Collider PlayerTrigger;
     public float moveSpeed = 1.0f;
-    public float jumpSpeed = 20.0f;
-    public float maxJumpSpeed = 20.0f;
-    public float gravityStrength = 15f;
-    public float increaseJumpSpeed = 10f;
-    private float jumpTimer;
-    private float jumpTimerCheckRate = 1.0f;
+
+    private float gravityStrength = 15f;
+
     private float angle;
     private float deadzone = 0.25f;
-
-    public float airTime = -2f;
-
-    float VerticalVelocity;
-
-    public bool canJump = true;
 
     public Transform playerCamera;
     private Transform CurrentTransform;
