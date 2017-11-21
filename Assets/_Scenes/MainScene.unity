@@ -826,7 +826,7 @@ Prefab:
     - target: {fileID: 114526918121504622, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
         type: 2}
       propertyPath: moveSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 54447200351489860, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
         type: 2}
@@ -837,6 +837,11 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 114526918121504622, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
+        type: 2}
+      propertyPath: acceleration
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54447200351489860, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0, type: 2}

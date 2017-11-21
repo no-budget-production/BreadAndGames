@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float increaseJumpSpeed = 10f;
     private float jumpTimer;
     private float jumpTimerCheckRate = 1.0f;
+    private float angle;
 
     //ParticleSystem
     public ParticleSystem dust;
@@ -25,35 +26,19 @@ public class PlayerController : MonoBehaviour
     public bool canJump = true;
 
     public Transform playerCamera;
-    public Transform houseCamera;
     private Transform CurrentTransform;
 
     Vector3 currentMovement;
 
-    AudioSource sound;
-
-    public AudioClip run;
-    public AudioClip jumpsnd;
-    public AudioClip doublejumpsnd;
-    public AudioClip jumpland;
-    public AudioClip[] coinSound;
-
-    private bool jumplandplayed;
-
-    public bool candouble;
-
     public float acceleration = 1.2f;
 
     public Vector3 temporaryVector;
+    public Vector3 temporarylookVector;
 
     void Start()
     {
         PlayerTrigger = GetComponent<Collider>();
-        sound = GetComponent<AudioSource>();
         CurrentTransform = playerCamera;
-
-        jumplandplayed = false;
-        candouble = false;
 
 
         dust = GetComponent<ParticleSystem>();
@@ -63,9 +48,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 myVector = new Vector3(0, 0, 0);
-
-        if (canJump == true)
-        {
+        Vector3 lookVector = new Vector3(0, 0, 0);
 
 
             myVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
@@ -74,67 +57,29 @@ public class PlayerController : MonoBehaviour
             temporaryVector.z = Input.GetAxis("VerticalXbox1");
             myVector = Vector3.ClampMagnitude(myVector, 3.0f);
             myVector = myVector * moveSpeed * Time.deltaTime;
+
             Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
             myVector = inputRotation * myVector;
 
-        }
+        lookVector.x += Input.GetAxis("HorizontalLook1");
+        temporarylookVector.x = Input.GetAxis("HorizontalLook1");
+        lookVector.z += Input.GetAxis("VerticalLook1");
+        temporarylookVector.z = Input.GetAxis("VerticalLook1");
+        //lookVector = Vector3.ClampMagnitude(lookVector, 3.0f);
+        angle = Mathf.Atan2(lookVector.x, lookVector.z) * Mathf.Rad2Deg;
 
 
+
+        //moves the character
+        CollisionFlags flags = myController.Move(myVector);
 
         if (myVector.x != 0 || myVector.z != 0)
         {
-            if (canJump)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(myVector), 0.3f);
-            }
-            else if (!canJump)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(myVector), 0.09f);
-            }
-
-            if (Input.GetButtonDown("Jump") && canJump)
-            {
-
-                VerticalVelocity += jumpSpeed;
-
-                sound.PlayOneShot(jumpsnd);
-                jumplandplayed = false;
-                canJump = false;
-                candouble = true;
-                dust.Play(includeChildren);
-            }
-
-
-            VerticalVelocity -= gravityStrength * Time.deltaTime;
-            myVector.y = VerticalVelocity * Time.deltaTime;
-
-            //moves the character
-            CollisionFlags flags = myController.Move(myVector);
-
-            if ((flags & CollisionFlags.Below) != 0)
-            {
-                canJump = true;
-                candouble = false;
-                VerticalVelocity = -3f;
-                jumpTimer = 0;
-
-                if (!jumplandplayed)
-                {
-                    sound.PlayOneShot(jumpland);
-                    jumplandplayed = true;
-                }
-            }
-            else if ((flags & CollisionFlags.Sides) != 0)
-            {
-                canJump = false;
-            }
-            else
-            {
-                canJump = false;
-                jumpTimer += Time.deltaTime;
-            }
-
-
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(myVector), 0.5f);
+        } 
+        if(lookVector.x != 0 || lookVector.z != 0)
+        {
+            transform.rotation = Quaternion.Euler(0, angle, 0);
         }
     }
 }
