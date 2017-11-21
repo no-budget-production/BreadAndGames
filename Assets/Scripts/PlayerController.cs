@@ -14,10 +14,7 @@ public class PlayerController : MonoBehaviour
     private float jumpTimer;
     private float jumpTimerCheckRate = 1.0f;
     private float angle;
-
-    //ParticleSystem
-    public ParticleSystem dust;
-    public bool includeChildren = true;
+    private float deadzone = 0.25f;
 
     public float airTime = -2f;
 
@@ -35,21 +32,17 @@ public class PlayerController : MonoBehaviour
     public Vector3 temporaryVector;
     public Vector3 temporarylookVector;
 
+
     void Start()
     {
         PlayerTrigger = GetComponent<Collider>();
         CurrentTransform = playerCamera;
-
-
-        dust = GetComponent<ParticleSystem>();
-
     }
 
     void Update()
     {
         Vector3 myVector = new Vector3(0, 0, 0);
         Vector3 lookVector = new Vector3(0, 0, 0);
-
 
             myVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
             temporaryVector.x = Input.GetAxis("HorizontalXbox1");
@@ -61,14 +54,21 @@ public class PlayerController : MonoBehaviour
             Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
             myVector = inputRotation * myVector;
 
+        if (myVector.magnitude < deadzone)
+        {
+            myVector = Vector3.zero;
+        }
+
         lookVector.z += Input.GetAxis("HorizontalLook1");
         temporarylookVector.x = Input.GetAxis("HorizontalLook1");
         lookVector.x += Input.GetAxis("VerticalLook1");
         temporarylookVector.z = Input.GetAxis("VerticalLook1");
-        Quaternion lookRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
-        lookVector = lookRotation * lookVector;
+        lookVector = inputRotation * lookVector;
 
-
+        if (lookVector.magnitude < deadzone)
+        {
+            lookVector = Vector3.zero;
+        }
 
         //moves the character
         CollisionFlags flags = myController.Move(myVector);
