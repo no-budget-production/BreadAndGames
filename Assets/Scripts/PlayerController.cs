@@ -61,12 +61,12 @@ public class PlayerController : MonoBehaviour
             Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
             myVector = inputRotation * myVector;
 
-        lookVector.x += Input.GetAxis("HorizontalLook1");
+        lookVector.z += Input.GetAxis("HorizontalLook1");
         temporarylookVector.x = Input.GetAxis("HorizontalLook1");
-        lookVector.z += Input.GetAxis("VerticalLook1");
+        lookVector.x += Input.GetAxis("VerticalLook1");
         temporarylookVector.z = Input.GetAxis("VerticalLook1");
-        //lookVector = Vector3.ClampMagnitude(lookVector, 3.0f);
-        angle = Mathf.Atan2(lookVector.x, lookVector.z) * Mathf.Rad2Deg;
+        Quaternion lookRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
+        lookVector = lookRotation * lookVector;
 
 
 
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         } 
         if(lookVector.x != 0 || lookVector.z != 0)
         {
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            transform.rotation = Quaternion.LookRotation(lookVector);
         }
     }
 }

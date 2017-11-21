@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 33350527513211210}
   - component: {fileID: 136603254643082468}
   - component: {fileID: 23247488380689560}
-  - component: {fileID: 54447200351489860}
   - component: {fileID: 114682499244684856}
   - component: {fileID: 114526918121504622}
   - component: {fileID: 143904208008952134}
@@ -210,21 +209,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994771596631358}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54447200351489860
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &114089546494241978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myController: {fileID: 143904208008952134}
   PlayerTrigger: {fileID: 136603254643082468}
-  moveSpeed: 1
+  moveSpeed: 4
   jumpSpeed: 20
   maxJumpSpeed: 20
   gravityStrength: 15
@@ -285,15 +269,9 @@ MonoBehaviour:
   airTime: -2
   canJump: 1
   playerCamera: {fileID: 0}
-  houseCamera: {fileID: 0}
-  run: {fileID: 0}
-  jumpsnd: {fileID: 0}
-  doublejumpsnd: {fileID: 0}
-  jumpland: {fileID: 0}
-  coinSound: []
-  candouble: 0
-  acceleration: 1.2
+  acceleration: 0.8
   temporaryVector: {x: 0, y: 0, z: 0}
+  temporarylookVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114618887639407282
 MonoBehaviour:
   m_ObjectHideFlags: 1
