@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitCollider : MonoBehaviour {
+public class HitCollider : MonoBehaviour
+{
 
     private Health _healthScript;
     private GameObject _originGameObject;
@@ -33,7 +34,7 @@ public class HitCollider : MonoBehaviour {
     {
         if (other.GetComponent("Health") as Health != null)
         {
-            _healthScript = (Health)other.(typeof(Health));
+            _healthScript = (Health)other.GetComponent(typeof(Health));
             _healthScript.LoseHealth(_bonusDamage);
         }
         Destroy(gameObject);
