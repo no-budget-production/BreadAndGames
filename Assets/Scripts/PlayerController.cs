@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetAxis("FireXbox1") < -0.25f)
         {
             gunSystem.Shoot();
+
         }
 
     }
