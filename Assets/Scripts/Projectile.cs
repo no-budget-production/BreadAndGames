@@ -2,15 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
+    float speed = 10;
+    float lifetime = 4;
+    float fadetime = 2;
+
+    public void SetSpeed (float newSpeed)
+    {
+        speed = newSpeed;
+
+        StartCoroutine(Fade());
+    }
+
+	void Update ()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    IEnumerator Fade()
+    {
+        yield return new WaitForSeconds(lifetime);
+
+        float fadePercent = 0;
+        float fadeSpeed = 1 / fadetime;
+
+        Material mat = GetComponent<Renderer>().material;
+        Color initialColor = mat.color;
+
+        while (fadePercent < 1)
+        {
+            fadePercent += Time.deltaTime * fadeSpeed;
+            mat.color = Color.Lerp(initialColor, Color.clear, fadePercent);
+            yield return null;
+        }
+        Destroy(gameObject);
+    }
+
 }

@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController myController;
     public Collider PlayerTrigger;
+    public Transform playerCamera;
+    GunSystem gunSystem;
+
     public float moveSpeed = 1.0f;
 
     private float gravityStrength = 15f;
@@ -13,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private float angle;
     private float deadzone = 0.25f;
 
-    public Transform playerCamera;
     private Transform CurrentTransform;
 
     Vector3 currentMovement;
@@ -21,17 +23,19 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 1.2f;
 
     public Vector3 temporaryVector;
-    public Vector3 temporarylookVector;
+    public Vector3 temporaryLookVector;
 
 
     void Start()
     {
         PlayerTrigger = GetComponent<Collider>();
+        gunSystem = GetComponent<GunSystem>();
         CurrentTransform = playerCamera;
     }
 
     void Update()
     {
+        //Movement Input
         Vector3 myVector = new Vector3(0, 0, 0);
         Vector3 lookVector = new Vector3(0, 0, 0);
 
@@ -46,9 +50,9 @@ public class PlayerController : MonoBehaviour
             myVector = inputRotation * myVector;
 
         lookVector.z += Input.GetAxis("HorizontalLook1");
-        temporarylookVector.x = Input.GetAxis("HorizontalLook1");
+        temporaryLookVector.x = Input.GetAxis("HorizontalLook1");
         lookVector.x += Input.GetAxis("VerticalLook1");
-        temporarylookVector.z = Input.GetAxis("VerticalLook1");
+        temporaryLookVector.z = Input.GetAxis("VerticalLook1");
         lookVector = inputRotation * lookVector;
 
         if (lookVector.magnitude < deadzone)
@@ -67,5 +71,12 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(lookVector);
         }
+
+        //Weapon Input
+        if(Input.GetAxis("FireXbox1") < -0.25f)
+        {
+            gunSystem.Shoot();
+        }
+
     }
 }
