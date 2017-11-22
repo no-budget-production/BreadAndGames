@@ -10,6 +10,8 @@ public class Gun : MonoBehaviour
     public float msBetweenShot = 100;
     public float muzzleVelocity = 35;
     MuzzleFlash muzzleFlash;
+    AudioSource gunSound;
+    public AudioClip[] soundClips;
 
     public Transform shell;
     public Transform shellEjection;
@@ -18,7 +20,15 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
+        gunSound = GetComponent<AudioSource>();
         muzzleFlash = GetComponent<MuzzleFlash>();
+    }
+
+    void playSound()
+    {
+        int clipNumber = Random.Range(0, soundClips.Length);
+        gunSound.clip = soundClips[clipNumber];
+        gunSound.Play();
     }
 
     public void Shoot()
@@ -30,7 +40,9 @@ public class Gun : MonoBehaviour
             newProjectile.SetSpeed(muzzleVelocity);
 
             Instantiate(shell, shellEjection.position, shellEjection.rotation);
+            playSound();
             muzzleFlash.Activate();
+
         }
     }
 
