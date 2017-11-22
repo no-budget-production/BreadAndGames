@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController myController;
     public Collider PlayerTrigger;
-    public Transform playerCamera;
+    public Transform Camera;
     GunSystem gunSystem;
 
     public float moveSpeed = 1.0f;
@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
 
     private float angle;
     private float deadzone = 0.25f;
-
-    private Transform CurrentTransform;
 
     Vector3 currentMovement;
 
@@ -30,7 +28,6 @@ public class PlayerController : MonoBehaviour
     {
         PlayerTrigger = GetComponent<Collider>();
         gunSystem = GetComponent<GunSystem>();
-        CurrentTransform = playerCamera;
     }
 
     void Update()
@@ -46,7 +43,7 @@ public class PlayerController : MonoBehaviour
             myVector = Vector3.ClampMagnitude(myVector, 3.0f);
             myVector = myVector * moveSpeed * Time.deltaTime;
 
-            Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(CurrentTransform.forward, Vector3.up));
+            Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
             myVector = inputRotation * myVector;
 
         lookVector.z += Input.GetAxis("HorizontalLook1");

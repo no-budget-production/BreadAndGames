@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
 
     float speed = 10;
-    float lifetime = 4;
+    float lifetime = 2;
     float fadetime = 2;
 
     public void SetSpeed (float newSpeed)

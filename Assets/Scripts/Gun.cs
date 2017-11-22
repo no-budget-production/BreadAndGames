@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     public Projectile projectile;
     public float msBetweenShot = 100;
     public float muzzleVelocity = 35;
+
     MuzzleFlash muzzleFlash;
     AudioSource gunSound;
     public AudioClip[] soundClips;
@@ -36,7 +37,10 @@ public class Gun : MonoBehaviour
         if(Time.time > nextShotTime)
         {
             nextShotTime = Time.time + msBetweenShot / 1000;
-            Projectile newProjectile = Instantiate(projectile, muzzle.position, muzzle.rotation) as Projectile;
+
+            Quaternion accuracy = Quaternion.Euler(0, Random.Range(-3.0f, 3.0f), 0);
+
+            Projectile newProjectile = Instantiate(projectile, muzzle.position, muzzle.rotation * accuracy ) as Projectile;
             newProjectile.SetSpeed(muzzleVelocity);
 
             Instantiate(shell, shellEjection.position, shellEjection.rotation);

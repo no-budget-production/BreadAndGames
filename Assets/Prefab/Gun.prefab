@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4126748345740522}
   - component: {fileID: 120806036641688680}
+  - component: {fileID: 114741920369432396}
   m_Layer: 0
   m_Name: Laser Sight
   m_TagString: Untagged
@@ -627,6 +628,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 66a6c26a7b4b73449bdce65ca5f98657, type: 3}
   shell: {fileID: 4618930595482000, guid: fc7c1e3e54abee04db4d0cf0845db847, type: 2}
   shellEjection: {fileID: 4685958634400136}
+--- !u!114 &114741920369432396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494267170184928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef967c1dd13656a46beaeb2a443d5108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &120806036641688680
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -660,8 +672,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 20}
   - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 20}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.33
@@ -670,13 +682,13 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: 0.29592133
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
         time: 1
-        value: 0.13265228
+        value: 0.15306091
         inSlope: 0
         outSlope: 0
         tangentMode: 0
