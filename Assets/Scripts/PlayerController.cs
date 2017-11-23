@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
+    {      
         //Movement Input
         Vector3 myVector = new Vector3(0, 0, 0);
         Vector3 lookVector = new Vector3(0, 0, 0);
