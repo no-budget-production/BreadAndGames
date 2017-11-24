@@ -33,7 +33,7 @@ public class HitCollider : MonoBehaviour {
     {
         if (other.GetComponent("Health") as Health != null)
         {
-            _healthScript = (Health)other.(typeof(Health));
+            _healthScript = (Health)other.GetComponent(typeof(Health));
             _healthScript.LoseHealth(_bonusDamage);
         }
         Destroy(gameObject);
