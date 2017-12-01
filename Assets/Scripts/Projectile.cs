@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public LayerMask collisionMask;
 
     float speed = 10;
-    float damage;
+    float damage = 1;
 
     float lifetime = 2;
     float fadetime = 2;
@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
         CheckCollisions(moveDistance);
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-	}
+    }
 
     void CheckCollisions(float moveDistance)
     {
@@ -35,20 +35,20 @@ public class Projectile : MonoBehaviour
         if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
         {
             OnHitObject(hit);
+            GameObject.Destroy(gameObject);
         }
     }
 
     void OnHitObject(RaycastHit hit)
     {
-        //Debug.Log(hit.collider.gameObject.name);
+        Debug.Log(hit.collider.gameObject.name);
         IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
         if(damageableObject != null)
         {
             damageableObject.TakeHit(damage, hit);
         }
-        GameObject.Destroy(gameObject);
     }
-
+    
     IEnumerator Fade()
     {
         yield return new WaitForSeconds(lifetime);

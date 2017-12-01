@@ -2,15 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour {
+public class Entity : MonoBehaviour, IDamageable
+{
 
-	// Use this for initialization
-	void Start () {
-		
+    public float startingHealth;
+    [SerializeField]
+    protected float health;
+    protected bool dead;
+
+    public event System.Action OnDeath;
+
+    protected virtual void Start ()
+    {
+        health = startingHealth;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	public void TakeHit (float damage, RaycastHit hit)
+    {
+        health -= damage;
+
+        if(health <= 0 && !dead)
+        {
+            Die();
+        }
 	}
+
+    protected void Die()
+    {
+        dead = true;
+        GameObject.Destroy(gameObject);
+    }
 }

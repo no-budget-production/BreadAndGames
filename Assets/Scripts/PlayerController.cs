@@ -2,11 +2,13 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+
+public class PlayerController : Entity
 {
     public CharacterController myController;
     public Collider PlayerTrigger;
     public Transform Camera;
+    public Camera viewCamera;
     GunSystem gunSystem;
 
     public float moveSpeed = 1.0f;
@@ -24,28 +26,39 @@ public class PlayerController : MonoBehaviour
     public Vector3 temporaryLookVector;
 
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         PlayerTrigger = GetComponent<Collider>();
         gunSystem = GetComponent<GunSystem>();
     }
 
     void Update()
     {
-        //Movement Input
-        Vector3 myVector = new Vector3(0, 0, 0);
+        Vector3 moveVector = new Vector3(0, 0, 0);
         Vector3 lookVector = new Vector3(0, 0, 0);
 
-            myVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
+        //Movement Input Xbox
+            moveVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
             temporaryVector.x = Input.GetAxis("HorizontalXbox1");
-            myVector.z += Input.GetAxis("VerticalXbox1") * acceleration;
+            moveVector.z += Input.GetAxis("VerticalXbox1") * acceleration;
             temporaryVector.z = Input.GetAxis("VerticalXbox1");
-            myVector = Vector3.ClampMagnitude(myVector, 3.0f);
-            myVector = myVector * moveSpeed * Time.deltaTime;
 
-            Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
-            myVector = inputRotation * myVector;
 
+        //Movement Input PC
+        moveVector.x += Input.GetAxis("HorizontalPC1") * acceleration;
+        temporaryVector.x = Input.GetAxis("HorizontalPC1");
+        moveVector.z += Input.GetAxis("VerticalPC1") * acceleration;
+        temporaryVector.z = Input.GetAxis("VerticalPC1");
+
+        moveVector = Vector3.ClampMagnitude(moveVector, 3.0f);
+        moveVector = moveVector * moveSpeed * Time.deltaTime;
+        Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
+        moveVector = inputRotation * moveVector;
+        
+
+
+        //Look Input Xbox
         lookVector.z += Input.GetAxis("HorizontalLook1");
         temporaryLookVector.x = Input.GetAxis("HorizontalLook1");
         lookVector.x += Input.GetAxis("VerticalLook1");
@@ -57,12 +70,27 @@ public class PlayerController : MonoBehaviour
             lookVector = Vector3.zero;
         }
 
-        //moves the character
-        CollisionFlags flags = myController.Move(myVector);
-
-        if (myVector.x != 0 || myVector.z != 0)
+       //Look Input Mouse **BUGGY**
+       /*
+       Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+       Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+       float rayDistance;
+        
+        if (groundPlane.Raycast(ray, out rayDistance))
         {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(myVector), 0.5f);
+            Vector3 lookPoint = ray.GetPoint(rayDistance);
+            Debug.DrawLine(ray.origin, lookPoint, Color.red);
+            Debug.DrawRay(ray.origin,ray.direction * 100,Color.red);
+            Vector3 heightCorrectedPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z);
+            transform.LookAt(heightCorrectedPoint);
+        }*/
+
+        //moves the character
+        CollisionFlags flags = myController.Move(moveVector);
+
+        if (moveVector.x != 0 || moveVector.z != 0)
+        {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), 0.5f);
         } 
         if(lookVector.x != 0 || lookVector.z != 0)
         {
@@ -70,11 +98,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //Weapon Input
-        if(Input.GetAxis("FireXbox1") < -0.25f)
+        if (Input.GetAxis("FireXbox1") < -0.25f)
         {
             gunSystem.Shoot();
 
         }
+        else if (Input.GetButton("FirePC1"))
+            gunSystem.Shoot();
 
     }
 }

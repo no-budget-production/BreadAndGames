@@ -53,7 +53,7 @@ public class TeamScript : MonoBehaviour
     private void Zoom()
     {
         float requiredSize = FindRequiredSize();
-        cameraGamerObject.orthographicSize = Mathf.SmoothDamp(cameraGamerObject.orthographicSize, requiredSize, ref zoomSpeed, dampTime);
+        cameraGamerObject.fieldOfView = Mathf.SmoothDamp(cameraGamerObject.fieldOfView, requiredSize, ref zoomSpeed, dampTime);
     }
 
     private float FindRequiredSize()
