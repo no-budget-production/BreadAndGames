@@ -38,7 +38,7 @@ public class Gun : MonoBehaviour
         {
             nextShotTime = Time.time + msBetweenShot / 1000;
 
-            Quaternion accuracy = Quaternion.Euler(0, Random.Range(-3.0f, 3.0f), 0);
+            Quaternion accuracy = Quaternion.Euler(Random.Range(-1.0f, 1.0f), Random.Range(-3.0f, 3.0f), 0);
 
             Projectile newProjectile = Instantiate(projectile, muzzle.position, muzzle.rotation * accuracy ) as Projectile;
             newProjectile.SetSpeed(muzzleVelocity);
