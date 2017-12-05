@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HitCollider : MonoBehaviour {
 
-    private Health _healthScript;
+    private HealthReference _healthReferenceScript;
     private GameObject _originGameObject;
 
     private float _bonusDamage;
@@ -31,10 +31,11 @@ public class HitCollider : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent("Health") as Health != null)
+        if (other.GetComponent("HealthReference") as HealthReference != null)
         {
-            _healthScript = (Health)other.GetComponent(typeof(Health));
-            _healthScript.LoseHealth(_bonusDamage);
+            _healthReferenceScript = (HealthReference)other.GetComponent(typeof(HealthReference));
+            //_healthReferenceScript.LoseHealth(_bonusDamage);
+            _healthReferenceScript.HealthScript.LoseHealth(_bonusDamage);
         }
         Destroy(gameObject);
     }

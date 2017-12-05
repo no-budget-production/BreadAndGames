@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TeamScript : MonoBehaviour
 {
-
+    public float juriisgay;
+    public float jurisuxdix;
 
     public float dampTime = 0.2f;
     public float screenEdgeBuffer = 4f;
@@ -54,16 +55,16 @@ public class TeamScript : MonoBehaviour
     {
         float requiredSize = FindRequiredSize();
 
-        Matrix4x4 m = cameraGamerObject.cameraToWorldMatrix;
-        Vector3 p = m.MultiplyPoint(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        //Matrix4x4 m = cameraGamerObject.cameraToWorldMatrix;
+        //Vector3 p = m.MultiplyPoint(new Vector3(transform.position.x, transform.position.y, transform.position.z));
 
-        cameraGamerObject.transform.localPosition = new Vector3(0, 0, 0);
+        //cameraGamerObject.transform.localPosition = new Vector3(0, 0, 0);
 
-        Debug.Log(requiredSize);
+        //Debug.Log(requiredSize);
         //Debug.Log(Mathf.SmoothDamp(cameraGamerObject.orthographicSize, requiredSize, ref zoomSpeed, dampTime));
+        
 
-
-        //cameraGamerObject.orthographicSize = Mathf.SmoothDamp(cameraGamerObject.orthographicSize, requiredSize, ref zoomSpeed, dampTime);
+        cameraGamerObject.transform.localPosition = new Vector3(0, 0, Mathf.SmoothDamp(cameraGamerObject.transform.localPosition.z, -(requiredSize), ref zoomSpeed, dampTime));
     }
 
     private float FindRequiredSize()
@@ -92,7 +93,9 @@ public class TeamScript : MonoBehaviour
 
         size = Mathf.Max(size, minSize);
 
-        return size;
+        var distance = size * juriisgay / Mathf.Tan(cameraGamerObject.fieldOfView * jurisuxdix * Mathf.Deg2Rad);
+
+        return distance;
     }
 
     public void SetStartPositionAndSize()
