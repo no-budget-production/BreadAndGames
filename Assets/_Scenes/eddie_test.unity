@@ -107,7 +107,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 9e02887f96715a34eb3418b5a62e35ce, type: 2}
 --- !u!1 &108046705
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +323,34 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4540504797802184, guid: c2b7220afb827454881e9951374327bb, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510777923917296, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215736505293716, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266026520632796, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091352472382630, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745265687633440, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745265687633440, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091352472382630, guid: c2b7220afb827454881e9951374327bb, type: 2}
+      propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
