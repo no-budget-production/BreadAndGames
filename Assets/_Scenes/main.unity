@@ -1939,6 +1939,28 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1935820091 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1584756593326210, guid: 615f788e48c1b704e93a69c3b599a5a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1245249049}
+--- !u!143 &1935820094
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1935820091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1943727082 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1584475549415710, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
