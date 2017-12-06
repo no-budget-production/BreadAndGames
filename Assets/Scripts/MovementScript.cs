@@ -22,7 +22,7 @@ public class MovementScript : MonoBehaviour
     public Collider PlayerTrigger;
     public Transform Camera;
     public Camera viewCamera;
-    //GunSystem gunSystem;
+    public EnemyTurret Turret;
 
     public float moveSpeed = 1.0f;
 
@@ -37,7 +37,6 @@ public class MovementScript : MonoBehaviour
 
     public Vector3 temporaryVector;
     public Vector3 temporaryLookVector;
-
 
     //protected override void Start()
     //{
@@ -135,7 +134,7 @@ public class MovementScript : MonoBehaviour
         //Weapon Input
         if (Input.GetAxis(FireXbox) < -0.25f)
         {
-            //gunSystem.Shoot();
+            Turret.Shoot();
         }
         //else if (Input.GetButton("FirePC1"))
         //{
