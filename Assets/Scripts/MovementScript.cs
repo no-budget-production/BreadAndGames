@@ -7,16 +7,14 @@ public class MovementScript : MonoBehaviour
     public int playerNumber;
     public bool XboxController;
 
-    public Rigidbody playerRigidbody;
     public string movementAxisHorizontalName;
     public string movementAxisVerticalName;
+
     public string movementAxisHorizontalXboxName;
     public string movementAxisVerticalXboxName;
-
-    public float movementInputValueHorizontal;
-    public float movementInputValueVertical;
-    public float movementSpeed;
-    public Vector3 movement;
+    public string movementAxisHorizontalLookXboxName;
+    public string movementAxisVerticalLookXboxName;
+    public string FireXbox;
 
     // Alex Start
 
@@ -48,7 +46,7 @@ public class MovementScript : MonoBehaviour
     //    //gunSystem = GetComponent<GunSystem>();
     //}
 
-    public void Start()
+    public void Awake()
     {
         SetInput();
     }
@@ -60,6 +58,11 @@ public class MovementScript : MonoBehaviour
 
         movementAxisHorizontalXboxName += playerNumber;
         movementAxisVerticalXboxName += playerNumber;
+
+        movementAxisHorizontalLookXboxName += playerNumber;
+        movementAxisVerticalLookXboxName += playerNumber;
+
+        FireXbox += playerNumber;
     }
 
     void Update()
@@ -67,31 +70,34 @@ public class MovementScript : MonoBehaviour
         Vector3 moveVector = new Vector3(0, 0, 0);
         Vector3 lookVector = new Vector3(0, 0, 0);
 
-        //Movement Input Xbox
-            moveVector.x += Input.GetAxis("movementAxisHorizontalXboxName") * acceleration;
-            temporaryVector.x = Input.GetAxis("movementAxisHorizontalXboxName");
-            moveVector.z += Input.GetAxis("movementAxisVerticalXboxName") * acceleration;
-            temporaryVector.z = Input.GetAxis("movementAxisVerticalXboxName");
-
-
         //Movement Input PC
-        moveVector.x += Input.GetAxis("movementAxisHorizontalXboxName") * acceleration;
-        temporaryVector.x = Input.GetAxis("movementAxisHorizontalXboxName");
-        moveVector.z += Input.GetAxis("movementAxisVerticalXboxName") * acceleration;
-        temporaryVector.z = Input.GetAxis("movementAxisVerticalXboxName");
+        if (XboxController)
+        {
+            //Movement Input Xbox
+            moveVector.x += Input.GetAxis(movementAxisHorizontalXboxName) * acceleration;
+            temporaryVector.x = Input.GetAxis(movementAxisHorizontalXboxName);
+            moveVector.z += Input.GetAxis(movementAxisVerticalXboxName) * acceleration;
+            temporaryVector.z = Input.GetAxis(movementAxisVerticalXboxName);
+        }
+        else
+        {
+            //Movement Input PC
+            moveVector.x += Input.GetAxis(movementAxisHorizontalXboxName) * acceleration;
+            temporaryVector.x = Input.GetAxis(movementAxisHorizontalXboxName);
+            moveVector.z += Input.GetAxis(movementAxisVerticalXboxName) * acceleration;
+            temporaryVector.z = Input.GetAxis(movementAxisVerticalXboxName);
+        }
 
         moveVector = Vector3.ClampMagnitude(moveVector, 3.0f);
         moveVector = moveVector * moveSpeed * Time.deltaTime;
         Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
         moveVector = inputRotation * moveVector;
         
-
-
         //Look Input Xbox
-        lookVector.z += Input.GetAxis("HorizontalLook1");
-        temporaryLookVector.x = Input.GetAxis("HorizontalLook1");
-        lookVector.x += Input.GetAxis("VerticalLook1");
-        temporaryLookVector.z = Input.GetAxis("VerticalLook1");
+        lookVector.z += Input.GetAxis(movementAxisHorizontalLookXboxName);
+        temporaryLookVector.x = Input.GetAxis(movementAxisHorizontalLookXboxName);
+        lookVector.x += Input.GetAxis(movementAxisVerticalLookXboxName);
+        temporaryLookVector.z = Input.GetAxis(movementAxisVerticalLookXboxName);
         lookVector = inputRotation * lookVector;
 
         if (lookVector.magnitude < deadzone)
@@ -127,67 +133,14 @@ public class MovementScript : MonoBehaviour
         }
 
         //Weapon Input
-        //if (Input.GetAxis("FireXbox1") < -0.25f)
+        if (Input.GetAxis(FireXbox) < -0.25f)
+        {
+            //gunSystem.Shoot();
+        }
+        //else if (Input.GetButton("FirePC1"))
         //{
         //    gunSystem.Shoot();
         //}
-        //else if (Input.GetButton("FirePC1"))
-        //    gunSystem.Shoot();
-
     }
-
-    // Ales Ende
-
-    // Juri Start
-
-    //private void FixedUpdate()
-    //{
-    //    GetInput();
-    //    Move();
-    //}
-
-    //private void Update()
-    //{
-    //    var x = Input.GetAxis(movementAxisHorizontalXboxName) * Time.deltaTime * 80.0f;
-    //    var z = Input.GetAxis(movementAxisVerticalXboxName) * Time.deltaTime * 3.0f;
-
-    //    transform.Rotate(0, x, 0);
-    //    transform.Translate(0, 0, z);
-    //}
-
-    //public void GetInput()
-    //{
-    //    if (XboxController)
-    //    {
-    //        GetXboxInput();
-    //    }
-    //    else
-    //    {
-    //        GetKeyboardInput();
-    //    }
-
-    //}
-
-    //public void GetXboxInput()
-    //{
-    //    movementInputValueHorizontal = Input.GetAxis(movementAxisHorizontalXboxName);
-    //    movementInputValueVertical = Input.GetAxis(movementAxisVerticalXboxName);
-    //}
-
-    //public void GetKeyboardInput()
-    //{
-    //    movementInputValueHorizontal = Input.GetAxis(movementAxisHorizontalName);
-    //    movementInputValueVertical = Input.GetAxis(movementAxisVerticalName);
-    //}
-
-    //public void Move()
-    //{
-    //    movement.Set(movementInputValueHorizontal, 0.0f, movementInputValueVertical);
-
-    //    movement = movement.normalized * movementSpeed * Time.deltaTime;
-
-    //    playerRigidbody.MovePosition(transform.position + movement);
-    //}
-
-    // Juri Ende
+   
 }
