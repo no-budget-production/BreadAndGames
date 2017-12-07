@@ -372,12 +372,14 @@ MonoBehaviour:
   movementAxisHorizontalLookXboxName: HorizontalLookXbox
   movementAxisVerticalLookXboxName: VerticalLookXbox
   FireXbox: FireXbox
+  TurnSpeed: 0
   myController: {fileID: 143761114787205060}
   PlayerTrigger: {fileID: 136572700279796528}
   Camera: {fileID: 0}
   viewCamera: {fileID: 0}
   Turret: {fileID: 114074517711523576}
   moveSpeed: 3
+  deadzone: 0.25
   acceleration: 1.2
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
@@ -403,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d86c59e398c046a9c4313e7c1eabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: -14
+  CurrentHealth: 100
   MaxHealth: 100
   armor: 1
   Decay: 2

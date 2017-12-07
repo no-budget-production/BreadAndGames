@@ -32,7 +32,8 @@ public class MovementScript : MonoBehaviour
     private float gravityStrength = 15f;
 
     private float angle;
-    private float deadzone = 0.25f;
+    public float deadzone = 0.25f;
+    //public float deadzoneMove = 0.25f;
 
     Vector3 currentMovement;
 
@@ -90,9 +91,10 @@ public class MovementScript : MonoBehaviour
             temporaryVector.z = Input.GetAxis(movementAxisVerticalXboxName);
         }
 
-        moveVector = Vector3.ClampMagnitude(moveVector, 3.0f);
+        Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up)); // align movement to camera view [can put in start() if camera view doesnt change]
+
+        moveVector = Vector3.ClampMagnitude(moveVector, 0.5f);
         moveVector = moveVector * moveSpeed * Time.deltaTime;
-        Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
         moveVector = inputRotation * moveVector;
 
         //Look Input Xbox
@@ -100,35 +102,37 @@ public class MovementScript : MonoBehaviour
         temporaryLookVector.x = Input.GetAxis(movementAxisHorizontalLookXboxName);
         lookVector.x += Input.GetAxis(movementAxisVerticalLookXboxName);
         temporaryLookVector.z = Input.GetAxis(movementAxisVerticalLookXboxName);
+
         lookVector = inputRotation * lookVector;
+        
 
         if (lookVector.magnitude < deadzone)
         {
             lookVector = Vector3.zero;
         }
 
-       //Look Input Mouse **BUGGY**
-       /*
-       Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
-       Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-       float rayDistance;
-        
-        if (groundPlane.Raycast(ray, out rayDistance))
-        {
-            Vector3 lookPoint = ray.GetPoint(rayDistance);
-            Debug.DrawLine(ray.origin, lookPoint, Color.red);
-            Debug.DrawRay(ray.origin,ray.direction * 100,Color.red);
-            Vector3 heightCorrectedPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z);
-            transform.LookAt(heightCorrectedPoint);
-        }*/
+        //Look Input Mouse **BUGGY**
+        /*
+        Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayDistance;
+
+         if (groundPlane.Raycast(ray, out rayDistance))
+         {
+             Vector3 lookPoint = ray.GetPoint(rayDistance);
+             Debug.DrawLine(ray.origin, lookPoint, Color.red);
+             Debug.DrawRay(ray.origin,ray.direction * 100,Color.red);
+             Vector3 heightCorrectedPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z);
+             transform.LookAt(heightCorrectedPoint);
+         }*/
 
         //moves the character
         CollisionFlags flags = myController.Move(moveVector);
 
         if (moveVector.x != 0 || moveVector.z != 0)
         {
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
-            transform.rotation = Quaternion.LookRotation(moveVector);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
+            //transform.rotation = Quaternion.LookRotation(moveVector);
         } 
         if(lookVector.x != 0 || lookVector.z != 0)
         {

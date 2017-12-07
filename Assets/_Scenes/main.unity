@@ -720,11 +720,6 @@ Prefab:
       propertyPath: viewCamera
       value: 
       objectReference: {fileID: 1248807870}
-    - target: {fileID: 114420630381971808, guid: 615f788e48c1b704e93a69c3b599a5a8,
-        type: 2}
-      propertyPath: TurnSpeed
-      value: 0.079
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 615f788e48c1b704e93a69c3b599a5a8, type: 2}
   m_IsPrefabParent: 0
@@ -1261,6 +1256,16 @@ Prefab:
       propertyPath: viewCamera
       value: 
       objectReference: {fileID: 1248807870}
+    - target: {fileID: 114420630381971808, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420630381971808, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
+        type: 2}
+      propertyPath: deadzoneMove
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0, type: 2}
   m_IsPrefabParent: 0
@@ -1446,6 +1451,10 @@ Prefab:
         type: 2}
       propertyPath: MaxHealth
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003205533618822, guid: 72c7547d8bd99984bae1e092b61af5c6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72c7547d8bd99984bae1e092b61af5c6, type: 2}
