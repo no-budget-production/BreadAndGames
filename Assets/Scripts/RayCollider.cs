@@ -16,6 +16,7 @@ public class RayCollider : MonoBehaviour
     public float fadetime = 2;
 
     private float _bonusDamage;
+    public float RayLengthMulti;
 
     public GameObject OriginGameObject
     {
@@ -49,10 +50,10 @@ public class RayCollider : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, moveDistance* RayLengthMulti, collisionMask, QueryTriggerInteraction.Collide))
         {
             OnHitObject(hit);
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
