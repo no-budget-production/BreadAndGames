@@ -16,6 +16,9 @@ public class MovementScript : MonoBehaviour
     public string movementAxisVerticalLookXboxName;
     public string FireXbox;
 
+    [Range(0.0f, 1.0f)]
+    public float TurnSpeed;
+
     // Alex Start
 
     public CharacterController myController;
@@ -91,7 +94,7 @@ public class MovementScript : MonoBehaviour
         moveVector = moveVector * moveSpeed * Time.deltaTime;
         Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
         moveVector = inputRotation * moveVector;
-        
+
         //Look Input Xbox
         lookVector.z += Input.GetAxis(movementAxisHorizontalLookXboxName);
         temporaryLookVector.x = Input.GetAxis(movementAxisHorizontalLookXboxName);
@@ -124,7 +127,8 @@ public class MovementScript : MonoBehaviour
 
         if (moveVector.x != 0 || moveVector.z != 0)
         {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), 0.5f);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
+            transform.rotation = Quaternion.LookRotation(moveVector);
         } 
         if(lookVector.x != 0 || lookVector.z != 0)
         {

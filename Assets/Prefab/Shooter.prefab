@@ -328,7 +328,7 @@ MonoBehaviour:
   BulletSpawn: {fileID: 1076025725738680}
   BulletPrefab: {fileID: 1003433134805976, guid: bb68068bd6f5f384aa922333e67a7365,
     type: 2}
-  DamageBonus: 20
+  DamageBonus: 5
   msBetweenShot: 50
   muzzleVelocity: 50
 --- !u!114 &114189334501542500
@@ -377,7 +377,7 @@ MonoBehaviour:
   Camera: {fileID: 0}
   viewCamera: {fileID: 0}
   Turret: {fileID: 114131699460823798}
-  moveSpeed: 4
+  moveSpeed: 1
   acceleration: 1.2
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d86c59e398c046a9c4313e7c1eabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 100
+  CurrentHealth: -14
   MaxHealth: 100
   armor: 1
   Decay: 2
@@ -567,7 +567,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 10}
+  m_SizeDelta: {x: -14, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224534091422336808
 RectTransform:
@@ -594,7 +594,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614202305009336}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.041575823, y: 0.9369403, z: 0.32575232, w: -0.11958186}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:

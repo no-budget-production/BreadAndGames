@@ -121,7 +121,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 1.82
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.z
@@ -294,16 +294,6 @@ Prefab:
       propertyPath: viewCamera
       value: 
       objectReference: {fileID: 1248807870}
-    - target: {fileID: 114420630381971808, guid: eebda17a53ecf6d43b9561bddf83dcc7,
-        type: 2}
-      propertyPath: moveSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114420630381971808, guid: eebda17a53ecf6d43b9561bddf83dcc7,
-        type: 2}
-      propertyPath: playerNumber
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eebda17a53ecf6d43b9561bddf83dcc7, type: 2}
   m_IsPrefabParent: 0
@@ -732,13 +722,8 @@ Prefab:
       objectReference: {fileID: 1248807870}
     - target: {fileID: 114420630381971808, guid: 615f788e48c1b704e93a69c3b599a5a8,
         type: 2}
-      propertyPath: moveSpeed
-      value: 2.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114420630381971808, guid: 615f788e48c1b704e93a69c3b599a5a8,
-        type: 2}
-      propertyPath: playerNumber
-      value: 1
+      propertyPath: TurnSpeed
+      value: 0.079
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 615f788e48c1b704e93a69c3b599a5a8, type: 2}
@@ -1096,7 +1081,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 1.8200002
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1160,7 +1145,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 1.8200002
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1276,11 +1261,6 @@ Prefab:
       propertyPath: viewCamera
       value: 
       objectReference: {fileID: 1248807870}
-    - target: {fileID: 114420630381971808, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0,
-        type: 2}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0, type: 2}
   m_IsPrefabParent: 0
@@ -1337,7 +1317,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 1.8200002
       objectReference: {fileID: 0}
     - target: {fileID: 4757591992940342, guid: 3b0801a7752e3734cad188060189b079, type: 2}
       propertyPath: m_LocalPosition.z
