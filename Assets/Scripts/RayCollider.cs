@@ -66,6 +66,7 @@ public class RayCollider : MonoBehaviour
             //_healthReferenceScript.LoseHealth(_bonusDamage);
             _healthReferenceScript.HealthScript.LoseHealth(_bonusDamage);
         }
+        //hit.collider.gameObject.SendMessage("LoseHealth", _bonusDamage, SendMessageOptions.DontRequireReceiver);
         Destroy(gameObject);
 
         //IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
