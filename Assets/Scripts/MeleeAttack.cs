@@ -11,11 +11,12 @@ public class MeleeAttack : MonoBehaviour
         //animator = gameObject.GetComponent<Animator>();
     }
 
-	void Update ()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        if (Input.GetButtonDown("P1 Button 0"))
         {
             animator.SetTrigger("Button 0");
         }
     }
+
 }

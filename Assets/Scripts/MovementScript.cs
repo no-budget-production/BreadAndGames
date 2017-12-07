@@ -42,6 +42,9 @@ public class MovementScript : MonoBehaviour
     public Vector3 temporaryVector;
     public Vector3 temporaryLookVector;
 
+    public bool playAttackAnim;
+    public Animator animator;
+
     //protected override void Start()
     //{
     //    base.Start();
@@ -143,6 +146,7 @@ public class MovementScript : MonoBehaviour
         if (Input.GetAxis(FireXbox) < -0.25f)
         {
             Turret.Shoot();
+
         }
         //else if (Input.GetButton("FirePC1"))
         //{
