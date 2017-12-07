@@ -15,6 +15,11 @@ public class Health : MonoBehaviour
     public RectTransform healthBar;
     public bool UseHealthbar;
 
+    private void Start()
+    {
+        OnChangeHealth(CurrentHealth);
+    }
+
     public void LoseHealth(float loseHealth){
         if (CurrentHealth >= 0)
         {
@@ -34,8 +39,7 @@ public class Health : MonoBehaviour
                     Destroy(gameObject, Decay);
                 }
             }
-        }
-       
+        }    
     }
 
     public void GainHealth(float gainHealth)
@@ -54,13 +58,10 @@ public class Health : MonoBehaviour
         armor += Mathf.Clamp(armorArg, 0, armorArg);
     }
 
-
     void OnChangeHealth(float currentHealth)
     {
-        healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+        healthBar.sizeDelta = new Vector2(currentHealth/MaxHealth*100, healthBar.sizeDelta.y);
     }
-
-
 
 }
 
