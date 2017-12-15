@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33355684255927548}
   - component: {fileID: 136003132363483850}
   - component: {fileID: 23468881272709214}
-  - component: {fileID: 95413426100157322}
+  - component: {fileID: 95302151154996798}
   m_Layer: 0
   m_Name: Right Fist
   m_TagString: Untagged
@@ -125,12 +125,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4982861297404492}
-  - component: {fileID: 114420630381971808}
   - component: {fileID: 114682499244684856}
   - component: {fileID: 143531531725344194}
   - component: {fileID: 114586520180792556}
-  - component: {fileID: 95690311572362742}
-  - component: {fileID: 114979835974749020}
+  - component: {fileID: 114352880749299370}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Untagged
@@ -342,7 +340,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584756593326210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.078, y: 1.627, z: -1.813961}
+  m_LocalPosition: {x: -7.42, y: 1.627, z: -8.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224543724661416666}
@@ -609,7 +607,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95413426100157322
+--- !u!95 &95302151154996798
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -620,23 +618,6 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dbd38cec13633f3438ed232efa5c1af3, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95690311572362742
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 182c51635bab7354695a40dcbb85a01c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -692,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthScript: {fileID: 114682499244684856}
---- !u!114 &114420630381971808
+--- !u!114 &114352880749299370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -700,29 +681,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1584756593326210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dbece9d50e6478428fe8b2d7fa6bb01, type: 3}
+  m_Script: {fileID: 11500000, guid: f1323efd318e6be4495a87f6abc5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
-  XboxController: 1
-  movementAxisHorizontalName: Horizontal
-  movementAxisVerticalName: Vertical
-  movementAxisHorizontalXboxName: HorizontalXbox
-  movementAxisVerticalXboxName: VerticalXbox
-  movementAxisHorizontalLookXboxName: HorizontalLookXbox
-  movementAxisVerticalLookXboxName: VerticalLookXbox
-  FireXbox: FireXbox
-  TurnSpeed: 0.079
+  setPlayerNumber: 1
+  xboxController: 1
+  TurnSpeed: 0.06
   myController: {fileID: 143531531725344194}
   PlayerTrigger: {fileID: 136455441723677330}
   Camera: {fileID: 0}
   viewCamera: {fileID: 0}
-  Turret: {fileID: 114586520180792556}
-  moveSpeed: 10
+  Turret: {fileID: 0}
+  moveSpeed: 15
   deadzone: 0.25
   acceleration: 1.2
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
+  playAttackAnim: 0
+  animator: {fileID: 0}
 --- !u!114 &114586520180792556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -823,18 +799,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114979835974749020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e5b15338fbeef4a8ee6b63e36b6788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95413426100157322}
 --- !u!135 &135281749754133208
 SphereCollider:
   m_ObjectHideFlags: 1
