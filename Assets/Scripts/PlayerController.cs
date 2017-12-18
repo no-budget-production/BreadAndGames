@@ -12,7 +12,6 @@ public class PlayerController : Entity
     GunSystem gunSystem;
 
     public float moveSpeed = 1.0f;
-
     private float gravityStrength = 15f;
 
     private float angle;
