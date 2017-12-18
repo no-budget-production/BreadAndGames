@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthReference : MonoBehaviour {
 
-    public Health HealthScript;
+    public Entity playerControllerScript;
 
 
 

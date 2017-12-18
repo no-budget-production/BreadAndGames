@@ -35,7 +35,7 @@ public class HitCollider : MonoBehaviour {
         {
             _healthReferenceScript = (HealthReference)other.GetComponent(typeof(HealthReference));
             //_healthReferenceScript.LoseHealth(_bonusDamage);
-            _healthReferenceScript.HealthScript.LoseHealth(_bonusDamage);
+            _healthReferenceScript.playerControllerScript.LoseHealth(_bonusDamage);
         }
         Destroy(gameObject);
     }

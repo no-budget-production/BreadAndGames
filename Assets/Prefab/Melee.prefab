@@ -104,9 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4891823194419814}
   - component: {fileID: 33055052295081906}
-  - component: {fileID: 136455441723677330}
   - component: {fileID: 23436834577756114}
-  - component: {fileID: 114297224439119034}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -122,7 +120,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4982861297404492}
-  - component: {fileID: 114682499244684856}
   - component: {fileID: 143531531725344194}
   - component: {fileID: 114586520180792556}
   - component: {fileID: 114352880749299370}
@@ -147,6 +144,23 @@ GameObject:
   - component: {fileID: 114618887639407282}
   m_Layer: 5
   m_Name: Healthbar Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1704486186188004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4562865797723354}
+  - component: {fileID: 136092393292227678}
+  - component: {fileID: 114148386986581020}
+  m_Layer: 0
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,6 +258,19 @@ Transform:
   m_Father: {fileID: 4780452027472706}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!4 &4562865797723354
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704486186188004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4982861297404492}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4652521431099588
 Transform:
   m_ObjectHideFlags: 1
@@ -341,6 +368,7 @@ Transform:
   - {fileID: 224543724661416666}
   - {fileID: 4687330234765388}
   - {fileID: 4780452027472706}
+  - {fileID: 4562865797723354}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -353,7 +381,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -369,7 +396,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -387,7 +413,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -403,7 +428,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -421,7 +445,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -437,7 +460,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -455,7 +477,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -471,7 +492,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -489,7 +509,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -505,7 +524,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -523,7 +541,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -539,7 +556,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -623,6 +639,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114148386986581020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704486186188004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0309417b1139484d82c3b217428d2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControllerScript: {fileID: 114352880749299370}
 --- !u!114 &114189334501542500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -644,18 +672,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114297224439119034
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1531726882261784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0309417b1139484d82c3b217428d2cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthScript: {fileID: 114682499244684856}
 --- !u!114 &114352880749299370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -667,10 +683,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1323efd318e6be4495a87f6abc5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentHealth: 100
+  MaxHealth: 100
+  armor: 2
+  Decay: 1
+  DestroyOnDeath: 0
+  healthBar: {fileID: 224228349348698198}
+  UseHealthbar: 1
   setPlayerNumber: 1
-  TurnSpeed: 0.27
+  TurnSpeed: 0.237
   myController: {fileID: 143531531725344194}
-  PlayerTrigger: {fileID: 0}
+  PlayerTrigger: {fileID: 136092393292227678}
   Camera: {fileID: 0}
   viewCamera: {fileID: 0}
   Turret: {fileID: 114586520180792556}
@@ -709,24 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2fd03762dfd04f96bd68ce9142614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114682499244684856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd2d86c59e398c046a9c4313e7c1eabc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 100
-  MaxHealth: 100
-  armor: 1
-  Decay: 2
-  DestroyOnDeath: 0
-  healthBar: {fileID: 224228349348698198}
-  UseHealthbar: 1
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -781,17 +786,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!136 &136455441723677330
+--- !u!136 &136092393292227678
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1531726882261784}
+  m_GameObject: {fileID: 1704486186188004}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.64
+  m_Height: 6.79
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143531531725344194
@@ -887,7 +892,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614202305009336}
   m_LocalRotation: {x: -0.16467312, y: 0.47525704, z: 0.09105643, w: 0.8594896}
-  m_LocalPosition: {x: 0, y: 6.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 224534091422336808}

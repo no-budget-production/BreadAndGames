@@ -71,7 +71,10 @@ public class PlayerController : InputManager
         {
             lookVector = Vector3.zero;
         }
-
+        //if (moveVector.magnitude < deadzone)
+        //{
+        //    moveVector = Vector3.zero;
+        //}
 
 
         //moves the character
@@ -88,43 +91,77 @@ public class PlayerController : InputManager
         }
 
         //Weapon Input
-        //Trigger
+        // Trigger
         if (Input.GetAxis(XBoxTriggerRight) < -0.25f)
         {
-            Debug.Log("Trigger Right");
+            Debug.Log("P" + setPlayerNumber + " Trigger Right");
+            Turret.Shoot();
         }
         if (Input.GetAxis(XBoxTriggerLeft) < -0.25f)
         {
-            Debug.Log("Trigger Left");
+            Debug.Log("P" + setPlayerNumber + " Trigger Left");
         }
-        //Bumper
+        // Bumper
         if (Input.GetButtonDown(XBoxBumperLeft))
         {
-            Debug.Log("Bumper Left");
+            Debug.Log("P" + setPlayerNumber + " Bumper Left");
         }
         if (Input.GetButtonDown(XBoxBumperRight))
         {
-            Debug.Log("Bumper Right");
+            Debug.Log("P" + setPlayerNumber + " Bumper Right");
         }
-        //Buttons
+        // Action Buttons
         if (Input.GetButtonDown(XBoxButtonA))
         {
-            Debug.Log("Button A");
+            Debug.Log("P" + setPlayerNumber + " Button A");
         }
         if (Input.GetButtonDown(XBoxButtonB))
         {
-            Debug.Log("Button B");
+            Debug.Log("P" + setPlayerNumber + " Button B");
         }
         if (Input.GetButtonDown(XBoxButtonX))
         {
-            Debug.Log("Button X");
+            Debug.Log("P" + setPlayerNumber + " Button X");
         }
         if (Input.GetButtonDown(XBoxButtonY))
         {
-            Debug.Log("Button Y");
+            Debug.Log("P" + setPlayerNumber + " Button Y");
         }
-
-
+        // Middle Buttons
+        if (Input.GetButtonDown(XBoxButtonStart))
+        {
+            Debug.Log("P" + setPlayerNumber + " Button Start");
+        }
+        if (Input.GetButtonDown(XBoxButtonBack))
+        {
+            Debug.Log("P" + setPlayerNumber + " Button Back");
+        }
+        // Stick Buttons
+        if (Input.GetButtonDown(XBoxButtonRightStick))
+        {
+            Debug.Log("P" + setPlayerNumber + " Button Right Stick");
+        }
+        if (Input.GetButtonDown(XBoxButtonLeftStick))
+        {
+            Debug.Log("P" + setPlayerNumber + " Button Left Stick");
+        }
+        // Pad
+        if (Input.GetAxis(XBoxPadLeft) < -0.25f)
+        {
+            Debug.Log("P" + setPlayerNumber + " Pad Left");
+        }
+        if (Input.GetAxis(XBoxPadDown) < -0.25f)
+        {
+            Debug.Log("P" + setPlayerNumber + " Pad Down");
+        }
+        if (Input.GetAxis(XBoxPadRight) < -0.25f)
+        {
+            Debug.Log("P" + setPlayerNumber + " Pad Right");
+        }
+        if (Input.GetAxis(XBoxPadUp) < -0.25f)
+        {
+            Debug.Log("P" + setPlayerNumber + " Pad Up");
+        }
         //else if (Input.GetButton("FirePC1"))
         //{
         //    gunSystem.Shoot();

@@ -9,7 +9,7 @@ public class InputManager : Entity
     // XBox Controller
     private string _xboxHorizontalLeftStick = "Horizontal_PX";
     private string _xboxVerticalLeftStick = "Vertical_PX";
-    private string _xboxHorizontalRightStick = "HorizontalLook_PX";
+    private string _xboxHorizontalLookRightStick = "HorizontalLook_PX";
     private string _xboxVerticalLookRightStick = "VerticalLook_PX";
 
     private string _xboxButtonA = "Button_A_PX";
@@ -26,12 +26,14 @@ public class InputManager : Entity
     private string _xboxBumperLeft = "Bumper_Left_PX";
     private string _xboxBumperRight = "Bumper_Right_PX";
 
-    private string _xboxPadLeftRight = "Pad_Left_PX";
-    private string _xboxPadUpDown = "Pad_Right_PX";
+    private string _xboxPadLeft = "Pad_Left_PX";
+    private string _xboxPadDown = "Pad_Down_PX";
+    private string _xboxPadRight = "Pad_Right_PX";
+    private string _xboxPadUp = "Pad_Up_PX";
 
     public string XBoxHorizontalLeftStick{ get { return _xboxHorizontalLeftStick; } }
     public string XBoxVerticalLeftStick { get { return _xboxVerticalLeftStick; } }
-    public string XBoxHorizontalRightStick { get { return _xboxHorizontalRightStick; } }
+    public string XBoxHorizontalRightStick { get { return _xboxHorizontalLookRightStick; } }
     public string XBoxVerticalLookRightStick { get { return _xboxVerticalLookRightStick; } }
 
     public string XBoxButtonA { get { return _xboxButtonA; } }
@@ -48,8 +50,10 @@ public class InputManager : Entity
     public string XBoxBumperLeft { get { return _xboxBumperLeft; } }
     public string XBoxBumperRight { get { return _xboxBumperRight; } }
 
-    public string XBoxPadLeftRight { get { return _xboxPadLeftRight; } }
-    public string XBoxPadUpDown { get { return _xboxPadUpDown; } }
+    public string XBoxPadLeft { get { return _xboxPadLeft; } }
+    public string XBoxPadDown { get { return _xboxPadDown; } }
+    public string XBoxPadRight { get { return _xboxPadRight; } }
+    public string XBoxPadUp { get { return _xboxPadUp; } }
 
     void Awake()
     {
@@ -60,7 +64,7 @@ public class InputManager : Entity
     {
         _xboxHorizontalLeftStick += setPlayerNumber;
         _xboxVerticalLeftStick += setPlayerNumber;
-        _xboxHorizontalRightStick += setPlayerNumber;
+        _xboxHorizontalLookRightStick += setPlayerNumber;
         _xboxVerticalLookRightStick += setPlayerNumber;
         _xboxButtonA += setPlayerNumber;
         _xboxButtonB += setPlayerNumber;
@@ -74,7 +78,9 @@ public class InputManager : Entity
         _xboxTriggerRight += setPlayerNumber;
         _xboxBumperLeft += setPlayerNumber;
         _xboxBumperRight += setPlayerNumber;
-        _xboxPadLeftRight += setPlayerNumber;
-        _xboxPadUpDown += setPlayerNumber;
+        _xboxPadLeft += setPlayerNumber;
+        _xboxPadDown += setPlayerNumber;
+        _xboxPadRight += setPlayerNumber;
+        _xboxPadUp += setPlayerNumber;
     }
 }

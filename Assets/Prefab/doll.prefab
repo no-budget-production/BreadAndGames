@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4360416786225704}
-  - component: {fileID: 114058917661140004}
+  - component: {fileID: 114487880074488152}
   m_Layer: 0
   m_Name: doll
   m_TagString: Untagged
@@ -167,8 +167,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1111542324411724}
-  m_LocalRotation: {x: -0, y: -0.27184367, z: -0, w: 0.9623414}
-  m_LocalPosition: {x: -12.5, y: 0.95, z: 10.13}
+  m_LocalRotation: {x: -0, y: -0.16135365, z: -0, w: 0.98689663}
+  m_LocalPosition: {x: -6.46, y: 0.95, z: 12.96}
   m_LocalScale: {x: 2.0099158, y: 2.009916, z: 2.009916}
   m_Children:
   - {fileID: 4404407331271888}
@@ -178,7 +178,7 @@ Transform:
   - {fileID: 4853528968602268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -31.548002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -18.571001, z: 0}
 --- !u!4 &4404407331271888
 Transform:
   m_ObjectHideFlags: 1
@@ -358,24 +358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2fd03762dfd04f96bd68ce9142614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114058917661140004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1111542324411724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd2d86c59e398c046a9c4313e7c1eabc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 500
-  MaxHealth: 500
-  armor: 0
-  Decay: 0
-  DestroyOnDeath: 1
-  healthBar: {fileID: 224470363257130178}
-  UseHealthbar: 1
 --- !u!114 &114118824777178360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0309417b1139484d82c3b217428d2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthScript: {fileID: 114058917661140004}
+  playerControllerScript: {fileID: 114487880074488152}
 --- !u!114 &114303754750549812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,6 +434,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114487880074488152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1111542324411724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd927a3e9c8009b4bb6f245362855fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 250
+  MaxHealth: 250
+  armor: 0
+  Decay: 0
+  DestroyOnDeath: 1
+  healthBar: {fileID: 224470363257130178}
+  UseHealthbar: 1
 --- !u!114 &114560572852563570
 MonoBehaviour:
   m_ObjectHideFlags: 1

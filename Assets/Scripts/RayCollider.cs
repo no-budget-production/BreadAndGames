@@ -59,12 +59,12 @@ public class RayCollider : MonoBehaviour
 
     void OnHitObject(RaycastHit hit)
     {
-        Debug.Log(hit.collider.gameObject.name);
+        //Debug.Log(hit.collider.gameObject.name);
         if (hit.collider.gameObject.GetComponent("HealthReference") as HealthReference != null)
         {
             _healthReferenceScript = (HealthReference)hit.collider.gameObject.GetComponent(typeof(HealthReference));
             //_healthReferenceScript.LoseHealth(_bonusDamage);
-            _healthReferenceScript.HealthScript.LoseHealth(_bonusDamage);
+            _healthReferenceScript.playerControllerScript.LoseHealth(_bonusDamage);
         }
         //hit.collider.gameObject.SendMessage("LoseHealth", _bonusDamage, SendMessageOptions.DontRequireReceiver);
         Destroy(gameObject);
