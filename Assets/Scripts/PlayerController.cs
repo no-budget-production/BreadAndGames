@@ -11,7 +11,7 @@ public class PlayerController : InputManager
     public Collider PlayerTrigger;
     public Transform Camera;
     public Camera viewCamera;
-    public EnemyTurret Turret;
+    public GunSystem gunSystem;
 
     public float moveSpeed = 1.0f;
 
@@ -31,13 +31,12 @@ public class PlayerController : InputManager
     public bool playAttackAnim;
     public Animator animator;
 
-    //protected override void Start()
-    //{
-    //    base.Start();
-    //    PlayerTrigger = GetComponent<Collider>();
-    //    //gunSystem = GetComponent<GunSystem>();
-    //}
-
+    protected override void Start()
+    {
+        base.Start();
+        PlayerTrigger = GetComponent<Collider>();
+        gunSystem = GetComponent<GunSystem>();
+    }
 
 
 
@@ -71,10 +70,6 @@ public class PlayerController : InputManager
         {
             lookVector = Vector3.zero;
         }
-        //if (moveVector.magnitude < deadzone)
-        //{
-        //    moveVector = Vector3.zero;
-        //}
 
 
         //moves the character
@@ -90,12 +85,12 @@ public class PlayerController : InputManager
             transform.rotation = Quaternion.LookRotation(lookVector);
         }
 
-        //Weapon Input
         // Trigger
         if (Input.GetAxis(XBoxTriggerRight) < -0.25f)
         {
             Debug.Log("P" + setPlayerNumber + " Trigger Right");
-            Turret.Shoot();
+            gunSystem.Shoot();
+
         }
         if (Input.GetAxis(XBoxTriggerLeft) < -0.25f)
         {
@@ -162,9 +157,5 @@ public class PlayerController : InputManager
         {
             Debug.Log("P" + setPlayerNumber + " Pad Up");
         }
-        //else if (Input.GetButton("FirePC1"))
-        //{
-        //    gunSystem.Shoot();
-        //}
     }
 }

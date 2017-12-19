@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterScript : MonoBehaviour
+public interface IDamageable
 {
-
-    public int playerNumber;
-
+    void TakeHit(float damage, RaycastHit hit);
 }

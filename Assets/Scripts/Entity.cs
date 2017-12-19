@@ -15,9 +15,15 @@ public class Entity : MonoBehaviour {
     public RectTransform healthBar;
     public bool UseHealthbar;
 
-    private void Start()
+    //private void Start()
+    //{
+    //    OnChangeHealth(CurrentHealth);
+    //}
+
+    protected virtual void Start()
     {
         OnChangeHealth(CurrentHealth);
+
     }
 
     public void LoseHealth(float loseHealth)
