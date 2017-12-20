@@ -8,7 +8,7 @@ public class PlayerController : InputManager
     public float TurnSpeed;
 
     public CharacterController myController;
-    public Collider PlayerTrigger;
+    //public Collider PlayerTrigger;
     public Transform Camera;
     public Camera viewCamera;
     public GunSystem gunSystem;
@@ -34,9 +34,10 @@ public class PlayerController : InputManager
     protected override void Start()
     {
         base.Start();
-        PlayerTrigger = GetComponent<Collider>();
-        gunSystem = GetComponent<GunSystem>();
+        //PlayerTrigger = GetComponent<Collider>();
+        //gunSystem = GetComponent<GunSystem>();
     }
+
 
 
 
@@ -88,74 +89,74 @@ public class PlayerController : InputManager
         // Trigger
         if (Input.GetAxis(XBoxTriggerRight) < -0.25f)
         {
-            Debug.Log("P" + setPlayerNumber + " Trigger Right");
+            //Debug.Log("P" + setPlayerNumber + " Trigger Right");
             gunSystem.Shoot();
 
         }
         if (Input.GetAxis(XBoxTriggerLeft) < -0.25f)
         {
-            Debug.Log("P" + setPlayerNumber + " Trigger Left");
+            //Debug.Log("P" + setPlayerNumber + " Trigger Left");
         }
         // Bumper
         if (Input.GetButtonDown(XBoxBumperLeft))
         {
-            Debug.Log("P" + setPlayerNumber + " Bumper Left");
+            //Debug.Log("P" + setPlayerNumber + " Bumper Left");
         }
         if (Input.GetButtonDown(XBoxBumperRight))
         {
-            Debug.Log("P" + setPlayerNumber + " Bumper Right");
+            //Debug.Log("P" + setPlayerNumber + " Bumper Right");
         }
         // Action Buttons
         if (Input.GetButtonDown(XBoxButtonA))
         {
-            Debug.Log("P" + setPlayerNumber + " Button A");
+            //Debug.Log("P" + setPlayerNumber + " Button A");
         }
         if (Input.GetButtonDown(XBoxButtonB))
         {
-            Debug.Log("P" + setPlayerNumber + " Button B");
+            //Debug.Log("P" + setPlayerNumber + " Button B");
         }
         if (Input.GetButtonDown(XBoxButtonX))
         {
-            Debug.Log("P" + setPlayerNumber + " Button X");
+            //Debug.Log("P" + setPlayerNumber + " Button X");
         }
         if (Input.GetButtonDown(XBoxButtonY))
         {
-            Debug.Log("P" + setPlayerNumber + " Button Y");
+            //Debug.Log("P" + setPlayerNumber + " Button Y");
         }
         // Middle Buttons
         if (Input.GetButtonDown(XBoxButtonStart))
         {
-            Debug.Log("P" + setPlayerNumber + " Button Start");
+            //Debug.Log("P" + setPlayerNumber + " Button Start");
         }
         if (Input.GetButtonDown(XBoxButtonBack))
         {
-            Debug.Log("P" + setPlayerNumber + " Button Back");
+            //Debug.Log("P" + setPlayerNumber + " Button Back");
         }
         // Stick Buttons
         if (Input.GetButtonDown(XBoxButtonRightStick))
         {
-            Debug.Log("P" + setPlayerNumber + " Button Right Stick");
+            //Debug.Log("P" + setPlayerNumber + " Button Right Stick");
         }
         if (Input.GetButtonDown(XBoxButtonLeftStick))
         {
-            Debug.Log("P" + setPlayerNumber + " Button Left Stick");
+            //Debug.Log("P" + setPlayerNumber + " Button Left Stick");
         }
         // Pad
         if (Input.GetAxis(XBoxPadLeft) < -0.25f)
         {
-            Debug.Log("P" + setPlayerNumber + " Pad Left");
+            //Debug.Log("P" + setPlayerNumber + " Pad Left");
         }
         if (Input.GetAxis(XBoxPadDown) < -0.25f)
         {
-            Debug.Log("P" + setPlayerNumber + " Pad Down");
+            //Debug.Log("P" + setPlayerNumber + " Pad Down");
         }
         if (Input.GetAxis(XBoxPadRight) < -0.25f)
         {
-            Debug.Log("P" + setPlayerNumber + " Pad Right");
+            ////Debug.Log("P" + setPlayerNumber + " Pad Right");
         }
         if (Input.GetAxis(XBoxPadUp) < -0.25f)
         {
-            Debug.Log("P" + setPlayerNumber + " Pad Up");
+            ////Debug.Log("P" + setPlayerNumber + " Pad Up");
         }
     }
 }

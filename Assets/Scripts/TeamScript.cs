@@ -60,8 +60,8 @@ public class TeamScript : MonoBehaviour
 
         //cameraGamerObject.transform.localPosition = new Vector3(0, 0, 0);
 
-        //Debug.Log(requiredSize);
-        //Debug.Log(Mathf.SmoothDamp(cameraGamerObject.orthographicSize, requiredSize, ref zoomSpeed, dampTime));
+        ////Debug.Log(requiredSize);
+        ////Debug.Log(Mathf.SmoothDamp(cameraGamerObject.orthographicSize, requiredSize, ref zoomSpeed, dampTime));
         
 
         cameraGamerObject.transform.localPosition = new Vector3(0, 0, Mathf.SmoothDamp(cameraGamerObject.transform.localPosition.z, -(requiredSize), ref zoomSpeed, dampTime));

@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
                 OnChangeHealth(CurrentHealth);
             }
 
-            Debug.Log(CurrentHealth);
+            //Debug.Log(CurrentHealth);
 
             if (CurrentHealth <= 0)
             {
@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
             OnChangeHealth(CurrentHealth);
         }
 
-        Debug.Log(CurrentHealth);
+        //Debug.Log(CurrentHealth);
     }
 
     public void ArmorBuff(float armorArg)

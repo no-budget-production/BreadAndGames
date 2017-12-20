@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour {
+public class Entity : MonoBehaviour, IDamageable {
 
     public float CurrentHealth;
     public float MaxHealth;
@@ -26,6 +26,16 @@ public class Entity : MonoBehaviour {
 
     }
 
+    public void TakeHit(float damage, RaycastHit hit)
+    {
+        CurrentHealth -= damage;
+
+        if (CurrentHealth <= 0)
+        {
+            Debug.Log("DEAD");
+        }
+    }
+
     public void LoseHealth(float loseHealth)
     {
         if (CurrentHealth >= 0)
@@ -37,7 +47,7 @@ public class Entity : MonoBehaviour {
                 OnChangeHealth(CurrentHealth);
             }
 
-            Debug.Log(CurrentHealth);
+            //Debug.Log(CurrentHealth);
 
             if (CurrentHealth <= 0)
             {
@@ -57,7 +67,7 @@ public class Entity : MonoBehaviour {
             OnChangeHealth(CurrentHealth);
         }
 
-        Debug.Log(CurrentHealth);
+        //Debug.Log(CurrentHealth);
     }
 
     public void ArmorBuff(float armorArg)
