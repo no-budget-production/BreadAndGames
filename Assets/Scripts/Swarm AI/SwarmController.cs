@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class SwarmController : Entity
 {
-
-
     private NavMeshAgent NavMeshAgent;
 
     void Awake()
@@ -14,22 +12,8 @@ public class SwarmController : Entity
         NavMeshAgent = this.GetComponent<NavMeshAgent>();
 
     }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    //private void SetDestination()
-    //{
-    //    if (Destination != null)
-    //    {
-    //        Vector3 targetVector = Destination.transform.position;
-    //        NavMeshAgent.SetDestination(targetVector);
-    //    }
-    //}
-
-    public void MoveToHoldingPoint(Transform Destination)
+    
+    public void MoveToDestination(Transform Destination)
     {
         Vector3 targetVector = Destination.transform.position;
         NavMeshAgent.SetDestination(targetVector);

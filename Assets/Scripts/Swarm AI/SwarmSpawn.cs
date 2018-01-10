@@ -23,10 +23,12 @@ public class SwarmSpawn : MonoBehaviour
         // So the number of spawning enemys is optional.
         // Array[0] has always to be the "Hidden Spawn".
         int children = transform.childCount;
-        NumberOfSpawns = children-1;        // -1 is the hidden spawn
+        NumberOfSpawns = children-1;        // -1 is the hidden spawn                               ?überflüssig wenn int i =1 ist?
         SpawnPoints = new Transform[children];
         for (int i = 0; i < children; ++i)
+        {
             SpawnPoints[i] = transform.GetChild(i);
+        }
 
 
         coroutine = WaitAndSpawn(SpawnRate);
@@ -41,10 +43,12 @@ public class SwarmSpawn : MonoBehaviour
         GameObject TempSpawnHandler;
         TempSpawnHandler = Instantiate(PrefabToSpawn, SpawnPoints[0].position, SpawnPoints[0].rotation) as GameObject;
         TempSpawnHandler.transform.parent = SpawnPoints[HoldingPointCounter].transform;
+
         // Let the spawned enemy move to the next free "Holding Point"
-        SwarmController SpawnControllerScript = (SwarmController)TempSpawnHandler.GetComponent(typeof(SwarmController));
-        SpawnControllerScript.MoveToHoldingPoint(SpawnPoints[HoldingPointCounter]);
+        SwarmController SpawnControllerScript = TempSpawnHandler.GetComponent<SwarmController>();
+        SpawnControllerScript.MoveToDestination(SpawnPoints[HoldingPointCounter]);
         HoldingPointCounter++;
+
         // Reset the HoldingPointCounter after one iteration of all "Holding Points"
         if (HoldingPointCounter > NumberOfSpawns)
         {
