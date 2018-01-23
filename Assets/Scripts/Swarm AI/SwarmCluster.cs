@@ -9,17 +9,17 @@ public class SwarmCluster : MonoBehaviour
     public float SphereRadius;
     public bool DrawCheckSphere;
     public Transform[] Waypoints;
+    public float ObjectBornTime;
 
-    public Transform bla;
+    //test variables
+    public Transform Destination;
     
-
-    [HideInInspector]
-    public int NumberOfEnemys;
-
+    private int NumberOfEnemys;
+    public int _NumberOfEnemys { get { return NumberOfEnemys; } }
     private List<GameObject> AllEnemysInCluster;
     private SwarmController[] SwarmControllerScripts;
-    private Transform dest;
     private NavMeshAgent NavMeshAgent;
+
 
     void Awake()
     {
@@ -30,14 +30,22 @@ public class SwarmCluster : MonoBehaviour
     void Start()
     {
         GetAllEnemysInCluster();
+        ObjectBornTime = Time.realtimeSinceStartup;
+
+        //SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
+        //hitbox.radius = SphereRadius;
+        //hitbox.isTrigger = true;
     }
 
     void Update()
     {
         All_GoToWaypoints();
-        MoveToDestination(bla);
+        if (Destination != null)
+        {
+            ClusterMoveToDestination(Destination);
+        }        
     }
-
+    
     // Draw a gizmo sphere for visibilty of the checkSphere and debugging
     void OnDrawGizmosSelected()
     {
@@ -46,10 +54,10 @@ public class SwarmCluster : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, SphereRadius);
         }
-
     }
 
-    void GetAllEnemysInCluster()
+    
+    public void GetAllEnemysInCluster()
     {
         int children = transform.childCount;
         NumberOfEnemys = children - 1;
@@ -73,9 +81,38 @@ public class SwarmCluster : MonoBehaviour
         }
     }
 
-    void MoveToDestination(Transform Destination)
+    public void ClusterMoveToDestination(Transform Destination)
     {
         Vector3 targetVector = Destination.transform.position;
         NavMeshAgent.SetDestination(targetVector);
+    }
+
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SwarmCluster"))
+        {
+            SwarmCluster TempSwarmClusterScript = other.GetComponent<SwarmCluster>();
+            if (NumberOfEnemys > TempSwarmClusterScript._NumberOfEnemys)
+            {
+                Debug.Log("i can live :)");
+                return;
+            }
+            else if (NumberOfEnemys < TempSwarmClusterScript._NumberOfEnemys)
+            {
+                Debug.Log("i have to die :(");
+                for (int i = 0; i < AllEnemysInCluster.Count; i++)
+                {
+                    AllEnemysInCluster[i].transform.parent = other.transform;
+                }
+                Destroy(gameObject);
+            }
+            else if (NumberOfEnemys == TempSwarmClusterScript._NumberOfEnemys)
+            {
+                Debug.Log("dice");
+            }
+
+        }
     }
 }

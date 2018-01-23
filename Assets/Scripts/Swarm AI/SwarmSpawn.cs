@@ -45,8 +45,8 @@ public class SwarmSpawn : MonoBehaviour
         TempSpawnHandler.transform.parent = SpawnPoints[HoldingPointCounter].transform;
 
         // Let the spawned enemy move to the next free "Holding Point"
-        SwarmController SpawnControllerScript = TempSpawnHandler.GetComponent<SwarmController>();
-        SpawnControllerScript.MoveToDestination(SpawnPoints[HoldingPointCounter]);
+        SwarmCluster SwarmClusterScript = TempSpawnHandler.GetComponent<SwarmCluster>();
+        SwarmClusterScript.ClusterMoveToDestination(SpawnPoints[HoldingPointCounter]);
         HoldingPointCounter++;
 
         // Reset the HoldingPointCounter after one iteration of all "Holding Points"
