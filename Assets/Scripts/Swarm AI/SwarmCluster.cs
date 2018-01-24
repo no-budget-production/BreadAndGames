@@ -6,18 +6,18 @@ using UnityEngine.AI;
 public class SwarmCluster : MonoBehaviour
 {
 
-    public float SphereRadius;
-    public bool DrawCheckSphere;
+    public float CheckRadius;
     public Transform[] Waypoints;
-    public float ObjectBornTime;
 
     //test variables
     public Transform Destination;
     
     private int NumberOfEnemys;
     public int _NumberOfEnemys { get { return NumberOfEnemys; } }
+    private float RandomNumber;
+    public float _RandomNumber { get { return RandomNumber; } }
     private List<GameObject> AllEnemysInCluster;
-    private SwarmController[] SwarmControllerScripts;
+    private SwarmController[] SwarmControllerScripts;   // Using a array here, because a list doesn't work (don't know why)
     private NavMeshAgent NavMeshAgent;
 
 
@@ -25,16 +25,17 @@ public class SwarmCluster : MonoBehaviour
     {
         AllEnemysInCluster = new List<GameObject>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
+        SwarmControllerScripts = new SwarmController[15];
+
+        SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
+        hitbox.radius = CheckRadius;
+        hitbox.isTrigger = true;
     }
 
     void Start()
     {
         GetAllEnemysInCluster();
-        ObjectBornTime = Time.realtimeSinceStartup;
-
-        //SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
-        //hitbox.radius = SphereRadius;
-        //hitbox.isTrigger = true;
+        RandomNumber = Random.Range(0f, 100f);
     }
 
     void Update()
@@ -46,23 +47,13 @@ public class SwarmCluster : MonoBehaviour
         }        
     }
     
-    // Draw a gizmo sphere for visibilty of the checkSphere and debugging
-    void OnDrawGizmosSelected()
-    {
-        if (DrawCheckSphere)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, SphereRadius);
-        }
-    }
-
     
     public void GetAllEnemysInCluster()
     {
-        int children = transform.childCount;
-        NumberOfEnemys = children - 1;
-        SwarmControllerScripts = new SwarmController[NumberOfEnemys];
-        for (int i = 1; i < children; ++i)  // int i = 1, because you have to skip the first child. The First one are the waypoints.
+        AllEnemysInCluster.Clear();
+        int children = transform.childCount;                            // How many childrens are in this cluster?
+        NumberOfEnemys = children - 1;                                  // Safe the number subtract with 1. (the first child are the waypoints)
+        for (int i = 1; i < children; ++i)                              // int i = 1 because child(0) are the waypoints
         {
             GameObject TempGameObjectHandler = gameObject.transform.GetChild(i).gameObject;
             SwarmController TempScriptHandler = TempGameObjectHandler.GetComponent<SwarmController>();
@@ -75,9 +66,13 @@ public class SwarmCluster : MonoBehaviour
 
     void All_GoToWaypoints()
     {
+        
         for (int i = 0; i < SwarmControllerScripts.Length; ++i)
         {
-            SwarmControllerScripts[i].MoveToDestination(Waypoints[i]);
+            if (SwarmControllerScripts[i] != null)
+            {
+                SwarmControllerScripts[i].MoveToDestination(Waypoints[i]);
+            }
         }
     }
 
@@ -87,7 +82,15 @@ public class SwarmCluster : MonoBehaviour
         NavMeshAgent.SetDestination(targetVector);
     }
 
-
+    void ClusterTakeover(Collider OpponentCluster, SwarmCluster OpponentClusterScript)
+    {
+        for (int i = 0; i < AllEnemysInCluster.Count; i++)
+        {
+            AllEnemysInCluster[i].transform.parent = OpponentCluster.transform;
+        }
+        OpponentClusterScript.GetAllEnemysInCluster();
+        Destroy(gameObject);
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -96,23 +99,30 @@ public class SwarmCluster : MonoBehaviour
             SwarmCluster TempSwarmClusterScript = other.GetComponent<SwarmCluster>();
             if (NumberOfEnemys > TempSwarmClusterScript._NumberOfEnemys)
             {
-                Debug.Log("i can live :)");
+                // this.Cluster is bigger. No action needed.
                 return;
             }
             else if (NumberOfEnemys < TempSwarmClusterScript._NumberOfEnemys)
             {
-                Debug.Log("i have to die :(");
-                for (int i = 0; i < AllEnemysInCluster.Count; i++)
-                {
-                    AllEnemysInCluster[i].transform.parent = other.transform;
-                }
-                Destroy(gameObject);
+                // this.Cluster is smaller. Hand over all enemys and destroy yourself.
+                ClusterTakeover(other, TempSwarmClusterScript);
             }
             else if (NumberOfEnemys == TempSwarmClusterScript._NumberOfEnemys)
             {
-                Debug.Log("dice");
+                // Clusters have the same amount of enemys. Do the takeover with random numbers.
+                if (RandomNumber > TempSwarmClusterScript._RandomNumber)
+                {
+                    return;
+                }
+                else if (RandomNumber < TempSwarmClusterScript._RandomNumber)
+                {
+                    ClusterTakeover(other, TempSwarmClusterScript);
+                }
             }
-
+            else
+            {
+                Debug.Log("Cluster Takeover Error");
+            }
         }
     }
 }
