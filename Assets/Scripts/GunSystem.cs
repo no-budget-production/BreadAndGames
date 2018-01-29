@@ -15,8 +15,7 @@ public class GunSystem : MonoBehaviour
             EquipGun(startingGun);
         }
 	}
-	
-	// Update is called once per frame
+		
 	public void EquipGun (Gun gunToEquip)
     {
 	    if (equippedGun != null)

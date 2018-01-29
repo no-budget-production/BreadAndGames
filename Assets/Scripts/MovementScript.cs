@@ -63,7 +63,7 @@ public class MovementScript : MonoBehaviour
         Vector3 moveAngle = new Vector3(0, +0, 45);
         transform.position += moveDirection * movementSpeed * Time.deltaTime;
         float angle = Mathf.Atan2(movementInputValueHorizontal, movementInputValueVertical) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));      
     }
 
     public void GetKeyboardInput()
