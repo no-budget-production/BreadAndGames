@@ -19,13 +19,15 @@ public class SwarmCluster : MonoBehaviour
     private List<GameObject> AllEnemysInCluster;
     private SwarmController[] SwarmControllerScripts;   // Using a array here, because a list doesn't work (don't know why)
     private NavMeshAgent NavMeshAgent;
-
+    private GameObject[] PlayerInRadius;
+    private GameObject Target;
 
     void Awake()
     {
         AllEnemysInCluster = new List<GameObject>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
         SwarmControllerScripts = new SwarmController[15];
+        PlayerInRadius = new GameObject[3];
 
         SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
         hitbox.radius = CheckRadius;
@@ -123,6 +125,47 @@ public class SwarmCluster : MonoBehaviour
             {
                 Debug.Log("Cluster Takeover Error");
             }
+        }
+
+        if (other.CompareTag("Melee"))
+        {
+            PlayerInRadius[0] = other.gameObject;
+            if (Target == null)
+            {
+                Target = other.gameObject;
+            }
+        }
+        if (other.CompareTag("Shooter"))
+        {
+            PlayerInRadius[1] = other.gameObject;
+            if (Target == null)
+            {
+                Target = other.gameObject;
+            }
+        }
+        if (other.CompareTag("Support"))
+        {
+            PlayerInRadius[2] = other.gameObject;
+            if (Target == null)
+            {
+                Target = other.gameObject;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Melee"))
+        {
+            PlayerInRadius[0] = null;
+        }
+        if (other.CompareTag("Shooter"))
+        {
+            PlayerInRadius[1] = null;
+        }
+        if (other.CompareTag("Support"))
+        {
+            PlayerInRadius[2] = null;
         }
     }
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8660b0510f6818a4d98db3be70324c16
-timeCreated: 1516940841
+guid: 9432eb4d690761f44a85b3a99f5decc1
+timeCreated: 1517242707
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -67,8 +67,8 @@ ModelImporter:
     400058: Upperarm.R
     2100000: Executor_base_Mat
     4300000: Executor_base
-    7400000: Executor_rig|IDLE
-    7400002: Executor_rig|JUMP
+    7400000: Executor_rig|FALL
+    7400002: Executor_rig|IDLE
     7400004: Executor_rig|RUN
     9500000: //RootNode
     13700000: Executor_base
@@ -102,7 +102,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.0028
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

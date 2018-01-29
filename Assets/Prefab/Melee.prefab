@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4284150259276108}
   - component: {fileID: 33290152367479832}
   - component: {fileID: 23851352180579550}
-  - component: {fileID: 54674574773970724}
+  - component: {fileID: 54373682182526824}
   m_Layer: 0
   m_Name: Left Fist
   m_TagString: Untagged
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 114352880749299370}
   m_Layer: 0
   m_Name: Melee
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367790242123358}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.327, y: 0.9, z: 0.49}
+  m_LocalPosition: {x: -0.32699996, y: 0.9, z: 0.48999998}
   m_LocalScale: {x: 0.14891243, y: 0.27550015, z: 0.28491348}
   m_Children: []
   m_Father: {fileID: 4780452027472706}
@@ -332,8 +332,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584756593326210}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2140007, y: 0, z: 4.5650024}
+  m_LocalRotation: {x: -0, y: -0.99998766, z: -0, w: -0.004965176}
+  m_LocalPosition: {x: 1.3800001, y: 0, z: -8.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224543724661416666}
@@ -341,7 +341,7 @@ Transform:
   - {fileID: 4780452027472706}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180.56898, z: 0}
 --- !u!23 &23155481414496612
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -588,7 +588,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1845565932216568}
   m_Mesh: {fileID: 4300000, guid: d9174de7b4e95ad499a3060c34f01d14, type: 3}
---- !u!54 &54674574773970724
+--- !u!54 &54373682182526824
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -675,7 +675,7 @@ MonoBehaviour:
   DestroyOnDeath: 0
   healthBar: {fileID: 224228349348698198}
   UseHealthbar: 1
-  setPlayerNumber: 1
+  setPlayerNumber: 2
   TurnSpeed: 0.237
   myController: {fileID: 143531531725344194}
   Camera: {fileID: 0}
@@ -835,7 +835,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 10}
+  m_SizeDelta: {x: 100, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224534091422336808
 RectTransform:
@@ -862,7 +862,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614202305009336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.4044551, y: 0.09168991, z: 0.040795397, w: -0.9090351}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
