@@ -35,7 +35,7 @@ public class SwarmSpawn : MonoBehaviour
 
         // Let the spawned enemy move to the Holding Point
         SwarmCluster SwarmClusterScript = TempSpawnHandler.GetComponent<SwarmCluster>();
-        SwarmClusterScript.ClusterMoveToDestination(HoldingPoint);
+        SwarmClusterScript._NavMeshAgent.SetDestination(HoldingPoint.transform.position);
         SpawnedEnemys++;
 
         if (SpawnedEnemys == AmountToSpawn)

@@ -8,9 +8,7 @@ public class SwarmCluster : MonoBehaviour
 
     public float CheckRadius;
     public Transform[] Waypoints;
-
-    //test variables
-    public Transform Destination;
+    public float ChaseDistance;
     
     private int NumberOfEnemys;
     public int _NumberOfEnemys { get { return NumberOfEnemys; } }
@@ -19,6 +17,7 @@ public class SwarmCluster : MonoBehaviour
     private List<GameObject> AllEnemysInCluster;
     private SwarmController[] SwarmControllerScripts;   // Using a array here, because a list doesn't work (don't know why)
     private NavMeshAgent NavMeshAgent;
+    public NavMeshAgent _NavMeshAgent { get { return NavMeshAgent; } }
     private GameObject[] PlayerInRadius;
     private GameObject Target;
 
@@ -29,9 +28,9 @@ public class SwarmCluster : MonoBehaviour
         SwarmControllerScripts = new SwarmController[15];
         PlayerInRadius = new GameObject[3];
 
-        //SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
-        //hitbox.radius = CheckRadius;
-        //hitbox.isTrigger = true;
+        SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
+        hitbox.radius = CheckRadius;
+        hitbox.isTrigger = true;
     }
 
     void Start()
@@ -43,10 +42,17 @@ public class SwarmCluster : MonoBehaviour
     void Update()
     {
         All_GoToWaypoints();
-        if (Destination != null)
+
+
+        if (Target != null)
         {
-            ClusterMoveToDestination(Destination);
-        }        
+            NavMeshAgent.SetDestination(Target.transform.position);
+            if (NavMeshAgent.remainingDistance > ChaseDistance)
+            {
+                Target = null;
+                NavMeshAgent.ResetPath();
+            }
+        }
     }
     
     
@@ -76,12 +82,6 @@ public class SwarmCluster : MonoBehaviour
                 SwarmControllerScripts[i].MoveToDestination(Waypoints[i]);
             }
         }
-    }
-
-    public void ClusterMoveToDestination(Transform Destination)
-    {
-        Vector3 targetVector = Destination.transform.position;
-        NavMeshAgent.SetDestination(targetVector);
     }
 
     void ClusterTakeover(Collider OpponentCluster, SwarmCluster OpponentClusterScript)
@@ -158,14 +158,29 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("Melee"))
         {
             PlayerInRadius[0] = null;
+            if (Target == other.gameObject)
+            {
+                Target = null;
+            }
+
         }
         if (other.CompareTag("Shooter"))
         {
             PlayerInRadius[1] = null;
+            if (Target == other.gameObject)
+            {
+                Target = null;
+            }
+
         }
         if (other.CompareTag("Support"))
         {
             PlayerInRadius[2] = null;
+            if (Target == other.gameObject)
+            {
+                Target = null;
+            }
+
         }
     }
 }
