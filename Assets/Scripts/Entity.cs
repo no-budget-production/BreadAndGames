@@ -15,10 +15,6 @@ public class Entity : MonoBehaviour, IDamageable {
     public RectTransform healthBar;
     public bool UseHealthbar;
 
-    //private void Start()
-    //{
-    //    OnChangeHealth(CurrentHealth);
-    //}
 
     protected virtual void Start()
     {
@@ -30,45 +26,20 @@ public class Entity : MonoBehaviour, IDamageable {
     {
         CurrentHealth -= damage;
 
+        // Healthbar
+        if (UseHealthbar)
+        {
+            OnChangeHealth(CurrentHealth);
+        }
+
+        // Death check
         if (CurrentHealth <= 0)
         {
             Debug.Log("DEAD");
         }
     }
 
-    public void LoseHealth(float loseHealth)
-    {
-        if (CurrentHealth >= 0)
-        {
-            loseHealth -= armor;
-            CurrentHealth -= Mathf.Clamp(loseHealth, 0, loseHealth);
-            if (UseHealthbar)
-            {
-                OnChangeHealth(CurrentHealth);
-            }
 
-            //Debug.Log(CurrentHealth);
-
-            if (CurrentHealth <= 0)
-            {
-                if (DestroyOnDeath)
-                {
-                    Destroy(gameObject, Decay);
-                }
-            }
-        }
-    }
-
-    public void GainHealth(float gainHealth)
-    {
-        CurrentHealth += Mathf.Clamp(gainHealth, 0, gainHealth);
-        if (UseHealthbar)
-        {
-            OnChangeHealth(CurrentHealth);
-        }
-
-        //Debug.Log(CurrentHealth);
-    }
 
     public void ArmorBuff(float armorArg)
     {
@@ -77,6 +48,7 @@ public class Entity : MonoBehaviour, IDamageable {
 
     void OnChangeHealth(float currentHealth)
     {
+        
         healthBar.sizeDelta = new Vector2(currentHealth / MaxHealth * 100, healthBar.sizeDelta.y);
     }
 

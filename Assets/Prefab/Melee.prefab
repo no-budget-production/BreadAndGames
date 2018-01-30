@@ -105,11 +105,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4982861297404492}
   - component: {fileID: 143531531725344194}
-  - component: {fileID: 114586520180792556}
   - component: {fileID: 114352880749299370}
   m_Layer: 0
   m_Name: Melee
-  m_TagString: Player
+  m_TagString: Melee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,23 +687,6 @@ MonoBehaviour:
   temporaryLookVector: {x: 0, y: 0, z: 0}
   playAttackAnim: 0
   animator: {fileID: 0}
---- !u!114 &114586520180792556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fde7a66a9f0dd94aab9a3dd10779b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletSpawn: {fileID: 1933409610486762}
-  BulletPrefab: {fileID: 1003433134805976, guid: bb68068bd6f5f384aa922333e67a7365,
-    type: 2}
-  DamageBonus: 10
-  msBetweenShot: 200
-  muzzleVelocity: 35
 --- !u!114 &114618887639407282
 MonoBehaviour:
   m_ObjectHideFlags: 1

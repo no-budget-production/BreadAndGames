@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114742029162987672}
   m_Layer: 0
   m_Name: Support
-  m_TagString: Player
+  m_TagString: Support
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   DamageBonus: 20
   msBetweenShot: 50
   muzzleVelocity: 50
+  nextShotTime: 0
 --- !u!114 &114089546494241978
 MonoBehaviour:
   m_ObjectHideFlags: 1
