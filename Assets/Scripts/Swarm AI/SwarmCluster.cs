@@ -29,9 +29,9 @@ public class SwarmCluster : MonoBehaviour
         SwarmControllerScripts = new SwarmController[15];
         PlayerInRadius = new GameObject[3];
 
-        SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
-        hitbox.radius = CheckRadius;
-        hitbox.isTrigger = true;
+        //SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
+        //hitbox.radius = CheckRadius;
+        //hitbox.isTrigger = true;
     }
 
     void Start()
