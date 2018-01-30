@@ -121,9 +121,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4424843764879360}
-  - component: {fileID: 114821180238492854}
   - component: {fileID: 199413772382916792}
   - component: {fileID: 198267320410660282}
+  - component: {fileID: 114240883855673984}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -445,7 +445,7 @@ Transform:
   m_Father: {fileID: 4424843764879360}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114821180238492854
+--- !u!114 &114240883855673984
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -453,9 +453,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620125856325670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f47e99623a5043adc11839706250a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4560c448c4ea29c40b71657e4dc3d379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xScale: 1000
+  zScale: 1000
+  intensity: 25
+  ParticleComponents:
+  - {fileID: 198790144167697762}
+  - {fileID: 198936997545705592}
+  - {fileID: 198732945823261746}
+  - {fileID: 198608066014710530}
+  - {fileID: 198084790740325378}
+  - {fileID: 198192692961528040}
+  - {fileID: 198837285805770056}
+  - {fileID: 198909344304032962}
+  - {fileID: 198102072592391326}
+  - {fileID: 198068755248418788}
+  - {fileID: 198730429949474492}
+  - {fileID: 198230641116071874}
+  - {fileID: 198293136798741892}
 --- !u!198 &198068755248418788
 ParticleSystem:
   m_ObjectHideFlags: 1
