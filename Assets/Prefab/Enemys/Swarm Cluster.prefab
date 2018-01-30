@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 114148741947584846}
   - component: {fileID: 195734426615747820}
   - component: {fileID: 54086706818329154}
-  - component: {fileID: 135741835459584154}
   m_Layer: 2
   m_Name: Swarm Cluster
   m_TagString: SwarmCluster
@@ -656,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40d8c45664ad5f4bbe43a0c61993a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckRadius: 5
+  CheckRadius: 15
   Waypoints:
   - {fileID: 4711052283385762}
   - {fileID: 4736413368345426}
@@ -673,7 +672,7 @@ MonoBehaviour:
   - {fileID: 4655652759577714}
   - {fileID: 4655652759577714}
   - {fileID: 4655652759577714}
-  Destination: {fileID: 0}
+  ChaseDistance: 20
 --- !u!114 &114376819772591616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -713,18 +712,6 @@ MonoBehaviour:
   DestroyOnDeath: 1
   healthBar: {fileID: 224953156713744502}
   UseHealthbar: 1
---- !u!135 &135741835459584154
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1168342798091440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136839057831181988
 CapsuleCollider:
   m_ObjectHideFlags: 1
