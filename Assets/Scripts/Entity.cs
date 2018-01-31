@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour, IDamageable {
 
     public RectTransform healthBar;
     public bool UseHealthbar;
-
+    
 
     protected virtual void Start()
     {
@@ -35,7 +35,12 @@ public class Entity : MonoBehaviour, IDamageable {
         // Death check
         if (CurrentHealth <= 0)
         {
+            
             Debug.Log("DEAD");
+            if (DestroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

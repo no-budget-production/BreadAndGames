@@ -9,6 +9,8 @@ public class SwarmCluster : MonoBehaviour
     public float CheckRadius;
     public Transform[] Waypoints;
     public float ChaseDistance;
+
+    private Transform Reinforcement;
     
     private int NumberOfEnemys;
     public int _NumberOfEnemys { get { return NumberOfEnemys; } }
@@ -19,14 +21,17 @@ public class SwarmCluster : MonoBehaviour
     private NavMeshAgent NavMeshAgent;
     public NavMeshAgent _NavMeshAgent { get { return NavMeshAgent; } }
     private GameObject[] PlayerInRadius;
+    private List<GameObject> PlayerInRadiusList;
     private GameObject Target;
 
     void Awake()
     {
         AllEnemysInCluster = new List<GameObject>();
+        PlayerInRadiusList = new List<GameObject>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
         SwarmControllerScripts = new SwarmController[15];
         PlayerInRadius = new GameObject[3];
+        Reinforcement = GameObject.Find("Reinforcment").GetComponent<Transform>();
 
         SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
         hitbox.radius = CheckRadius;
@@ -37,22 +42,33 @@ public class SwarmCluster : MonoBehaviour
     {
         GetAllEnemysInCluster();
         RandomNumber = Random.Range(0f, 100f);
+        NavMeshAgent.speed = 10f;
     }
 
     void Update()
     {
         All_GoToWaypoints();
 
-
-        if (Target != null)
+        if (PlayerInRadiusList.Count == 1 & AllEnemysInCluster.Count >= 3)
         {
-            NavMeshAgent.SetDestination(Target.transform.position);
-            if (NavMeshAgent.remainingDistance > ChaseDistance)
+            if (Target != null)
             {
-                Target = null;
-                NavMeshAgent.ResetPath();
+                NavMeshAgent.SetDestination(Target.transform.position);
+                if (NavMeshAgent.remainingDistance > ChaseDistance)
+                {
+                    Target = null;
+                    NavMeshAgent.ResetPath();
+                    GetNearestTarget();
+                }
             }
         }
+        if (PlayerInRadiusList.Count == 1 & AllEnemysInCluster.Count <= 2)
+        {
+            NavMeshAgent.SetDestination(Reinforcement.position);
+            Debug.Log(NavMeshAgent.speed);
+        }
+
+
     }
     
     
@@ -93,6 +109,47 @@ public class SwarmCluster : MonoBehaviour
         OpponentClusterScript.GetAllEnemysInCluster();
         Destroy(gameObject);
     }
+    
+    void GetNearestTarget()
+    {
+        float LenghtSoFar = 0f;
+        int NearestPlayer = 0;
+        float ShortestWay = 100;
+        NavMeshPath Path = new NavMeshPath();
+        bool PlayersInRange = false;
+        for (int i = 0; i < PlayerInRadius.Length; i++)
+        {
+            if (PlayerInRadius[i] != null)
+            {
+                PlayersInRange = true;
+                NavMeshAgent.CalculatePath(PlayerInRadius[i].transform.position, Path);
+                
+                for (int i2 = 0; i2 < Path.corners.Length; i2++)
+                {
+                    Vector3 previousCorner = Path.corners[0];
+                    Vector3 currentCorner = Path.corners[i2];
+
+                    LenghtSoFar += Vector3.Distance(previousCorner, currentCorner);
+                    
+                    previousCorner = currentCorner;
+                }
+
+                if (LenghtSoFar < ShortestWay)
+                {
+                    ShortestWay = LenghtSoFar;
+                    NearestPlayer = i;
+                }
+            }
+
+
+        }
+
+        if (PlayersInRange == true)
+        {
+            Target = PlayerInRadius[NearestPlayer];
+        }
+        
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -130,6 +187,7 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("Melee"))
         {
             PlayerInRadius[0] = other.gameObject;
+            PlayerInRadiusList.Add(other.gameObject);
             if (Target == null)
             {
                 Target = other.gameObject;
@@ -138,6 +196,7 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("Shooter"))
         {
             PlayerInRadius[1] = other.gameObject;
+            PlayerInRadiusList.Add(other.gameObject);
             if (Target == null)
             {
                 Target = other.gameObject;
@@ -146,6 +205,7 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("Support"))
         {
             PlayerInRadius[2] = other.gameObject;
+            PlayerInRadiusList.Add(other.gameObject);
             if (Target == null)
             {
                 Target = other.gameObject;
@@ -158,29 +218,19 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("Melee"))
         {
             PlayerInRadius[0] = null;
-            if (Target == other.gameObject)
-            {
-                Target = null;
-            }
+            PlayerInRadiusList.Remove(other.gameObject);
 
         }
         if (other.CompareTag("Shooter"))
         {
             PlayerInRadius[1] = null;
-            if (Target == other.gameObject)
-            {
-                Target = null;
-            }
+            PlayerInRadiusList.Remove(other.gameObject);
 
         }
         if (other.CompareTag("Support"))
         {
             PlayerInRadius[2] = null;
-            if (Target == other.gameObject)
-            {
-                Target = null;
-            }
-
+            PlayerInRadiusList.Remove(other.gameObject);
         }
     }
 }
