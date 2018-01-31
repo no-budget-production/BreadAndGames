@@ -401,12 +401,17 @@ Prefab:
     - target: {fileID: 114240883855673984, guid: 4ca761910662c6d4cbb1c305016c013d,
         type: 2}
       propertyPath: xScale
-      value: 100000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114240883855673984, guid: 4ca761910662c6d4cbb1c305016c013d,
         type: 2}
       propertyPath: zScale
-      value: 100000
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114240883855673984, guid: 4ca761910662c6d4cbb1c305016c013d,
+        type: 2}
+      propertyPath: height
+      value: 50000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ca761910662c6d4cbb1c305016c013d, type: 2}
