@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour, IDamageable
     protected virtual void Start ()
     {
         health = startingHealth;
-        //new
+        //blood WIP
         blood = GetComponent<ParticleSystem>();
 
 	}

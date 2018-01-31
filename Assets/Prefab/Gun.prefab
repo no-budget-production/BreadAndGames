@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1494267170184928
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806835097473610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1881824, y: 1.271, z: 1.718698}
+  m_LocalPosition: {x: 17.178782, y: 1.54, z: 3.487527}
   m_LocalScale: {x: 0.31984675, y: 0.31984675, z: 1.016413}
   m_Children:
   - {fileID: 4685958634400136}
@@ -565,8 +565,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.8527384, b: 0.029411793, a: 1}
-  m_Intensity: 6
+  m_Color: {r: 1, g: 0.6117647, b: 0.029411793, a: 1}
+  m_Intensity: 14
   m_Range: 4
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -629,11 +629,16 @@ MonoBehaviour:
     type: 2}
   msBetweenShot: 50
   muzzleVelocity: 50
-  soundClips:
+  reloadTime: 1
+  clipSize: 30
+  soundShootClips:
   - {fileID: 8300000, guid: 97f349b021868744780f678aef2a009e, type: 3}
   - {fileID: 8300000, guid: 66a6c26a7b4b73449bdce65ca5f98657, type: 3}
+  soundEmpty: {fileID: 8300000, guid: cdcd7c2ee3f02224e8bbb08e608cd0de, type: 3}
+  soundReload: {fileID: 8300000, guid: 7636b9926a48d09458135d897e3bdd47, type: 3}
   shell: {fileID: 4618930595482000, guid: fc7c1e3e54abee04db4d0cf0845db847, type: 2}
   shellEjection: {fileID: 4685958634400136}
+  circleBar: {fileID: 0}
 --- !u!114 &114741920369432396
 MonoBehaviour:
   m_ObjectHideFlags: 1

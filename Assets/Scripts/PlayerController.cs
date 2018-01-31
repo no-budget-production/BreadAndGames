@@ -8,7 +8,7 @@ public class PlayerController : Entity
     public CharacterController myController;
     public Collider PlayerTrigger;
     public Transform Camera;
-    public Camera viewCamera;
+    //public Camera viewCamera;
     GunSystem gunSystem;
 
     public float moveSpeed = 1.0f;
