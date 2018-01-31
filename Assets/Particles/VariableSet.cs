@@ -15,7 +15,8 @@ public class VariableSet : MonoBehaviour
         foreach (var ParticleSystemRef in ParticleComponents)
         {
             ParticleSystemRef.shape.scale.Set(xScale, 1, zScale);
-            //ParticleSystemRef.emission.rateOverTime = intensity;
+            var emission = ParticleSystemRef.emission;
+            emission.rateOverTime = intensity;
         }
     }
 	
