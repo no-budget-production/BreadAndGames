@@ -97,13 +97,18 @@ public class PlayerController : Entity
         }
 
         //Weapon Input
-        if (Input.GetAxis("FireXbox1") < -0.25f)
+        if (Input.GetAxis("RightTrigger") > 0.25f)
         {
             gunSystem.Shoot();
 
         }
         else if (Input.GetButton("FirePC1"))
             gunSystem.Shoot();
+
+        if(Input.GetButtonDown("Reload1"))
+        {
+            gunSystem.Reload();
+        }
 
     }
 }

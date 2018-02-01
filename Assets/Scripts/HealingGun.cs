@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class HealingGun : MonoBehaviour
 {
 
     public Transform muzzle;
@@ -38,7 +38,10 @@ public class Gun : MonoBehaviour
     }
     void Update()
     {
-
+        if (Input.GetButtonDown("Reload1") && clipSize < defaultMagSize - 1)
+        {
+            Reload();
+        }
     }
 
     void playShotSound()
@@ -74,15 +77,12 @@ public class Gun : MonoBehaviour
 
     public void Reload()
     {
-        if(clipSize < defaultMagSize - 1)
-        {
-            isReloading = true;
-            gunSound.PlayOneShot(soundReload);
-            clipSize = 30;
-            nextShotTime = Time.time + reloadTime;
+        isReloading = true;
+        gunSound.PlayOneShot(soundReload);
+        clipSize = 30;
+        nextShotTime = Time.time + reloadTime;
 
-            isReloading = false;
-        }
+        isReloading = false;
     }
 
 

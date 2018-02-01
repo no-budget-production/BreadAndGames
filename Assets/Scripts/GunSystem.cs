@@ -31,4 +31,10 @@ public class GunSystem : MonoBehaviour
         if (equippedGun != null)
             equippedGun.Shoot();
     }
+
+    public void Reload()
+    {
+        if (equippedGun != null)
+            equippedGun.Reload();
+    }
 }
