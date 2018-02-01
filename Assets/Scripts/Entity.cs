@@ -44,6 +44,28 @@ public class Entity : MonoBehaviour, IDamageable {
         }
     }
 
+    public void TakePunch(float damage, Collider hit)
+    {
+        CurrentHealth -= damage;
+
+        // Healthbar
+        if (UseHealthbar)
+        {
+            OnChangeHealth(CurrentHealth);
+        }
+
+        // Death check
+        if (CurrentHealth <= 0)
+        {
+
+            Debug.Log("DEAD");
+            if (DestroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
 
 
     public void ArmorBuff(float armorArg)
