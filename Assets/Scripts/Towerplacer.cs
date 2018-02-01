@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Towerplacer : MonoBehaviour
+public class Towerplacer : InputManager
 {
     ////////Variables////////
 
@@ -31,16 +31,16 @@ public class Towerplacer : MonoBehaviour
         BuildmodeON();
         InBuildmodeMovement();
         ChooseTower();
-        RotateTower();
         PlaceTower();
     }
 
     void BuildmodeON()
     {
-        if (!buildmode && Input.GetKeyDown(KeyCode.JoystickButton3))
+        if (!buildmode && Input.GetButtonDown(XBoxButtonY))
         {
             buildmode = true;
             grid.SetActive(true);
+            /* activate UI with towers*/
         }
     }
 
@@ -49,83 +49,72 @@ public class Towerplacer : MonoBehaviour
     {
         if (buildmode)
         {
-            if (Input.GetAxis("Horizontal") == -1)
+            if (Input.GetAxis(XBoxHorizontalLeftStick) == -1)
             {
                 Vector3 buildposition = new Vector3(hgfPosx - 1, hgfPosy, hgfPosz);
                 highlightedGridField.transform.Translate(buildposition);
             }
 
-            if (Input.GetAxis("Horizontal") == 1)
+            if (Input.GetAxis(XBoxHorizontalLeftStick) == 1)
             {
                 Vector3 buildposition = new Vector3(hgfPosx + 1, hgfPosy, hgfPosz);
                 highlightedGridField.transform.Translate(buildposition);
             }
 
-            if (Input.GetAxis("Vertical") == -1)
+            if (Input.GetAxis(XBoxVerticalLeftStick) == -1)
             {
                 Vector3 buildposition = new Vector3(hgfPosx, hgfPosy, hgfPosz - 1);
                 highlightedGridField.transform.Translate(buildposition);
             }
 
-            if (Input.GetAxis("Vertical") == 1)
+            if (Input.GetAxis(XBoxVerticalLeftStick) == 1)
             {
                 Vector3 buildposition = new Vector3(hgfPosx, hgfPosy, hgfPosz + 1);
                 highlightedGridField.transform.Translate(buildposition);
             }
-
-            //if (Input.GetKeyDown(KeyCode.A))
-            //{
-            //    Vector3 buildposition = new Vector3(hgfPosx - 1, hgfPosy, hgfPosz);
-            //    highlightedGridField.transform.Translate(buildposition);
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.D))
-            //{
-            //    Vector3 buildposition = new Vector3(hgfPosx + 1, hgfPosy, hgfPosz);
-            //    highlightedGridField.transform.Translate(buildposition);
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.W))
-            //{
-            //    Vector3 buildposition = new Vector3(hgfPosx, hgfPosy, hgfPosz + 1);
-            //    highlightedGridField.transform.Translate(buildposition);
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.S))
-            //{
-            //    Vector3 buildposition = new Vector3(hgfPosx, hgfPosy, hgfPosz - 1);
-            //    highlightedGridField.transform.Translate(buildposition);
-            //}
         }
     }
 
 
     void ChooseTower()
     {
-        if (buildmode /*&& ui(inventory)*/)
+        if (buildmode /*&& ui.inventory*/)
         {
-            /*if (D-Pad steuerung)
+            //tower = new GameObject(); <- if more than one tower is avaible --> create towers
+            /* add components */
+
+            if (Input.GetButtonDown(XBoxPadLeft))
             {
+                /* go through inventory ui */
+                /* get refence of object */
+                /* RotateTower(object); */
                 chosen = true;
-            }*/
+            }
+
+            if (Input.GetButtonDown(XBoxPadRight))
+            {
+                /* go through inventory ui */
+                /* get refence of object */
+                /* RotateTower(object); */
+                chosen = true;
+            }
         }
     }
 
-    void RotateTower()
+    void RotateTower(GameObject chosenTower)
     {
         if (buildmode && chosen)
-        {
-            tower = Instantiate(tower, new Vector3(transform.position.x, (transform.position.y + 2), transform.position.z), transform.rotation);
+        { 
             tower.GetComponent<Renderer>().material = outline;
 
-            if (Input.GetAxis("") >= 0/*Right Stick Steuerung -> right*/)
+            if (Input.GetAxis(XBoxHorizontalRightStick) >= 0/*Right Stick Steuerung -> right*/)
             {
                 tower.transform.Rotate(0, 45, 0);
                 rotate = true;
 
             }
 
-            if (Input.GetAxis("") <= 0/*Right Stick Steuerung -> left*/)
+            if (Input.GetAxis(XBoxHorizontalRightStick) <= 0/*Right Stick Steuerung -> left*/)
             {
                 tower.transform.Rotate(0, - 45, 0);
                 rotate = true;
@@ -135,7 +124,7 @@ public class Towerplacer : MonoBehaviour
 
     void PlaceTower()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton2) && buildmode && rotate)
+        if (Input.GetKeyDown(XBoxButtonX) && buildmode && rotate)
         {
             tower.GetComponent<Renderer>().material = basematerial;
             tower.AddComponent<Rigidbody>();
