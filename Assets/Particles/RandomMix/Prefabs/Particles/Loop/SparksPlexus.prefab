@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4893346486454842}
-  - component: {fileID: 114129488029861354}
   - component: {fileID: 199665918791927202}
   - component: {fileID: 198605237804205510}
   m_Layer: 0
@@ -28,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1876674140541982
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4415312977543344}
   - component: {fileID: 198947869756763762}
   - component: {fileID: 199064250968468634}
-  - component: {fileID: 114259348572558338}
   m_Layer: 0
   m_Name: Sparks
   m_TagString: Untagged
@@ -67,45 +65,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655978487252240}
   m_LocalRotation: {x: -0.27059805, y: 0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: 180, y: 0, z: 0}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
   m_Children:
   - {fileID: 4415312977543344}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -45, y: 90, z: 0}
---- !u!114 &114129488029861354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1655978487252240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f47e99623a5043adc11839706250a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114259348572558338
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1876674140541982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a5a8e349c9cf54496babb3e7fd5191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 2
-  maxConnections: 4
-  maxLineRenderers: 200
-  widthFromParticle: 0.5
-  colourFromParticle: 1
-  alphaFromParticle: 1
-  lineRendererTemplate: {fileID: 120033039200711244, guid: 77d061d1cf45c3f409a8b9b369a6ae18,
-    type: 2}
-  delay: 0
-  alwaysUpdate: 0
 --- !u!198 &198605237804205510
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -166,7 +132,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1651442587
+  randomSeed: 1642526789
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3527,7 +3493,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1439829451
+  randomSeed: 1267857885
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6144,7 +6110,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 0.25
-    light: {fileID: 108246006885834966, guid: 9d3900a299993c5478fe493791f599f8, type: 2}
+    light: {fileID: 0}
     randomDistribution: 1
     color: 1
     range: 1
