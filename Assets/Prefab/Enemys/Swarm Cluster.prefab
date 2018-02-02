@@ -634,7 +634,7 @@ MonoBehaviour:
   - {fileID: 4655652759577714}
   - {fileID: 4655652759577714}
   - {fileID: 4655652759577714}
-  ChaseDistance: 50
+  ChaseDistance: 15
 --- !u!114 &114308866093409732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -669,6 +669,7 @@ MonoBehaviour:
   DestroyOnDeath: 1
   healthBar: {fileID: 224478898064027266}
   UseHealthbar: 1
+  IsDeadTrigger: 0
 --- !u!114 &114609356620796250
 MonoBehaviour:
   m_ObjectHideFlags: 1

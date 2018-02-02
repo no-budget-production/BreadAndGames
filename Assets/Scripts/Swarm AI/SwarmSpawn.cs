@@ -14,17 +14,11 @@ public class SwarmSpawn : MonoBehaviour
     private IEnumerator WaitAndSpawnCoroutine;
     private int SpawnedEnemys;
 
-    void Awake()
-    {
-        
-    }
-
     void Start()
     {
         WaitAndSpawnCoroutine = WaitAndSpawn(SpawnRate);
         StartCoroutine(WaitAndSpawnCoroutine);
     }
-
 
     void SpawnEnemy()
     {
