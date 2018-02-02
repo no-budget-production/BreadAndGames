@@ -28,7 +28,7 @@ public class SwarmController : Entity
         if (IsDeadTrigger && OneFrameBool)
         {
             OneFrameBool = false;
-            _SwarmClusterScript._EnemysInCluster[_IndexNumber] =
+            //_SwarmClusterScript._EnemysInCluster[_IndexNumber] =
         }
     }
 
