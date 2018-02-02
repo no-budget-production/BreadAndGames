@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour, IDamageable
+public class Entity : MonoBehaviour, IDamageable, IHealable
 {
 
     public float startingHealth;
     [SerializeField]
     protected float health;
-    ParticleSystem blood;
+    public ParticleSystem healEffect;
     protected bool dead;
 
     public event System.Action OnDeath;
@@ -16,21 +16,26 @@ public class Entity : MonoBehaviour, IDamageable
     protected virtual void Start ()
     {
         health = startingHealth;
-        //blood WIP
-        blood = GetComponent<ParticleSystem>();
-
+        healEffect = GetComponent<ParticleSystem>();
 	}
 	
 	public void TakeHit (float damage, RaycastHit hit)
     {
         health -= damage;
-        blood.Play();
 
         if(health <= 0 && !dead)
         {
             Die();
         }
 	}
+
+    public void TakeHeal (float healAmount, RaycastHit hit)
+    {
+        if (health <= (health / startingHealth * 100) + 20 && !dead)
+        {
+            health += healAmount;
+        }
+    }
 
     protected void Die()
     {
