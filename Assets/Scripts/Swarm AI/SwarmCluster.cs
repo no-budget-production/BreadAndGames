@@ -19,21 +19,25 @@ public class SwarmCluster : MonoBehaviour
     private List<GameObject> AllEnemysInCluster;
     public List<GameObject> _AllEnemysInCluster { get { return AllEnemysInCluster; } set { AllEnemysInCluster = value; } }
 
-
-    private SwarmController[] SwarmControllerScripts;   // Using a array here, because a list doesn't work (don't know why)
     private NavMeshAgent NavMeshAgent;
     public NavMeshAgent _NavMeshAgent { get { return NavMeshAgent; } }
+
     private GameObject[] PlayerInRadius;
-    private List<GameObject> PlayerInRadiusList;
+    private List<GameObject> PlayerInRadiusList;        // needed?
+
+    private List<SwarmController> SwarmControllerScripts;
+    public List<SwarmController> _SwarmControllerScripts { get { return SwarmControllerScripts; } set { SwarmControllerScripts = value; } }
+
+
     private int PlayerCount;
     private GameObject Target;
 
     void Awake()
     {
+        SwarmControllerScripts = new List<SwarmController>();
         AllEnemysInCluster = new List<GameObject>();
         PlayerInRadiusList = new List<GameObject>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
-        SwarmControllerScripts = new SwarmController[15];
         PlayerInRadius = new GameObject[3];
         Reinforcement = GameObject.Find("Reinforcment").GetComponent<Transform>();
 
@@ -54,6 +58,16 @@ public class SwarmCluster : MonoBehaviour
     {
         AllGoToWaypoints();
 
+        if (EnemyCount < AllEnemysInCluster.Count)
+        {
+            GetAllEnemysInCluster();
+        }
+
+        if (AllEnemysInCluster.Count <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (PlayerCount == 1 & EnemyCount >= 3)
         {
             if (Target != null)
@@ -71,17 +85,17 @@ public class SwarmCluster : MonoBehaviour
         if (PlayerCount == 1 & EnemyCount <= 2)
         {
             NavMeshAgent.SetDestination(Reinforcement.position);
-            Debug.Log(NavMeshAgent.speed);
         }
     }
     
     
     public void GetAllEnemysInCluster()
     {
+        SwarmControllerScripts.Clear();
         AllEnemysInCluster.Clear();
-        int children = transform.childCount;                            // How many childrens are in this cluster?
-        EnemyCount = children - 1;                                  // Safe the number subtract with 1. (the first child are the waypoints)
-        for (int i = 1; i < children; ++i)                              // int i = 1 because child(0) are the waypoints
+        int children = transform.childCount;    // How many childrens are in this cluster?
+        EnemyCount = children - 1;              // Safe the number subtract with 1. (the first child are the waypoints)
+        for (int i = 1; i < children; ++i)      // int i = 1 because child(0) are the waypoints
         {
             GameObject TempGameObjectHandler = gameObject.transform.GetChild(i).gameObject;
             SwarmController TempScriptHandler = TempGameObjectHandler.GetComponent<SwarmController>();
@@ -89,14 +103,14 @@ public class SwarmCluster : MonoBehaviour
             TempScriptHandler._SwarmClusterScript = this;
             TempScriptHandler._IndexNumber = i;
 
+            SwarmControllerScripts.Add(TempScriptHandler);
             AllEnemysInCluster.Add(TempGameObjectHandler);
-            SwarmControllerScripts[i - 1] = TempScriptHandler;
         }
     }
 
     void AllGoToWaypoints()
     {
-        for (int i = 0; i < SwarmControllerScripts.Length; ++i)
+        for (int i = 0; i < SwarmControllerScripts.Count; i++)
         {
             if (SwarmControllerScripts[i] != null)
             {

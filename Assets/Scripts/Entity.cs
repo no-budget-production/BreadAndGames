@@ -36,11 +36,9 @@ public class Entity : MonoBehaviour, IDamageable {
         // Death check
         if (CurrentHealth <= 0)
         {
+            Debug.Log(gameObject + " is dead");
             IsDeadTrigger = true;
-            if (DestroyOnDeath)
-            {
-                Destroy(gameObject);
-            }
+
         }
     }
 

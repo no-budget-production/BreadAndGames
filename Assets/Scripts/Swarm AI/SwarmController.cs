@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class SwarmController : Entity
 {
-    private NavMeshAgent NavMeshAgent;
-    private bool OneFrameBool;
+    private NavMeshAgent MyNavMeshAgent;
+    private bool DoItOnceBool;
+    private SwarmController MySwarmController;
 
     private SwarmCluster SwarmClusterScript;
     public SwarmCluster _SwarmClusterScript { get { return SwarmClusterScript; } set { SwarmClusterScript = value; } }
@@ -16,25 +17,36 @@ public class SwarmController : Entity
     
     void Awake()
     {
-        NavMeshAgent = this.GetComponent<NavMeshAgent>();
-        NavMeshAgent.speed = 15f;
-        NavMeshAgent.angularSpeed = 200;
+        MyNavMeshAgent = this.GetComponent<NavMeshAgent>();
+        MyNavMeshAgent.speed = 15f;
+        MyNavMeshAgent.angularSpeed = 200;
 
-        OneFrameBool = true;
+        DoItOnceBool = true;
+        MySwarmController = GetComponent<SwarmController>();
     }
 
     void Update()
     {
-        if (IsDeadTrigger && OneFrameBool)
+        if (IsDeadTrigger && DoItOnceBool)
         {
-            OneFrameBool = false;
-            //_SwarmClusterScript._EnemysInCluster[_IndexNumber] =
+            DoItOnceBool = false;
+            SwarmClusterScript._AllEnemysInCluster.Remove(this.gameObject);
+            SwarmClusterScript._SwarmControllerScripts.Remove(this.MySwarmController);
+            if (DestroyOnDeath)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
+
+
     public void MoveToDestination(Transform Destination)
     {
-        Vector3 targetVector = Destination.transform.position;
-        NavMeshAgent.SetDestination(targetVector);
+        if(!IsDeadTrigger)
+        {
+            Vector3 targetVector = Destination.transform.position;
+            MyNavMeshAgent.SetDestination(targetVector);
+        }
     }
 }
