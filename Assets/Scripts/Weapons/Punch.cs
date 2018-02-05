@@ -6,7 +6,8 @@ public class Punch : MonoBehaviour {
 
     private PunchCollider hitBox;
     public float damage = 10f;
-        
+    public float cooldown = 10;
+
     // Use this for initialization
     void Start ()
     {
@@ -19,7 +20,7 @@ public class Punch : MonoBehaviour {
     {
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log("Gedrueckt");
+            Debug.Log("Punch");
             hitBox.enemies.ForEach(e => e.TakeDamage(damage));
         }
     }

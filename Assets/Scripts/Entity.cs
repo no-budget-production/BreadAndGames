@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour/*, IDamageable*/ {
     public float armor;
 
     public float Decay;
-
+    public bool IsDamageAble;
     public bool DestroyOnDeath;
 
     public RectTransform healthBar;
@@ -25,20 +25,23 @@ public class Entity : MonoBehaviour/*, IDamageable*/ {
 
     public virtual void TakeDamage(float damage)
     {
-        CurrentHealth -= damage;
-
-        // Healthbar
-        if (UseHealthbar)
+        if (IsDamageAble)
         {
-            OnChangeHealth(CurrentHealth);
-        }
+            CurrentHealth -= damage;
 
-        // Death check
-        if (CurrentHealth <= 0)
-        {
-            Debug.Log(gameObject + " is dead");
-            IsDeadTrigger = true;
+            // Healthbar
+            if (UseHealthbar)
+            {
+                OnChangeHealth(CurrentHealth);
+            }
 
+            // Death check
+            if (CurrentHealth <= 0)
+            {
+                Debug.Log(gameObject + " is dead");
+                IsDeadTrigger = true;
+
+            }
         }
     }
 

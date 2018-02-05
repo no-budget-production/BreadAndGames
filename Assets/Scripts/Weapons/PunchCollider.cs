@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class PunchCollider : MonoBehaviour {
     
-    private GameObject Melee; //Player
     public List<SwarmController> enemies; //Enemy
-
-    void Start()
-    {
-        Melee = transform.parent.gameObject;
-    }
-
+    
     void OnTriggerEnter(Collider other) 
     {
         var temp = GetComponent<SwarmController>();
