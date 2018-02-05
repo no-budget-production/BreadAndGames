@@ -14,13 +14,12 @@ public class Entity : MonoBehaviour, IDamageable {
 
     public RectTransform healthBar;
     public bool UseHealthbar;
-
-    public bool IsDeadTrigger;
+    
 
     protected virtual void Start()
     {
         OnChangeHealth(CurrentHealth);
-        IsDeadTrigger = false;
+
     }
 
     public void TakeHit(float damage, RaycastHit hit)
@@ -36,7 +35,8 @@ public class Entity : MonoBehaviour, IDamageable {
         // Death check
         if (CurrentHealth <= 0)
         {
-            IsDeadTrigger = true;
+            
+            Debug.Log("DEAD");
             if (DestroyOnDeath)
             {
                 Destroy(gameObject);

@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4499662480702876}
+  - component: {fileID: 114289827261603514}
   - component: {fileID: 199485240619741242}
   - component: {fileID: 198728906241533188}
   m_Layer: 0
@@ -61,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1479183382301236
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1349016015111512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 120, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4488790952861928}
@@ -134,6 +135,17 @@ Transform:
   m_Father: {fileID: 4488790952861928}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114289827261603514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349016015111512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70f47e99623a5043adc11839706250a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198151106507514920
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -6892,7 +6904,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -237497778
+  randomSeed: -199840246
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9291,7 +9303,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 1
-    light: {fileID: 0}
+    light: {fileID: 108246006885834966, guid: 9d3900a299993c5478fe493791f599f8, type: 2}
     randomDistribution: 1
     color: 1
     range: 1
@@ -10131,7 +10143,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1687215750
+  randomSeed: -60671258
   InitialModule:
     serializedVersion: 3
     enabled: 1

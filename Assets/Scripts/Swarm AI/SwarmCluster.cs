@@ -5,27 +5,23 @@ using UnityEngine.AI;
 
 public class SwarmCluster : MonoBehaviour
 {
+
     public float CheckRadius;
     public Transform[] Waypoints;
     public float ChaseDistance;
 
     private Transform Reinforcement;
     
-    private int EnemyCount;
-    public int _EnemyCount { get { return EnemyCount; } }
+    private int NumberOfEnemys;
+    public int _NumberOfEnemys { get { return NumberOfEnemys; } }
     private float RandomNumber;
     public float _RandomNumber { get { return RandomNumber; } }
-
     private List<GameObject> AllEnemysInCluster;
-    public List<GameObject> _AllEnemysInCluster { get { return AllEnemysInCluster; } set { AllEnemysInCluster = value; } }
-
-
     private SwarmController[] SwarmControllerScripts;   // Using a array here, because a list doesn't work (don't know why)
     private NavMeshAgent NavMeshAgent;
     public NavMeshAgent _NavMeshAgent { get { return NavMeshAgent; } }
     private GameObject[] PlayerInRadius;
     private List<GameObject> PlayerInRadiusList;
-    private int PlayerCount;
     private GameObject Target;
 
     void Awake()
@@ -44,7 +40,6 @@ public class SwarmCluster : MonoBehaviour
 
     void Start()
     {
-        PlayerCount = 0;
         GetAllEnemysInCluster();
         RandomNumber = Random.Range(0f, 100f);
         NavMeshAgent.speed = 10f;
@@ -52,9 +47,9 @@ public class SwarmCluster : MonoBehaviour
 
     void Update()
     {
-        AllGoToWaypoints();
+        All_GoToWaypoints();
 
-        if (PlayerCount == 1 & EnemyCount >= 3)
+        if (PlayerInRadiusList.Count == 1 & AllEnemysInCluster.Count >= 3)
         {
             if (Target != null)
             {
@@ -67,12 +62,13 @@ public class SwarmCluster : MonoBehaviour
                 }
             }
         }
-
-        if (PlayerCount == 1 & EnemyCount <= 2)
+        if (PlayerInRadiusList.Count == 1 & AllEnemysInCluster.Count <= 2)
         {
             NavMeshAgent.SetDestination(Reinforcement.position);
             Debug.Log(NavMeshAgent.speed);
         }
+
+
     }
     
     
@@ -80,22 +76,21 @@ public class SwarmCluster : MonoBehaviour
     {
         AllEnemysInCluster.Clear();
         int children = transform.childCount;                            // How many childrens are in this cluster?
-        EnemyCount = children - 1;                                  // Safe the number subtract with 1. (the first child are the waypoints)
+        NumberOfEnemys = children - 1;                                  // Safe the number subtract with 1. (the first child are the waypoints)
         for (int i = 1; i < children; ++i)                              // int i = 1 because child(0) are the waypoints
         {
             GameObject TempGameObjectHandler = gameObject.transform.GetChild(i).gameObject;
             SwarmController TempScriptHandler = TempGameObjectHandler.GetComponent<SwarmController>();
 
-            TempScriptHandler._SwarmClusterScript = this;
-            TempScriptHandler._IndexNumber = i;
-
             AllEnemysInCluster.Add(TempGameObjectHandler);
             SwarmControllerScripts[i - 1] = TempScriptHandler;
         }
+
     }
 
-    void AllGoToWaypoints()
+    void All_GoToWaypoints()
     {
+        
         for (int i = 0; i < SwarmControllerScripts.Length; ++i)
         {
             if (SwarmControllerScripts[i] != null)
@@ -144,12 +139,16 @@ public class SwarmCluster : MonoBehaviour
                     ShortestWay = LenghtSoFar;
                     NearestPlayer = i;
                 }
-            }        }
+            }
+
+
+        }
 
         if (PlayersInRange == true)
         {
             Target = PlayerInRadius[NearestPlayer];
         }
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -157,17 +156,17 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("SwarmCluster"))
         {
             SwarmCluster TempSwarmClusterScript = other.GetComponent<SwarmCluster>();
-            if (EnemyCount > TempSwarmClusterScript._EnemyCount)
+            if (NumberOfEnemys > TempSwarmClusterScript._NumberOfEnemys)
             {
                 // this.Cluster is bigger. No action needed.
                 return;
             }
-            else if (EnemyCount < TempSwarmClusterScript._EnemyCount)
+            else if (NumberOfEnemys < TempSwarmClusterScript._NumberOfEnemys)
             {
                 // this.Cluster is smaller. Hand over all enemys and destroy yourself.
                 ClusterTakeover(other, TempSwarmClusterScript);
             }
-            else if (EnemyCount == TempSwarmClusterScript._EnemyCount)
+            else if (NumberOfEnemys == TempSwarmClusterScript._NumberOfEnemys)
             {
                 // Clusters have the same amount of enemys. Do the takeover with random numbers.
                 if (RandomNumber > TempSwarmClusterScript._RandomNumber)
@@ -187,7 +186,6 @@ public class SwarmCluster : MonoBehaviour
 
         if (other.CompareTag("Melee"))
         {
-            PlayerCount++;
             PlayerInRadius[0] = other.gameObject;
             PlayerInRadiusList.Add(other.gameObject);
             if (Target == null)
@@ -197,7 +195,6 @@ public class SwarmCluster : MonoBehaviour
         }
         if (other.CompareTag("Shooter"))
         {
-            PlayerCount++;
             PlayerInRadius[1] = other.gameObject;
             PlayerInRadiusList.Add(other.gameObject);
             if (Target == null)
@@ -207,7 +204,6 @@ public class SwarmCluster : MonoBehaviour
         }
         if (other.CompareTag("Support"))
         {
-            PlayerCount++;
             PlayerInRadius[2] = other.gameObject;
             PlayerInRadiusList.Add(other.gameObject);
             if (Target == null)
@@ -221,21 +217,18 @@ public class SwarmCluster : MonoBehaviour
     {
         if (other.CompareTag("Melee"))
         {
-            PlayerCount--;
             PlayerInRadius[0] = null;
             PlayerInRadiusList.Remove(other.gameObject);
 
         }
         if (other.CompareTag("Shooter"))
         {
-            PlayerCount--;
             PlayerInRadius[1] = null;
             PlayerInRadiusList.Remove(other.gameObject);
 
         }
         if (other.CompareTag("Support"))
         {
-            PlayerCount--;
             PlayerInRadius[2] = null;
             PlayerInRadiusList.Remove(other.gameObject);
         }

@@ -43,6 +43,7 @@ public class Projectile : MonoBehaviour {
     {
         //Debug.Log(hit.collider.gameObject.name);
         IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+        Debug.Log(damageableObject);
         if (damageableObject != null)
         {
             damageableObject.TakeHit(damage, hit);
