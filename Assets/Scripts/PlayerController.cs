@@ -10,8 +10,10 @@ public class PlayerController : Entity
     public Transform Camera;
     //public Camera viewCamera;
     GunSystem gunSystem;
+    public LineRenderer laserSight;
 
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 6f;
+    private float startSpeed;
     private float gravityStrength = 15f;
 
     private float angle;
@@ -23,6 +25,8 @@ public class PlayerController : Entity
 
     public Vector3 temporaryVector;
     public Vector3 temporaryLookVector;
+    [HideInInspector]
+    public bool isAiming;
 
 
     protected override void Start()
@@ -30,6 +34,11 @@ public class PlayerController : Entity
         base.Start();
         PlayerTrigger = GetComponent<Collider>();
         gunSystem = GetComponent<GunSystem>();
+        laserSight = GetComponentInChildren<LineRenderer>();
+
+        startSpeed = moveSpeed;
+
+        isAiming = false;
     }
 
     void Update()
@@ -38,10 +47,10 @@ public class PlayerController : Entity
         Vector3 lookVector = new Vector3(0, 0, 0);
 
         //Movement Input Xbox
-            moveVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
-            temporaryVector.x = Input.GetAxis("HorizontalXbox1");
-            moveVector.z += Input.GetAxis("VerticalXbox1") * acceleration;
-            temporaryVector.z = Input.GetAxis("VerticalXbox1");
+        moveVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
+        temporaryVector.x = Input.GetAxis("HorizontalXbox1");
+        moveVector.z += Input.GetAxis("VerticalXbox1") * acceleration;
+        temporaryVector.z = Input.GetAxis("VerticalXbox1");
 
 
         //Movement Input PC
@@ -54,7 +63,7 @@ public class PlayerController : Entity
         moveVector = moveVector * moveSpeed * Time.deltaTime;
         Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up));
         moveVector = inputRotation * moveVector;
-        
+
 
 
         //Look Input Xbox
@@ -69,31 +78,40 @@ public class PlayerController : Entity
             lookVector = Vector3.zero;
         }
 
-       //Look Input Mouse **BUGGY**
-       /*
-       Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
-       Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-       float rayDistance;
-        
-        if (groundPlane.Raycast(ray, out rayDistance))
-        {
-            Vector3 lookPoint = ray.GetPoint(rayDistance);
-            Debug.DrawLine(ray.origin, lookPoint, Color.red);
-            Debug.DrawRay(ray.origin,ray.direction * 100,Color.red);
-            Vector3 heightCorrectedPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z);
-            transform.LookAt(heightCorrectedPoint);
-        }*/
+        //Look Input Mouse **BUGGY**
+        /*
+        Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayDistance;
+
+         if (groundPlane.Raycast(ray, out rayDistance))
+         {
+             Vector3 lookPoint = ray.GetPoint(rayDistance);
+             Debug.DrawLine(ray.origin, lookPoint, Color.red);
+             Debug.DrawRay(ray.origin,ray.direction * 100,Color.red);
+             Vector3 heightCorrectedPoint = new Vector3(lookPoint.x, transform.position.y, lookPoint.z);
+             transform.LookAt(heightCorrectedPoint);
+         }*/
 
         //moves the character
         CollisionFlags flags = myController.Move(moveVector);
 
         if (moveVector.x != 0 || moveVector.z != 0)
         {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), 0.5f);
-        } 
-        if(lookVector.x != 0 || lookVector.z != 0)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), 0.5f);
+        }
+        if (lookVector.x != 0 || lookVector.z != 0)
         {
             transform.rotation = Quaternion.LookRotation(lookVector);
+            isAiming = true;
+            laserSight.enabled = true;
+            moveSpeed = 3;
+        }
+        else
+        {
+            laserSight.enabled = false;
+            isAiming = false;
+            moveSpeed = startSpeed;
         }
 
         //Weapon Input
@@ -105,7 +123,7 @@ public class PlayerController : Entity
         else if (Input.GetButton("FirePC1"))
             gunSystem.Shoot();
 
-        if(Input.GetButtonDown("Reload1"))
+        if (Input.GetButtonDown("Reload1"))
         {
             gunSystem.Reload();
         }

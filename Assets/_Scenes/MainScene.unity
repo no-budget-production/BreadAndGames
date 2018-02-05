@@ -323,6 +323,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df8c4fed9386aff439db72ec453787d5, type: 2}
   m_IsPrefabParent: 0
+--- !u!120 &439985836 stripped
+LineRenderer:
+  m_PrefabParentObject: {fileID: 120806036641688680, guid: df8c4fed9386aff439db72ec453787d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 436529774}
 --- !u!1 &509432212
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +814,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -307092710
+  randomSeed: 1159909302
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8043,10 +8048,12 @@ MonoBehaviour:
   myController: {fileID: 1441489221}
   PlayerTrigger: {fileID: 1441489225}
   Camera: {fileID: 1104076181}
+  laserSight: {fileID: 439985836}
   moveSpeed: 6
   acceleration: 0.8
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
+  isAiming: 0
 --- !u!114 &1441489223
 MonoBehaviour:
   m_ObjectHideFlags: 0
