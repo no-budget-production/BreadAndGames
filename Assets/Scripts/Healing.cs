@@ -12,7 +12,7 @@ public class Healing : MonoBehaviour
     public float healAmount = 2.0f;
 
     Vector3 direction;
-    bool isVisible;
+    bool isVisible = false;
 
 
 
@@ -20,18 +20,39 @@ public class Healing : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         beamOrigin = gameObject.transform;
-        isVisible = !isVisible;
 	}
 
-	void Update ()
+	void FixedUpdate ()
     {
+        RaycastHit hit;
+
+        if (Physics.Raycast(beamOrigin.position, direction, out hit))
+        {
+            if (hit.collider.tag == "Player")
+            {
+                isVisible = true;
+
+                lineRenderer.SetPosition(0, beamOrigin.position);
+                lineRenderer.SetPosition(1, currentTarget.position);
+
+                OnHealObject(hit);
+            }
+
+            else if (hit.collider.tag != "Player")
+            {
+                isVisible = false;
+
+                lineRenderer.SetPosition(0, beamOrigin.position);
+                lineRenderer.SetPosition(1, transform.position);
+            }
+        }
+
         if (Input.GetAxis(axisName) > 0.25f)
             {
 
                 lineRenderer.enabled = true;
                 
                 LockOn();
-                BeamOn();
                 RaycastCheck();
 
 
@@ -50,31 +71,12 @@ public class Healing : MonoBehaviour
         beamOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    void BeamOn()
-    {
-        if(isVisible)
-        {
-            lineRenderer.SetPosition(0, beamOrigin.position);
-            lineRenderer.SetPosition(1, currentTarget.position);
-        }
-    }
+
 
     void RaycastCheck()
     {
-        RaycastHit hit;
 
-        if (Physics.Raycast(beamOrigin.position, direction, out hit))
-        {
-            if(hit.collider.tag == "Player")
-            {
-                isVisible = true;
-                OnHealObject(hit);
-            }
-            else
-            {
-                isVisible = false;
-            }
-        }
+
     }
 
     void OnHealObject(RaycastHit hit)

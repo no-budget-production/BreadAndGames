@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : Effect
 {
     public LayerMask collisionMask;
 
@@ -48,24 +48,4 @@ public class Projectile : MonoBehaviour
             damageableObject.TakeHit(damage, hit);
         }
     }
-    
-    IEnumerator Fade()
-    {
-        yield return new WaitForSeconds(lifetime);
-
-        float fadePercent = 0;
-        float fadeSpeed = 1 / fadetime;
-
-        Material mat = GetComponent<Renderer>().material;
-        Color initialColor = mat.color;
-
-        while (fadePercent < 1)
-        {
-            fadePercent += Time.deltaTime * fadeSpeed;
-            mat.color = Color.Lerp(initialColor, Color.clear, fadePercent);
-            yield return null;
-        }
-        Destroy(gameObject);
-    }
-
 }
