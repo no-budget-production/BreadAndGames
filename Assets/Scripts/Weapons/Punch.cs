@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour {
 
-    public GameObject hitBox;
+    private PunchCollider hitBox;
     public float damage = 10f;
         
     // Use this for initialization
     void Start ()
     {
-        hitBox.GetComponent<Renderer>().enabled = true;
-        hitBox.SetActive(false);
+        hitBox = GetComponentInChildren<PunchCollider>();
+        hitBox.GetComponent<Renderer>().enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        hitBox.SetActive(false);
         if (Input.GetKeyDown("space"))
         {
             Debug.Log("Gedrueckt");
-            hitBox.SetActive(true);
+            hitBox.enemies.ForEach(e => e.TakeDamage(damage));
         }
     }
 }

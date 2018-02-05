@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour, IDamageable {
+public class Entity : MonoBehaviour/*, IDamageable*/ {
 
     public float CurrentHealth;
     public float MaxHealth;
@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour, IDamageable {
         IsDeadTrigger = false;
     }
 
-    public void TakeHit(float damage, RaycastHit hit)
+    public virtual void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
 
@@ -41,30 +41,6 @@ public class Entity : MonoBehaviour, IDamageable {
 
         }
     }
-
-    public void TakePunch(float damage, Collider hit)
-    {
-        CurrentHealth -= damage;
-
-        // Healthbar
-        if (UseHealthbar)
-        {
-            OnChangeHealth(CurrentHealth);
-        }
-
-        // Death check
-        if (CurrentHealth <= 0)
-        {
-
-            Debug.Log("DEAD");
-            if (DestroyOnDeath)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
-
 
     public void ArmorBuff(float armorArg)
     {
