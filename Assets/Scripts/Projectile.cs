@@ -9,8 +9,8 @@ public class Projectile : Effect
     float speed = 10;
     float damage = 1;
 
-    float lifetime = 2;
-    float fadetime = 2;
+    //float lifetime = 2;
+    //float fadetime = 2;
 
     public void SetSpeed (float newSpeed)
     {

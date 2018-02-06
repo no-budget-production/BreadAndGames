@@ -8,8 +8,8 @@ public class SFX_ShellEject : Effect
     public float forceMin;
     public float forceMax;
 
-    float lifetime = 4;
-    float fadetime = 2;
+    //float lifetime = 4;
+    //float fadetime = 2;
 
     void Start()
     {

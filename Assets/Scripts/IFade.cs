@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class Effect : MonoBehaviour
 {
 
-    float lifetime;
-    float fadetime;
+    float lifetime = 4f;
+    float fadetime = 4f;
 
     protected virtual IEnumerator Fade()
     {
