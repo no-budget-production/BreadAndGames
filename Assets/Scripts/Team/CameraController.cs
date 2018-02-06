@@ -28,6 +28,7 @@ public class CameraController : MonoBehaviour
     public void Setup(Transform[] player)
     {
         targetPlayer = player;
+        SetStartPositionAndSize();
     }
 
     private void FixedUpdate()
@@ -51,8 +52,7 @@ public class CameraController : MonoBehaviour
 
         for (int i = 0; i < targetPlayer.Length; i++)
         {
-
-            continue;
+            //continue;
 
             averagePos += targetPlayer[i].position;
             numTargets++;

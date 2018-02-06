@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PrefabLoader : MonoBehaviour
 {
-    public Vector3[] PlayerSpawns;
+    private InstanceRef instanceRef;
+
+    public Transform[] PlayerSpawns;
     public GameObject[] Players;
     private Transform playerHolder;
 
@@ -43,15 +45,22 @@ public class PrefabLoader : MonoBehaviour
             "Button_LeftStick_PX"
     };
 
-    public void LoadPrefabs()
+    void LoadInstancesRed()
     {
-        ActivePlayers = SpawnPreFabs(Players, PlayerSpawns, "PlayerHolder");
-        ActiveCamera = SpawnPreFab(Camera, Camera.transform.position, null);
-        SetupCamera();
-
+        instanceRef = GameObject.FindGameObjectWithTag("InstanceRef").GetComponent<InstanceRef>();
+        PlayerSpawns = instanceRef.PlayerSpawns;
     }
 
-    GameObject[] SpawnPreFabs(GameObject[] prefabArray, Vector3[] spawnArray, string holder)
+    public void LoadPrefabs()
+    {
+        LoadInstancesRed();
+        ActivePlayers = SpawnPreFabs(Players, PlayerSpawns, "PlayerHolder");
+        ActivePlayerCount = ActivePlayers.Length;
+        ActiveCamera = SpawnPreFab(Camera, Camera.transform, null);
+        SetupCamera();
+    }
+
+    GameObject[] SpawnPreFabs(GameObject[] prefabArray, Transform[] spawnArray, string holder)
     {
         if (holder != null)
         {
@@ -64,17 +73,17 @@ public class PrefabLoader : MonoBehaviour
 
         for (int i = 0; i < tempLength; i++)
         {
-            Vector3 curSpawn = spawnArray[i];
+            Vector3 curSpawn = spawnArray[i].position;
 
-            curPrefabs[i] = SpawnPreFab(prefabArray[i], curSpawn, holder);
+            curPrefabs[i] = SpawnPreFab(prefabArray[i], spawnArray[i], holder);
         }
 
         return curPrefabs;
     }
 
-    GameObject SpawnPreFab(GameObject prefab, Vector3 location, string holder)
+    GameObject SpawnPreFab(GameObject prefab, Transform transform, string holder)
     {
-        GameObject curPrefab = Instantiate(prefab, location, Quaternion.identity);
+        GameObject curPrefab = Instantiate(prefab, transform.position, transform.rotation);
 
         if (holder != null)
         {
@@ -88,11 +97,11 @@ public class PrefabLoader : MonoBehaviour
     {
         ActiveCamera.transform.rotation = Camera.transform.rotation;
 
-        int tempLength = Players.Length;
-        Transform[] transformPlayers = new Transform[tempLength];
-        for (int i = 0; i < tempLength; i++)
+        Transform[] transformPlayers = new Transform[ActivePlayerCount];
+        Debug.Log(ActivePlayerCount);
+        for (int i = 0; i < ActivePlayerCount; i++)
         {
-            transformPlayers[i] = Players[i].transform;
+            transformPlayers[i] = ActivePlayers[i].transform;
         }
 
         CameraController tempTeamScript = ActiveCamera.GetComponent<CameraController>();
@@ -104,8 +113,6 @@ public class PrefabLoader : MonoBehaviour
 
     void LatePlayerSetup()
     {
-        ActivePlayerCount = ActivePlayers.Length;
-
         for (int i = 0; i < ActivePlayerCount; i++)
         {
             ActivePlayers[i].GetComponent<PlayerController>().Setup(InputRotation, ButtonStrings);

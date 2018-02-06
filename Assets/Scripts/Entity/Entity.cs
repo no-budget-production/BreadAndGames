@@ -23,6 +23,11 @@ public class Entity : MonoBehaviour
         }
     }
 
+    public virtual void GetHealth(float damage)
+    {
+        CurrentHealth = Mathf.Min(CurrentHealth + damage, MaxHealth);
+    }
+
     public virtual void ArmorBuff(float armorArg)
     {
         Armor += Mathf.Clamp(armorArg, 0, armorArg);
