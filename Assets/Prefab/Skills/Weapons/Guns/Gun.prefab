@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806835097473610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.2, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4685958634400136}
@@ -603,16 +603,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88894c6d5190b84482c405236d58d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashHolder: {fileID: 1419328974623418}
-  flashSprites:
+  FlashHolder: {fileID: 1419328974623418}
+  FlashSprites:
   - {fileID: 21300000, guid: f9f5a07a79826af478aa1f7761bf8156, type: 3}
   - {fileID: 21300002, guid: f9f5a07a79826af478aa1f7761bf8156, type: 3}
   - {fileID: 21300004, guid: f9f5a07a79826af478aa1f7761bf8156, type: 3}
   - {fileID: 21300006, guid: f9f5a07a79826af478aa1f7761bf8156, type: 3}
-  spriteRenderers:
+  SpriteRenderers:
   - {fileID: 212871584652129468}
   - {fileID: 212273055869548884}
-  flashTime: 0.1
+  flashTime: 0.05
 --- !u!114 &114188199541555762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,6 +631,8 @@ MonoBehaviour:
   MuzzleVelocity: 35
   AccuracyHorizontal: 0
   AccuracyVertical: 0
+  MuzzleFlash: {fileID: 114054656930947626}
+  GunSound: {fileID: 82542246519308962}
   soundClips:
   - {fileID: 8300000, guid: 0a5e538ac22e3cc419731d3c1f1475e7, type: 3}
   - {fileID: 8300000, guid: c8450ab38b5e9c145b5bbee0ec8f2172, type: 3}

@@ -11,8 +11,8 @@ public class Gun : Skill
     public float AccuracyHorizontal;
     public float AccuracyVertical;
 
-    MuzzleFlash MuzzleFlash;
-    AudioSource GunSound;
+    public MuzzleFlash MuzzleFlash;
+    public AudioSource GunSound;
     public AudioClip[] soundClips;
 
     public Transform shell;

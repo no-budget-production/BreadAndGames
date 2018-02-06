@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaseRush : MonoBehaviour {
+public class PhaseRush : MonoBehaviour
+{
 
     private PlayerController charakter;
     public float moveSpeedBonus = 600;
     public float duration = 5;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         charakter = GetComponent<PlayerController>();
     }
 
@@ -25,7 +27,7 @@ public class PhaseRush : MonoBehaviour {
     {
         Debug.Log(charakter.moveSpeed);
         charakter.moveSpeed += moveSpeedBonus;
-        charakter.IsDamageAble = false;
+        //charakter.IsDamageAble = false;
         Invoke("StopPhaseRush", duration);
         Debug.Log(charakter.moveSpeed);
     }
@@ -33,6 +35,6 @@ public class PhaseRush : MonoBehaviour {
     void StopPhaseRush()
     {
         charakter.moveSpeed -= moveSpeedBonus;
-        charakter.IsDamageAble = true;
+        //charakter.IsDamageAble = true;
     }
 }

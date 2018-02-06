@@ -354,7 +354,6 @@ GameObject:
   - component: {fileID: 4982861297404492}
   - component: {fileID: 143873380964443512}
   - component: {fileID: 114799034168502476}
-  - component: {fileID: 114015639779809238}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Shooter
@@ -1017,7 +1016,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584756593326210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.362}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224543724661416666}
@@ -1043,20 +1042,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114015639779809238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fe79c7b70c3654786de7a4ced37a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponHold: {fileID: 4830602311907468}
-  startingGun: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
-    type: 2}
 --- !u!114 &114089546494241978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1138,7 +1123,6 @@ MonoBehaviour:
       type: 2}
   ActiveSkills: []
   TurnSpeed: 0.79
-  gunSystem: {fileID: 114015639779809238}
   moveSpeed: 20
   deadzone: 0.25
   acceleration: 1.2

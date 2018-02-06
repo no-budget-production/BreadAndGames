@@ -209,8 +209,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143050206337656}
-  m_LocalRotation: {x: -0, y: -0.99998766, z: -0, w: -0.004965176}
-  m_LocalPosition: {x: -4.71, y: 0, z: -15.56}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224103337719675648}
@@ -219,7 +219,7 @@ Transform:
   - {fileID: 4252319834093624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180.56898, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4723794256097478
 Transform:
   m_ObjectHideFlags: 1
@@ -391,15 +391,17 @@ MonoBehaviour:
   DestroyOnDeath: 0
   healthBar: {fileID: 224660065565190754}
   UseHealthbar: 1
-  setPlayerNumber: 2
+  usedButtonsCount: 0
   usedButtons: 
+  areButtons: 
+  deadZones: []
   thisPlayerString: []
   PlayerNumber: 2
+  isWalking: 0
+  isUsingRightStick: 0
+  PlayerSkills: []
+  ActiveSkills: []
   TurnSpeed: 0.066
-  myController: {fileID: 143950757012174290}
-  Camera: {fileID: 0}
-  viewCamera: {fileID: 0}
-  gunSystem: {fileID: 0}
   moveSpeed: 10
   deadzone: 0.25
   acceleration: 1.2
@@ -407,6 +409,7 @@ MonoBehaviour:
   temporaryLookVector: {x: 0, y: 0, z: 0}
   playAttackAnim: 0
   animator: {fileID: 0}
+  myController: {fileID: 143950757012174290}
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  cooldown: 10
 --- !u!143 &143950757012174290
 CharacterController:
   m_ObjectHideFlags: 1

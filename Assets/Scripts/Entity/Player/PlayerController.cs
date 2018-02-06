@@ -95,7 +95,7 @@ public class PlayerController : Character
             areButtons[i] = PlayerSkills[i].ButtonStringBC.isButton;
             deadZones[i] = PlayerSkills[i].ButtonStringBC.DeadZone;
 
-            Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position, Quaternion.identity);
+            Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity);
             curSkill.transform.SetParent(transform);
             ActiveSkills[i] = curSkill;
         }
