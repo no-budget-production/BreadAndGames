@@ -14,7 +14,7 @@ public class SwarmController : Entity
 
     private int IndexNumber;
     public int _IndexNumber { get { return IndexNumber; } set { IndexNumber = value; } }
-    
+
     void Awake()
     {
         MyNavMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -27,7 +27,7 @@ public class SwarmController : Entity
 
     void Update()
     {
-        if (IsDeadTrigger && DoItOnceBool)
+        if (isDeadTrigger && DoItOnceBool)
         {
             DoItOnceBool = false;
             SwarmClusterScript._AllEnemysInCluster.Remove(this.gameObject);
@@ -43,7 +43,7 @@ public class SwarmController : Entity
 
     public void MoveToDestination(Transform Destination)
     {
-        if(!IsDeadTrigger)
+        if (!isDeadTrigger)
         {
             Vector3 targetVector = Destination.transform.position;
             MyNavMeshAgent.SetDestination(targetVector);
