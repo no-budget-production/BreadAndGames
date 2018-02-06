@@ -5,5 +5,6 @@ using UnityEngine;
 public class InstanceRef : MonoBehaviour
 {
     public Transform[] PlayerSpawns;
-    public Transform[] EnemySpawns;
+    //public Transform[] SpawnTriggerSpawns;
+    public GameObject[] SpawnTriggers;
 }

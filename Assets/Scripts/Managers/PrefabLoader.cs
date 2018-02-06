@@ -8,11 +8,16 @@ public class PrefabLoader : MonoBehaviour
 
     public Transform[] PlayerSpawns;
     public GameObject[] Players;
-    private Transform playerHolder;
+
+
 
     public GameObject Camera;
 
-    //
+    public Transform[] SpawnTriggerSpawns;
+    public GameObject SpawnSpawnTrigges;
+
+    public GameObject[] SpawnTrigges;
+
     public static Quaternion InputRotation;
 
     //Instances
@@ -20,6 +25,11 @@ public class PrefabLoader : MonoBehaviour
     public int ActivePlayerCount;
     public GameObject[] ActivePlayers;
     public GameObject ActiveCamera;
+    public GameObject[] ActiveTriggerSpawns;
+
+    public Transform curHolder;
+
+    public string[] PlayerTags;
 
     public string[] ButtonStrings = new string[]
     {
@@ -49,29 +59,45 @@ public class PrefabLoader : MonoBehaviour
     {
         instanceRef = GameObject.FindGameObjectWithTag("InstanceRef").GetComponent<InstanceRef>();
         PlayerSpawns = instanceRef.PlayerSpawns;
+        //SpawnTriggerSpawns = instanceRef.SpawnTriggerSpawns;
+        SpawnTrigges = instanceRef.SpawnTriggers;
     }
 
     public void LoadPrefabs()
     {
         LoadInstancesRed();
-        ActivePlayers = SpawnPreFabs(Players, PlayerSpawns, "PlayerHolder");
+        ActivePlayers = SpawnPreFabs(PlayerSpawns.Length, Players, PlayerSpawns, "PlayerHolder");
         ActivePlayerCount = ActivePlayers.Length;
         ActiveCamera = SpawnPreFab(Camera, Camera.transform, null);
+        SetPlayerTags();
         SetupCamera();
+        LinkInstances();
     }
 
-    GameObject[] SpawnPreFabs(GameObject[] prefabArray, Transform[] spawnArray, string holder)
+    void LinkInstances()
+    {
+        int tempLength = SpawnTrigges.Length;
+        for (int i = 0; i < tempLength; i++)
+        {
+            SpawnTrigger tempSpawnTrigger = SpawnTrigges[i].GetComponent<SpawnTrigger>();
+            tempSpawnTrigger.Tags = new string[PlayerTags.Length];
+            for (int j = 0; j < PlayerTags.Length; j++)
+            {
+                tempSpawnTrigger.Tags[j] = PlayerTags[j];
+            }
+        }
+    }
+
+    GameObject[] SpawnPreFabs(int amount, GameObject[] prefabArray, Transform[] spawnArray, string holder)
     {
         if (holder != null)
         {
-            playerHolder = new GameObject(holder).transform;
+            curHolder = new GameObject(holder).transform;
         }
 
-        int tempLength = prefabArray.Length;
+        GameObject[] curPrefabs = new GameObject[amount];
 
-        GameObject[] curPrefabs = new GameObject[tempLength];
-
-        for (int i = 0; i < tempLength; i++)
+        for (int i = 0; i < amount; i++)
         {
             Vector3 curSpawn = spawnArray[i].position;
 
@@ -87,7 +113,7 @@ public class PrefabLoader : MonoBehaviour
 
         if (holder != null)
         {
-            curPrefab.transform.SetParent(playerHolder);
+            curPrefab.transform.SetParent(curHolder);
         }
 
         return curPrefab;
@@ -98,7 +124,6 @@ public class PrefabLoader : MonoBehaviour
         ActiveCamera.transform.rotation = Camera.transform.rotation;
 
         Transform[] transformPlayers = new Transform[ActivePlayerCount];
-        Debug.Log(ActivePlayerCount);
         for (int i = 0; i < ActivePlayerCount; i++)
         {
             transformPlayers[i] = ActivePlayers[i].transform;
@@ -109,6 +134,15 @@ public class PrefabLoader : MonoBehaviour
 
         InputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(ActiveCamera.transform.forward, Vector3.up));
         LatePlayerSetup();
+    }
+
+    void SetPlayerTags()
+    {
+        PlayerTags = new string[ActivePlayerCount];
+        for (int i = 0; i < ActivePlayerCount; i++)
+        {
+            PlayerTags[i] = Players[i].gameObject.tag;
+        }
     }
 
     void LatePlayerSetup()

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SpawnTrigger : MonoBehaviour
 {
-    private string MeleeTag;
-    private string ShooterTag;
-    private string SupportTag;
+    public string[] Tags;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (true)
+        for (int i = 0; i < Tags.Length; i++)
         {
-
+            if (collision.gameObject.tag == Tags[i])
+            {
+                Debug.Log(Tags[i]);
+            }
         }
-
     }
 }

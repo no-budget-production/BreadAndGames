@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 
-    public static GameManager instance = null;
+    public static GameManager Instance = null;
 
     public PrefabLoader prefabLoader;
 
@@ -21,11 +19,11 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
