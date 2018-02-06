@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunSystem : MonoBehaviour {
-
+public class GunSystem : MonoBehaviour
+{
     public Transform weaponHold;
     public Gun startingGun;
     Gun equippedGun;
@@ -16,7 +16,6 @@ public class GunSystem : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     public void EquipGun(Gun gunToEquip)
     {
         if (equippedGun != null)
@@ -31,5 +30,11 @@ public class GunSystem : MonoBehaviour {
     {
         if (equippedGun != null)
             equippedGun.Shoot();
+    }
+
+    public void Reload()
+    {
+        if (equippedGun != null)
+            equippedGun.Reload();
     }
 }
