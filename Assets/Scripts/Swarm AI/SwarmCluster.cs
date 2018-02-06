@@ -10,7 +10,7 @@ public class SwarmCluster : MonoBehaviour
     public float ChaseDistance;
 
     private Transform Reinforcement;
-    
+
     private int EnemyCount;
     public int _EnemyCount { get { return EnemyCount; } }
     private float RandomNumber;
@@ -32,6 +32,8 @@ public class SwarmCluster : MonoBehaviour
     private int PlayerCount;
     private GameObject Target;
 
+    public Transform[] ReinforcmentPoints;
+
     void Awake()
     {
         SwarmControllerScripts = new List<SwarmController>();
@@ -39,7 +41,7 @@ public class SwarmCluster : MonoBehaviour
         PlayerInRadiusList = new List<GameObject>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
         PlayerInRadius = new GameObject[3];
-        Reinforcement = GameObject.Find("Reinforcment").GetComponent<Transform>();
+        //Reinforcement = GameObject.Find("Reinforcment").GetComponent<Transform>();
 
         SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
         hitbox.radius = CheckRadius;
@@ -87,8 +89,8 @@ public class SwarmCluster : MonoBehaviour
             NavMeshAgent.SetDestination(Reinforcement.position);
         }
     }
-    
-    
+
+
     public void GetAllEnemysInCluster()
     {
         SwarmControllerScripts.Clear();
@@ -128,7 +130,7 @@ public class SwarmCluster : MonoBehaviour
         OpponentClusterScript.GetAllEnemysInCluster();
         Destroy(gameObject);
     }
-    
+
     void GetNearestTarget()
     {
         float LenghtSoFar = 0f;
@@ -142,14 +144,14 @@ public class SwarmCluster : MonoBehaviour
             {
                 PlayersInRange = true;
                 NavMeshAgent.CalculatePath(PlayerInRadius[i].transform.position, Path);
-                
+
                 for (int i2 = 0; i2 < Path.corners.Length; i2++)
                 {
                     Vector3 previousCorner = Path.corners[0];
                     Vector3 currentCorner = Path.corners[i2];
 
                     LenghtSoFar += Vector3.Distance(previousCorner, currentCorner);
-                    
+
                     previousCorner = currentCorner;
                 }
 
@@ -158,7 +160,8 @@ public class SwarmCluster : MonoBehaviour
                     ShortestWay = LenghtSoFar;
                     NearestPlayer = i;
                 }
-            }        }
+            }
+        }
 
         if (PlayersInRange == true)
         {

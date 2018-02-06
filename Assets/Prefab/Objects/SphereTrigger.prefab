@@ -9,31 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1507663357530514}
+  m_RootGameObject: {fileID: 1947385689010502}
   m_IsPrefabParent: 1
---- !u!1 &1507663357530514
+--- !u!1 &1947385689010502
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4409091711826492}
-  - component: {fileID: 135558252972104638}
-  - component: {fileID: 114287803617927000}
+  - component: {fileID: 4842249850183150}
+  - component: {fileID: 114490762799838484}
   m_Layer: 0
-  m_Name: SpawnTrigger
+  m_Name: SphereTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4409091711826492
+--- !u!4 &4842249850183150
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1507663357530514}
+  m_GameObject: {fileID: 1947385689010502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 7.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,27 +40,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114287803617927000
+--- !u!114 &114490762799838484
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1507663357530514}
+  m_GameObject: {fileID: 1947385689010502}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d69f98d6cdaf4643ab73661b21943f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tags: []
---- !u!135 &135558252972104638
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1507663357530514}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
+  SwarmSpawn: {fileID: 0}

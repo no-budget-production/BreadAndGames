@@ -10,11 +10,13 @@ public class PrefabLoader : MonoBehaviour
     public GameObject[] Players;
 
 
-
     public GameObject Camera;
 
-    public Transform[] SpawnTriggerSpawns;
-    public GameObject SpawnSpawnTrigges;
+    public Transform SphereTriggerHolder;
+
+    public Transform[] SphereTriggers;
+
+    public Transform[] ReinforcmentPoints;
 
     public GameObject[] SpawnTrigges;
 
@@ -27,7 +29,10 @@ public class PrefabLoader : MonoBehaviour
     public GameObject ActiveCamera;
     public GameObject[] ActiveTriggerSpawns;
 
-    public Transform curHolder;
+    private Transform curHolder;
+
+    public Transform EnemyHolder;
+    public Transform SpawnHolder;
 
     public string[] PlayerTags;
 
@@ -60,39 +65,34 @@ public class PrefabLoader : MonoBehaviour
         instanceRef = GameObject.FindGameObjectWithTag("InstanceRef").GetComponent<InstanceRef>();
         PlayerSpawns = instanceRef.PlayerSpawns;
         //SpawnTriggerSpawns = instanceRef.SpawnTriggerSpawns;
-        SpawnTrigges = instanceRef.SpawnTriggers;
+        SpawnTrigges = instanceRef.SphereTriggers;
+        SpawnHolder = instanceRef.SpawnHolder;
+        EnemyHolder = instanceRef.EnemyHolder;
+        SpawnHolder = instanceRef.SpawnHolder;
+        ReinforcmentPoints = instanceRef.ReinforcmentPoints;
     }
 
     public void LoadPrefabs()
     {
         LoadInstancesRed();
-        ActivePlayers = SpawnPreFabs(PlayerSpawns.Length, Players, PlayerSpawns, "PlayerHolder");
-        ActivePlayerCount = ActivePlayers.Length;
-        ActiveCamera = SpawnPreFab(Camera, Camera.transform, null);
-        SetPlayerTags();
+
+        PlayerSetup();
+
         SetupCamera();
+
         LinkInstances();
     }
 
     void LinkInstances()
     {
-        int tempLength = SpawnTrigges.Length;
-        for (int i = 0; i < tempLength; i++)
-        {
-            SpawnTrigger tempSpawnTrigger = SpawnTrigges[i].GetComponent<SpawnTrigger>();
-            tempSpawnTrigger.Tags = new string[PlayerTags.Length];
-            for (int j = 0; j < PlayerTags.Length; j++)
-            {
-                tempSpawnTrigger.Tags[j] = PlayerTags[j];
-            }
-        }
+        SpawnSphereTriggerSetup();
     }
 
     GameObject[] SpawnPreFabs(int amount, GameObject[] prefabArray, Transform[] spawnArray, string holder)
     {
         if (holder != null)
         {
-            curHolder = new GameObject(holder).transform;
+            curHolder = SpawnHolderFunction(holder);
         }
 
         GameObject[] curPrefabs = new GameObject[amount];
@@ -143,6 +143,40 @@ public class PrefabLoader : MonoBehaviour
         {
             PlayerTags[i] = Players[i].gameObject.tag;
         }
+    }
+
+    Transform SpawnHolderFunction(string holderString)
+    {
+        curHolder = new GameObject(holderString).transform;
+        return curHolder.transform;
+    }
+
+    void SpawnSphereTriggerSetup()
+    {
+        //SphereTriggerHolder = SpawnHolderFunction("SpawnHolder");
+
+        int tempLength = SpawnTrigges.Length;
+        for (int i = 0; i < tempLength; i++)
+        {
+            SphereTrigger tempSpawnTrigger = SpawnTrigges[i].GetComponent<SphereTrigger>();
+            tempSpawnTrigger.Tags = new string[PlayerTags.Length];
+            for (int j = 0; j < PlayerTags.Length; j++)
+            {
+                tempSpawnTrigger.Tags[j] = PlayerTags[j];
+            }
+
+            SwarmSpawn tempSwarmSpawn = SpawnTrigges[i].GetComponent<SwarmSpawn>();
+            tempSwarmSpawn.SwarmHandler = SpawnHolder;
+            tempSwarmSpawn.ReinforcmentPoints = ReinforcmentPoints;
+        }
+    }
+
+    void PlayerSetup()
+    {
+        ActivePlayers = SpawnPreFabs(PlayerSpawns.Length, Players, PlayerSpawns, "PlayerHolder");
+        ActivePlayerCount = ActivePlayers.Length;
+        ActiveCamera = SpawnPreFab(Camera, Camera.transform, null);
+        SetPlayerTags();
     }
 
     void LatePlayerSetup()

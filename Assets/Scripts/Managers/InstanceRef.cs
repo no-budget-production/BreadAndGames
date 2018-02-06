@@ -6,5 +6,8 @@ public class InstanceRef : MonoBehaviour
 {
     public Transform[] PlayerSpawns;
     //public Transform[] SpawnTriggerSpawns;
-    public GameObject[] SpawnTriggers;
+    public GameObject[] SphereTriggers;
+    public Transform[] ReinforcmentPoints;
+    public Transform EnemyHolder;
+    public Transform SpawnHolder;
 }
