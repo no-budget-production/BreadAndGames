@@ -10,4 +10,5 @@ public class InstanceRef : MonoBehaviour
     public Transform[] ReinforcmentPoints;
     public Transform EnemyHolder;
     public Transform SpawnHolder;
+    public Transform ClusterHolder;
 }

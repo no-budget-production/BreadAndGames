@@ -33,6 +33,7 @@ public class PrefabLoader : MonoBehaviour
 
     public Transform EnemyHolder;
     public Transform SpawnHolder;
+    public Transform ClusterHolder;
 
     public string[] PlayerTags;
 
@@ -68,7 +69,7 @@ public class PrefabLoader : MonoBehaviour
         SpawnTrigges = instanceRef.SphereTriggers;
         SpawnHolder = instanceRef.SpawnHolder;
         EnemyHolder = instanceRef.EnemyHolder;
-        SpawnHolder = instanceRef.SpawnHolder;
+        ClusterHolder = instanceRef.ClusterHolder;
         ReinforcmentPoints = instanceRef.ReinforcmentPoints;
     }
 
@@ -168,6 +169,7 @@ public class PrefabLoader : MonoBehaviour
             SwarmSpawn tempSwarmSpawn = SpawnTrigges[i].GetComponent<SwarmSpawn>();
             tempSwarmSpawn.SwarmHandler = SpawnHolder;
             tempSwarmSpawn.ReinforcmentPoints = ReinforcmentPoints;
+
         }
     }
 

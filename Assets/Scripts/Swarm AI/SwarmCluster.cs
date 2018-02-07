@@ -28,6 +28,7 @@ public class SwarmCluster : MonoBehaviour
     private List<SwarmController> SwarmControllerScripts;
     public List<SwarmController> _SwarmControllerScripts { get { return SwarmControllerScripts; } set { SwarmControllerScripts = value; } }
 
+    public SwarmSpawn ParentSwarmSpawn;
 
     private int PlayerCount;
     private GameObject Target;

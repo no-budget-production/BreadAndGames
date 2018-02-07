@@ -9,6 +9,7 @@ public class SwarmSpawn : MonoBehaviour
     public int AmountToSpawn;                   // How many enemys should spawn
     public Transform SpawnPoint;
     public Transform HoldingPoint;
+    public Transform ClusterHolder;
 
     public Transform SwarmHandler;
     public Transform[] ReinforcmentPoints;
@@ -33,6 +34,7 @@ public class SwarmSpawn : MonoBehaviour
         SwarmCluster SwarmClusterScript = TempSpawnHandler.GetComponent<SwarmCluster>();
         SwarmClusterScript._NavMeshAgent.SetDestination(HoldingPoint.transform.position);
         SwarmClusterScript.ReinforcmentPoints = ReinforcmentPoints;
+        SwarmClusterScript.ParentSwarmSpawn = GetComponent<SwarmSpawn>();
         SpawnedEnemys++;
 
         if (SpawnedEnemys == AmountToSpawn)

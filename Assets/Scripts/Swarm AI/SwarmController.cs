@@ -39,8 +39,6 @@ public class SwarmController : Entity
         }
     }
 
-
-
     public void MoveToDestination(Transform Destination)
     {
         if (!isDeadTrigger)
