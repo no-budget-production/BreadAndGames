@@ -84,10 +84,10 @@ public class SwarmCluster : MonoBehaviour
             }
         }
 
-        if (PlayerCount == 1 & EnemyCount <= 2)
-        {
-            NavMeshAgent.SetDestination(Reinforcement.position);
-        }
+        //if (PlayerCount == 1 & EnemyCount <= 2)
+        //{
+        //    NavMeshAgent.SetDestination(Reinforcement.position);
+        //}
     }
 
 
