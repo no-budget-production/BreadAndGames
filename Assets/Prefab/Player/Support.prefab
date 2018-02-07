@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4982861297404492}
   - component: {fileID: 143761114787205060}
   - component: {fileID: 114742029162987672}
+  - component: {fileID: 54998227612491716}
   m_Layer: 0
   m_Name: Support
   m_TagString: Support
@@ -196,6 +197,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688823597451648}
   m_Mesh: {fileID: 4300000, guid: d9174de7b4e95ad499a3060c34f01d14, type: 3}
+--- !u!54 &54998227612491716
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!114 &114089546494241978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,7 +286,11 @@ MonoBehaviour:
   PlayerNumber: 3
   isWalking: 0
   isUsingRightStick: 0
-  PlayerSkills: []
+  PlayerSkills:
+  - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
+      type: 2}
+    ButtonStringBC: {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df,
+      type: 2}
   ActiveSkills: []
   isInAction: 0
   ActionPoints: 100
@@ -351,7 +371,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 0
   m_StepOffset: 0.01
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001

@@ -17,7 +17,7 @@ public class SphereTrigger : MonoBehaviour
                 playerCount++;
             }
         }
-        Debug.Log("WRF");
+        //Debug.Log("WRF");
         CheckPlayerCount();
     }
 

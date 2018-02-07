@@ -1119,7 +1119,7 @@ MonoBehaviour:
   PlayerSkills:
   - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
       type: 2}
-    ButtonStringBC: {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49,
+    ButtonStringBC: {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df,
       type: 2}
   - SkillBC: {fileID: 114664328918198588, guid: 4fedf76c09b44654796a5784a313ac5b,
       type: 2}
@@ -1127,7 +1127,7 @@ MonoBehaviour:
       type: 2}
   - SkillBC: {fileID: 114132905055807542, guid: 1b26ceeb2376f26468b2b7bf68bc013c,
       type: 2}
-    ButtonStringBC: {fileID: 114441161642664474, guid: 9475b5706eb59dc4caf0e9139828070b,
+    ButtonStringBC: {fileID: 114699667673163188, guid: daa924789377d964d854a18ed9d6f75d,
       type: 2}
   ActiveSkills: []
   isInAction: 0
@@ -1276,7 +1276,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 0
   m_StepOffset: 0.01
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001

@@ -46,7 +46,7 @@ public class PhaseRush : Skill
 
     IEnumerator DurationTimer(float duration)
     {
-        Debug.Log("PhaseRush_On");
+        //Debug.Log("PhaseRush_On");
 
         yield return new WaitForSeconds(duration);
 

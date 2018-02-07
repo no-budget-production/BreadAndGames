@@ -45,7 +45,7 @@ public class Gun : Skill
             playShotSound();
             MuzzleFlash.Activate();
 
-            Debug.Log("Fire");
+            //Debug.Log("Fire");
 
             base.PlayerController.curActionPoints -= ActionPointsCost;
         }

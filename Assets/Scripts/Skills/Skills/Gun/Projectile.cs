@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : Effect
 {
-
     public LayerMask collisionMask;
 
-    float speed = 10;
-    float damage = 1;
+    private float speed = 10;
+    private float damage = 1;
 
-    float lifetime = 2;
-    float fadetime = 2;
+    //float lifetime = 2;
+    //float fadetime = 2;
 
     public void SetSpeed(float newSpeed)
     {
@@ -30,6 +29,7 @@ public class Projectile : MonoBehaviour
 
     void CheckCollisions(float moveDistance)
     {
+        //Debug.Log("Check");
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
@@ -46,26 +46,7 @@ public class Projectile : MonoBehaviour
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
-            damageableObject.TakeDamage(damage/*, hit*/);
+            damageableObject.TakeDamage(damage);
         }
-    }
-
-    IEnumerator Fade()
-    {
-        yield return new WaitForSeconds(lifetime);
-
-        float fadePercent = 0;
-        float fadeSpeed = 1 / fadetime;
-
-        Material mat = GetComponent<Renderer>().material;
-        Color initialColor = mat.color;
-
-        while (fadePercent < 1)
-        {
-            fadePercent += Time.deltaTime * fadeSpeed;
-            mat.color = Color.Lerp(initialColor, Color.clear, fadePercent);
-            yield return null;
-        }
-        Destroy(gameObject);
     }
 }

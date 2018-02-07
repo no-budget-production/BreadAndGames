@@ -2,26 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch : MonoBehaviour {
+public class Punch : Skill
+{
 
-    private PunchCollider hitBox;
-    public float damage = 10f;
-    public float cooldown = 10;
+    public PunchCollider hitBox;
 
-    // Use this for initialization
-    void Start ()
+    public float MsBetweenShot;
+    public float Damage;
+
+    float nextShotTime;
+
+    public override void Shoot()
     {
-        hitBox = GetComponentInChildren<PunchCollider>();
-        hitBox.GetComponent<Renderer>().enabled = false;
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        if (Input.GetKeyDown("space"))
+        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
             Debug.Log("Punch");
-            hitBox.enemies.ForEach(e => e.TakeDamage(damage));
+            hitBox.enemies.ForEach(e => e.TakeDamage(Damage));
         }
     }
 }

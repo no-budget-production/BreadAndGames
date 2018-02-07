@@ -9,7 +9,7 @@ public class Reload : Skill
 
     public override void Shoot()
     {
-        if (base.PlayerController.curActionPoints < base.PlayerController.ActionPoints - 1)
+        if (base.PlayerController.curActionPoints < base.PlayerController.ActionPoints)
         {
             base.PlayerController.isInAction = true;
             AudioSource.PlayOneShot(SoundReload);
