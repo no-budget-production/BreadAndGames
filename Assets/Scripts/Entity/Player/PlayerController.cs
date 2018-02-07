@@ -29,8 +29,6 @@ public class PlayerController : Character
     [Range(0.0f, 1.0f)]
     public float TurnSpeed;
 
-
-
     public float moveSpeed = 1.0f;
     public float deadzone = 0.25f;
     //public float deadzoneMove = 0.25f;
@@ -55,6 +53,7 @@ public class PlayerController : Character
 
     private Quaternion inputRotation;
 
+    //public PlayerController playerController;
 
     //Müll
 
@@ -97,6 +96,8 @@ public class PlayerController : Character
 
             Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity);
             curSkill.transform.SetParent(transform);
+            curSkill.Player = this.gameObject;
+            curSkill.PlayerController = this;
             ActiveSkills[i] = curSkill;
         }
     }
