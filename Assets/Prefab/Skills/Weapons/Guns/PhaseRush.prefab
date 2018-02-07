@@ -55,6 +55,9 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   Charges: 3
   ButtonCD: 0.1
-  Duration: 1000
-  RechargeTime: 1000
-  MoveSpeedBonus: 0
+  isPhaseRushing: 0
+  isRechargingPhaseRushing: 0
+  Duration: 1
+  RechargeTime: 3
+  MoveSpeedBonus: 100
+  Dummy: 0

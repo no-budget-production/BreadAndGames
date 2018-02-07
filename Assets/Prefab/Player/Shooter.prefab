@@ -1119,13 +1119,21 @@ MonoBehaviour:
   PlayerSkills:
   - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
       type: 2}
-    ButtonStringBC: {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df,
+    ButtonStringBC: {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49,
       type: 2}
   - SkillBC: {fileID: 114664328918198588, guid: 4fedf76c09b44654796a5784a313ac5b,
       type: 2}
     ButtonStringBC: {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6,
       type: 2}
+  - SkillBC: {fileID: 114132905055807542, guid: 1b26ceeb2376f26468b2b7bf68bc013c,
+      type: 2}
+    ButtonStringBC: {fileID: 114441161642664474, guid: 9475b5706eb59dc4caf0e9139828070b,
+      type: 2}
   ActiveSkills: []
+  isInAction: 0
+  ActionPoints: 100
+  curActionPoints: 100
+  ActionCD: 1
   TurnSpeed: 0.79
   moveSpeed: 20
   deadzone: 0.25

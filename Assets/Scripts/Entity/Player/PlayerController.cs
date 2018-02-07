@@ -26,6 +26,12 @@ public class PlayerController : Character
 
     public Skill[] ActiveSkills;
 
+    public bool isInAction;
+    public int ActionPoints;
+    public int curActionPoints;
+
+    public float ActionCD;
+
     [Range(0.0f, 1.0f)]
     public float TurnSpeed;
 
@@ -52,6 +58,7 @@ public class PlayerController : Character
     private Vector3 lookVector;
 
     private Quaternion inputRotation;
+
 
     //public PlayerController playerController;
 
@@ -111,7 +118,7 @@ public class PlayerController : Character
         float HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
         float VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
 
-        if (Horizontal_PX != 0 || Vertical_PX != 0)
+        //if (Horizontal_PX != 0 || Vertical_PX != 0 || HorizontalLook_PX != 0 || VerticalLook_PX != 0)
         {
             moveVector = new Vector3(0, 0, 0);
             lookVector = new Vector3(0, 0, 0);
@@ -125,24 +132,14 @@ public class PlayerController : Character
             moveVector = Vector3.ClampMagnitude(moveVector, 0.5f);
             moveVector = moveVector * moveSpeed * Time.deltaTime;
             moveVector = inputRotation * moveVector;
-
-            isWalking = true;
-        }
-        else
-        {
-            isWalking = false;
         }
 
-
-        if (HorizontalLook_PX != 0 || VerticalLook_PX != 0)
         {
             // XBox (right stick) look input
             lookVector.z += Input.GetAxis(thisPlayerString[2]);
             temporaryLookVector.x = Input.GetAxis(thisPlayerString[2]);
             lookVector.x += Input.GetAxis(thisPlayerString[3]);
             temporaryLookVector.z = Input.GetAxis(thisPlayerString[3]);
-
-            isUsingRightStick = true;
 
             lookVector = inputRotation * lookVector;
 
@@ -160,6 +157,20 @@ public class PlayerController : Character
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
             }
 
+        }
+
+        if (Horizontal_PX != 0 || Vertical_PX != 0)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+
+        if (HorizontalLook_PX != 0 || VerticalLook_PX != 0)
+        {
+            isUsingRightStick = true;
         }
         else
         {

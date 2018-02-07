@@ -624,6 +624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731b72ce76e2c7040906b00416bbd30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  PlayerController: {fileID: 0}
   Muzzle: {fileID: 4316203229679068}
   Projectile: {fileID: 114397302490237756, guid: f02f7399b72f0de4482dcbedb5028193,
     type: 2}
@@ -631,11 +633,13 @@ MonoBehaviour:
   MuzzleVelocity: 35
   AccuracyHorizontal: 0
   AccuracyVertical: 0
+  ActionPointsCost: 1
   MuzzleFlash: {fileID: 114054656930947626}
   GunSound: {fileID: 82542246519308962}
   soundClips:
   - {fileID: 8300000, guid: 0a5e538ac22e3cc419731d3c1f1475e7, type: 3}
   - {fileID: 8300000, guid: c8450ab38b5e9c145b5bbee0ec8f2172, type: 3}
+  soundEmpty: {fileID: 0}
   shell: {fileID: 4618930595482000, guid: 3aae16d9c48a312489323d005d10fd96, type: 2}
   shellEjection: {fileID: 4685958634400136}
 --- !u!114 &114741920369432396
