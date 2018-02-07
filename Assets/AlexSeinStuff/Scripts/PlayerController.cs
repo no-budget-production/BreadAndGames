@@ -21,7 +21,7 @@ public class PlayerController : Entity
 
     Vector3 currentMovement;
 
-    public float acceleration = 1.2f;
+    public float acceleration = 2f;
 
     public Vector3 temporaryVector;
     public Vector3 temporaryLookVector;
@@ -47,17 +47,17 @@ public class PlayerController : Entity
         Vector3 lookVector = new Vector3(0, 0, 0);
 
         //Movement Input Xbox
-        moveVector.x += Input.GetAxis("HorizontalXbox1") * acceleration;
-        temporaryVector.x = Input.GetAxis("HorizontalXbox1");
-        moveVector.z += Input.GetAxis("VerticalXbox1") * acceleration;
-        temporaryVector.z = Input.GetAxis("VerticalXbox1");
+        moveVector.x += Input.GetAxis("LeftStickX1") * acceleration;
+        temporaryVector.x = Input.GetAxis("LeftStickX1");
+        moveVector.z += Input.GetAxis("LeftStickY1") * acceleration;
+        temporaryVector.z = Input.GetAxis("LeftStickY1");
 
 
-        //Movement Input PC
-        moveVector.x += Input.GetAxis("HorizontalPC1") * acceleration;
-        temporaryVector.x = Input.GetAxis("HorizontalPC1");
-        moveVector.z += Input.GetAxis("VerticalPC1") * acceleration;
-        temporaryVector.z = Input.GetAxis("VerticalPC1");
+        ////Movement Input PC
+        //moveVector.x += Input.GetAxis("HorizontalPC1") * acceleration;
+        //temporaryVector.x = Input.GetAxis("HorizontalPC1");
+        //moveVector.z += Input.GetAxis("VerticalPC1") * acceleration;
+        //temporaryVector.z = Input.GetAxis("VerticalPC1");
 
         moveVector = Vector3.ClampMagnitude(moveVector, 3.0f);
         moveVector = moveVector * moveSpeed * Time.deltaTime;
@@ -67,16 +67,17 @@ public class PlayerController : Entity
 
 
         //Look Input Xbox
-        lookVector.z += Input.GetAxis("HorizontalLook1");
-        temporaryLookVector.x = Input.GetAxis("HorizontalLook1");
-        lookVector.x += Input.GetAxis("VerticalLook1");
-        temporaryLookVector.z = Input.GetAxis("VerticalLook1");
+        lookVector.z += Input.GetAxis("RightStickZ1");
+        temporaryLookVector.x = Input.GetAxis("RightStickZ1");
+        lookVector.x += Input.GetAxis("RightStickX1");
+        temporaryLookVector.z = Input.GetAxis("RightStickX1");
         lookVector = inputRotation * lookVector;
 
         if (lookVector.magnitude < deadzone)
         {
             lookVector = Vector3.zero;
         }
+
 
         //Look Input Mouse **BUGGY**
         /*
@@ -120,10 +121,8 @@ public class PlayerController : Entity
             gunSystem.Shoot();
 
         }
-        else if (Input.GetButton("FirePC1"))
-            gunSystem.Shoot();
 
-        if (Input.GetButtonDown("Reload1"))
+        if (Input.GetButtonDown("RightBumper"))
         {
             gunSystem.Reload();
         }

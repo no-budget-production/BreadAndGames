@@ -60,6 +60,7 @@ public class Healing : MonoBehaviour
         else if(!isVisible)
             {
                 lineRenderer.enabled = false;
+                direction = beamOrigin.position;  
             }
     }
 
