@@ -33,6 +33,7 @@ public class Healing : Skill
     {
         base.PlayerController.isInAction = true;
 
+
         LineRenderer.enabled = false;
 
         LockOn();
@@ -43,6 +44,8 @@ public class Healing : Skill
         {
             if (hit.collider.tag == (TargetTag))
             {
+                isShooting = true;
+
                 isVisible = true;
 
                 LineRenderer.SetPosition(0, BeamOrigin.position);
@@ -54,6 +57,8 @@ public class Healing : Skill
             }
             else
             {
+                isShooting = false;
+
                 isVisible = false;
 
                 LineRenderer.SetPosition(0, BeamOrigin.position);
@@ -62,17 +67,14 @@ public class Healing : Skill
                 LineRenderer.enabled = false;
             }
         }
-
-        //RaycastCheck();
-
-        base.PlayerController.isInAction = false;
-
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!base.PlayerController.isInAction)
+        if (!base.isFiring)
         {
+            LineRenderer.SetPosition(0, BeamOrigin.position);
+            LineRenderer.SetPosition(1, transform.position);
             LineRenderer.enabled = false;
         }
     }

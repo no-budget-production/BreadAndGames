@@ -199,7 +199,12 @@ public class PlayerController : Character
                 if (Input.GetButtonDown(thisPlayerString[usedButtons[i]]))
                 {
                     ActiveSkills[i].Shoot();
+                    ActiveSkills[i].isFiring = true;
                     //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                }
+                else
+                {
+                    ActiveSkills[i].isFiring = false;
                 }
             }
             else
@@ -207,7 +212,12 @@ public class PlayerController : Character
                 if (Input.GetAxis(thisPlayerString[usedButtons[i]]) < deadZones[i])
                 {
                     ActiveSkills[i].Shoot();
+                    ActiveSkills[i].isFiring = true;
                     //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                }
+                else
+                {
+                    ActiveSkills[i].isFiring = false;
                 }
             }
         }
