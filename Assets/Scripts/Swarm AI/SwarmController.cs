@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class SwarmController : Character
 {
+    public float PlayerStopDistance;
+
     private NavMeshAgent MyNavMeshAgent;
     private bool DoItOnceBool;
     private SwarmController MySwarmController;
@@ -18,8 +20,6 @@ public class SwarmController : Character
     void Awake()
     {
         MyNavMeshAgent = this.GetComponent<NavMeshAgent>();
-        MyNavMeshAgent.speed = 15f;
-        MyNavMeshAgent.angularSpeed = 200;
 
         DoItOnceBool = true;
         MySwarmController = GetComponent<SwarmController>();
@@ -43,6 +43,17 @@ public class SwarmController : Character
     {
         if (!isDeadTrigger)
         {
+            MyNavMeshAgent.stoppingDistance = 0;
+            Vector3 targetVector = Destination.transform.position;
+            MyNavMeshAgent.SetDestination(targetVector);
+        }
+    }
+
+    public void AttackCommand(Transform Destination)
+    {
+        if (!isDeadTrigger)
+        {
+            MyNavMeshAgent.stoppingDistance = PlayerStopDistance;
             Vector3 targetVector = Destination.transform.position;
             MyNavMeshAgent.SetDestination(targetVector);
         }

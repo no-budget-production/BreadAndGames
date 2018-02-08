@@ -34,7 +34,6 @@ public class SwarmSpawn : MonoBehaviour
         SwarmCluster SwarmClusterScript = TempSpawnHandler.GetComponent<SwarmCluster>();
         SwarmClusterScript._NavMeshAgent.SetDestination(HoldingPoint.transform.position);
         SwarmClusterScript.ReinforcmentPoints = ReinforcmentPoints;
-        SwarmClusterScript.ParentSwarmSpawn = GetComponent<SwarmSpawn>();
         SpawnedEnemys++;
 
         if (SpawnedEnemys == AmountToSpawn)

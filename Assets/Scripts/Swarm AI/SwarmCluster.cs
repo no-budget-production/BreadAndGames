@@ -8,11 +8,13 @@ public class SwarmCluster : MonoBehaviour
     public float CheckRadius;
     public Transform[] Waypoints;
     public float ChaseDistance;
+    public Transform[] ReinforcmentPoints;
+    public GameObject PrefabToSpawn;
 
-    private Transform Reinforcement;
+    private int OldEnemyCount;
+    private int PlayerCount;
+    private GameObject Target;
 
-    private int EnemyCount;
-    public int _EnemyCount { get { return EnemyCount; } }
     private float RandomNumber;
     public float _RandomNumber { get { return RandomNumber; } }
 
@@ -28,12 +30,6 @@ public class SwarmCluster : MonoBehaviour
     private List<SwarmController> SwarmControllerScripts;
     public List<SwarmController> _SwarmControllerScripts { get { return SwarmControllerScripts; } set { SwarmControllerScripts = value; } }
 
-    public SwarmSpawn ParentSwarmSpawn;
-
-    private int PlayerCount;
-    private GameObject Target;
-
-    public Transform[] ReinforcmentPoints;
 
     void Awake()
     {
@@ -42,7 +38,12 @@ public class SwarmCluster : MonoBehaviour
         PlayerInRadiusList = new List<GameObject>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
         PlayerInRadius = new GameObject[3];
-        //Reinforcement = GameObject.Find("Reinforcment").GetComponent<Transform>();
+
+        // Spawn one enemy
+        GameObject TempSpawnHandler;
+        TempSpawnHandler = Instantiate(PrefabToSpawn, transform.position, transform.rotation) as GameObject;
+        TempSpawnHandler.transform.parent = this.transform;
+        GetAllEnemysInCluster();
 
         SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
         hitbox.radius = CheckRadius;
@@ -55,50 +56,67 @@ public class SwarmCluster : MonoBehaviour
         GetAllEnemysInCluster();
         RandomNumber = Random.Range(0f, 100f);
         NavMeshAgent.speed = 10f;
+
+
     }
 
     void Update()
     {
-        AllGoToWaypoints();
+        if (Target == null)
+        {
+            AllGoToWaypoints();
+        }
+        else
+        {
+            Attack();
+        }
 
-        if (EnemyCount < AllEnemysInCluster.Count)
+        if (OldEnemyCount < AllEnemysInCluster.Count)
         {
             GetAllEnemysInCluster();
         }
 
+        // Death of the cluster
         if (AllEnemysInCluster.Count <= 0)
         {
             Destroy(gameObject);
         }
 
-        if (PlayerCount == 1 & EnemyCount >= 3)
-        {
-            if (Target != null)
-            {
-                NavMeshAgent.SetDestination(Target.transform.position);
-                if (NavMeshAgent.remainingDistance > ChaseDistance)
-                {
-                    Target = null;
-                    NavMeshAgent.ResetPath();
-                    GetNearestTarget();
-                }
-            }
-        }
-
-        //if (PlayerCount == 1 & EnemyCount <= 2)
+        //if (PlayerCount == 1 & EnemyCount >= 3)
         //{
-        //    NavMeshAgent.SetDestination(Reinforcement.position);
+        //    if (Target != null)
+        //    {
+        //        NavMeshAgent.SetDestination(Target.transform.position);
+        //        if (NavMeshAgent.remainingDistance > ChaseDistance)
+        //        {
+        //            Target = null;
+        //            NavMeshAgent.ResetPath();
+        //            GetNearestTarget();
+        //        }
+        //    }
         //}
+
     }
 
+    void Attack()
+    {
+        NavMeshAgent.SetDestination(Target.transform.position);
+        for (int i = 0; i < SwarmControllerScripts.Count; i++)
+        {
+            if (SwarmControllerScripts[i] != null)
+            {
+                SwarmControllerScripts[i].AttackCommand(Target.transform);
+            }
+        }
+    }
 
     public void GetAllEnemysInCluster()
     {
         SwarmControllerScripts.Clear();
         AllEnemysInCluster.Clear();
-        int children = transform.childCount;    // How many childrens are in this cluster?
-        EnemyCount = children - 1;              // Safe the number subtract with 1. (the first child are the waypoints)
-        for (int i = 1; i < children; ++i)      // int i = 1 because child(0) are the waypoints
+        int children = transform.childCount;        // How many childrens are in this cluster?
+        OldEnemyCount = children - 1;               // Safe the number subtract with 1. (the first child are the waypoints)
+        for (int i = 1; i < children; ++i)          // int i = 1 because child(0) are the waypoints
         {
             GameObject TempGameObjectHandler = gameObject.transform.GetChild(i).gameObject;
             SwarmController TempScriptHandler = TempGameObjectHandler.GetComponent<SwarmController>();
@@ -175,17 +193,17 @@ public class SwarmCluster : MonoBehaviour
         if (other.CompareTag("SwarmCluster"))
         {
             SwarmCluster TempSwarmClusterScript = other.GetComponent<SwarmCluster>();
-            if (EnemyCount > TempSwarmClusterScript._EnemyCount)
+            if (AllEnemysInCluster.Count > TempSwarmClusterScript._AllEnemysInCluster.Count)
             {
                 // this.Cluster is bigger. No action needed.
                 return;
             }
-            else if (EnemyCount < TempSwarmClusterScript._EnemyCount)
+            else if (AllEnemysInCluster.Count < TempSwarmClusterScript._AllEnemysInCluster.Count)
             {
                 // this.Cluster is smaller. Hand over all enemys and destroy yourself.
                 ClusterTakeover(other, TempSwarmClusterScript);
             }
-            else if (EnemyCount == TempSwarmClusterScript._EnemyCount)
+            else if (AllEnemysInCluster.Count == TempSwarmClusterScript._AllEnemysInCluster.Count)
             {
                 // Clusters have the same amount of enemys. Do the takeover with random numbers.
                 if (RandomNumber > TempSwarmClusterScript._RandomNumber)
