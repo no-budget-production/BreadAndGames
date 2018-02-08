@@ -7,13 +7,17 @@ public class PlayerAnimation : MonoBehaviour
 
     Animator animator;
 
-    public Vector3 moveVector;
-    public Vector3 lookVector;
+    Vector3 moveVector;
+    Vector3 lookVector;
+
+    public Transform Camera;
 
     // Use this for initialization
     void Awake ()
     {
         animator = GetComponent<Animator>();
+        animator.SetBool("isAiming", true);
+        animator.SetBool("isRunning", false);
 	}
 	
 	// Update is called once per frame
@@ -26,11 +30,24 @@ public class PlayerAnimation : MonoBehaviour
         moveVector.x += Input.GetAxis("LeftStickX1");
         moveVector.y += Input.GetAxis("LeftStickY1");
 
-        lookVector.z += Input.GetAxis("RightStickZ1");
-        lookVector.x += Input.GetAxis("RightStickX1");
+        lookVector.x += Input.GetAxis("RightStickZ1");
+        lookVector.y += Input.GetAxis("RightStickX1");
 
-
-        animator.SetFloat("MovX", moveVector.magnitude);
-
+        if (lookVector.magnitude <= 0.11f)
+        {
+            Debug.Log("isRunning");
+            animator.SetBool("isRunning", true);
+            animator.SetFloat("MovX", moveVector.magnitude);
+        }    
+        else if (lookVector.magnitude >= 0f)
+        {
+            
+            Debug.Log("isAiming");
+            animator.SetBool("isAiming", true);
+            animator.SetBool("isRunning", false);
+            animator.SetFloat("Aim_Amount", lookVector.magnitude);
+            animator.SetFloat("MovY", Mathf.Clamp(moveVector.y, -1, 0.5f));
+            animator.SetFloat("MovX", moveVector.x);
+        }
     }
 }

@@ -13,6 +13,7 @@ public class PlayerController : Entity
     public LineRenderer laserSight;
 
     public float moveSpeed = 6f;
+    public float aimMoveSpeed = 2f;
     private float startSpeed;
     private float gravityStrength = 15f;
 
@@ -106,7 +107,7 @@ public class PlayerController : Entity
             transform.rotation = Quaternion.LookRotation(lookVector);
             isAiming = true;
             laserSight.enabled = true;
-            moveSpeed = 3;
+            moveSpeed = aimMoveSpeed;
         }
         else
         {
