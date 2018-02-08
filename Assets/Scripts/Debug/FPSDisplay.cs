@@ -3,7 +3,21 @@ using System.Collections;
 
 public class FPSDisplay : MonoBehaviour
 {
+    int w;
+    int h;
     float deltaTime = 0.0f;
+    GUIStyle style;
+    Rect rect;
+    float msec;
+    float fps;
+    string text;
+
+    private void Awake()
+    {
+        style = new GUIStyle();
+        style.alignment = TextAnchor.UpperLeft;
+        style.normal.textColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    }
 
     void Update()
     {
@@ -12,17 +26,15 @@ public class FPSDisplay : MonoBehaviour
 
     void OnGUI()
     {
-        int w = Screen.width, h = Screen.height;
+        w = Screen.width;
+        h = Screen.height;
+        rect = new Rect(0, 0, w, h * 2 / 100);
+        msec = deltaTime * 1000.0f;
+        fps = 1.0f / deltaTime;
 
-        GUIStyle style = new GUIStyle();
+        text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
 
-        Rect rect = new Rect(0, 0, w, h * 2 / 100);
-        style.alignment = TextAnchor.UpperLeft;
         style.fontSize = h * 2 / 100;
-        style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
-        float msec = deltaTime * 1000.0f;
-        float fps = 1.0f / deltaTime;
-        string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         GUI.Label(rect, text, style);
     }
 }

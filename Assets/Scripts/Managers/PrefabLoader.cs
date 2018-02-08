@@ -130,8 +130,8 @@ public class PrefabLoader : MonoBehaviour
             transformPlayers[i] = ActivePlayers[i].transform;
         }
 
-        CameraController tempTeamScript = ActiveCamera.GetComponent<CameraController>();
-        tempTeamScript.Setup(transformPlayers);
+        CameraController cameraController = ActiveCamera.GetComponent<CameraController>();
+        cameraController.Setup(transformPlayers);
 
         InputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(ActiveCamera.transform.forward, Vector3.up));
         LatePlayerSetup();
@@ -185,7 +185,7 @@ public class PrefabLoader : MonoBehaviour
     {
         for (int i = 0; i < ActivePlayerCount; i++)
         {
-            ActivePlayers[i].GetComponent<PlayerController>().Setup(InputRotation, ButtonStrings);
+            ActivePlayers[i].GetComponent<PlayerController>().Setup(InputRotation, ButtonStrings, ActivePlayers);
         }
     }
 }

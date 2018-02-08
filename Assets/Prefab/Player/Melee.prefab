@@ -824,7 +824,16 @@ MonoBehaviour:
   PlayerNumber: 2
   isWalking: 0
   isUsingRightStick: 0
+  ActivePlayers: []
   PlayerSkills:
+  - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
+      type: 2}
+    ButtonStringBC: {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6,
+      type: 2}
+  - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
+      type: 2}
+    ButtonStringBC: {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6,
+      type: 2}
   - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
       type: 2}
     ButtonStringBC: {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6,
@@ -915,6 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
+  ActivePlayers: []
   hitBox: {fileID: 0}
   MsBetweenShot: 100
   Damage: 10
