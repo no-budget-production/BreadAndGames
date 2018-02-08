@@ -35,14 +35,14 @@ public class PlayerAnimation : MonoBehaviour
 
         if (lookVector.magnitude <= 0.11f)
         {
-            Debug.Log("isRunning");
+            //Debug.Log("isRunning");
             animator.SetBool("isRunning", true);
             animator.SetFloat("MovX", moveVector.magnitude);
         }
         else if (lookVector.magnitude >= 0f)
         {
 
-            Debug.Log("isAiming");
+            //Debug.Log("isAiming");
             animator.SetBool("isAiming", true);
             animator.SetBool("isRunning", false);
             animator.SetFloat("Aim_Amount", lookVector.magnitude);

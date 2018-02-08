@@ -96,17 +96,17 @@ public class Healing : Skill
 
     void OnHealObject(RaycastHit hit)
     {
-        Debug.Log(hit.collider.gameObject.name);
+        //Debug.Log(hit.collider.gameObject.name);
         Entity healableObject = hit.collider.GetComponent<Entity>();
         if (healableObject != null)
         {
             healableObject.GetHealth(HealAmount * 0.5f);
-            Debug.Log("Fart");
+            //Debug.Log("Fart");
         }
         else
         {
             healableObject.GetHealth(HealAmount);
-            Debug.Log("AJKSNDLJH");
+            //Debug.Log("AJKSNDLJH");
         }
     }
 }

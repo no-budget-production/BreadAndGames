@@ -16,7 +16,7 @@ public class Punch : Skill
     {
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
-           Debug.Log("Punch");
+            //Debug.Log("Punch");
             foreach (Character e in hitBox.enemies)
             {
                 if (e == null)

@@ -43,7 +43,7 @@ public class PhaseRush : Skill
 
     public IEnumerator DurationTimer()
     {
-        Debug.Log("PhaseRush_On");
+        //Debug.Log("PhaseRush_On");
         isPhaseRushing = true;
         nextShotTime = Time.time + ButtonCD;
 
@@ -57,7 +57,7 @@ public class PhaseRush : Skill
         Player.layer = LayerMask.NameToLayer("Default");
         isPhaseRushing = false;
 
-        Debug.Log("PhaseRush_Off");
+        //Debug.Log("PhaseRush_Off");
 
         while (Charges < MaxCharges)
         {
