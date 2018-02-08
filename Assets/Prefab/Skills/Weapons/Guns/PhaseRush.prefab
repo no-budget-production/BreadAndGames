@@ -55,12 +55,13 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   ActivePlayers: []
   isFiring: 0
+  SkillSpawn: {fileID: 0}
   Charges: 3
   MaxCharges: 3
   ButtonCD: 0.1
   isPhaseRushing: 0
   isRechargingPhaseRushing: 0
-  Duration: 1
-  RechargeTime: 3
+  Duration: 0.1
+  RechargeTime: 6
   MoveSpeedBonus: 100
   Dummy: 0
