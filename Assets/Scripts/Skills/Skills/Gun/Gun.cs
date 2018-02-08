@@ -39,7 +39,7 @@ public class Gun : Skill
     {
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
-            nextShotTime = Time.time + MsBetweenShot / 1000;
+            nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
             Quaternion accuracy = Quaternion.Euler(Random.Range(-AccuracyHorizontal, AccuracyHorizontal), Random.Range(-AccuracyVertical, AccuracyVertical), 0);
 

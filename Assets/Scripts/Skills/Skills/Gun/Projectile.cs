@@ -6,25 +6,25 @@ public class Projectile : Effect
 {
     public LayerMask collisionMask;
 
-    private float speed = 10;
-    private float damage = 1;
+    public float Speed = 10;
+    public float Damage = 1;
 
     //float lifetime = 2;
     //float fadetime = 2;
 
     public void SetSpeed(float newSpeed)
     {
-        speed = newSpeed;
+        Speed = newSpeed;
 
         StartCoroutine(Fade());
     }
 
     void Update()
     {
-        float moveDistance = speed * Time.deltaTime;
+        float moveDistance = Speed * Time.deltaTime;
         CheckCollisions(moveDistance);
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Translate(Vector3.forward * Time.deltaTime * Speed);
     }
 
     void CheckCollisions(float moveDistance)
@@ -46,7 +46,7 @@ public class Projectile : Effect
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
-            damageableObject.TakeDamage(damage);
+            damageableObject.TakeDamage(Damage);
         }
     }
 }

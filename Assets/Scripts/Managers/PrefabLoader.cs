@@ -166,9 +166,14 @@ public class PrefabLoader : MonoBehaviour
                 tempSpawnTrigger.Tags[j] = PlayerTags[j];
             }
 
-            SwarmSpawn tempSwarmSpawn = tempSpawnTrigger.SwarmSpawn;
-            tempSwarmSpawn.SwarmHandler = SpawnHolder;
-            tempSwarmSpawn.ReinforcmentPoints = ReinforcmentPoints;
+            int tempSwarmSpawnLength = tempSpawnTrigger.SwarmSpawn.Length;
+            for (int k = 0; k < tempSwarmSpawnLength; k++)
+            {
+                SwarmSpawn tempSwarmSpawn = tempSpawnTrigger.SwarmSpawn[i];
+                tempSwarmSpawn.SwarmHandler = SpawnHolder;
+                tempSwarmSpawn.ReinforcmentPoints = ReinforcmentPoints;
+            }
+
 
         }
     }

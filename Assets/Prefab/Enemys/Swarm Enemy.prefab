@@ -1114,8 +1114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1028ea0e6262907448e1da721fa21b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 20
-  MaxHealth: 20
+  CurrentHealth: 100
+  MaxHealth: 100
   Armor: 0
   isDeadTrigger: 0
   DestroyOnDeath: 1
@@ -1223,7 +1223,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 15
-  m_Acceleration: 50
+  m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 200
   m_StoppingDistance: 0

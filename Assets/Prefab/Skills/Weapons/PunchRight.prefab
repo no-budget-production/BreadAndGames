@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95230061748252912}
   - component: {fileID: 114255274258433542}
   - component: {fileID: 64118737844329756}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HitBoxSweep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,5 +175,5 @@ MonoBehaviour:
   isFiring: 0
   SkillSpawn: {fileID: 0}
   hitBox: {fileID: 114255274258433542}
-  MsBetweenShot: 400
-  Damage: 7
+  MsBetweenShot: 300
+  Damage: 51

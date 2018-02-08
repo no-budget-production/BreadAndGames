@@ -16,7 +16,9 @@ public class Punch : Skill
     {
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
-            //Debug.Log("Punch");
+            nextShotTime = Time.time + MsBetweenShot * 0.001f;
+
+            Debug.Log("Punch");
             foreach (Character e in hitBox.enemies)
             {
                 if (e == null)
