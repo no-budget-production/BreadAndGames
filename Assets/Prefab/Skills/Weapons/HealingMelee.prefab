@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 114628303344535940}
   - component: {fileID: 120803723628524548}
   m_Layer: 0
-  m_Name: Healing
+  m_Name: HealingMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,6 +84,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   ActivePlayers: []
+  isFiring: 0
   LineRenderer: {fileID: 120803723628524548}
   CurrentTarget: {fileID: 0}
   BeamOrigin: {fileID: 4598409900153212}

@@ -33,7 +33,6 @@ public class Healing : Skill
     {
         base.PlayerController.isInAction = true;
 
-
         LineRenderer.enabled = false;
 
         LockOn();
@@ -67,6 +66,8 @@ public class Healing : Skill
                 LineRenderer.enabled = false;
             }
         }
+
+        base.PlayerController.isInAction = false;
     }
 
     private void FixedUpdate()
@@ -100,10 +101,12 @@ public class Healing : Skill
         if (healableObject != null)
         {
             healableObject.GetHealth(HealAmount * 0.5f);
+            Debug.Log("Fart");
         }
         else
         {
             healableObject.GetHealth(HealAmount);
+            Debug.Log("AJKSNDLJH");
         }
     }
 }
