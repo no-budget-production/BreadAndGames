@@ -5,7 +5,8 @@ using UnityEngine;
 public class Punch : Skill
 {
 
-    public PunchCollider hitBox;
+    public PunchCollider hitBoxSweep;
+    public PunchCollider hitBoxPunch;
 
     public float MsBetweenShot;
     public float Damage;
@@ -16,8 +17,9 @@ public class Punch : Skill
     {
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
-            Debug.Log("Punch");
-            hitBox.enemies.ForEach(e => e.TakeDamage(Damage));
+           Debug.Log("Punch");
+           hitBoxSweep.enemies.ForEach(e => e.TakeDamage(Damage));
+           hitBoxPunch.enemies.ForEach(e => e.TakeDamage(Damage));
         }
     }
 }
