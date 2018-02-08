@@ -1121,9 +1121,6 @@ MonoBehaviour:
   DestroyOnDeath: 1
   healthBar: {fileID: 224163059560306816}
   UseHealthbar: 1
-  Speed: 15
-  AngularSpeed: 200
-  AutoBraking: 1
   PlayerStopDistance: 3
 --- !u!114 &114521453037504252
 MonoBehaviour:
@@ -1226,7 +1223,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 15
-  m_Acceleration: 8
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 200
   m_StoppingDistance: 0
