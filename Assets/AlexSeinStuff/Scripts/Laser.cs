@@ -25,7 +25,7 @@ public class Laser : MonoBehaviour
         }
         else
         {
-            lineRenderer.SetPosition(1, new Vector3(0, 0, 20));
+            lineRenderer.SetPosition(1, new Vector3(0, 0, 15));
         }
 	}
 }
