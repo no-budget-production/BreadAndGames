@@ -283,7 +283,7 @@ MonoBehaviour:
   areButtons: 
   deadZones: []
   thisPlayerString: []
-  PlayerNumber: 1
+  PlayerNumber: 3
   isWalking: 0
   isUsingRightStick: 0
   ActivePlayers: []
@@ -291,6 +291,10 @@ MonoBehaviour:
   - SkillBC: {fileID: 114628303344535940, guid: df5e391c20b477d4c8a0c8fbb02f2e25,
       type: 2}
     ButtonStringBC: {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df,
+      type: 2}
+  - SkillBC: {fileID: 114628303344535940, guid: bbe29969de7c17c43a47034d6bbff2fa,
+      type: 2}
+    ButtonStringBC: {fileID: 114906731920503428, guid: 7f8ee7bd3e564204690acb449c04ad25,
       type: 2}
   ActiveSkills: []
   isInAction: 0

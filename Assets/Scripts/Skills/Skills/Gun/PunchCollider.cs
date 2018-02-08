@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PunchCollider : MonoBehaviour
 {
-    public List<SwarmController> enemies;
+    public List<Character> enemies;
 
     void OnTriggerEnter(Collider other)
     {
-        var temp = GetComponent<SwarmController>();
+        var temp = other.GetComponent<Character>();
         if (temp == null)
             return;
         enemies.Add(temp);
@@ -16,7 +16,7 @@ public class PunchCollider : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        var temp = GetComponent<SwarmController>();
+        var temp = other.GetComponent<Character>();
         if (temp == null)
             return;
         enemies.Remove(temp);

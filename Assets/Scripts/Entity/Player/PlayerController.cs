@@ -32,6 +32,8 @@ public class PlayerController : Character
     public int ActionPoints;
     public int curActionPoints;
 
+    public Transform SkillSpawn;
+
     public float ActionCD;
 
     [Range(0.0f, 1.0f)]
@@ -109,6 +111,7 @@ public class PlayerController : Character
             curSkill.Player = this.gameObject;
             curSkill.PlayerController = this;
             curSkill.ActivePlayers = ActivePlayers;
+            curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
         }
     }
@@ -199,7 +202,12 @@ public class PlayerController : Character
                 if (Input.GetButtonDown(thisPlayerString[usedButtons[i]]))
                 {
                     ActiveSkills[i].Shoot();
+                    ActiveSkills[i].isFiring = true;
                     //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                }
+                else
+                {
+                    ActiveSkills[i].isFiring = false;
                 }
             }
             else
@@ -207,7 +215,12 @@ public class PlayerController : Character
                 if (Input.GetAxis(thisPlayerString[usedButtons[i]]) < deadZones[i])
                 {
                     ActiveSkills[i].Shoot();
+                    ActiveSkills[i].isFiring = true;
                     //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                }
+                else
+                {
+                    ActiveSkills[i].isFiring = false;
                 }
             }
         }

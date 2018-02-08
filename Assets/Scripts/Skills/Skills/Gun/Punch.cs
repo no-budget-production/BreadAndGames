@@ -16,8 +16,16 @@ public class Punch : Skill
     {
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
-            Debug.Log("Punch");
-            hitBox.enemies.ForEach(e => e.TakeDamage(Damage));
+           Debug.Log("Punch");
+            foreach (Character e in hitBox.enemies)
+            {
+                if (e == null)
+                {
+                    hitBox.enemies.Remove(e);
+                    return;
+                }
+                e.TakeDamage(Damage);
+            }
         }
     }
 }
