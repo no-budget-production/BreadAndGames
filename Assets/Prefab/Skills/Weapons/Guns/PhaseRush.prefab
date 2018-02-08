@@ -53,7 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
+  ActivePlayers: []
+  isFiring: 0
   Charges: 3
+  MaxCharges: 3
   ButtonCD: 0.1
   isPhaseRushing: 0
   isRechargingPhaseRushing: 0

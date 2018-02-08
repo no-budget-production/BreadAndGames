@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhaseRush : Skill
 {
     public int Charges;
+    public int MaxCharges;
     public float ButtonCD;
 
     public bool isPhaseRushing;
@@ -17,8 +18,10 @@ public class PhaseRush : Skill
 
     public int Dummy;
 
-    private Coroutine coroutineDuration;
-    private Coroutine coroutineRechargeTimer;
+    bool b1, b2, b3, b4;
+
+    //private Coroutine coroutineDuration;
+    //private Coroutine coroutineRechargeTimer;
 
     public override void Shoot()
     {
@@ -28,51 +31,43 @@ public class PhaseRush : Skill
             {
                 if (Time.time > nextShotTime)
                 {
-                    isPhaseRushing = true;
-                    nextShotTime = Time.time + ButtonCD;
-
-                    base.PlayerController.moveSpeed += MoveSpeedBonus;
-                    Player.layer = LayerMask.NameToLayer("Ignore Raycast");
-                    Charges--;
-                    if (!isRechargingPhaseRushing)
+                    if (true)
                     {
-                        isRechargingPhaseRushing = true;
-                        coroutineDuration = StartCoroutine(DurationTimer(Duration));
+                        StopCoroutine("DurationTimer");
+                        StartCoroutine(DurationTimer());
                     }
                 }
             }
         }
     }
 
-    IEnumerator DurationTimer(float duration)
+    public IEnumerator DurationTimer()
     {
-        //Debug.Log("PhaseRush_On");
+        Debug.Log("PhaseRush_On");
+        isPhaseRushing = true;
+        nextShotTime = Time.time + ButtonCD;
 
-        yield return new WaitForSeconds(duration);
+        base.PlayerController.moveSpeed += MoveSpeedBonus;
+        Player.layer = LayerMask.NameToLayer("Ignore Raycast");
+        Charges--;
+
+        yield return new WaitForSeconds(Duration);
 
         base.PlayerController.moveSpeed -= MoveSpeedBonus;
         Player.layer = LayerMask.NameToLayer("Default");
         isPhaseRushing = false;
-        if (!isRechargingPhaseRushing)
-        {
-            coroutineDuration = StartCoroutine(RechargeTimer(RechargeTime));
-        }
-    }
 
-    IEnumerator RechargeTimer(float rechargeTime)
-    {
         Debug.Log("PhaseRush_Off");
 
-        yield return new WaitForSeconds(rechargeTime);
+        while (Charges < MaxCharges)
+        {
+            isRechargingPhaseRushing = true;
+            yield return new WaitForSeconds(RechargeTime);
+            Charges++;
+            Charges = Mathf.Min(Charges, MaxCharges);
+        }
 
-        Charges++;
-        if (Charges > 3)
-        {
-            coroutineDuration = StartCoroutine(DurationTimer(Duration));
-        }
-        else
-        {
-            isRechargingPhaseRushing = false;
-        }
+        isRechargingPhaseRushing = false;
+
     }
 }
