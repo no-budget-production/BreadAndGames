@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            Debug.Log(gameObject + " is dead");
+            //Debug.Log(gameObject + " is dead");
             isDeadTrigger = true;
         }
     }

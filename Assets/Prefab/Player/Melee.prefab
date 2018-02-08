@@ -674,19 +674,24 @@ MonoBehaviour:
   areButtons: 
   deadZones: []
   thisPlayerString: []
-  PlayerNumber: 1
+  PlayerNumber: 2
   isWalking: 0
   isUsingRightStick: 0
   ActivePlayers: []
   PlayerSkills:
   - SkillBC: {fileID: 114777490603000294, guid: 3917ab2fd0e2b5b41a2d1515af06b043,
       type: 2}
-    ButtonStringBC: {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6,
+    ButtonStringBC: {fileID: 114906731920503428, guid: 7f8ee7bd3e564204690acb449c04ad25,
+      type: 2}
+  - SkillBC: {fileID: 114601730004366300, guid: cc1f707e21f7d3b4fb1e744c07c215ae,
+      type: 2}
+    ButtonStringBC: {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df,
       type: 2}
   ActiveSkills: []
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100
+  SkillSpawn: {fileID: 0}
   ActionCD: 1
   TurnSpeed: 0.066
   moveSpeed: 10
@@ -771,8 +776,8 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   ActivePlayers: []
   isFiring: 0
-  hitBoxSweep: {fileID: 0}
-  hitBoxPunch: {fileID: 0}
+  SkillSpawn: {fileID: 0}
+  hitBox: {fileID: 0}
   MsBetweenShot: 100
   Damage: 10
 --- !u!137 &137211501825727624

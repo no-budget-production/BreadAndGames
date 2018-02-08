@@ -23,6 +23,11 @@ public class Gun : Skill
 
     float nextShotTime;
 
+    private void Start()
+    {
+        this.transform.SetParent(SkillSpawn);
+    }
+
     void playShotSound()
     {
         int clipNumber = Random.Range(0, soundClips.Length);
