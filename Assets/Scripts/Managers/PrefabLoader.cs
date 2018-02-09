@@ -1,41 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PrefabLoader : MonoBehaviour
 {
-    private InstanceRef instanceRef;
+    public GameObject[] PlayerPrefabs;
+    public GameObject CameraPrefab;
 
-    public Transform[] PlayerSpawns;
-    public GameObject[] Players;
-
-
-    public GameObject Camera;
-
-    public Transform SphereTriggerHolder;
-
-    public Transform[] SphereTriggers;
-
-    public Transform[] ReinforcmentPoints;
-
-    public GameObject[] SpawnTrigges;
-
-    public static Quaternion InputRotation;
-
-    //Instances
-
-    public int ActivePlayerCount;
-    public GameObject[] ActivePlayers;
-    public GameObject ActiveCamera;
-    public GameObject[] ActiveTriggerSpawns;
+    //public string[] PlayerTags;
 
     private Transform curHolder;
-
-    public Transform EnemyHolder;
-    public Transform SpawnHolder;
-    public Transform ClusterHolder;
-
-    public string[] PlayerTags;
 
     public string[] ButtonStrings = new string[]
     {
@@ -61,22 +36,8 @@ public class PrefabLoader : MonoBehaviour
             "Button_LeftStick_PX"
     };
 
-    void LoadInstancesRed()
-    {
-        instanceRef = GameObject.FindGameObjectWithTag("InstanceRef").GetComponent<InstanceRef>();
-        PlayerSpawns = instanceRef.PlayerSpawns;
-        //SpawnTriggerSpawns = instanceRef.SpawnTriggerSpawns;
-        SpawnTrigges = instanceRef.SphereTriggers;
-        SpawnHolder = instanceRef.SpawnHolder;
-        EnemyHolder = instanceRef.EnemyHolder;
-        ClusterHolder = instanceRef.ClusterHolder;
-        ReinforcmentPoints = instanceRef.ReinforcmentPoints;
-    }
-
     public void LoadPrefabs()
     {
-        LoadInstancesRed();
-
         PlayerSetup();
 
         SetupCamera();
@@ -89,27 +50,74 @@ public class PrefabLoader : MonoBehaviour
         SpawnSphereTriggerSetup();
     }
 
-    GameObject[] SpawnPreFabs(int amount, GameObject[] prefabArray, Transform[] spawnArray, string holder)
+    //List<GameObject> SpawnPreFabs<T>(GameObject[] prefabArray, List<Transform> spawnList, string holder)
+    //{
+    //    int amount = spawnList.Count;
+
+    //    if (holder != null)
+    //    {
+    //        curHolder = SpawnHolderFunction(holder);
+    //    }
+
+    //    List<GameObject> curPrefabs = new List<GameObject>();
+
+    //    for (int i = 0; i < amount; i++)
+    //    {
+    //        Debug.Log(i);
+
+    //        Vector3 curSpawn = spawnList[i].position;
+
+    //        GameObject curPrefab = SpawnPreFab<GameObject>(prefabArray[i], spawnList[i], holder);
+
+    //        curPrefabs.Add(curPrefab);
+    //    }
+
+    //    return curPrefabs;
+    //}
+
+    //GameObject SpawnPreFab<T>(GameObject prefab, Transform transform, string holder)
+    //{
+    //    Debug.Log("A");
+
+    //    GameObject curPrefab = Instantiate(prefab, transform.position, transform.rotation);
+
+    //    if (holder != null)
+    //    {
+    //        curPrefab.transform.SetParent(curHolder);
+    //    }
+
+    //    return curPrefab;
+    //}
+
+    List<T> SpawnPreFabs<T>(GameObject[] prefabArray, List<Transform> spawnList, string holder)
     {
+        int amount = spawnList.Count;
+
         if (holder != null)
         {
             curHolder = SpawnHolderFunction(holder);
         }
 
-        GameObject[] curPrefabs = new GameObject[amount];
+        List<T> curPrefabs = new List<T>();
 
         for (int i = 0; i < amount; i++)
         {
-            Vector3 curSpawn = spawnArray[i].position;
+            Debug.Log(i);
 
-            curPrefabs[i] = SpawnPreFab(prefabArray[i], spawnArray[i], holder);
+            Vector3 curSpawn = spawnList[i].position;
+
+            T curPrefab = SpawnPreFab<T>(prefabArray[i], spawnList[i], holder);
+
+            curPrefabs.Add(curPrefab);
         }
 
         return curPrefabs;
     }
 
-    GameObject SpawnPreFab(GameObject prefab, Transform transform, string holder)
+    T SpawnPreFab<T>(GameObject prefab, Transform transform, string holder)
     {
+        Debug.Log("A");
+
         GameObject curPrefab = Instantiate(prefab, transform.position, transform.rotation);
 
         if (holder != null)
@@ -117,34 +125,34 @@ public class PrefabLoader : MonoBehaviour
             curPrefab.transform.SetParent(curHolder);
         }
 
-        return curPrefab;
+        return curPrefab.GetComponent<T>();
     }
 
     void SetupCamera()
     {
-        ActiveCamera.transform.rotation = Camera.transform.rotation;
+        GameManager.Instance.ActiveCamera.transform.rotation = CameraPrefab.transform.rotation;
 
-        Transform[] transformPlayers = new Transform[ActivePlayerCount];
-        for (int i = 0; i < ActivePlayerCount; i++)
+        Transform[] transformPlayers = new Transform[GameManager.Instance.Players.Count];
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
-            transformPlayers[i] = ActivePlayers[i].transform;
+            transformPlayers[i] = GameManager.Instance.Players[i].transform;
         }
 
-        CameraController cameraController = ActiveCamera.GetComponent<CameraController>();
+        CameraController cameraController = GameManager.Instance.ActiveCamera.GetComponent<CameraController>();
         cameraController.Setup(transformPlayers);
 
-        InputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(ActiveCamera.transform.forward, Vector3.up));
+        GameManager.Instance.InputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(GameManager.Instance.ActiveCamera.transform.forward, Vector3.up));
         LatePlayerSetup();
     }
 
-    void SetPlayerTags()
-    {
-        PlayerTags = new string[ActivePlayerCount];
-        for (int i = 0; i < ActivePlayerCount; i++)
-        {
-            PlayerTags[i] = Players[i].gameObject.tag;
-        }
-    }
+    //void SetPlayerTags()
+    //{
+    //    PlayerTags = new string[GameManager.Instance.Players.Count];
+    //    for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+    //    {
+    //        PlayerTags[i] = PlayerPrefabs[i].gameObject.tag;
+    //    }
+    //}
 
     Transform SpawnHolderFunction(string holderString)
     {
@@ -156,41 +164,40 @@ public class PrefabLoader : MonoBehaviour
     {
         //SphereTriggerHolder = SpawnHolderFunction("SpawnHolder");
 
-        int tempLength = SpawnTrigges.Length;
+        int tempLength = GameManager.Instance.SpawnTrigges.Length;
         for (int i = 0; i < tempLength; i++)
         {
-            SphereTrigger tempSpawnTrigger = SpawnTrigges[i].GetComponent<SphereTrigger>();
-            tempSpawnTrigger.Tags = new string[PlayerTags.Length];
-            for (int j = 0; j < PlayerTags.Length; j++)
-            {
-                tempSpawnTrigger.Tags[j] = PlayerTags[j];
-            }
+            Trigger tempSpawnTrigger = GameManager.Instance.SpawnTrigges[i].GetComponent<Trigger>();
 
-            int tempSwarmSpawnLength = tempSpawnTrigger.SwarmSpawn.Length;
-            for (int k = 0; k < tempSwarmSpawnLength; k++)
-            {
-                SwarmSpawn tempSwarmSpawn = tempSpawnTrigger.SwarmSpawn[i];
-                tempSwarmSpawn.SwarmHandler = SpawnHolder;
-                tempSwarmSpawn.ReinforcmentPoints = ReinforcmentPoints;
-            }
-
+            //foreach (SwarmSpawn tempSwarmSpawn in tempSpawnTrigger.SwarmSpawn)
+            //{
+            //    tempSwarmSpawn.SwarmHandler = GameManager.Instance.SpawnHolder;
+            //    tempSwarmSpawn.ReinforcmentPoints = GameManager.Instance.ReinforcmentPoints;
+            //}
 
         }
     }
 
     void PlayerSetup()
     {
-        ActivePlayers = SpawnPreFabs(PlayerSpawns.Length, Players, PlayerSpawns, "PlayerHolder");
-        ActivePlayerCount = ActivePlayers.Length;
-        ActiveCamera = SpawnPreFab(Camera, Camera.transform, null);
-        SetPlayerTags();
+        GameManager.Instance.Players = SpawnPreFabs<PlayerController>(PlayerPrefabs, GameManager.Instance.PlayerSpawns, "PlayerHolder");
+        GameManager.Instance.ActiveCamera = SpawnPreFab<CameraController>(CameraPrefab, CameraPrefab.transform, null);
+
+        //List<GameObject> curPlayers = SpawnPreFabs<GameObject>(PlayerPrefabs, GameManager.Instance.PlayerSpawns, "PlayerHolder");
+        //foreach (var item in curPlayers)
+        //{
+        //    GameManager.Instance.Players.Add(item.GetComponent<PlayerController>());
+        //}
+
+        //GameObject curCamera = SpawnPreFab<GameObject>(CameraPrefab, CameraPrefab.transform, null);
+        //GameManager.Instance.ActiveCamera = curCamera.GetComponent<CameraController>();
     }
 
     void LatePlayerSetup()
     {
-        for (int i = 0; i < ActivePlayerCount; i++)
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
-            ActivePlayers[i].GetComponent<PlayerController>().Setup(InputRotation, ButtonStrings, ActivePlayers);
+            GameManager.Instance.Players[i].GetComponent<PlayerController>().Setup(GameManager.Instance.InputRotation, ButtonStrings);
         }
     }
 }

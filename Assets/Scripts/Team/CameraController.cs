@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
     {
         targetPlayer = player;
         SetStartPositionAndSize();
+
     }
 
     private void FixedUpdate()

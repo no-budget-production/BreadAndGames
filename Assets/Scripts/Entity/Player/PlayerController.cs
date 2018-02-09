@@ -11,6 +11,28 @@ public class ButtonConfig
 
 public class PlayerController : Character
 {
+    public enum PlayerType
+    {
+        Melee,
+        Shooter,
+        Support
+    }
+
+    [System.Flags]
+    public enum PlayerTypeFlags
+    {
+        Melee = 1 << PlayerType.Melee,
+        Shooter = 1 << PlayerType.Shooter,
+        Support = 1 << PlayerType.Support,
+    }
+
+    public bool HasFlag(PlayerTypeFlags flags)
+    {
+        int typeflag = 1 << (int)Type;
+        return (typeflag & (int)flags) != 0;
+    }
+
+    public PlayerType Type;
     public int usedButtonsCount;
     public int[] usedButtons;
     public bool[] areButtons;
@@ -22,7 +44,7 @@ public class PlayerController : Character
     public bool isWalking;
     public bool isUsingRightStick;
 
-    public GameObject[] ActivePlayers;
+    //public GameObject[] ActivePlayers;
 
     public ButtonConfig[] PlayerSkills;
 
@@ -81,7 +103,7 @@ public class PlayerController : Character
         //gunSystem = GetComponent<GunSystem>();
     }
 
-    public void Setup(Quaternion inputRotationArg, string[] buttonStrings, GameObject[] players)
+    public void Setup(Quaternion inputRotationArg, string[] buttonStrings)
     {
         inputRotation = inputRotationArg;
         int tempLength = buttonStrings.Length;
@@ -90,7 +112,6 @@ public class PlayerController : Character
         {
             thisPlayerString[i] = buttonStrings[i] + PlayerNumber;
         }
-        ActivePlayers = players;
     }
 
     public void ButtonSetup()
@@ -110,7 +131,7 @@ public class PlayerController : Character
             curSkill.transform.SetParent(transform);
             curSkill.Player = this.gameObject;
             curSkill.PlayerController = this;
-            curSkill.ActivePlayers = ActivePlayers;
+            //curSkill.ActivePlayers = ActivePlayers;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
         }

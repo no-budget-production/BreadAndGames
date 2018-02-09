@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InstanceRef : MonoBehaviour
 {
-    public Transform[] PlayerSpawns;
+    public List<Transform> PlayerSpawns;
     //public Transform[] SpawnTriggerSpawns;
     public GameObject[] SphereTriggers;
     public Transform[] ReinforcmentPoints;

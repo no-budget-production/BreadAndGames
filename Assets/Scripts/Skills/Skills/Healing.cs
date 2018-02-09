@@ -5,8 +5,9 @@ using UnityEngine;
 public class Healing : Skill
 {
     public LineRenderer LineRenderer;
-    public Transform CurrentTarget;
+    public PlayerController CurrentTarget;
     public Transform BeamOrigin;
+    public PlayerController.PlayerType TargetType;
 
     public float HealAmount = 2.0f;
 
@@ -19,14 +20,7 @@ public class Healing : Skill
 
     private void Start()
     {
-        for (int i = 0; i < base.ActivePlayers.Length; i++)
-        {
-            if (base.ActivePlayers[i].tag == TargetTag)
-            {
-                CurrentTarget = base.ActivePlayers[i].transform;
-                break;
-            }
-        }
+        CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
     }
 
     public override void Shoot()
@@ -48,7 +42,7 @@ public class Healing : Skill
                 isVisible = true;
 
                 LineRenderer.SetPosition(0, BeamOrigin.position);
-                LineRenderer.SetPosition(1, CurrentTarget.position);
+                LineRenderer.SetPosition(1, CurrentTarget.transform.position);
 
                 OnHealObject(hit);
 
@@ -82,7 +76,7 @@ public class Healing : Skill
 
     void LockOn()
     {
-        direction = CurrentTarget.position - transform.position;
+        direction = CurrentTarget.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(BeamOrigin.rotation, lookRotation, Time.deltaTime * 100000000).eulerAngles;
         BeamOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
