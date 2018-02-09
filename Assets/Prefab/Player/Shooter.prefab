@@ -1890,7 +1890,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838672, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
+  m_LocalRotation: {x: 0.0029838667, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -3673,15 +3673,15 @@ MonoBehaviour:
   DestroyOnDeath: 0
   healthBar: {fileID: 224228349348698198}
   UseHealthbar: 1
+  Type: 1
   usedButtonsCount: 0
   usedButtons: 
   areButtons: 
   deadZones: []
   thisPlayerString: []
-  PlayerNumber: 1
+  PlayerNumber: 3
   isWalking: 0
   isUsingRightStick: 0
-  ActivePlayers: []
   PlayerSkills:
   - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
       type: 2}

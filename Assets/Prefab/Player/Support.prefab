@@ -278,15 +278,15 @@ MonoBehaviour:
   DestroyOnDeath: 0
   healthBar: {fileID: 224228349348698198}
   UseHealthbar: 1
+  Type: 2
   usedButtonsCount: 0
   usedButtons: 
   areButtons: 
   deadZones: []
   thisPlayerString: []
-  PlayerNumber: 3
+  PlayerNumber: 1
   isWalking: 0
   isUsingRightStick: 0
-  ActivePlayers: []
   PlayerSkills:
   - SkillBC: {fileID: 114628303344535940, guid: df5e391c20b477d4c8a0c8fbb02f2e25,
       type: 2}
@@ -300,6 +300,7 @@ MonoBehaviour:
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100
+  SkillSpawn: {fileID: 0}
   ActionCD: 1
   TurnSpeed: 0.569
   moveSpeed: 15
