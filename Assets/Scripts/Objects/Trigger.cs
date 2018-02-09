@@ -5,10 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Trigger : MonoBehaviour
 {
-    //public string[] Tags;
     public Behaviour[] EnabledWithPlayer;
     public int playerCount;
-    public PlayerController.PlayerTypeFlags Types;
+    //public PlayerController.PlayerTypeFlags Types;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +15,7 @@ public class Trigger : MonoBehaviour
         if (temp == null)
             return;
 
-        if (temp.HasFlag(Types))
+        //if (temp.HasFlag(Types))
         {
             playerCount++;
             CheckPlayerCount();
@@ -29,7 +28,7 @@ public class Trigger : MonoBehaviour
         if (temp == null)
             return;
 
-        if (temp.HasFlag(Types))
+        //if (temp.HasFlag(Types))
         {
             playerCount--;
             CheckPlayerCount();
