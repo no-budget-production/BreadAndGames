@@ -176,9 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d69f98d6cdaf4643ab73661b21943f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tags: []
-  SwarmSpawn: {fileID: 114152336240453120}
+  EnabledWithPlayer:
+  - {fileID: 114152336240453120}
   playerCount: 0
+  Types: 0
 --- !u!135 &135839559955886814
 SphereCollider:
   m_ObjectHideFlags: 1
