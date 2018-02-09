@@ -14,19 +14,19 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.13743511, g: 0.16052975, b: 0.22794116, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 247b873f17863bc4f8f9cc49020676d4, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 818074873}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
@@ -50,7 +50,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -1153,7 +1153,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1376,7 +1376,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1462,6 +1462,11 @@ MonoBehaviour:
   ClusterHolder: {fileID: 0}
   SwarmHandler: {fileID: 781651423}
   ReinforcmentPoints: []
+--- !u!108 &818074873 stripped
+Light:
+  m_PrefabParentObject: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
+    type: 2}
+  m_PrefabInternal: {fileID: 1469753543}
 --- !u!1 &837008873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1490,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 837008873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.16, z: 7.94}
+  m_LocalPosition: {x: 0, y: -0.913, z: 8.251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1629269641}
@@ -1906,19 +1911,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.346052
+      value: 0.40139768
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.46026185
+      value: -0.5513735
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.51966035
+      value: 0.46135938
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.6311579
+      value: 0.56746346
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_RootOrder
@@ -1927,34 +1932,34 @@ Prefab:
     - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
         type: 2}
       propertyPath: m_Shadows.m_Strength
-      value: 0.212
+      value: 0.188
       objectReference: {fileID: 0}
     - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.6544118
+      value: 0.46927577
       objectReference: {fileID: 0}
     - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.74259627
+      value: 0.46712804
       objectReference: {fileID: 0}
     - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
         type: 2}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.5294118
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 426.232
+      value: 105.35199
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 326.689
+      value: 105.271996
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 56.848003
+      value: 197.809
       objectReference: {fileID: 0}
     - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
         type: 2}
@@ -1974,7 +1979,7 @@ Prefab:
     - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
         type: 2}
       propertyPath: m_Intensity
-      value: 0.28
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 4539966419097366, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
       propertyPath: m_LocalScale.x
@@ -1997,6 +2002,11 @@ Prefab:
         type: 2}
       propertyPath: m_Shadows.m_Type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 108850067605451022, guid: 1adf8c8778187f14396d5d6046295e01,
+        type: 2}
+      propertyPath: m_Shadows.m_Bias
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1adf8c8778187f14396d5d6046295e01, type: 2}
@@ -2045,7 +2055,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
