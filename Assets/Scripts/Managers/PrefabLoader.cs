@@ -98,7 +98,7 @@ public class PrefabLoader : MonoBehaviour
             curHolder = SpawnHolderFunction(holder);
         }
 
-        List<T> curPrefabs = new List<T>();
+        List<T> curPrefabs = new List<T>(amount);
 
         for (int i = 0; i < amount; i++)
         {
