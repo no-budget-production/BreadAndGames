@@ -82,6 +82,6 @@ public class GameManager : MonoBehaviour
         SpawnHolder = InstanceRef.SpawnHolder;
         EnemyHolder = InstanceRef.EnemyHolder;
         ClusterHolder = InstanceRef.ClusterHolder;
-        ReinforcmentPoints = InstanceRef.ReinforcmentPoints;
+        ReinforcmentPoints = InstanceRef.ReinforcementPoints;
     }
 }
