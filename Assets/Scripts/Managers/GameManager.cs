@@ -11,25 +11,19 @@ public static class GameManagerHelper
     }
 }
 
-
 public class GameManager : MonoBehaviour
 {
-
-    public InstanceRef InstanceRef;
-
     public static GameManager Instance = null;
 
+    public InstanceRef InstanceRef;
     public PrefabLoader prefabLoader;
 
     //Instances
 
-    //public int Players.Length;
     public List<PlayerController> Players;
     public CameraController ActiveCamera;
 
     public List<Transform> PlayerSpawns;
-
-
     public List<SwarmController> Enemies;
 
     public Transform EnemyHolder;
@@ -37,11 +31,8 @@ public class GameManager : MonoBehaviour
     public Transform ClusterHolder;
     public Transform TriggerHolder;
 
-    public GameObject[] TriggerSpawns;
-    public Transform[] Triggers;
+    public GameObject[] Triggers;
     public Transform[] ReinforcmentPoints;
-    public GameObject[] SpawnTrigges;
-
 
     public Quaternion InputRotation;
 
@@ -49,7 +40,6 @@ public class GameManager : MonoBehaviour
     public PlayerController GetShooter() { return GetPlayerByType(PlayerController.PlayerType.Shooter); }
     public PlayerController GetSupport() { return GetPlayerByType(PlayerController.PlayerType.Support); }
     public PlayerController GetPlayerByType(PlayerController.PlayerType t) { return Players.Where(p => p.Type == t).FirstOrDefault(); }
-
 
     void Awake()
     {
@@ -78,10 +68,13 @@ public class GameManager : MonoBehaviour
     public void LoadInstancesRef()
     {
         PlayerSpawns = InstanceRef.PlayerSpawns;
-        SpawnTrigges = InstanceRef.SphereTriggers;
+
+        Triggers = InstanceRef.SphereTriggers;
+
+        ReinforcmentPoints = InstanceRef.ReinforcementPoints;
+
         SpawnHolder = InstanceRef.SpawnHolder;
         EnemyHolder = InstanceRef.EnemyHolder;
         ClusterHolder = InstanceRef.ClusterHolder;
-        ReinforcmentPoints = InstanceRef.ReinforcementPoints;
     }
 }

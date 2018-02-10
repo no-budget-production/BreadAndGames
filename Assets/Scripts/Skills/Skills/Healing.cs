@@ -12,7 +12,6 @@ public class Healing : Skill
     public float HealAmount = 2.0f;
 
     Vector3 direction;
-    bool isVisible = false;
 
     bool isShooting;
 
@@ -39,8 +38,6 @@ public class Healing : Skill
             {
                 isShooting = true;
 
-                isVisible = true;
-
                 LineRenderer.SetPosition(0, BeamOrigin.position);
                 LineRenderer.SetPosition(1, CurrentTarget.transform.position);
 
@@ -51,8 +48,6 @@ public class Healing : Skill
             else
             {
                 isShooting = false;
-
-                isVisible = false;
 
                 LineRenderer.SetPosition(0, BeamOrigin.position);
                 LineRenderer.SetPosition(1, transform.position);
@@ -82,12 +77,6 @@ public class Healing : Skill
         BeamOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    //void RaycastCheck()
-    //{
-
-
-    //}
-
     void OnHealObject(RaycastHit hit)
     {
         //Debug.Log(hit.collider.gameObject.name);
@@ -95,12 +84,10 @@ public class Healing : Skill
         if (healableObject != null)
         {
             healableObject.GetHealth(HealAmount * 0.5f);
-            //Debug.Log("Fart");
         }
         else
         {
             healableObject.GetHealth(HealAmount);
-            //Debug.Log("AJKSNDLJH");
         }
     }
 }

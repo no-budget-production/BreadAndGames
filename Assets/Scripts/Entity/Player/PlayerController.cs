@@ -33,6 +33,7 @@ public class PlayerController : Character
     }
 
     public PlayerType Type;
+
     public int usedButtonsCount;
     public int[] usedButtons;
     public bool[] areButtons;
@@ -43,8 +44,6 @@ public class PlayerController : Character
 
     public bool isWalking;
     public bool isUsingRightStick;
-
-    //public GameObject[] ActivePlayers;
 
     public ButtonConfig[] PlayerSkills;
 
@@ -63,10 +62,7 @@ public class PlayerController : Character
 
     public float moveSpeed = 1.0f;
     public float deadzone = 0.25f;
-    //public float deadzoneMove = 0.25f;
 
-
-    private float gravityStrength = 15f;
     private float angle;
 
     public float acceleration = 1.2f;
@@ -85,22 +81,15 @@ public class PlayerController : Character
 
     private Quaternion inputRotation;
 
-
-    //public PlayerController playerController;
-
     //Müll
 
-    //public Collider PlayerTrigger;
-    //public GunSystem gunSystem;
-    //public Transform Camera;
-    //public Camera viewCamera;
+    //public float deadzoneMove = 0.25f;
+    //private float gravityStrength = 15f;
 
     protected override void Start()
     {
         base.Start();
         ButtonSetup();
-        //PlayerTrigger = GetComponent<Collider>();
-        //gunSystem = GetComponent<GunSystem>();
     }
 
     public void Setup(Quaternion inputRotationArg, string[] buttonStrings)
@@ -131,7 +120,6 @@ public class PlayerController : Character
             curSkill.transform.SetParent(transform);
             curSkill.Player = this.gameObject;
             curSkill.PlayerController = this;
-            //curSkill.ActivePlayers = ActivePlayers;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
         }
@@ -139,8 +127,6 @@ public class PlayerController : Character
 
     private void Move()
     {
-        //inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.forward, Vector3.up)); // align movement to camera view (can put in start() if camera view doesnt change)
-
         float Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
         float Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         float HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
@@ -249,7 +235,6 @@ public class PlayerController : Character
 
     void Update()
     {
-
         Move();
         CheckButtonInput();
     }

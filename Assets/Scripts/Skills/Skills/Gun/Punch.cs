@@ -18,7 +18,7 @@ public class Punch : Skill
         {
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
-            Debug.Log("Punch");
+            //Debug.Log("Punch");
             foreach (Character e in hitBox.enemies)
             {
                 if (e == null)
