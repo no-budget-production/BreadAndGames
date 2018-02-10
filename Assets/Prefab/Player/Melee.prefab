@@ -1116,15 +1116,15 @@ MonoBehaviour:
   DestroyOnDeath: 0
   healthBar: {fileID: 224660065565190754}
   UseHealthbar: 1
+  Type: 0
   usedButtonsCount: 0
   usedButtons: 
   areButtons: 
   deadZones: []
   thisPlayerString: []
-  PlayerNumber: 2
+  PlayerNumber: 1
   isWalking: 0
   isUsingRightStick: 0
-  ActivePlayers: []
   PlayerSkills:
   - SkillBC: {fileID: 114777490603000294, guid: 3917ab2fd0e2b5b41a2d1515af06b043,
       type: 2}
@@ -1221,7 +1221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
-  ActivePlayers: []
   isFiring: 0
   SkillSpawn: {fileID: 0}
   hitBox: {fileID: 0}
