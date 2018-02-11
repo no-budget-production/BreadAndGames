@@ -41,11 +41,11 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        //Debug.Log("ThisUnityTypeFlags = " + (int)(ThisUnityTypeFlags));
+        Debug.Log("ThisUnityTypeFlags = " + (int)(ThisUnityTypeFlags));
 
-        //Debug.Log("UnitTypes.Invurnable = " + (UnitTypes.Invurnable));
+        Debug.Log("UnitTypes.Invurnable = " + (int)(UnitTypes.Invurnable));
         //if (((ThisUnityTypeFlags | UnitTypes.Invurnable) != 0))
-        if (ThisUnityTypeFlags > UnitTypes.Invurnable)
+        if (ThisUnityTypeFlags >= UnitTypes.Invurnable)
         {
             //Debug.Log("ThisUnityTypeFlags | UnitTypes.Invurnable = " + (int)(ThisUnityTypeFlags | UnitTypes.Invurnable));
             return;
