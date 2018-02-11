@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player1 : Cheat
 {
     public PlayerController NewPlayer1;
-    public PlayerController.PlayerType TargetType;
+    public PlayerType TargetType;
 
     public override void Shoot()
     {

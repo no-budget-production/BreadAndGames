@@ -11,28 +11,13 @@ public class ButtonConfig
 
 public class PlayerController : Character
 {
-    public enum PlayerType
-    {
-        Melee,
-        Shooter,
-        Support
-    }
-
-    [System.Flags]
-    public enum PlayerTypeFlags
-    {
-        Melee = 1 << PlayerType.Melee,
-        Shooter = 1 << PlayerType.Shooter,
-        Support = 1 << PlayerType.Support,
-    }
+    public PlayerType Type;
 
     public bool HasFlag(PlayerTypeFlags flags)
     {
         int typeflag = 1 << (int)Type;
         return (typeflag & (int)flags) != 0;
     }
-
-    public PlayerType Type;
 
     public int usedButtonsCount;
     public int[] usedButtons;

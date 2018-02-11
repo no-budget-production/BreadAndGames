@@ -7,7 +7,7 @@ public class Healing : Skill
     public LineRenderer LineRenderer;
     public PlayerController CurrentTarget;
     public Transform BeamOrigin;
-    public PlayerController.PlayerType TargetType;
+    public PlayerType TargetType;
 
     public float HealAmount = 2.0f;
 

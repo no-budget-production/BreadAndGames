@@ -6,6 +6,31 @@ public class Projectile : Effect
 {
     public LayerMask collisionMask;
 
+    //public List<int> ReturnSelectedElements()
+    //{
+    //    List<int> selectedElements = new List<int>();
+    //    for (int i = 0; i < System.Enum.GetValues(typeof(TargetType)).Length; i++)
+    //    {
+    //        int layer = 1 << i;
+    //        if (((int)ThisThisType & layer) != 0)
+    //        {
+    //            selectedElements.Add(i);
+    //        }
+    //    }
+    //    return selectedElements;
+    //}
+
+    //[System.Flags]
+    //public enum TargetType
+    //{
+    //    None, CoolDown0, CoolDown1, CoolDown2, CoolDown3
+    //}
+
+    //[EnumFlagsAttribute]
+    //public TargetType ThisThisType;
+
+    public UnitTypesFlags UnityTypeFlags;
+
     public float Speed = 10;
     public float Damage = 1;
 
@@ -46,11 +71,11 @@ public class Projectile : Effect
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
-            if (true)
+            if (damageableObject.HasFlag(UnityTypeFlags))
             {
-
+                damageableObject.TakeDamage(Damage);
             }
-            damageableObject.TakeDamage(Damage);
+
         }
     }
 }

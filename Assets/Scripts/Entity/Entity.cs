@@ -2,26 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Entity : MonoBehaviour
 {
-    public enum UnitTypes
-    {
-        Player,
-        Enemy,
-        Neutral,
-        Invurnable
-    }
-
-    [System.Flags]
-    public enum UnitTypesFlags
-    {
-        Player = 1 << UnitTypes.Player,
-        Enemy = 1 << UnitTypes.Enemy,
-        Neutral = 1 << UnitTypes.Neutral,
-        Invurnable = 1 << UnitTypes.Invurnable,
-    }
-
+    public UnitTypesFlags UnityTypeFlags;
     public UnitTypes UnitType;
 
     public bool HasFlag(UnitTypesFlags flags)
@@ -40,6 +23,11 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (UnitType == UnitTypes.Invurnable)
+        {
+            return;
+        }
+
         CurrentHealth -= damage;
 
         if (CurrentHealth <= 0)

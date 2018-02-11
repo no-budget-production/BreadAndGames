@@ -7,7 +7,6 @@ public class Skill : MonoBehaviour
 
     public List<int> ReturnSelectedElements()
     {
-
         List<int> selectedElements = new List<int>();
         for (int i = 0; i < System.Enum.GetValues(typeof(CooldownType)).Length; i++)
         {

@@ -36,10 +36,10 @@ public class GameManager : MonoBehaviour
 
     public Quaternion InputRotation;
 
-    public PlayerController GetMelee() { return GetPlayerByType(PlayerController.PlayerType.Melee); }
-    public PlayerController GetShooter() { return GetPlayerByType(PlayerController.PlayerType.Shooter); }
-    public PlayerController GetSupport() { return GetPlayerByType(PlayerController.PlayerType.Support); }
-    public PlayerController GetPlayerByType(PlayerController.PlayerType t) { return Players.Where(p => p.Type == t).FirstOrDefault(); }
+    public PlayerController GetMelee() { return GetPlayerByType(PlayerType.Melee); }
+    public PlayerController GetShooter() { return GetPlayerByType(PlayerType.Shooter); }
+    public PlayerController GetSupport() { return GetPlayerByType(PlayerType.Support); }
+    public PlayerController GetPlayerByType(PlayerType t) { return Players.Where(p => p.Type == t).FirstOrDefault(); }
 
     void Awake()
     {
