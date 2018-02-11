@@ -2,8 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Entity : MonoBehaviour
 {
+    public enum UnitTypes
+    {
+        Player,
+        Enemy,
+        Neutral,
+        Invurnable
+    }
+
+    [System.Flags]
+    public enum UnitTypesFlags
+    {
+        Player = 1 << UnitTypes.Player,
+        Enemy = 1 << UnitTypes.Enemy,
+        Neutral = 1 << UnitTypes.Neutral,
+        Invurnable = 1 << UnitTypes.Invurnable,
+    }
+
+    public UnitTypes UnitType;
+
+    public bool HasFlag(UnitTypesFlags flags)
+    {
+        int typeflag = 1 << (int)UnitType;
+        return (typeflag & (int)flags) != 0;
+    }
+
     public float CurrentHealth;
     public float MaxHealth;
     public float Armor;

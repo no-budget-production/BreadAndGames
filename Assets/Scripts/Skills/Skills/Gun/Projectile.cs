@@ -46,6 +46,10 @@ public class Projectile : Effect
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
+            if (true)
+            {
+
+            }
             damageableObject.TakeDamage(Damage);
         }
     }

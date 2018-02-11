@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 4613099269740536}
   - component: {fileID: 143950757012174290}
   - component: {fileID: 114422117127842328}
-  - component: {fileID: 114948921617203012}
   - component: {fileID: 95376863720080050}
   - component: {fileID: 114401277695705374}
   m_Layer: 0
@@ -1109,6 +1108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1323efd318e6be4495a87f6abc5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitType: 0
   CurrentHealth: 100
   MaxHealth: 100
   Armor: 0
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   areButtons: 
   deadZones: []
   thisPlayerString: []
-  PlayerNumber: 1
+  PlayerNumber: 2
   isWalking: 0
   isUsingRightStick: 0
   PlayerSkills:
@@ -1208,24 +1208,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114948921617203012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1143050206337656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  PlayerController: {fileID: 0}
-  isFiring: 0
-  SkillSpawn: {fileID: 0}
-  hitBox: {fileID: 0}
-  MsBetweenShot: 100
-  Damage: 10
 --- !u!137 &137734601331765670
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

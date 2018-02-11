@@ -219,7 +219,8 @@ public class PlayerController : Character
             }
             else
             {
-                if (Input.GetAxis(thisPlayerString[usedButtons[i]]) < deadZones[i])
+
+                if (Input.GetAxis(thisPlayerString[usedButtons[i]]) > deadZones[i])
                 {
                     ActiveSkills[i].Shoot();
                     ActiveSkills[i].isFiring = true;
