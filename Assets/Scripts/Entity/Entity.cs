@@ -49,9 +49,9 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public virtual void GetHealth(float damage)
+    public virtual void GetHealth(float healing)
     {
-        CurrentHealth = Mathf.Min(CurrentHealth + damage, MaxHealth);
+        CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
     }
 
     public virtual void ArmorBuff(float armorArg)

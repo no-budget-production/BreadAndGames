@@ -13,10 +13,6 @@ public class Healing : Skill
 
     Vector3 direction;
 
-    bool isShooting;
-
-    public string TargetTag;
-
     private void Start()
     {
         CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
@@ -34,10 +30,9 @@ public class Healing : Skill
 
         if (Physics.Raycast(BeamOrigin.position, direction, out hit))
         {
-            if (hit.collider.tag == (TargetTag))
+            var temp = hit.collider.GetComponent<PlayerController>();
+            if (temp == CurrentTarget)
             {
-                isShooting = true;
-
                 LineRenderer.SetPosition(0, BeamOrigin.position);
                 LineRenderer.SetPosition(1, CurrentTarget.transform.position);
 
@@ -47,8 +42,6 @@ public class Healing : Skill
             }
             else
             {
-                isShooting = false;
-
                 LineRenderer.SetPosition(0, BeamOrigin.position);
                 LineRenderer.SetPosition(1, transform.position);
 

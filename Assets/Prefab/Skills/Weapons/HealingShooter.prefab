@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de22b2197f936d4bb70ef6eedcda7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisCoolDownType: 2
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
@@ -90,7 +91,6 @@ MonoBehaviour:
   BeamOrigin: {fileID: 4598409900153212}
   TargetType: 1
   HealAmount: 2
-  TargetTag: Shooter
 --- !u!120 &120803723628524548
 LineRenderer:
   m_ObjectHideFlags: 1

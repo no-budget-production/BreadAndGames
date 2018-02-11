@@ -23,6 +23,16 @@ public class Character : Entity
         }
     }
 
+    public override void GetHealth(float healing)
+    {
+        base.GetHealth(healing);
+
+        if (UseHealthbar)
+        {
+            OnChangeHealth(CurrentHealth);
+        }
+    }
+
     void OnChangeHealth(float currentHealth)
     {
         healthBar.sizeDelta = new Vector2(currentHealth / MaxHealth * 100, healthBar.sizeDelta.y);
