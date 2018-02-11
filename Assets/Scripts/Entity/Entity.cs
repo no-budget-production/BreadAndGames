@@ -41,12 +41,19 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (ThisUnityTypeFlags == UnitTypes.Invurnable)
+        //Debug.Log("ThisUnityTypeFlags = " + (int)(ThisUnityTypeFlags));
+
+        //Debug.Log("UnitTypes.Invurnable = " + (UnitTypes.Invurnable));
+        //if (((ThisUnityTypeFlags | UnitTypes.Invurnable) != 0))
+        if (ThisUnityTypeFlags > UnitTypes.Invurnable)
         {
+            //Debug.Log("ThisUnityTypeFlags | UnitTypes.Invurnable = " + (int)(ThisUnityTypeFlags | UnitTypes.Invurnable));
             return;
         }
 
-        CurrentHealth -= damage;
+        //Debug.Log("EntityTakeDamage");
+
+        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
 
         if (CurrentHealth <= 0)
         {
