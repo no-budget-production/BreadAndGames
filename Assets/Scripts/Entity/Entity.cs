@@ -4,14 +4,32 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public UnitTypesFlags UnityTypeFlags;
-    public UnitTypes UnitType;
 
-    public bool HasFlag(UnitTypesFlags flags)
+    public List<int> ReturnSelectedElements()
     {
-        int typeflag = 1 << (int)UnitType;
-        return (typeflag & (int)flags) != 0;
+        List<int> selectedElements = new List<int>();
+        for (int i = 0; i < System.Enum.GetValues(typeof(UnitTypes)).Length; i++)
+        {
+            int layer = 1 << i;
+            if (((int)ThisUnityTypeFlags & layer) != 0)
+            {
+                selectedElements.Add(i);
+            }
+        }
+        return selectedElements;
     }
+
+    [EnumFlagsAttribute]
+    public UnitTypes ThisUnityTypeFlags;
+
+    //public UnitTypesFlags UnityTypeFlags;
+    //public UnitTypes UnitType;
+
+    //public bool HasFlag(UnitTypesFlags flags)
+    //{
+    //    int typeflag = 1 << (int)UnitType;
+    //    return (typeflag & (int)flags) != 0;
+    //}
 
     public float CurrentHealth;
     public float MaxHealth;
@@ -23,7 +41,7 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (UnitType == UnitTypes.Invurnable)
+        if (ThisUnityTypeFlags == UnitTypes.Invurnable)
         {
             return;
         }

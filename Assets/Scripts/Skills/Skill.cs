@@ -19,12 +19,6 @@ public class Skill : MonoBehaviour
         return selectedElements;
     }
 
-    [System.Flags]
-    public enum CooldownType
-    {
-        None, CoolDown0, CoolDown1, CoolDown2, CoolDown3
-    }
-
     [EnumFlagsAttribute]
     public CooldownType ThisCoolDownType;
 
