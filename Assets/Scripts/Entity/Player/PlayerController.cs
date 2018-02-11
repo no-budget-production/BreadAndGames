@@ -6,7 +6,7 @@ using UnityEngine;
 public class ButtonConfig
 {
     public Skill SkillBC;
-    public ButtonString ButtonStringBC;
+    public ButtonString[] ButtonStringBC;
 }
 
 public class PlayerController : Character
@@ -90,23 +90,35 @@ public class PlayerController : Character
 
     public void ButtonSetup()
     {
-        usedButtonsCount = PlayerSkills.Length;
+        for (int i = 0; i < PlayerSkills.Length; i++)
+        {
+            usedButtonsCount += PlayerSkills[i].ButtonStringBC.Length;
+        }
+
         usedButtons = new int[usedButtonsCount];
         areButtons = new bool[usedButtonsCount];
         deadZones = new float[usedButtonsCount];
-        ActiveSkills = new Skill[usedButtonsCount];
-        for (int i = 0; i < usedButtonsCount; i++)
-        {
-            usedButtons[i] = PlayerSkills[i].ButtonStringBC.ButtonID;
-            areButtons[i] = PlayerSkills[i].ButtonStringBC.isButton;
-            deadZones[i] = PlayerSkills[i].ButtonStringBC.DeadZone;
 
+        ActiveSkills = new Skill[PlayerSkills.Length];
+
+        int tempIJ = 0;
+        for (int i = 0; i < PlayerSkills.Length; i++)
+        {
             Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity);
             curSkill.transform.SetParent(transform);
             curSkill.Player = this.gameObject;
             curSkill.PlayerController = this;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
+
+            for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
+            {
+                usedButtons[tempIJ] = PlayerSkills[i].ButtonStringBC[j].ButtonID;
+                areButtons[tempIJ] = PlayerSkills[i].ButtonStringBC[j].isButton;
+                deadZones[tempIJ] = PlayerSkills[i].ButtonStringBC[j].DeadZone;
+                tempIJ++;
+            }
+
         }
     }
 
@@ -187,34 +199,39 @@ public class PlayerController : Character
 
     private void CheckButtonInput()
     {
-        for (int i = 0; i < usedButtonsCount; i++)
+        int tempIJ = 0;
+        for (int i = 0; i < PlayerSkills.Length; i++)
         {
-            if (areButtons[i])
+            for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
             {
-                if (Input.GetButtonDown(thisPlayerString[usedButtons[i]]))
+                if (areButtons[tempIJ])
                 {
-                    ActiveSkills[i].Shoot();
-                    ActiveSkills[i].isFiring = true;
-                    //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                    if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
+                    {
+                        ActiveSkills[i].Shoot();
+                        ActiveSkills[i].isFiring = true;
+                        //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                    }
+                    else
+                    {
+                        ActiveSkills[i].isFiring = false;
+                    }
                 }
                 else
                 {
-                    ActiveSkills[i].isFiring = false;
-                }
-            }
-            else
-            {
 
-                if (Input.GetAxis(thisPlayerString[usedButtons[i]]) > deadZones[i])
-                {
-                    ActiveSkills[i].Shoot();
-                    ActiveSkills[i].isFiring = true;
-                    //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                    if (Input.GetAxis(thisPlayerString[usedButtons[tempIJ]]) > deadZones[tempIJ])
+                    {
+                        ActiveSkills[i].Shoot();
+                        ActiveSkills[i].isFiring = true;
+                        //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                    }
+                    else
+                    {
+                        ActiveSkills[i].isFiring = false;
+                    }
                 }
-                else
-                {
-                    ActiveSkills[i].isFiring = false;
-                }
+                tempIJ++;
             }
         }
     }
