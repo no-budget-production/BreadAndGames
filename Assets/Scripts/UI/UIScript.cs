@@ -8,7 +8,8 @@ using UnityEngine.Audio;
 using UnityEditor;
 #endif
 
-public class UIScript : MonoBehaviour {
+public class UIScript : MonoBehaviour
+{
 
     private void Awake() // Moved from Update to Awake function
     {
@@ -109,6 +110,9 @@ public class UIScript : MonoBehaviour {
 
     public void RestartButton()
     {
+        GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+        //Destroy(GameManager.Instance.GameManagerFolder.gameObject);
+
         MainMenu.SetActive(false);
 
         AreYouSure_Restart();
@@ -118,7 +122,7 @@ public class UIScript : MonoBehaviour {
 
     public void AreYouSure_Restart()
     {
-        SceneManager.UnloadSceneAsync(sceneindex);
+        //SceneManager.UnloadSceneAsync(sceneindex);
         SceneManager.LoadScene(sceneindex, LoadSceneMode.Single);
 
         //PlaySound(1);
@@ -184,6 +188,7 @@ public class UIScript : MonoBehaviour {
 
     void RestartGame()
     {
+
         if (_isPause == true)
         {
             if (Input.GetButtonDown("Restart") || Input.GetButtonDown("RestartXbox"))
