@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisCoolDownType: 0
+  UsedCoolDownTypes: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
@@ -882,6 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisCoolDownType: 0
+  UsedCoolDownTypes: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
@@ -956,6 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisCoolDownType: 0
+  UsedCoolDownTypes: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
@@ -975,6 +978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineRenderer: {fileID: 120806036641688680}
+  MaxDistance: 2000
+  EveryXFrames: 2
 --- !u!120 &120806036641688680
 LineRenderer:
   m_ObjectHideFlags: 1

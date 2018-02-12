@@ -22,6 +22,9 @@ public class Skill : MonoBehaviour
     [EnumFlagsAttribute]
     public CooldownType ThisCoolDownType;
 
+    public CooldownType[] UsedCoolDownTypes;
+
+
     //public enum SkillType
     //{
     //    CoolDown0,

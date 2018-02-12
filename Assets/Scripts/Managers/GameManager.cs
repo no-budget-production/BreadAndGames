@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Destroy(this);
+        //Destroy(this);
         enabled = false;
     }
 

@@ -6,6 +6,9 @@ public class Projectile : Effect
 {
     public LayerMask collisionMask;
 
+    public int EveryXFrames;
+    private int FrameCounter;
+
     public List<int> ReturnSelectedElements()
     {
         List<int> selectedElements = new List<int>();
@@ -39,7 +42,13 @@ public class Projectile : Effect
     void Update()
     {
         float moveDistance = Speed * Time.deltaTime;
-        CheckCollisions(moveDistance);
+
+        FrameCounter++;
+        if ((FrameCounter % EveryXFrames) == 0)
+        {
+            CheckCollisions(moveDistance);
+            FrameCounter = 0;
+        }
 
         transform.Translate(Vector3.forward * Time.deltaTime * Speed);
     }

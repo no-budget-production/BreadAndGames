@@ -166,9 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95df3d7db75f8f44abf6d25e549a37da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lifetime: 4
+  Fadetime: 0.25
   collisionMask:
     serializedVersion: 2
     m_Bits: 1
-  ThisUnityTypeFlags: 6
+  EveryXFrames: 2
+  ThisUnityTypeFlags: 3
   Speed: 10
   Damage: 8.5

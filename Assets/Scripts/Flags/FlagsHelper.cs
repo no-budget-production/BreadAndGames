@@ -3,7 +3,9 @@
     Player,
     Enemy,
     Neutral,
-    Invurnable
+    Invurnable,
+    _Length,
+    _Invalid = -1
 }
 
 [System.Flags]
