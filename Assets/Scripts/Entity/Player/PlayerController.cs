@@ -202,36 +202,38 @@ public class PlayerController : Character
         int tempIJ = 0;
         for (int i = 0; i < PlayerSkills.Length; i++)
         {
+            bool tempIsShooting = false;
             for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
             {
+
                 if (areButtons[tempIJ])
                 {
                     if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
                     {
                         ActiveSkills[i].Shoot();
                         ActiveSkills[i].isFiring = true;
+                        tempIsShooting = true;
                         //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
-                    }
-                    else
-                    {
-                        ActiveSkills[i].isFiring = false;
                     }
                 }
                 else
                 {
-
-                    if (Input.GetAxis(thisPlayerString[usedButtons[tempIJ]]) > deadZones[tempIJ])
+                    if (Mathf.Abs(Input.GetAxis(thisPlayerString[usedButtons[tempIJ]])) > deadZones[tempIJ])
                     {
                         ActiveSkills[i].Shoot();
                         ActiveSkills[i].isFiring = true;
+                        tempIsShooting = true;
                         //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                     }
-                    else
-                    {
-                        ActiveSkills[i].isFiring = false;
-                    }
                 }
+
+
                 tempIJ++;
+            }
+            if (!tempIsShooting)
+            {
+                ActiveSkills[i].isFiring = false;
+                ActiveSkills[i].StopShoot();
             }
         }
     }
