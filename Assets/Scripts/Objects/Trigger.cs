@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Trigger : MonoBehaviour
 {
+    public bool setBool;
     public Behaviour[] EnabledWithPlayer;
     public int playerCount;
+    public int requiredPlayerCount;
     //public PlayerController.PlayerTypeFlags Types;
 
     private void OnTriggerEnter(Collider other)
@@ -15,11 +17,9 @@ public class Trigger : MonoBehaviour
         if (temp == null)
             return;
 
-        //if (temp.HasFlag(Types))
-        {
-            playerCount++;
-            CheckPlayerCount();
-        }
+        playerCount++;
+        CheckPlayerCount();
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -28,31 +28,61 @@ public class Trigger : MonoBehaviour
         if (temp == null)
             return;
 
-        //if (temp.HasFlag(Types))
-        {
-            playerCount--;
-            CheckPlayerCount();
-        }
+        playerCount--;
+        CheckPlayerCount();
+
     }
 
     void CheckPlayerCount()
     {
-        if (playerCount == 0)
+        if (playerCount >= requiredPlayerCount)
         {
-            for (int i = 0; i < EnabledWithPlayer.Length; i++)
+            if (setBool)
             {
-                EnabledWithPlayer[i].enabled = false;
+                for (int i = 0; i < EnabledWithPlayer.Length; i++)
+                {
+                    var temp = EnabledWithPlayer[i].GetComponent<BehaviourWithBool>();
+                    if (temp == null)
+                        return;
+                    temp.setBool = true;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < EnabledWithPlayer.Length; i++)
+                {
+                    EnabledWithPlayer[i].enabled = true;
+                }
             }
 
+
         }
-        else if (playerCount == 1)
+        else
         {
-            for (int i = 0; i < EnabledWithPlayer.Length; i++)
+            if (setBool)
             {
-                EnabledWithPlayer[i].enabled = true;
+                for (int i = 0; i < EnabledWithPlayer.Length; i++)
+                {
+                    var temp = EnabledWithPlayer[i].GetComponent<BehaviourWithBool>();
+                    if (temp == null)
+                        return;
+                    temp.setBool = false;
+                }
             }
+            else
+            {
+                for (int i = 0; i < EnabledWithPlayer.Length; i++)
+                {
+                    if (setBool)
+                    {
+                        EnabledWithPlayer[i].enabled = false;
+                    }
+                }
+            }
+
 
         }
 
     }
+
 }

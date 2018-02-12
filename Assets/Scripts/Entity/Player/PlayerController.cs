@@ -66,7 +66,7 @@ public class PlayerController : Character
 
     private Quaternion inputRotation;
 
-    //Müll
+    //Dump
 
     //public float deadzoneMove = 0.25f;
     //private float gravityStrength = 15f;
@@ -240,26 +240,5 @@ public class PlayerController : Character
     {
         Move();
         CheckButtonInput();
-
-        //Debug.Log("UnitTypes.Player = " + (int)UnitTypes.Player);
-        //Debug.Log("UnitTypes.Enemy = " + (int)UnitTypes.Enemy);
-        //Debug.Log("UnitTypes.Neutral = " + (int)UnitTypes.Neutral);
-        //Debug.Log("UnitTypes.Invurnable = " + (int)UnitTypes.Invurnable);
-
-        //Debug.Log("UnitTypes.Player & UnitTypes.Enemy = " + (int)(UnitTypes.Player & UnitTypes.Enemy));
-        //Debug.Log("UnitTypes.Player & UnitTypes.Player = " + (int)(UnitTypes.Player & UnitTypes.Player));
-        //Debug.Log("UnitTypes.Player & UnitTypes.Enemy & UnitTypes.Neutral= " + (int)(UnitTypes.Player & UnitTypes.Enemy & UnitTypes.Neutral));
-
-        //Debug.Log("UnitTypes.Player | UnitTypes.Enemy = " + (int)(UnitTypes.Player | UnitTypes.Enemy));
-        //Debug.Log("UnitTypes.Player | UnitTypes.Player = " + (int)(UnitTypes.Player | UnitTypes.Player));
-        //Debug.Log("UnitTypes.Player | UnitTypes.Enemy | UnitTypes.Neutral= " + (int)(UnitTypes.Player | UnitTypes.Enemy | UnitTypes.Neutral));
-
-        //Debug.Log("(UnitTypes.Player & UnitTypes.Enemy) != 0 = " + ((UnitTypes.Player & UnitTypes.Enemy) != 0));
-        //Debug.Log("(UnitTypes.Player & UnitTypes.Enemy) == 0 = " + ((UnitTypes.Player & UnitTypes.Enemy) == 0));
-        //Debug.Log("(UnitTypes.Player & UnitTypes.Player) != 0 = " + ((UnitTypes.Player & UnitTypes.Player) != 0));
-
-        //Debug.Log("(UnitTypes.Player | UnitTypes.Enemy) != 0 = " + ((UnitTypes.Player | UnitTypes.Enemy) != 0));
-        //Debug.Log("(UnitTypes.Player | UnitTypes.Enemy) == 0 = " + ((UnitTypes.Player | UnitTypes.Enemy) == 0));
-        //Debug.Log("(UnitTypes.Player | UnitTypes.Player) != 0 = " + ((UnitTypes.Player | UnitTypes.Player) != 0));
     }
 }

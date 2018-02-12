@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 65911352877894048}
   - component: {fileID: 23956383806606114}
   - component: {fileID: 114758169661977248}
+  - component: {fileID: 114625579532333780}
   m_Layer: 0
   m_Name: ControlPoint
   m_TagString: Untagged
@@ -90,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630477219676072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.58, y: 0, z: 0}
+  m_LocalPosition: {x: 20.07, y: 0, z: 30.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224000589271400278}
@@ -225,6 +226,22 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114625579532333780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630477219676072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d69f98d6cdaf4643ab73661b21943f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setBool: 1
+  EnabledWithPlayer:
+  - {fileID: 114758169661977248}
+  playerCount: 0
+  requiredPlayerCount: 1
 --- !u!114 &114756850877678224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,9 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c3899ce417c5847ba67f795af390ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setBool: 0
   CaptureProgressBar: {fileID: 224819332166231234}
-  TriggerCollider: {fileID: 65911352877894048}
-  ValidTag: Player
   Captured: 0
   MinCapturingPlayersRequired: 1
   CurrentCapturingPlayers: 0

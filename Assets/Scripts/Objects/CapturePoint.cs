@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CapturePoint : MonoBehaviour
+public class CapturePoint : BehaviourWithBool
 {
     public RectTransform CaptureProgressBar;
-    public Collider TriggerCollider;
-
-    public string ValidTag;
 
     public bool Captured;
     public int MinCapturingPlayersRequired;
@@ -17,34 +14,10 @@ public class CapturePoint : MonoBehaviour
     public float StepIncreaseProgress;
     public float StepDecreaseProgress;
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == ValidTag)
-        {
-            CurrentCapturingPlayers++;
-            if (CurrentCapturingPlayers >= MinCapturingPlayersRequired)
-            {
-                Captured = true;
-            }
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == ValidTag)
-        {
-            CurrentCapturingPlayers--;
-            if (CurrentCapturingPlayers <= MinCapturingPlayersRequired)
-            {
-                Captured = false;
-            }
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Captured)
+        if (base.setBool)
         {
             IncreaseProgress();
         }
