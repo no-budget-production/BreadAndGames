@@ -21,15 +21,11 @@ public class DroneMovement : Skill {
 
     public override void Shoot()
     {
-        Horizontal_PX = Input.GetAxis(base.PlayerController.thisPlayerString[0]);
-        Vertical_PX = Input.GetAxis(base.PlayerController.thisPlayerString[1]);
         HorizontalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[2]);
         VerticalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[3]);
-        //Debug.Log(Horizontal_PX);
-        //Debug.Log(Vertical_PX);
-        Debug.Log(HorizontalLook_PX);
-        //Debug.Log(VerticalLook_PX);
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * 100, 1, Input.GetAxis("Vertical") * 100);
+        Debug.Log("HorizontalLook_PX: " + HorizontalLook_PX);
+        Debug.Log("VerticalLook_PX: " + VerticalLook_PX);
+        moveDirection = new Vector3(HorizontalLook_PX, 0, VerticalLook_PX);
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= speed;
 
