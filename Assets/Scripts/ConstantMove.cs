@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ConstantMove : MonoBehaviour {
 
-    public float speed;
+    public float Speed;
 
 	void Update ()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * Speed * Time.deltaTime;
     }
 }

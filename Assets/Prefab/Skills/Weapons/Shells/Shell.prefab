@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b574b7a4a20e12f41aa94f03dd3f77b3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce94b1c91c66b04e9c561e68b3de02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellRigidbody: {fileID: 54080357741151552}
-  forceMin: 100
-  forceMax: 150
+  ShellRigidbody: {fileID: 54080357741151552}
+  ForceMin: 100
+  ForceMax: 150
+  Lifetime: 4
+  Fadetime: 0.5

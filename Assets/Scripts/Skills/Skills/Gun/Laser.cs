@@ -5,7 +5,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
 
-    public LineRenderer lineRenderer;
+    public LineRenderer LineRenderer;
 
     void Update()
     {
@@ -15,12 +15,12 @@ public class Laser : MonoBehaviour
         {
             if (Hit.collider)
             {
-                lineRenderer.SetPosition(1, new Vector3(0, 0, Hit.distance));
+                LineRenderer.SetPosition(1, new Vector3(0, 0, Hit.distance));
             }
         }
         else
         {
-            lineRenderer.SetPosition(1, new Vector3(0, 0, 20));
+            LineRenderer.SetPosition(1, new Vector3(0, 0, 20));
         }
     }
 }

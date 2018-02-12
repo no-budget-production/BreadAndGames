@@ -15,6 +15,35 @@ public enum UnitTypesFlags
     Invurnable = 1 << UnitTypes.Invurnable,
 }
 
+public enum PlayerType
+{
+    Melee,
+    Shooter,
+    Support
+}
+
+[System.Flags]
+public enum PlayerTypeFlags
+{
+    Melee = 1 << PlayerType.Melee,
+    Shooter = 1 << PlayerType.Shooter,
+    Support = 1 << PlayerType.Support,
+}
+
+public enum CooldownType
+{
+    CoolDown0, CoolDown1, CoolDown2, CoolDown3
+}
+
+[System.Flags]
+public enum CooldownTypeFlags
+{
+    CoolDown0 = 1 << CooldownType.CoolDown0,
+    CoolDown1 = 1 << CooldownType.CoolDown1,
+    CoolDown2 = 1 << CooldownType.CoolDown2,
+    CoolDown3 = 1 << CooldownType.CoolDown3
+}
+
 class FlagsHelper
 {
     public static bool HasUnitTypes(UnitTypesFlags flags, UnitTypes enu)
@@ -30,12 +59,3 @@ class FlagsHelper
     }
 
 }
-
-//[System.Flags]
-//public enum UnitTypes
-//{
-//    Player,
-//    Enemy,
-//    Neutral,
-//    Invurnable
-//}

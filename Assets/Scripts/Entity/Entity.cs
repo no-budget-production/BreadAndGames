@@ -22,15 +22,6 @@ public class Entity : MonoBehaviour
     [EnumFlagsAttribute]
     public UnitTypesFlags ThisUnityTypeFlags;
 
-    //public UnitTypesFlags UnityTypeFlags;
-    //public UnitTypes UnitType;
-
-    //public bool HasFlag(UnitTypesFlags flags)
-    //{
-    //    int typeflag = 1 << (int)UnitType;
-    //    return (typeflag & (int)flags) != 0;
-    //}
-
     public float CurrentHealth;
     public float MaxHealth;
     public float Armor;
@@ -41,13 +32,10 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        //Debug.Log("ThisUnityTypeFlags = " + (int)(ThisUnityTypeFlags));
-
-        Debug.Log("EntityDamage");
+        //Debug.Log("EntityDamage");
         if (FlagsHelper.HasUnitTypes(ThisUnityTypeFlags, UnitTypes.Invurnable))
         {
-            //Debug.Log("ThisUnityTypeFlags | UnitTypes.Invurnable = " + (int)(ThisUnityTypeFlags | UnitTypes.Invurnable));
-            Debug.Log("Invurnable");
+            //Debug.Log("Invurnable");
             return;
         }
 
@@ -57,7 +45,6 @@ public class Entity : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            //Debug.Log(gameObject + " is dead");
             isDeadTrigger = true;
         }
     }

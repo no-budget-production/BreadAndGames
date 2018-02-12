@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : Entity
 {
 
-    public RectTransform healthBar;
+    public RectTransform HealthBar;
     public bool UseHealthbar;
 
     protected virtual void Start()
@@ -35,7 +35,7 @@ public class Character : Entity
 
     void OnChangeHealth(float currentHealth)
     {
-        healthBar.sizeDelta = new Vector2(currentHealth / MaxHealth * 100, healthBar.sizeDelta.y);
+        HealthBar.sizeDelta = new Vector2(currentHealth / MaxHealth * 100, HealthBar.sizeDelta.y);
     }
 
 }

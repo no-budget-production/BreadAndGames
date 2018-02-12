@@ -10,6 +10,30 @@ using UnityEditor;
 
 public class UIScript : MonoBehaviour
 {
+    public GameObject MainMenu;
+
+    private bool escapeButton;
+    private bool escapeButtonXbox;
+
+    private bool _isPause = false;
+
+    private bool _aboutToPause = false;
+    private bool _aboutToUnpause = false;
+
+    private int sceneindex;
+
+    //AudioSetUp
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //public AudioMixerSnapshot paused;
+    //public AudioMixerSnapshot unpaused;
+
+    //public AudioMixer masterMixer;
+
+    /// Voice
+
+    //public float curLaughingCD;
+    //public float LaughingCD;
 
     private void Awake() // Moved from Update to Awake function
     {
@@ -32,65 +56,6 @@ public class UIScript : MonoBehaviour
         _isPause = false;
     }
 
-    //Bools&Stuff
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private bool _isPause = false;
-
-    private bool _aboutToPause = false;
-    private bool _aboutToUnpause = false;
-
-    private int sceneindex;
-
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //GameObjects
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public GameObject MainMenu;
-
-    //public AudioClip[] AudioClips;     //Added
-    //public AudioSource AudioSource;     //Added
-
-    //public Slider voiceSlider;
-    //public AudioSource voiceSource;
-
-    //public Slider musicSlider;
-    //public AudioSource musicSource;
-
-    //public Slider fxSlider;
-    //public AudioSource fxSource;
-
-
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //BoolButtons
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private bool escapeButton;
-    private bool escapeButtonXbox;
-
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //AudioSetUp
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //public AudioMixerSnapshot paused;
-    //public AudioMixerSnapshot unpaused;
-
-    //public AudioMixer masterMixer;
-
-    /// Voice
-
-    //public float curLaughingCD;
-    //public float LaughingCD;
-
-    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
     //ClickableUIButtons
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -111,6 +76,7 @@ public class UIScript : MonoBehaviour
     public void RestartButton()
     {
         GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+
         //Destroy(GameManager.Instance.GameManagerFolder.gameObject);
 
         MainMenu.SetActive(false);
@@ -123,6 +89,7 @@ public class UIScript : MonoBehaviour
     public void AreYouSure_Restart()
     {
         //SceneManager.UnloadSceneAsync(sceneindex);
+
         SceneManager.LoadScene(sceneindex, LoadSceneMode.Single);
 
         //PlaySound(1);

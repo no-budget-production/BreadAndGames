@@ -53,20 +53,20 @@ public class Projectile : Effect
         if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
         {
             OnHitObject(hit);
-            GameObject.Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
     void OnHitObject(RaycastHit hit)
     {
-        Debug.Log(hit.collider.gameObject.name);
+        //Debug.Log(hit.collider.gameObject.name);
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
             if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
             {
                 damageableObject.TakeDamage(Damage);
-                Debug.Log("TakeDamage");
+                //Debug.Log("TakeDamage");
             }
         }
     }

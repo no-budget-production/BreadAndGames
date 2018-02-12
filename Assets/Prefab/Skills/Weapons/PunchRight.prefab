@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d7aab60a3acb74a98dacdbade379df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  Enemies: []
   ThisUnityTypeFlags: 6
 --- !u!114 &114601730004366300
 MonoBehaviour:
@@ -114,6 +114,6 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
-  hitBox: {fileID: 114255274258433542}
+  HitBox: {fileID: 114255274258433542}
   MsBetweenShot: 300
   Damage: 51

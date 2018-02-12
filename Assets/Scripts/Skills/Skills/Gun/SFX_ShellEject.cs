@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class SFX_ShellEject : MonoBehaviour
 {
-    public Rigidbody shellRigidbody;
-    public float forceMin;
-    public float forceMax;
+    public Rigidbody ShellRigidbody;
+    public float ForceMin;
+    public float ForceMax;
 
-    float lifetime = 4;
-    float fadetime = 2;
+    public float Lifetime = 4;
+    public float Fadetime = 0.5f;
 
     void Start()
     {
-        float force = Random.Range(forceMin, forceMax);
-        shellRigidbody.AddForce(transform.right * force);
-        shellRigidbody.AddTorque(Random.insideUnitSphere * force);
+        float force = Random.Range(ForceMin, ForceMax);
+        ShellRigidbody.AddForce(transform.right * force);
+        ShellRigidbody.AddTorque(Random.insideUnitSphere * force);
 
-        StartCoroutine (Fade());
+        StartCoroutine(Fade());
     }
 
     IEnumerator Fade()
     {
-        yield return new WaitForSeconds(lifetime);
+        yield return new WaitForSeconds(Lifetime);
 
         float fadePercent = 0;
-        float fadeSpeed = 1 / fadetime;
+        float fadeSpeed = Fadetime;
 
         Material mat = GetComponent<Renderer>().material;
         Color initialColor = mat.color;
@@ -34,9 +34,9 @@ public class SFX_ShellEject : MonoBehaviour
         {
             fadePercent += Time.deltaTime * fadeSpeed;
             mat.color = Color.Lerp(initialColor, Color.clear, fadePercent);
-            yield return null;  
+            yield return null;
         }
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 }

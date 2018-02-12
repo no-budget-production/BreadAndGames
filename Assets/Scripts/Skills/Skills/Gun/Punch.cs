@@ -5,7 +5,7 @@ using UnityEngine;
 public class Punch : Skill
 {
 
-    public PunchCollider hitBox;
+    public PunchCollider HitBox;
 
     public float MsBetweenShot;
     public float Damage;
@@ -19,11 +19,11 @@ public class Punch : Skill
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
             //Debug.Log("Punch");
-            foreach (Character e in hitBox.enemies)
+            foreach (Character e in HitBox.Enemies)
             {
                 if (e == null)
                 {
-                    hitBox.enemies.Remove(e);
+                    HitBox.Enemies.Remove(e);
                     return;
                 }
                 e.TakeDamage(Damage);

@@ -13,10 +13,11 @@ public class CameraController : MonoBehaviour
     public float CameraDistanceValue1;
 
     [Header("Privates:")]
-    public Transform[] targetPlayer;
-    public Camera cameraGamerObject;
+    public Transform[] TargetPlayer;
+    public Camera CameraGamerObject;
 
-    private float zoomSpeed;
+    private float ZoomSpeed;
+
     private Vector3 moveVelocity;
     private Vector3 desiredPosition;
 
@@ -27,9 +28,8 @@ public class CameraController : MonoBehaviour
 
     public void Setup(Transform[] player)
     {
-        targetPlayer = player;
+        TargetPlayer = player;
         SetStartPositionAndSize();
-
     }
 
     private void FixedUpdate()
@@ -51,11 +51,11 @@ public class CameraController : MonoBehaviour
 
         int numTargets = 0;
 
-        for (int i = 0; i < targetPlayer.Length; i++)
+        for (int i = 0; i < TargetPlayer.Length; i++)
         {
             //continue;
 
-            averagePos += targetPlayer[i].position;
+            averagePos += TargetPlayer[i].position;
             numTargets++;
         }
 
@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour
     {
         float requiredSize = FindRequiredSize();
 
-        cameraGamerObject.transform.localPosition = new Vector3(0, 0, Mathf.SmoothDamp(cameraGamerObject.transform.localPosition.z, -(requiredSize), ref zoomSpeed, DampTime));
+        CameraGamerObject.transform.localPosition = new Vector3(0, 0, Mathf.SmoothDamp(CameraGamerObject.transform.localPosition.z, -(requiredSize), ref ZoomSpeed, DampTime));
     }
 
     private float FindRequiredSize()
@@ -82,27 +82,27 @@ public class CameraController : MonoBehaviour
 
         float size = 0f;
 
-        for (int i = 0; i < targetPlayer.Length; i++)
+        for (int i = 0; i < TargetPlayer.Length; i++)
         {
-            if (!targetPlayer[i].gameObject.activeSelf)
+            if (!TargetPlayer[i].gameObject.activeSelf)
             {
                 continue;
             }
 
-            Vector3 targetLocalPos = transform.InverseTransformPoint(targetPlayer[i].position);
+            Vector3 targetLocalPos = transform.InverseTransformPoint(TargetPlayer[i].position);
 
             Vector3 desiredPosToTarget = targetLocalPos - desiredLocalPos;
 
             size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y));
 
-            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / cameraGamerObject.aspect);
+            size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / CameraGamerObject.aspect);
         }
 
         size += ScreenEdgeBuffer;
 
         size = Mathf.Max(size, MinSize);
 
-        var distance = size * CameraDistanceValue0 / Mathf.Tan(cameraGamerObject.fieldOfView * CameraDistanceValue1 * Mathf.Deg2Rad);
+        var distance = size * CameraDistanceValue0 / Mathf.Tan(CameraGamerObject.fieldOfView * CameraDistanceValue1 * Mathf.Deg2Rad);
 
         return distance;
     }
@@ -113,6 +113,6 @@ public class CameraController : MonoBehaviour
 
         transform.position = desiredPosition;
 
-        cameraGamerObject.orthographicSize = FindRequiredSize();
+        CameraGamerObject.orthographicSize = FindRequiredSize();
     }
 }

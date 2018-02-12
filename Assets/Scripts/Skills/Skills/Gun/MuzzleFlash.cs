@@ -8,7 +8,7 @@ public class MuzzleFlash : MonoBehaviour
     public Sprite[] FlashSprites;
     public SpriteRenderer[] SpriteRenderers;
 
-    public float flashTime;
+    public float FlashTime;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class MuzzleFlash : MonoBehaviour
             SpriteRenderers[i].sprite = FlashSprites[flashSpriteIndex];
         }
 
-        Invoke("Deactivate", flashTime);
+        Invoke("Deactivate", FlashTime);
     }
 
     void Deactivate()

@@ -15,13 +15,13 @@ public class Gun : Skill
 
     public MuzzleFlash MuzzleFlash;
     public AudioSource GunSound;
-    public AudioClip[] soundClips;
-    public AudioClip soundEmpty;
+    public AudioClip[] SoundClips;
+    public AudioClip SoundEmpty;
 
-    public Transform shell;
-    public Transform shellEjection;
+    public Transform Shell;
+    public Transform ShellEjection;
 
-    float nextShotTime;
+    private float nextShotTime;
 
     private void Start()
     {
@@ -30,8 +30,8 @@ public class Gun : Skill
 
     void playShotSound()
     {
-        int clipNumber = Random.Range(0, soundClips.Length);
-        GunSound.clip = soundClips[clipNumber];
+        int clipNumber = Random.Range(0, SoundClips.Length);
+        GunSound.clip = SoundClips[clipNumber];
         GunSound.Play();
     }
 
@@ -46,7 +46,7 @@ public class Gun : Skill
             Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
             newProjectile.SetSpeed(MuzzleVelocity);
 
-            Instantiate(shell, shellEjection.position, shellEjection.rotation);
+            Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
             playShotSound();
             MuzzleFlash.Activate();
 
@@ -56,7 +56,7 @@ public class Gun : Skill
         }
         else if (Time.time > nextShotTime && base.PlayerController.curActionPoints <= 0)
         {
-            GunSound.PlayOneShot(soundEmpty);
+            GunSound.PlayOneShot(SoundEmpty);
             nextShotTime = Time.time + MsBetweenShot / 150;
         }
     }

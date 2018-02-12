@@ -5,7 +5,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class InstanceFinder : MonoBehaviour
 {
-
     public InstanceRef instanceRef;
 
     public List<string> PlayerSpawnNames;

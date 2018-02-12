@@ -4,15 +4,15 @@ using UnityEngine;
 
 public abstract class Effect : MonoBehaviour
 {
-    float lifetime = 4f;
-    float fadetime = 4f;
+    public float Lifetime = 4f;
+    public float Fadetime = 0.25f;
 
     protected virtual IEnumerator Fade()
     {
-        yield return new WaitForSeconds(lifetime);
+        yield return new WaitForSeconds(Lifetime);
 
         float fadePercent = 0;
-        float fadeSpeed = 1 / fadetime;
+        float fadeSpeed = Fadetime;
 
         Material mat = GetComponent<Renderer>().material;
         Color initialColor = mat.color;

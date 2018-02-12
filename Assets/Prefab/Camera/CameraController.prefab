@@ -220,11 +220,8 @@ MonoBehaviour:
   MinSize: 8
   CameraDistanceValue0: 1.25
   CameraDistanceValue1: 0.5
-  targetPlayer:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  cameraGamerObject: {fileID: 20324848655225292}
+  TargetPlayer: []
+  CameraGamerObject: {fileID: 20324848655225292}
 --- !u!124 &124544949597050654
 Behaviour:
   m_ObjectHideFlags: 1
