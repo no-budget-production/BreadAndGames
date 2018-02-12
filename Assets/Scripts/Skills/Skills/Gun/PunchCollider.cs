@@ -28,7 +28,7 @@ public class PunchCollider : MonoBehaviour
         var temp = other.GetComponent<Character>();
         if (temp == null)
             return;
-        if ((temp.ThisUnityTypeFlags & ThisUnityTypeFlags) != 0)
+        if (FlagsHelper.HasUnitTypes(temp.ThisUnityTypeFlags, ThisUnityTypeFlags))
         {
             enemies.Add(temp);
         }
@@ -39,7 +39,7 @@ public class PunchCollider : MonoBehaviour
         var temp = other.GetComponent<Character>();
         if (temp == null)
             return;
-        if ((temp.ThisUnityTypeFlags & ThisUnityTypeFlags) != 0)
+        if (FlagsHelper.HasUnitTypes(temp.ThisUnityTypeFlags, ThisUnityTypeFlags))
         {
             enemies.Add(temp);
         }

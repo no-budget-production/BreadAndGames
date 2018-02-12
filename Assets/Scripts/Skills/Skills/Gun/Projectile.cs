@@ -21,7 +21,7 @@ public class Projectile : Effect
     }
 
     [EnumFlagsAttribute]
-    public UnitTypes ThisUnityTypeFlags;
+    public UnitTypesFlags ThisUnityTypeFlags;
 
     public float Speed = 10;
     public float Damage = 1;
@@ -59,13 +59,14 @@ public class Projectile : Effect
 
     void OnHitObject(RaycastHit hit)
     {
-        //Debug.Log(hit.collider.gameObject.name);
+        Debug.Log(hit.collider.gameObject.name);
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
-            if ((damageableObject.ThisUnityTypeFlags & ThisUnityTypeFlags) != 0)
+            if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
             {
                 damageableObject.TakeDamage(Damage);
+                Debug.Log("TakeDamage");
             }
         }
     }

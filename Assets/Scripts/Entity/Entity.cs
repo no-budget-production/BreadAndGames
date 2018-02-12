@@ -20,7 +20,7 @@ public class Entity : MonoBehaviour
     }
 
     [EnumFlagsAttribute]
-    public UnitTypes ThisUnityTypeFlags;
+    public UnitTypesFlags ThisUnityTypeFlags;
 
     //public UnitTypesFlags UnityTypeFlags;
     //public UnitTypes UnitType;
@@ -41,13 +41,13 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        Debug.Log("ThisUnityTypeFlags = " + (int)(ThisUnityTypeFlags));
+        //Debug.Log("ThisUnityTypeFlags = " + (int)(ThisUnityTypeFlags));
 
-        Debug.Log("UnitTypes.Invurnable = " + (int)(UnitTypes.Invurnable));
-        //if (((ThisUnityTypeFlags | UnitTypes.Invurnable) != 0))
-        if (ThisUnityTypeFlags >= UnitTypes.Invurnable)
+        Debug.Log("EntityDamage");
+        if (FlagsHelper.HasUnitTypes(ThisUnityTypeFlags, UnitTypes.Invurnable))
         {
             //Debug.Log("ThisUnityTypeFlags | UnitTypes.Invurnable = " + (int)(ThisUnityTypeFlags | UnitTypes.Invurnable));
+            Debug.Log("Invurnable");
             return;
         }
 
