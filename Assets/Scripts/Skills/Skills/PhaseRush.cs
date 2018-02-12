@@ -14,6 +14,8 @@ public class PhaseRush : Skill
     public float RechargeTime;
     public float MoveSpeedBonus;
 
+    public ParticleSystem thunder;
+
     float nextShotTime;
 
     public int Dummy;
@@ -28,7 +30,8 @@ public class PhaseRush : Skill
         if (!isPhaseRushing)
         {
             if (Charges > 0)
-            {
+            { 
+                thunder.Play();
                 if (Time.time > nextShotTime)
                 {
                     if (true)
