@@ -30,30 +30,38 @@ public class PhaseRush : Skill
         if (!isPhaseRushing)
         {
             if (Charges > 0)
-            { 
-                thunder.Play();
+            {
                 if (Time.time > nextShotTime)
                 {
-                    if (true)
-                    {
-                        StopCoroutine("DurationTimer");
-                        StartCoroutine(DurationTimer());
-                    }
+                    SkillEvents();
+
                 }
             }
         }
     }
 
-    public IEnumerator DurationTimer()
-    {
-        //Debug.Log("PhaseRush_On");
-        isPhaseRushing = true;
-        nextShotTime = Time.time + ButtonCD;
 
-        base.PlayerController.moveSpeed += MoveSpeedBonus;
-        Player.layer = LayerMask.NameToLayer("Ignore Raycast");
+    private void SkillEvents()
+    {
+        isPhaseRushing = true;
         Charges--;
 
+        nextShotTime = Time.time + ButtonCD;
+
+        thunder.Play();
+
+        base.SpawnBuff();
+
+        StopCoroutine("DurationTimer");
+        StartCoroutine(DurationTimer());
+
+        base.PlayerController.canWalk = false;
+        base.PlayerController.moveSpeed += MoveSpeedBonus;
+        Player.layer = LayerMask.NameToLayer("Ignore Raycast");
+    }
+
+    public IEnumerator DurationTimer()
+    {
         yield return new WaitForSeconds(Duration);
 
         base.PlayerController.moveSpeed -= MoveSpeedBonus;

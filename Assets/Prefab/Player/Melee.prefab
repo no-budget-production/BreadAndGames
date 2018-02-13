@@ -1123,6 +1123,9 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 1
+  canWalk: 1
+  canUseRightStick: 0
+  canUseSkills: 1
   isWalking: 0
   isUsingRightStick: 0
   PlayerSkills:
@@ -1135,6 +1138,7 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df, type: 2}
   ActiveSkills: []
+  ActiveBuffs: []
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100

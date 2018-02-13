@@ -241,12 +241,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d97b48158739cc489277c091f08c350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 0
-  UsedCoolDownTypes: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 114045349576357292, guid: 6c38be41e874d1040b64ae4540a35231, type: 2}
+  curBuff: {fileID: 0}
+  BuffDuration: 1
+  cantStack: 1
   Charges: 3
   MaxCharges: 3
   ButtonCD: 0.1

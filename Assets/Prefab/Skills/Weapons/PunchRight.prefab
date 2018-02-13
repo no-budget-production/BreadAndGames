@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies: []
-  ThisUnityTypeFlags: 6
+  ThisUnityTypeFlags: 3
 --- !u!114 &114601730004366300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisCoolDownType: 0
+  UsedCoolDownTypes: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
@@ -118,3 +119,4 @@ MonoBehaviour:
   MsBetweenShot: 300
   Damage: 51
   chargeTime: 3
+  cur_chargeTime: 0

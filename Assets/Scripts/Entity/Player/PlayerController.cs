@@ -27,12 +27,18 @@ public class PlayerController : Character
 
     public string PlayerNumber;
 
+    public bool canWalk = true;
+    public bool canUseRightStick = true;
+    public bool canUseSkills = true;
+
     public bool isWalking;
     public bool isUsingRightStick;
 
     public ButtonConfig[] PlayerSkills;
 
     public Skill[] ActiveSkills;
+
+    public List<Buff> ActiveBuffs;
 
     public bool isInAction;
     public int ActionPoints;
@@ -129,65 +135,84 @@ public class PlayerController : Character
         float HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
         float VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
 
-        //if (Horizontal_PX != 0 || Vertical_PX != 0 || HorizontalLook_PX != 0 || VerticalLook_PX != 0)
+        moveVector = new Vector3(0, 0, 0);
+        lookVector = new Vector3(0, 0, 0);
+
+        if (canWalk)
         {
-            moveVector = new Vector3(0, 0, 0);
-            lookVector = new Vector3(0, 0, 0);
-
-            // XBox (left stick) movement input
-            moveVector.x += Horizontal_PX * acceleration;
-            temporaryVector.x = Horizontal_PX;
-            moveVector.z += Vertical_PX * acceleration;
-            temporaryVector.z = Vertical_PX;
-
-            moveVector = moveVector.normalized * 0.5f;
-            moveVector = moveVector * moveSpeed * Time.deltaTime;
-            moveVector = inputRotation * moveVector;
-        }
-
-        {
-            // XBox (right stick) look input
-            lookVector.z += Input.GetAxis(thisPlayerString[2]);
-            temporaryLookVector.x = Input.GetAxis(thisPlayerString[2]);
-            lookVector.x += Input.GetAxis(thisPlayerString[3]);
-            temporaryLookVector.z = Input.GetAxis(thisPlayerString[3]);
-
-            lookVector = inputRotation * lookVector;
-
-            if (lookVector.magnitude < deadzone)
+            if (((Mathf.Abs(Horizontal_PX)) > deadZones[0]) || ((Mathf.Abs(Vertical_PX)) > deadZones[1]))
             {
-                lookVector = Vector3.zero;
-            }
+                isWalking = true;
 
-            if (lookVector.x != 0 || lookVector.z != 0)
+                // XBox (left stick) movement input
+                moveVector.x += Horizontal_PX * acceleration;
+                temporaryVector.x = Horizontal_PX;
+                moveVector.z += Vertical_PX * acceleration;
+                temporaryVector.z = Vertical_PX;
+
+                moveVector = moveVector.normalized * 0.5f;
+                moveVector = moveVector * moveSpeed * Time.deltaTime;
+                moveVector = inputRotation * moveVector;
+            }
+            else
             {
-                transform.rotation = Quaternion.LookRotation(lookVector);
+                isWalking = false;
             }
-            else if (moveVector.x != 0 || moveVector.z != 0)
+        }
+
+
+        if (canUseRightStick)
+        {
+            if ((Mathf.Abs(HorizontalLook_PX) != 0) || ((Mathf.Abs(VerticalLook_PX) != 0)))
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
+                isUsingRightStick = true;
+
+                // XBox (right stick) look input
+                lookVector.z += Input.GetAxis(thisPlayerString[2]);
+                temporaryLookVector.x = Input.GetAxis(thisPlayerString[2]);
+                lookVector.x += Input.GetAxis(thisPlayerString[3]);
+                temporaryLookVector.z = Input.GetAxis(thisPlayerString[3]);
+
+                lookVector = inputRotation * lookVector;
+
+                if (lookVector.magnitude < deadzone)
+                {
+                    lookVector = Vector3.zero;
+                }
+
             }
-
+            else
+            {
+                isUsingRightStick = false;
+            }
         }
 
-        if (Horizontal_PX != 0 || Vertical_PX != 0)
-        {
-            isWalking = true;
-        }
-        else
-        {
-            isWalking = false;
-        }
+        //if (Horizontal_PX != 0 || Vertical_PX != 0)
+        //{
+        //    isWalking = true;
+        //}
+        //else
+        //{
+        //    isWalking = false;
+        //}
 
-        if (HorizontalLook_PX != 0 || VerticalLook_PX != 0)
-        {
-            isUsingRightStick = true;
-        }
-        else
-        {
-            isUsingRightStick = false;
-        }
+        //if (HorizontalLook_PX != 0 || VerticalLook_PX != 0)
+        //{
+        //    isUsingRightStick = true;
+        //}
+        //else
+        //{
+        //    isUsingRightStick = false;
+        //}
 
+        if (lookVector.x != 0 || lookVector.z != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(lookVector);
+        }
+        else if (moveVector.x != 0 || moveVector.z != 0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
+        }
 
         //moves the character
         if (isWalking)
@@ -199,41 +224,41 @@ public class PlayerController : Character
 
     private void CheckButtonInput()
     {
-        int tempIJ = 0;
-        for (int i = 0; i < PlayerSkills.Length; i++)
+        if (canUseSkills)
         {
-            bool tempIsShooting = false;
-            for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
+            int tempIJ = 0;
+            for (int i = 0; i < PlayerSkills.Length; i++)
             {
-
-                if (areButtons[tempIJ])
+                bool tempIsShooting = false;
+                for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
                 {
-                    if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
+                    if (areButtons[tempIJ])
                     {
-                        ActiveSkills[i].Shoot();
-                        ActiveSkills[i].isFiring = true;
-                        tempIsShooting = true;
-                        //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
+                        {
+                            ActiveSkills[i].Shoot();
+                            ActiveSkills[i].isFiring = true;
+                            tempIsShooting = true;
+                            //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                        }
                     }
+                    else
+                    {
+                        if (Mathf.Abs(Input.GetAxis(thisPlayerString[usedButtons[tempIJ]])) > deadZones[tempIJ])
+                        {
+                            ActiveSkills[i].Shoot();
+                            ActiveSkills[i].isFiring = true;
+                            tempIsShooting = true;
+                            //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                        }
+                    }
+                    tempIJ++;
                 }
-                else
+                if (!tempIsShooting)
                 {
-                    if (Mathf.Abs(Input.GetAxis(thisPlayerString[usedButtons[tempIJ]])) > deadZones[tempIJ])
-                    {
-                        ActiveSkills[i].Shoot();
-                        ActiveSkills[i].isFiring = true;
-                        tempIsShooting = true;
-                        //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
-                    }
+                    ActiveSkills[i].isFiring = false;
+                    ActiveSkills[i].StopShoot();
                 }
-
-
-                tempIJ++;
-            }
-            if (!tempIsShooting)
-            {
-                ActiveSkills[i].isFiring = false;
-                ActiveSkills[i].StopShoot();
             }
         }
     }

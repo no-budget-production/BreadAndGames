@@ -46,6 +46,24 @@ public enum CooldownTypeFlags
     CoolDown3 = 1 << CooldownType.CoolDown3
 }
 
+public enum BuffType
+{
+    CanWalk,
+    CanUseRightStick,
+    CanUseSkills,
+    _Length,
+    _Invalid = -1
+}
+
+[System.Flags]
+public enum BuffTypeFlags
+{
+    canWalk = 1 << BuffType.CanWalk,
+    canUseRightStick = 1 << BuffType.CanUseRightStick,
+    canUseSkills = 1 << BuffType.CanUseSkills
+}
+
+
 class FlagsHelper
 {
     public static bool HasUnitTypes(UnitTypesFlags flags, UnitTypes enu)

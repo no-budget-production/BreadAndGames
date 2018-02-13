@@ -1890,7 +1890,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.002983866, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
+  m_LocalRotation: {x: 0.002983864, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -3681,6 +3681,9 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 2
+  canWalk: 1
+  canUseRightStick: 1
+  canUseSkills: 1
   isWalking: 0
   isUsingRightStick: 0
   PlayerSkills:
@@ -3697,6 +3700,7 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114623924717632030, guid: ced779f6af869e948820efc572971b46, type: 2}
   ActiveSkills: []
+  ActiveBuffs: []
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100

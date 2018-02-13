@@ -21,7 +21,7 @@ public class PunchCollider : MonoBehaviour
     }
 
     [EnumFlagsAttribute]
-    public UnitTypes ThisUnityTypeFlags;
+    public UnitTypesFlags ThisUnityTypeFlags;
 
     void OnTriggerEnter(Collider other)
     {

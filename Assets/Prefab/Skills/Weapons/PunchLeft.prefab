@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies: []
-  ThisUnityTypeFlags: 6
+  ThisUnityTypeFlags: 3
 --- !u!114 &114777490603000294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,11 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 0
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 0}
+  curBuff: {fileID: 0}
+  BuffDuration: 0
   HitBox: {fileID: 114534373570059676}
   MsBetweenShot: 100
   Damage: 17
+  chargeTime: 0
+  cur_chargeTime: 0
