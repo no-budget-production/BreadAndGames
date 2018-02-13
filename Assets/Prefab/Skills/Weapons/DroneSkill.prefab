@@ -51,14 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff266f941f512b41bb66862bbad224c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 0
-  UsedCoolDownTypes: 
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 0}
+  curBuff: {fileID: 0}
+  BuffDuration: 0
+  cantStack: 0
   controller: {fileID: 54882628797789960, guid: 61df665ff3d764c499e21c7de5f4973e,
     type: 2}
-  speed: 10
-  deceleration: 0.1
+  acceleration: 10000
+  deceleration: 120
+  maxSpeed: 8
   movement: {x: 0, y: 0, z: 0}
