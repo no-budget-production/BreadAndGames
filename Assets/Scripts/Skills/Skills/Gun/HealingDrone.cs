@@ -8,10 +8,11 @@ public class Boundary
     public float xMin, xMax, zMin, zMax;
 }
 
-public class DroneMovement : Skill {
-
-
+public class HealingDrone : Skill
+{
     public Rigidbody controller;
+    public DroneController DroneController;
+
 
     private float HorizontalLook_PX;
     private float VerticalLook_PX;
@@ -22,9 +23,13 @@ public class DroneMovement : Skill {
 
     public Vector3 movement;
 
+    public Transform BeamOrigin;
+
     void Start()
     {
-        controller = Instantiate(controller, transform.position + controller.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        DroneController = Instantiate(DroneController, transform.position + DroneController.transform.position, Quaternion.identity);
+        controller = DroneController.GetComponent<Rigidbody>();
+        BeamOrigin = DroneController.BeamOrigin;
     }
 
     public override void Shoot()
@@ -41,15 +46,17 @@ public class DroneMovement : Skill {
 
         if (HorizontalLook_PX == 0 && VerticalLook_PX == 0)
         {
-            if (controller.velocity.magnitude > 0.2f) controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
-            else controller.velocity = Vector3.zero;
+            if (controller.velocity.magnitude > 0.2f)
+                controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
+            else
+                controller.velocity = Vector3.zero;
         }
         else
         {
             controller.AddForce(movement * acceleration * Time.deltaTime);
         }
         controller.velocity = Vector3.ClampMagnitude(controller.velocity, maxSpeed);
-        Debug.Log(controller.velocity.magnitude);
+        //Debug.Log(controller.velocity.magnitude);
     }
 
 }

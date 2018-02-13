@@ -11,6 +11,7 @@ public class FPSDisplay : MonoBehaviour
     float msec;
     float fps;
     string text;
+    int enemies;
 
     private void Awake()
     {
@@ -31,8 +32,9 @@ public class FPSDisplay : MonoBehaviour
         rect = new Rect(0, 0, w, h * 2 / 100);
         msec = deltaTime * 1000.0f;
         fps = 1.0f / deltaTime;
+        enemies = GameManager.Instance.SwarmController.Count;
 
-        text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+        text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies", msec, fps, enemies);
 
         style.fontSize = h * 2 / 100;
         GUI.Label(rect, text, style);

@@ -31,6 +31,8 @@ public class Skill : MonoBehaviour
     //}
 
     //no G.O.
+    public int SkillID;
+
     public GameObject Player;
     public PlayerController PlayerController;
 
@@ -62,7 +64,6 @@ public class Skill : MonoBehaviour
 
         if (cantStack)
         {
-
             Debug.Log("CantStack");
 
             for (int i = 0; i < PlayerController.ActiveBuffs.Count; i++)

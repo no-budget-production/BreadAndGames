@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4775129073157174}
   - component: {fileID: 114940261459285084}
   m_Layer: 0
-  m_Name: DroneSkill
+  m_Name: HealingDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436243808780710}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff266f941f512b41bb66862bbad224c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkillID: 1
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
@@ -59,9 +60,11 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  controller: {fileID: 54882628797789960, guid: 61df665ff3d764c499e21c7de5f4973e,
+  controller: {fileID: 0}
+  DroneController: {fileID: 114068438227607296, guid: 61df665ff3d764c499e21c7de5f4973e,
     type: 2}
   acceleration: 10000
   deceleration: 120
   maxSpeed: 8
   movement: {x: 0, y: 0, z: 0}
+  BeamOrigin: {fileID: 0}

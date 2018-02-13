@@ -45,6 +45,7 @@ public class PlayerController : Character
     public int curActionPoints;
 
     public Transform SkillSpawn;
+    public Transform TakeHitPoint;
 
     public float ActionCD;
 

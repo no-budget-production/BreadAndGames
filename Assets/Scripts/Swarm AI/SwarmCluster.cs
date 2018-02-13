@@ -43,6 +43,9 @@ public class SwarmCluster : MonoBehaviour
         GameObject TempSpawnHandler;
         TempSpawnHandler = Instantiate(PrefabToSpawn, transform.position, transform.rotation) as GameObject;
         TempSpawnHandler.transform.parent = this.transform;
+
+        GameManager.Instance.SwarmController.Add(TempSpawnHandler);
+
         GetAllEnemysInCluster();
 
         SphereCollider hitbox = gameObject.AddComponent<SphereCollider>() as SphereCollider;
@@ -135,7 +138,17 @@ public class SwarmCluster : MonoBehaviour
         {
             if (SwarmControllerScripts[i] != null)
             {
-                SwarmControllerScripts[i].MoveToDestination(Waypoints[i]);
+                int tempI;
+                if (i > 14)
+                {
+                    tempI = 14;
+                    SwarmControllerScripts[i].MoveToDestination(Waypoints[tempI]);
+                }
+                else
+                {
+                    SwarmControllerScripts[i].MoveToDestination(Waypoints[i]);
+                }
+
             }
         }
     }
@@ -144,6 +157,11 @@ public class SwarmCluster : MonoBehaviour
     {
         for (int i = 0; i < AllEnemysInCluster.Count; i++)
         {
+            if (AllEnemysInCluster[i] == null)
+            {
+                AllEnemysInCluster.Remove(AllEnemysInCluster[i]);
+                i--;
+            }
             AllEnemysInCluster[i].transform.parent = OpponentCluster.transform;
         }
         OpponentClusterScript.GetAllEnemysInCluster();

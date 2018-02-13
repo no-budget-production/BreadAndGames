@@ -81,15 +81,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de22b2197f936d4bb70ef6eedcda7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 2
+  SkillID: 0
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 114001772017207628, guid: dabdf75f6cfa9744a8d78d7c5a481013, type: 2}
+  curBuff: {fileID: 0}
+  BuffDuration: 0.02
+  cantStack: 0
   LineRenderer: {fileID: 120803723628524548}
   CurrentTarget: {fileID: 0}
   BeamOrigin: {fileID: 4598409900153212}
   TargetType: 0
+  SkillRequired: {fileID: 114940261459285084, guid: a094c9a21824ee74ea1ff86bb556bd62,
+    type: 2}
+  BuffSynergy: {fileID: 114618702744425574, guid: e18dec1d405d3cc4994c437e53085d55,
+    type: 2}
   HealAmount: 2
 --- !u!120 &120803723628524548
 LineRenderer:
@@ -105,7 +113,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: dfdaf181ea92369458a2feccdeabfd87, type: 2}
+  - {fileID: 2100000, guid: 86184aa5e8c2f254088847c101fa07ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

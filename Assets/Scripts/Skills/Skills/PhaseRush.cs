@@ -56,6 +56,7 @@ public class PhaseRush : Skill
         StartCoroutine(DurationTimer());
 
         base.PlayerController.canWalk = false;
+
         base.PlayerController.moveSpeed += MoveSpeedBonus;
         Player.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
