@@ -16,8 +16,9 @@ public class DroneMovement : Skill {
     private float HorizontalLook_PX;
     private float VerticalLook_PX;
 
-    public float acceleration = 100.0F;
-    public float deceleration = 150.0F;
+    public float acceleration = 1000.0F;
+    public float deceleration = 1.0F;
+    public float maxSpeed = 5;
 
     public Vector3 movement;
 
@@ -40,17 +41,15 @@ public class DroneMovement : Skill {
 
         if (HorizontalLook_PX == 0 && VerticalLook_PX == 0)
         {
-            if (controller.velocity.magnitude > 0.1f) controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
+            if (controller.velocity.magnitude > 0.2f) controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
             else controller.velocity = Vector3.zero;
-                
-
         }
         else
         {
             controller.AddForce(movement * acceleration * Time.deltaTime);
         }
-
-        Debug.Log(controller.velocity);
+        controller.velocity = Vector3.ClampMagnitude(controller.velocity, maxSpeed);
+        Debug.Log(controller.velocity.magnitude);
     }
 
 }
