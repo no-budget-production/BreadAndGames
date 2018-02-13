@@ -2,37 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Boundary
+{
+    public float xMin, xMax, zMin, zMax;
+}
+
 public class DroneMovement : Skill {
 
-    public float movementSpeed;
-    public CharacterController controller;
-    public float value = 7.08f;
-    private float Horizontal_PX;
-    private float Vertical_PX;
+
+    public Rigidbody controller;
+
     private float HorizontalLook_PX;
     private float VerticalLook_PX;
-    private Vector3 moveDirection = Vector3.zero;
-    public float speed = 6.0F;
+
+    public float acceleration = 100.0F;
+    public float deceleration = 150.0F;
+
+    public Vector3 movement;
 
     void Start()
     {
-        controller = Instantiate(controller, transform.position + controller.transform.position, Quaternion.identity).GetComponent<CharacterController>();
+        controller = Instantiate(controller, transform.position + controller.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
     }
 
     public override void Shoot()
     {
+
+    }
+
+    void Update()
+    {
         HorizontalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[2]);
         VerticalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[3]);
-        Debug.Log("HorizontalLook_PX: " + HorizontalLook_PX);
-        Debug.Log("VerticalLook_PX: " + VerticalLook_PX);
-        moveDirection = new Vector3(HorizontalLook_PX, 0, VerticalLook_PX);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
 
-        controller.Move(moveDirection * Time.deltaTime);
+        movement = new Vector3(VerticalLook_PX, 0.0f, HorizontalLook_PX).normalized;
 
-        //controller.Move(new Vector3(HorizontalLook_PX, 1f, VerticalLook_PX));// * 0.09 * HorizontalLook_PX
-       // controller.Move(controller.transform.right);// * 0.09 * HorizontalLook_PX
+        if (HorizontalLook_PX == 0 && VerticalLook_PX == 0)
+        {
+            if (controller.velocity.magnitude > 0.1f) controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
+            else controller.velocity = Vector3.zero;
+                
+
+        }
+        else
+        {
+            controller.AddForce(movement * acceleration * Time.deltaTime);
+        }
+
+        Debug.Log(controller.velocity);
     }
 
 }

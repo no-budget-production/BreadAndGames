@@ -140,7 +140,7 @@ public class PlayerController : Character
             moveVector.z += Vertical_PX * acceleration;
             temporaryVector.z = Vertical_PX;
 
-            moveVector = Vector3.ClampMagnitude(moveVector, 0.5f);
+            moveVector = moveVector.normalized * 0.5f;
             moveVector = moveVector * moveSpeed * Time.deltaTime;
             moveVector = inputRotation * moveVector;
         }
