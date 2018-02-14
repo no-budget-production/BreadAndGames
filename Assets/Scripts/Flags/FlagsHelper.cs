@@ -17,11 +17,27 @@ public enum UnitTypesFlags
     Invurnable = 1 << UnitTypes.Invurnable,
 }
 
+public enum DamageType
+{
+    Melee,
+    Ranged,
+    _Length
+}
+
+[System.Flags]
+public enum DamageTypeFlags
+{
+    Melee = 1 << DamageType.Melee,
+    Ranged = 1 << DamageType.Ranged
+}
+
+
 public enum PlayerType
 {
     Melee,
     Shooter,
-    Support
+    Support,
+    _Length
 }
 
 [System.Flags]
@@ -32,19 +48,20 @@ public enum PlayerTypeFlags
     Support = 1 << PlayerType.Support,
 }
 
-public enum CooldownType
-{
-    CoolDown0, CoolDown1, CoolDown2, CoolDown3
-}
 
-[System.Flags]
-public enum CooldownTypeFlags
-{
-    CoolDown0 = 1 << CooldownType.CoolDown0,
-    CoolDown1 = 1 << CooldownType.CoolDown1,
-    CoolDown2 = 1 << CooldownType.CoolDown2,
-    CoolDown3 = 1 << CooldownType.CoolDown3
-}
+//public enum CooldownType
+//{
+//    CoolDown0, CoolDown1, CoolDown2, CoolDown3
+//}
+
+//[System.Flags]
+//public enum CooldownTypeFlags
+//{
+//    CoolDown0 = 1 << CooldownType.CoolDown0,
+//    CoolDown1 = 1 << CooldownType.CoolDown1,
+//    CoolDown2 = 1 << CooldownType.CoolDown2,
+//    CoolDown3 = 1 << CooldownType.CoolDown3
+//}
 
 public enum BuffType
 {

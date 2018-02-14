@@ -41,7 +41,10 @@ public class Gun : Skill
         {
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
-            Quaternion accuracy = Quaternion.Euler(Random.Range(-AccuracyHorizontal, AccuracyHorizontal), Random.Range(-AccuracyVertical, AccuracyVertical), 0);
+            float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * base.PlayerController.AccuracyMultiplicator, 0);
+            float tempAccuracyVertical = Mathf.Max(-AccuracyVertical * base.PlayerController.AccuracyMultiplicator, 0);
+
+            Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
 
             Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
             newProjectile.SetSpeed(MuzzleVelocity);

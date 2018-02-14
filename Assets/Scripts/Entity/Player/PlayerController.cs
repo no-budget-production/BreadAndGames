@@ -27,6 +27,14 @@ public class PlayerController : Character
 
     public string PlayerNumber;
 
+    public float MeleeDamage = 1f;
+    public float RangeDamage = 1f;
+    public float Accuracy = 1f;
+
+    public float MeleeDamageMultiplicator = 1f;
+    public float RangeDamageMultiplicator = 1f;
+    public float AccuracyMultiplicator = 1f;
+
     public bool canWalk = true;
     public bool canUseRightStick = true;
     public bool canUseSkills = true;

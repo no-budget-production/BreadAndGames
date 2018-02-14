@@ -378,12 +378,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099996455352286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 15372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4309679035686028}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4465291422698354
 Transform:
   m_ObjectHideFlags: 1
@@ -802,9 +802,9 @@ Light:
   m_GameObject: {fileID: 1099996455352286}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 3
   m_Color: {r: 0.74264705, g: 0.5935151, b: 0.2020437, a: 1}
-  m_Intensity: 0.42
+  m_Intensity: 0.78
   m_Range: 15.2
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -817,7 +817,7 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
+  m_DrawHalo: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -841,15 +841,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 0
-  UsedCoolDownTypes: 
+  SkillID: 0
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 0}
+  curBuff: {fileID: 0}
+  BuffDuration: 0
+  cantStack: 0
   HitBox: {fileID: 114224517553287476}
   MsBetweenShot: 300
   Damage: 51
+  chargeTime: 0
+  cur_chargeTime: 0
 --- !u!114 &114054656930947626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -882,19 +887,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731b72ce76e2c7040906b00416bbd30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 0
-  UsedCoolDownTypes: 
+  SkillID: 0
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 0}
+  curBuff: {fileID: 0}
+  BuffDuration: 0
+  cantStack: 0
   Muzzle: {fileID: 4316203229679068}
   Projectile: {fileID: 114397302490237756, guid: f02f7399b72f0de4482dcbedb5028193,
     type: 2}
   MsBetweenShot: 50
   MuzzleVelocity: 35
-  AccuracyHorizontal: 0
-  AccuracyVertical: 0
+  AccuracyHorizontal: 15
+  AccuracyVertical: 15
   ActionPointsCost: 2
   MuzzleFlash: {fileID: 114054656930947626}
   GunSound: {fileID: 82542246519308962}
@@ -957,15 +965,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCoolDownType: 0
-  UsedCoolDownTypes: 
+  SkillID: 0
   Player: {fileID: 0}
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  UsedBuff: {fileID: 0}
+  curBuff: {fileID: 0}
+  BuffDuration: 0
+  cantStack: 0
   HitBox: {fileID: 114331974057728756}
   MsBetweenShot: 100
   Damage: 17
+  chargeTime: 0
+  cur_chargeTime: 0
 --- !u!114 &114741920369432396
 MonoBehaviour:
   m_ObjectHideFlags: 1

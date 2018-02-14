@@ -15,6 +15,8 @@ public class Healing : Skill
     public Buff BuffSynergy;
 
     public float HealAmount = 2.0f;
+    public float MaxRange;
+
     private float healProcentage;
 
     Vector3 direction;
@@ -50,7 +52,7 @@ public class Healing : Skill
 
             if (temp == null)
             {
-                Debug.Log("DoneMovementNotFound");
+                //Debug.Log("DoneMovementNotFound");
                 return;
             }
 
@@ -58,7 +60,7 @@ public class Healing : Skill
         }
         else
         {
-            Debug.Log("DroneSkillNotFound");
+            //Debug.Log("DroneSkillNotFound");
         }
     }
 
@@ -74,6 +76,11 @@ public class Healing : Skill
         base.PlayerController.isInAction = true;
 
         LineRenderer.enabled = false;
+
+        if (!InRange())
+        {
+            return;
+        }
 
         LockOn();
 
@@ -121,6 +128,23 @@ public class Healing : Skill
         DroneOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
+    bool InRange()
+    {
+        //Debug.Log(Vector3.Distance(CurrentTargetTransform.position, DroneOrigin.position));
+        if (Vector3.Distance(CurrentTargetTransform.position, DroneOrigin.position) > MaxRange)
+        {
+            //Debug.Log("Out of Range");
+            return false;
+
+        }
+        else
+        {
+            //Debug.Log("In of Range");
+            return true;
+        }
+
+    }
+
     //bool firstHeal;
     //bool firstFullHeal;
 
@@ -143,7 +167,7 @@ public class Healing : Skill
 
             if (buffSynergyPresent)
             {
-                Debug.Log("SynergyFound: " + base.UsedBuff.name);
+                //Debug.Log("SynergyFound: " + base.UsedBuff.name);
 
                 healableObject.GetHealth(healProcentage * 0.5f * Time.deltaTime);
 
@@ -174,7 +198,7 @@ public class Healing : Skill
             }
             else
             {
-                Debug.Log("SynergyNotFound: " + base.UsedBuff.name);
+                //Debug.Log("SynergyNotFound: " + base.UsedBuff.name);
                 healableObject.GetHealth(healProcentage * Time.deltaTime);
 
                 //if (!firstHeal)
@@ -204,11 +228,11 @@ public class Healing : Skill
 
 
         }
-        else
-        {
-            Debug.Log("DEADEND");
-            //healableObject.GetHealth(HealAmount);
-        }
+        //else
+        //{
+        //    Debug.Log("DEADEND");
+        //    healableObject.GetHealth(HealAmount);
+        //}
     }
 }
 

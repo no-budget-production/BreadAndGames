@@ -92,13 +92,16 @@ MonoBehaviour:
   cantStack: 0
   LineRenderer: {fileID: 120803723628524548}
   CurrentTarget: {fileID: 0}
+  CurrentTargetTransform: {fileID: 0}
   BeamOrigin: {fileID: 4598409900153212}
+  DroneOrigin: {fileID: 0}
   TargetType: 0
   SkillRequired: {fileID: 114940261459285084, guid: a094c9a21824ee74ea1ff86bb556bd62,
     type: 2}
   BuffSynergy: {fileID: 114618702744425574, guid: e18dec1d405d3cc4994c437e53085d55,
     type: 2}
-  HealAmount: 2
+  HealAmount: 20
+  MaxRange: 13
 --- !u!120 &120803723628524548
 LineRenderer:
   m_ObjectHideFlags: 1
