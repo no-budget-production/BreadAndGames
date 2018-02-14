@@ -26,7 +26,7 @@ public class HookLeader : MonoBehaviour
 	public GameObject hookNodePrefab;							// Node Prefab
 	public GameObject hookPrefab;								// Hook Prefab
 	private GameObject hook;									// Hook gameObject
-	private CharacterController ownerController;			// Owner controller
+	private BaseCharacterController ownerController;			// Owner controller
 	private Transform hookStartTransform;						// The transform of hook start 
 
 	public float hookBondDistance = 0.25f;						// Distance between hook and last hook node.
@@ -191,5 +191,136 @@ public class HookLeader : MonoBehaviour
 		}
 	}
 
+	private Transform LastNode ()
+	{ 		
+		if (nodes.Count > 0) {
+			return nodes [nodes.Count - 1].transform;
+		} else {
+			return mTransform;
+		}
+	}
 	
+	private Transform ownerTransform;
+	public void Init (Transform shootPointTransform)
+	{
+		if (updateOrderSpeed > minUpdateOrderNum) {
+			updateOrderSpeed = minUpdateOrderNum;
+			//throw new System.ArgumentException("updateOrderSpeed can not be greater than minUpdateOrderNum");
+		} 
+		
+		mTransform = transform;
+		this.ownerTransform = shootPointTransform.parent;//ownerTransform;
+		
+		ownerController = ownerTransform.gameObject.GetComponent<BaseCharacterController> ();
+		hookStartTransform = shootPointTransform;//ownerTransform.gameObject.transform.FindChild("HookShootPoint");
+			
+		// Instantiate hook
+		Vector3 position = nextPosition(mTransform.transform);
+		Quaternion rotation = nextRotation(mTransform.transform, position);
+		hook = Instantiate (hookPrefab, position, rotation) as GameObject;
+		Hook hookScript = hook.GetComponent<Hook> ();
+		hookScript.setOwnerTrans (ownerTransform);
+		hookScript.hookEventListener.StartTakeBackHook += StartTakeBackHook;
+		hookScript.hookEventListener.HookSomething += HookSomething;
+
+		Physics.IgnoreCollision (hook.GetComponent<Collider>(), ownerTransform.gameObject.GetComponent<Collider>());
+
+		// Slow down owner speed
+		ownerController.SlowDownMovingSpeed ();
+	}
+	
+	void Awake ()
+	{
+		lineRenderer = GetComponent<LineRenderer> ();
+		if(lineRenderer)
+			lineRenderer.enabled = false;
+	}
+	
+	void Start ()
+	{
+		
+	}
+	
+	void OnDestroy ()
+	{
+		// Recover owner speed
+		ownerController.NormalMovingSpeed ();
+		// Owner can be controlled
+		ownerController.Control(true);
+	}
+
+	void FixedUpdate ()
+	{
+				
+		HookLogic ();
+
+		// update hook nodes transform
+		for (int i = 0; i < nodes.Count; i++) {
+			FollowPrev (i == 0 ? mTransform : nodes [i - 1].transform, nodes [i].transform);
+		}
+		
+		// update hook transform
+		if (hook != null) {
+			HookFollowLast(LastNode (), hook.transform);
+		}
+		
+		// Renderer hook path
+		if(lineRenderer && nodes.Count >= 5){
+			lineRenderer.enabled = true;
+			lineRenderer.SetVertexCount (nodes.Count);
+			for (int i = 0; i < nodes.Count; i++) {
+				lineRenderer.SetPosition (i, nodes [i].transform.position);
+			}
+		}
+
+	}
+	
+	private Vector3 nextPosition (Transform prevNode)
+	{
+		// Get next node position
+	
+		// Convert the angle into a rotation
+		Quaternion currentRotation = Quaternion.Euler (0, prevNode.eulerAngles.y, 0);
+
+		Vector3 position = prevNode.position;
+		position -= currentRotation * Vector3.forward * bondDistance;
+		return position;
+	}
+	private Quaternion nextRotation (Transform prevNode, Vector3 position)
+	{
+		// Get next node rotation
+		return Quaternion.LookRotation (prevNode.position - position, prevNode.up);
+	}
+
+	private void HookFollowLast (Transform prevNode, Transform node)
+	{
+
+		float targetRotationAngle = prevNode.eulerAngles.y;
+		float currentRotationAngle = node.transform.eulerAngles.y;
+		// Calculate the current rotation angles
+		currentRotationAngle = Mathf.LerpAngle (currentRotationAngle, targetRotationAngle, bondDamping * Time.deltaTime);
+		// Convert the angle into a rotation
+		Quaternion currentRotation = Quaternion.Euler (0, currentRotationAngle, 0);
+		// bondDistance meters behind the prevNode
+		node.transform.position = prevNode.position;
+		node.transform.position -= currentRotation * Vector3.forward * hookBondDistance;
+		//Always look at the prevNode
+		node.transform.LookAt (prevNode);
+	}
+	
+	private void FollowPrev (Transform prevNode, Transform node)
+	{
+		// Set node's rotation and position by the previous node
+
+		Quaternion targetRotation = Quaternion.LookRotation (prevNode.position - node.position, prevNode.up);
+		targetRotation.x = 0;
+		targetRotation.z = 0;
+		node.rotation = Quaternion.Slerp (node.rotation, targetRotation, Time.deltaTime * bondDamping);
+		
+		Vector3 targetPosition = prevNode.position;
+		targetPosition -= node.transform.rotation * Vector3.forward * bondDistance;
+		targetPosition.y = node.position.y;
+		node.position = Vector3.Lerp (node.position, targetPosition, Time.deltaTime * bondDamping); 
+	}
+
 }

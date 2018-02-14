@@ -66,7 +66,7 @@ public class Hook : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider) 
 	{
-		if (collider.gameObject.tag == Tags.enemy) {
+		if (collider.gameObject.tag == "enemy") {
 			// enemy get hooked by hook
 			hookObjects.Add (collider.gameObject.transform);
 			if(ownerTrans != null)
@@ -74,7 +74,7 @@ public class Hook : MonoBehaviour
 
 			// tell hook leader the hook should tack back.
 			hookEventListener.NotifyTakeBack();
-		}else if(collider.gameObject.tag == Tags.cylinder){
+		}else if(collider.gameObject.tag == "cylinder"){
 			// hook the cylinder. tell hook leader the hook got hooked.
 			hookEventListener.NotifyHookSomething(mTransform.position);
 		}

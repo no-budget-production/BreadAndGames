@@ -31,7 +31,7 @@ public class HookNode : MonoBehaviour
 	void OnCollisionEnter (Collision collision)
 	{
 				
-		if (collision.gameObject.tag == Tags.wall) {
+		if (collision.gameObject.tag == "wall") {
 			// dont collide if this has collided wall
 			if (wasCollided){ //|| !canReflect){
 				return;
