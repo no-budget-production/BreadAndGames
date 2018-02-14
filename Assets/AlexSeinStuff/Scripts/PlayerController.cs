@@ -14,7 +14,7 @@ public class PlayerController : Entity
 
     public float moveSpeed = 6f;
     public float aimMoveSpeed = 2f;
-    private float startSpeed;
+    private float defaultSpeed;
     private float gravityStrength = 15f;
 
     private float angle;
@@ -37,7 +37,7 @@ public class PlayerController : Entity
         gunSystem = GetComponent<GunSystem>();
         laserSight = GetComponentInChildren<LineRenderer>();
 
-        startSpeed = moveSpeed;
+        defaultSpeed = moveSpeed;
 
         isAiming = false;
     }
@@ -113,7 +113,7 @@ public class PlayerController : Entity
         {
             laserSight.enabled = false;
             isAiming = false;
-            moveSpeed = startSpeed;
+            moveSpeed = defaultSpeed;
         }
 
         //Weapon Input
@@ -128,5 +128,17 @@ public class PlayerController : Entity
             gunSystem.Reload();
         }
 
+    }
+
+    //Hook Stuff
+    void SlowDownMovingSpeed()
+    {
+        moveSpeed = 2f;
+
+    }
+
+    void NormalMovingSpeed()
+    {
+        moveSpeed = defaultSpeed;
     }
 }
