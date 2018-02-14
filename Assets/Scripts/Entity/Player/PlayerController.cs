@@ -218,9 +218,14 @@ public class PlayerController : Character
         //moves the character
         if (isWalking)
         {
-            CollisionFlags flags = myController.Move(moveVector);
+            Walk();
         }
 
+    }
+
+    public void Walk()
+    {
+        CollisionFlags flags = myController.Move(moveVector);
     }
 
     private void CheckButtonInput()

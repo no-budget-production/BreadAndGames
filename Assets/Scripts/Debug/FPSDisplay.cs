@@ -12,6 +12,9 @@ public class FPSDisplay : MonoBehaviour
     float fps;
     string text;
     int enemies;
+    float time;
+    float min;
+    float sec;
 
     private void Awake()
     {
@@ -23,18 +26,20 @@ public class FPSDisplay : MonoBehaviour
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+        enemies = GameManager.Instance.SwarmController.Count;
     }
 
     void OnGUI()
     {
         w = Screen.width;
         h = Screen.height;
-        rect = new Rect(0, 0, w, h * 2 / 100);
+        rect = new Rect(0, 0, w, h * 50);
         msec = deltaTime * 1000.0f;
         fps = 1.0f / deltaTime;
-        enemies = GameManager.Instance.SwarmController.Count;
 
-        text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies", msec, fps, enemies);
+        time = Time.realtimeSinceStartup;
+
+        text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies {3:0.00} RT", msec, fps, enemies, time);
 
         style.fontSize = h * 2 / 100;
         GUI.Label(rect, text, style);

@@ -12,9 +12,11 @@ public class PhaseRush : Skill
     public bool isRechargingPhaseRushing;
     public float Duration;
     public float RechargeTime;
-    public float MoveSpeedBonus;
+    //public float MoveSpeedBonus;
+    public float Distance;
 
-    public ParticleSystem thunder;
+    public Effect thunder;
+    public Effect curThunder;
 
     float nextShotTime;
 
@@ -40,6 +42,11 @@ public class PhaseRush : Skill
         }
     }
 
+    public void SpawnEffect()
+    {
+        curThunder = Instantiate(thunder, base.PlayerController.transform.position, base.PlayerController.transform.rotation);
+        curThunder.GetComponent<ParticleSystem>().Play();
+    }
 
     private void SkillEvents()
     {
@@ -48,7 +55,7 @@ public class PhaseRush : Skill
 
         nextShotTime = Time.time + ButtonCD;
 
-        thunder.Play();
+        SpawnEffect();
 
         base.SpawnBuff();
 
@@ -57,16 +64,31 @@ public class PhaseRush : Skill
 
         base.PlayerController.canWalk = false;
 
-        base.PlayerController.moveSpeed += MoveSpeedBonus;
-        Player.layer = LayerMask.NameToLayer("Ignore Raycast");
+        //base.PlayerController.moveSpeed += MoveSpeedBonus;
+
+        base.PlayerController.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
+        base.PlayerController.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     public IEnumerator DurationTimer()
     {
+        base.PlayerController.transform.Translate(Vector3.forward * Distance);
+
+        //float curTime = Time.time + Duration;
+
+        //while (Time.time < Duration)
+        //{
+        //    curTime += Time.deltaTime * 0.01f;
+        //    base.PlayerController.transform.Translate(Vector3.forward * Distance);
+        //    yield return null;
+        //}
+
         yield return new WaitForSeconds(Duration);
 
-        base.PlayerController.moveSpeed -= MoveSpeedBonus;
-        Player.layer = LayerMask.NameToLayer("Default");
+        //base.PlayerController.moveSpeed -= MoveSpeedBonus;
+        base.PlayerController.ThisUnityTypeFlags = UnitTypesFlags.Player;
+        base.PlayerController.gameObject.layer = LayerMask.NameToLayer("Default");
+
         isPhaseRushing = false;
 
         //Debug.Log("PhaseRush_Off");

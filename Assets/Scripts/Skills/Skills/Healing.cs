@@ -15,6 +15,7 @@ public class Healing : Skill
     public Buff BuffSynergy;
 
     public float HealAmount = 2.0f;
+    private float healProcentage;
 
     Vector3 direction;
 
@@ -22,10 +23,10 @@ public class Healing : Skill
 
     private void Start()
     {
-
         DroneOrigin = BeamOrigin;
         CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
         CurrentTargetTransform = CurrentTarget.TakeHitPoint;
+        healProcentage = CurrentTarget.MaxHealth * 0.01f * HealAmount;
     }
 
     public void FindDrone()
@@ -120,6 +121,9 @@ public class Healing : Skill
         DroneOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
+    //bool firstHeal;
+    //bool firstFullHeal;
+
     void OnHealObject(RaycastHit hit)
     {
         //Debug.Log(hit.collider.gameObject.name);
@@ -140,7 +144,25 @@ public class Healing : Skill
             if (buffSynergyPresent)
             {
                 Debug.Log("SynergyFound: " + base.UsedBuff.name);
-                healableObject.GetHealth(HealAmount * 0.5f);
+
+                healableObject.GetHealth(healProcentage * 0.5f * Time.deltaTime);
+
+                //if (!firstHeal)
+                //{
+                //    Debug.Log("RT:" + Time.realtimeSinceStartup);
+                //    firstHeal = true;
+                //}
+
+                //if (healableObject.CurrentHealth == 100)
+                //{
+                //    if (!firstFullHeal)
+                //    {
+                //        Debug.Log("RT:" + Time.realtimeSinceStartup);
+                //        Debug.Log(Time.realtimeSinceStartup);
+                //        firstFullHeal = true;
+                //    }
+
+                //}
 
                 if (!isHalfWidthLineRenderer)
                 {
@@ -153,7 +175,24 @@ public class Healing : Skill
             else
             {
                 Debug.Log("SynergyNotFound: " + base.UsedBuff.name);
-                healableObject.GetHealth(HealAmount);
+                healableObject.GetHealth(healProcentage * Time.deltaTime);
+
+                //if (!firstHeal)
+                //{
+                //    Debug.Log(Time.realtimeSinceStartup);
+                //    firstHeal = true;
+                //}
+
+                //if (healableObject.CurrentHealth == 100)
+                //{
+                //    if (!firstFullHeal)
+                //    {
+                //        Debug.Log("RT:" + Time.realtimeSinceStartup);
+                //        Debug.Log(Time.realtimeSinceStartup);
+                //        firstFullHeal = true;
+                //    }
+
+                //}
 
                 if (isHalfWidthLineRenderer)
                 {
