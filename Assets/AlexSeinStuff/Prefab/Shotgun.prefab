@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1107958555482440
 GameObject:
   m_ObjectHideFlags: 1
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4091307614158404}
   - component: {fileID: 33814329165656564}
   - component: {fileID: 23758610573862606}
-  - component: {fileID: 114908293951093780}
+  - component: {fileID: 114121798306746442}
   - component: {fileID: 114808040211015634}
   - component: {fileID: 82313329636135300}
   m_Layer: 0
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286406249794786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.178782, y: 1.54, z: 3.487527}
+  m_LocalPosition: {x: 17.263, y: 0.8306044, z: 0.39749604}
   m_LocalScale: {x: 0.31984675, y: 0.31984675, z: 1.016413}
   m_Children:
   - {fileID: 4740000980081128}
@@ -409,6 +409,33 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114121798306746442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286406249794786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfab42c15076ca44e924980105eb7965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzle: {fileID: 4587422455829822}
+  projectile: {fileID: 114397302490237756, guid: 3d3496577881fd44b84b0b22197cb11c,
+    type: 2}
+  msBetweenShot: 100
+  muzzleVelocity: 35
+  reloadTime: 1.5
+  clipSize: 30
+  soundShootClips:
+  - {fileID: 8300000, guid: 97f349b021868744780f678aef2a009e, type: 3}
+  - {fileID: 8300000, guid: 66a6c26a7b4b73449bdce65ca5f98657, type: 3}
+  soundEmpty: {fileID: 0}
+  soundReload: {fileID: 0}
+  shell: {fileID: 4618930595482000, guid: fc7c1e3e54abee04db4d0cf0845db847, type: 2}
+  shellEjection: {fileID: 4740000980081128}
+  shellGauge: 12
+  shotSpread: 2
 --- !u!114 &114567897098390296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -441,32 +468,6 @@ MonoBehaviour:
   - {fileID: 212620393165445466}
   - {fileID: 212517465544906328}
   flashTime: 0.05
---- !u!114 &114908293951093780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1286406249794786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d4626a455fda14f94594ae2fea887f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzle: {fileID: 4587422455829822}
-  projectile: {fileID: 114397302490237756, guid: 3d3496577881fd44b84b0b22197cb11c,
-    type: 2}
-  msBetweenShot: 50
-  muzzleVelocity: 50
-  reloadTime: 1
-  clipSize: 30
-  soundShootClips:
-  - {fileID: 8300000, guid: 97f349b021868744780f678aef2a009e, type: 3}
-  - {fileID: 8300000, guid: 66a6c26a7b4b73449bdce65ca5f98657, type: 3}
-  soundEmpty: {fileID: 8300000, guid: cdcd7c2ee3f02224e8bbb08e608cd0de, type: 3}
-  soundReload: {fileID: 8300000, guid: 7636b9926a48d09458135d897e3bdd47, type: 3}
-  shell: {fileID: 4618930595482000, guid: fc7c1e3e54abee04db4d0cf0845db847, type: 2}
-  shellEjection: {fileID: 4740000980081128}
-  circleBar: {fileID: 0}
 --- !u!120 &120683776509453538
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -590,7 +591,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 728df264ed66a93468662bd338b02085, type: 3}
-  m_Color: {r: 0.91561866, g: 0.5294118, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -634,7 +635,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 728df264ed66a93468662bd338b02085, type: 3}
-  m_Color: {r: 0.91561866, g: 0.5294118, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

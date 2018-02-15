@@ -29,6 +29,8 @@ public class Gun : MonoBehaviour
     float nextShotTime;
     int defaultMagSize;
 
+    public int pelletSize = 20;
+
     private void Start()
     {
         gunSound = GetComponent<AudioSource>();
@@ -54,10 +56,15 @@ public class Gun : MonoBehaviour
         {
             nextShotTime = Time.time + msBetweenShot / 1000;
 
-            Quaternion accuracy = Quaternion.Euler(Random.Range(-1.0f, 1.0f), Random.Range(-3.0f, 3.0f), 0);
+            for (int i = 0; i < pelletSize; i++)
+            {
+                Quaternion accuracy = Quaternion.Euler(Random.Range(-1.0f, 1.0f), Random.Range(-3.0f, 3.0f), 0);
 
-            Projectile newProjectile = Instantiate(projectile, muzzle.position, muzzle.rotation * accuracy) as Projectile;
-            newProjectile.SetSpeed(muzzleVelocity);
+                Projectile newProjectile = Instantiate(projectile, muzzle.position, muzzle.rotation * accuracy) as Projectile;
+                newProjectile.SetSpeed(muzzleVelocity);
+
+            }
+
 
             Instantiate(shell, shellEjection.position, shellEjection.rotation);
             playShotSound();

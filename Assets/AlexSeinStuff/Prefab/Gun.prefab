@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806835097473610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.178782, y: 1.54, z: 3.487527}
+  m_LocalPosition: {x: 16.887377, y: 0.85, z: -2.62}
   m_LocalScale: {x: 0.31984675, y: 0.31984675, z: 1.016413}
   m_Children:
   - {fileID: 4685958634400136}
@@ -444,7 +444,7 @@ MonoBehaviour:
   muzzle: {fileID: 4316203229679068}
   projectile: {fileID: 114397302490237756, guid: 3d3496577881fd44b84b0b22197cb11c,
     type: 2}
-  msBetweenShot: 50
+  msBetweenShot: 500
   muzzleVelocity: 50
   reloadTime: 1
   clipSize: 30
@@ -456,6 +456,7 @@ MonoBehaviour:
   shell: {fileID: 4618930595482000, guid: fc7c1e3e54abee04db4d0cf0845db847, type: 2}
   shellEjection: {fileID: 4685958634400136}
   circleBar: {fileID: 0}
+  pelletSize: 5
 --- !u!114 &114741920369432396
 MonoBehaviour:
   m_ObjectHideFlags: 1
