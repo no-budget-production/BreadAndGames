@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1232817049370756
 GameObject:
   m_ObjectHideFlags: 1
@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 4424843764879360}
   - component: {fileID: 199413772382916792}
   - component: {fileID: 198267320410660282}
-  - component: {fileID: 114240883855673984}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -414,35 +413,6 @@ Transform:
   m_Father: {fileID: 4424843764879360}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114240883855673984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620125856325670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4560c448c4ea29c40b71657e4dc3d379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xScale: 1000
-  zScale: 1000
-  newShape: 5
-  intensity: 100
-  ParticleComponents:
-  - {fileID: 198790144167697762}
-  - {fileID: 198936997545705592}
-  - {fileID: 198732945823261746}
-  - {fileID: 198608066014710530}
-  - {fileID: 198084790740325378}
-  - {fileID: 198192692961528040}
-  - {fileID: 0}
-  - {fileID: 198909344304032962}
-  - {fileID: 198102072592391326}
-  - {fileID: 198068755248418788}
-  - {fileID: 198730429949474492}
-  - {fileID: 198230641116071874}
-  - {fileID: 198293136798741892}
 --- !u!198 &198068755248418788
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -839,7 +809,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -894,7 +864,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 1, z: 10}
+    m_Scale: {x: 100, y: 1, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1003,7 +973,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4058,7 +4028,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4113,7 +4083,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 0.05, z: 10}
+    m_Scale: {x: 100, y: 0.05, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4222,7 +4192,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -7311,7 +7281,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -7366,7 +7336,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 0.1, z: 10}
+    m_Scale: {x: 100, y: 0.1, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -7475,7 +7445,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 2000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -30670,7 +30640,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100000
     size3D: 1
     rotation3D: 0
     gravityModifier:
@@ -30725,7 +30695,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 1, z: 10}
+    m_Scale: {x: 100, y: 1, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -30834,7 +30804,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 3000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -31667,7 +31637,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 1
+    enabled: 0
     multiplier: 1
   ClampVelocityModule:
     enabled: 0
@@ -33995,7 +33965,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100000
     size3D: 1
     rotation3D: 0
     gravityModifier:
@@ -34050,7 +34020,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 1, z: 10}
+    m_Scale: {x: 100, y: 1, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -34159,7 +34129,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 3000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -34992,7 +34962,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 1
+    enabled: 0
     multiplier: 1
   ClampVelocityModule:
     enabled: 0
@@ -37260,7 +37230,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -37315,7 +37285,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 0.1, z: 10}
+    m_Scale: {x: 100, y: 0.1, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -37424,7 +37394,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -40567,7 +40537,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100000
     size3D: 1
     rotation3D: 0
     gravityModifier:
@@ -40622,7 +40592,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 10, y: 1, z: 10}
+    m_Scale: {x: 100, y: 1, z: 100}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -40731,7 +40701,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 3000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -41564,7 +41534,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 1
+    enabled: 0
     multiplier: 1
   ClampVelocityModule:
     enabled: 0
