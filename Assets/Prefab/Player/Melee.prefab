@@ -1153,6 +1153,12 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 1
+  MeleeDamage: 1
+  RangeDamage: 1
+  Accuracy: 1
+  MeleeDamageMultiplicator: 1
+  RangeDamageMultiplicator: 1
+  AccuracyMultiplicator: 1
   canWalk: 1
   canUseRightStick: 0
   canUseSkills: 1
@@ -1167,6 +1173,10 @@ MonoBehaviour:
       type: 2}
     ButtonStringBC:
     - {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df, type: 2}
+  - SkillBC: {fileID: 114064105950308934, guid: 89f30088ecdb9bf468b83f7abd4e58f6,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6, type: 2}
   ActiveSkills: []
   ActiveBuffs: []
   isInAction: 0

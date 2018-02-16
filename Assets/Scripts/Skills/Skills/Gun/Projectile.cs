@@ -25,12 +25,21 @@ public class Projectile : Effect
 
     [EnumFlagsAttribute]
     public UnitTypesFlags ThisUnityTypeFlags;
+    public Character Shooter;
 
     public float Speed = 10;
     public float Damage = 1;
 
+
+    private bool shieldImmunity = false;
+
     //float lifetime = 2;
     //float fadetime = 2;
+
+    public void shieldImmunize()
+    {
+        shieldImmunity = true;
+    }
 
     public void SetSpeed(float newSpeed)
     {
@@ -61,12 +70,11 @@ public class Projectile : Effect
 
         if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames, collisionMask, QueryTriggerInteraction.Collide))
         {
-            OnHitObject(hit);
-            Destroy(this.gameObject);
+            if (OnHitObject(hit)) Destroy(this.gameObject);
         }
     }
 
-    void OnHitObject(RaycastHit hit)
+    bool OnHitObject(RaycastHit hit)
     {
         //Debug.Log(hit.collider.gameObject.name);
         Entity damageableObject = hit.collider.GetComponent<Entity>();
@@ -75,8 +83,17 @@ public class Projectile : Effect
             if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
             {
                 damageableObject.TakeDamage(Damage);
+                return true;
                 //Debug.Log("TakeDamage");
             }
         }
+
+        MeleeShield MeleeShield = hit.collider.GetComponentInParent<MeleeShield>();
+        if (MeleeShield != null && !shieldImmunity)
+        {
+            return MeleeShield.AddProjectile(this);
+          
+        }
+        return true;
     }
 }
