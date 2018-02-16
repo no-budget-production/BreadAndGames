@@ -1186,9 +1186,10 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 4022339163266460}
   ActionCD: 1
   TurnSpeed: 0.066
-  moveSpeed: 10
-  deadzone: 0.25
-  acceleration: 1.2
+  MoveSpeed: 6
+  MoveSpeedMultiplicator: 1
+  Deadzone: 0.19
+  Acceleration: 1.2
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
   playAttackAnim: 0

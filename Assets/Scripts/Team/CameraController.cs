@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public float DampTime = 0.2f;
+    //public float[] ScreenEdgeBuffers = new float[4];
     public float ScreenEdgeBuffer = 4f;
     public float MinSize = 6.5f;
 

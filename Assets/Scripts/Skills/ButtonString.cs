@@ -6,5 +6,10 @@ public class ButtonString : MonoBehaviour
 {
     public bool isButton;
     public int ButtonID;
-    public float DeadZone;  
+    public float DeadZone;
+
+    public string GetInputName(int player)
+    {
+        return name + player;
+    }
 }

@@ -42,9 +42,11 @@ public class HealingDrone : Skill
         HorizontalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[2]);
         VerticalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[3]);
 
+        Vector3 lookVector = new Vector3(HorizontalLook_PX, 0, VerticalLook_PX);
+
         movement = new Vector3(VerticalLook_PX, 0.0f, HorizontalLook_PX).normalized;
 
-        if (HorizontalLook_PX == 0 && VerticalLook_PX == 0)
+        if (lookVector.magnitude < base.PlayerController.deadZones[0])
         {
             if (controller.velocity.magnitude > 0.2f)
                 controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);

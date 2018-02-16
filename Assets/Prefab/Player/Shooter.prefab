@@ -1905,7 +1905,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838618, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
+  m_LocalRotation: {x: 0.0029838614, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -3710,6 +3710,12 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 2
+  MeleeDamage: 1
+  RangeDamage: 1
+  Accuracy: 1
+  MeleeDamageMultiplicator: 1
+  RangeDamageMultiplicator: 1
+  AccuracyMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canUseSkills: 1
@@ -3737,9 +3743,10 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 4834803545969750}
   ActionCD: 1
   TurnSpeed: 0.79
-  moveSpeed: 18
-  deadzone: 0.25
-  acceleration: 1.2
+  MoveSpeed: 7.5
+  MoveSpeedMultiplicator: 1
+  Deadzone: 0.19
+  Acceleration: 1.2
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
   playAttackAnim: 0

@@ -60,12 +60,14 @@ public class PlayerController : Character
     [Range(0.0f, 1.0f)]
     public float TurnSpeed;
 
-    public float moveSpeed = 1.0f;
-    public float deadzone = 0.25f;
+    public float MoveSpeed;
+    public float MoveSpeedMultiplicator = 1f;
+
+    public float Deadzone;
 
     private float angle;
 
-    public float acceleration = 1.2f;
+    public float Acceleration;
 
     public Vector3 temporaryVector;
     public Vector3 temporaryLookVector;
@@ -76,8 +78,8 @@ public class PlayerController : Character
     public CharacterController myController;
 
     private Vector3 currentMovement;
-    private Vector3 moveVector;
-    private Vector3 lookVector;
+    //private Vector3 moveVector;
+    //private Vector3 lookVector;
 
     private Quaternion inputRotation;
 
@@ -143,28 +145,37 @@ public class PlayerController : Character
         float Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         float HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
         float VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
+        Vector3 moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
+        Vector3 lookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
 
-        moveVector = new Vector3(0, 0, 0);
-        lookVector = new Vector3(0, 0, 0);
+        //moveVector = new Vector3(0, 0, 0);
+        //lookVector = new Vector3(0, 0, 0);
 
         if (canWalk)
         {
-            if (((Mathf.Abs(Horizontal_PX)) > deadZones[0]) || ((Mathf.Abs(Vertical_PX)) > deadZones[1]))
+
+            //if (((Mathf.Abs(Horizontal_PX)) > deadZones[0]) || ((Mathf.Abs(Vertical_PX)) > deadZones[1]))
+            if (moveVector.magnitude > deadZones[0])
             {
                 isWalking = true;
+                moveVector = inputRotation * moveVector;
 
                 // XBox (left stick) movement input
-                moveVector.x += Horizontal_PX * acceleration;
-                temporaryVector.x = Horizontal_PX;
-                moveVector.z += Vertical_PX * acceleration;
-                temporaryVector.z = Vertical_PX;
+                //moveVector.x += moveVector2.x;
+                //temporaryVector.x = Horizontal_PX;
+                //moveVector.z += moveVector2.y;
+                //temporaryVector.z = Vertical_PX;
+                currentMovement += moveVector * Acceleration;
+                float speed = currentMovement.magnitude;
+                if (speed > MoveSpeed)
+                {
+                    currentMovement *= MoveSpeed / speed;
+                }
 
-                moveVector = moveVector.normalized * 0.5f;
-                moveVector = moveVector * moveSpeed * Time.deltaTime;
-                moveVector = inputRotation * moveVector;
             }
             else
             {
+                currentMovement = Vector3.zero;
                 isWalking = false;
             }
         }
@@ -172,22 +183,18 @@ public class PlayerController : Character
 
         if (canUseRightStick)
         {
-            if ((Mathf.Abs(HorizontalLook_PX) != 0) || ((Mathf.Abs(VerticalLook_PX) != 0)))
+            //if ((Mathf.Abs(HorizontalLook_PX) != 0) || ((Mathf.Abs(VerticalLook_PX) != 0)))
+            if ((lookVector.magnitude > deadZones[0]))
             {
                 isUsingRightStick = true;
 
-                // XBox (right stick) look input
-                lookVector.z += Input.GetAxis(thisPlayerString[2]);
-                temporaryLookVector.x = Input.GetAxis(thisPlayerString[2]);
-                lookVector.x += Input.GetAxis(thisPlayerString[3]);
-                temporaryLookVector.z = Input.GetAxis(thisPlayerString[3]);
 
                 lookVector = inputRotation * lookVector;
 
-                if (lookVector.magnitude < deadzone)
-                {
-                    lookVector = Vector3.zero;
-                }
+                //if (lookVector.magnitude < deadzone)
+                //{
+                //    lookVector = Vector3.zero;
+                //}
 
             }
             else
@@ -214,11 +221,12 @@ public class PlayerController : Character
         //    isUsingRightStick = false;
         //}
 
-        if (lookVector.x != 0 || lookVector.z != 0)
+        if (isUsingRightStick)
         {
-            transform.rotation = Quaternion.LookRotation(lookVector);
+            //transform.rotation = Quaternion.LookRotation(lookVector);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookVector), 0.35f);
         }
-        else if (moveVector.x != 0 || moveVector.z != 0)
+        else if (isWalking)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
         }
@@ -226,15 +234,15 @@ public class PlayerController : Character
         //moves the character
         if (isWalking)
         {
-            Walk();
+            myController.Move(currentMovement * Time.deltaTime);
         }
 
     }
 
-    public void Walk()
+    /*public void Walk()
     {
         CollisionFlags flags = myController.Move(moveVector);
-    }
+    }*/
 
     private void CheckButtonInput()
     {
@@ -253,7 +261,7 @@ public class PlayerController : Character
                             ActiveSkills[i].Shoot();
                             ActiveSkills[i].isFiring = true;
                             tempIsShooting = true;
-                            //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                         }
                     }
                     else
@@ -263,7 +271,7 @@ public class PlayerController : Character
                             ActiveSkills[i].Shoot();
                             ActiveSkills[i].isFiring = true;
                             tempIsShooting = true;
-                            //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                         }
                     }
                     tempIJ++;

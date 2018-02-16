@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4219544037220276}
-  - component: {fileID: 114045349576357292}
+  - component: {fileID: 114716193263888146}
   m_Layer: 0
   m_Name: PhaseRushBuff
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114045349576357292
+--- !u!114 &114716193263888146
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,10 +48,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1498570215433454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96571533b811e2d4884f1dc91050731d, type: 3}
+  m_Script: {fileID: 11500000, guid: 08560ae80af14bd4a81f687cb8fe307b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuffID: 1
-  Lifetime: 10
+  BuffID: 3
+  Lifetime: 0
   PlayerController: {fileID: 0}
-  ThisBuffTypes: 00000000
+  ThisBuffTypes: 
