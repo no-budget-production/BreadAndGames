@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7df3c612cbc3d47957ee37cfd1952f, type: 3}
+  m_Name: Reload
+  m_EditorClassIdentifier: 
+  BuffTypes: 10
+  ID: 204
+  maxTime: 0.3
+  curTime: 0
+  isStackable: 0
+  cantTriggerWith: 070000000800000009000000
+  effectWith: 
+  disableWalking: 0
+  disableRightStick: 0
+  disableSkills: 0
+  MeleeDamageMultiplicator: 1
+  RangeDamageMultiplicator: 1
+  AccuracyMultiplicator: 1
+  MoveSpeedMultiplicator: 1
+  MeleeArmorMultiplicator: 1
+  RangedArmorMultiplicator: 1
+  GainHealth: 0
+  LoseHealth: 0
+  GainActionPoints: 0
+  LoseGainActionPoints: 0

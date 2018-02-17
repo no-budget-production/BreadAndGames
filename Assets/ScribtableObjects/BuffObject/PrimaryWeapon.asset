@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7df3c612cbc3d47957ee37cfd1952f, type: 3}
+  m_Name: PrimaryWeapon
+  m_EditorClassIdentifier: 
+  name: 
+  BuffTypes: 7
+  ID: 201
+  maxTime: 10
+  curTime: 0
+  isStackable: 0
+  cantTriggerWith: 08000000090000000a000000
+  effectWith: 
+  disableWalking: 0
+  disableRightStick: 1
+  disableSkills: 0
+  MeleeDamageMultiplicator: 1
+  RangeDamageMultiplicator: 1
+  AccuracyMultiplicator: 1
+  MoveSpeedMultiplicator: 1
+  MeleeArmorMultiplicator: 1
+  RangedArmorMultiplicator: 1
+  GainHealth: 2
+  LoseHealth: 0
+  GainActionPoints: 0
+  LoseGainActionPoints: 0

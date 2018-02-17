@@ -1905,7 +1905,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838593, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
+  m_LocalRotation: {x: 0.0029838583, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -3717,7 +3717,8 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   canWalk: 1
-  canUseRightStick: 1
+  canUseRightStick: 0
+  canCurUseRightStick: 1
   canUseSkills: 1
   isWalking: 0
   isUsingRightStick: 0
@@ -3736,6 +3737,10 @@ MonoBehaviour:
     - {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49, type: 2}
   ActiveSkills: []
   ActiveBuffs: []
+  ActiveBuffsCurTime:
+  - 0
+  ActiveBuffObjects:
+  - {fileID: 11400000, guid: 5e17b196f94d5564193623bb656d256e, type: 2}
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100
