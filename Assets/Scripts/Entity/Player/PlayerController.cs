@@ -37,6 +37,7 @@ public class PlayerController : Character
 
     public bool canWalk = true;
     public bool canUseRightStick = true;
+    public bool canCurUseRightStick = true;
     public bool canUseSkills = true;
 
     public bool isWalking;
@@ -47,6 +48,9 @@ public class PlayerController : Character
     public Skill[] ActiveSkills;
 
     public List<Buff> ActiveBuffs;
+
+    public List<float> ActiveBuffsCurTime;
+    public List<BuffObject> ActiveBuffObjects;
 
     public bool isInAction;
     public int ActionPoints;
@@ -293,5 +297,90 @@ public class PlayerController : Character
     {
         Move();
         CheckButtonInput();
+        UpdateBuffs();
+    }
+
+    void GainBuff(BuffObject buff)
+    {
+        MeleeDamageMultiplicator += buff.MeleeDamageMultiplicator;
+        RangeDamageMultiplicator += buff.RangeDamageMultiplicator;
+        AccuracyMultiplicator += buff.AccuracyMultiplicator;
+        RangeDamageMultiplicator += buff.RangeDamageMultiplicator;
+
+        MoveSpeedMultiplicator += buff.MoveSpeedMultiplicator;
+    }
+
+    void UpdateBuffs()
+    {
+        if (ActiveBuffObjects.Count > 0)
+        {
+            int canWalkAgainCount = 0;
+            int canUseRightStickAgainCount = 0;
+            int canUseSkillsAgainCount = 0;
+
+            for (int i = 0; i < ActiveBuffObjects.Count; i++)
+            {
+                ActiveBuffsCurTime[i] += Time.deltaTime;
+                //ActiveBuffObjects[i].curTime += Time.deltaTime;
+
+                TakeDamage(ActiveBuffObjects[i].LoseHealth);
+                GetHealth(ActiveBuffObjects[i].GainHealth);
+
+
+                if (ActiveBuffObjects[i].disableWalking)
+                {
+                    canWalkAgainCount++;
+                }
+
+                if (ActiveBuffObjects[i].disableRightStick)
+                {
+                    canUseRightStickAgainCount++;
+                }
+
+                if (ActiveBuffObjects[i].disableSkills)
+                {
+                    canUseSkillsAgainCount++;
+                }
+
+                if (ActiveBuffObjects[i].maxTime < ActiveBuffsCurTime[i])
+                {
+                    MeleeDamageMultiplicator -= ActiveBuffObjects[i].MeleeDamageMultiplicator;
+                    RangeDamageMultiplicator -= ActiveBuffObjects[i].RangeDamageMultiplicator;
+                    AccuracyMultiplicator -= ActiveBuffObjects[i].AccuracyMultiplicator;
+                    RangeDamageMultiplicator -= ActiveBuffObjects[i].RangeDamageMultiplicator;
+
+                    MoveSpeedMultiplicator -= ActiveBuffObjects[i].MoveSpeedMultiplicator;
+
+                    ActiveBuffsCurTime.RemoveAt(i);
+                    ActiveBuffObjects.Remove(ActiveBuffObjects[i]);
+                    i--;
+                }
+            }
+
+            if (!canWalk)
+            {
+                if (canWalkAgainCount == 1)
+                {
+                    canWalk = true;
+                }
+            }
+            if (canUseRightStick)
+            {
+                if (!canCurUseRightStick)
+                {
+                    if (canUseRightStickAgainCount == 1)
+                    {
+                        canUseRightStick = true;
+                    }
+                }
+            }
+            if (!canUseSkills)
+            {
+                if (canUseSkillsAgainCount == 1)
+                {
+                    canUseSkills = true;
+                }
+            }
+        }
     }
 }
