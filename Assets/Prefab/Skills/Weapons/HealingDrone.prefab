@@ -63,8 +63,17 @@ MonoBehaviour:
   controller: {fileID: 0}
   DroneController: {fileID: 114068438227607296, guid: 61df665ff3d764c499e21c7de5f4973e,
     type: 2}
+  PlayerPostion: {fileID: 0}
   acceleration: 10000
   deceleration: 120
   maxSpeed: 8
   movement: {x: 0, y: 0, z: 0}
   BeamOrigin: {fileID: 0}
+  Leeway: 2
+  startMarker: {x: 0, y: 0, z: 0}
+  endMarker: {x: 0, y: 0, z: 0}
+  speed: 10
+  Smoothing: 0
+  SmoothingStep: 0.01
+  SmoothingMin: -0.000025
+  SmoothinMax: 0.000025

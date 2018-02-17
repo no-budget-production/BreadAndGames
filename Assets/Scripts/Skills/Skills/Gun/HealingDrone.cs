@@ -12,7 +12,7 @@ public class HealingDrone : Skill
 {
     public Rigidbody controller;
     public DroneController DroneController;
-
+    public Transform PlayerPostion;
 
     private float HorizontalLook_PX;
     private float VerticalLook_PX;
@@ -24,6 +24,20 @@ public class HealingDrone : Skill
     public Vector3 movement;
 
     public Transform BeamOrigin;
+
+    public float Leeway;
+
+    public Vector3 startMarker;
+    public Vector3 endMarker;
+    public float speed = 1.0F;
+    private float startTime;
+    private float journeyLength;
+    private bool isReturning;
+
+    public float Smoothing;
+    public float SmoothingStep;
+    public float SmoothingMin;
+    public float SmoothinMax;
 
     void Start()
     {
@@ -51,7 +65,42 @@ public class HealingDrone : Skill
             if (controller.velocity.magnitude > 0.2f)
                 controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
             else
-                controller.velocity = Vector3.zero;
+            {
+                startMarker = controller.transform.position;
+                endMarker = new Vector3(base.PlayerController.transform.position.x, startMarker.y, base.PlayerController.transform.position.z);
+                Vector3 newSpot = Vector3.MoveTowards(startMarker, endMarker, Leeway);
+                journeyLength = Vector3.Distance(startMarker, endMarker);
+                if (true)
+                {
+                    if (!isReturning)
+                    {
+                        startTime = Time.time;
+                    }
+
+
+                    {
+                        Smoothing += SmoothingStep;
+                        Smoothing += Random.Range(SmoothingMin, SmoothinMax);
+
+                        controller.transform.position = Vector3.Lerp(controller.transform.position, newSpot, Smoothing * Time.deltaTime);
+                    }
+
+                    isReturning = true;
+                    //float distCovered = (Time.time - startTime) * speed;
+                    //float fracJourney = distCovered / journeyLength;
+                    //controller.transform.position = new Vector3(Mathf.SmoothStep(0, journeyLength, distCovered), startMarker.y, Mathf.SmoothStep(0, journeyLength, distCovered));
+                }
+                //else
+                //{
+
+                //    if (isReturning)
+                //    {
+                //        isReturning = false;
+                //    }
+                //    controller.velocity = Vector3.zero;
+                //}
+            }
+
         }
         else
         {
