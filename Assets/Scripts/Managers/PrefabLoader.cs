@@ -137,7 +137,7 @@ public class PrefabLoader : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
-            GameManager.Instance.Players[i].GetComponent<PlayerController>().Setup(GameManager.Instance.InputRotation, ButtonStrings, i + 1);
+            GameManager.Instance.Players[i].GetComponent<PlayerController>().Setup(GameManager.Instance.InputRotation, ButtonStrings);
         }
     }
 }

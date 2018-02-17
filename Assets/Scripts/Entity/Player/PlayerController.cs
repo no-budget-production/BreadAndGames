@@ -94,9 +94,8 @@ public class PlayerController : Character
         ButtonSetup();
     }
 
-    public void Setup(Quaternion inputRotationArg, string[] buttonStrings, int playerNumber)
+    public void Setup(Quaternion inputRotationArg, string[] buttonStrings)
     {
-        PlayerNumber = playerNumber.ToString();
         inputRotation = inputRotationArg;
         int tempLength = buttonStrings.Length;
         thisPlayerString = new string[tempLength];
@@ -266,7 +265,7 @@ public class PlayerController : Character
                             ActiveSkills[i].Shoot();
                             ActiveSkills[i].isFiring = true;
                             tempIsShooting = true;
-                            DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            //DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                         }
                     }
                     else
@@ -276,7 +275,7 @@ public class PlayerController : Character
                             ActiveSkills[i].Shoot();
                             ActiveSkills[i].isFiring = true;
                             tempIsShooting = true;
-                            DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            //DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                         }
                     }
                     tempIJ++;

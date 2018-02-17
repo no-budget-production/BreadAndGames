@@ -23,19 +23,14 @@ public class Player1 : Cheat
             if (curPlayer != GameManager.Instance.GetPlayerByType(TargetType))
             {
                 curPlayer.PlayerNumber = j.ToString();
-                curPlayer.Setup(GameManager.Instance.InputRotation, GameManager.Instance.prefabLoader.ButtonStrings, j);
                 j++;
-
-
             }
             else
             {
                 curPlayer.PlayerNumber = "1";
-
-                curPlayer.Setup(GameManager.Instance.InputRotation, GameManager.Instance.prefabLoader.ButtonStrings, 1);
             }
 
-
+            curPlayer.Setup(GameManager.Instance.InputRotation, GameManager.Instance.prefabLoader.ButtonStrings);
         }
 
         Debug.Log(NewPlayer1.name + "new Player 1");
