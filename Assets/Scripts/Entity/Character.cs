@@ -287,6 +287,18 @@ public class Character : Entity
         }
     }
 
+    public void EmptySound()
+    {
+        if (MultiSoundPlayer != null)
+        {
+            if (Time.time > nextSoundTime)
+            {
+                MultiSoundPlayer.EmptySound();
+                nextSoundTime = Time.time + SBetweenSounds + MultiSoundPlayer.GetClipLenght();
+            }
+        }
+    }
+
     public void OnActionBarChange()
     {
         ActionPointsBar.value = curActionPoints;

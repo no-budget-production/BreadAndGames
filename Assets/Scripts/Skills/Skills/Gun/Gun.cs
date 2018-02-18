@@ -47,15 +47,15 @@ public class Gun : Skill
 
     public override void Shoot()
     {
-        if (Time.time > nextSoundTime)
-        {
-            GunSound.Play();
-            nextSoundTime = Time.time + SBetweenSounds + curSoundPlayer.GetClipLenght();
-            curSoundPlayer.Play();
-        }
-
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
+            if (Time.time > nextSoundTime)
+            {
+                GunSound.Play();
+                nextSoundTime = Time.time + SBetweenSounds + curSoundPlayer.GetClipLenght();
+                curSoundPlayer.Play();
+            }
+
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
             float AccuracyBonus = Mathf.Max(base.PlayerController.AccuracyMultiplicator, 0.0001f);
@@ -85,7 +85,8 @@ public class Gun : Skill
         }
         else if (Time.time > nextShotTime && base.PlayerController.curActionPoints <= 0)
         {
-            GunSound.PlayOneShot(SoundEmpty);
+            PlayerController.EmptySound();
+            //GunSound.PlayOneShot(SoundEmpty);
             nextShotTime = Time.time + MsBetweenShot / 150;
         }
     }
