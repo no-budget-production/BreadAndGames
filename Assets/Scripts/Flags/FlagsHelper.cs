@@ -54,19 +54,56 @@ public enum PlayerTypeFlags
 }
 
 
-//public enum CooldownType
-//{
-//    CoolDown0, CoolDown1, CoolDown2, CoolDown3
-//}
+public enum SkillType
+{
+    LeftPunch,
+    RightPunch,
+    EnergyBarrier,
+    Hook,
+    ComboL1,
+    ComboR1,
+    ComboL2,
+    Gun,
+    PrimaryWeapon,
+    SecondaryWeapon,
+    TertiaryWeapon,
+    Reload,
+    HipFireMode,
+    AimMode,
+    PaimMode,
+    PhaseRush,
+    HealingMelee,
+    HealingShooter,
+    HealingDrone,
+    HealingDroneReturn,
+    _Length,
+    _Invalid = -1
+}
 
-//[System.Flags]
-//public enum CooldownTypeFlags
-//{
-//    CoolDown0 = 1 << CooldownType.CoolDown0,
-//    CoolDown1 = 1 << CooldownType.CoolDown1,
-//    CoolDown2 = 1 << CooldownType.CoolDown2,
-//    CoolDown3 = 1 << CooldownType.CoolDown3
-//}
+[System.Flags]
+public enum SkillTypeFlags
+{
+    LeftPunch = 1 << SkillType.LeftPunch,
+    RightPunch = 1 << SkillType.RightPunch,
+    EnergyBarrier = 1 << SkillType.EnergyBarrier,
+    Hook = 1 << SkillType.Hook,
+    ComboL1 = 1 << SkillType.ComboL1,
+    ComboR1 = 1 << SkillType.ComboR1,
+    ComboL2 = 1 << SkillType.ComboL2,
+    Gun = 1 << SkillType.Gun,
+    PrimaryWeapon = 1 << SkillType.PrimaryWeapon,
+    SecondaryWeapon = 1 << SkillType.SecondaryWeapon,
+    TertiaryWeapon = 1 << SkillType.TertiaryWeapon,
+    Reload = 1 << SkillType.Reload,
+    HipFireMode = 1 << SkillType.HipFireMode,
+    AimMode = 1 << SkillType.AimMode,
+    PaimMode = 1 << SkillType.PaimMode,
+    PhaseRush = 1 << SkillType.PhaseRush,
+    HealingMelee = 1 << SkillType.HealingMelee,
+    HealingShooter = 1 << SkillType.HealingShooter,
+    HealingDrone = 1 << SkillType.HealingDrone,
+    HealingDroneReturn = 1 << SkillType.HealingDroneReturn
+}
 
 public enum BuffType
 {

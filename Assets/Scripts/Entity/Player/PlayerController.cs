@@ -103,6 +103,11 @@ public class PlayerController : Character
                 tempIJ++;
             }
         }
+
+        for (int i = 0; i < ActiveSkills.Length; i++)
+        {
+            ActiveSkills[i].LateSkillSetup();
+        }
     }
 
     private void Move()

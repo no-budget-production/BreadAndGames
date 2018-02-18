@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    public int SkillID;
+    public SkillType SkillType;
 
     public PlayerController PlayerController;
 
@@ -29,6 +29,11 @@ public class Skill : MonoBehaviour
 
     }
 
+    public virtual void LateSkillSetup()
+    {
+
+    }
+
     public void SpawnBuff()
     {
         if (UsedBuff == null)
@@ -42,7 +47,7 @@ public class Skill : MonoBehaviour
 
             for (int i = 0; i < PlayerController.ActiveBuffs.Count; i++)
             {
-                if (PlayerController.ActiveBuffs[i].BuffID == UsedBuff.BuffID)
+                if (PlayerController.ActiveBuffs[i].BuffSkillType == UsedBuff.BuffSkillType)
                 {
                     Debug.Log("Spawn Buff found: " + PlayerController.ActiveBuffs[i]);
                     Destroy(PlayerController.ActiveBuffs[i].gameObject);

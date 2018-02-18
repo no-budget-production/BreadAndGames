@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1614049378940664}
+  m_RootGameObject: {fileID: 1710078182140642}
   m_IsPrefabParent: 1
---- !u!1 &1614049378940664
+--- !u!1 &1710078182140642
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4797493958922408}
-  - component: {fileID: 114799149923351328}
-  - component: {fileID: 82035874068320208}
+  - component: {fileID: 4615261840525234}
+  - component: {fileID: 114383377472512716}
+  - component: {fileID: 82305037487834702}
   m_Layer: 0
-  m_Name: ReloadSound
+  m_Name: SecondaryWeaponSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4797493958922408
+--- !u!4 &4615261840525234
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1614049378940664}
+  m_GameObject: {fileID: 1710078182140642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,16 +41,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82035874068320208
+--- !u!82 &82305037487834702
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1614049378940664}
+  m_GameObject: {fileID: 1710078182140642}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 974d97fab722d56498f9c3763f9aa5dc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -121,18 +121,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114799149923351328
+--- !u!114 &114383377472512716
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1614049378940664}
+  m_GameObject: {fileID: 1710078182140642}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3eadabaf93d8a64f8e3e0e66a49c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSource: {fileID: 82035874068320208}
+  AudioSource: {fileID: 82305037487834702}
   AudioClipsArray:
-  - {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
+  - {fileID: 8300000, guid: 3f486b5d63ef84e4cbb61ee8f243317d, type: 3}
   _lastSound: 0

@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fb42f503764ff418dd07eb79977f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillID: 204
+  SkillType: 11
   PlayerController: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   BuffDuration: 0
   cantStack: 0
   SoundPlayer: {fileID: 114536509537192034}
-  SBetweenSounds: 100
+  SBetweenSounds: 1
 --- !u!114 &114536509537192034
 MonoBehaviour:
   m_ObjectHideFlags: 1

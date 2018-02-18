@@ -86,7 +86,7 @@ public class Projectile : Effect
         {
             if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
             {
-                damageableObject.TakeDamage(Damage, DamageType);
+                damageableObject.TakeDamage(Shooter.RangeDamage * Shooter.RangeDamageMultiplicator * Damage, DamageType);
                 return true;
                 //Debug.Log("TakeDamage");
             }
