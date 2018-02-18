@@ -119,5 +119,26 @@ public class InstanceFinder : MonoBehaviour
 
             instanceRef.ClusterHolder = GameObject.Find("ClusterHolder").transform;
         }
+
+        //if (instanceRef._DynamicHolder == null)
+        {
+            Debug.Log("_DynamicHolder - Find it");
+
+            instanceRef._DynamicHolder = GameObject.Find("_DynamicHolder").transform;
+        }
+
+        //if (instanceRef.ProjectileHolder == null)
+        {
+            Debug.Log("ProjectileHolder - Find it");
+
+            instanceRef.ProjectileHolder = GameObject.Find("ProjectileHolder").transform;
+        }
+
+        //if (instanceRef.VisualsHolder == null)
+        {
+            Debug.Log("VisualsHolder - Find it");
+
+            instanceRef.VisualsHolder = GameObject.Find("VisualsHolder").transform;
+        }
     }
 }

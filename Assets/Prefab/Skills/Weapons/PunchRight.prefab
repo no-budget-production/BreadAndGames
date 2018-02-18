@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies: []
-  ThisUnityTypeFlags: 3
+  ThisUnityTypeFlags: 6
 --- !u!114 &114601730004366300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,9 +234,9 @@ MonoBehaviour:
   Damage: 51
   Debuff: {fileID: 0}
   canCharge: 1
-  ChargeTime: 0.3
+  ChargeTime: 1
   curChargeTime: 0
-  BonusDamagePerSec: 33
+  BonusDamagePerSec: 100
   SoundPlayer: {fileID: 114659931926392164}
   SBetweenSounds: 1
 --- !u!114 &114659931926392164

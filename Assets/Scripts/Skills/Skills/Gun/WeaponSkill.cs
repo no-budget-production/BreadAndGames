@@ -89,10 +89,14 @@ public class WeaponSkill : Skill
                 Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
                 newProjectile.Shooter = Character;
                 newProjectile.SetSpeed(MuzzleVelocity);
-                newProjectile.transform.SetParent(transform);
+                newProjectile.transform.SetParent(GameManager.Instance.ProjectileHolder);
             }
 
-            Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
+            if (Shell != null)
+            {
+                Transform newShell = Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
+                newShell.transform.SetParent(GameManager.Instance.VisualsHolder);
+            }
 
             MuzzleFlash.Activate();
 

@@ -11,4 +11,7 @@ public class InstanceRef : MonoBehaviour
     public Transform EnemyHolder;
     public Transform SpawnHolder;
     public Transform ClusterHolder;
+    public Transform _DynamicHolder;
+    public Transform ProjectileHolder;
+    public Transform VisualsHolder;
 }

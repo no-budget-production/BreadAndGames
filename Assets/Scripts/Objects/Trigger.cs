@@ -51,7 +51,7 @@ public class Trigger : MonoBehaviour
             {
                 for (int i = 0; i < EnabledWithPlayer.Length; i++)
                 {
-                    //EnabledWithPlayer[i].enabled = true;
+                    EnabledWithPlayer[i].enabled = true;
                 }
             }
 
@@ -79,10 +79,6 @@ public class Trigger : MonoBehaviour
                     }
                 }
             }
-
-
         }
-
     }
-
 }

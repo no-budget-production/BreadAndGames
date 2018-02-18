@@ -66,9 +66,13 @@ public class Punch : Skill
 
     public override void StopShoot()
     {
-        curChargeTime = ChargeTime;
+        DeadlDamage();
+
+        curChargeTime = 0;
+
         Debug.Log("Punch Early");
     }
+
 
     public void DeadlDamage()
     {
