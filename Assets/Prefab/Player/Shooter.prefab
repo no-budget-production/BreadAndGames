@@ -1972,7 +1972,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838525, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
+  m_LocalRotation: {x: 0.0029838518, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -4024,6 +4024,10 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
     - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
+  - SkillBC: {fileID: 114233662046524968, guid: 29197da5aa9aea648ab5c647e0ce3c0c,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114699667673163188, guid: daa924789377d964d854a18ed9d6f75d, type: 2}
   - SkillBC: {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc,
       type: 2}
     ButtonStringBC: []

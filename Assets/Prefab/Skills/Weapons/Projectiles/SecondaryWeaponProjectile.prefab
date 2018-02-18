@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114397302490237756}
   - component: {fileID: 96993710841006174}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: SecondaryWeaponProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.9724138, b: 0, a: 0.69411767}
+      key0: {r: 0, g: 1, b: 0.006896496, a: 0.69411767}
       key1: {r: 1, g: 0.8645031, b: 0.5088235, a: 0.6784314}
       key2: {r: 1, g: 1, b: 1, a: 0.19607843}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -175,5 +175,5 @@ MonoBehaviour:
   ThisUnityTypeFlags: 6
   DamageType: 1
   Shooter: {fileID: 0}
-  Speed: 10
-  Damage: 8.5
+  Speed: 8
+  Damage: 4

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrimaryWeapon : Skill
+public class WeaponSkill : Skill
 {
     public Skill SkillRequired;
 
@@ -92,6 +92,7 @@ public class PrimaryWeapon : Skill
                 Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
                 newProjectile.Shooter = base.PlayerController;
                 newProjectile.SetSpeed(MuzzleVelocity);
+                newProjectile.transform.SetParent(this.transform);
             }
 
             Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
