@@ -22,7 +22,12 @@ public class Character : Entity
     public RectTransform HealthBar;
     public bool UseHealthbar;
 
+    public MultiSoundPlayer MultiSoundPlayer;
+
     public List<ActiveBuffObject> ActiveBuffObjects;
+
+    private float nextSoundTime;
+    public float SBetweenSounds = 1;
 
     public float MeleeDamage = 1f;
     public float RangeDamage = 1f;
@@ -48,6 +53,15 @@ public class Character : Entity
     {
 
         base.TakeDamage(damage, damageType);
+
+        if (MultiSoundPlayer != null)
+        {
+            if (Time.time > nextSoundTime)
+            {
+                MultiSoundPlayer.TakingDamageSound();
+                nextSoundTime = Time.time + SBetweenSounds + MultiSoundPlayer.GetClipLenght();
+            }
+        }
 
         if (UseHealthbar)
         {

@@ -850,6 +850,7 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  DamageType: 0
   HitBox: {fileID: 114224517553287476}
   MsBetweenShot: 300
   Damage: 51
@@ -913,6 +914,9 @@ MonoBehaviour:
   SoundEmpty: {fileID: 8300000, guid: 0a5e538ac22e3cc419731d3c1f1475e7, type: 3}
   Shell: {fileID: 4618930595482000, guid: 3aae16d9c48a312489323d005d10fd96, type: 2}
   ShellEjection: {fileID: 4685958634400136}
+  SoundPlayer: {fileID: 114799149923351328, guid: 06fda1fe9b58fb749a8b5a45a4fc1322,
+    type: 2}
+  SBetweenSounds: 1
 --- !u!114 &114224517553287476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -975,6 +979,7 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  DamageType: 0
   HitBox: {fileID: 114331974057728756}
   MsBetweenShot: 100
   Damage: 17

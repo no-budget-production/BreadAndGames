@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class DroneController : MonoBehaviour
 {
-
     public Transform BeamOrigin;
-
 }
