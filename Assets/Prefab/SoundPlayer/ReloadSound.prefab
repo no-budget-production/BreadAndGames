@@ -9,78 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1394566057841106}
+  m_RootGameObject: {fileID: 1614049378940664}
   m_IsPrefabParent: 1
---- !u!1 &1394566057841106
+--- !u!1 &1614049378940664
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4520488162497414}
-  - component: {fileID: 114132905055807542}
+  - component: {fileID: 4797493958922408}
+  - component: {fileID: 114799149923351328}
+  - component: {fileID: 82035874068320208}
   m_Layer: 0
-  m_Name: Reload
+  m_Name: PrimaryWeaponSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1613462156707536
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4759706038125068}
-  - component: {fileID: 114536509537192034}
-  - component: {fileID: 82615310749270370}
-  m_Layer: 0
-  m_Name: ReloadSound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4520488162497414
+--- !u!4 &4797493958922408
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1394566057841106}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4759706038125068}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4759706038125068
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613462156707536}
+  m_GameObject: {fileID: 1614049378940664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4520488162497414}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82615310749270370
+--- !u!82 &82035874068320208
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613462156707536}
+  m_GameObject: {fileID: 1614049378940664}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 974d97fab722d56498f9c3763f9aa5dc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -151,40 +121,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114132905055807542
+--- !u!114 &114799149923351328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1394566057841106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08fb42f503764ff418dd07eb79977f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillID: 204
-  PlayerController: {fileID: 0}
-  isFiring: 0
-  SkillSpawn: {fileID: 0}
-  BuffObject: {fileID: 11400000, guid: 537a2e64dda2fea489eb36c6ea0a09dc, type: 2}
-  UsedBuff: {fileID: 0}
-  curBuff: {fileID: 0}
-  BuffDuration: 0
-  cantStack: 0
-  SoundPlayer: {fileID: 114536509537192034}
-  SBetweenSounds: 100
---- !u!114 &114536509537192034
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613462156707536}
+  m_GameObject: {fileID: 1614049378940664}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3eadabaf93d8a64f8e3e0e66a49c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSource: {fileID: 82615310749270370}
+  AudioSource: {fileID: 82035874068320208}
   AudioClipsArray:
-  - {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
+  - {fileID: 8300000, guid: 974d97fab722d56498f9c3763f9aa5dc, type: 3}
   _lastSound: 0

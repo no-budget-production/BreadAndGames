@@ -181,18 +181,6 @@ public class Character : Entity
         }
     }
 
-    public bool HasBuff(BuffObject buffInQuestion)
-    {
-        for (int i = 0; i < ActiveBuffObjects.Count; i++)
-        {
-            if (ActiveBuffObjects[i].BuffObject == buffInQuestion)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     void UpdateBuffs()
     {
         if (ActiveBuffObjects.Count > 0)

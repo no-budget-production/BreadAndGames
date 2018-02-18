@@ -4,40 +4,14 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-
-    //public List<int> ReturnSelectedElements()
-    //{
-    //    List<int> selectedElements = new List<int>();
-    //    for (int i = 0; i < System.Enum.GetValues(typeof(CooldownType)).Length; i++)
-    //    {
-    //        int layer = 1 << i;
-    //        if (((int)ThisCoolDownType & layer) != 0)
-    //        {
-    //            selectedElements.Add(i);
-    //        }
-    //    }
-    //    return selectedElements;
-    //}
-
-    //[EnumFlagsAttribute]
-    //public CooldownType ThisCoolDownType;
-
-    //public CooldownType[] UsedCoolDownTypes;
-
-    //public bool HasFlag(CooldownType flags)
-    //{
-    //    int typeflag = 1 << (int)ThisCoolDownType;
-    //    return (typeflag & (int)flags) != 0;
-    //}
-
-    //no G.O.
     public int SkillID;
 
-    public GameObject Player;
     public PlayerController PlayerController;
 
     public bool isFiring;
     public Transform SkillSpawn;
+
+    public BuffObject BuffObject;
 
     public Buff UsedBuff;
     public Buff curBuff;

@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class Reload : Skill
 {
-    public AudioSource AudioSource;
-    public AudioClip SoundReload;
+
+    public SoundPlayer SoundPlayer;
+    private float nextSoundTime;
+    public float SBetweenSounds = 100;
 
     public override void Shoot()
     {
-        if (base.PlayerController.curActionPoints < base.PlayerController.ActionPoints)
+        if (BuffObject.HasBuff(PlayerController.ActiveBuffObjects))
         {
-            base.PlayerController.isInAction = true;
-            AudioSource.PlayOneShot(SoundReload);
-            base.PlayerController.curActionPoints = base.PlayerController.ActionPoints;
-            //base.ActionCD = Time.time + reloadTime;
-
-            base.PlayerController.isInAction = false;
+            return;
         }
-    }
 
+        if (BuffObject.HasCanTriggerWith(PlayerController.ActiveBuffObjects))
+        {
+            return;
+        }
+
+
+        if (Time.time > nextSoundTime)
+        {
+            nextSoundTime = Time.time + SBetweenSounds + SoundPlayer.GetClipLenght();
+            SoundPlayer.Play();
+        }
+
+        PlayerController.AddBuff(BuffObject, 1, PlayerController);
+
+        if (PlayerController.curActionPoints < PlayerController.ActionPoints)
+        {
+            PlayerController.isInAction = true;
+            PlayerController.curActionPoints = PlayerController.ActionPoints;
+            PlayerController.OnActionBarChange();
+            SoundPlayer.Play();
+            PlayerController.isInAction = false;
+        }
+
+    }
 }

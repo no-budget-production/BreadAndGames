@@ -35,7 +35,7 @@ public enum BuffTypes
 public class BuffObject : ScriptableObject
 {
     public new string name;
-    public BuffTypes BuffTypes;
+    public BuffTypes BuffType;
     public int ID;
 
     public bool isPermanent;
@@ -68,5 +68,37 @@ public class BuffObject : ScriptableObject
     public float LoseGainActionPoints;
 
     public BuffEndScript BuffEndScript;
+
+    public bool HasCanTriggerWith(List<ActiveBuffObject> BuffList)
+    {
+        for (int i = 0; i < BuffList.Count; i++)
+        {
+            for (int j = 0; j < cantTriggerWith.Length; j++)
+            {
+                if (BuffList[i].BuffObject.BuffType == cantTriggerWith[j])
+                {
+                    Debug.Log("cantTriggerWith");
+                    return true;
+                }
+            }
+        }
+        Debug.Log("cantTriggerWith NotFound");
+        return false;
+    }
+
+    public bool HasBuff(List<ActiveBuffObject> BuffList)
+    {
+        for (int i = 0; i < BuffList.Count; i++)
+        {
+            if (BuffList[i].BuffObject.BuffType == BuffType)
+            {
+                Debug.Log("HasBuff");
+                return true;
+
+            }
+        }
+        Debug.Log("HasBuff NotFound");
+        return false;
+    }
 }
 

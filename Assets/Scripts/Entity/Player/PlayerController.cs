@@ -91,7 +91,6 @@ public class PlayerController : Character
         {
             Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity);
             curSkill.transform.SetParent(transform);
-            curSkill.Player = this.gameObject;
             curSkill.PlayerController = this;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
