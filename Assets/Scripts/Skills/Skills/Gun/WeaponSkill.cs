@@ -12,7 +12,6 @@ public class WeaponSkill : Skill
     public Projectile Projectile;
     public Transform Shell;
 
-    public float MsBetweenShot = 100;
     public float MuzzleVelocity = 35;
     public float AccuracyHorizontal;
     public float AccuracyVertical;
@@ -22,8 +21,6 @@ public class WeaponSkill : Skill
     public int VolleySize;
 
     public MuzzleFlash MuzzleFlash;
-
-    private float nextShotTime;
 
     public SoundPlayer SoundPlayer;
     private SoundPlayer curSoundPlayer;
@@ -35,7 +32,7 @@ public class WeaponSkill : Skill
     public override void LateSkillSetup()
     {
         this.transform.SetParent(SkillSpawn);
-        curSoundPlayer = Instantiate(SoundPlayer, PlayerController.transform.position + SoundPlayer.transform.position, Quaternion.identity);
+        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
         curSoundPlayer.transform.SetParent(SkillSpawn);
         curSoundPlayer.Play();
     }
@@ -44,11 +41,11 @@ public class WeaponSkill : Skill
     {
         int atI = 0;
 
-        for (int i = 0; i < PlayerController.ActiveSkills.Length; i++)
+        for (int i = 0; i < Character.ActiveSkills.Length; i++)
         {
-            if (PlayerController.ActiveSkills[i].SkillType == SkillRequired.SkillType)
+            if (Character.ActiveSkills[i].SkillType == SkillRequired.SkillType)
             {
-                Debug.Log("Gun Found: " + PlayerController.ActiveBuffs[i]);
+                Debug.Log("Gun Found: " + Character.ActiveBuffs[i]);
                 isGunFound = true;
                 atI = i;
                 break;
@@ -58,19 +55,19 @@ public class WeaponSkill : Skill
 
     public override void Shoot()
     {
-        if (BuffObject.HasBuff(PlayerController.ActiveBuffObjects))
+        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
         {
             return;
         }
 
-        if (BuffObject.HasCanTriggerWith(PlayerController.ActiveBuffObjects))
+        if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
         {
             return;
         }
 
-        PlayerController.AddBuff(BuffObject, 1, PlayerController);
+        Character.AddBuff(BuffObject, 1, Character);
 
-        if (PlayerController.curActionPoints > 0)
+        if (Character.curActionPoints - ActionPointsCost > 0)
         {
             if (Time.time > nextSoundTime)
             {
@@ -78,7 +75,7 @@ public class WeaponSkill : Skill
                 curSoundPlayer.Play();
             }
 
-            float AccuracyBonus = Mathf.Max(base.PlayerController.AccuracyMultiplicator, 0.0001f);
+            float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);
 
             float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
             float tempAccuracyVertical = Mathf.Max(AccuracyVertical * AccuracyBonus, 0);
@@ -90,20 +87,20 @@ public class WeaponSkill : Skill
                 Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
 
                 Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
-                newProjectile.Shooter = base.PlayerController;
+                newProjectile.Shooter = Character;
                 newProjectile.SetSpeed(MuzzleVelocity);
-                newProjectile.transform.SetParent(this.transform);
+                newProjectile.transform.SetParent(transform);
             }
 
             Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
 
             MuzzleFlash.Activate();
 
-            base.PlayerController.SpendActionPoints(ActionPointsCost);
+            Character.SpendActionPoints(ActionPointsCost);
         }
-        else if (base.PlayerController.curActionPoints <= 0)
+        else if (Character.curActionPoints <= 0)
         {
-            PlayerController.EmptySound();
+            Character.EmptySound();
         }
     }
 }

@@ -9,7 +9,7 @@ public class Buff : MonoBehaviour
     [HideInInspector]
     public float Lifetime;
 
-    public PlayerController PlayerController;
+    public Character Character;
 
     public BuffType[] ThisBuffTypes;
 
@@ -17,22 +17,22 @@ public class Buff : MonoBehaviour
     {
         yield return new WaitForSeconds(Lifetime);
 
-        PlayerController.ActiveBuffs.Remove(this);
+        Character.ActiveBuffs.Remove(this);
 
         Destroy(this.gameObject);
 
         for (int i = 0; i < ThisBuffTypes.Length; i++)
         {
             bool hasActiveBuff = false;
-            for (int j = 0; j < PlayerController.ActiveBuffs.Count; j++)
+            for (int j = 0; j < Character.ActiveBuffs.Count; j++)
             {
                 if (hasActiveBuff)
                 {
                     break;
                 }
-                for (int k = 0; k < PlayerController.ActiveBuffs[j].ThisBuffTypes.Length; k++)
+                for (int k = 0; k < Character.ActiveBuffs[j].ThisBuffTypes.Length; k++)
                 {
-                    if (ThisBuffTypes[i] == PlayerController.ActiveBuffs[j].ThisBuffTypes[k])
+                    if (ThisBuffTypes[i] == Character.ActiveBuffs[j].ThisBuffTypes[k])
                     {
                         hasActiveBuff = true;
                         Debug.Log("Buff found: " + ThisBuffTypes[i]);
@@ -46,13 +46,13 @@ public class Buff : MonoBehaviour
                 switch (ThisBuffTypes[i])
                 {
                     case BuffType.CanWalk:
-                        PlayerController.canWalk = true;
+                        Character.canWalk = true;
                         break;
                     case BuffType.CanUseRightStick:
-                        PlayerController.canUseRightStick = true;
+                        Character.canUseRightStick = true;
                         break;
                     case BuffType.CanUseSkills:
-                        PlayerController.canUseSkills = true;
+                        Character.canUseSkills = true;
                         break;
                     default:
                         break;

@@ -10,6 +10,8 @@ public class Boundary
 
 public class HealingDrone : Skill
 {
+    public PlayerController PlayerController;
+
     public Rigidbody controller;
     public DroneController DroneController;
     public Transform PlayerPostion;
@@ -44,30 +46,32 @@ public class HealingDrone : Skill
         DroneController = Instantiate(DroneController, transform.position + DroneController.transform.position, Quaternion.identity);
         controller = DroneController.GetComponent<Rigidbody>();
         BeamOrigin = DroneController.BeamOrigin;
-    }
 
-    public override void Shoot()
-    {
+        var tempPlayerController = Character.GetComponent<PlayerController>();
+        if (Character.GetComponent<PlayerController>() != null)
+        {
+            PlayerController = tempPlayerController;
+        }
 
     }
 
     void Update()
     {
-        HorizontalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[2]);
-        VerticalLook_PX = Input.GetAxis(base.PlayerController.thisPlayerString[3]);
+        HorizontalLook_PX = Input.GetAxis(PlayerController.thisPlayerString[2]);
+        VerticalLook_PX = Input.GetAxis(PlayerController.thisPlayerString[3]);
 
         Vector3 lookVector = new Vector3(HorizontalLook_PX, 0, VerticalLook_PX);
 
         movement = new Vector3(VerticalLook_PX, 0.0f, HorizontalLook_PX).normalized;
 
-        if (lookVector.magnitude < base.PlayerController.deadZones[0])
+        if (lookVector.magnitude < PlayerController.deadZones[0])
         {
             if (controller.velocity.magnitude > 0.2f)
                 controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
             else
             {
                 startMarker = controller.transform.position;
-                endMarker = new Vector3(base.PlayerController.transform.position.x, startMarker.y, base.PlayerController.transform.position.z);
+                endMarker = new Vector3(Character.transform.position.x, startMarker.y, Character.transform.position.z);
                 Vector3 newSpot = Vector3.MoveTowards(startMarker, endMarker, Leeway);
                 journeyLength = Vector3.Distance(startMarker, endMarker);
                 if (true)

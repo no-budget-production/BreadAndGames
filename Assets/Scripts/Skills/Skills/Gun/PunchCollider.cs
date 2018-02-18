@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PunchCollider : MonoBehaviour
 {
-    public List<Character> Enemies;
+    public List<Entity> Enemies;
 
     public List<int> ReturnSelectedElements()
     {
@@ -25,7 +25,7 @@ public class PunchCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        var temp = other.GetComponent<Character>();
+        var temp = other.GetComponent<Entity>();
         if (temp == null)
             return;
         if (FlagsHelper.HasUnitTypes(temp.ThisUnityTypeFlags, ThisUnityTypeFlags))
@@ -36,7 +36,7 @@ public class PunchCollider : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        var temp = other.GetComponent<Character>();
+        var temp = other.GetComponent<Entity>();
         if (temp == null)
             return;
         if (FlagsHelper.HasUnitTypes(temp.ThisUnityTypeFlags, ThisUnityTypeFlags))

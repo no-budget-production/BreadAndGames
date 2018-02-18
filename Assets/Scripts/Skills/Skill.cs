@@ -6,7 +6,7 @@ public class Skill : MonoBehaviour
 {
     public SkillType SkillType;
 
-    public PlayerController PlayerController;
+    public Character Character;
 
     public bool isFiring;
     public Transform SkillSpawn;
@@ -45,13 +45,13 @@ public class Skill : MonoBehaviour
         {
             Debug.Log("CantStack");
 
-            for (int i = 0; i < PlayerController.ActiveBuffs.Count; i++)
+            for (int i = 0; i < Character.ActiveBuffs.Count; i++)
             {
-                if (PlayerController.ActiveBuffs[i].BuffSkillType == UsedBuff.BuffSkillType)
+                if (Character.ActiveBuffs[i].BuffSkillType == UsedBuff.BuffSkillType)
                 {
-                    Debug.Log("Spawn Buff found: " + PlayerController.ActiveBuffs[i]);
-                    Destroy(PlayerController.ActiveBuffs[i].gameObject);
-                    PlayerController.ActiveBuffs.Remove(PlayerController.ActiveBuffs[i]);
+                    Debug.Log("Spawn Buff found: " + Character.ActiveBuffs[i]);
+                    Destroy(Character.ActiveBuffs[i].gameObject);
+                    Character.ActiveBuffs.Remove(Character.ActiveBuffs[i]);
                     break;
                 }
             }
@@ -59,8 +59,8 @@ public class Skill : MonoBehaviour
 
         curBuff = Instantiate(UsedBuff, transform.position + UsedBuff.transform.position, Quaternion.identity);
         curBuff.transform.SetParent(transform);
-        curBuff.PlayerController = PlayerController;
+        curBuff.Character = Character;
         curBuff.Lifetime = BuffDuration;
-        PlayerController.ActiveBuffs.Add(curBuff);
+        Character.ActiveBuffs.Add(curBuff);
     }
 }

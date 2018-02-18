@@ -6,7 +6,7 @@ public class AimMode : Skill
 {
     public override void Shoot()
     {
-        PlayerController.AddBuff(BuffObject, 1, PlayerController);
+        Character.AddBuff(BuffObject, 1, Character);
     }
 
     public override void StopShoot()
