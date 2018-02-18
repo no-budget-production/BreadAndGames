@@ -36,18 +36,26 @@ public class Entity : MonoBehaviour
     public bool DestroyOnDeath;
     //public float Decay;
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, DamageType damageType)
     {
-        //Debug.Log("EntityDamage");
         if (FlagsHelper.HasUnitTypes(ThisUnityTypeFlags, UnitTypes.Invurnable))
         {
-            //Debug.Log("Invurnable");
             return;
         }
 
-        //Debug.Log("EntityTakeDamage");
+        float editedDamage = damage;
 
-        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
+
+        if (damageType == DamageType.Melee)
+        {
+            editedDamage = Mathf.Max(editedDamage - MeleeArmor - (MeleeArmor * MeleeArmorMultiplicator), 0);
+        }
+        else if (damageType == DamageType.Ranged)
+        {
+            editedDamage = Mathf.Max(editedDamage - RangedArmor - (RangedArmor * RangeArmorMultiplicator), 0);
+        }
+
+        CurrentHealth = Mathf.Max(CurrentHealth - editedDamage, 0);
 
         if (CurrentHealth <= 0)
         {

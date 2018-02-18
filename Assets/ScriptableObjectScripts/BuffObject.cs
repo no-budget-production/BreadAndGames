@@ -57,10 +57,12 @@ public class BuffObject : ScriptableObject
     public float MoveSpeedMultiplicator = 1;
 
     public float MeleeArmorMultiplicator = 1;
-    public float RangedArmorMultiplicator = 1;
+    public float RangeArmorMultiplicator = 1;
 
     public float GainHealth;
     public float LoseHealth;
+
+    public DamageType DamageType;
 
     public float GainActionPoints;
     public float LoseGainActionPoints;

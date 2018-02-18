@@ -21,14 +21,19 @@ public enum DamageType
 {
     Melee,
     Ranged,
-    _Length
+    Skill,
+    Trigger,
+    _Length,
+    _Invalid = -1
 }
 
 [System.Flags]
 public enum DamageTypeFlags
 {
     Melee = 1 << DamageType.Melee,
-    Ranged = 1 << DamageType.Ranged
+    Ranged = 1 << DamageType.Ranged,
+    Skill = 1 << DamageType.Skill,
+    Trigger = 1 << DamageType.Trigger
 }
 
 

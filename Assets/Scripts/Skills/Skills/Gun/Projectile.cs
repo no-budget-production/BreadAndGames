@@ -25,6 +25,9 @@ public class Projectile : Effect
 
     [EnumFlagsAttribute]
     public UnitTypesFlags ThisUnityTypeFlags;
+
+    public DamageType DamageType;
+
     public Character Shooter;
 
     public float Speed = 10;
@@ -70,7 +73,8 @@ public class Projectile : Effect
 
         if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames, collisionMask, QueryTriggerInteraction.Collide))
         {
-            if (OnHitObject(hit)) Destroy(this.gameObject);
+            if (OnHitObject(hit))
+                Destroy(this.gameObject);
         }
     }
 
@@ -82,7 +86,7 @@ public class Projectile : Effect
         {
             if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
             {
-                damageableObject.TakeDamage(Damage);
+                damageableObject.TakeDamage(Damage, DamageType);
                 return true;
                 //Debug.Log("TakeDamage");
             }
@@ -92,7 +96,7 @@ public class Projectile : Effect
         if (MeleeShield != null && !shieldImmunity)
         {
             return MeleeShield.AddProjectile(this);
-          
+
         }
         return true;
     }

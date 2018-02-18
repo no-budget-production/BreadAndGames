@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Punch : Skill
 {
-
+    public DamageType DamageType;
     public PunchCollider HitBox;
 
     public float MsBetweenShot;
@@ -20,7 +20,8 @@ public class Punch : Skill
 
     public override void Shoot()
     {
-        if (cur_chargeTime < 100) cur_chargeTime -= Time.deltaTime;
+        if (cur_chargeTime < 100)
+            cur_chargeTime -= Time.deltaTime;
         if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction && cur_chargeTime <= 0)
         {
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
@@ -33,7 +34,7 @@ public class Punch : Skill
                     HitBox.Enemies.Remove(e);
                     return;
                 }
-                e.TakeDamage(Damage);
+                e.TakeDamage(Damage, DamageType);
             }
 
             cur_chargeTime = 110;

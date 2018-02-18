@@ -23,6 +23,8 @@ public class Healing : Skill
 
     bool isHalfWidthLineRenderer;
 
+    bool isDroneSkillFound;
+
     private void Start()
     {
         DroneOrigin = BeamOrigin;
@@ -34,7 +36,7 @@ public class Healing : Skill
     public void FindDrone()
     {
         int atI = 0;
-        bool isDroneSkillFound = false;
+
         for (int i = 0; i < base.PlayerController.ActiveSkills.Length; i++)
         {
             if (base.PlayerController.ActiveSkills[i].SkillID == SkillRequired.SkillID)
@@ -62,7 +64,7 @@ public class Healing : Skill
 
     public override void Shoot()
     {
-        if (DroneOrigin = BeamOrigin)
+        if (!isDroneSkillFound)
         {
             FindDrone();
         }
