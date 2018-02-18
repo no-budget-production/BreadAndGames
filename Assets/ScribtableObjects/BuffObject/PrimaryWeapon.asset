@@ -11,23 +11,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7df3c612cbc3d47957ee37cfd1952f, type: 3}
   m_Name: PrimaryWeapon
   m_EditorClassIdentifier: 
-  name: 
+  name: PrimaryWeapon
   BuffTypes: 7
   ID: 201
+  isPermanent: 0
   maxTime: 10
   curTime: 0
   isStackable: 0
   cantTriggerWith: 08000000090000000a000000
   effectWith: 
   disableWalking: 0
-  disableRightStick: 1
+  disableRightStick: 0
   disableSkills: 0
-  MeleeDamageMultiplicator: 1
-  RangeDamageMultiplicator: 1
-  AccuracyMultiplicator: 1
-  MoveSpeedMultiplicator: 1
-  MeleeArmorMultiplicator: 1
-  RangedArmorMultiplicator: 1
+  MeleeDamageMultiplicator: 0
+  RangeDamageMultiplicator: 0
+  AccuracyMultiplicator: 0
+  MoveSpeedMultiplicator: 0
+  MeleeArmorMultiplicator: 0
+  RangedArmorMultiplicator: 0
   GainHealth: 2
   LoseHealth: 0
   GainActionPoints: 0

@@ -37,6 +37,8 @@ public class BuffObject : ScriptableObject
     public new string name;
     public BuffTypes BuffTypes;
     public int ID;
+
+    public bool isPermanent;
     public float maxTime;
     public float curTime;
 
@@ -63,20 +65,5 @@ public class BuffObject : ScriptableObject
     public float GainActionPoints;
     public float LoseGainActionPoints;
 
-    public BuffObject()
-    {
-    }
-
-    public void Init(string name)
-    {
-        this.name = name;
-    }
-
-    public static BuffObject CreateInstance(string name)
-    {
-        var data = ScriptableObject.CreateInstance<BuffObject>();
-        data.Init(name);
-        return data;
-    }
 }
 

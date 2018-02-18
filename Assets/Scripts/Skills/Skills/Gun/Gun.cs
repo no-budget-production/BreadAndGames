@@ -13,6 +13,7 @@ public class Gun : Skill
 
     public int ActionPointsCost;
 
+
     public MuzzleFlash MuzzleFlash;
     public AudioSource GunSound;
     public AudioClip[] SoundClips;
@@ -41,8 +42,12 @@ public class Gun : Skill
         {
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
-            float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * base.PlayerController.AccuracyMultiplicator, 0);
-            float tempAccuracyVertical = Mathf.Max(-AccuracyVertical * base.PlayerController.AccuracyMultiplicator, 0);
+            float AccuracyBonus = Mathf.Max(base.PlayerController.AccuracyMultiplicator, 0.0001f);
+
+            float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
+            float tempAccuracyVertical = Mathf.Max(AccuracyVertical * AccuracyBonus, 0);
+            tempAccuracyHorizontal = Mathf.Min(tempAccuracyHorizontal, 180);
+            tempAccuracyVertical = Mathf.Min(tempAccuracyVertical, 180);
 
             Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
 

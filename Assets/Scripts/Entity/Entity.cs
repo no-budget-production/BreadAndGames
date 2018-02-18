@@ -24,7 +24,13 @@ public class Entity : MonoBehaviour
 
     public float CurrentHealth;
     public float MaxHealth;
-    public float Armor;
+
+    public float MeleeArmor;
+    public float RangedArmor;
+
+    public float MeleeArmorMultiplicator;
+    public float RangeArmorMultiplicator;
+
     public bool isDeadTrigger;
 
     public bool DestroyOnDeath;
@@ -52,10 +58,5 @@ public class Entity : MonoBehaviour
     public virtual void GetHealth(float healing)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
-    }
-
-    public virtual void ArmorBuff(float armorArg)
-    {
-        Armor += Mathf.Clamp(armorArg, 0, armorArg);
     }
 }

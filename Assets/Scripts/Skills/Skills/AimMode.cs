@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class AimMode : Skill
 {
+    public BuffObject buffObject;
 
     public override void Shoot()
     {
-        SkillEvents();
+        base.PlayerController.AddBuff(buffObject, 1);
+        //if (!base.PlayerController.HasBuff(buffObject))
+        //{
+        //    base.PlayerController.AddBuff(buffObject, 1);
+        //    Debug.Log("Skill AddingBuff " + buffObject.name);
+        //}
+
+
+        //SkillEvents();
+
     }
 
-    private void SkillEvents()
+    public override void StopShoot()
     {
-        base.SpawnBuff();
+        //if (base.PlayerController.HasBuff(buffObject))
+        //{
+        //    base.PlayerController.AddBuff(buffObject, -1);
+        //    Debug.Log("Skill RemovingBuff " + buffObject.name);
+        //}
+
 
     }
+
+    //private void SkillEvents()
+    //{
+    //    base.SpawnBuff();
+
+    //}
 }

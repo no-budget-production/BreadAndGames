@@ -9,6 +9,19 @@ public class ButtonConfig
     public ButtonString[] ButtonStringBC;
 }
 
+[System.Serializable]
+public class ActiveBuffObject
+{
+    public float BuffCurTime;
+    public BuffObject BuffObject;
+
+    public ActiveBuffObject(float buffCurTime, BuffObject buffObject)
+    {
+        this.BuffCurTime = buffCurTime;
+        this.BuffObject = buffObject;
+    }
+}
+
 public class PlayerController : Character
 {
     public PlayerType Type;
@@ -49,8 +62,7 @@ public class PlayerController : Character
 
     public List<Buff> ActiveBuffs;
 
-    public List<float> ActiveBuffsCurTime;
-    public List<BuffObject> ActiveBuffObjects;
+    public List<ActiveBuffObject> ActiveBuffObjects;
 
     public bool isInAction;
     public int ActionPoints;
@@ -175,9 +187,9 @@ public class PlayerController : Character
                 //temporaryVector.z = Vertical_PX;
                 currentMovement += moveVector * Acceleration;
                 float speed = currentMovement.magnitude;
-                if (speed > MoveSpeed)
+                if (speed > (MoveSpeed * MoveSpeedMultiplicator))
                 {
-                    currentMovement *= MoveSpeed / speed;
+                    currentMovement *= (MoveSpeed * MoveSpeedMultiplicator) / speed;
                 }
 
             }
@@ -287,7 +299,6 @@ public class PlayerController : Character
                 if (!tempIsShooting)
                 {
                     ActiveSkills[i].isFiring = false;
-                    ActiveSkills[i].StopShoot();
                 }
             }
         }
@@ -300,14 +311,69 @@ public class PlayerController : Character
         UpdateBuffs();
     }
 
-    void GainBuff(BuffObject buff)
+    public void AddBuff(BuffObject buff, int multi)
     {
-        MeleeDamageMultiplicator += buff.MeleeDamageMultiplicator;
-        RangeDamageMultiplicator += buff.RangeDamageMultiplicator;
-        AccuracyMultiplicator += buff.AccuracyMultiplicator;
-        RangeDamageMultiplicator += buff.RangeDamageMultiplicator;
+        bool hasBuff = false;
+        for (int i = 0; i < ActiveBuffObjects.Count; i++)
+        {
+            if (ActiveBuffObjects[i].BuffObject == buff)
+            {
+                hasBuff = true;
 
-        MoveSpeedMultiplicator += buff.MoveSpeedMultiplicator;
+                //if (!buff.isStackable)
+                {
+                    //if (!buff.isPermanent)
+                    {
+                        if (multi < 0)
+                        {
+                            Debug.Log("RemovingBuff " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
+                            ActiveBuffObjects.RemoveAt(i);
+                        }
+                        else
+                        {
+                            ActiveBuffObjects[i].BuffCurTime = 0;
+                            Debug.Log("ResetTime " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!hasBuff)
+        {
+            BuffBuff(buff, multi);
+        }
+
+        if (multi > 0)
+        {
+            if (!hasBuff && !buff.isPermanent)
+            {
+                ActiveBuffObjects.Add(new ActiveBuffObject(0, buff));
+                Debug.Log("AddingBuff " + buff.name);
+            }
+        }
+    }
+
+    void BuffBuff(BuffObject buff, int multi)
+    {
+        MeleeDamageMultiplicator += (buff.MeleeDamageMultiplicator * multi);
+        RangeDamageMultiplicator += (buff.RangeDamageMultiplicator * multi);
+        AccuracyMultiplicator += (buff.AccuracyMultiplicator * multi);
+        RangeDamageMultiplicator += (buff.RangeDamageMultiplicator * multi);
+
+        MoveSpeedMultiplicator += (buff.MoveSpeedMultiplicator * multi);
+    }
+
+    public bool HasBuff(BuffObject buffInQuestion)
+    {
+        for (int i = 0; i < ActiveBuffObjects.Count; i++)
+        {
+            if (ActiveBuffObjects[i].BuffObject == buffInQuestion)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void UpdateBuffs()
@@ -317,68 +383,71 @@ public class PlayerController : Character
             int canWalkAgainCount = 0;
             int canUseRightStickAgainCount = 0;
             int canUseSkillsAgainCount = 0;
+            bool expired = false;
 
             for (int i = 0; i < ActiveBuffObjects.Count; i++)
             {
-                ActiveBuffsCurTime[i] += Time.deltaTime;
-                //ActiveBuffObjects[i].curTime += Time.deltaTime;
-
-                TakeDamage(ActiveBuffObjects[i].LoseHealth);
-                GetHealth(ActiveBuffObjects[i].GainHealth);
+                TakeDamage(ActiveBuffObjects[i].BuffObject.LoseHealth);
+                GetHealth(ActiveBuffObjects[i].BuffObject.GainHealth);
 
 
-                if (ActiveBuffObjects[i].disableWalking)
+                if (ActiveBuffObjects[i].BuffObject.disableWalking)
                 {
                     canWalkAgainCount++;
                 }
 
-                if (ActiveBuffObjects[i].disableRightStick)
+                if (ActiveBuffObjects[i].BuffObject.disableRightStick)
                 {
                     canUseRightStickAgainCount++;
                 }
 
-                if (ActiveBuffObjects[i].disableSkills)
+                if (ActiveBuffObjects[i].BuffObject.disableSkills)
                 {
                     canUseSkillsAgainCount++;
                 }
 
-                if (ActiveBuffObjects[i].maxTime < ActiveBuffsCurTime[i])
+                if (!ActiveBuffObjects[i].BuffObject.isPermanent)
                 {
-                    MeleeDamageMultiplicator -= ActiveBuffObjects[i].MeleeDamageMultiplicator;
-                    RangeDamageMultiplicator -= ActiveBuffObjects[i].RangeDamageMultiplicator;
-                    AccuracyMultiplicator -= ActiveBuffObjects[i].AccuracyMultiplicator;
-                    RangeDamageMultiplicator -= ActiveBuffObjects[i].RangeDamageMultiplicator;
+                    ActiveBuffObjects[i].BuffCurTime += Time.deltaTime;
 
-                    MoveSpeedMultiplicator -= ActiveBuffObjects[i].MoveSpeedMultiplicator;
-
-                    ActiveBuffsCurTime.RemoveAt(i);
-                    ActiveBuffObjects.Remove(ActiveBuffObjects[i]);
-                    i--;
-                }
-            }
-
-            if (!canWalk)
-            {
-                if (canWalkAgainCount == 1)
-                {
-                    canWalk = true;
-                }
-            }
-            if (canUseRightStick)
-            {
-                if (!canCurUseRightStick)
-                {
-                    if (canUseRightStickAgainCount == 1)
+                    if (ActiveBuffObjects[i].BuffObject.maxTime < ActiveBuffObjects[i].BuffCurTime)
                     {
-                        canUseRightStick = true;
+                        BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
+                        ActiveBuffObjects.RemoveAt(i);
+                        i--;
+
+                        expired = true;
+                        Debug.Log("RemovingBuff");
+                        continue;
                     }
                 }
             }
-            if (!canUseSkills)
+
+            if (expired)
             {
-                if (canUseSkillsAgainCount == 1)
+                if (!canWalk)
                 {
-                    canUseSkills = true;
+                    if (canWalkAgainCount == 1)
+                    {
+                        canWalk = true;
+                    }
+                }
+                if (canUseRightStick)
+                {
+                    if (!canCurUseRightStick)
+                    {
+                        if (canUseRightStickAgainCount == 1)
+                        {
+                            canUseRightStick = true;
+                        }
+                    }
+                }
+                if (!canUseSkills)
+                {
+                    if (canUseSkillsAgainCount == 1)
+                    {
+                        canUseSkills = true;
+                    }
                 }
             }
         }

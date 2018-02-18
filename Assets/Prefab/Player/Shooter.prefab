@@ -1905,7 +1905,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838583, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
+  m_LocalRotation: {x: 0.0029838565, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -3698,7 +3698,10 @@ MonoBehaviour:
   ThisUnityTypeFlags: 1
   CurrentHealth: 0
   MaxHealth: 100
-  Armor: 0
+  MeleeArmor: 0
+  RangedArmor: 0
+  MeleeArmorMultiplicator: 0
+  RangeArmorMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
   HealthBar: {fileID: 224228349348698198}
@@ -3717,7 +3720,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   canWalk: 1
-  canUseRightStick: 0
+  canUseRightStick: 1
   canCurUseRightStick: 1
   canUseSkills: 1
   isWalking: 0
@@ -3735,12 +3738,16 @@ MonoBehaviour:
       type: 2}
     ButtonStringBC:
     - {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49, type: 2}
+  - SkillBC: {fileID: 114407309964108902, guid: 2be2c420b6ddd5542b9af87e0fc22ed1,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
+    - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
   ActiveSkills: []
   ActiveBuffs: []
-  ActiveBuffsCurTime:
-  - 0
   ActiveBuffObjects:
-  - {fileID: 11400000, guid: 5e17b196f94d5564193623bb656d256e, type: 2}
+  - BuffCurTime: 1
+    BuffObject: {fileID: 11400000, guid: 5e17b196f94d5564193623bb656d256e, type: 2}
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100

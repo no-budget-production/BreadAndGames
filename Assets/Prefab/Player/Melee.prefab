@@ -1141,7 +1141,10 @@ MonoBehaviour:
   ThisUnityTypeFlags: 1
   CurrentHealth: 1
   MaxHealth: 100
-  Armor: 0
+  MeleeArmor: 0
+  RangedArmor: 0
+  MeleeArmorMultiplicator: 0
+  RangeArmorMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
   HealthBar: {fileID: 224660065565190754}
@@ -1161,6 +1164,7 @@ MonoBehaviour:
   AccuracyMultiplicator: 1
   canWalk: 1
   canUseRightStick: 0
+  canCurUseRightStick: 0
   canUseSkills: 1
   isWalking: 0
   isUsingRightStick: 0
@@ -1179,6 +1183,7 @@ MonoBehaviour:
     - {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6, type: 2}
   ActiveSkills: []
   ActiveBuffs: []
+  ActiveBuffObjects: []
   isInAction: 0
   ActionPoints: 100
   curActionPoints: 100
