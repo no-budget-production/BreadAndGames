@@ -9,27 +9,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7df3c612cbc3d47957ee37cfd1952f, type: 3}
-  m_Name: AimMode
+  m_Name: EnergyBarrier
   m_EditorClassIdentifier: 
-  name: AimMode
-  BuffTypes: 12
-  ID: 101
+  name: EnergyBarrier
+  BuffTypes: 2
+  ID: 103
   isPermanent: 0
-  maxTime: 0.1
+  maxTime: 0.3
   curTime: 0
   isStackable: 0
   cantTriggerWith: 
-  effectWith: 0d00000009000000
+  effectWith: 
   disableWalking: 0
   disableRightStick: 0
   disableSkills: 0
   MeleeDamageMultiplicator: 0
   RangeDamageMultiplicator: 0
-  AccuracyMultiplicator: -0.75
-  MoveSpeedMultiplicator: -0.5
+  AccuracyMultiplicator: 0
+  MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
   RangedArmorMultiplicator: 0
   GainHealth: 0
   LoseHealth: 0
   GainActionPoints: 0
   LoseGainActionPoints: 0
+  BuffEndScript: {fileID: 0}

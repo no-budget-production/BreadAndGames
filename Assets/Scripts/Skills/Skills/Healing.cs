@@ -58,10 +58,6 @@ public class Healing : Skill
 
             DroneOrigin = temp.BeamOrigin.transform;
         }
-        else
-        {
-            //Debug.Log("DroneSkillNotFound");
-        }
     }
 
     public override void Shoot()

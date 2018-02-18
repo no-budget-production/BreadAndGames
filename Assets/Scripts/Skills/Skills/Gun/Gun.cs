@@ -13,6 +13,7 @@ public class Gun : Skill
 
     public int ActionPointsCost;
 
+    public int VolleySize;
 
     public MuzzleFlash MuzzleFlash;
     public AudioSource GunSound;
@@ -49,11 +50,15 @@ public class Gun : Skill
             tempAccuracyHorizontal = Mathf.Min(tempAccuracyHorizontal, 180);
             tempAccuracyVertical = Mathf.Min(tempAccuracyVertical, 180);
 
-            Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
+            for (int i = 0; i < VolleySize; i++)
+            {
+                Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
 
-            Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
-            newProjectile.Shooter = base.PlayerController;
-            newProjectile.SetSpeed(MuzzleVelocity);
+                Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
+                newProjectile.Shooter = base.PlayerController;
+                newProjectile.SetSpeed(MuzzleVelocity);
+            }
+
 
             Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
             playShotSound();

@@ -10,5 +10,8 @@ public class HealingBuff : Buff
         base.StartCoroutine(Fade());
     }
 
-
+    private void OnDestroy()
+    {
+        Debug.Log("Buff Destroyed");
+    }
 }

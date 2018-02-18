@@ -278,12 +278,19 @@ public class PlayerController : Character
                 {
                     if (areButtons[tempIJ])
                     {
-                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
+                        if (Input.GetButton(thisPlayerString[usedButtons[tempIJ]]))
                         {
                             ActiveSkills[i].Shoot();
                             ActiveSkills[i].isFiring = true;
                             tempIsShooting = true;
-                            //DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                        }
+                        else if ((Input.GetButtonUp(thisPlayerString[usedButtons[tempIJ]])) && PlayerSkills[i].ButtonStringBC.Length == 1)
+                        {
+                            ActiveSkills[i].isFiring = false;
+                            ActiveSkills[i].StopShoot();
+                            Debug.Log("StopFire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            tempIsShooting = true;
                         }
                     }
                     else
