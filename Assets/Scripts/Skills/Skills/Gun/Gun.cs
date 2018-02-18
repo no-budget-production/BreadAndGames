@@ -54,7 +54,7 @@ public class Gun : Skill
             curSoundPlayer.Play();
         }
 
-        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0)
+        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
         {
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
