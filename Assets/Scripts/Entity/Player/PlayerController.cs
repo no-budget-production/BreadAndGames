@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
 public class ButtonConfig
 {
@@ -29,21 +30,9 @@ public class PlayerController : Character
 
     public bool isWalking;
     public bool isUsingRightStick;
+    public bool isInAction;
 
     public ButtonConfig[] PlayerSkills;
-
-    public Skill[] ActiveSkills;
-
-    public List<Buff> ActiveBuffs;
-
-    public bool isInAction;
-    public int ActionPoints;
-    public int curActionPoints;
-
-    public Transform SkillSpawn;
-    public Transform TakeHitPoint;
-
-    public float ActionCD;
 
     [Range(0.0f, 1.0f)]
     public float TurnSpeed;
@@ -67,7 +56,7 @@ public class PlayerController : Character
 
     //private float gravityStrength = 15f;
 
-    protected override void Start()
+    public override void Start()
     {
         base.Start();
         ButtonSetup();
@@ -128,7 +117,7 @@ public class PlayerController : Character
 
         if (canWalk)
         {
-            if (moveVector.magnitude > deadZones[0])
+            if (moveVector.magnitude > Deadzone)
             {
                 isWalking = true;
                 moveVector = inputRotation * moveVector;
@@ -149,7 +138,7 @@ public class PlayerController : Character
 
         if (canUseRightStick)
         {
-            if ((lookVector.magnitude > deadZones[0]))
+            if ((lookVector.magnitude > Deadzone))
             {
                 isUsingRightStick = true;
 

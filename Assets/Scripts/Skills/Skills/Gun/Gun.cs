@@ -54,7 +54,7 @@ public class Gun : Skill
             curSoundPlayer.Play();
         }
 
-        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
+        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0)
         {
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
@@ -81,7 +81,7 @@ public class Gun : Skill
 
             //Debug.Log("Fire");
 
-            base.PlayerController.curActionPoints -= ActionPointsCost;
+            base.PlayerController.SpendActionPoints(ActionPointsCost);
         }
         else if (Time.time > nextShotTime && base.PlayerController.curActionPoints <= 0)
         {

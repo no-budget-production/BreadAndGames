@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class ActiveBuffObject
@@ -19,15 +20,8 @@ public class ActiveBuffObject
 
 public class Character : Entity
 {
-    public RectTransform HealthBar;
-    public bool UseHealthbar;
-
-    public MultiSoundPlayer MultiSoundPlayer;
-
-    public List<ActiveBuffObject> ActiveBuffObjects;
-
-    private float nextSoundTime;
-    public float SBetweenSounds = 1;
+    public float ActionPoints;
+    public float curActionPoints;
 
     public float MeleeDamage = 1f;
     public float RangeDamage = 1f;
@@ -44,14 +38,41 @@ public class Character : Entity
     public bool canCurUseRightStick = true;
     public bool canUseSkills = true;
 
-    protected virtual void Start()
+    public Transform SkillSpawn;
+    public Transform TakeHitPoint;
+
+    public RectTransform HealthBar;
+    public bool UseHealthbar;
+
+    public Slider ActionPointsBar;
+    public bool UseActionPointsBar;
+
+    public MultiSoundPlayer MultiSoundPlayer;
+
+    public List<ActiveBuffObject> ActiveBuffObjects;
+
+    private float nextSoundTime;
+    public float SBetweenSounds = 1;
+
+    public Skill[] ActiveSkills;
+
+    public List<Buff> ActiveBuffs;
+
+    public virtual void Start()
     {
-        OnChangeHealth(CurrentHealth);
+        if (UseHealthbar)
+        {
+            OnChangeHealth(CurrentHealth);
+        }
+        if (UseActionPointsBar)
+        {
+
+            OnActionBarChange();
+        }
     }
 
     public override void TakeDamage(float damage, DamageType damageType)
     {
-
         base.TakeDamage(damage, damageType);
 
         if (MultiSoundPlayer != null)
@@ -81,6 +102,7 @@ public class Character : Entity
 
     void OnChangeHealth(float currentHealth)
     {
+
         HealthBar.sizeDelta = new Vector2(currentHealth / MaxHealth * 100, HealthBar.sizeDelta.y);
     }
 
@@ -253,5 +275,20 @@ public class Character : Entity
                 }
             }
         }
+    }
+
+    public void SpendActionPoints(float costs)
+    {
+        curActionPoints = Mathf.Max(curActionPoints - costs, 0);
+
+        if (UseActionPointsBar)
+        {
+            OnActionBarChange();
+        }
+    }
+
+    public void OnActionBarChange()
+    {
+        ActionPointsBar.value = curActionPoints;
     }
 }
