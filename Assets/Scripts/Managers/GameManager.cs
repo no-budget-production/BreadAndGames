@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public Transform SpawnHolder;
     public Transform ClusterHolder;
     public Transform TriggerHolder;
+    public Transform _DynamicHolder;
+    public Transform ProjectileHolder;
+    public Transform VisualsHolder;
 
     public GameObject[] Triggers;
     public Transform[] ReinforcmentPoints;
@@ -78,5 +81,8 @@ public class GameManager : MonoBehaviour
         SpawnHolder = InstanceRef.SpawnHolder;
         EnemyHolder = InstanceRef.EnemyHolder;
         ClusterHolder = InstanceRef.ClusterHolder;
+        _DynamicHolder = InstanceRef._DynamicHolder;
+        ProjectileHolder = InstanceRef.ProjectileHolder;
+        VisualsHolder = InstanceRef.VisualsHolder;
     }
 }

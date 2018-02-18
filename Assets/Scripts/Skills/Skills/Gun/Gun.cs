@@ -33,7 +33,7 @@ public class Gun : Skill
     private void Start()
     {
         this.transform.SetParent(SkillSpawn);
-        curSoundPlayer = Instantiate(SoundPlayer, PlayerController.transform.position + SoundPlayer.transform.position, Quaternion.identity);
+        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
         curSoundPlayer.transform.SetParent(SkillSpawn);
         curSoundPlayer.Play();
     }
@@ -47,7 +47,7 @@ public class Gun : Skill
 
     public override void Shoot()
     {
-        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
+        if (Time.time > nextShotTime && Character.curActionPoints > 0)
         {
             if (Time.time > nextSoundTime)
             {
@@ -58,7 +58,7 @@ public class Gun : Skill
 
             nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
-            float AccuracyBonus = Mathf.Max(base.PlayerController.AccuracyMultiplicator, 0.0001f);
+            float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);
 
             float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
             float tempAccuracyVertical = Mathf.Max(AccuracyVertical * AccuracyBonus, 0);
@@ -70,7 +70,7 @@ public class Gun : Skill
                 Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
 
                 Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
-                newProjectile.Shooter = base.PlayerController;
+                newProjectile.Shooter = Character;
                 newProjectile.SetSpeed(MuzzleVelocity);
             }
 
@@ -81,11 +81,11 @@ public class Gun : Skill
 
             //Debug.Log("Fire");
 
-            base.PlayerController.SpendActionPoints(ActionPointsCost);
+            Character.SpendActionPoints(ActionPointsCost);
         }
-        else if (Time.time > nextShotTime && base.PlayerController.curActionPoints <= 0)
+        else if (Time.time > nextShotTime && Character.curActionPoints <= 0)
         {
-            PlayerController.EmptySound();
+            Character.EmptySound();
             //GunSound.PlayOneShot(SoundEmpty);
             nextShotTime = Time.time + MsBetweenShot / 150;
         }

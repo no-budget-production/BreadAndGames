@@ -7,42 +7,100 @@ public class Punch : Skill
     public DamageType DamageType;
     public PunchCollider HitBox;
 
-    public float MsBetweenShot;
     public float Damage;
-    public float chargeTime;
-    public float cur_chargeTime;
+    public BuffObject Debuff;
 
-    float nextShotTime;
-    void Start()
+    public bool canCharge;
+    public float ChargeTime;
+    public float curChargeTime;
+    public float BonusDamagePerSec;
+
+    public SoundPlayer SoundPlayer;
+    private SoundPlayer curSoundPlayer;
+    private float nextSoundTime;
+    public float SBetweenSounds;
+
+    public override void LateSkillSetup()
     {
-        cur_chargeTime = chargeTime;
+        transform.SetParent(SkillSpawn);
+        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
+        curSoundPlayer.transform.SetParent(SkillSpawn);
+        curSoundPlayer.Play();
     }
 
     public override void Shoot()
     {
-        if (cur_chargeTime < 100)
-            cur_chargeTime -= Time.deltaTime;
-        if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction && cur_chargeTime <= 0)
+
+        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
         {
-            nextShotTime = Time.time + MsBetweenShot * 0.001f;
-
-
-            foreach (Character e in HitBox.Enemies)
-            {
-                if (e == null)
-                {
-                    HitBox.Enemies.Remove(e);
-                    return;
-                }
-                e.TakeDamage(Damage, DamageType);
-            }
-
-            cur_chargeTime = 110;
+            return;
         }
+
+        if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
+        {
+            return;
+        }
+
+        Character.AddBuff(BuffObject, 1, Character);
+
+        ///////////////
+        if (canCharge)
+        {
+            curChargeTime += Time.deltaTime;
+
+            if (ChargeTime < curChargeTime)
+            {
+                DeadlDamage();
+
+                curChargeTime = 0;
+
+                Debug.Log("Punch");
+            }
+        }
+        else
+        {
+            DeadlDamage();
+        }
+
     }
 
     public override void StopShoot()
     {
-        cur_chargeTime = chargeTime;
+        DeadlDamage();
+
+        curChargeTime = 0;
+
+        Debug.Log("Punch Early");
+    }
+
+
+    public void DeadlDamage()
+    {
+        if (Time.time > nextSoundTime)
+        {
+            nextSoundTime = Time.time + SBetweenSounds + curSoundPlayer.GetClipLenght();
+            curSoundPlayer.Play();
+        }
+
+        for (int i = 0; i < HitBox.Enemies.Count; i++)
+        {
+            if (HitBox.Enemies[i] == null)
+            {
+                HitBox.Enemies.Remove(HitBox.Enemies[i]);
+                i--;
+                continue;
+            }
+
+            if (Debuff != null)
+            {
+                var temp = HitBox.Enemies[i].GetComponent<Character>();
+                if (temp != null)
+                {
+                    temp.AddBuff(Debuff, 1, Character);
+                }
+            }
+
+            HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curChargeTime * BonusDamagePerSec)), DamageType);
+        }
     }
 }

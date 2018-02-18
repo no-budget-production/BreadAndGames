@@ -11,17 +11,16 @@ public class MeleeShieldSkill : Skill
     private float cur_cooldown = 0;
     public float stayActivTime = 3;
 
-
     public override void Shoot()
     {
         if (cur_cooldown < Time.time)
         {
-            if (Time.time > nextShotTime && base.PlayerController.curActionPoints > 0 && !base.PlayerController.isInAction)
+            if (Time.time > nextShotTime && Character.curActionPoints > 0)
             {
                 nextShotTime = Time.time + MsBetweenShot * 0.001f;
 
                 var cur_meleeShield = Instantiate(meleeShield, Vector3.zero, Quaternion.identity);
-                cur_meleeShield.transform.parent = base.transform;
+                cur_meleeShield.transform.parent = transform;
                 cur_meleeShield.transform.localRotation = Quaternion.identity;
                 cur_meleeShield.transform.localPosition = Vector3.zero;
 

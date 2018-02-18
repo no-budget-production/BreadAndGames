@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1584756593326210}
   m_IsPrefabParent: 1
+--- !u!1 &1121287961079584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4803257457588708}
+  - component: {fileID: 82271401828401910}
+  m_Layer: 2
+  m_Name: VoiceOrigion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1262916552689242
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +136,6 @@ GameObject:
   - component: {fileID: 114742029162987672}
   - component: {fileID: 54998227612491716}
   - component: {fileID: 114790149080930136}
-  - component: {fileID: 82945070996847428}
   m_Layer: 0
   m_Name: Support
   m_TagString: Support
@@ -179,6 +194,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1893815570158278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4896045772889310}
+  m_Layer: 0
+  m_Name: SkillSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1930096232045716
 GameObject:
   m_ObjectHideFlags: 1
@@ -208,7 +238,7 @@ Transform:
   m_Children:
   - {fileID: 4573411429998352}
   m_Father: {fileID: 4982861297404492}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4573411429998352
 Transform:
@@ -234,6 +264,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4982861297404492}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4803257457588708
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121287961079584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4982861297404492}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4896045772889310
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893815570158278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.395, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4982861297404492}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4982861297404492
@@ -246,9 +302,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4896045772889310}
   - {fileID: 4652811692876784}
   - {fileID: 224543724661416666}
   - {fileID: 4262946202683102}
+  - {fileID: 4803257457588708}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -308,12 +366,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!82 &82945070996847428
+--- !u!82 &82271401828401910
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
+  m_GameObject: {fileID: 1121287961079584}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -572,7 +630,7 @@ MonoBehaviour:
   canUseRightStick: 0
   canCurUseRightStick: 0
   canUseSkills: 1
-  SkillSpawn: {fileID: 0}
+  SkillSpawn: {fileID: 4896045772889310}
   TakeHitPoint: {fileID: 4652811692876784}
   HealthBar: {fileID: 224228349348698198}
   UseHealthbar: 1
@@ -626,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0952629399d5fb54a80f8ff3cf5842d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VoiceSource: {fileID: 82945070996847428}
+  VoiceSource: {fileID: 82271401828401910}
   AudioClipsArray:
   - AudioClips:
     - {fileID: 8300000, guid: e80d54ac00ac0ae4a964469ee3ab2b3a, type: 3}
@@ -853,7 +911,7 @@ RectTransform:
   - {fileID: 224534091422336808}
   - {fileID: 224699080721298848}
   m_Father: {fileID: 4982861297404492}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

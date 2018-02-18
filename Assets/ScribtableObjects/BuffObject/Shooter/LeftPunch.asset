@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7df3c612cbc3d47957ee37cfd1952f, type: 3}
-  m_Name: SecondaryWeapon
+  m_Name: LeftPunch
   m_EditorClassIdentifier: 
-  name: SecondaryWeapon
-  BuffType: 8
-  ID: 202
+  name: LeftPunch
+  BuffType: 0
+  ID: 101
   isPermanent: 0
-  maxTime: 0.4
+  maxTime: 0.1
   curTime: 0
   isStackable: 0
-  cantTriggerWith: 07000000090000000a000000
+  cantTriggerWith: 
   effectWith: 
   disableWalking: 0
   disableRightStick: 0

@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1653627091785898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 9.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525854951131626}
@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 1255517428541006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 9.91}
-  m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4875727083469676}
   m_Father: {fileID: 4525854951131626}
@@ -216,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 1225104300911236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.41, y: 0.34, z: 0.142}
-  m_LocalScale: {x: 0.642538, y: 0.6425371, z: 0.20219502}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525854951131626}
   m_RootOrder: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 8
-  PlayerController: {fileID: 0}
+  Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 5e17b196f94d5564193623bb656d256e, type: 2}
@@ -392,7 +392,6 @@ MonoBehaviour:
   Projectile: {fileID: 114397302490237756, guid: f02f7399b72f0de4482dcbedb5028193,
     type: 2}
   Shell: {fileID: 4618930595482000, guid: 3aae16d9c48a312489323d005d10fd96, type: 2}
-  MsBetweenShot: 0
   MuzzleVelocity: 35
   AccuracyHorizontal: 10
   AccuracyVertical: 10

@@ -37,9 +37,9 @@ public class Healing : Skill
     {
         int atI = 0;
 
-        for (int i = 0; i < base.PlayerController.ActiveSkills.Length; i++)
+        for (int i = 0; i < Character.ActiveSkills.Length; i++)
         {
-            if (base.PlayerController.ActiveSkills[i].SkillType == SkillRequired.SkillType)
+            if (Character.ActiveSkills[i].SkillType == SkillRequired.SkillType)
             {
                 //Debug.Log("SynergyFound: " + PlayerController.ActiveBuffs[i]);
                 isDroneSkillFound = true;
@@ -50,7 +50,7 @@ public class Healing : Skill
 
         if (isDroneSkillFound)
         {
-            var temp = base.PlayerController.ActiveSkills[atI].GetComponent<HealingDrone>();
+            var temp = Character.ActiveSkills[atI].GetComponent<HealingDrone>();
 
             if (temp == null)
             {
@@ -69,9 +69,7 @@ public class Healing : Skill
             FindDrone();
         }
 
-        base.SpawnBuff();
-
-        base.PlayerController.isInAction = true;
+        SpawnBuff();
 
         LineRenderer.enabled = false;
 
@@ -104,13 +102,11 @@ public class Healing : Skill
                 LineRenderer.enabled = false;
             }
         }
-
-        base.PlayerController.isInAction = false;
     }
 
     private void FixedUpdate()
     {
-        if (!base.isFiring)
+        if (!isFiring)
         {
             LineRenderer.SetPosition(0, DroneOrigin.position);
             LineRenderer.SetPosition(1, transform.position);
@@ -153,9 +149,9 @@ public class Healing : Skill
         if (healableObject != null)
         {
             bool buffSynergyPresent = false;
-            for (int i = 0; i < PlayerController.ActiveBuffs.Count; i++)
+            for (int i = 0; i < Character.ActiveBuffs.Count; i++)
             {
-                if (PlayerController.ActiveBuffs[i].BuffSkillType == BuffSynergy.BuffSkillType)
+                if (Character.ActiveBuffs[i].BuffSkillType == BuffSynergy.BuffSkillType)
                 {
                     //Debug.Log("SynergyFound: " + PlayerController.ActiveBuffs[i]);
                     buffSynergyPresent = true;

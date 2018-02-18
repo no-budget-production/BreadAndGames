@@ -107,6 +107,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1129760772671468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4360849759146206}
+  - component: {fileID: 82047039485331390}
+  m_Layer: 0
+  m_Name: VoiceOrigion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1143050206337656
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +136,6 @@ GameObject:
   - component: {fileID: 95376863720080050}
   - component: {fileID: 114949494468550788}
   - component: {fileID: 114062045482434310}
-  - component: {fileID: 82573494718802812}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Melee
@@ -541,6 +556,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1873413460790186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4884654481988200}
+  m_Layer: 0
+  m_Name: SkillSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1875382739240438
 GameObject:
   m_ObjectHideFlags: 1
@@ -670,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4613099269740536}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4091901595476726
 Transform:
@@ -754,7 +784,7 @@ Transform:
   m_Children:
   - {fileID: 4091901595476726}
   m_Father: {fileID: 4613099269740536}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4253918193121498
 Transform:
@@ -837,6 +867,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4150190287498680}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4360849759146206
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129760772671468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.29, z: 0.323}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4613099269740536}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4391502002421250
 Transform:
@@ -943,9 +986,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4884654481988200}
   - {fileID: 4022339163266460}
   - {fileID: 224103337719675648}
   - {fileID: 4252319834093624}
+  - {fileID: 4360849759146206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1015,6 +1060,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188515767451810}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4884654481988200
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873413460790186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4613099269740536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4933405656800068
@@ -1122,12 +1180,12 @@ Transform:
   m_Father: {fileID: 4264363980941836}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82573494718802812
+--- !u!82 &82047039485331390
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1143050206337656}
+  m_GameObject: {fileID: 1129760772671468}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -1246,7 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0952629399d5fb54a80f8ff3cf5842d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VoiceSource: {fileID: 82573494718802812}
+  VoiceSource: {fileID: 82047039485331390}
   AudioClipsArray:
   - AudioClips:
     - {fileID: 8300000, guid: 2572c380eec0a794a9c64268e39b23e3, type: 3}
@@ -1389,7 +1447,7 @@ MonoBehaviour:
   canUseRightStick: 0
   canCurUseRightStick: 0
   canUseSkills: 1
-  SkillSpawn: {fileID: 0}
+  SkillSpawn: {fileID: 4884654481988200}
   TakeHitPoint: {fileID: 4022339163266460}
   HealthBar: {fileID: 224660065565190754}
   UseHealthbar: 1
@@ -1414,7 +1472,7 @@ MonoBehaviour:
   - SkillBC: {fileID: 114777490603000294, guid: 3917ab2fd0e2b5b41a2d1515af06b043,
       type: 2}
     ButtonStringBC:
-    - {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df, type: 2}
+    - {fileID: 114623924717632030, guid: ced779f6af869e948820efc572971b46, type: 2}
   - SkillBC: {fileID: 114601730004366300, guid: cc1f707e21f7d3b4fb1e744c07c215ae,
       type: 2}
     ButtonStringBC:
@@ -1706,7 +1764,7 @@ RectTransform:
   - {fileID: 224771418003025080}
   - {fileID: 224078963150459768}
   m_Father: {fileID: 4613099269740536}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

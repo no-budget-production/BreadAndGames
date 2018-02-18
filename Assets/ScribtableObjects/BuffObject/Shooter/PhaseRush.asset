@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: PhaseRush
   m_EditorClassIdentifier: 
   name: PhaseRush
-  BuffTypes: 14
+  BuffType: 0
   ID: 208
   isPermanent: 0
   maxTime: 0.1
@@ -28,9 +28,10 @@ MonoBehaviour:
   AccuracyMultiplicator: 0
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
-  RangedArmorMultiplicator: 0
+  RangeArmorMultiplicator: 0
   GainHealth: 0
   LoseHealth: 0
+  DamageType: -1
   GainActionPoints: 0
   LoseGainActionPoints: 0
   BuffEndScript: {fileID: 0}

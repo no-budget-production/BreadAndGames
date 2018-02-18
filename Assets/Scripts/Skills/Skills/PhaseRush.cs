@@ -44,7 +44,7 @@ public class PhaseRush : Skill
 
     public void SpawnEffect()
     {
-        curThunder = Instantiate(thunder, base.PlayerController.transform.position, base.PlayerController.transform.rotation);
+        curThunder = Instantiate(thunder, base.Character.transform.position, base.Character.transform.rotation);
         curThunder.GetComponent<ParticleSystem>().Play();
     }
 
@@ -62,17 +62,17 @@ public class PhaseRush : Skill
         StopCoroutine("DurationTimer");
         StartCoroutine(DurationTimer());
 
-        base.PlayerController.canWalk = false;
+        base.Character.canWalk = false;
 
         //base.PlayerController.moveSpeed += MoveSpeedBonus;
 
-        base.PlayerController.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
-        base.PlayerController.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        base.Character.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
+        base.Character.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     public IEnumerator DurationTimer()
     {
-        base.PlayerController.transform.Translate(Vector3.forward * Distance);
+        base.Character.transform.Translate(Vector3.forward * Distance);
 
         //float curTime = Time.time + Duration;
 
@@ -86,8 +86,8 @@ public class PhaseRush : Skill
         yield return new WaitForSeconds(Duration);
 
         //base.PlayerController.moveSpeed -= MoveSpeedBonus;
-        base.PlayerController.ThisUnityTypeFlags = UnitTypesFlags.Player;
-        base.PlayerController.gameObject.layer = LayerMask.NameToLayer("Default");
+        base.Character.ThisUnityTypeFlags = UnitTypesFlags.Player;
+        base.Character.gameObject.layer = LayerMask.NameToLayer("Default");
 
         isPhaseRushing = false;
 

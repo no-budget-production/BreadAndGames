@@ -11,12 +11,12 @@ public class Reload : Skill
 
     public override void Shoot()
     {
-        if (BuffObject.HasBuff(PlayerController.ActiveBuffObjects))
+        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
         {
             return;
         }
 
-        if (BuffObject.HasCanTriggerWith(PlayerController.ActiveBuffObjects))
+        if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
         {
             return;
         }
@@ -28,16 +28,13 @@ public class Reload : Skill
             SoundPlayer.Play();
         }
 
-        PlayerController.AddBuff(BuffObject, 1, PlayerController);
+        Character.AddBuff(BuffObject, 1, Character);
 
-        if (PlayerController.curActionPoints < PlayerController.ActionPoints)
+        if (Character.curActionPoints < Character.ActionPoints)
         {
-            PlayerController.isInAction = true;
-            PlayerController.curActionPoints = PlayerController.ActionPoints;
-            PlayerController.OnActionBarChange();
+            Character.curActionPoints = Character.ActionPoints;
+            Character.OnActionBarChange();
             SoundPlayer.Play();
-            PlayerController.isInAction = false;
         }
-
     }
 }
