@@ -39,7 +39,7 @@ public class Healing : Skill
 
         for (int i = 0; i < base.PlayerController.ActiveSkills.Length; i++)
         {
-            if (base.PlayerController.ActiveSkills[i].SkillID == SkillRequired.SkillID)
+            if (base.PlayerController.ActiveSkills[i].SkillType == SkillRequired.SkillType)
             {
                 //Debug.Log("SynergyFound: " + PlayerController.ActiveBuffs[i]);
                 isDroneSkillFound = true;
@@ -155,7 +155,7 @@ public class Healing : Skill
             bool buffSynergyPresent = false;
             for (int i = 0; i < PlayerController.ActiveBuffs.Count; i++)
             {
-                if (PlayerController.ActiveBuffs[i].BuffID == BuffSynergy.BuffID)
+                if (PlayerController.ActiveBuffs[i].BuffSkillType == BuffSynergy.BuffSkillType)
                 {
                     //Debug.Log("SynergyFound: " + PlayerController.ActiveBuffs[i]);
                     buffSynergyPresent = true;

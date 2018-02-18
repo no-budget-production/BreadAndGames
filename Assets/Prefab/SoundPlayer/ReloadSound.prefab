@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114799149923351328}
   - component: {fileID: 82035874068320208}
   m_Layer: 0
-  m_Name: PrimaryWeaponSound
+  m_Name: ReloadSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 974d97fab722d56498f9c3763f9aa5dc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -134,5 +134,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 82035874068320208}
   AudioClipsArray:
-  - {fileID: 8300000, guid: 974d97fab722d56498f9c3763f9aa5dc, type: 3}
+  - {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
   _lastSound: 0

@@ -1972,7 +1972,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838535, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
+  m_LocalRotation: {x: 0.0029838525, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children: []
@@ -3992,10 +3992,7 @@ MonoBehaviour:
   ActionPointsBar: {fileID: 114639886533559848}
   UseActionPointsBar: 1
   MultiSoundPlayer: {fileID: 114303827818326802}
-  ActiveBuffObjects:
-  - BuffCurTime: 1
-    BuffObject: {fileID: 11400000, guid: 5e17b196f94d5564193623bb656d256e, type: 2}
-    Character: {fileID: 0}
+  ActiveBuffObjects: []
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
@@ -4010,7 +4007,7 @@ MonoBehaviour:
   isUsingRightStick: 0
   isInAction: 0
   PlayerSkills:
-  - SkillBC: {fileID: 114188199541555762, guid: b0d533674b530b749918602d8e1fb41c,
+  - SkillBC: {fileID: 114105700659199692, guid: 9ec4d1c99f9e16f46a08dbd83e7c7b02,
       type: 2}
     ButtonStringBC:
     - {fileID: 114265054195504260, guid: 83e4dddfbc0b27c4281d737b3100d3df, type: 2}
@@ -4027,6 +4024,9 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
     - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
+  - SkillBC: {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc,
+      type: 2}
+    ButtonStringBC: []
   TurnSpeed: 0.79
   Deadzone: 0.19
   Acceleration: 1.2

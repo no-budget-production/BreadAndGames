@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
-    public int BuffID;
+    public SkillType BuffSkillType;
 
     [HideInInspector]
     public float Lifetime;
