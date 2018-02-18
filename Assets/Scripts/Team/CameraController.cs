@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     private float ZoomSpeed;
 
     private Vector3 moveVelocity;
-    private Vector3 desiredPosition;
+    public Vector3 desiredPosition;
 
     //private void Start()
     //{
