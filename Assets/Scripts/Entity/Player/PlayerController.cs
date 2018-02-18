@@ -14,11 +14,13 @@ public class ActiveBuffObject
 {
     public float BuffCurTime;
     public BuffObject BuffObject;
+    public Entity Entity;
 
-    public ActiveBuffObject(float buffCurTime, BuffObject buffObject)
+    public ActiveBuffObject(float buffCurTime, BuffObject buffObject, Entity entity)
     {
         this.BuffCurTime = buffCurTime;
         this.BuffObject = buffObject;
+        this.Entity = entity;
     }
 }
 
@@ -311,7 +313,7 @@ public class PlayerController : Character
         UpdateBuffs();
     }
 
-    public void AddBuff(BuffObject buff, int multi)
+    public void AddBuff(BuffObject buff, int multi, Entity entity)
     {
         bool hasBuff = false;
         for (int i = 0; i < ActiveBuffObjects.Count; i++)
@@ -326,6 +328,8 @@ public class PlayerController : Character
                     {
                         if (multi < 0)
                         {
+                            BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
+                            BuffEnd(ActiveBuffObjects[i].BuffObject, entity);
                             Debug.Log("RemovingBuff " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
                             ActiveBuffObjects.RemoveAt(i);
                         }
@@ -346,9 +350,9 @@ public class PlayerController : Character
 
         if (multi > 0)
         {
-            if (!hasBuff && !buff.isPermanent)
+            if (!hasBuff /* && !buff.isPermanent*/)
             {
-                ActiveBuffObjects.Add(new ActiveBuffObject(0, buff));
+                ActiveBuffObjects.Add(new ActiveBuffObject(0, buff, entity));
                 Debug.Log("AddingBuff " + buff.name);
             }
         }
@@ -362,6 +366,20 @@ public class PlayerController : Character
         RangeDamageMultiplicator += (buff.RangeDamageMultiplicator * multi);
 
         MoveSpeedMultiplicator += (buff.MoveSpeedMultiplicator * multi);
+
+
+    }
+
+    void BuffEnd(BuffObject buff, Entity entity)
+    {
+        if (buff.BuffEndScript != null)
+        {
+            BuffEndScript curBuffEndScript = Instantiate(buff.BuffEndScript, transform.position, Quaternion.identity);
+            curBuffEndScript.transform.SetParent(transform);
+            curBuffEndScript.Origion = entity;
+            curBuffEndScript.Parent = this;
+            curBuffEndScript.EndScript();
+        }
     }
 
     public bool HasBuff(BuffObject buffInQuestion)
@@ -413,6 +431,7 @@ public class PlayerController : Character
                     if (ActiveBuffObjects[i].BuffObject.maxTime < ActiveBuffObjects[i].BuffCurTime)
                     {
                         BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
+                        BuffEnd(ActiveBuffObjects[i].BuffObject, ActiveBuffObjects[i].Entity);
                         ActiveBuffObjects.RemoveAt(i);
                         i--;
 

@@ -8,7 +8,7 @@ public class AimMode : Skill
 
     public override void Shoot()
     {
-        base.PlayerController.AddBuff(buffObject, 1);
+        PlayerController.AddBuff(buffObject, 1, PlayerController);
         //if (!base.PlayerController.HasBuff(buffObject))
         //{
         //    base.PlayerController.AddBuff(buffObject, 1);

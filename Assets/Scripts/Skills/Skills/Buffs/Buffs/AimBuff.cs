@@ -15,6 +15,6 @@ public class AimBuff : Buff
 
     private void OnDestroy()
     {
-
+        Debug.Log("Buff Destroyed");
     }
 }

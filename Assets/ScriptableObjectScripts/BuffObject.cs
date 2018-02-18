@@ -65,5 +65,6 @@ public class BuffObject : ScriptableObject
     public float GainActionPoints;
     public float LoseGainActionPoints;
 
+    public BuffEndScript BuffEndScript;
 }
 
