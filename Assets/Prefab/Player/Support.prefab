@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 4982861297404492}
   - component: {fileID: 143761114787205060}
   - component: {fileID: 114742029162987672}
-  - component: {fileID: 54998227612491716}
-  - component: {fileID: 114790149080930136}
+  - component: {fileID: 114379739147996958}
+  - component: {fileID: 95822925165237778}
   m_Layer: 0
   m_Name: Support
   m_TagString: Support
@@ -351,21 +351,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1748534785848476}
   m_Mesh: {fileID: 4300000, guid: 963d84369d437ef47ae0d6c683bc446c, type: 3}
---- !u!54 &54998227612491716
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
 --- !u!82 &82271401828401910
 AudioSource:
   m_ObjectHideFlags: 1
@@ -446,6 +431,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95822925165237778
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 21fd64f63ad904647a72faddebedadca, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114089546494241978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -558,6 +560,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114379739147996958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0952629399d5fb54a80f8ff3cf5842d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoiceSource: {fileID: 82271401828401910}
+  AudioClipsArray:
+  - AudioClips:
+    - {fileID: 8300000, guid: e80d54ac00ac0ae4a964469ee3ab2b3a, type: 3}
+  - AudioClips:
+    - {fileID: 8300000, guid: f71a2387f79a6ae448e6c107009b8a54, type: 3}
+  _lastSound: 
 --- !u!114 &114603167856184830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,7 +656,7 @@ MonoBehaviour:
   UseHealthbar: 1
   ActionPointsBar: {fileID: 114215373454324648}
   UseActionPointsBar: 1
-  MultiSoundPlayer: {fileID: 114790149080930136}
+  MultiSoundPlayer: {fileID: 114379739147996958}
   ActiveBuffObjects: []
   SBetweenSounds: 1
   ActiveSkills: []
@@ -670,27 +690,8 @@ MonoBehaviour:
   Acceleration: 1.2
   temporaryVector: {x: 0, y: 0, z: 0}
   temporaryLookVector: {x: 0, y: 0, z: 0}
-  playAttackAnim: 0
-  animator: {fileID: 0}
+  Anim: {fileID: 95822925165237778}
   myController: {fileID: 143761114787205060}
---- !u!114 &114790149080930136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0952629399d5fb54a80f8ff3cf5842d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VoiceSource: {fileID: 82271401828401910}
-  AudioClipsArray:
-  - AudioClips:
-    - {fileID: 8300000, guid: e80d54ac00ac0ae4a964469ee3ab2b3a, type: 3}
-  - AudioClips:
-    - {fileID: 8300000, guid: c04ab49af72a79548b61a6bd43254472, type: 3}
-  _lastSound: 
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1

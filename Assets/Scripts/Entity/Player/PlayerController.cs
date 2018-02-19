@@ -46,8 +46,14 @@ public class PlayerController : Character
     public Vector3 temporaryVector;
     public Vector3 temporaryLookVector;
 
-    public bool playAttackAnim;
-    public Animator animator;
+    public Animator Anim;
+
+    int animMovX = Animator.StringToHash("MovX");
+    int animMovY = Animator.StringToHash("MovY");
+    int animIsAiming = Animator.StringToHash("isAiming");
+    int animIsRunning = Animator.StringToHash("isRunning");
+    int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
+
     public CharacterController myController;
 
     private Vector3 currentMovement;
@@ -147,11 +153,24 @@ public class PlayerController : Character
                 isUsingRightStick = true;
 
                 lookVector = inputRotation * lookVector;
+
+                Anim.SetBool(animIsAiming, true);
+                Anim.SetBool(animIsRunning, false);
+                Anim.SetFloat(animIsAim_Amount, lookVector.magnitude);
+                Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
+                Anim.SetFloat(animMovX, moveVector.x);
             }
             else
             {
                 isUsingRightStick = false;
+
+                Anim.SetBool(animIsRunning, true);
+                Anim.SetFloat(animMovX, moveVector.magnitude);
             }
+        }
+        else
+        {
+            Anim.SetFloat(animMovX, moveVector.magnitude);
         }
 
         if (isUsingRightStick)
