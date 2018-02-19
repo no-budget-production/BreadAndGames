@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4444241441346452}
   - component: {fileID: 114893617687127172}
   m_Layer: 0
-  m_Name: MeleeShield
+  m_Name: MeleeShieldLevel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122203875241890}
   m_LocalRotation: {x: -0.67766035, y: 0.20193209, z: 0.2019321, w: 0.6776603}
-  m_LocalPosition: {x: -0, y: 2.283, z: 0.94}
+  m_LocalPosition: {x: -0, y: 2.2, z: 0.94}
   m_LocalScale: {x: 2845.203, y: 2845.203, z: 2845.203}
   m_Children: []
   m_Father: {fileID: 4444241441346452}
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 172d3eb745f756e45af872e1307a1aea, type: 2}
+  - {fileID: 2100000, guid: e7af129da963d8c489e697d0bd6fe371, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,5 +138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00434cd3eba53d4ea56cc402a9ea216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMulti: 0
-  damageMultiIncrease: 0.1
+  SkillType: 0
+  Character: {fileID: 0}
+  isFiring: 0
+  SkillSpawn: {fileID: 0}
+  BuffObject: {fileID: 0}
+  UsedBuff: {fileID: 0}
+  curBuff: {fileID: 0}
+  BuffDuration: 0
+  cantStack: 0

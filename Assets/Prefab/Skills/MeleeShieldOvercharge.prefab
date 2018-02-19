@@ -9,49 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1913182196548758}
+  m_RootGameObject: {fileID: 1254564218649572}
   m_IsPrefabParent: 1
---- !u!1 &1913182196548758
+--- !u!1 &1254564218649572
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4931814342467968}
-  - component: {fileID: 114064105950308934}
+  - component: {fileID: 4872277297645172}
+  - component: {fileID: 114346892580708106}
   m_Layer: 0
-  m_Name: MeleeShieldSkill
+  m_Name: MeleeShieldOvercharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4931814342467968
+--- !u!4 &4872277297645172
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1913182196548758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1254564218649572}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114064105950308934
+--- !u!114 &114346892580708106
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1913182196548758}
+  m_GameObject: {fileID: 1254564218649572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
+  m_Script: {fileID: 11500000, guid: bac83a960ca6d2c4b938d2347318c263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 0
+  SkillType: -1
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
@@ -60,7 +60,3 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  meleeShield: {fileID: 114793312650232316, guid: 031757b06f683664c892350419b96829,
-    type: 2}
-  SecBetweenShot: 0.2
-  stayActivTime: 5

@@ -43,9 +43,6 @@ public class PlayerController : Character
 
     public float Acceleration;
 
-    public Vector3 temporaryVector;
-    public Vector3 temporaryLookVector;
-
     public Animator Anim;
 
     int animMovX = Animator.StringToHash("MovX");
@@ -131,7 +128,7 @@ public class PlayerController : Character
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
         VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
         moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
-        lookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
+        Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
 
         if (canWalk)
         {
@@ -156,15 +153,16 @@ public class PlayerController : Character
 
         if (canUseRightStick)
         {
-            if ((lookVector.magnitude > Deadzone))
+            if ((temporaryLookVector.magnitude > Deadzone))
             {
                 isUsingRightStick = true;
+                lookVector = temporaryLookVector;
 
-                lookVector = inputRotation * lookVector;
+                temporaryLookVector = inputRotation * temporaryLookVector;
 
                 Anim.SetBool(animIsAiming, true);
                 Anim.SetBool(animIsRunning, false);
-                Anim.SetFloat(animIsAim_Amount, lookVector.magnitude);
+                Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
                 Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
                 Anim.SetFloat(animMovX, moveVector.x);
             }

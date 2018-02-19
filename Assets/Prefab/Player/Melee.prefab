@@ -600,6 +600,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1952418328043746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4575352139550200}
+  - component: {fileID: 114715430036726954}
+  m_Layer: 0
+  m_Name: MeleeHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1958564403600672
 GameObject:
   m_ObjectHideFlags: 1
@@ -934,6 +950,19 @@ Transform:
   m_Father: {fileID: 4635383083501628}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4575352139550200
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952418328043746}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4613099269740536}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4577669488963424
 Transform:
   m_ObjectHideFlags: 1
@@ -990,6 +1019,7 @@ Transform:
   - {fileID: 224103337719675648}
   - {fileID: 4252319834093624}
   - {fileID: 4360849759146206}
+  - {fileID: 4575352139550200}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1476,7 +1506,16 @@ MonoBehaviour:
       type: 2}
     ButtonStringBC:
     - {fileID: 114699667673163188, guid: daa924789377d964d854a18ed9d6f75d, type: 2}
-  - SkillBC: {fileID: 114064105950308934, guid: 89f30088ecdb9bf468b83f7abd4e58f6,
+  - SkillBC: {fileID: 114197014149919486, guid: 74e9e3b5510c7134e84fafc47642e8f1,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
+    - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
+  - SkillBC: {fileID: 114952456575416912, guid: 5fb50a5f6e53e92408dfb4461d65f29d,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114979931433249424, guid: 7c1ea391b0357a84a8ea106abdbdf5d3, type: 2}
+  - SkillBC: {fileID: 114346892580708106, guid: 1afa81eae4cc680438f939ba15e90f48,
       type: 2}
     ButtonStringBC:
     - {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6, type: 2}
@@ -1487,6 +1526,12 @@ MonoBehaviour:
   temporaryLookVector: {x: 0, y: 0, z: 0}
   Anim: {fileID: 95376863720080050}
   myController: {fileID: 143950757012174290}
+  Horizontal_PX: 0
+  Vertical_PX: 0
+  HorizontalLook_PX: 0
+  VerticalLook_PX: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  lookVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1535,6 +1580,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114715430036726954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952418328043746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeShieldLevel1_Prefabs: {fileID: 4444241441346452, guid: 14517b405dcb83348961d4e94b4ec0ff,
+    type: 2}
+  meleeShieldLevel2_Prefabs: {fileID: 4789576024763420, guid: 031757b06f683664c892350419b96829,
+    type: 2}
+  SecBetweenShot: 0
+  level: []
+  damageMulti: 1
+  damageMultiIncrease: 0.1
 --- !u!114 &114828686618201432
 MonoBehaviour:
   m_ObjectHideFlags: 1

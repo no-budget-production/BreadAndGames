@@ -92,7 +92,7 @@ public class Projectile : Effect
             }
         }
 
-        MeleeShield MeleeShield = hit.collider.GetComponentInParent<MeleeShield>();
+        MeleeShieldHandler MeleeShield = hit.collider.GetComponentInParent<MeleeShieldHandler>();
         if (MeleeShield != null && !shieldImmunity)
         {
             return MeleeShield.AddProjectile(this);

@@ -38,24 +38,27 @@ public class SwarmController : Character
             }
         }
     }
-
     public void MoveToDestination(Transform Destination)
     {
-        if (!isDeadTrigger)
-        {
-            MyNavMeshAgent.stoppingDistance = 0;
-            Vector3 targetVector = Destination.transform.position;
-            MyNavMeshAgent.SetDestination(targetVector);
-        }
+        /*
+            if (!isDeadTrigger)
+            {
+                MyNavMeshAgent.stoppingDistance = 0;
+                Vector3 targetVector = Destination.transform.position;
+                MyNavMeshAgent.SetDestination(targetVector);
+            }
+        */
     }
 
     public void AttackCommand(Transform Destination)
-    {
-        if (!isDeadTrigger)
         {
-            MyNavMeshAgent.stoppingDistance = PlayerStopDistance;
-            Vector3 targetVector = Destination.transform.position;
-            MyNavMeshAgent.SetDestination(targetVector);
+        /*
+            if (!isDeadTrigger)
+            {
+                MyNavMeshAgent.stoppingDistance = PlayerStopDistance;
+                Vector3 targetVector = Destination.transform.position;
+                MyNavMeshAgent.SetDestination(targetVector);
+            }
+            */
         }
     }
-}
