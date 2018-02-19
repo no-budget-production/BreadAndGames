@@ -43,7 +43,6 @@ public class Punch : Skill
 
         Character.AddBuff(BuffObject, 1, Character);
 
-        ///////////////
         if (canCharge)
         {
             curChargeTime += Time.deltaTime;
