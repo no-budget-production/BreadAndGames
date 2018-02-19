@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: RightPunch
   m_EditorClassIdentifier: 
   name: RightPunch
-  BuffTypes: 1
+  BuffType: 1
   ID: 102
   isPermanent: 0
   maxTime: 0.3
@@ -28,9 +28,10 @@ MonoBehaviour:
   AccuracyMultiplicator: 0
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
-  RangedArmorMultiplicator: 0
+  RangeArmorMultiplicator: 1
   GainHealth: 0
   LoseHealth: 0
+  DamageType: -1
   GainActionPoints: 0
   LoseGainActionPoints: 0
   BuffEndScript: {fileID: 0}

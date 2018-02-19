@@ -12,7 +12,6 @@ public class Healing : Skill
     public PlayerType TargetType;
 
     public Skill SkillRequired;
-    public Buff BuffSynergy;
 
     public float HealAmount = 2.0f;
     public float MaxRange;
@@ -25,7 +24,7 @@ public class Healing : Skill
 
     bool isDroneSkillFound;
 
-    private void Start()
+    public override void LateSkillSetup()
     {
         DroneOrigin = BeamOrigin;
         CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
@@ -41,7 +40,6 @@ public class Healing : Skill
         {
             if (Character.ActiveSkills[i].SkillType == SkillRequired.SkillType)
             {
-                //Debug.Log("SynergyFound: " + PlayerController.ActiveBuffs[i]);
                 isDroneSkillFound = true;
                 atI = i;
                 break;
@@ -54,10 +52,8 @@ public class Healing : Skill
 
             if (temp == null)
             {
-                //Debug.Log("DoneMovementNotFound");
                 return;
             }
-
             DroneOrigin = temp.BeamOrigin.transform;
         }
     }
@@ -69,7 +65,17 @@ public class Healing : Skill
             FindDrone();
         }
 
-        SpawnBuff();
+        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+        {
+            return;
+        }
+
+        if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
+        {
+            return;
+        }
+
+        Character.AddBuff(BuffObject, 1, Character);
 
         LineRenderer.enabled = false;
 
@@ -124,109 +130,42 @@ public class Healing : Skill
 
     bool InRange()
     {
-        //Debug.Log(Vector3.Distance(CurrentTargetTransform.position, DroneOrigin.position));
         if (Vector3.Distance(CurrentTargetTransform.position, DroneOrigin.position) > MaxRange)
         {
-            //Debug.Log("Out of Range");
             return false;
-
         }
         else
         {
-            //Debug.Log("In of Range");
             return true;
         }
-
     }
-
-    //bool firstHeal;
-    //bool firstFullHeal;
 
     void OnHealObject(RaycastHit hit)
     {
-        //Debug.Log(hit.collider.gameObject.name);
         Entity healableObject = hit.collider.GetComponent<Entity>();
         if (healableObject != null)
         {
-            bool buffSynergyPresent = false;
-            for (int i = 0; i < Character.ActiveBuffs.Count; i++)
+            if (BuffObject.HasEffectWith(Character.ActiveBuffObjects))
             {
-                if (Character.ActiveBuffs[i].BuffSkillType == BuffSynergy.BuffSkillType)
-                {
-                    //Debug.Log("SynergyFound: " + PlayerController.ActiveBuffs[i]);
-                    buffSynergyPresent = true;
-                    break;
-                }
-            }
-
-            if (buffSynergyPresent)
-            {
-                //Debug.Log("SynergyFound: " + base.UsedBuff.name);
-
                 healableObject.GetHealth(healProcentage * 0.5f * Time.deltaTime);
-
-                //if (!firstHeal)
-                //{
-                //    Debug.Log("RT:" + Time.realtimeSinceStartup);
-                //    firstHeal = true;
-                //}
-
-                //if (healableObject.CurrentHealth == 100)
-                //{
-                //    if (!firstFullHeal)
-                //    {
-                //        Debug.Log("RT:" + Time.realtimeSinceStartup);
-                //        Debug.Log(Time.realtimeSinceStartup);
-                //        firstFullHeal = true;
-                //    }
-
-                //}
 
                 if (!isHalfWidthLineRenderer)
                 {
                     LineRenderer.widthMultiplier = 0.5f;
                     isHalfWidthLineRenderer = true;
                 }
-
-
             }
             else
             {
-                //Debug.Log("SynergyNotFound: " + base.UsedBuff.name);
                 healableObject.GetHealth(healProcentage * Time.deltaTime);
-
-                //if (!firstHeal)
-                //{
-                //    Debug.Log(Time.realtimeSinceStartup);
-                //    firstHeal = true;
-                //}
-
-                //if (healableObject.CurrentHealth == 100)
-                //{
-                //    if (!firstFullHeal)
-                //    {
-                //        Debug.Log("RT:" + Time.realtimeSinceStartup);
-                //        Debug.Log(Time.realtimeSinceStartup);
-                //        firstFullHeal = true;
-                //    }
-
-                //}
 
                 if (isHalfWidthLineRenderer)
                 {
                     LineRenderer.widthMultiplier = 1f;
                     isHalfWidthLineRenderer = false;
                 }
-
             }
-
-
         }
-        //else
-        //{
-        //    Debug.Log("DEADEND");
-        //    healableObject.GetHealth(HealAmount);
-        //}
     }
 }
 

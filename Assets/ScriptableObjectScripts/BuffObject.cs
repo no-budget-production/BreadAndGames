@@ -69,6 +69,23 @@ public class BuffObject : ScriptableObject
 
     public BuffEndScript BuffEndScript;
 
+    public bool HasEffectWith(List<ActiveBuffObject> BuffList)
+    {
+        for (int i = 0; i < BuffList.Count; i++)
+        {
+            for (int j = 0; j < effectWith.Length; j++)
+            {
+                if (BuffList[i].BuffObject.BuffType == effectWith[j])
+                {
+                    Debug.Log("effectWithWith");
+                    return true;
+                }
+            }
+        }
+        Debug.Log("effectWith NotFound");
+        return false;
+    }
+
     public bool HasCanTriggerWith(List<ActiveBuffObject> BuffList)
     {
         for (int i = 0; i < BuffList.Count; i++)

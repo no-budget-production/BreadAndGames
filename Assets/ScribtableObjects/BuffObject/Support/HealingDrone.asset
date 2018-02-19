@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7df3c612cbc3d47957ee37cfd1952f, type: 3}
   m_Name: HealingDrone
   m_EditorClassIdentifier: 
-  name: HealingShooter
-  BuffTypes: 17
+  name: HealingDrone
+  BuffType: 17
   ID: 303
   isPermanent: 0
   maxTime: 0.1
@@ -28,9 +28,10 @@ MonoBehaviour:
   AccuracyMultiplicator: 0
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
-  RangedArmorMultiplicator: 0
+  RangeArmorMultiplicator: 1
   GainHealth: 0
   LoseHealth: 0
+  DamageType: 0
   GainActionPoints: 0
   LoseGainActionPoints: 0
   BuffEndScript: {fileID: 0}
