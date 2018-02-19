@@ -16,6 +16,7 @@ public class MeleeShieldHandler : MonoBehaviour
     public float damageMulti = 1;
     public float damageMultiIncrease = 0.1f;
     private PlayerController Character;
+    public Transform shootFrom;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class MeleeShieldHandler : MonoBehaviour
     {
         if (Character.curActionPoints <= 0) return;
         if (IsActive()) return;
-
+        
         meleeShieldLevel1.gameObject.SetActive(true);
     }
 
@@ -88,7 +89,7 @@ public class MeleeShieldHandler : MonoBehaviour
         meleeShieldLevel2.forward = Character.lookVector;
 
         //Character.curActionPoints -= factor;
-        Character.curActionPoints -= Time.deltaTime * 1;
+        //Character.curActionPoints -= Time.deltaTime * 1;
         if (Character.curActionPoints <= 0)
         {
             Deactive();
@@ -104,9 +105,10 @@ public class MeleeShieldHandler : MonoBehaviour
             if (IsOvercharge())
             {
                 p.Damage *= damageMulti;
-                p.transform.forward = transform.forward;
+                p.transform.forward = Character.lookVector;
+                p.transform.position = shootFrom.position;
                 p.shieldImmunize();
-                return true;
+                return false;
             }
             else
             {
@@ -124,7 +126,7 @@ public class MeleeShieldHandler : MonoBehaviour
             {
                 //Character.curActionPoints += factor;
             }
-            return false;
+            return true;
         }
     }
 }

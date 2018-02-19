@@ -130,9 +130,14 @@ public class PlayerController : Character
         moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
         Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
 
+        if (temporaryLookVector.magnitude > Deadzone)
+        {
+            temporaryLookVector = inputRotation * temporaryLookVector;
+            lookVector = temporaryLookVector;
+        }
+
         if (canUseRightStick)
         {
-            Debug.Log(temporaryLookVector.magnitude);
             if (temporaryLookVector.magnitude > Deadzone)
             {
                 isUsingRightStick = true;
