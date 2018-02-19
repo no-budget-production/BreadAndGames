@@ -130,6 +130,35 @@ public class PlayerController : Character
         moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
         Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
 
+        if (canUseRightStick)
+        {
+            Debug.Log(temporaryLookVector.magnitude);
+            if (temporaryLookVector.magnitude > Deadzone)
+            {
+                isUsingRightStick = true;
+
+                temporaryLookVector = inputRotation * temporaryLookVector;
+                lookVector = temporaryLookVector;
+
+                Anim.SetBool(animIsAiming, true);
+                Anim.SetBool(animIsRunning, false);
+                Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
+                Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
+                Anim.SetFloat(animMovX, moveVector.x);
+            }
+            else
+            {
+                isUsingRightStick = false;
+
+                Anim.SetBool(animIsRunning, true);
+                Anim.SetFloat(animMovX, moveVector.magnitude);
+            }
+        }
+        else
+        {
+            Anim.SetFloat(animMovX, moveVector.magnitude);
+        }
+
         if (canWalk)
         {
             if (moveVector.magnitude > Deadzone)
@@ -151,33 +180,7 @@ public class PlayerController : Character
             }
         }
 
-        if (canUseRightStick)
-        {
-            if ((temporaryLookVector.magnitude > Deadzone))
-            {
-                isUsingRightStick = true;
-                lookVector = temporaryLookVector;
-
-                temporaryLookVector = inputRotation * temporaryLookVector;
-
-                Anim.SetBool(animIsAiming, true);
-                Anim.SetBool(animIsRunning, false);
-                Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
-                Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
-                Anim.SetFloat(animMovX, moveVector.x);
-            }
-            else
-            {
-                isUsingRightStick = false;
-
-                Anim.SetBool(animIsRunning, true);
-                Anim.SetFloat(animMovX, moveVector.magnitude);
-            }
-        }
-        else
-        {
-            Anim.SetFloat(animMovX, moveVector.magnitude);
-        }
+        
 
         if (isUsingRightStick)
         {
@@ -250,8 +253,8 @@ public class PlayerController : Character
 
     public override void Update()
     {
-        Move();
         CheckButtonInput();
         base.Update();
+        Move();
     }
 }
