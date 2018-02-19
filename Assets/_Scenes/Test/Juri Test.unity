@@ -15205,7 +15205,7 @@ MonoBehaviour:
   AccuracyHorizontal: 10
   AccuracyVertical: 10
   ActionPointsCost: 2
-  VolleySize: 5
+  VolleySize: 0
   MuzzleFlash: {fileID: 1717048679}
   GunSound: {fileID: 1717048678}
   SoundClips:
@@ -15214,9 +15214,8 @@ MonoBehaviour:
   SoundEmpty: {fileID: 8300000, guid: 0a5e538ac22e3cc419731d3c1f1475e7, type: 3}
   Shell: {fileID: 4618930595482000, guid: 3aae16d9c48a312489323d005d10fd96, type: 2}
   ShellEjection: {fileID: 1705431331}
-  SoundPlayer: {fileID: 114799149923351328, guid: 06fda1fe9b58fb749a8b5a45a4fc1322,
-    type: 2}
-  SBetweenSounds: 1
+  SoundPlayer: {fileID: 0}
+  SBetweenSounds: 100
 --- !u!23 &1717048681
 MeshRenderer:
   m_ObjectHideFlags: 0
