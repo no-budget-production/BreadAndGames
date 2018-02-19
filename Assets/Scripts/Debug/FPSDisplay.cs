@@ -13,8 +13,6 @@ public class FPSDisplay : MonoBehaviour
     string text;
     int enemies;
     float time;
-    float min;
-    float sec;
 
     private void Awake()
     {
@@ -26,7 +24,7 @@ public class FPSDisplay : MonoBehaviour
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        enemies = GameManager.Instance.SwarmController.Count;
+        enemies = GameManager.Instance.Enemies.Count;
     }
 
     void OnGUI()
@@ -37,7 +35,7 @@ public class FPSDisplay : MonoBehaviour
         msec = deltaTime * 1000.0f;
         fps = 1.0f / deltaTime;
 
-        time = Time.realtimeSinceStartup;
+        float time = Time.realtimeSinceStartup;
 
         text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies {3:0.00} RT", msec, fps, enemies, time);
 

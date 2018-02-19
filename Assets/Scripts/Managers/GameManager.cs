@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public CameraController ActiveCamera;
 
     public List<Transform> PlayerSpawns;
-    public List<GameObject> SwarmController;
+    public List<Enemy> Enemies;
 
 
     public Transform EnemyHolder;

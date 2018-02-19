@@ -5,8 +5,6 @@ using UnityEngine;
 public class AimBuff : Buff
 {
 
-    float AccuracyBonus;
-
     private void Start()
     {
         base.StartCoroutine(Fade());

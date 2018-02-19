@@ -26,14 +26,20 @@ public class SwarmSpawn : MonoBehaviour
     void SpawnEnemy()
     {
         // Spawn one enemy
-        GameObject TempSpawnHandler;
-        TempSpawnHandler = Instantiate(PrefabToSpawn, SpawnPoint.position, SpawnPoint.rotation) as GameObject;
-        TempSpawnHandler.transform.parent = SwarmHandler.transform;
+        GameObject curPrefab;
+        curPrefab = Instantiate(PrefabToSpawn, SpawnPoint.position, SpawnPoint.rotation) as GameObject;
+        curPrefab.transform.parent = SwarmHandler.transform;
+
 
         // Let the spawned enemy move to the Holding Point
-        SwarmCluster SwarmClusterScript = TempSpawnHandler.GetComponent<SwarmCluster>();
-        SwarmClusterScript._NavMeshAgent.SetDestination(HoldingPoint.transform.position);
-        SwarmClusterScript.ReinforcmentPoints = ReinforcmentPoints;
+        var curEnemy = curPrefab.GetComponent<Enemy>();
+        if (curEnemy != null)
+        {
+            GameManager.Instance.Enemies.Add(curEnemy);
+            //    curEnemy.NavMeshAgent.SetDestination(HoldingPoint.transform.position);
+            //    curEnemy.ReinforcmentPoints = ReinforcmentPoints;
+        }
+
         SpawnedEnemys++;
 
         if (SpawnedEnemys == AmountToSpawn)
@@ -50,5 +56,4 @@ public class SwarmSpawn : MonoBehaviour
             SpawnEnemy();
         }
     }
-
 }

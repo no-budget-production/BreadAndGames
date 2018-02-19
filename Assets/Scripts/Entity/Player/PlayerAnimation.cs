@@ -7,8 +7,8 @@ public class PlayerAnimation : MonoBehaviour
 
     Animator animator;
 
-    Vector3 moveVector;
-    Vector3 lookVector;
+    //Vector3 moveVector;
+    //Vector3 lookVector;
 
     public Transform Camera;
 

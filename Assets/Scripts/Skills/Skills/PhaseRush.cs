@@ -22,8 +22,6 @@ public class PhaseRush : Skill
 
     public int Dummy;
 
-    bool b1, b2, b3, b4;
-
     //private Coroutine coroutineDuration;
     //private Coroutine coroutineRechargeTimer;
 

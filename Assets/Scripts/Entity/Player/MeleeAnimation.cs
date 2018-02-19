@@ -7,8 +7,8 @@ public class MeleeAnimation : MonoBehaviour
 
     Animator animator;
 
-    Vector3 moveVector;
-    Vector3 lookVector;
+    //Vector3 moveVector;
+    //Vector3 lookVector;
 
     // Use this for initialization
     void Awake()

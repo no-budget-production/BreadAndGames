@@ -26,6 +26,9 @@ public enum BuffTypes
     HealingDrone,
     HealingDroneReturn,
 
+    EnemyMeleeWeapon,
+    EnemyRangedWeapon,
+
     _Length,
     _Invalid = -1
 

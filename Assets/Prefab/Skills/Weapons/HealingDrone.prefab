@@ -64,7 +64,10 @@ MonoBehaviour:
   DroneController: {fileID: 114068438227607296, guid: 61df665ff3d764c499e21c7de5f4973e,
     type: 2}
   PlayerPostion: {fileID: 0}
-  Acceleration: 1.2
+  acceleration: 1000
+  deceleration: 1
+  maxSpeed: 5
+  Acceleration: 1000
   isWalking: 0
   TurnSpeed: 0.569
   canWalk: 1
