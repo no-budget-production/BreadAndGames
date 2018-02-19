@@ -12,7 +12,6 @@ public class HealingDrone : Skill
 {
     public PlayerController PlayerController;
 
-    public Rigidbody controller;
     public DroneController DroneController;
     public Transform PlayerPostion;
 
@@ -22,6 +21,24 @@ public class HealingDrone : Skill
     public float acceleration = 1000.0F;
     public float deceleration = 1.0F;
     public float maxSpeed = 5;
+
+    //public float Acceleration;
+
+    public bool isWalking;
+
+    [Range(0.0f, 1.0f)]
+    public float TurnSpeed;
+
+    private Vector3 currentMovement;
+
+    private Quaternion inputRotation;
+
+    public bool canWalk = true;
+
+    public float MoveSpeed;
+    public float MoveSpeedMultiplicator = 1f;
+
+    public float Deadzone;
 
     public Vector3 movement;
 
@@ -41,11 +58,16 @@ public class HealingDrone : Skill
     public float SmoothingMin;
     public float SmoothinMax;
 
-    void Start()
+    public CharacterController myController;
+    private Rigidbody controller;
+
+    public override void LateSkillSetup()
     {
         DroneController = Instantiate(DroneController, transform.position + DroneController.transform.position, Quaternion.identity);
-        controller = DroneController.GetComponent<Rigidbody>();
+
         BeamOrigin = DroneController.BeamOrigin;
+        controller = DroneController.GetComponent<Rigidbody>();
+        myController = DroneController.GetComponent<CharacterController>();
 
         var tempPlayerController = Character.GetComponent<PlayerController>();
         if (Character.GetComponent<PlayerController>() != null)
@@ -53,7 +75,52 @@ public class HealingDrone : Skill
             PlayerController = tempPlayerController;
         }
 
+        inputRotation = GameManager.Instance.InputRotation;
     }
+
+    //private void Update()
+    //{
+    //    Vector3 moveVector = PlayerController.lookVector;
+
+    //    if (canWalk)
+    //    {
+    //        if (moveVector.magnitude > Deadzone)
+    //        {
+    //            isWalking = true;
+    //            moveVector = inputRotation * moveVector;
+
+    //            currentMovement += moveVector * Acceleration;
+    //            float speed = currentMovement.magnitude;
+    //            if (speed > (MoveSpeed * MoveSpeedMultiplicator))
+    //            {
+    //                currentMovement *= (MoveSpeed * MoveSpeedMultiplicator) / speed;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            currentMovement = Vector3.zero;
+    //            isWalking = false;
+    //        }
+    //    }
+
+    //    if (isWalking)
+    //    {
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
+    //    }
+
+    //    if (isWalking)
+    //    {
+    //        Walk(currentMovement);
+    //        //myController.Move(currentMovement * Time.deltaTime);
+    //    }
+
+    //}
+
+    //public void Walk(Vector3 currentMovementArg)
+    //{
+    //    CollisionFlags flags = myController.Move(currentMovementArg * Time.deltaTime);
+    //}
+
 
     void Update()
     {
@@ -112,6 +179,7 @@ public class HealingDrone : Skill
         }
         controller.velocity = Vector3.ClampMagnitude(controller.velocity, maxSpeed);
         //Debug.Log(controller.velocity.magnitude);
-    }
+        //}
 
+    }
 }

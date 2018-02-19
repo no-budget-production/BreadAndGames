@@ -62,6 +62,14 @@ public class PlayerController : Character
 
     //private float gravityStrength = 15f;
 
+    public float Horizontal_PX;
+    public float Vertical_PX;
+    public float HorizontalLook_PX;
+    public float VerticalLook_PX;
+
+    public Vector3 moveVector;
+    public Vector3 lookVector;
+
     public override void Start()
     {
         base.Start();
@@ -118,12 +126,12 @@ public class PlayerController : Character
 
     private void Move()
     {
-        float Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
-        float Vertical_PX = Input.GetAxis(thisPlayerString[1]);
-        float HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
-        float VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
-        Vector3 moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
-        Vector3 lookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
+        Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
+        Vertical_PX = Input.GetAxis(thisPlayerString[1]);
+        HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
+        VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
+        moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
+        lookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
 
         if (canWalk)
         {

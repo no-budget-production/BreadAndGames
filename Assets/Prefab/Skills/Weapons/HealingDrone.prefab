@@ -55,19 +55,22 @@ MonoBehaviour:
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
-  BuffObject: {fileID: 0}
+  BuffObject: {fileID: 11400000, guid: ca0459b4860543f409cbd847567676b1, type: 2}
   UsedBuff: {fileID: 0}
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
   PlayerController: {fileID: 0}
-  controller: {fileID: 0}
   DroneController: {fileID: 114068438227607296, guid: 61df665ff3d764c499e21c7de5f4973e,
     type: 2}
   PlayerPostion: {fileID: 0}
-  acceleration: 10000
-  deceleration: 120
-  maxSpeed: 8
+  Acceleration: 1.2
+  isWalking: 0
+  TurnSpeed: 0.569
+  canWalk: 1
+  MoveSpeed: 8
+  MoveSpeedMultiplicator: 1
+  Deadzone: 0.19
   movement: {x: 0, y: 0, z: 0}
   BeamOrigin: {fileID: 0}
   Leeway: 2
@@ -78,3 +81,4 @@ MonoBehaviour:
   SmoothingStep: 0.01
   SmoothingMin: -0.000025
   SmoothinMax: 0.000025
+  myController: {fileID: 0}
