@@ -51,17 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillID: 0
-  Player: {fileID: 0}
-  PlayerController: {fileID: 0}
+  SkillType: 0
+  Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
+  BuffObject: {fileID: 0}
   UsedBuff: {fileID: 0}
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  meleeShield: {fileID: 114893617687127172, guid: 14517b405dcb83348961d4e94b4ec0ff,
+  meleeShield: {fileID: 114793312650232316, guid: 031757b06f683664c892350419b96829,
     type: 2}
-  MsBetweenShot: 0
-  cooldown: 3
+  SecBetweenShot: 0.2
   stayActivTime: 5

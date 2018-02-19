@@ -69,7 +69,7 @@ public class EnemyMelee : Entity
                 }
 
             }
-            Target = PlayerInRadius[NearestPlayer];
+            //Target = PlayerInRadius[NearestPlayer];
         }
 
     }
