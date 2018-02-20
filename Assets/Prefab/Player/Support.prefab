@@ -636,7 +636,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
-  ActionPoints: 100
+  maxActionPoints: 100
   curActionPoints: 100
   MeleeDamage: 1
   RangeDamage: 1
@@ -688,10 +688,14 @@ MonoBehaviour:
   TurnSpeed: 0.569
   Deadzone: 0.19
   Acceleration: 1.2
-  temporaryVector: {x: 0, y: 0, z: 0}
-  temporaryLookVector: {x: 0, y: 0, z: 0}
   Anim: {fileID: 95822925165237778}
   myController: {fileID: 143761114787205060}
+  Horizontal_PX: 0
+  Vertical_PX: 0
+  HorizontalLook_PX: 0
+  VerticalLook_PX: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  lookVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -67,4 +67,11 @@ public class Entity : MonoBehaviour
     {
         CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
     }
+
+    public virtual bool RestoreHealth(float healing)
+    {
+        if(CurrentHealth == MaxHealth) return false;
+        CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
+        return true;
+    }
 }

@@ -48,7 +48,7 @@ public class Punch : Skill
         {
             if (Character.curActionPoints > 0)
             {
-                Character.curActionPoints -= Time.deltaTime * energyCosts;
+                Character.SpendActionPoints(energyCosts);
 
                 curChargeTime += Time.deltaTime;
 

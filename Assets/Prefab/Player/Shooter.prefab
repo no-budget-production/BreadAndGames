@@ -2669,7 +2669,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870569288768528}
-  m_LocalRotation: {x: -0.1025467, y: 0.5951261, z: -0.28813633, w: 0.74315983}
+  m_LocalRotation: {x: -0.1025467, y: 0.59512615, z: -0.28813636, w: 0.7431599}
   m_LocalPosition: {x: 1.8626451e-11, y: 0.0017988919, z: 3.1897798e-10}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.9999998}
   m_Children:
@@ -2796,7 +2796,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584756593326210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.595644, y: -17.018326, z: 69.35643}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4834803545969750}
@@ -3135,7 +3135,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
-  ActionPoints: 100
+  maxActionPoints: 100
   curActionPoints: 100
   MeleeDamage: 1
   RangeDamage: 1
