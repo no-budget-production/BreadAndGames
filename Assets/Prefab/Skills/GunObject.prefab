@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075399540784632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06462426, y: 1.269138, z: 0}
+  m_LocalPosition: {x: 0, y: 0.59, z: 5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485280870489048}
@@ -93,10 +93,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143889463678848}
-  m_LocalRotation: {x: 0.000000059604645, y: 0.00000014901161, z: 0.000000018727533,
-    w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.0015499294, y: -0.5305904, z: -0.004462242, w: -0.84761524}
+  m_LocalPosition: {x: -0.19577248, y: 1.1886978, z: -0.053680778}
+  m_LocalScale: {x: 0.10000011, y: 0.09999998, z: 0.100000024}
   m_Children:
   - {fileID: 4946918575210454}
   - {fileID: 4489257948597936}
@@ -110,8 +109,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364746119962326}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.064624265, y: 1.2691375, z: 0.859672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00000025079302, y: 0.5899987, z: 5.6000013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485280870489048}
@@ -123,13 +122,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546580148117836}
-  m_LocalRotation: {x: 0.003801683, y: 0.087072834, z: 0.043453418, w: 0.9952466}
-  m_LocalPosition: {x: 0.111624286, y: 1.3451375, z: 0.17967238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 1.07, z: 4.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485280870489048}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 10, z: 5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114222517438844754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 7
-  PlayerController: {fileID: 0}
+  Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 0}

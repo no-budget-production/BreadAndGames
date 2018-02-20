@@ -102,6 +102,8 @@ public class PlayerController : Character
         {
             Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity);
             curSkill.transform.SetParent(transform);
+            curSkill.transform.position = SkillSpawn.position;
+            curSkill.transform.rotation = SkillSpawn.rotation;
             curSkill.Character = this;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
@@ -185,7 +187,7 @@ public class PlayerController : Character
             }
         }
 
-        
+
 
         if (isUsingRightStick)
         {
