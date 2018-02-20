@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114397302490237756}
   - component: {fileID: 96993710841006174}
   m_Layer: 0
-  m_Name: PrimaryWeaponProjectile
+  m_Name: EnemyWeaponProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.5
@@ -158,10 +158,10 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1
-  EveryXFrames: 2
+  EveryXFrames: 1
   MutliRayLength: 2
-  ThisUnityTypeFlags: 6
+  ThisUnityTypeFlags: 5
   DamageType: 1
   Shooter: {fileID: 0}
-  Speed: 10
-  Damage: 8.5
+  Speed: 9
+  Damage: 5

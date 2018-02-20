@@ -9,6 +9,8 @@ public class Projectile : Effect
     public int EveryXFrames;
     private int FrameCounter;
 
+    public float MutliRayLength;
+
     public List<int> ReturnSelectedElements()
     {
         List<int> selectedElements = new List<int>();
@@ -67,11 +69,11 @@ public class Projectile : Effect
 
     void CheckCollisions(float moveDistance)
     {
-        //Debug.Log("Check");
+        ////Debug.Log("Check");
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames, collisionMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames * MutliRayLength, collisionMask, QueryTriggerInteraction.Collide))
         {
             if (OnHitObject(hit))
                 Destroy(this.gameObject);
@@ -80,7 +82,7 @@ public class Projectile : Effect
 
     bool OnHitObject(RaycastHit hit)
     {
-        //Debug.Log(hit.collider.gameObject.name);
+        ////Debug.Log(hit.collider.gameObject.name);
         Entity damageableObject = hit.collider.GetComponent<Entity>();
         if (damageableObject != null)
         {
@@ -88,7 +90,7 @@ public class Projectile : Effect
             {
                 damageableObject.TakeDamage(Shooter.RangeDamage * Shooter.RangeDamageMultiplicator * Damage, DamageType);
                 return true;
-                //Debug.Log("TakeDamage");
+                ////Debug.Log("TakeDamage");
             }
         }
 
