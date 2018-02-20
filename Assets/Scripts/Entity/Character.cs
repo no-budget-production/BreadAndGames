@@ -130,13 +130,13 @@ public class Character : Entity
                         {
                             //BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
                             //BuffEnd(ActiveBuffObjects[i].BuffObject, character);
-                            Debug.Log("RemovingBuff " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
+                            //Debug.Log("RemovingBuff " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
                             ActiveBuffObjects.RemoveAt(i);
                         }
                         else
                         {
                             ActiveBuffObjects[i].BuffCurTime = 0;
-                            Debug.Log("ResetTime " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
+                            //Debug.Log("ResetTime " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
                         }
                     }
                 }
@@ -153,7 +153,7 @@ public class Character : Entity
             if (!hasBuff /* && !buff.isPermanent*/)
             {
                 ActiveBuffObjects.Add(new ActiveBuffObject(0, buff, character));
-                Debug.Log("AddingBuff " + buff.name);
+                //Debug.Log("AddingBuff " + buff.name);
             }
         }
     }
