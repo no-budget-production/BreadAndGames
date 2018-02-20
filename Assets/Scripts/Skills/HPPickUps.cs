@@ -9,6 +9,7 @@ public class HPPickUps : MonoBehaviour
     {
         var temp = other.GetComponent<PlayerController>();
         if (temp == null) return;
-        temp.GetHealth(healthAmount);
+        var used = temp.RestoreHealth(healthAmount);
+        if (used) Destroy(this.gameObject);
     }
 }
