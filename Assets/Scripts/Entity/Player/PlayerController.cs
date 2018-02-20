@@ -142,9 +142,6 @@ public class PlayerController : Character
             {
                 isUsingRightStick = true;
 
-                temporaryLookVector = inputRotation * temporaryLookVector;
-                lookVector = temporaryLookVector;
-
                 Anim.SetBool(animIsAiming, true);
                 Anim.SetBool(animIsRunning, false);
                 Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
@@ -185,7 +182,7 @@ public class PlayerController : Character
             }
         }
 
-        
+
 
         if (isUsingRightStick)
         {

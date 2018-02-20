@@ -7,10 +7,9 @@ public class Enemy : Character
 {
     private NavMeshAgent NavMeshAgent;
 
-    public List<Transform> PlayerInRadius = new List<Transform>(3);
-    //public List<Transform> PlayerInView = new List<Transform>(3);
+    public List<Transform> PlayerInRadius = new List<Transform>();
 
-    public List<Transform> PlayersInRange = new List<Transform>(3);
+    public List<Transform> PlayersInRange = new List<Transform>();
 
     private Transform Target;
 
@@ -74,6 +73,7 @@ public class Enemy : Character
         if ((FrameCounterDistanceCheck % EveryXFramesDistanceCheck) == 0)
         {
             isInRange = InRange(Target, MaxShootingRange);
+            FrameCounterDistanceCheck = 0;
         }
 
         if (isInRange)
@@ -105,9 +105,11 @@ public class Enemy : Character
             {
                 NavMeshAgent.enabled = true;
 
+                FrameCounterFind++;
                 if ((FrameCounterFind % EveryXFramesFind) == 0)
                 {
                     GetNearestTargetWithNavMesh();
+                    FrameCounterFind = 0;
                 }
 
                 ísSooting = false;

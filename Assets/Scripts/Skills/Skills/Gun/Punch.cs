@@ -16,16 +16,12 @@ public class Punch : Skill
     public float BonusDamagePerSec;
 
     public SoundPlayer SoundPlayer;
-    private SoundPlayer curSoundPlayer;
     private float nextSoundTime;
     public float SBetweenSounds;
 
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
-        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
-        curSoundPlayer.transform.SetParent(SkillSpawn);
-        curSoundPlayer.Play();
     }
 
     public override void Shoot()
@@ -77,8 +73,11 @@ public class Punch : Skill
     {
         if (Time.time > nextSoundTime)
         {
-            nextSoundTime = Time.time + SBetweenSounds + curSoundPlayer.GetClipLenght();
-            curSoundPlayer.Play();
+            if (SoundPlayer != null)
+            {
+                nextSoundTime = Time.time + SBetweenSounds + SoundPlayer.GetClipLenght();
+                SoundPlayer.Play();
+            }
         }
 
         for (int i = 0; i < HitBox.Enemies.Count; i++)

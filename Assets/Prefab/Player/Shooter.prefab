@@ -2001,7 +2001,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147789579015212}
-  m_LocalRotation: {x: 0.0029838507, y: -0.6999427, z: -0.7141868, w: 0.0029242933}
+  m_LocalRotation: {x: 0.0029838502, y: -0.69994277, z: -0.71418685, w: 0.0029242935}
   m_LocalPosition: {x: 0.00079, y: 0.00066, z: -0.0001}
   m_LocalScale: {x: 0.0004294666, y: 0.00038175774, z: 0.00033223696}
   m_Children:
@@ -4079,10 +4079,14 @@ MonoBehaviour:
   TurnSpeed: 0.79
   Deadzone: 0.19
   Acceleration: 1.2
-  temporaryVector: {x: 0, y: 0, z: 0}
-  temporaryLookVector: {x: 0, y: 0, z: 0}
   Anim: {fileID: 95690205810491088}
   myController: {fileID: 143873380964443512}
+  Horizontal_PX: 0
+  Vertical_PX: 0
+  HorizontalLook_PX: 0
+  VerticalLook_PX: 0
+  moveVector: {x: 0, y: 0, z: 0}
+  lookVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1
