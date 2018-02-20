@@ -42,7 +42,7 @@ public class MeleeShieldHandler : MonoBehaviour
     {
         if (Character.curActionPoints <= 0) return;
         if (IsActive()) return;
-        
+
         meleeShieldLevel1.gameObject.SetActive(true);
     }
 
