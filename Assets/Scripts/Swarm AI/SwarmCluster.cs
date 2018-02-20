@@ -44,7 +44,7 @@ public class SwarmCluster : MonoBehaviour
         TempSpawnHandler = Instantiate(PrefabToSpawn, transform.position, transform.rotation) as GameObject;
         TempSpawnHandler.transform.parent = this.transform;
 
-        GameManager.Instance.SwarmController.Add(TempSpawnHandler);
+        //GameManager.Instance.SwarmController.Add(TempSpawnHandler);
 
         GetAllEnemysInCluster();
 
