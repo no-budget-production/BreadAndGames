@@ -809,6 +809,7 @@ GameObject:
   - component: {fileID: 114799034168502476}
   - component: {fileID: 114303827818326802}
   - component: {fileID: 95690205810491088}
+  - component: {fileID: 54971347936647978}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Shooter
@@ -2669,7 +2670,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870569288768528}
-  m_LocalRotation: {x: -0.1025467, y: 0.59512615, z: -0.28813636, w: 0.7431599}
+  m_LocalRotation: {x: -0.10254669, y: 0.59512615, z: -0.28813636, w: 0.7431599}
   m_LocalPosition: {x: 1.8626451e-11, y: 0.0017988919, z: 3.1897798e-10}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.9999998}
   m_Children:
@@ -2833,6 +2834,21 @@ Transform:
   m_Father: {fileID: 4991369723744850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54971347936647978
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &82846766717059796
 AudioSource:
   m_ObjectHideFlags: 1

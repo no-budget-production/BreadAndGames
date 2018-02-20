@@ -20,6 +20,7 @@ public class Enemy : Character
 
     public float MaxShootingRange;
     public float StopRange;
+    public float LookDamping;
 
     public Skill[] UsedSkills;
 
@@ -201,7 +202,12 @@ public class Enemy : Character
 
     void LockOn()
     {
-        transform.LookAt(Target.position);
+        //transform.LookAt(Target.position);
+
+        var lookPos = Target.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
 
         //direction = Target.position - transform.position;
         //Quaternion lookRotation = Quaternion.LookRotation(direction);

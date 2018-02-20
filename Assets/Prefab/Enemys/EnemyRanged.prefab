@@ -176,23 +176,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1255104395604706
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4908236118181472}
-  - component: {fileID: 114322285086619766}
-  - component: {fileID: 135551731902884254}
-  m_Layer: 2
-  m_Name: HitBoxPunch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1255204981583166
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,13 +345,14 @@ GameObject:
   - component: {fileID: 114381365789339586}
   - component: {fileID: 82515971745730904}
   - component: {fileID: 114486814065191174}
+  - component: {fileID: 54509426557924298}
   m_Layer: 0
   m_Name: EnemyRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1475408054608286
 GameObject:
   m_ObjectHideFlags: 1
@@ -500,23 +484,6 @@ GameObject:
   - component: {fileID: 4040696483015606}
   m_Layer: 0
   m_Name: Enemy_melee_arm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1624908683466472
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4415821531221706}
-  - component: {fileID: 114232861103269880}
-  - component: {fileID: 82347899528842504}
-  m_Layer: 0
-  m_Name: LeftRightSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,22 +651,6 @@ GameObject:
   - component: {fileID: 114427325552481108}
   m_Layer: 5
   m_Name: Foregorund
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1964777563626052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4380428024737982}
-  - component: {fileID: 114888917794820828}
-  m_Layer: 0
-  m_Name: PunchMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +853,6 @@ Transform:
   - {fileID: 4348643285332890}
   - {fileID: 224568464675368478}
   - {fileID: 4995292191824428}
-  - {fileID: 4380428024737982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1005,21 +955,6 @@ Transform:
   m_Father: {fileID: 4493291224821172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4380428024737982
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1964777563626052}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4908236118181472}
-  - {fileID: 4415821531221706}
-  m_Father: {fileID: 4203593449528948}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4400366593278620
 Transform:
   m_ObjectHideFlags: 1
@@ -1051,19 +986,6 @@ Transform:
   - {fileID: 4786128491017360}
   m_Father: {fileID: 4560214897170016}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4415821531221706
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624908683466472}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4380428024737982}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4442042773924308
 Transform:
@@ -1300,19 +1222,6 @@ Transform:
   m_Father: {fileID: 4452864429101620}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4908236118181472
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255104395604706}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 4380428024737982}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4912342042601200
 Transform:
   m_ObjectHideFlags: 1
@@ -1382,86 +1291,21 @@ Transform:
   m_Father: {fileID: 4203593449528948}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82347899528842504
-AudioSource:
+--- !u!54 &54509426557924298
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624908683466472}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 406f46976d8cbc54597a5b873a2d960d, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0.002
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 1.0022888
-      inSlope: Infinity
-      outSlope: Infinity
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_GameObject: {fileID: 1460884189814422}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &82515971745730904
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1576,21 +1420,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114232861103269880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624908683466472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3eadabaf93d8a64f8e3e0e66a49c8c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioSource: {fileID: 82347899528842504}
-  AudioClipsArray:
-  - {fileID: 8300000, guid: 406f46976d8cbc54597a5b873a2d960d, type: 3}
-  _lastSound: 0
 --- !u!114 &114271087624653090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1602,19 +1431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d2fd03762dfd04f96bd68ce9142614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114322285086619766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255104395604706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d7aab60a3acb74a98dacdbade379df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemies: []
-  ThisUnityTypeFlags: 6
 --- !u!114 &114381365789339586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1732,10 +1548,12 @@ MonoBehaviour:
   isInRange: 0
   isTargetInView: 0
   isSooting: 0
-  MaxShootingRange: 2
+  MaxShootingRange: 20
   StopRange: 3
+  LookDamping: 100
   UsedSkills:
-  - {fileID: 114777490603000294, guid: 7ac1bcc7ad1207b448e8faffe357f1d2, type: 2}
+  - {fileID: 114105700659199692, guid: 631e2959325764e49ba7fe13e212a502, type: 2}
+  - {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc, type: 2}
   EveryXFramesDistanceCheck: 2
   FrameCounterDistanceCheck: 0
   EveryXFramesRayCheck: 30
@@ -1760,37 +1578,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114888917794820828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1964777563626052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillType: 20
-  Character: {fileID: 0}
-  isFiring: 0
-  SkillSpawn: {fileID: 0}
-  BuffObject: {fileID: 11400000, guid: a072c8762af69eb47964adbca4ec9189, type: 2}
-  UsedBuff: {fileID: 0}
-  curBuff: {fileID: 0}
-  BuffDuration: 0
-  cantStack: 0
-  DamageType: 0
-  HitBox: {fileID: 114322285086619766}
-  Damage: 17
-  Debuff: {fileID: 0}
-  canCharge: 0
-  ChargeTime: 0
-  curChargeTime: 0
-  BonusDamagePerSec: 0
-  energyCosts: 0
-  SoundPlayer: {fileID: 114232861103269880}
-  SBetweenSounds: 0
 --- !u!114 &114955246835477970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1818,18 +1605,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!135 &135551731902884254
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255104395604706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136724221730329578
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1929,7 +1704,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 128
-  m_StoppingDistance: 1
+  m_StoppingDistance: 15
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1

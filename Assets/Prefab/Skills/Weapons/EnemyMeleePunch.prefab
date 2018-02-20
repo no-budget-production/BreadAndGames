@@ -52,8 +52,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4977193373326202}
-  - component: {fileID: 65812134608424566}
   - component: {fileID: 114534373570059676}
+  - component: {fileID: 135746780467341942}
   m_Layer: 2
   m_Name: HitBoxPunch
   m_TagString: Untagged
@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137327059641884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000010079, y: 1.446, z: 0.712}
-  m_LocalScale: {x: 1.8454545, y: 7.302168, z: 1.8454539}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4977193373326202}
   - {fileID: 4415758086545334}
@@ -96,24 +96,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898363228350440}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0.72, y: 0, z: 0.98}
-  m_LocalScale: {x: 1.5449077, y: 0.40163475, z: 0.55178785}
+  m_LocalPosition: {x: 0, y: 1, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4204332074509282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
---- !u!65 &65812134608424566
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1898363228350440}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82999360057156942
 AudioSource:
   m_ObjectHideFlags: 1
@@ -253,3 +241,15 @@ MonoBehaviour:
   energyCosts: 0
   SoundPlayer: {fileID: 114568817090117510}
   SBetweenSounds: 0
+--- !u!135 &135746780467341942
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898363228350440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
