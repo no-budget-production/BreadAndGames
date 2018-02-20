@@ -14,6 +14,7 @@ public class MeleeShieldHandler : MonoBehaviour
     //ShieldLogic
     public float damageMulti = 1;
     public float damageMultiIncrease = 0.1f;
+    public float energyCosts;
     private PlayerController Character;
     private Transform shootFrom;
 
@@ -86,9 +87,8 @@ public class MeleeShieldHandler : MonoBehaviour
 
         meleeShieldLevel1.forward = Character.lookVector;
         meleeShieldLevel2.forward = Character.lookVector;
-
-        //Character.curActionPoints -= factor;
-        //Character.curActionPoints -= Time.deltaTime * 1;
+        
+        Character.curActionPoints -= Time.deltaTime * energyCosts;
         if (Character.curActionPoints <= 0)
         {
             Deactive();

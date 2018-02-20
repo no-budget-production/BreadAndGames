@@ -14,6 +14,7 @@ public class Punch : Skill
     public float ChargeTime;
     public float curChargeTime;
     public float BonusDamagePerSec;
+    public float energyCosts;
 
     public SoundPlayer SoundPlayer;
     private SoundPlayer curSoundPlayer;
@@ -45,15 +46,23 @@ public class Punch : Skill
 
         if (canCharge)
         {
-            curChargeTime += Time.deltaTime;
+            if (Character.curActionPoints > 0)
+            {
+                Character.curActionPoints -= Time.deltaTime * energyCosts;
 
-            if (ChargeTime < curChargeTime)
+                curChargeTime += Time.deltaTime;
+
+                if (ChargeTime < curChargeTime)
+                {
+                    DeadlDamage();
+
+                    curChargeTime = 0;
+                }
+            }
+            else
             {
                 DeadlDamage();
-
                 curChargeTime = 0;
-
-                Debug.Log("Punch");
             }
         }
         else
