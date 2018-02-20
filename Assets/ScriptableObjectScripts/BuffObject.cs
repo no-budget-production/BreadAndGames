@@ -26,6 +26,9 @@ public enum BuffTypes
     HealingDrone,
     HealingDroneReturn,
 
+    EnemyMeleeWeapon,
+    EnemyRangedWeapon,
+
     _Length,
     _Invalid = -1
 
@@ -77,12 +80,12 @@ public class BuffObject : ScriptableObject
             {
                 if (BuffList[i].BuffObject.BuffType == effectWith[j])
                 {
-                    Debug.Log("effectWithWith");
+                    //Debug.Log("effectWithWith");
                     return true;
                 }
             }
         }
-        Debug.Log("effectWith NotFound");
+        //Debug.Log("effectWith NotFound");
         return false;
     }
 
@@ -94,12 +97,12 @@ public class BuffObject : ScriptableObject
             {
                 if (BuffList[i].BuffObject.BuffType == cantTriggerWith[j])
                 {
-                    Debug.Log("cantTriggerWith");
+                    //Debug.Log("cantTriggerWith");
                     return true;
                 }
             }
         }
-        Debug.Log("cantTriggerWith NotFound");
+        //Debug.Log("cantTriggerWith NotFound");
         return false;
     }
 
@@ -109,12 +112,12 @@ public class BuffObject : ScriptableObject
         {
             if (BuffList[i].BuffObject.BuffType == BuffType)
             {
-                Debug.Log("HasBuff");
+                //Debug.Log("HasBuff");
                 return true;
 
             }
         }
-        Debug.Log("HasBuff NotFound");
+        //Debug.Log("HasBuff NotFound");
         return false;
     }
 }

@@ -26,7 +26,7 @@ public class FPSDisplay : MonoBehaviour
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        enemies = GameManager.Instance.SwarmController.Count;
+        enemies = GameManager.Instance.Enemies.Count;
     }
 
     void OnGUI()
