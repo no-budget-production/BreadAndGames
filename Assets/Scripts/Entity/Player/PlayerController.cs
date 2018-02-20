@@ -209,8 +209,8 @@ public class PlayerController : Character
 
     public void Walk(Vector3 currentMovementArg)
     {
-        //CollisionFlags flags = myController.Move(currentMovementArg * Time.deltaTime);
-        myController.SimpleMove(currentMovementArg * Time.deltaTime);
+        CollisionFlags flags = myController.Move(currentMovementArg * Time.deltaTime);
+        //myController.SimpleMove(currentMovementArg * Time.deltaTime);
     }
 
     private void CheckButtonInput()
