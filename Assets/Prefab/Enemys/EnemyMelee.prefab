@@ -555,12 +555,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4658026966710746}
   - component: {fileID: 195225598082948426}
-  - component: {fileID: 136240023710284864}
   - component: {fileID: 95914028235286768}
   - component: {fileID: 114650950170363120}
   - component: {fileID: 82262388361476194}
   - component: {fileID: 114989625834042308}
   - component: {fileID: 54458973079174632}
+  - component: {fileID: 65892178683052854}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -1306,6 +1306,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65892178683052854
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724353408865596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 2, z: 0.6}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &82262388361476194
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1576,7 +1588,7 @@ MonoBehaviour:
   canUseSkills: 1
   SkillSpawn: {fileID: 4647850868697872}
   TakeHitPoint: {fileID: 4657473989523668}
-  HealthBar: {fileID: 224848475305035036}
+  HealthBar: {fileID: 224901219119261124}
   UseHealthbar: 1
   ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
@@ -1604,19 +1616,6 @@ MonoBehaviour:
   FrameCounterShoot: 0
   EveryXFramesFind: 60
   FrameCounterFind: 0
---- !u!136 &136240023710284864
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724353408865596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.45
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

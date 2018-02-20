@@ -60,6 +60,7 @@ public class Character : Entity
 
     public virtual void Start()
     {
+        CurrentHealth = MaxHealth;
         curActionPoints = maxActionPoints;
         if (UseHealthbar)
         {
@@ -67,7 +68,6 @@ public class Character : Entity
         }
         if (UseActionPointsBar)
         {
-
             OnActionBarChange();
         }
     }

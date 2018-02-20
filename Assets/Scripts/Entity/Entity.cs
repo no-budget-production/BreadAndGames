@@ -60,6 +60,11 @@ public class Entity : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             isDeadTrigger = true;
+
+            if (DestroyOnDeath)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -70,7 +75,8 @@ public class Entity : MonoBehaviour
 
     public virtual bool RestoreHealth(float healing)
     {
-        if(CurrentHealth == MaxHealth) return false;
+        if (CurrentHealth == MaxHealth)
+            return false;
         CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
         return true;
     }

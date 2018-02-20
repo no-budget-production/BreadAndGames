@@ -14,6 +14,7 @@ public class PlayerController : Character
 {
     public PlayerType Type;
 
+    [SerializeField]
     public bool HasFlag(PlayerTypeFlags flags)
     {
         int typeflag = 1 << (int)Type;
@@ -208,7 +209,8 @@ public class PlayerController : Character
 
     public void Walk(Vector3 currentMovementArg)
     {
-        CollisionFlags flags = myController.Move(currentMovementArg * Time.deltaTime);
+        //CollisionFlags flags = myController.Move(currentMovementArg * Time.deltaTime);
+        myController.SimpleMove(currentMovementArg * Time.deltaTime);
     }
 
     private void CheckButtonInput()

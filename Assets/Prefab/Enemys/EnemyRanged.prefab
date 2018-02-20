@@ -340,19 +340,19 @@ GameObject:
   m_Component:
   - component: {fileID: 4203593449528948}
   - component: {fileID: 195200813297578334}
-  - component: {fileID: 136724221730329578}
   - component: {fileID: 95675554294600488}
   - component: {fileID: 114381365789339586}
   - component: {fileID: 82515971745730904}
   - component: {fileID: 114486814065191174}
   - component: {fileID: 54509426557924298}
+  - component: {fileID: 65386740566680650}
   m_Layer: 0
   m_Name: EnemyRanged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1475408054608286
 GameObject:
   m_ObjectHideFlags: 1
@@ -1306,6 +1306,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65386740566680650
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460884189814422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 2, z: 0.6}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &82515971745730904
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1533,7 +1545,7 @@ MonoBehaviour:
   canUseSkills: 1
   SkillSpawn: {fileID: 4299175136602342}
   TakeHitPoint: {fileID: 4348643285332890}
-  HealthBar: {fileID: 224568464675368478}
+  HealthBar: {fileID: 224795656030523584}
   UseHealthbar: 1
   ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
@@ -1605,19 +1617,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!136 &136724221730329578
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1460884189814422}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.45
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137251487634615050
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

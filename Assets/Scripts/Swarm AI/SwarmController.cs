@@ -27,16 +27,16 @@ public class SwarmController : Character
 
     void Update()
     {
-        if (isDeadTrigger && DoItOnceBool)
-        {
-            DoItOnceBool = false;
-            SwarmClusterScript._AllEnemysInCluster.Remove(this.gameObject);
-            SwarmClusterScript._SwarmControllerScripts.Remove(this.MySwarmController);
-            if (DestroyOnDeath)
-            {
-                Destroy(gameObject);
-            }
-        }
+        //if (isDeadTrigger && DoItOnceBool)
+        //{
+        //    DoItOnceBool = false;
+        //    SwarmClusterScript._AllEnemysInCluster.Remove(this.gameObject);
+        //    SwarmClusterScript._SwarmControllerScripts.Remove(this.MySwarmController);
+        //    if (DestroyOnDeath)
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
     }
     public void MoveToDestination(Transform Destination)
     {
@@ -51,7 +51,7 @@ public class SwarmController : Character
     }
 
     public void AttackCommand(Transform Destination)
-        {
+    {
         /*
             if (!isDeadTrigger)
             {
@@ -60,5 +60,5 @@ public class SwarmController : Character
                 MyNavMeshAgent.SetDestination(targetVector);
             }
             */
-        }
     }
+}
