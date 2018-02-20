@@ -203,21 +203,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1227746108041376
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4219027494873792}
-  m_Layer: 0
-  m_Name: ShootFrom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1245563750808122
 GameObject:
   m_ObjectHideFlags: 1
@@ -802,19 +787,6 @@ Transform:
   m_Father: {fileID: 4256313004820600}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4219027494873792
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1227746108041376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.164, y: 2, z: 4.834}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4613099269740536}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4252319834093624
 Transform:
   m_ObjectHideFlags: 1
@@ -1048,7 +1020,6 @@ Transform:
   - {fileID: 4252319834093624}
   - {fileID: 4360849759146206}
   - {fileID: 4575352139550200}
-  - {fileID: 4219027494873792}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1623,10 +1594,8 @@ MonoBehaviour:
   meleeShieldLevel2_Prefabs: {fileID: 4789576024763420, guid: 031757b06f683664c892350419b96829,
     type: 2}
   SecBetweenShot: 0
-  level: []
   damageMulti: 1
   damageMultiIncrease: 0.1
-  shootFrom: {fileID: 4219027494873792}
 --- !u!114 &114828686618201432
 MonoBehaviour:
   m_ObjectHideFlags: 1

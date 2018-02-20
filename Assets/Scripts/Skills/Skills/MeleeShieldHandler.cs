@@ -10,13 +10,12 @@ public class MeleeShieldHandler : MonoBehaviour
     private Transform meleeShieldLevel2;
     float nextShotTime;
     public float SecBetweenShot;
-    public ButtonConfig[] level;
 
     //ShieldLogic
     public float damageMulti = 1;
     public float damageMultiIncrease = 0.1f;
     private PlayerController Character;
-    public Transform shootFrom;
+    private Transform shootFrom;
 
     void Start()
     {
@@ -33,7 +32,7 @@ public class MeleeShieldHandler : MonoBehaviour
         meleeShieldLevel2.localRotation = Quaternion.identity;
         meleeShieldLevel2.localPosition = Vector3.zero;
         meleeShieldLevel2.gameObject.SetActive(false);
-
+        shootFrom = meleeShieldLevel2.GetComponentInChildren<ShootFrom>().transform;
         //ShieldLogic
         damageMulti = 1;
     }
