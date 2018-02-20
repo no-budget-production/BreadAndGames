@@ -30,9 +30,9 @@ public class Reload : Skill
 
         Character.AddBuff(BuffObject, 1, Character);
 
-        if (Character.curActionPoints < Character.ActionPoints)
+        if (Character.curActionPoints < Character.maxActionPoints)
         {
-            Character.curActionPoints = Character.ActionPoints;
+            Character.curActionPoints = Character.maxActionPoints;
             Character.OnActionBarChange();
             SoundPlayer.Play();
         }

@@ -1462,7 +1462,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
-  ActionPoints: 100
+  maxActionPoints: 100
   curActionPoints: 100
   MeleeDamage: 1
   RangeDamage: 1
@@ -1596,6 +1596,7 @@ MonoBehaviour:
   SecBetweenShot: 0
   damageMulti: 1
   damageMultiIncrease: 0.1
+  energyCosts: 0
 --- !u!114 &114828686618201432
 MonoBehaviour:
   m_ObjectHideFlags: 1

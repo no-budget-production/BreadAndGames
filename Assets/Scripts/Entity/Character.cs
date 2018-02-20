@@ -20,7 +20,7 @@ public class ActiveBuffObject
 
 public class Character : Entity
 {
-    public float ActionPoints;
+    public float maxActionPoints;
     public float curActionPoints;
 
     public float MeleeDamage = 1f;
@@ -60,6 +60,7 @@ public class Character : Entity
 
     public virtual void Start()
     {
+        curActionPoints = maxActionPoints;
         if (UseHealthbar)
         {
             OnChangeHealth(CurrentHealth);
@@ -267,12 +268,26 @@ public class Character : Entity
 
     public void SpendActionPoints(float costs)
     {
-        curActionPoints = Mathf.Max(curActionPoints - costs, 0);
+        curActionPoints = Mathf.Max(curActionPoints - (Time.deltaTime * costs), 0);
 
         if (UseActionPointsBar)
         {
             OnActionBarChange();
         }
+    }
+
+    public float RestoreActionPoints(float restore)
+    {
+        var tempActionPoints = Mathf.Min(curActionPoints + (Time.deltaTime * restore), maxActionPoints);
+        var dif = tempActionPoints - curActionPoints;
+        curActionPoints = tempActionPoints;
+
+        if (UseActionPointsBar)
+        {
+            OnActionBarChange();
+        }
+
+        return dif;
     }
 
     public void EmptySound()
