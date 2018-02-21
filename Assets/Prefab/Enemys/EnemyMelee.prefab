@@ -1621,6 +1621,8 @@ MonoBehaviour:
   EveryXFramesFind: 60
   FrameCounterFind: 0
   Anim: {fileID: 95145110562039168}
+  AnimationStrings:
+  - isAttacking
   NavAgentSpeed: 0
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:
@@ -1708,7 +1710,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 128
-  m_StoppingDistance: 1
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1

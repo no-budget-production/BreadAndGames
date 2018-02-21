@@ -43,6 +43,8 @@ public class Enemy : Character
     int animSpeed = Animator.StringToHash("Speed");
     int animIsAttacking = Animator.StringToHash("isAttacking");
 
+    public string[] AnimationStrings;
+
     public float NavAgentSpeed;
 
     public override void Start()
@@ -128,17 +130,22 @@ public class Enemy : Character
                             for (int i = 0; i < ActiveSkills.Length; i++)
                             {
                                 ActiveSkills[i].Shoot();
+
+                                if (i < AnimationStrings.Length)
+                                {
+                                    if (AnimationStrings[i] != null)
+                                    {
+                                        Anim.SetTrigger(animIsAttacking);
+                                    }
+                                }
                             }
                             FrameCounterShoot = 0;
 
                             isSooting = true;
-                            //NavMeshAgent.enabled = false;
                         }
                     }
                     else
                     {
-                        //NavMeshAgent.enabled = true;
-
                         FrameCounterFind++;
                         if ((FrameCounterFind % EveryXFramesFind) == 0)
                         {
