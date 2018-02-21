@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PhaseOneLevelScript : MonoBehaviour
 {
-    public SwarmSpawn[] spawner;
+    public ArenaSpawner[] spawner;
 
     public bool startArenaEvent;
 
