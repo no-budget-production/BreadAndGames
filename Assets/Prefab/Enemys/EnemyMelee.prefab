@@ -1407,7 +1407,7 @@ Animator:
   m_GameObject: {fileID: 1542881348221030}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa5f4695d4230144f98cb36ef1c065f4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1600,6 +1600,7 @@ MonoBehaviour:
   PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
+  isGameOver: 0
   isAlive: 0
   isInRange: 0
   isTargetInView: 0
@@ -1619,6 +1620,8 @@ MonoBehaviour:
   FrameCounterShoot: 0
   EveryXFramesFind: 60
   FrameCounterFind: 0
+  Anim: {fileID: 95145110562039168}
+  NavAgentSpeed: 0
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
