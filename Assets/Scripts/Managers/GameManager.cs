@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class GameManagerHelper
 {
@@ -45,6 +46,9 @@ public class GameManager : MonoBehaviour
     public PlayerController GetSupport() { return GetPlayerByType(PlayerType.Support); }
     public PlayerController GetPlayerByType(PlayerType t) { return Players.Where(p => p.Type == t).FirstOrDefault(); }
 
+    public Slider[] HUDHealthBarSlider;
+    public Slider[] HUDActionPointsBar;
+
     void Awake()
     {
         InitGame();
@@ -84,5 +88,8 @@ public class GameManager : MonoBehaviour
         _DynamicHolder = InstanceRef._DynamicHolder;
         ProjectileHolder = InstanceRef.ProjectileHolder;
         VisualsHolder = InstanceRef.VisualsHolder;
+
+        HUDHealthBarSlider = InstanceRef.HUDHealthBarSlider;
+        HUDActionPointsBar = InstanceRef.HUDActionPointsBar;
     }
 }

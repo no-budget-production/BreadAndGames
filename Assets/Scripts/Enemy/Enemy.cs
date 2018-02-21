@@ -288,9 +288,11 @@ public class Enemy : Character
 
         var lookPos = new Vector3(Target.position.x, 0, Target.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
         lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
-
+        if (lookPos != Vector3.zero)
+        {
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
+        }
         //direction = Target.position - transform.position;
         //Quaternion lookRotation = Quaternion.LookRotation(direction);
         //Vector3 rotation = Quaternion.Lerp(Target.rotation, lookRotation, Time.deltaTime * 100000000).eulerAngles;

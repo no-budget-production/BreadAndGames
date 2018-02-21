@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InstanceRef : MonoBehaviour
 {
@@ -14,4 +15,7 @@ public class InstanceRef : MonoBehaviour
     public Transform _DynamicHolder;
     public Transform ProjectileHolder;
     public Transform VisualsHolder;
+
+    public Slider[] HUDHealthBarSlider;
+    public Slider[] HUDActionPointsBar;
 }
