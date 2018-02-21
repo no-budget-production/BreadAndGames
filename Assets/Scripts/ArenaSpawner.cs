@@ -8,6 +8,7 @@ public class ArenaSpawner : MonoBehaviour
     public float SpawnRate;                     // The time limit when the next enemy will spawn
     public int AmountToSpawn;                   // How many enemys should spawn
     public Transform HoldingPoint;
+
     private Transform EnemyHolder;
     
 
@@ -26,7 +27,7 @@ public class ArenaSpawner : MonoBehaviour
         // Spawn one enemy
         GameObject curPrefab;
         curPrefab = Instantiate(PrefabToSpawn, transform.position, transform.rotation) as GameObject;
-        curPrefab.transform.parent = SwarmHandler.transform;
+        curPrefab.transform.parent = EnemyHolder.transform;
 
 
         // Let the spawned enemy move to the Holding Point
