@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 114422117127842328}
   - component: {fileID: 114062045482434310}
   - component: {fileID: 54792642140107436}
+  - component: {fileID: 114474429914328714}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Melee
@@ -1221,7 +1222,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1550,6 +1551,17 @@ MonoBehaviour:
   VerticalLook_PX: 0
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
+--- !u!114 &114474429914328714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143050206337656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf62417552e86c43821c19ebb9eefb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,12 +15,18 @@ public class EnemyMelee : Entity
 
     private List<Transform> PlayerInRadius;
     private PlayerController Target;
-    
+
+    private Animator animator;
+    private Rigidbody thisRigidbody;
+
+    private float enemySpeed;
+
 
     void Start()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
-
+        animator = GetComponentInChildren<Animator>();
+        thisRigidbody = GetComponent<Rigidbody>();
 
         Melee = GameManager.Instance.GetMelee();
         Shooter = GameManager.Instance.GetShooter();
@@ -31,6 +37,14 @@ public class EnemyMelee : Entity
         PlayerInRadius.Add(Support.GetComponent<Transform>());
 
         //GetNearestTargetWithNavMesh();
+
+    }
+
+    void Update()
+    {
+
+        enemySpeed = thisRigidbody.velocity.magnitude;
+        animator.SetFloat("Speed", Mathf.Clamp(enemySpeed, 0, 1));
 
     }
 
