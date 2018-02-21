@@ -142,5 +142,4 @@ class FlagsHelper
     {
         return ((int)flags2 & (int)flags) != 0;
     }
-
 }

@@ -38,11 +38,44 @@ public class Punch : Skill
 
     public override void Shoot()
     {
-        if (!BuffObject.isStackable)
+        if (canCharge)
         {
-            if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+            if (Character.curActionPoints - energyCosts > 0)
             {
-                return;
+                Debug.Log("CanCharge");
+                if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
+                {
+                    Debug.Log("!ChargingBuff.HasBuff");
+                    if (!BuffObject.isStackable)
+                    {
+                        Debug.Log("!BuffObject.isStackable");
+                        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                        {
+                            Debug.Log("BuffObject.HasBuff");
+                            return;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!BuffObject.isStackable)
+                {
+                    if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (!BuffObject.isStackable)
+            {
+                if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                {
+                    return;
+                }
             }
         }
 
@@ -57,6 +90,10 @@ public class Punch : Skill
         {
             if (Character.curActionPoints - energyCosts > 0)
             {
+                Character.AddBuff(ChargingBuff, 1, Character);
+
+                Debug.Log("Character.AddBuff");
+
                 curChargeTime += Time.deltaTime;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
                 Character.SpendActionPoints(energyCosts * Time.deltaTime);
@@ -67,17 +104,20 @@ public class Punch : Skill
                 if (ChargeTime < curChargeTime)
                 {
                     punchCount++;
-                    Debug.Log("punchCount " + punchCount);
+                    Debug.Log("//////////////////////////////////////////////////////////////////////////punchCount " + punchCount);
                     DeadlDamage();
                     curChargeTime = 0;
                     curDamageBonus = 0;
+                    Character.AddBuff(ChargingBuff, -1, Character);
                 }
             }
             else
             {
+                Debug.Log("###############################################################NoEnerhyPuncch ");
                 DeadlDamage();
                 curChargeTime = 0;
                 curDamageBonus = 0;
+                Character.AddBuff(ChargingBuff, -1, Character);
             }
         }
         else
@@ -95,9 +135,51 @@ public class Punch : Skill
 
     public override void StopShoot()
     {
+        if (canCharge)
+        {
+            Debug.Log("CanCharge");
+            if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
+            {
+                Debug.Log("!ChargingBuff.HasBuff");
+                if (!BuffObject.isStackable)
+                {
+                    Debug.Log("!BuffObject.isStackable");
+                    if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                    {
+                        Debug.Log("BuffObject.HasBuff");
+                        return;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (!BuffObject.isStackable)
+            {
+                if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                {
+                    return;
+                }
+            }
+        }
+
+        if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
+        {
+            return;
+        }
+
+        Character.AddBuff(BuffObject, 1, Character);
+
         DeadlDamage();
 
         curChargeTime = 0;
+
+        if (canCharge)
+        {
+            Character.AddBuff(ChargingBuff, -1, Character);
+        }
+
+        Debug.Log("###############################################################QUICKPUNCH -------------------------------- ");
 
         //Debug.Log("Punch Early");
     }

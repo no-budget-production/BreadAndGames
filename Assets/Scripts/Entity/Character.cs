@@ -146,7 +146,7 @@ public class Character : Entity
                     {
                         if (multi < 0)
                         {
-                            //BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
+                            BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
                             //BuffEnd(ActiveBuffObjects[i].BuffObject, character);
                             //Debug.Log("RemovingBuff " + i + " " + ActiveBuffObjects[i].BuffCurTime + " " + ActiveBuffObjects[i].BuffObject.name);
                             ActiveBuffObjects.RemoveAt(i);
