@@ -47,5 +47,28 @@ public class MeleeAnimation : MonoBehaviour
             animator.SetFloat("MovY", Mathf.Clamp(moveVector.y, -1, 0.5f));
             animator.SetFloat("MovX", moveVector.x);
         }
+
+        if(Input.GetButtonDown("Bumper_Left_PX"))
+        {
+            animator.SetBool("isAttacking", true);
+            animator.SetBool("leftPunch", true);
+        }
+        else if (Input.GetButtonUp("Bumper_Left_PX"))
+        {
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("leftPunch", false);
+        }
+        if (Input.GetButtonDown("Bumper_Right_PX"))
+        {
+            animator.SetBool("isAttacking", true);
+            animator.SetBool("rightPunch", true);
+        }
+        else if (Input.GetButtonUp("Bumper_Right_PX"))
+        {
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("rightPunch", false);
+        }
+
+
     }
 }

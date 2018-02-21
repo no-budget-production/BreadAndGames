@@ -51,6 +51,10 @@ public class PlayerController : Character
     int animIsAiming = Animator.StringToHash("isAiming");
     int animIsRunning = Animator.StringToHash("isRunning");
     int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
+    int animIsAttacking = Animator.StringToHash("isAttacking");
+    int animleftPunch = Animator.StringToHash("leftPunch");
+    int animRightPunch = Animator.StringToHash("rightPunch");
+
 
     public CharacterController myController;
 
