@@ -29,7 +29,15 @@ public class WaypointSystem : MonoBehaviour
                     {
                         if (autoRenameWaypoints)
                         {
-                            t.name = "Waypoint " + Index.ToString();
+                            if (Index == 0)
+                            {
+                                int indexHelper = Index++;
+                                t.name = "Waypoint " + Index.ToString();
+                            }
+                            else
+                            {
+                                t.name = "Waypoint " + Index.ToString();
+                            }
                         }
 
                         waypoints.Add(t);
