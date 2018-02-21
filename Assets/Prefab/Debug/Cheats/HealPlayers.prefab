@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4431104083592452}
-  - component: {fileID: 114763016242820116}
+  - component: {fileID: 114048705889160208}
   m_Layer: 0
   m_Name: HealPlayers
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114763016242820116
+--- !u!114 &114048705889160208
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,9 +48,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020036050182554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8091ed60b14a324d8a9ea1346f870cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 99da2e262ff72d84bae0731bd1353a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFiring: 0
-  NewPlayer1: {fileID: 0}
-  TargetType: 2
+  HealAmount: 100

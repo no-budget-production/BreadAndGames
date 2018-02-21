@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerHeal : Cheat
 {
-    public PlayerController NewPlayer1;
     public float HealAmount;
 
     public override void Shoot()
