@@ -29,20 +29,14 @@ public class PlayerController : Character
 
     public string PlayerNumber;
 
-    public bool isWalking;
     public bool isUsingRightStick;
     public bool isInAction;
 
     public ButtonConfig[] PlayerSkills;
 
-    [Range(0.0f, 1.0f)]
-    public float TurnSpeed;
-
     public float Deadzone;
 
     private float angle;
-
-    public float Acceleration;
 
     public Animator Anim;
 
@@ -52,21 +46,26 @@ public class PlayerController : Character
     int animIsRunning = Animator.StringToHash("isRunning");
     int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
 
-    public CharacterController myController;
-
-    private Vector3 currentMovement;
-
     private Quaternion inputRotation;
-
-    //private float gravityStrength = 15f;
 
     public float Horizontal_PX;
     public float Vertical_PX;
     public float HorizontalLook_PX;
     public float VerticalLook_PX;
 
+    //Movement
     public Vector3 moveVector;
     public Vector3 lookVector;
+
+    public Rigidbody myController;
+    
+    private Vector3 currentMovement;
+    public float acceleration;
+    public float deceleration;
+    public float moveSpeedMax;
+
+    public float TurnSpeed;
+
 
     public override void Start()
     {
@@ -131,12 +130,18 @@ public class PlayerController : Character
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
         VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
         moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
+
         Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
+        //myController.angularVelocity = Vector3.zero;
 
         if (temporaryLookVector.magnitude > Deadzone)
         {
             temporaryLookVector = inputRotation * temporaryLookVector;
             lookVector = temporaryLookVector;
+        }
+        else
+        {
+            lookVector = transform.forward;
         }
 
         if (canUseRightStick)
@@ -164,53 +169,49 @@ public class PlayerController : Character
         }
         else
         {
+            isUsingRightStick = false;
             Anim.SetFloat(animMovX, moveVector.magnitude);
+        }
+
+        if (isUsingRightStick)
+        {
+            Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(lookVector, transform.up), TurnSpeed * Time.deltaTime);
+            myController.rotation = newLookDirection;
         }
 
         if (canWalk)
         {
             if (moveVector.magnitude > Deadzone)
             {
-                isWalking = true;
-                moveVector = inputRotation * moveVector;
-
-                currentMovement += moveVector * Acceleration;
+                //moveVector = inputRotation * moveVector;
+                /*
+                currentMovement += moveVector * accelerationBase;
                 float speed = currentMovement.magnitude;
                 if (speed > (MoveSpeed * MoveSpeedMultiplicator))
                 {
                     currentMovement *= (MoveSpeed * MoveSpeedMultiplicator) / speed;
                 }
+                */
+                if (!isUsingRightStick)
+                {
+                    Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(moveVector, transform.up), TurnSpeed * Time.deltaTime);
+                    myController.rotation = newLookDirection;
+                }
+                Walk();
             }
             else
             {
                 currentMovement = Vector3.zero;
-                isWalking = false;
+                if (myController.velocity.magnitude > 0.2f)
+                {
+                    myController.AddForce(-myController.velocity * deceleration * Time.deltaTime);
+                }
+                else
+                {
+                    myController.velocity = Vector3.zero;
+                }
             }
         }
-
-
-
-        if (isUsingRightStick)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookVector), 0.35f);
-        }
-        else if (isWalking)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), TurnSpeed);
-        }
-
-        if (isWalking)
-        {
-            Walk(currentMovement);
-            //myController.Move(currentMovement * Time.deltaTime);
-        }
-
-    }
-
-    public void Walk(Vector3 currentMovementArg)
-    {
-        CollisionFlags flags = myController.Move(currentMovementArg * Time.deltaTime);
-        //myController.SimpleMove(currentMovementArg * Time.deltaTime);
     }
 
     private void CheckButtonInput()
@@ -265,5 +266,13 @@ public class PlayerController : Character
         CheckButtonInput();
         base.Update();
         Move();
+    }
+
+    public void Walk()
+    {
+        myController.AddForce(moveVector * acceleration * Time.deltaTime);
+        myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax);
+        //myController.SimpleMove(currentMovementArg * Time.deltaTime);
+        Debug.Log(myController.velocity.magnitude);
     }
 }

@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1614202305009336
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +684,6 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 3
-  isWalking: 0
   isUsingRightStick: 0
   isInAction: 0
   PlayerSkills:
@@ -701,17 +700,19 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
     - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
-  TurnSpeed: 0.569
   Deadzone: 0.19
-  Acceleration: 1.2
   Anim: {fileID: 95822925165237778}
-  myController: {fileID: 143761114787205060}
   Horizontal_PX: 0
   Vertical_PX: 0
   HorizontalLook_PX: 0
   VerticalLook_PX: 0
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
+  myController: {fileID: 143761114787205060}
+  acceleration: 3500
+  deceleration: 120
+  moveSpeedMax: 15
+  TurnSpeed: 12
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -878,7 +879,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.01, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

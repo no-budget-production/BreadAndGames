@@ -820,7 +820,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4982861297404492}
-  - component: {fileID: 143873380964443512}
+  - component: {fileID: 54093522444489436}
+  - component: {fileID: 136286705433390594}
   - component: {fileID: 114799034168502476}
   - component: {fileID: 114303827818326802}
   m_Layer: 0
@@ -2861,6 +2862,21 @@ Transform:
   m_Father: {fileID: 4991369723744850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54093522444489436
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.5
+  m_AngularDrag: 0.95
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!82 &82846766717059796
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3178,7 +3194,6 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 2
-  isWalking: 0
   isUsingRightStick: 0
   isInAction: 0
   PlayerSkills:
@@ -3206,17 +3221,19 @@ MonoBehaviour:
   - SkillBC: {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc,
       type: 2}
     ButtonStringBC: []
-  TurnSpeed: 0.79
   Deadzone: 0.19
-  Acceleration: 1.2
   Anim: {fileID: 95894590904067126}
-  myController: {fileID: 143873380964443512}
   Horizontal_PX: 0
   Vertical_PX: 0
   HorizontalLook_PX: 0
   VerticalLook_PX: 0
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
+  myController: {fileID: 54093522444489436}
+  acceleration: 3500
+  deceleration: 120
+  moveSpeedMax: 15
+  TurnSpeed: 12
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3271,6 +3288,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!136 &136286705433390594
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137609915525239402
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -3392,23 +3422,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00008883397, y: 0.009746353, z: 0.00052807364}
     m_Extent: {x: 0.0072633857, y: 0.010642148, z: 0.0058072377}
   m_DirtyAABB: 0
---- !u!143 &143873380964443512
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584756593326210}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 0
-  m_StepOffset: 0.01
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!222 &222031644433737874
 CanvasRenderer:
   m_ObjectHideFlags: 1

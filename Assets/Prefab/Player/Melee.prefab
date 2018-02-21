@@ -207,10 +207,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4613099269740536}
-  - component: {fileID: 143950757012174290}
+  - component: {fileID: 54792642140107436}
+  - component: {fileID: 136724789527746718}
   - component: {fileID: 114422117127842328}
   - component: {fileID: 114062045482434310}
-  - component: {fileID: 54792642140107436}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Melee
@@ -996,7 +996,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143050206337656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4884654481988200}
@@ -1218,12 +1218,12 @@ Rigidbody:
   m_GameObject: {fileID: 1143050206337656}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.95
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!82 &82047039485331390
 AudioSource:
@@ -1510,7 +1510,6 @@ MonoBehaviour:
   deadZones: []
   thisPlayerString: []
   PlayerNumber: 1
-  isWalking: 0
   isUsingRightStick: 0
   isInAction: 0
   PlayerSkills:
@@ -1539,17 +1538,19 @@ MonoBehaviour:
       type: 2}
     ButtonStringBC:
     - {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49, type: 2}
-  TurnSpeed: 0.066
   Deadzone: 0.19
-  Acceleration: 1.2
   Anim: {fileID: 95489058017728856}
-  myController: {fileID: 143950757012174290}
   Horizontal_PX: 0
   Vertical_PX: 0
   HorizontalLook_PX: 0
   VerticalLook_PX: 0
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
+  myController: {fileID: 54792642140107436}
+  acceleration: 3500
+  deceleration: 120
+  moveSpeedMax: 15
+  TurnSpeed: 12
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1655,6 +1656,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!136 &136724789527746718
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143050206337656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &137412656359919340
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1720,23 +1734,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.0144691635, z: 0.0010396121}
     m_Extent: {x: 0.026548974, y: 0.016029002, z: 0.0086095}
   m_DirtyAABB: 0
---- !u!143 &143950757012174290
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1143050206337656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 3
-  m_Radius: 1
-  m_SlopeLimit: 0
-  m_StepOffset: 0.01
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!222 &222113195791850482
 CanvasRenderer:
   m_ObjectHideFlags: 1
