@@ -6,6 +6,7 @@ public class Player1 : Cheat
 {
     public PlayerController NewPlayer1;
     public PlayerType TargetType;
+    bool isPlayerFound;
 
     public override void Shoot()
     {
@@ -28,11 +29,21 @@ public class Player1 : Cheat
             else
             {
                 curPlayer.PlayerNumber = "1";
+                isPlayerFound = true;
+            }
+
+            if (!isPlayerFound && (i == GameManager.Instance.Players.Count))
+            {
+                curPlayer.PlayerNumber = "1";
+                Debug.Log(NewPlayer1.name + "not found!");
             }
 
             curPlayer.Setup(GameManager.Instance.InputRotation, GameManager.Instance.prefabLoader.ButtonStrings);
         }
 
-        Debug.Log(NewPlayer1.name + "new Player 1");
+        if (NewPlayer1 != null)
+        {
+            Debug.Log(NewPlayer1.name + "new Player 1");
+        }
     }
 }

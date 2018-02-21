@@ -13,7 +13,8 @@ public class Enemy : Character
 
     public Transform Target;
 
-
+    public bool isGameOver;
+    public bool isAlive;
     public bool isInRange;
     public bool isTargetInView;
     public bool isSooting;
@@ -26,6 +27,8 @@ public class Enemy : Character
 
     private Vector3 direction;
 
+    public int EveryXFramesAliveCheck;
+    public int FrameCounterAliveCheck;
     public int EveryXFramesDistanceCheck;
     public int FrameCounterDistanceCheck;
     public int EveryXFramesRayCheck;
@@ -63,81 +66,132 @@ public class Enemy : Character
             ActiveSkills[i].LateSkillSetup();
         }
 
-        GetNearestTargetWithNavMesh();
+        if (GetNearestTargetWithNavMesh())
+        {
+            NavMeshAgent.destination = Target.position;
+        }
+        else
+        {
+            NavMeshAgent.enabled = false;
+        }
     }
 
     public override void Update()
     {
-        LockOn();
-
-        base.Update();
-
-        FrameCounterDistanceCheck++;
-        if ((FrameCounterDistanceCheck % EveryXFramesDistanceCheck) == 0)
+        if (!isGameOver)
         {
-            isInRange = InRange(Target, MaxShootingRange);
-            FrameCounterDistanceCheck = 0;
-        }
+            base.Update();
 
-        if (isInRange)
-        {
-            FrameCounterRayCheck++;
-            if ((FrameCounterRayCheck % EveryXFramesRayCheck) == 0)
+            FrameCounterAliveCheck++;
+            if ((FrameCounterAliveCheck % EveryXFramesAliveCheck) == 0)
             {
-                //LockOn();
-                isTargetInView = CheckView();
-                FrameCounterRayCheck = 0;
+                isAlive = CheckIsAlive(Target);
+                FrameCounterAliveCheck = 0;
             }
 
-            if (isTargetInView)
+            if (isAlive)
             {
-                FrameCounterShoot++;
-                if ((FrameCounterShoot % EveryXFramesShoot) == 0)
-                {
-                    for (int i = 0; i < ActiveSkills.Length; i++)
-                    {
-                        ActiveSkills[i].Shoot();
-                    }
-                    FrameCounterShoot = 0;
+                LockOn();
 
-                    isSooting = true;
-                    //NavMeshAgent.enabled = false;
+                FrameCounterDistanceCheck++;
+                if ((FrameCounterDistanceCheck % EveryXFramesDistanceCheck) == 0)
+                {
+                    isInRange = InRange(Target, MaxShootingRange);
+                    FrameCounterDistanceCheck = 0;
                 }
+
+                if (isInRange)
+                {
+                    FrameCounterRayCheck++;
+                    if ((FrameCounterRayCheck % EveryXFramesRayCheck) == 0)
+                    {
+                        //LockOn();
+                        isTargetInView = CheckView();
+                        FrameCounterRayCheck = 0;
+                    }
+
+                    if (isTargetInView)
+                    {
+                        FrameCounterShoot++;
+                        if ((FrameCounterShoot % EveryXFramesShoot) == 0)
+                        {
+                            for (int i = 0; i < ActiveSkills.Length; i++)
+                            {
+                                ActiveSkills[i].Shoot();
+                            }
+                            FrameCounterShoot = 0;
+
+                            isSooting = true;
+                            //NavMeshAgent.enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        //NavMeshAgent.enabled = true;
+
+                        FrameCounterFind++;
+                        if ((FrameCounterFind % EveryXFramesFind) == 0)
+                        {
+                            GetNearestTargetWithNavMesh();
+                            FrameCounterFind = 0;
+                        }
+
+                        isSooting = false;
+                    }
+                }
+                else
+                {
+                    isTargetInView = false;
+                    isSooting = false;
+                }
+
+                if (!isSooting)
+                {
+                    FrameCounterFind++;
+                    if ((FrameCounterFind % EveryXFramesFind) == 0)
+                    {
+                        if (GetNearestTargetWithNavMesh())
+                        {
+                            NavMeshAgent.destination = Target.position;
+                        }
+                        else
+                        {
+                            isGameOver = true;
+                        }
+                        FrameCounterFind = 0;
+                    }
+
+
+                }
+                else
+                {
+                    if (GetNearestTargetWithNavMesh())
+                    {
+                        NavMeshAgent.destination = Target.position;
+                    }
+                    else
+                    {
+                        isGameOver = true;
+                    }
+                }
+
             }
             else
             {
-                //NavMeshAgent.enabled = true;
-
-                FrameCounterFind++;
-                if ((FrameCounterFind % EveryXFramesFind) == 0)
+                if (GetNearestTargetWithNavMesh())
                 {
-                    GetNearestTargetWithNavMesh();
-                    FrameCounterFind = 0;
+                    NavMeshAgent.destination = Target.position;
+                }
+                else
+                {
+                    isGameOver = true;
                 }
 
-                isSooting = false;
             }
-        }
-        else
-        {
-            isTargetInView = false;
-            isSooting = false;
-        }
-
-        if (!isSooting)
-        {
-            FrameCounterFind++;
-            if ((FrameCounterFind % EveryXFramesFind) == 0)
-            {
-                GetNearestTargetWithNavMesh();
-                FrameCounterFind = 0;
-            }
-
-            NavMeshAgent.destination = Target.position;
         }
     }
 
-    void GetNearestTargetWithNavMesh()
+    bool GetNearestTargetWithNavMesh()
     {
         PlayerInRadius.Clear();
 
@@ -145,8 +199,10 @@ public class Enemy : Character
         {
             Transform tempPlayer = GameManager.Instance.Players[i].GetComponent<Transform>();
 
-            PlayerInRadius.Add(tempPlayer);
-
+            if (CheckIsAlive(tempPlayer))
+            {
+                PlayerInRadius.Add(tempPlayer);
+            }
         }
 
         int NearestPlayer = 0;
@@ -154,38 +210,47 @@ public class Enemy : Character
         NavMeshPath Path = new NavMeshPath();
         bool PlayersInRange = false;
 
-        for (int i = 0; i < PlayerInRadius.Count; i++)
+        if (PlayerInRadius.Count > 0)
         {
-            float LenghtSoFar = 0f;
-
-            if (PlayerInRadius[i] != null)
+            for (int i = 0; i < PlayerInRadius.Count; i++)
             {
-                PlayersInRange = true;
-                NavMeshAgent.CalculatePath(PlayerInRadius[i].transform.position, Path);
+                float LenghtSoFar = 0f;
 
-                for (int i2 = 0; i2 < Path.corners.Length; i2++)
+                if (PlayerInRadius[i] != null)
                 {
-                    Vector3 previousCorner = Path.corners[0];
-                    Vector3 currentCorner = Path.corners[i2];
+                    PlayersInRange = true;
+                    NavMeshAgent.CalculatePath(PlayerInRadius[i].transform.position, Path);
 
-                    LenghtSoFar += Vector3.Distance(previousCorner, currentCorner);
+                    for (int i2 = 0; i2 < Path.corners.Length; i2++)
+                    {
+                        Vector3 previousCorner = Path.corners[0];
+                        Vector3 currentCorner = Path.corners[i2];
 
-                    previousCorner = currentCorner;
-                }
+                        LenghtSoFar += Vector3.Distance(previousCorner, currentCorner);
 
-                if (ShortestWay == 0)
-                {
-                    ShortestWay = LenghtSoFar;
-                }
-                else if (LenghtSoFar < ShortestWay)
-                {
-                    ShortestWay = LenghtSoFar;
-                    NearestPlayer = i;
+                        previousCorner = currentCorner;
+                    }
+
+                    if (ShortestWay == 0)
+                    {
+                        ShortestWay = LenghtSoFar;
+                    }
+                    else if (LenghtSoFar < ShortestWay)
+                    {
+                        ShortestWay = LenghtSoFar;
+                        NearestPlayer = i;
+                    }
                 }
             }
-        }
 
-        Target = PlayerInRadius[NearestPlayer];
+            Target = PlayerInRadius[NearestPlayer];
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     bool InRange(Transform transformTarget, float MaxRange)
@@ -204,7 +269,7 @@ public class Enemy : Character
     {
         //transform.LookAt(Target.position);
 
-        var lookPos = Target.position - transform.position;
+        var lookPos = new Vector3(Target.position.x, 0, Target.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
@@ -224,5 +289,34 @@ public class Enemy : Character
             return true;
         }
         return false;
+    }
+
+    bool CheckIsAlive(Transform transformArg)
+    {
+        if (transformArg != null)
+        {
+            var tempEntity = transformArg.GetComponent<Entity>();
+            if (tempEntity != null)
+            {
+                if (tempEntity.CurrentHealth > 0)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    void FindAlivePlayer()
+    {
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        {
+            Transform tempPlayer = GameManager.Instance.Players[i].GetComponent<Transform>();
+
+            if (CheckIsAlive(tempPlayer))
+            {
+                PlayerInRadius.Add(tempPlayer);
+            }
+        }
     }
 }

@@ -1600,6 +1600,7 @@ MonoBehaviour:
   PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
+  isAlive: 0
   isInRange: 0
   isTargetInView: 0
   isSooting: 0
@@ -1608,6 +1609,8 @@ MonoBehaviour:
   LookDamping: 100
   UsedSkills:
   - {fileID: 114777490603000294, guid: 7ac1bcc7ad1207b448e8faffe357f1d2, type: 2}
+  EveryXFramesAliveCheck: 1
+  FrameCounterAliveCheck: 0
   EveryXFramesDistanceCheck: 2
   FrameCounterDistanceCheck: 0
   EveryXFramesRayCheck: 30
