@@ -44,7 +44,7 @@ public class EnemyMelee : Entity
     {
 
         enemySpeed = thisRigidbody.velocity.magnitude;
-        animator.SetFloat("speed", Mathf.Clamp(enemySpeed, 0, 1));
+        animator.SetFloat("Speed", Mathf.Clamp(enemySpeed, 0, 1));
 
     }
 
