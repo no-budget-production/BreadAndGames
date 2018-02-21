@@ -55,9 +55,12 @@ public class WeaponSkill : Skill
 
     public override void Shoot()
     {
-        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+        if (!BuffObject.isStackable)
         {
-            return;
+            if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+            {
+                return;
+            }
         }
 
         if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))

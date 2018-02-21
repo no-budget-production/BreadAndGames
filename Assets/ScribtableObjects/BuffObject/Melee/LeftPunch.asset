@@ -15,7 +15,7 @@ MonoBehaviour:
   BuffType: 0
   ID: 101
   isPermanent: 0
-  maxTime: 0.1
+  maxTime: 0.5
   curTime: 0
   isStackable: 0
   cantTriggerWith: 0100000003000000
@@ -28,10 +28,12 @@ MonoBehaviour:
   AccuracyMultiplicator: 0
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
-  RangeArmorMultiplicator: 1
+  RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
+  ActionPointRegeneration: 0
   GainHealth: 0
   LoseHealth: 0
   DamageType: -1
   GainActionPoints: 0
-  LoseGainActionPoints: 0
+  LoseActionPoints: 0
   BuffEndScript: {fileID: 0}

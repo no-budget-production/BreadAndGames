@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class InstanceFinder : MonoBehaviour
@@ -132,6 +133,13 @@ public class InstanceFinder : MonoBehaviour
             Debug.Log("ProjectileHolder - Find it");
 
             instanceRef.ProjectileHolder = GameObject.Find("ProjectileHolder").transform;
+        }
+
+        //if (instanceRef.VisualsHolder == null)
+        {
+            Debug.Log("VisualsHolder - Find it");
+
+            instanceRef.VisualsHolder = GameObject.Find("VisualsHolder").transform;
         }
 
         //if (instanceRef.VisualsHolder == null)

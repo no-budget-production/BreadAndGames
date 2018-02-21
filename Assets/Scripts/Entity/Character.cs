@@ -23,6 +23,8 @@ public class Character : Entity
     public float maxActionPoints;
     public float curActionPoints;
 
+    public float ActionPointRegeneration;
+
     public float MeleeDamage = 1f;
     public float RangeDamage = 1f;
     public float Accuracy = 1f;
@@ -32,6 +34,7 @@ public class Character : Entity
     public float RangeDamageMultiplicator = 1f;
     public float AccuracyMultiplicator = 1f;
     public float MoveSpeedMultiplicator = 1f;
+    public float ActionPointMultiplicator = 1f;
 
     public bool canWalk = true;
     public bool canUseRightStick = true;
@@ -44,8 +47,14 @@ public class Character : Entity
     public RectTransform HealthBar;
     public bool UseHealthbar;
 
+    public Slider HUDHealthBarSlider;
+    public bool UseHUDHealthbarSlider;
+
     public Slider ActionPointsBar;
     public bool UseActionPointsBar;
+
+    public Slider HUDActionPointsBar;
+    public bool UseHUDActionPointsBar;
 
     public MultiSoundPlayer MultiSoundPlayer;
 
@@ -89,6 +98,11 @@ public class Character : Entity
         {
             OnChangeHealth(CurrentHealth);
         }
+
+        if (UseHUDHealthbarSlider)
+        {
+            OnHUDChangeHealthSlider();
+        }
     }
 
     public override void GetHealth(float healing)
@@ -99,11 +113,15 @@ public class Character : Entity
         {
             OnChangeHealth(CurrentHealth);
         }
+
+        if (UseHUDHealthbarSlider)
+        {
+            OnHUDChangeHealthSlider();
+        }
     }
 
     void OnChangeHealth(float currentHealth)
     {
-
         HealthBar.sizeDelta = new Vector2(currentHealth / MaxHealth * 100, HealthBar.sizeDelta.y);
     }
 
@@ -167,6 +185,9 @@ public class Character : Entity
         MeleeArmorMultiplicator += (buff.MeleeArmorMultiplicator * multi);
         RangeArmorMultiplicator += (buff.RangeArmorMultiplicator * multi);
 
+        HealthRegenerationMultiplicator += (buff.HealthRegenerationMultiplicator * multi);
+        ActionPointRegeneration += (buff.ActionPointRegeneration * multi);
+
         MoveSpeedMultiplicator += (buff.MoveSpeedMultiplicator * multi);
     }
 
@@ -195,13 +216,25 @@ public class Character : Entity
             {
                 if (ActiveBuffObjects[i].BuffObject.LoseHealth > 0f)
                 {
-                    TakeDamage(ActiveBuffObjects[i].BuffObject.LoseHealth, ActiveBuffObjects[i].BuffObject.DamageType);
+                    TakeDamage(ActiveBuffObjects[i].BuffObject.LoseHealth * Time.deltaTime, ActiveBuffObjects[i].BuffObject.DamageType);
                 }
 
                 if (ActiveBuffObjects[i].BuffObject.GainHealth > 0f)
                 {
                     GetHealth(ActiveBuffObjects[i].BuffObject.GainHealth);
                 }
+
+                //
+                if (ActiveBuffObjects[i].BuffObject.GainActionPoints > 0f)
+                {
+                    RestoreActionPoints(ActiveBuffObjects[i].BuffObject.GainActionPoints * Time.deltaTime);
+                }
+
+                if (ActiveBuffObjects[i].BuffObject.GainHealth > 0f)
+                {
+                    SpendActionPoints(ActiveBuffObjects[i].BuffObject.LoseActionPoints * Time.deltaTime);
+                }
+                //
 
                 if (ActiveBuffObjects[i].BuffObject.disableWalking)
                 {
@@ -230,7 +263,7 @@ public class Character : Entity
                         i--;
 
                         expired = true;
-                        Debug.Log("RemovingBuff");
+                        //Debug.Log("RemovingBuff");
                         continue;
                     }
                 }
@@ -268,18 +301,23 @@ public class Character : Entity
 
     public void SpendActionPoints(float costs)
     {
-        curActionPoints = Mathf.Max(curActionPoints - (Time.deltaTime * costs), 0);
+        curActionPoints = Mathf.Max(curActionPoints - (costs), 0);
 
         if (UseActionPointsBar)
         {
             OnActionBarChange();
         }
+
+        if (UseHUDActionPointsBar)
+        {
+            OnHUDActionBarChange();
+        }
     }
 
     public float RestoreActionPoints(float restore)
     {
-        var tempActionPoints = Mathf.Min(curActionPoints + (Time.deltaTime * restore), maxActionPoints);
-        var dif = tempActionPoints - curActionPoints;
+        float tempActionPoints = Mathf.Min(curActionPoints + (restore), maxActionPoints);
+        float dif = tempActionPoints - curActionPoints;
         curActionPoints = tempActionPoints;
 
         if (UseActionPointsBar)
@@ -287,8 +325,47 @@ public class Character : Entity
             OnActionBarChange();
         }
 
+        if (UseHUDActionPointsBar)
+        {
+            OnHUDActionBarChange();
+        }
+
         return dif;
     }
+
+    //public void SpendActionPoints(float costs)
+    //{
+    //    curActionPoints = Mathf.Max(curActionPoints - (Time.deltaTime * costs), 0);
+
+    //    if (UseActionPointsBar)
+    //    {
+    //        OnActionBarChange();
+    //    }
+
+    //    if (UseHUDActionPointsBar)
+    //    {
+    //        OnHUDActionBarChange();
+    //    }
+    //}
+
+    //public float RestoreActionPoints(float restore)
+    //{
+    //    var tempActionPoints = Mathf.Min(curActionPoints + (Time.deltaTime * restore), maxActionPoints);
+    //    var dif = tempActionPoints - curActionPoints;
+    //    curActionPoints = tempActionPoints;
+
+    //    if (UseActionPointsBar)
+    //    {
+    //        OnActionBarChange();
+    //    }
+
+    //    if (UseHUDActionPointsBar)
+    //    {
+    //        OnHUDActionBarChange();
+    //    }
+
+    //    return dif;
+    //}
 
     public void EmptySound()
     {
@@ -305,5 +382,15 @@ public class Character : Entity
     public void OnActionBarChange()
     {
         ActionPointsBar.value = curActionPoints;
+    }
+
+    public void OnHUDActionBarChange()
+    {
+        HUDActionPointsBar.value = curActionPoints / maxActionPoints * 100;
+    }
+
+    void OnHUDChangeHealthSlider()
+    {
+        HUDHealthBarSlider.value = CurrentHealth / MaxHealth * 100;
     }
 }

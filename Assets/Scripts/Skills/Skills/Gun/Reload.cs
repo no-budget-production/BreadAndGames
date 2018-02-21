@@ -11,9 +11,12 @@ public class Reload : Skill
 
     public override void Shoot()
     {
-        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+        if (!BuffObject.isStackable)
         {
-            return;
+            if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+            {
+                return;
+            }
         }
 
         if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
@@ -32,7 +35,7 @@ public class Reload : Skill
 
         if (Character.curActionPoints < Character.maxActionPoints)
         {
-            Character.curActionPoints = Character.maxActionPoints;
+            Character.RestoreActionPoints(Character.maxActionPoints);
             Character.OnActionBarChange();
             SoundPlayer.Play();
         }

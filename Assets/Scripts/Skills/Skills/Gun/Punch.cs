@@ -8,6 +8,7 @@ public class Punch : Skill
     public PunchCollider HitBox;
 
     public float Damage;
+    public BuffObject ChargingBuff;
     public BuffObject Debuff;
 
     public bool canCharge;
@@ -16,10 +17,16 @@ public class Punch : Skill
     public float BonusDamagePerSec;
     public float energyCosts;
 
+    public int punchCount;
+
     public SoundPlayer SoundPlayer;
     private SoundPlayer curSoundPlayer;
     private float nextSoundTime;
     public float SBetweenSounds;
+
+    public float curDamageBonus;
+
+
 
     public override void LateSkillSetup()
     {
@@ -31,10 +38,12 @@ public class Punch : Skill
 
     public override void Shoot()
     {
-
-        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+        if (!BuffObject.isStackable)
         {
-            return;
+            if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+            {
+                return;
+            }
         }
 
         if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
@@ -46,30 +55,42 @@ public class Punch : Skill
 
         if (canCharge)
         {
-            if (Character.curActionPoints > 0)
+            if (Character.curActionPoints - energyCosts > 0)
             {
-                Character.SpendActionPoints(energyCosts);
-
                 curChargeTime += Time.deltaTime;
+                curDamageBonus += BonusDamagePerSec * Time.deltaTime;
+                Character.SpendActionPoints(energyCosts * Time.deltaTime);
+                //Debug.Log("TimeDeltaTime:" + Time.deltaTime);
+                //Debug.Log("TimeDeltaTime:" + curChargeTime);
+                //Character.SpendActionPoints(energyCosts * 1 + curChargeTime);
 
                 if (ChargeTime < curChargeTime)
                 {
+                    punchCount++;
+                    Debug.Log("punchCount " + punchCount);
                     DeadlDamage();
-
                     curChargeTime = 0;
+                    curDamageBonus = 0;
                 }
             }
             else
             {
                 DeadlDamage();
                 curChargeTime = 0;
+                curDamageBonus = 0;
             }
         }
         else
         {
+            Character.SpendActionPoints(energyCosts);
             DeadlDamage();
+            curChargeTime = 0;
+            curDamageBonus = 0;
         }
 
+
+        Debug.Log("Energy " + energyCosts * Time.deltaTime);
+        Debug.Log("curDamageBonus: " + curDamageBonus + " Time: " + Time.realtimeSinceStartup);
     }
 
     public override void StopShoot()
@@ -78,7 +99,7 @@ public class Punch : Skill
 
         curChargeTime = 0;
 
-        Debug.Log("Punch Early");
+        //Debug.Log("Punch Early");
     }
 
 
@@ -108,7 +129,7 @@ public class Punch : Skill
                 }
             }
 
-            HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curChargeTime * BonusDamagePerSec)), DamageType);
+            HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
         }
     }
 }

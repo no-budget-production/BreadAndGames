@@ -15,9 +15,9 @@ MonoBehaviour:
   BuffType: 1
   ID: 102
   isPermanent: 0
-  maxTime: 0.3
+  maxTime: 1
   curTime: 0
-  isStackable: 0
+  isStackable: 1
   cantTriggerWith: 0000000003000000
   effectWith: 
   disableWalking: 0
@@ -28,10 +28,12 @@ MonoBehaviour:
   AccuracyMultiplicator: 0
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
-  RangeArmorMultiplicator: 1
+  RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
+  ActionPointRegeneration: 0
   GainHealth: 0
   LoseHealth: 0
   DamageType: -1
   GainActionPoints: 0
-  LoseGainActionPoints: 0
+  LoseActionPoints: 0
   BuffEndScript: {fileID: 0}
