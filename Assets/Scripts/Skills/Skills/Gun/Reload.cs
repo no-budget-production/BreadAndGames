@@ -9,6 +9,11 @@ public class Reload : Skill
     private float nextSoundTime;
     public float SBetweenSounds = 100;
 
+    public float ReloadActionPointsAmount;
+    public float SpendReloadAmount;
+
+    public bool isReloadingFully;
+
     public override void Shoot()
     {
         if (!BuffObject.isStackable)
@@ -24,6 +29,21 @@ public class Reload : Skill
             return;
         }
 
+        if (Character.curActionPoints >= Character.maxActionPoints)
+        {
+            return;
+        }
+
+        if (!Character.rechargeActionBarDirectly)
+        {
+            if (Character.curReloadBar < SpendReloadAmount)
+            {
+                Debug.Log("False");
+                return;
+            }
+        }
+
+        Debug.Log("True");
 
         if (Time.time > nextSoundTime)
         {
@@ -33,11 +53,17 @@ public class Reload : Skill
 
         Character.AddBuff(BuffObject, 1, Character);
 
-        if (Character.curActionPoints < Character.maxActionPoints)
+        if (isReloadingFully)
         {
             Character.RestoreActionPoints(Character.maxActionPoints);
-            Character.OnActionBarChange();
-            SoundPlayer.Play();
         }
+        else
+        {
+            Character.RestoreActionPoints(ReloadActionPointsAmount);
+        }
+
+        Character.SpendReloads(SpendReloadAmount);
+
+        SoundPlayer.Play();
     }
 }

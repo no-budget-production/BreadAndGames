@@ -1486,6 +1486,13 @@ MonoBehaviour:
   UseOverChargeBar: 1
   maxOverCharge: 100
   curOverCharge: 100
+  ReloadBar: {fileID: 0}
+  UseReloadBar: 0
+  maxReloadBar: 0
+  curReloadBar: 0
+  curDisplaySteps: 0
+  curDisplayReloadBar: 0
+  rechargeActionBarDirectly: 1
   ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
@@ -1563,6 +1570,8 @@ MonoBehaviour:
   deceleration: 1200
   moveSpeedMax: 5
   TurnSpeed: 8
+  rotatable: 1
+  moveable: 1
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1

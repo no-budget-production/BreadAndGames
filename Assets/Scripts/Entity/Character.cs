@@ -32,7 +32,10 @@ public class Character : Entity
     public bool UseReloadBar;
     public float maxReloadBar;
     public float curReloadBar;
-    public float curDisplayReloadBar;
+    public float curDisplaySteps;
+    public int curDisplayReloadBar;
+
+    public bool rechargeActionBarDirectly;
 
     public float ActionPointRegeneration;
 
@@ -87,6 +90,8 @@ public class Character : Entity
     {
         CurrentHealth = MaxHealth;
         curActionPoints = maxActionPoints;
+
+
         if (UseHealthbar)
         {
             OnChangeHealth(CurrentHealth);
@@ -98,6 +103,18 @@ public class Character : Entity
         if (UseHUDHealthbarSlider)
         {
             OnHUDChangeHealthSlider();
+        }
+        if (UseReloadBar)
+        {
+            if (curDisplaySteps != 0)
+            {
+                curDisplayReloadBar = Mathf.RoundToInt(maxReloadBar / curDisplaySteps);
+            }
+            OnChangeReloadSlider();
+        }
+        if (UseOverChargeBar)
+        {
+            OnChangeOverchargeSlider();
         }
     }
 
@@ -336,6 +353,7 @@ public class Character : Entity
 
     public float RestoreActionPoints(float restore)
     {
+
         float tempActionPoints = Mathf.Min(curActionPoints + (restore), maxActionPoints);
         float dif = tempActionPoints - curActionPoints;
         curActionPoints = tempActionPoints;
@@ -351,6 +369,37 @@ public class Character : Entity
         }
 
         return dif;
+
+    }
+
+    public float RestoreReloadPoints(float restore)
+    {
+
+        float tempReloadPoints = Mathf.Min(curReloadBar + (restore), maxReloadBar);
+        float dif = tempReloadPoints - curReloadBar;
+        curReloadBar = tempReloadPoints;
+
+        if (UseReloadBar)
+        {
+            RoundDisplayBar();
+            OnChangeReloadSlider();
+        }
+        return dif;
+
+    }
+
+    public void SpendReloads(float costs)
+    {
+        curReloadBar = Mathf.Max(curReloadBar - (costs), 0);
+
+        RoundDisplayBar();
+
+        OnChangeReloadSlider();
+    }
+
+    void RoundDisplayBar()
+    {
+        curDisplayReloadBar = Mathf.RoundToInt(curReloadBar / curDisplaySteps);
     }
 
     //public void SpendActionPoints(float costs)
@@ -426,7 +475,7 @@ public class Character : Entity
     {
         if (UseReloadBar)
         {
-            OverChargeBar.value = curReloadBar;
+            ReloadBar.value = curDisplayReloadBar;
         }
     }
 }

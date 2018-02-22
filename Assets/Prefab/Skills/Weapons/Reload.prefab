@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fb42f503764ff418dd07eb79977f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 11
-  PlayerController: {fileID: 0}
+  SkillType: 12
+  Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 537a2e64dda2fea489eb36c6ea0a09dc, type: 2}
@@ -173,6 +173,9 @@ MonoBehaviour:
   cantStack: 0
   SoundPlayer: {fileID: 114536509537192034}
   SBetweenSounds: 1
+  ReloadActionPointsAmount: 100
+  SpendReloadAmount: 20
+  isReloadingFully: 1
 --- !u!114 &114536509537192034
 MonoBehaviour:
   m_ObjectHideFlags: 1
