@@ -18,4 +18,5 @@ public class InstanceRef : MonoBehaviour
 
     public Slider[] HUDHealthBarSlider;
     public Slider[] HUDActionPointsBar;
+    public Slider[] HUDOverChargeBar;
 }

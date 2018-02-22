@@ -23,6 +23,11 @@ public class Character : Entity
     public float maxActionPoints;
     public float curActionPoints;
 
+    public Slider OverChargeBar;
+    public bool UseOverChargeBar;
+    public float maxOverCharge;
+    public float curOverCharge;
+
     public float ActionPointRegeneration;
 
     public float MeleeDamage = 1f;
@@ -392,5 +397,13 @@ public class Character : Entity
     void OnHUDChangeHealthSlider()
     {
         HUDHealthBarSlider.value = CurrentHealth / MaxHealth * 100;
+    }
+
+    public void OnChangeOverchargeSlider()
+    {
+        if (UseOverChargeBar)
+        {
+            OverChargeBar.value = curOverCharge / maxOverCharge * 100;
+        }
     }
 }

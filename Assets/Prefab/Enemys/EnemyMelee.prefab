@@ -1566,14 +1566,17 @@ MonoBehaviour:
   ThisUnityTypeFlags: 2
   CurrentHealth: 100
   MaxHealth: 100
+  HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100
+  ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1582,6 +1585,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
+  ActionPointMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canCurUseRightStick: 1
@@ -1590,8 +1594,12 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 4657473989523668}
   HealthBar: {fileID: 224901219119261124}
   UseHealthbar: 1
+  HUDHealthBarSlider: {fileID: 0}
+  UseHUDHealthbarSlider: 0
   ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
+  HUDActionPointsBar: {fileID: 0}
+  UseHUDActionPointsBar: 0
   MultiSoundPlayer: {fileID: 114650950170363120}
   ActiveBuffObjects: []
   SBetweenSounds: 1
@@ -1620,8 +1628,9 @@ MonoBehaviour:
   FrameCounterShoot: 0
   EveryXFramesFind: 60
   FrameCounterFind: 0
-  Anim: {fileID: 95914028235286768}
-  AnimationStrings: []
+  Anim: {fileID: 95145110562039168}
+  AnimationStrings:
+  - isAttacking
   NavAgentSpeed: 0
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:

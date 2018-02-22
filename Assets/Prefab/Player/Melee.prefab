@@ -1472,14 +1472,21 @@ MonoBehaviour:
   ThisUnityTypeFlags: 1
   CurrentHealth: 1500
   MaxHealth: 1500
+  HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
   maxActionPoints: 100
   curActionPoints: 100
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 1
+  maxOverCharge: 100
+  curOverCharge: 100
+  ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1488,6 +1495,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
+  ActionPointMultiplicator: 1
   canWalk: 1
   canUseRightStick: 0
   canCurUseRightStick: 0

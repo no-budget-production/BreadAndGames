@@ -20,20 +20,14 @@ public class Punch : Skill
     public int punchCount;
 
     public SoundPlayer SoundPlayer;
-    private SoundPlayer curSoundPlayer;
     private float nextSoundTime;
     public float SBetweenSounds;
 
     public float curDamageBonus;
 
-
-
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
-        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
-        curSoundPlayer.transform.SetParent(SkillSpawn);
-        curSoundPlayer.Play();
     }
 
     public override void Shoot()
@@ -189,8 +183,8 @@ public class Punch : Skill
     {
         if (Time.time > nextSoundTime)
         {
-            nextSoundTime = Time.time + SBetweenSounds + curSoundPlayer.GetClipLenght();
-            curSoundPlayer.Play();
+            nextSoundTime = Time.time + SBetweenSounds + SoundPlayer.GetClipLenght();
+            SoundPlayer.Play();
         }
 
         for (int i = 0; i < HitBox.Enemies.Count; i++)
@@ -213,5 +207,8 @@ public class Punch : Skill
 
             HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
         }
+
+        Character.curOverCharge = Character.curActionPoints;
+        Character.OnChangeOverchargeSlider();
     }
 }

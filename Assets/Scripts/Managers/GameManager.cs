@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public Slider[] HUDHealthBarSlider;
     public Slider[] HUDActionPointsBar;
+    public Slider[] HUDOverChargeBar;
 
     void Awake()
     {
@@ -91,5 +92,6 @@ public class GameManager : MonoBehaviour
 
         HUDHealthBarSlider = InstanceRef.HUDHealthBarSlider;
         HUDActionPointsBar = InstanceRef.HUDActionPointsBar;
+        HUDOverChargeBar = InstanceRef.HUDOverChargeBar;
     }
 }

@@ -143,14 +143,17 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseHUDHealthbarSlider)
             {
                 GameManager.Instance.Players[i].HUDHealthBarSlider = GameManager.Instance.HUDHealthBarSlider[i];
-                GameManager.Instance.Players[i].HUDHealthBarSlider.maxValue = GameManager.Instance.Players[i].MaxHealth;
+                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth;
             }
 
             if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
             {
                 GameManager.Instance.Players[i].HUDActionPointsBar = GameManager.Instance.HUDActionPointsBar[i];
-                GameManager.Instance.Players[i].HUDHealthBarSlider.maxValue = GameManager.Instance.Players[i].maxActionPoints;
+                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
             }
+
+            GameManager.Instance.Players[i].OverChargeBar = GameManager.Instance.HUDOverChargeBar[i];
+            GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxOverCharge;
         }
     }
 }
