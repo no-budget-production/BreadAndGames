@@ -23,10 +23,13 @@ public class ArenaSpawner : MonoBehaviour
     void Start()
     {
         WaitAndSpawnCoroutine = WaitAndSpawn(SpawnRate);
-        StartCoroutine(WaitAndSpawnCoroutine);
         EnemyHolder = GameManager.Instance.EnemyHolder;
     }
 
+    public void StartSpawn()
+    {
+        StartCoroutine(WaitAndSpawnCoroutine);
+    }
     void SpawnEnemy()
     {
         GameObject curPrefab;
