@@ -51,11 +51,19 @@ public class Enemy : Character
     {
         base.Start();
 
+        GameManager.Instance.Enemies.Add(this);
+
         NavMeshAgent = GetComponent<NavMeshAgent>();
 
         NavAgentSpeed = NavMeshAgent.speed;
 
         SkillSetup();
+    }
+
+    public virtual void OnDestroy()
+    {
+        GameManager.Instance.Enemies.Remove(this);
+        base.OnDestroy();
     }
 
     public void SkillSetup()

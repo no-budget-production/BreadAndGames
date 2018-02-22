@@ -71,6 +71,11 @@ public class Entity : MonoBehaviour
         }
     }
 
+    public virtual void OnDestroy()
+    {
+
+    }
+
     public virtual void GetHealth(float healing)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);

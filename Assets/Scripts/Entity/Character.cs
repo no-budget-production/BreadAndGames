@@ -72,6 +72,11 @@ public class Character : Entity
 
     public List<Buff> ActiveBuffs;
 
+    public virtual void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+
     public virtual void Start()
     {
         CurrentHealth = MaxHealth;

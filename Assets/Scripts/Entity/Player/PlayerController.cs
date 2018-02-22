@@ -131,7 +131,7 @@ public class PlayerController : Character
 
     private void Move()
     {
-        Debug.Log(myController.velocity.magnitude);
+        //Debug.Log(myController.velocity.magnitude);
         Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
         Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
