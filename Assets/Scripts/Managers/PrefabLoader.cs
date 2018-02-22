@@ -143,7 +143,8 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseHUDHealthbarSlider)
             {
                 GameManager.Instance.Players[i].HUDHealthBarSlider = GameManager.Instance.HUDHealthBarSlider[i];
-                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth / 100;
+                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth;
+                GameManager.Instance.Players[i].OnHUDChangeHealthSlider();
             }
             else
             {
@@ -154,6 +155,7 @@ public class PrefabLoader : MonoBehaviour
             {
                 GameManager.Instance.Players[i].HUDActionPointsBar = GameManager.Instance.HUDActionPointsBar[i];
                 GameManager.Instance.HUDActionPointsBar[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
+                GameManager.Instance.Players[i].OnActionBarChange();
             }
             else
             {
@@ -164,6 +166,7 @@ public class PrefabLoader : MonoBehaviour
             {
                 GameManager.Instance.Players[i].OverChargeBar = GameManager.Instance.HUDOverChargeBar[i];
                 GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxOverCharge;
+                GameManager.Instance.Players[i].OnChangeOverchargeSlider();
             }
             else
             {
@@ -174,6 +177,8 @@ public class PrefabLoader : MonoBehaviour
             {
                 GameManager.Instance.Players[i].ReloadBar = GameManager.Instance.HUDReloadBar[i];
                 GameManager.Instance.HUDReloadBar[i].maxValue = GameManager.Instance.Players[i].maxReloadBar;
+                GameManager.Instance.Players[i].OnChangeReloadSlider();
+
             }
             else
             {

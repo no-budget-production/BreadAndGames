@@ -141,12 +141,5 @@ public class InstanceFinder : MonoBehaviour
 
             instanceRef.VisualsHolder = GameObject.Find("VisualsHolder").transform;
         }
-
-        //if (instanceRef.VisualsHolder == null)
-        {
-            Debug.Log("VisualsHolder - Find it");
-
-            instanceRef.VisualsHolder = GameObject.Find("VisualsHolder").transform;
-        }
     }
 }

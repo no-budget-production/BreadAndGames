@@ -95,6 +95,10 @@ public class Character : Entity
         {
             OnActionBarChange();
         }
+        if (UseHUDHealthbarSlider)
+        {
+            OnHUDChangeHealthSlider();
+        }
     }
 
     public override void TakeDamage(float damage, DamageType damageType)
@@ -402,19 +406,19 @@ public class Character : Entity
 
     public void OnHUDActionBarChange()
     {
-        HUDActionPointsBar.value = curActionPoints / maxActionPoints;
+        HUDActionPointsBar.value = curActionPoints;
     }
 
-    void OnHUDChangeHealthSlider()
+    public void OnHUDChangeHealthSlider()
     {
-        HUDHealthBarSlider.value = CurrentHealth / MaxHealth * 100;
+        HUDHealthBarSlider.value = CurrentHealth;
     }
 
     public void OnChangeOverchargeSlider()
     {
         if (UseOverChargeBar)
         {
-            OverChargeBar.value = curOverCharge / maxOverCharge;
+            OverChargeBar.value = curOverCharge;
         }
     }
 
@@ -422,7 +426,7 @@ public class Character : Entity
     {
         if (UseReloadBar)
         {
-            OverChargeBar.value = curReloadBar / maxReloadBar;
+            OverChargeBar.value = curReloadBar;
         }
     }
 }
