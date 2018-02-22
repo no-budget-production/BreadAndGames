@@ -97,7 +97,7 @@ public class PhaseOneLevelScript : MonoBehaviour
                 spawner[i].enabled = true;
             }
         }
-
+        Debug.Log("gsdgh");
         WaveStatus = WaveStatusReport.running;
         if (GameManager.Instance.Enemies.Count == 0)
         {
