@@ -19,6 +19,11 @@ public class Skill : MonoBehaviour
 
     public bool cantStack;
 
+    public virtual void OneShoot()
+    {
+
+    }
+
     public virtual void Shoot()
     {
 
