@@ -4,104 +4,70 @@ using UnityEngine;
 
 public class PhaseRush : Skill
 {
-    public int Charges;
-    public int MaxCharges;
-    public float ButtonCD;
 
-    public bool isPhaseRushing;
-    public bool isRechargingPhaseRushing;
-    public float Duration;
-    public float RechargeTime;
-    //public float MoveSpeedBonus;
-    public float Distance;
+    public int maxCharges;
+    private int curCharges = 0;
 
-    public Effect thunder;
-    public Effect curThunder;
+    public float rechargeTime;
+    private List<float> checkToNextChargeTest = new List<float>();
 
-    float nextShotTime;
+    public float duration;
+    public float speed;
 
-    public int Dummy;
+    public Transform thunder;
+    private Transform curThunder;
+    private PlayerController controller;
 
-    bool b1, b2, b3, b4;
-
-    //private Coroutine coroutineDuration;
-    //private Coroutine coroutineRechargeTimer;
-
-    public override void Shoot()
+    public void Start()
     {
-        if (!isPhaseRushing)
-        {
-            if (Charges > 0)
-            {
-                if (Time.time > nextShotTime)
-                {
-                    SkillEvents();
+        controller = GetComponentInParent<PlayerController>();
+    }
 
-                }
+    public override void OneShoot()
+    {
+        for (var i = 0; i < checkToNextChargeTest.Count; i++)
+        {
+            var timeStemp = checkToNextChargeTest[i];
+            if (timeStemp <= Time.time && timeStemp != 0)
+            {
+                curCharges--;
+                curCharges = Mathf.Max(curCharges, 0);
+                checkToNextChargeTest.Remove(timeStemp);
             }
         }
-    }
 
-    public void SpawnEffect()
-    {
-        curThunder = Instantiate(thunder, base.Character.transform.position, base.Character.transform.rotation);
+        if (!controller.canUseSkills) return;
+        if (curCharges >= maxCharges) return;
+
+        curThunder = Instantiate(thunder, controller.transform.position, controller.transform.rotation).transform;
         curThunder.GetComponent<ParticleSystem>().Play();
-    }
+        controller.canUseSkills = false;
+        controller.rotatable = false;
+        controller.moveable = false;
 
-    private void SkillEvents()
-    {
-        isPhaseRushing = true;
-        Charges--;
+        Character.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
+        Character.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-        nextShotTime = Time.time + ButtonCD;
+        controller.myController.AddForce(controller.transform.forward * speed);
 
-        SpawnEffect();
-
-        base.SpawnBuff();
-
-        StopCoroutine("DurationTimer");
-        StartCoroutine(DurationTimer());
-
-        base.Character.canWalk = false;
-
-        //base.PlayerController.moveSpeed += MoveSpeedBonus;
-
-        base.Character.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
-        base.Character.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-    }
-
-    public IEnumerator DurationTimer()
-    {
-        base.Character.transform.Translate(Vector3.forward * Distance);
-
-        //float curTime = Time.time + Duration;
-
-        //while (Time.time < Duration)
-        //{
-        //    curTime += Time.deltaTime * 0.01f;
-        //    base.PlayerController.transform.Translate(Vector3.forward * Distance);
-        //    yield return null;
-        //}
-
-        yield return new WaitForSeconds(Duration);
-
-        //base.PlayerController.moveSpeed -= MoveSpeedBonus;
-        base.Character.ThisUnityTypeFlags = UnitTypesFlags.Player;
-        base.Character.gameObject.layer = LayerMask.NameToLayer("Default");
-
-        isPhaseRushing = false;
-
-        //Debug.Log("PhaseRush_Off");
-
-        while (Charges < MaxCharges)
-        {
-            isRechargingPhaseRushing = true;
-            yield return new WaitForSeconds(RechargeTime);
-            Charges++;
-            Charges = Mathf.Min(Charges, MaxCharges);
+        if (curCharges == 0) {
+            checkToNextChargeTest.Add(Time.time + rechargeTime);
+        } else {
+            checkToNextChargeTest.Add(checkToNextChargeTest[curCharges - 1] + rechargeTime);
         }
+        curCharges++;
+        Invoke("phaseRushStop", duration);
+    }
 
-        isRechargingPhaseRushing = false;
+    public void phaseRushStop()
+    {
+        Destroy(curThunder.gameObject);
+        controller.myController.velocity = Vector3.zero;
+        controller.canUseSkills = true;
+        controller.rotatable = true;
+        controller.moveable = true;
 
+        Character.ThisUnityTypeFlags = UnitTypesFlags.Player;
+        Character.gameObject.layer = LayerMask.NameToLayer("Default");
     }
 }

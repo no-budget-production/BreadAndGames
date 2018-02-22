@@ -68,8 +68,9 @@ public class PlayerController : Character
     public float acceleration;
     public float deceleration;
     public float moveSpeedMax;
-
     public float TurnSpeed;
+    public bool rotatable = true;
+    public bool moveable = true;
 
 
     public override void Start()
@@ -130,6 +131,7 @@ public class PlayerController : Character
 
     private void Move()
     {
+        Debug.Log(myController.velocity.magnitude);
         Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
         Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
@@ -146,7 +148,7 @@ public class PlayerController : Character
         }
         else
         {
-            lookVector = transform.forward;
+            //lookVector = transform.forward;
         }
 
         if (canUseRightStick)
@@ -178,7 +180,7 @@ public class PlayerController : Character
             Anim.SetFloat(animMovX, moveVector.magnitude);
         }
 
-        if (isUsingRightStick)
+        if (isUsingRightStick && rotatable)
         {
             Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(lookVector, transform.up), TurnSpeed * Time.deltaTime);
             myController.rotation = newLookDirection;
@@ -197,7 +199,7 @@ public class PlayerController : Character
                     currentMovement *= (MoveSpeed * MoveSpeedMultiplicator) / speed;
                 }
                 */
-                if (!isUsingRightStick)
+                if (!isUsingRightStick && rotatable)
                 {
                     Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(moveVector, transform.up), TurnSpeed * Time.deltaTime);
                     myController.rotation = newLookDirection;
@@ -231,7 +233,14 @@ public class PlayerController : Character
                 {
                     if (areButtons[tempIJ])
                     {
-                        if (Input.GetButton(thisPlayerString[usedButtons[tempIJ]]))
+                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
+                        {
+                            ActiveSkills[i].OneShoot();
+                            ActiveSkills[i].isFiring = true;
+                            tempIsShooting = true;
+                            //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                        }
+                        else if (Input.GetButton(thisPlayerString[usedButtons[tempIJ]]))
                         {
                             ActiveSkills[i].Shoot();
                             ActiveSkills[i].isFiring = true;
@@ -275,9 +284,8 @@ public class PlayerController : Character
 
     public void Walk()
     {
+        if (!moveable) return;
         myController.AddForce(moveVector * acceleration * Time.deltaTime);
         myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax);
-        //myController.SimpleMove(currentMovementArg * Time.deltaTime);
-        Debug.Log(myController.velocity.magnitude);
     }
 }

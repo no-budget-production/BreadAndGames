@@ -60,14 +60,8 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0.1
   cantStack: 1
-  Charges: 3
-  MaxCharges: 3
-  ButtonCD: 0.1
-  isPhaseRushing: 0
-  isRechargingPhaseRushing: 0
-  Duration: 0.1
-  RechargeTime: 6
-  Distance: 7
-  thunder: {fileID: 114099549767863238, guid: 1b0f8e38e1f350043946e88e66d3dca3, type: 2}
-  curThunder: {fileID: 0}
-  Dummy: 0
+  maxCharges: 3
+  rechargeTime: 5
+  duration: 0.25
+  speed: 2200
+  thunder: {fileID: 4339336245496788, guid: 1b0f8e38e1f350043946e88e66d3dca3, type: 2}

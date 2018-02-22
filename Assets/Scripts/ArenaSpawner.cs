@@ -5,8 +5,12 @@ using UnityEngine;
 public class ArenaSpawner : MonoBehaviour
 {
     public GameObject PrefabToSpawn;            // The prefab what should be spawned
+
+    [HideInInspector]
     public float SpawnRate;                     // The time limit when the next enemy will spawn
+    [HideInInspector]
     public int AmountToSpawn;                   // How many enemys should spawn
+
     public Transform HoldingPoint;
 
     private Transform EnemyHolder;
@@ -28,6 +32,7 @@ public class ArenaSpawner : MonoBehaviour
         GameObject curPrefab;
         curPrefab = Instantiate(PrefabToSpawn, transform.position, transform.rotation) as GameObject;
         curPrefab.transform.parent = EnemyHolder.transform;
+        GameManager.Instance.Enemies.Add(curPrefab.GetComponent<Enemy>());
 
 
         // Let the spawned enemy move to the Holding Point

@@ -35,7 +35,7 @@ public class Player1 : Cheat
             if (!isPlayerFound && (i == GameManager.Instance.Players.Count))
             {
                 curPlayer.PlayerNumber = "1";
-                //Debug.Log(NewPlayer1.name + "not found!");
+                Debug.Log(NewPlayer1.name + "not found!");
             }
 
             curPlayer.Setup(GameManager.Instance.InputRotation, GameManager.Instance.prefabLoader.ButtonStrings);
@@ -43,7 +43,7 @@ public class Player1 : Cheat
 
         if (NewPlayer1 != null)
         {
-            //Debug.Log(NewPlayer1.name + "new Player 1");
+            Debug.Log(NewPlayer1.name + "new Player 1");
         }
     }
 }

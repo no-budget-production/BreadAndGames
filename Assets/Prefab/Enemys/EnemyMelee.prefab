@@ -1562,6 +1562,11 @@ MonoBehaviour:
   UseOverChargeBar: 0
   maxOverCharge: 0
   curOverCharge: 0
+  ReloadBar: {fileID: 0}
+  UseReloadBar: 0
+  maxReloadBar: 0
+  curReloadBar: 0
+  curDisplayReloadBar: 0
   ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
@@ -1699,7 +1704,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1724353408865596}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
