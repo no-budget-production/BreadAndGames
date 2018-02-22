@@ -287,5 +287,10 @@ public class PlayerController : Character
         if (!moveable) return;
         myController.AddForce(moveVector * acceleration * Time.deltaTime);
         myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax);
+<<<<<<< HEAD
+=======
+        //myController.SimpleMove(currentMovementArg * Time.deltaTime);
+        //Debug.Log(myController.velocity.magnitude);
+>>>>>>> c4b5cafe0845fab4d6d8ff85697816e9256ec99b
     }
 }

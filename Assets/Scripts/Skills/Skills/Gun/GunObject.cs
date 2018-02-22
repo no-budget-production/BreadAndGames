@@ -9,8 +9,26 @@ public class GunObject : Skill
 
     public Laser LaserScript;
 
+    public float ActionPointsPerSec;
+
     public override void LateSkillSetup()
     {
-        this.transform.SetParent(SkillSpawn);
+        transform.SetParent(SkillSpawn);
+        if (Character.UseOverChargeBar)
+        {
+            Character.OnChangeOverchargeSlider();
+        }
+
+    }
+
+    private void Update()
+    {
+        if (Character.UseOverChargeBar)
+        {
+            if (Character.curActionPoints > Character.curOverCharge)
+            {
+                Character.RestoreActionPoints(ActionPointsPerSec * Time.deltaTime);
+            }
+        }
     }
 }
