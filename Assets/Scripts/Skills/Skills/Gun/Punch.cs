@@ -123,8 +123,8 @@ public class Punch : Skill
         }
 
 
-        Debug.Log("Energy " + energyCosts * Time.deltaTime);
-        Debug.Log("curDamageBonus: " + curDamageBonus + " Time: " + Time.realtimeSinceStartup);
+        //Debug.Log("Energy " + energyCosts * Time.deltaTime);
+        //Debug.Log("curDamageBonus: " + curDamageBonus + " Time: " + Time.realtimeSinceStartup);
     }
 
     public override void StopShoot()

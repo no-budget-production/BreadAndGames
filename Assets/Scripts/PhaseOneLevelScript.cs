@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class PhaseOneLevelScript : MonoBehaviour
 {
+    
+    public bool startArenaEvent;
+    public bool Wave1Finshed;
+
+    public int Wave1AmountOfEnemys;
+
     public ArenaSpawner[] spawner;
 
-    public bool startArenaEvent;
+    void Start()
+    {
+        startArenaEvent = false;
+        Wave1Finshed = false;
+    }
 
-
-    
-	void Update ()
+    void Update ()
     {
         if (startArenaEvent)
         {
-            for (int i = 0; i < spawner.Length; i++)
+            Debug.Log(GameManager.Instance.Enemies.Count);
+            if (!Wave1Finshed)
             {
-                spawner[i].enabled = true;
+                // Start of the first Wave
+                for (int i = 0; i < spawner.Length; i++)
+                {
+                    spawner[i].SpawnRate = Random.Range(1.0f, 2.0f);
+                    spawner[i].AmountToSpawn = Wave1AmountOfEnemys / spawner.Length;
+                    spawner[i].enabled = true;
+                }
+                if (GameManager.Instance.Enemies.Count == 0)
+                {
+                    Wave1Finshed = true;
+                }
             }
 
 
