@@ -402,7 +402,7 @@ public class Character : Entity
 
     public void OnHUDActionBarChange()
     {
-        HUDActionPointsBar.value = curActionPoints / maxActionPoints;
+        HUDActionPointsBar.value = curActionPoints / maxActionPoints * 100;
     }
 
     void OnHUDChangeHealthSlider()
@@ -414,7 +414,7 @@ public class Character : Entity
     {
         if (UseOverChargeBar)
         {
-            OverChargeBar.value = curOverCharge / maxOverCharge;
+            OverChargeBar.value = curOverCharge / maxOverCharge * 100;
         }
     }
 
@@ -422,7 +422,7 @@ public class Character : Entity
     {
         if (UseReloadBar)
         {
-            OverChargeBar.value = curReloadBar / maxReloadBar;
+            OverChargeBar.value = curReloadBar / maxReloadBar * 100;
         }
     }
 }
