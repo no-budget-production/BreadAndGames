@@ -19,7 +19,7 @@ public class JoystickCheck : Cheat
                 Joysticks += " " + i + ": " + Input.GetJoystickNames()[i].ToString();
             }
         }
-        //Debug.Log(Input.GetJoystickNames().Length + Joysticks);
+        Debug.Log(Input.GetJoystickNames().Length + Joysticks);
         DebugConsole.Log(Input.GetJoystickNames().Length + Joysticks);
     }
 }

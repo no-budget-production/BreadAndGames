@@ -41,7 +41,7 @@ public class WeaponSkill : Skill
         {
             if (Character.ActiveSkills[i].SkillType == SkillRequired.SkillType)
             {
-                //Debug.Log("Gun Found: " + Character.ActiveBuffs[i]);
+                Debug.Log("Gun Found: " + Character.ActiveBuffs[i]);
                 isGunFound = true;
                 atI = i;
                 break;

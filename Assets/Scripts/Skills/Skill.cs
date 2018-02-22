@@ -19,6 +19,11 @@ public class Skill : MonoBehaviour
 
     public bool cantStack;
 
+    public virtual void OneShoot()
+    {
+
+    }
+
     public virtual void Shoot()
     {
 
@@ -43,13 +48,13 @@ public class Skill : MonoBehaviour
 
         if (cantStack)
         {
-            //Debug.Log("CantStack");
+            Debug.Log("CantStack");
 
             for (int i = 0; i < Character.ActiveBuffs.Count; i++)
             {
                 if (Character.ActiveBuffs[i].BuffSkillType == UsedBuff.BuffSkillType)
                 {
-                    //Debug.Log("Spawn Buff found: " + Character.ActiveBuffs[i]);
+                    Debug.Log("Spawn Buff found: " + Character.ActiveBuffs[i]);
                     Destroy(Character.ActiveBuffs[i].gameObject);
                     Character.ActiveBuffs.Remove(Character.ActiveBuffs[i]);
                     break;

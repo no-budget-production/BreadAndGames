@@ -1219,7 +1219,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0.5
-  m_AngularDrag: 0.95
+  m_AngularDrag: 100000
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1486,11 +1486,6 @@ MonoBehaviour:
   UseOverChargeBar: 1
   maxOverCharge: 100
   curOverCharge: 100
-  ReloadBar: {fileID: 0}
-  UseReloadBar: 0
-  maxReloadBar: 0
-  curReloadBar: 0
-  curDisplayReloadBar: 0
   ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
@@ -1564,10 +1559,10 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
   myController: {fileID: 54792642140107436}
-  acceleration: 3500
-  deceleration: 120
-  moveSpeedMax: 15
-  TurnSpeed: 12
+  acceleration: 1100
+  deceleration: 1200
+  moveSpeedMax: 5
+  TurnSpeed: 8
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1
