@@ -38,10 +38,7 @@ public class Enemy : Character
     public int EveryXFramesFind;
     public int FrameCounterFind;
 
-    public Animator Anim;
-
-    int animSpeed = Animator.StringToHash("Speed");
-    int animIsAttacking = Animator.StringToHash("isAttacking");
+    int animMovX = Animator.StringToHash("MovX");
 
     public float NavAgentSpeed;
 
@@ -94,7 +91,7 @@ public class Enemy : Character
 
     public override void Update()
     {
-        Anim.SetFloat(animSpeed, NavMeshAgent.velocity.magnitude / NavAgentSpeed);
+        Anim.SetFloat(animMovX, NavMeshAgent.velocity.magnitude / NavAgentSpeed);
 
         if (!isGameOver)
         {
@@ -136,14 +133,6 @@ public class Enemy : Character
                             for (int i = 0; i < ActiveSkills.Length; i++)
                             {
                                 ActiveSkills[i].Shoot();
-
-                                if (i < AnimationStrings.Length)
-                                {
-                                    if (AnimationStrings[i] != null)
-                                    {
-                                        Anim.SetTrigger(animIsAttacking);
-                                    }
-                                }
                             }
                             FrameCounterShoot = 0;
 

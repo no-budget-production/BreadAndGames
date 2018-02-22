@@ -82,8 +82,17 @@ public class Punch : Skill
 
         if (canCharge)
         {
+            if (AnimationStrings[0] != null)
+            {
+                if (!AnimationAreTriggers[0])
+                {
+                    Character.Anim.SetBool(AnimationStrings[0], true);
+                }
+            }
+
             if (Character.curActionPoints - energyCosts > 0)
             {
+                Character.canWalk = false;
                 Character.AddBuff(ChargingBuff, 1, Character);
 
                 //Debug.Log("Character.AddBuff");
@@ -91,9 +100,8 @@ public class Punch : Skill
                 curChargeTime += Time.deltaTime;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
                 Character.SpendActionPoints(energyCosts * Time.deltaTime);
-                //Debug.Log("TimeDeltaTime:" + Time.deltaTime);
-                //Debug.Log("TimeDeltaTime:" + curChargeTime);
-                //Character.SpendActionPoints(energyCosts * 1 + curChargeTime);
+                Debug.Log("BonusDamagePerSec * Time.deltaTime:" + BonusDamagePerSec * Time.deltaTime);
+                Debug.Log("TimeDeltaTime:" + curChargeTime);
 
                 if (ChargeTime < curChargeTime)
                 {
@@ -116,6 +124,14 @@ public class Punch : Skill
         }
         else
         {
+            if (AnimationStrings[0] != null)
+            {
+                if (AnimationAreTriggers[0])
+                {
+                    Character.Anim.SetTrigger(AnimationStrings[0]);
+                }
+            }
+
             Character.SpendActionPoints(energyCosts);
             DeadlDamage();
             curChargeTime = 0;
@@ -164,6 +180,7 @@ public class Punch : Skill
 
         Character.AddBuff(BuffObject, 1, Character);
 
+
         DeadlDamage();
 
         curChargeTime = 0;
@@ -211,6 +228,16 @@ public class Punch : Skill
         Character.curOverCharge = Character.curActionPoints;
         Character.OnChangeOverchargeSlider();
 
-
+        if (canCharge)
+        {
+            if (AnimationStrings[0] != null)
+            {
+                if (!AnimationAreTriggers[0])
+                {
+                    Character.Anim.SetBool(AnimationStrings[0], false);
+                    Debug.Log("ResetBool");
+                }
+            }
+        }
     }
 }

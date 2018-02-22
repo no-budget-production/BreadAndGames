@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1521265777625092
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +230,11 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  SkillNumber: 0
+  HasAnimation: 0
+  AnimationStrings:
+  - Skill_0
+  AnimationAreTriggers: 01
   DamageType: 0
   HitBox: {fileID: 114534373570059676}
   Damage: 17

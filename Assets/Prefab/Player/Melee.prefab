@@ -1493,7 +1493,7 @@ MonoBehaviour:
   curDisplaySteps: 0
   curDisplayReloadBar: 0
   rechargeActionBarDirectly: 1
-  ActionPointRegeneration: 0
+  ActionPointRegeneration: 1
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1522,6 +1522,15 @@ MonoBehaviour:
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
+  AnimationStrings:
+  - Skill_0
+  - Skill_Bool_0
+  - 
+  - 
+  - 
+  - 
+  AnimationAreBools: 000100000000
+  Anim: {fileID: 95489058017728856}
   Type: 0
   usedButtonsCount: 0
   usedButtons: 
@@ -1558,7 +1567,6 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49, type: 2}
   Deadzone: 0.19
-  Anim: {fileID: 95489058017728856}
   Horizontal_PX: 0
   Vertical_PX: 0
   HorizontalLook_PX: 0
@@ -1572,14 +1580,6 @@ MonoBehaviour:
   TurnSpeed: 8
   rotatable: 1
   moveable: 1
-  AnimationStrings:
-  - Skill_0
-  - isCharging
-  - 
-  - 
-  - 
-  - 
-  AnimationAreBools: 000100000000
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1

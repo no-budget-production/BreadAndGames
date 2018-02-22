@@ -84,6 +84,8 @@ public class Character : Entity
     public string[] AnimationStrings;
     public bool[] AnimationAreBools;
 
+    public Animator Anim;
+
     public virtual void OnDestroy()
     {
         base.OnDestroy();
@@ -168,7 +170,14 @@ public class Character : Entity
 
     public virtual void Update()
     {
+        Regenerate();
         UpdateBuffs();
+    }
+
+    void Regenerate()
+    {
+        GetHealth(HealthRegeneration * Time.deltaTime);
+        RestoreActionPoints(ActionPointRegeneration * Time.deltaTime);
     }
 
     public void AddBuff(BuffObject buff, int multi, Character character)
@@ -313,7 +322,7 @@ public class Character : Entity
             {
                 if (!canWalk)
                 {
-                    if (canWalkAgainCount == 1)
+                    if (canWalkAgainCount <= 0)
                     {
                         canWalk = true;
                     }
@@ -322,7 +331,7 @@ public class Character : Entity
                 {
                     if (!canCurUseRightStick)
                     {
-                        if (canUseRightStickAgainCount == 1)
+                        if (canUseRightStickAgainCount <= 0)
                         {
                             canUseRightStick = true;
                         }
@@ -330,7 +339,7 @@ public class Character : Entity
                 }
                 if (!canUseSkills)
                 {
-                    if (canUseSkillsAgainCount == 1)
+                    if (canUseSkillsAgainCount <= 0)
                     {
                         canUseSkills = true;
                     }

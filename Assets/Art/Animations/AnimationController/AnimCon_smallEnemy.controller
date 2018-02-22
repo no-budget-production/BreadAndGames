@@ -8,13 +8,13 @@ AnimatorController:
   m_Name: AnimCon_smallEnemy
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Speed
+  - m_Name: MovX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isAttacking
+  - m_Name: Skill_0
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -56,7 +56,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Speed
+  m_BlendParameter: MovX
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 0.5
@@ -92,7 +92,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isAttacking
+    m_ConditionEvent: Skill_0
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102050113654732268}

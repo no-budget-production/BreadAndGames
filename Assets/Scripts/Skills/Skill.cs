@@ -21,6 +21,10 @@ public class Skill : MonoBehaviour
 
     public int SkillNumber;
 
+    public bool HasAnimation;
+    public string[] AnimationStrings;
+    public bool[] AnimationAreTriggers;
+
     public virtual void OneShoot()
     {
 

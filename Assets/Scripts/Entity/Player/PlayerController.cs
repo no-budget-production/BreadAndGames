@@ -40,8 +40,6 @@ public class PlayerController : Character
 
     private float angle;
 
-    public Animator Anim;
-
     int animMovX = Animator.StringToHash("MovX");
     int animMovY = Animator.StringToHash("MovY");
     int animIsAiming = Animator.StringToHash("isAiming");
@@ -53,7 +51,7 @@ public class PlayerController : Character
     //int animSkill_2 = Animator.StringToHash("Skill_2");
     int animIsDead = Animator.StringToHash("isDead");
     int animGetUp = Animator.StringToHash("GetUp");
-    int animIsCharging = Animator.StringToHash("IsCharging");
+    int animSkill_Bool_0 = Animator.StringToHash("Skill_Bool_0");
 
     private Quaternion inputRotation;
 
@@ -275,23 +273,6 @@ public class PlayerController : Character
                 if (!tempIsShooting)
                 {
                     ActiveSkills[i].isFiring = false;
-                }
-                else
-                {
-                    if (i < AnimationStrings.Length)
-                    {
-                        if (AnimationStrings[i] != null)
-                        {
-                            if (AnimationAreBools[i])
-                            {
-                                Anim.SetBool(AnimationStrings[i], true);
-                            }
-                            else
-                            {
-                                Anim.SetTrigger(AnimationStrings[i]);
-                            }
-                        }
-                    }
                 }
             }
         }
