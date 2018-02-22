@@ -75,7 +75,7 @@ public class UIScript : MonoBehaviour
 
     public void RestartButton()
     {
-        //GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+        GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
 
         //Destroy(GameManager.Instance.GameManagerFolder.gameObject);
 

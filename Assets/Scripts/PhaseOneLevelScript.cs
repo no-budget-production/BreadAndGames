@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 //[System.Serializable]
@@ -40,7 +39,7 @@ public class PhaseOneLevelScript : MonoBehaviour
     //public WaveArray[] currentWave;
 
     //private string[] WaveNames;
-    
+
 
     void Start()
     {
@@ -53,7 +52,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     }
 
-    void Update ()
+    void Update()
     {
         //if (!Application.isPlaying)
         //{
@@ -109,7 +108,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             }
         }
 
-        
+
         if (GameManager.Instance.Enemies.Count > 0)
         {
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.running;
