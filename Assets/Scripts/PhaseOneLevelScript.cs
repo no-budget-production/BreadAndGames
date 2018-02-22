@@ -73,22 +73,23 @@ public class PhaseOneLevelScript : MonoBehaviour
         if (Application.isPlaying)
         {
             // Start of the Wave1
-            if ((WaveStatus[0] == WaveStatusReport.begin || WaveStatus[0] == WaveStatusReport.running) && !(WaveStatus[0] == WaveStatusReport.end))
+            if (!(WaveStatus[0] == WaveStatusReport.end) && !(WaveStatus[0] == WaveStatusReport.off))
             {
                 StartWave(Wave1AmountOfEnemys, 0);
             }
             // Start of the Wave2
-            if ((WaveStatus[1] == WaveStatusReport.begin || WaveStatus[1] == WaveStatusReport.running) && !(WaveStatus[1] == WaveStatusReport.end))
+            if (!(WaveStatus[1] == WaveStatusReport.end) && !(WaveStatus[1] == WaveStatusReport.off))
             {
+                Debug.Log("dsagsdg");
                 StartWave(Wave2AmountOfEnemys, 1);
             }
             // Start of the Wave3
-            if ((WaveStatus[2] == WaveStatusReport.begin || WaveStatus[2] == WaveStatusReport.running) && !(WaveStatus[2] == WaveStatusReport.end))
+            if (!(WaveStatus[2] == WaveStatusReport.end) && !(WaveStatus[2] == WaveStatusReport.off))
             {
                 StartWave(Wave3AmountOfEnemys, 2);
             }
             // Start of the Wave4
-            if ((WaveStatus[3] == WaveStatusReport.begin || WaveStatus[3] == WaveStatusReport.running) && !(WaveStatus[3] == WaveStatusReport.end))
+            if (!(WaveStatus[3] == WaveStatusReport.end) && !(WaveStatus[3] == WaveStatusReport.off))
             {
                 StartWave(Wave4AmountOfEnemys, 3);
             }
@@ -97,15 +98,17 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     void StartWave(int AmountOfEnemys, int WaveArrayNumber)
     {
-        if ((this.WaveStatus[WaveArrayNumber] == WaveStatusReport.begin && !(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running)))
+        if (!(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.ready) && !(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
         {
             for (int i = 0; i < spawner.Length; i++)
             {
                 spawner[i].SpawnRate = Random.Range(0.0f, 2.0f);
                 spawner[i].AmountToSpawn = AmountOfEnemys / spawner.Length;
-                spawner[i].enabled = true;
+                spawner[i].StartSpawn();
+                this.WaveStatus[WaveArrayNumber] = WaveStatusReport.ready;
             }
         }
+
         
         if (GameManager.Instance.Enemies.Count > 0)
         {
@@ -113,38 +116,33 @@ public class PhaseOneLevelScript : MonoBehaviour
         }
         if (GameManager.Instance.Enemies.Count == 0 && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
         {
-            StartCoroutine(EndOfWave(PauseBetweenWaves));
+            StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
         }
     }
 
 
-    private IEnumerator EndOfWave(float waitTime)
+    private IEnumerator EndOfWave(float waitTime, int WaveArrayNumber)
     {
         yield return new WaitForSeconds(waitTime);
+        WaveEnd(WaveArrayNumber);
 
-        // Called only once if all enemys from wave1 are killed
-        if (WaveStatus[0] == WaveStatusReport.running && !(WaveStatus[0] == WaveStatusReport.end))
+    }
+
+    void WaveEnd(int WaveArrayNumber)
+    {
+        if (WaveStatus[WaveArrayNumber] == WaveStatusReport.running)
         {
             for (int i = 0; i < spawner.Length; i++)
             {
                 spawner[i]._SpawnedEnemys = 0;
             }
-            WaveStatus[0] = WaveStatusReport.end;     // End of Wave1
-            WaveStatus[1] = WaveStatusReport.begin;   // Start of Wave2
-        }
-        if (WaveStatus[1] == WaveStatusReport.running && !(WaveStatus[1] == WaveStatusReport.end))
-        {
-            // Do Something when wave2 is over
+            WaveStatus[WaveArrayNumber] = WaveStatusReport.end;     // End of Wave
 
-            WaveStatus[1] = WaveStatusReport.end;     // End of Wave2
-            WaveStatus[2] = WaveStatusReport.begin;   // Start of Wave3
-        }
-        if (WaveStatus[2] == WaveStatusReport.running && !(WaveStatus[2] == WaveStatusReport.end))
-        {
-            // Do Something when wave3 is over
+            if (!(WaveArrayNumber + 1 >= WaveStatus.Length))
+            {
+                WaveStatus[WaveArrayNumber + 1] = WaveStatusReport.begin;   // Start of Nextwave
+            }
 
-            WaveStatus[2] = WaveStatusReport.end;     // End of Wave3
-            WaveStatus[3] = WaveStatusReport.begin;   // Start of Wave4
         }
     }
 
