@@ -28,6 +28,12 @@ public class Character : Entity
     public float maxOverCharge;
     public float curOverCharge;
 
+    public Slider ReloadBar;
+    public bool UseReloadBar;
+    public float maxReloadBar;
+    public float curReloadBar;
+    public float curDisplayReloadBar;
+
     public float ActionPointRegeneration;
 
     public float MeleeDamage = 1f;
@@ -396,7 +402,7 @@ public class Character : Entity
 
     public void OnHUDActionBarChange()
     {
-        HUDActionPointsBar.value = curActionPoints / maxActionPoints * 100;
+        HUDActionPointsBar.value = curActionPoints / maxActionPoints;
     }
 
     void OnHUDChangeHealthSlider()
@@ -408,7 +414,15 @@ public class Character : Entity
     {
         if (UseOverChargeBar)
         {
-            OverChargeBar.value = curOverCharge / maxOverCharge * 100;
+            OverChargeBar.value = curOverCharge / maxOverCharge;
+        }
+    }
+
+    public void OnChangeReloadSlider()
+    {
+        if (UseReloadBar)
+        {
+            OverChargeBar.value = curReloadBar / maxReloadBar;
         }
     }
 }
