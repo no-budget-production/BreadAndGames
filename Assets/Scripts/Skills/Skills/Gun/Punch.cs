@@ -36,16 +36,16 @@ public class Punch : Skill
         {
             if (Character.curActionPoints - energyCosts > 0)
             {
-                Debug.Log("CanCharge");
+                //Debug.Log("CanCharge");
                 if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
                 {
-                    Debug.Log("!ChargingBuff.HasBuff");
+                    //Debug.Log("!ChargingBuff.HasBuff");
                     if (!BuffObject.isStackable)
                     {
-                        Debug.Log("!BuffObject.isStackable");
+                        //Debug.Log("!BuffObject.isStackable");
                         if (BuffObject.HasBuff(Character.ActiveBuffObjects))
                         {
-                            Debug.Log("BuffObject.HasBuff");
+                            //Debug.Log("BuffObject.HasBuff");
                             return;
                         }
                     }
@@ -86,7 +86,7 @@ public class Punch : Skill
             {
                 Character.AddBuff(ChargingBuff, 1, Character);
 
-                Debug.Log("Character.AddBuff");
+                //Debug.Log("Character.AddBuff");
 
                 curChargeTime += Time.deltaTime;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
@@ -98,7 +98,7 @@ public class Punch : Skill
                 if (ChargeTime < curChargeTime)
                 {
                     punchCount++;
-                    Debug.Log("//////////////////////////////////////////////////////////////////////////punchCount " + punchCount);
+                    //Debug.Log("//////////////////////////////////////////////////////////////////////////punchCount " + punchCount);
                     DeadlDamage();
                     curChargeTime = 0;
                     curDamageBonus = 0;
@@ -107,7 +107,7 @@ public class Punch : Skill
             }
             else
             {
-                Debug.Log("###############################################################NoEnerhyPuncch ");
+                //Debug.Log("###############################################################NoEnerhyPuncch ");
                 DeadlDamage();
                 curChargeTime = 0;
                 curDamageBonus = 0;
@@ -131,16 +131,16 @@ public class Punch : Skill
     {
         if (canCharge)
         {
-            Debug.Log("CanCharge");
+            //Debug.Log("CanCharge");
             if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
             {
-                Debug.Log("!ChargingBuff.HasBuff");
+                //Debug.Log("!ChargingBuff.HasBuff");
                 if (!BuffObject.isStackable)
                 {
-                    Debug.Log("!BuffObject.isStackable");
+                    //Debug.Log("!BuffObject.isStackable");
                     if (BuffObject.HasBuff(Character.ActiveBuffObjects))
                     {
-                        Debug.Log("BuffObject.HasBuff");
+                        //Debug.Log("BuffObject.HasBuff");
                         return;
                     }
                 }
@@ -173,7 +173,7 @@ public class Punch : Skill
             Character.AddBuff(ChargingBuff, -1, Character);
         }
 
-        Debug.Log("###############################################################QUICKPUNCH -------------------------------- ");
+        //Debug.Log("###############################################################QUICKPUNCH -------------------------------- ");
 
         //Debug.Log("Punch Early");
     }
@@ -184,7 +184,7 @@ public class Punch : Skill
         if (Time.time > nextSoundTime)
         {
             nextSoundTime = Time.time + SBetweenSounds + SoundPlayer.GetClipLenght();
-            SoundPlayer.Play();
+            //SoundPlayer.Play();
         }
 
         for (int i = 0; i < HitBox.Enemies.Count; i++)
@@ -210,5 +210,7 @@ public class Punch : Skill
 
         Character.curOverCharge = Character.curActionPoints;
         Character.OnChangeOverchargeSlider();
+
+
     }
 }

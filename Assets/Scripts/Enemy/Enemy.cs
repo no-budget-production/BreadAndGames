@@ -43,8 +43,6 @@ public class Enemy : Character
     int animSpeed = Animator.StringToHash("Speed");
     int animIsAttacking = Animator.StringToHash("isAttacking");
 
-    public string[] AnimationStrings;
-
     public float NavAgentSpeed;
 
     public override void Start()

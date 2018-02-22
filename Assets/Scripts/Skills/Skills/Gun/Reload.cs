@@ -38,12 +38,9 @@ public class Reload : Skill
         {
             if (Character.curReloadBar < SpendReloadAmount)
             {
-                Debug.Log("False");
                 return;
             }
         }
-
-        Debug.Log("True");
 
         if (Time.time > nextSoundTime)
         {

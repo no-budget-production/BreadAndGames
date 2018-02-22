@@ -31,7 +31,6 @@ public class SoundPlayer : MonoBehaviour
 
     private void CycleSoundInList()
     {
-
         if (_lastSound >= AudioClipsArray.Length - 1)
         {
             _lastSound = 0;

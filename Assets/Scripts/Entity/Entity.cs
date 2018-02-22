@@ -66,14 +66,14 @@ public class Entity : MonoBehaviour
 
             if (DestroyOnDeath)
             {
-                Destroy(this.gameObject);
+                OnDestroy();
             }
         }
     }
 
     public virtual void OnDestroy()
     {
-
+        Destroy(this.gameObject);
     }
 
     public virtual void GetHealth(float healing)

@@ -1560,6 +1560,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114422117127842328, guid: 615f788e48c1b704e93a69c3b599a5a8,
+        type: 2}
+      propertyPath: AnimationStrings.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4613099269740536, guid: 615f788e48c1b704e93a69c3b599a5a8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1595,6 +1600,16 @@ Prefab:
     - target: {fileID: 1143050206337656, guid: 615f788e48c1b704e93a69c3b599a5a8, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114422117127842328, guid: 615f788e48c1b704e93a69c3b599a5a8,
+        type: 2}
+      propertyPath: AnimationStrings.Array.data[0]
+      value: Skill_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114422117127842328, guid: 615f788e48c1b704e93a69c3b599a5a8,
+        type: 2}
+      propertyPath: AnimationStrings.Array.data[1]
+      value: Skill_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 615f788e48c1b704e93a69c3b599a5a8, type: 2}
@@ -16697,6 +16712,7 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  SkillNumber: 0
   Muzzle: {fileID: 622301521}
   Projectile: {fileID: 114397302490237756, guid: f02f7399b72f0de4482dcbedb5028193,
     type: 2}

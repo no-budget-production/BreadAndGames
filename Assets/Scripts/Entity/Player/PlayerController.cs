@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 [System.Serializable]
 public class ButtonConfig
 {
@@ -47,9 +48,12 @@ public class PlayerController : Character
     int animIsRunning = Animator.StringToHash("isRunning");
     int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
     int animIsAttacking = Animator.StringToHash("isAttacking");
-    int animleftPunch = Animator.StringToHash("leftPunch");
-    int animRightPunch = Animator.StringToHash("rightPunch");
-
+    int animSkill_0 = Animator.StringToHash("Skill_0");
+    int animSkill_1 = Animator.StringToHash("Skill_1");
+    //int animSkill_2 = Animator.StringToHash("Skill_2");
+    int animIsDead = Animator.StringToHash("isDead");
+    int animGetUp = Animator.StringToHash("GetUp");
+    int animIsCharging = Animator.StringToHash("IsCharging");
 
     private Quaternion inputRotation;
 
@@ -63,7 +67,7 @@ public class PlayerController : Character
     public Vector3 lookVector;
 
     public Rigidbody myController;
-    
+
     private Vector3 currentMovement;
     public float acceleration;
     public float deceleration;
@@ -71,7 +75,6 @@ public class PlayerController : Character
     public float TurnSpeed;
     public bool rotatable = true;
     public bool moveable = true;
-
 
     public override void Start()
     {
@@ -112,7 +115,9 @@ public class PlayerController : Character
             curSkill.transform.rotation = SkillSpawn.rotation;
             curSkill.Character = this;
             curSkill.SkillSpawn = SkillSpawn;
+            curSkill.SkillNumber = i;
             ActiveSkills[i] = curSkill;
+
 
             for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
             {
@@ -271,6 +276,23 @@ public class PlayerController : Character
                 {
                     ActiveSkills[i].isFiring = false;
                 }
+                else
+                {
+                    if (i < AnimationStrings.Length)
+                    {
+                        if (AnimationStrings[i] != null)
+                        {
+                            if (AnimationAreBools[i])
+                            {
+                                Anim.SetBool(AnimationStrings[i], true);
+                            }
+                            else
+                            {
+                                Anim.SetTrigger(AnimationStrings[i]);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -284,7 +306,8 @@ public class PlayerController : Character
 
     public void Walk()
     {
-        if (!moveable) return;
+        if (!moveable)
+            return;
         myController.AddForce(moveVector * acceleration * Time.deltaTime);
         myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax);
     }

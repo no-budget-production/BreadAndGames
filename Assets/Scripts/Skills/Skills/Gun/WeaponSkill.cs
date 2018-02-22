@@ -71,7 +71,7 @@ public class WeaponSkill : Skill
             if (Time.time > nextSoundTime)
             {
                 nextSoundTime = Time.time + SBetweenSounds + SoundPlayer.GetClipLenght();
-                SoundPlayer.Play();
+                //SoundPlayer.Play();
             }
 
             float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);

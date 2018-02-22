@@ -81,6 +81,9 @@ public class Character : Entity
 
     public List<Buff> ActiveBuffs;
 
+    public string[] AnimationStrings;
+    public bool[] AnimationAreBools;
+
     public virtual void OnDestroy()
     {
         base.OnDestroy();
@@ -122,14 +125,14 @@ public class Character : Entity
     {
         base.TakeDamage(damage, damageType);
 
-        if (MultiSoundPlayer != null)
-        {
-            if (Time.time > nextSoundTime)
-            {
-                MultiSoundPlayer.TakingDamageSound();
-                nextSoundTime = Time.time + SBetweenSounds + MultiSoundPlayer.GetClipLenght();
-            }
-        }
+        //if (MultiSoundPlayer != null)
+        //{
+        //    if (Time.time > nextSoundTime)
+        //    {
+        //        MultiSoundPlayer.TakingDamageSound();
+        //        nextSoundTime = Time.time + SBetweenSounds + MultiSoundPlayer.GetClipLenght();
+        //    }
+        //}
 
         if (UseHealthbar)
         {
