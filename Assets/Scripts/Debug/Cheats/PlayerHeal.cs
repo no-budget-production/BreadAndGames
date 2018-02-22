@@ -15,6 +15,6 @@ public class PlayerHeal : Cheat
             curPlayer.GetHealth(HealAmount);
         }
 
-        Debug.Log("PlayersHealed: " + HealAmount);
+        //Debug.Log("PlayersHealed: " + HealAmount);
     }
 }

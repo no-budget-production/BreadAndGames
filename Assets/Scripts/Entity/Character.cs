@@ -28,6 +28,12 @@ public class Character : Entity
     public float maxOverCharge;
     public float curOverCharge;
 
+    public Slider ReloadBar;
+    public bool UseReloadBar;
+    public float maxReloadBar;
+    public float curReloadBar;
+    public float curDisplayReloadBar;
+
     public float ActionPointRegeneration;
 
     public float MeleeDamage = 1f;
@@ -404,6 +410,14 @@ public class Character : Entity
         if (UseOverChargeBar)
         {
             OverChargeBar.value = curOverCharge / maxOverCharge * 100;
+        }
+    }
+
+    public void OnChangeReloadSlider()
+    {
+        if (UseReloadBar)
+        {
+            OverChargeBar.value = curReloadBar / maxReloadBar * 100;
         }
     }
 }
