@@ -41,8 +41,7 @@ public class PunchCollider : MonoBehaviour
             return;
         if (FlagsHelper.HasUnitTypes(temp.ThisUnityTypeFlags, ThisUnityTypeFlags))
         {
-            Enemies.Add(temp);
+            Enemies.Remove(temp);
         }
-        Enemies.Remove(temp);
     }
 }

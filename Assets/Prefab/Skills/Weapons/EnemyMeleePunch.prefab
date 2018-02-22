@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1521265777625092
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 20
+  SkillType: 21
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
@@ -233,14 +233,17 @@ MonoBehaviour:
   DamageType: 0
   HitBox: {fileID: 114534373570059676}
   Damage: 17
+  ChargingBuff: {fileID: 0}
   Debuff: {fileID: 0}
   canCharge: 0
   ChargeTime: 0
   curChargeTime: 0
   BonusDamagePerSec: 0
   energyCosts: 0
+  punchCount: 0
   SoundPlayer: {fileID: 114568817090117510}
   SBetweenSounds: 0
+  curDamageBonus: 0
 --- !u!135 &135746780467341942
 SphereCollider:
   m_ObjectHideFlags: 1

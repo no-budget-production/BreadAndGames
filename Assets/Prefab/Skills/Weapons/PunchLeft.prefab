@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137327059641884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000010079, y: 1.446, z: 0.712}
+  m_LocalPosition: {x: -0.00000010079, y: 1.446, z: 0.781}
   m_LocalScale: {x: 1.8454545, y: 7.302168, z: 1.8454539}
   m_Children:
   - {fileID: 4977193373326202}
@@ -245,6 +245,7 @@ MonoBehaviour:
   DamageType: 0
   HitBox: {fileID: 114534373570059676}
   Damage: 17
+  ChargingBuff: {fileID: 0}
   Debuff: {fileID: 0}
   canCharge: 0
   ChargeTime: 0
