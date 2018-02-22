@@ -1407,7 +1407,7 @@ Animator:
   m_GameObject: {fileID: 1542881348221030}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa5f4695d4230144f98cb36ef1c065f4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1566,14 +1566,17 @@ MonoBehaviour:
   ThisUnityTypeFlags: 2
   CurrentHealth: 100
   MaxHealth: 100
+  HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100
+  ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1582,6 +1585,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
+  ActionPointMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canCurUseRightStick: 1
@@ -1590,8 +1594,12 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 4657473989523668}
   HealthBar: {fileID: 224901219119261124}
   UseHealthbar: 1
+  HUDHealthBarSlider: {fileID: 0}
+  UseHUDHealthbarSlider: 0
   ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
+  HUDActionPointsBar: {fileID: 0}
+  UseHUDActionPointsBar: 0
   MultiSoundPlayer: {fileID: 114650950170363120}
   ActiveBuffObjects: []
   SBetweenSounds: 1
@@ -1600,6 +1608,8 @@ MonoBehaviour:
   PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
+  isGameOver: 0
+  isAlive: 0
   isInRange: 0
   isTargetInView: 0
   isSooting: 0
@@ -1608,6 +1618,8 @@ MonoBehaviour:
   LookDamping: 100
   UsedSkills:
   - {fileID: 114777490603000294, guid: 7ac1bcc7ad1207b448e8faffe357f1d2, type: 2}
+  EveryXFramesAliveCheck: 1
+  FrameCounterAliveCheck: 0
   EveryXFramesDistanceCheck: 2
   FrameCounterDistanceCheck: 0
   EveryXFramesRayCheck: 30
@@ -1616,6 +1628,10 @@ MonoBehaviour:
   FrameCounterShoot: 0
   EveryXFramesFind: 60
   FrameCounterFind: 0
+  Anim: {fileID: 95145110562039168}
+  AnimationStrings:
+  - isAttacking
+  NavAgentSpeed: 0
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1702,7 +1718,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 128
-  m_StoppingDistance: 1
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1

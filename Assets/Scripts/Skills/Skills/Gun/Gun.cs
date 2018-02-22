@@ -30,14 +30,6 @@ public class Gun : Skill
     private float nextSoundTime;
     public float SBetweenSounds = 100;
 
-    private void Start()
-    {
-        this.transform.SetParent(SkillSpawn);
-        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
-        curSoundPlayer.transform.SetParent(SkillSpawn);
-        curSoundPlayer.Play();
-    }
-
     void PlayShotSound()
     {
         int clipNumber = Random.Range(0, SoundClips.Length);

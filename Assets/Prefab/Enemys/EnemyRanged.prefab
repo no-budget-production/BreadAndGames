@@ -1407,7 +1407,7 @@ Animator:
   m_GameObject: {fileID: 1335224367556316}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa5f4695d4230144f98cb36ef1c065f4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1523,14 +1523,17 @@ MonoBehaviour:
   ThisUnityTypeFlags: 2
   CurrentHealth: 100
   MaxHealth: 100
+  HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100
+  ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1539,6 +1542,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
+  ActionPointMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canCurUseRightStick: 1
@@ -1547,8 +1551,12 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 4348643285332890}
   HealthBar: {fileID: 224795656030523584}
   UseHealthbar: 1
+  HUDHealthBarSlider: {fileID: 0}
+  UseHUDHealthbarSlider: 0
   ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
+  HUDActionPointsBar: {fileID: 0}
+  UseHUDActionPointsBar: 0
   MultiSoundPlayer: {fileID: 114381365789339586}
   ActiveBuffObjects: []
   SBetweenSounds: 1
@@ -1557,6 +1565,8 @@ MonoBehaviour:
   PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
+  isGameOver: 0
+  isAlive: 0
   isInRange: 0
   isTargetInView: 0
   isSooting: 0
@@ -1566,6 +1576,8 @@ MonoBehaviour:
   UsedSkills:
   - {fileID: 114105700659199692, guid: 631e2959325764e49ba7fe13e212a502, type: 2}
   - {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc, type: 2}
+  EveryXFramesAliveCheck: 1
+  FrameCounterAliveCheck: 0
   EveryXFramesDistanceCheck: 2
   FrameCounterDistanceCheck: 0
   EveryXFramesRayCheck: 30
@@ -1574,6 +1586,10 @@ MonoBehaviour:
   FrameCounterShoot: 0
   EveryXFramesFind: 60
   FrameCounterFind: 0
+  Anim: {fileID: 95525545377489842}
+  AnimationStrings:
+  - isAttacking
+  NavAgentSpeed: 0
 --- !u!114 &114873590198389922
 MonoBehaviour:
   m_ObjectHideFlags: 1

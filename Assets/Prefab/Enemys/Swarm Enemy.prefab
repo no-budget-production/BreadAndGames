@@ -1337,7 +1337,7 @@ Animator:
   m_GameObject: {fileID: 1755828964248312}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa5f4695d4230144f98cb36ef1c065f4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1352,7 +1352,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1218460679126538}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
   m_Controller: {fileID: 9100000, guid: 27eb5a2292d6d6146abbff496c7312f2, type: 2}
   m_CullingMode: 0
@@ -1473,11 +1473,8 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 1
-  HealthBar: {fileID: 224163059560306816}
-  UseHealthbar: 1
-  MultiSoundPlayer: {fileID: 114731565633756964}
-  ActiveBuffObjects: []
-  SBetweenSounds: 1
+  maxActionPoints: 0
+  curActionPoints: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1490,6 +1487,17 @@ MonoBehaviour:
   canUseRightStick: 1
   canCurUseRightStick: 1
   canUseSkills: 1
+  SkillSpawn: {fileID: 0}
+  TakeHitPoint: {fileID: 0}
+  HealthBar: {fileID: 224163059560306816}
+  UseHealthbar: 1
+  ActionPointsBar: {fileID: 0}
+  UseActionPointsBar: 0
+  MultiSoundPlayer: {fileID: 114731565633756964}
+  ActiveBuffObjects: []
+  SBetweenSounds: 1
+  ActiveSkills: []
+  ActiveBuffs: []
   PlayerStopDistance: 3
 --- !u!114 &114521453037504252
 MonoBehaviour:

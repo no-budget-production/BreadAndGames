@@ -28,10 +28,12 @@ MonoBehaviour:
   AccuracyMultiplicator: 0
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
-  RangeArmorMultiplicator: 1
+  RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
+  ActionPointRegeneration: 0
   GainHealth: 0
   LoseHealth: 0
-  DamageType: 0
+  DamageType: -1
   GainActionPoints: 0
-  LoseGainActionPoints: 0
+  LoseActionPoints: 0
   BuffEndScript: {fileID: 0}

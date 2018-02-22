@@ -25,11 +25,14 @@ public class Entity : MonoBehaviour
     public float CurrentHealth;
     public float MaxHealth;
 
+    public float HealthRegeneration;
+
     public float MeleeArmor;
     public float RangedArmor;
 
     public float MeleeArmorMultiplicator;
     public float RangeArmorMultiplicator;
+    public float HealthRegenerationMultiplicator;
 
     public bool isDeadTrigger;
 

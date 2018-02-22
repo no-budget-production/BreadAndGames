@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class InstanceFinder : MonoBehaviour
@@ -33,10 +34,10 @@ public class InstanceFinder : MonoBehaviour
         //if (PlayerSpawnNames.Count == 0)
         {
             Debug.Log("InstanceFinder PlayerSpawnNames.Count - Setting to: MeleeSpawnPoint, ShooterSpawnPoint, SupportSpawnPoint");
-            PlayerSpawnNames = new List<string>(3);
+            PlayerSpawnNames = new List<string>(2);
             PlayerSpawnNames.Add("MeleeSpawnPoint");
             PlayerSpawnNames.Add("ShooterSpawnPoint");
-            PlayerSpawnNames.Add("SupportSpawnPoint");
+            //PlayerSpawnNames.Add("SupportSpawnPoint");
         }
 
         //if (instanceRef.PlayerSpawns.Count != 3)
@@ -132,6 +133,13 @@ public class InstanceFinder : MonoBehaviour
             Debug.Log("ProjectileHolder - Find it");
 
             instanceRef.ProjectileHolder = GameObject.Find("ProjectileHolder").transform;
+        }
+
+        //if (instanceRef.VisualsHolder == null)
+        {
+            Debug.Log("VisualsHolder - Find it");
+
+            instanceRef.VisualsHolder = GameObject.Find("VisualsHolder").transform;
         }
 
         //if (instanceRef.VisualsHolder == null)

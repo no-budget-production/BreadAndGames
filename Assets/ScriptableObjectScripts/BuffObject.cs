@@ -8,6 +8,7 @@ public enum BuffTypes
     RightPunch,
     EnergyBarrier,
     Hook,
+    Charging,
     ComboL1,
     ComboR1,
     ComboL2,
@@ -54,13 +55,16 @@ public class BuffObject : ScriptableObject
     public bool disableRightStick;
     public bool disableSkills;
 
-    public float MeleeDamageMultiplicator = 1;
-    public float RangeDamageMultiplicator = 1;
-    public float AccuracyMultiplicator = 1;
-    public float MoveSpeedMultiplicator = 1;
+    public float MeleeDamageMultiplicator;
+    public float RangeDamageMultiplicator;
+    public float AccuracyMultiplicator;
+    public float MoveSpeedMultiplicator;
 
-    public float MeleeArmorMultiplicator = 1;
-    public float RangeArmorMultiplicator = 1;
+    public float MeleeArmorMultiplicator;
+    public float RangeArmorMultiplicator;
+
+    public float HealthRegenerationMultiplicator;
+    public float ActionPointRegeneration;
 
     public float GainHealth;
     public float LoseHealth;
@@ -68,7 +72,7 @@ public class BuffObject : ScriptableObject
     public DamageType DamageType;
 
     public float GainActionPoints;
-    public float LoseGainActionPoints;
+    public float LoseActionPoints;
 
     public BuffEndScript BuffEndScript;
 

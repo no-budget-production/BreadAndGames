@@ -65,9 +65,12 @@ public class Healing : Skill
             FindDrone();
         }
 
-        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+        if (!BuffObject.isStackable)
         {
-            return;
+            if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+            {
+                return;
+            }
         }
 
         if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))

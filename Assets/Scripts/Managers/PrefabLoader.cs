@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrefabLoader : MonoBehaviour
 {
@@ -138,6 +139,21 @@ public class PrefabLoader : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
             GameManager.Instance.Players[i].GetComponent<PlayerController>().Setup(GameManager.Instance.InputRotation, ButtonStrings);
+
+            if (GameManager.Instance.Players[i].UseHUDHealthbarSlider)
+            {
+                GameManager.Instance.Players[i].HUDHealthBarSlider = GameManager.Instance.HUDHealthBarSlider[i];
+                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth;
+            }
+
+            if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
+            {
+                GameManager.Instance.Players[i].HUDActionPointsBar = GameManager.Instance.HUDActionPointsBar[i];
+                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
+            }
+
+            GameManager.Instance.Players[i].OverChargeBar = GameManager.Instance.HUDOverChargeBar[i];
+            GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxOverCharge;
         }
     }
 }

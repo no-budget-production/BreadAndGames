@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404b6aac20b266b4eb2f7b739253a362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 0
+  SkillType: 1
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
@@ -232,13 +232,17 @@ MonoBehaviour:
   DamageType: 0
   HitBox: {fileID: 114255274258433542}
   Damage: 51
+  ChargingBuff: {fileID: 11400000, guid: 44204a33ac7511b41aa15cb751f650db, type: 2}
   Debuff: {fileID: 0}
-  canCharge: 0
-  ChargeTime: 0
+  canCharge: 1
+  ChargeTime: 2
   curChargeTime: 0
-  BonusDamagePerSec: 0
+  BonusDamagePerSec: 51
+  energyCosts: 10
+  punchCount: 0
   SoundPlayer: {fileID: 114659931926392164}
   SBetweenSounds: 0
+  curDamageBonus: 0
 --- !u!114 &114659931926392164
 MonoBehaviour:
   m_ObjectHideFlags: 1

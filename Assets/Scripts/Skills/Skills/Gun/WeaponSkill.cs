@@ -23,7 +23,6 @@ public class WeaponSkill : Skill
     public MuzzleFlash MuzzleFlash;
 
     public SoundPlayer SoundPlayer;
-    private SoundPlayer curSoundPlayer;
     private float nextSoundTime;
     public float SBetweenSounds = 100;
 
@@ -31,10 +30,7 @@ public class WeaponSkill : Skill
 
     public override void LateSkillSetup()
     {
-        this.transform.SetParent(SkillSpawn);
-        curSoundPlayer = Instantiate(SoundPlayer, Character.transform.position + SoundPlayer.transform.position, Quaternion.identity);
-        curSoundPlayer.transform.SetParent(SkillSpawn);
-        curSoundPlayer.Play();
+        transform.SetParent(SkillSpawn);
     }
 
     public void FindGunObject()
@@ -55,9 +51,12 @@ public class WeaponSkill : Skill
 
     public override void Shoot()
     {
-        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+        if (!BuffObject.isStackable)
         {
-            return;
+            if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+            {
+                return;
+            }
         }
 
         if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
@@ -71,8 +70,8 @@ public class WeaponSkill : Skill
         {
             if (Time.time > nextSoundTime)
             {
-                nextSoundTime = Time.time + SBetweenSounds + curSoundPlayer.GetClipLenght();
-                curSoundPlayer.Play();
+                nextSoundTime = Time.time + SBetweenSounds + SoundPlayer.GetClipLenght();
+                SoundPlayer.Play();
             }
 
             float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);

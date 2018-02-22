@@ -389,7 +389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1360815411406630
 GameObject:
   m_ObjectHideFlags: 1
@@ -996,6 +996,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143050206337656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalPosition: {x: -4.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1472,14 +1473,21 @@ MonoBehaviour:
   ThisUnityTypeFlags: 1
   CurrentHealth: 1500
   MaxHealth: 1500
+  HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 0
   maxActionPoints: 100
   curActionPoints: 100
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 1
+  maxOverCharge: 100
+  curOverCharge: 100
+  ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1488,6 +1496,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
+  ActionPointMultiplicator: 1
   canWalk: 1
   canUseRightStick: 0
   canCurUseRightStick: 0
@@ -1496,8 +1505,12 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 4022339163266460}
   HealthBar: {fileID: 224660065565190754}
   UseHealthbar: 1
+  HUDHealthBarSlider: {fileID: 0}
+  UseHUDHealthbarSlider: 1
   ActionPointsBar: {fileID: 114101222704165328}
-  UseActionPointsBar: 1
+  UseActionPointsBar: 0
+  HUDActionPointsBar: {fileID: 0}
+  UseHUDActionPointsBar: 1
   MultiSoundPlayer: {fileID: 114062045482434310}
   ActiveBuffObjects: []
   SBetweenSounds: 1
@@ -1812,7 +1825,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
