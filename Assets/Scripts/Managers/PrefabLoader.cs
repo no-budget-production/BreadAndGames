@@ -143,13 +143,21 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseHUDHealthbarSlider)
             {
                 GameManager.Instance.Players[i].HUDHealthBarSlider = GameManager.Instance.HUDHealthBarSlider[i];
-                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth;
+                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth / 100;
+            }
+            else
+            {
+                GameManager.Instance.HUDHealthBarSlider[i].enabled = false;
             }
 
             if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
             {
                 GameManager.Instance.Players[i].HUDActionPointsBar = GameManager.Instance.HUDActionPointsBar[i];
-                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
+                GameManager.Instance.HUDActionPointsBar[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
+            }
+            else
+            {
+                GameManager.Instance.HUDActionPointsBar[i].enabled = false;
             }
 
             if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
@@ -157,11 +165,19 @@ public class PrefabLoader : MonoBehaviour
                 GameManager.Instance.Players[i].OverChargeBar = GameManager.Instance.HUDOverChargeBar[i];
                 GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxOverCharge;
             }
+            else
+            {
+                GameManager.Instance.HUDOverChargeBar[i].enabled = false;
+            }
 
             if (GameManager.Instance.Players[i].UseReloadBar)
             {
                 GameManager.Instance.Players[i].ReloadBar = GameManager.Instance.HUDReloadBar[i];
-                GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxReloadBar;
+                GameManager.Instance.HUDReloadBar[i].maxValue = GameManager.Instance.Players[i].maxReloadBar;
+            }
+            else
+            {
+                GameManager.Instance.HUDReloadBar[i].enabled = false;
             }
         }
     }
