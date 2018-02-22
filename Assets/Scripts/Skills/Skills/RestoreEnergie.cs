@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RestoreEnergie : Skill {
+public class RestoreEnergie : Skill
+{
 
     public Transform[] energyRestorationPoints;
     public float drainRate;
@@ -12,12 +13,14 @@ public class RestoreEnergie : Skill {
     {
         var nearest_erp = GetClosestRestorationPoint(energyRestorationPoints);
         var distance = (nearest_erp.position - transform.position).magnitude;
-        if (distance > range) return;
+        if (distance > range)
+            return;
 
         var used_erp = nearest_erp.GetComponent<EnergyRestorationPoint>();
-        if (used_erp.EnergyMaximum < (drainRate * Time.deltaTime)) return;
+        if (used_erp.EnergyMaximum < (drainRate * Time.deltaTime))
+            return;
 
-        var used = Character.RestoreActionPoints(drainRate);
+        var used = Character.RestoreActionPoints(drainRate * Time.deltaTime);
         used_erp.EnergyMaximum -= used;
     }
 

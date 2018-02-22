@@ -555,7 +555,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4658026966710746}
   - component: {fileID: 195225598082948426}
-  - component: {fileID: 95914028235286768}
   - component: {fileID: 114650950170363120}
   - component: {fileID: 82262388361476194}
   - component: {fileID: 114989625834042308}
@@ -1328,7 +1327,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1409,23 +1408,6 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
   m_Controller: {fileID: 9100000, guid: fa5f4695d4230144f98cb36ef1c065f4, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95914028235286768
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724353408865596}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 27eb5a2292d6d6146abbff496c7312f2, type: 2}
-  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1576,6 +1558,10 @@ MonoBehaviour:
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 0
+  maxOverCharge: 0
+  curOverCharge: 0
   ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
