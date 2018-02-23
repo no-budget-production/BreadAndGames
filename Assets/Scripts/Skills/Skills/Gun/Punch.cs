@@ -53,11 +53,14 @@ public class Punch : Skill
             }
             else
             {
-                if (!BuffObject.isStackable)
+                if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
                 {
-                    if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                    if (!BuffObject.isStackable)
                     {
-                        return;
+                        if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -222,12 +225,12 @@ public class Punch : Skill
         Character.curOverCharge = Character.curActionPoints;
         Character.OnChangeOverchargeSlider();
 
-        Debug.Log("ResetBool?!?");
+        //Debug.Log("ResetBool?!?");
 
         if (canCharge)
         {
             Character.Anim.SetBool(AnimationStrings[0], false);
-            Debug.Log("ResetBool");
+            //Debug.Log("ResetBool");
 
         }
 
