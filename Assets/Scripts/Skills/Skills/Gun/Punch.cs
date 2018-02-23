@@ -84,7 +84,7 @@ public class Punch : Skill
         {
             if (AnimationStrings[0] != null)
             {
-                if (!AnimationAreTriggers[0])
+                if (AnimationTypes[0] == AnimTypes.Bool)
                 {
                     Character.Anim.SetBool(AnimationStrings[0], true);
                 }
@@ -100,8 +100,8 @@ public class Punch : Skill
                 curChargeTime += Time.deltaTime;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
                 Character.SpendActionPoints(energyCosts * Time.deltaTime);
-                Debug.Log("BonusDamagePerSec * Time.deltaTime:" + BonusDamagePerSec * Time.deltaTime);
-                Debug.Log("TimeDeltaTime:" + curChargeTime);
+                //Debug.Log("BonusDamagePerSec * Time.deltaTime:" + BonusDamagePerSec * Time.deltaTime);
+                //Debug.Log("TimeDeltaTime:" + curChargeTime);
 
                 if (ChargeTime < curChargeTime)
                 {
@@ -126,7 +126,7 @@ public class Punch : Skill
         {
             if (AnimationStrings[0] != null)
             {
-                if (AnimationAreTriggers[0])
+                if (AnimationTypes[0] == AnimTypes.Trigger)
                 {
                     Character.Anim.SetTrigger(AnimationStrings[0]);
                 }
@@ -232,7 +232,7 @@ public class Punch : Skill
         {
             if (AnimationStrings[0] != null)
             {
-                if (!AnimationAreTriggers[0])
+                if (AnimationTypes[0] == AnimTypes.Bool)
                 {
                     Character.Anim.SetBool(AnimationStrings[0], false);
                     Debug.Log("ResetBool");

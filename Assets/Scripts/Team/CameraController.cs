@@ -22,6 +22,12 @@ public class CameraController : MonoBehaviour
     private Vector3 moveVelocity;
     public Vector3 desiredPosition;
 
+    public float FogStarAdd;
+    public float FogEndAdd;
+
+    public float FogStartMult;
+    public float FogEndMult;
+
     //private void Start()
     //{
     //    SetStartPositionAndSize();
@@ -105,7 +111,12 @@ public class CameraController : MonoBehaviour
 
         var distance = size * CameraDistanceValue0 / Mathf.Tan(CameraGamerObject.fieldOfView * CameraDistanceValue1 * Mathf.Deg2Rad);
 
+
+        RenderSettings.fogStartDistance = distance * FogStartMult + FogStarAdd;
+        RenderSettings.fogEndDistance = distance * FogEndMult + FogEndAdd;
+
         return distance;
+
     }
 
     public void SetStartPositionAndSize()
@@ -115,5 +126,7 @@ public class CameraController : MonoBehaviour
         transform.position = desiredPosition;
 
         CameraGamerObject.orthographicSize = FindRequiredSize();
+
+
     }
 }

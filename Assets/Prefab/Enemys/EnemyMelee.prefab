@@ -566,7 +566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1729841876266512
 GameObject:
   m_ObjectHideFlags: 1
@@ -1566,7 +1566,9 @@ MonoBehaviour:
   UseReloadBar: 0
   maxReloadBar: 0
   curReloadBar: 0
+  curDisplaySteps: 0
   curDisplayReloadBar: 0
+  rechargeActionBarDirectly: 0
   ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
@@ -1596,6 +1598,10 @@ MonoBehaviour:
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
+  AnimationStrings:
+  - MovX
+  AnimationType: 
+  Anim: {fileID: 95145110562039168}
   PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
@@ -1619,9 +1625,6 @@ MonoBehaviour:
   FrameCounterShoot: 0
   EveryXFramesFind: 60
   FrameCounterFind: 0
-  Anim: {fileID: 95145110562039168}
-  AnimationStrings:
-  - isAttacking
   NavAgentSpeed: 0
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:

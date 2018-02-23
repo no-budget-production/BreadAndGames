@@ -1467,14 +1467,28 @@ MonoBehaviour:
   ThisUnityTypeFlags: 2
   CurrentHealth: 100
   MaxHealth: 100
+  HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   DestroyOnDeath: 1
   maxActionPoints: 0
   curActionPoints: 0
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 0
+  maxOverCharge: 0
+  curOverCharge: 0
+  ReloadBar: {fileID: 0}
+  UseReloadBar: 0
+  maxReloadBar: 0
+  curReloadBar: 0
+  curDisplaySteps: 0
+  curDisplayReloadBar: 0
+  rechargeActionBarDirectly: 0
+  ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1483,6 +1497,7 @@ MonoBehaviour:
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
+  ActionPointMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canCurUseRightStick: 1
@@ -1491,13 +1506,21 @@ MonoBehaviour:
   TakeHitPoint: {fileID: 0}
   HealthBar: {fileID: 224163059560306816}
   UseHealthbar: 1
+  HUDHealthBarSlider: {fileID: 0}
+  UseHUDHealthbarSlider: 0
   ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
+  HUDActionPointsBar: {fileID: 0}
+  UseHUDActionPointsBar: 0
   MultiSoundPlayer: {fileID: 114731565633756964}
   ActiveBuffObjects: []
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
+  AnimationStrings:
+  - Skill_0
+  AnimationAreBools: 00
+  Anim: {fileID: 0}
   PlayerStopDistance: 3
 --- !u!114 &114521453037504252
 MonoBehaviour:

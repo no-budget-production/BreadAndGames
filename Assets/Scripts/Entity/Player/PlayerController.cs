@@ -46,12 +46,8 @@ public class PlayerController : Character
     int animIsRunning = Animator.StringToHash("isRunning");
     int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
     int animIsAttacking = Animator.StringToHash("isAttacking");
-    int animSkill_0 = Animator.StringToHash("Skill_0");
-    int animSkill_1 = Animator.StringToHash("Skill_1");
-    //int animSkill_2 = Animator.StringToHash("Skill_2");
     int animIsDead = Animator.StringToHash("isDead");
     int animGetUp = Animator.StringToHash("GetUp");
-    int animSkill_Bool_0 = Animator.StringToHash("Skill_Bool_0");
 
     private Quaternion inputRotation;
 

@@ -8,6 +8,32 @@
     _Invalid = -1
 }
 
+public enum AnimTypes
+{
+    Trigger,
+    Bool,
+    Float,
+    _Length,
+    _Invalid = -1
+}
+
+public enum Anims
+{
+    MovX,
+    MovY,
+    Aim_Amount,
+    isDead,
+    GetUp,
+    isRunning,
+    isAiming,
+    Skill_0,
+    Skill_1,
+    Skill_2,
+    Skill_Bool_0,
+    _Length,
+    _Invalid = -1
+}
+
 [System.Flags]
 public enum UnitTypesFlags
 {

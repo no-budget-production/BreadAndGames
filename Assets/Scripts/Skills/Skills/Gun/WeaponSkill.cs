@@ -74,6 +74,14 @@ public class WeaponSkill : Skill
                 //SoundPlayer.Play();
             }
 
+            if (AnimationStrings[0] != null)
+            {
+                if (AnimationTypes[0] == AnimTypes.Trigger)
+                {
+                    Character.Anim.SetTrigger(AnimationStrings[0]);
+                }
+            }
+
             float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);
 
             float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
