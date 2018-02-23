@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: 845f58b60efc4f34081b0140caf71de0
-timeCreated: 1518797409
+guid: 0a898c8bfb0459b4eb85ab1b67367830
+timeCreated: 1519388019
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: seats_pCube3SG1
-    2100002: car_pCube3SG1
+    2100000: CarBroken01Mat
     2300000: //RootNode
     3300000: //RootNode
     4300000: EnvironmentCar001Broken_Mesh
@@ -52,7 +51,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
@@ -67,7 +66,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
