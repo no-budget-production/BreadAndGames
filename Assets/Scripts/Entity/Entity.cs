@@ -86,6 +86,10 @@ public class Entity : MonoBehaviour
         if (CurrentHealth == MaxHealth)
             return false;
         CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
+        if (CurrentHealth > 0)
+        {
+            isDeadTrigger = false;
+        }
         return true;
     }
 }
