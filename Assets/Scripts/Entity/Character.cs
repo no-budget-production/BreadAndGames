@@ -128,6 +128,20 @@ public class Character : Entity
     {
         base.TakeDamage(damage, damageType);
 
+        if (isDeadTrigger)
+        {
+            if (!DestroyOnDeath)
+            {
+                for (int i = 0; i < ActiveBuffObjects.Count; i++)
+                {
+                    AddBuff(ActiveBuffObjects[i].BuffObject, -1, GetComponent<Character>());
+                }
+                canWalk = false;
+                canUseRightStick = false;
+                canUseSkills = false;
+            }
+        }
+
         if (UseHealthbar)
         {
             OnChangeHealth(CurrentHealth);
