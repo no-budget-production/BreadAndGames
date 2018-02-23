@@ -52,8 +52,18 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     }
 
+    void CheatButton()
+    {
+        if (Input.GetButtonDown("[3]"))
+        {
+            startArenaEvent = true;
+        }
+    }
+
     void Update()
     {
+        CheatButton();
+
         //if (!Application.isPlaying)
         //{
         //    WaveNames = new string[amountOfWaves];
