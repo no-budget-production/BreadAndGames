@@ -112,7 +112,6 @@ public class PlayerController : Character
             curSkill.SkillNumber = i;
             ActiveSkills[i] = curSkill;
 
-
             for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
             {
                 usedButtons[tempIJ] = PlayerSkills[i].ButtonStringBC[j].ButtonID;
@@ -286,6 +285,6 @@ public class PlayerController : Character
         if (!moveable)
             return;
         myController.AddForce(moveVector * acceleration * Time.deltaTime);
-        myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax);
+        myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax * MoveSpeedMultiplicator);
     }
 }

@@ -108,8 +108,6 @@ public class Punch : Skill
                     punchCount++;
                     //Debug.Log("//////////////////////////////////////////////////////////////////////////punchCount " + punchCount);
                     DeadlDamage();
-                    curChargeTime = 0;
-                    curDamageBonus = 0;
                     Character.AddBuff(ChargingBuff, -1, Character);
                 }
             }
@@ -117,8 +115,6 @@ public class Punch : Skill
             {
                 //Debug.Log("###############################################################NoEnerhyPuncch ");
                 DeadlDamage();
-                curChargeTime = 0;
-                curDamageBonus = 0;
                 Character.AddBuff(ChargingBuff, -1, Character);
             }
         }
@@ -134,8 +130,6 @@ public class Punch : Skill
 
             Character.SpendActionPoints(energyCosts);
             DeadlDamage();
-            curChargeTime = 0;
-            curDamageBonus = 0;
         }
 
 
@@ -228,16 +222,16 @@ public class Punch : Skill
         Character.curOverCharge = Character.curActionPoints;
         Character.OnChangeOverchargeSlider();
 
+        Debug.Log("ResetBool?!?");
+
         if (canCharge)
         {
-            if (AnimationStrings[0] != null)
-            {
-                if (AnimationTypes[0] == AnimTypes.Bool)
-                {
-                    Character.Anim.SetBool(AnimationStrings[0], false);
-                    Debug.Log("ResetBool");
-                }
-            }
+            Character.Anim.SetBool(AnimationStrings[0], false);
+            Debug.Log("ResetBool");
+
         }
+
+        curChargeTime = 0;
+        curDamageBonus = 0;
     }
 }
