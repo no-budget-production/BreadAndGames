@@ -287,4 +287,14 @@ public class PlayerController : Character
         myController.AddForce(moveVector * acceleration * Time.deltaTime);
         myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax * MoveSpeedMultiplicator);
     }
+
+    public override void TakeDamage(float damage, DamageType damageType)
+    {
+        base.TakeDamage(damage, damageType);
+
+        if (isDeadTrigger)
+        {
+            Anim.SetTrigger(animIsDead);
+        }
+    }
 }

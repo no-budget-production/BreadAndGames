@@ -123,18 +123,10 @@ public class Character : Entity
         }
     }
 
+
     public override void TakeDamage(float damage, DamageType damageType)
     {
         base.TakeDamage(damage, damageType);
-
-        //if (MultiSoundPlayer != null)
-        //{
-        //    if (Time.time > nextSoundTime)
-        //    {
-        //        MultiSoundPlayer.TakingDamageSound();
-        //        nextSoundTime = Time.time + SBetweenSounds + MultiSoundPlayer.GetClipLenght();
-        //    }
-        //}
 
         if (UseHealthbar)
         {
