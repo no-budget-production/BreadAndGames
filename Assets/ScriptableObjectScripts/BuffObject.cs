@@ -24,8 +24,8 @@ public enum BuffTypes
 
     HealingMelee,
     HealingShooter,
-    HealingDrone,
-    HealingDroneReturn,
+    IsHealingMelee,
+    IsHealingShooter,
 
     EnemyMeleeWeapon,
     EnemyRangedWeapon,
