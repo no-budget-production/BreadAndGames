@@ -6,6 +6,7 @@ public class Revive : Skill
 {
     public float ReviveRange;
     public float ReviveHealthMulti;
+    public BuffObject ReviveCoolDownBuff;
 
     public override void Shoot()
     {
@@ -23,6 +24,7 @@ public class Revive : Skill
         }
 
         Character.AddBuff(BuffObject, 1, Character);
+        Character.AddBuff(ReviveCoolDownBuff, 1, Character);
 
         var tempPlayer = Character.GetComponent<PlayerController>();
         if (tempPlayer == null)

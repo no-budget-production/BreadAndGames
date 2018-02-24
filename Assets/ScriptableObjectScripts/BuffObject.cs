@@ -31,6 +31,7 @@ public enum BuffTypes
     EnemyRangedWeapon,
 
     Revive,
+    ReviveCooldown,
 
     _Length,
     _Invalid = -1
