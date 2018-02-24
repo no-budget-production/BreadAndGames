@@ -31,15 +31,19 @@ public class PhaseOneLevelScript : MonoBehaviour
     public int Wave2AmountOfEnemys;
     public int Wave3AmountOfEnemys;
     public int Wave4AmountOfEnemys;
+    public int Wave5AmountOfEnemys;
 
     public ArenaSpawner[] spawner;
 
-    private WaveStatusReport[] WaveStatus = new WaveStatusReport[4];
+    private WaveStatusReport[] WaveStatus = new WaveStatusReport[5];
+
+    private int AmountOfSpawnedEnemysInCurrentWave;
+    public int _AmountOfSpawnedEnemysInCurrentWave { get { return AmountOfSpawnedEnemysInCurrentWave; } set { AmountOfSpawnedEnemysInCurrentWave = value; } }
 
     //public WaveArray[] currentWave;
 
     //private string[] WaveNames;
-    
+
 
     void Start()
     {
@@ -63,6 +67,13 @@ public class PhaseOneLevelScript : MonoBehaviour
         //        WaveNames[i] = "Wave" + (i + 1);
         //    }
         //}
+
+        // Debug
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            startArenaEvent = true;
+        }
+
         if (startArenaEvent)
         {
             WaveStatus[0] = WaveStatusReport.begin;
@@ -74,38 +85,51 @@ public class PhaseOneLevelScript : MonoBehaviour
             // Start of the Wave1
             if (!(WaveStatus[0] == WaveStatusReport.end) && !(WaveStatus[0] == WaveStatusReport.off))
             {
-                StartWave(Wave1AmountOfEnemys, 0);
+                StartWave(Wave1AmountOfEnemys, 0, false);
             }
             // Start of the Wave2
             if (!(WaveStatus[1] == WaveStatusReport.end) && !(WaveStatus[1] == WaveStatusReport.off))
             {
-                Debug.Log("dsagsdg");
-                StartWave(Wave2AmountOfEnemys, 1);
+                StartWave(Wave2AmountOfEnemys, 1, false);
             }
             // Start of the Wave3
             if (!(WaveStatus[2] == WaveStatusReport.end) && !(WaveStatus[2] == WaveStatusReport.off))
             {
-                StartWave(Wave3AmountOfEnemys, 2);
+                StartWave(Wave3AmountOfEnemys, 2, false);
             }
             // Start of the Wave4
             if (!(WaveStatus[3] == WaveStatusReport.end) && !(WaveStatus[3] == WaveStatusReport.off))
             {
-                StartWave(Wave4AmountOfEnemys, 3);
+                StartWave(Wave4AmountOfEnemys, 3, false);
+            }
+            // Start of final Wave (transition to phase 2)
+            if (!(WaveStatus[4] == WaveStatusReport.end) && !(WaveStatus[4] == WaveStatusReport.off))
+            {
+                StartWave(Wave5AmountOfEnemys, 4, true);
             }
         }
     }
 
-    void StartWave(int AmountOfEnemys, int WaveArrayNumber)
+    void StartWave(int AmountOfEnemys, int WaveArrayNumber, bool isFinalWave)
     {
+        float amountOfEnemysHelper = AmountOfEnemys / spawner.Length;
         if (!(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.ready) && !(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
         {
             for (int i = 0; i < spawner.Length; i++)
             {
-                spawner[i].SpawnRate = Random.Range(0.0f, 2.0f);
-                spawner[i].AmountToSpawn = AmountOfEnemys / spawner.Length %+ AmountOfEnemys;
-                spawner[i].StartSpawn();
-                this.WaveStatus[WaveArrayNumber] = WaveStatusReport.ready;
+                spawner[i]._AmountOfEnemys = amountOfEnemysHelper;
+                if (isFinalWave)
+                {
+                    spawner[i]._Interval = Random.Range(2f, 15f);
+                }
+                else
+                {
+                    spawner[i]._Interval = Random.Range(2f, 5f);
+                }
+                spawner[i].enabled = true;
+                spawner[i]._StartSpawning = true;
             }
+            this.WaveStatus[WaveArrayNumber] = WaveStatusReport.ready;
         }
 
         
@@ -113,9 +137,12 @@ public class PhaseOneLevelScript : MonoBehaviour
         {
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.running;
         }
-        if (GameManager.Instance.Enemies.Count == 0 && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
+        if ((AmountOfSpawnedEnemysInCurrentWave >= AmountOfEnemys) && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
         {
-            StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
+            if (GameManager.Instance.Enemies.Count == 0)
+            {
+                StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
+            }
         }
     }
 
@@ -127,14 +154,18 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     }
 
+
     void WaveEnd(int WaveArrayNumber)
     {
         if (WaveStatus[WaveArrayNumber] == WaveStatusReport.running)
         {
             for (int i = 0; i < spawner.Length; i++)
             {
+                spawner[i].enabled = false;
+                spawner[i]._StartSpawning = false;
                 spawner[i]._SpawnedEnemys = 0;
             }
+            AmountOfSpawnedEnemysInCurrentWave = 0;
             WaveStatus[WaveArrayNumber] = WaveStatusReport.end;     // End of Wave
 
             if (!(WaveArrayNumber + 1 >= WaveStatus.Length))
@@ -144,6 +175,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         }
     }
+
 
 
 }
