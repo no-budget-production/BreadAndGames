@@ -87,6 +87,12 @@ public class Punch : Skill
 
         if (canCharge)
         {
+            Debug.Log("!! CanWalk");
+
+            Character.canWalk = false;
+
+            Character.AddBuff(ChargingBuff, 1, Character);
+
             if (AnimationStrings[0] != null)
             {
                 if (AnimationTypes[0] == AnimTypes.Bool)
@@ -97,9 +103,6 @@ public class Punch : Skill
 
             if (Character.curActionPoints - energyCosts > 0)
             {
-                Character.canWalk = false;
-                Character.AddBuff(ChargingBuff, 1, Character);
-
                 //Debug.Log("Character.AddBuff");
 
                 curChargeTime += Time.deltaTime;
@@ -184,10 +187,7 @@ public class Punch : Skill
 
         curChargeTime = 0;
 
-        if (canCharge)
-        {
-            Character.AddBuff(ChargingBuff, -1, Character);
-        }
+
 
         //Debug.Log("###############################################################QUICKPUNCH -------------------------------- ");
 
@@ -203,26 +203,6 @@ public class Punch : Skill
             //SoundPlayer.Play();
         }
 
-        for (int i = 0; i < HitBox.Enemies.Count; i++)
-        {
-            if (HitBox.Enemies[i] == null)
-            {
-                HitBox.Enemies.Remove(HitBox.Enemies[i]);
-                i--;
-                continue;
-            }
-
-            if (Debuff != null)
-            {
-                var temp = HitBox.Enemies[i].GetComponent<Character>();
-                if (temp != null)
-                {
-                    temp.AddBuff(Debuff, 1, Character);
-                }
-            }
-
-            HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
-        }
 
         Character.curOverCharge = Character.curActionPoints;
         Character.OnChangeOverchargeSlider();
@@ -263,6 +243,11 @@ public class Punch : Skill
             }
 
             HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+        }
+
+        if (canCharge)
+        {
+            Character.AddBuff(ChargingBuff, -1, Character);
         }
     }
 

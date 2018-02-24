@@ -128,9 +128,9 @@ public class Character : Entity
 
     public virtual void Enable()
     {
-        canWalk = true;
-        canUseRightStick = true;
-        canUseSkills = true;
+        //canWalk = true;
+        //canUseRightStick = true;
+        //canUseSkills = true;
     }
 
     public virtual void OnDestroy()
@@ -340,27 +340,27 @@ public class Character : Entity
                 }
                 //
 
+                if (ActiveBuffObjects[i].BuffObject.disableWalking)
+                {
+                    canWalkAgainCount++;
+                }
+
+                if (ActiveBuffObjects[i].BuffObject.disableRightStick)
+                {
+                    canUseRightStickAgainCount++;
+                }
+
+                if (ActiveBuffObjects[i].BuffObject.disableSkills)
+                {
+                    canUseSkillsAgainCount++;
+                }
+
                 if (!ActiveBuffObjects[i].BuffObject.isPermanent)
                 {
                     ActiveBuffObjects[i].BuffCurTime += Time.deltaTime;
 
                     if (ActiveBuffObjects[i].BuffObject.maxTime < ActiveBuffObjects[i].BuffCurTime)
                     {
-                        if (ActiveBuffObjects[i].BuffObject.disableWalking)
-                        {
-                            canWalkAgainCount++;
-                        }
-
-                        if (ActiveBuffObjects[i].BuffObject.disableRightStick)
-                        {
-                            canUseRightStickAgainCount++;
-                        }
-
-                        if (ActiveBuffObjects[i].BuffObject.disableSkills)
-                        {
-                            canUseSkillsAgainCount++;
-                        }
-
                         BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
                         BuffEnd(ActiveBuffObjects[i].BuffObject, ActiveBuffObjects[i].Character);
                         ActiveBuffObjects.RemoveAt(i);
@@ -374,11 +374,11 @@ public class Character : Entity
                 }
             }
 
-            if (expired)
+            //if (expired)
             {
                 if (!canWalk)
                 {
-                    if (canWalkAgainCount <= 1)
+                    if (canWalkAgainCount <= 0)
                     {
                         canWalk = true;
                     }
@@ -387,7 +387,7 @@ public class Character : Entity
                 {
                     if (!canCurUseRightStick)
                     {
-                        if (canUseRightStickAgainCount <= 1)
+                        if (canUseRightStickAgainCount <= 0)
                         {
                             canUseRightStick = true;
                         }
@@ -395,7 +395,7 @@ public class Character : Entity
                 }
                 if (!canUseSkills)
                 {
-                    if (canUseSkillsAgainCount <= 1)
+                    if (canUseSkillsAgainCount <= 0)
                     {
                         canUseSkills = true;
                     }

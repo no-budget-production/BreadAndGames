@@ -93,13 +93,13 @@ public class Healing : Skill
             return;
         }
 
-        if (true)
+        if (!((HealAmount != 0) && (CurrentTarget.CurrentHealth < CurrentTarget.MaxHealth) || ((ActionPointAmount != 0) && (CurrentTarget.curActionPoints < CurrentTarget.maxActionPoints) && CurrentTarget.rechargeActionBarDirectly) || ((ReloadAmount != 0) && (CurrentTarget.curReloadBar < CurrentTarget.maxReloadBar) && !CurrentTarget.rechargeActionBarDirectly)))
         {
-
+            return;
         }
 
 
-        if (!((HealAmount != 0) && (CurrentTarget.CurrentHealth < CurrentTarget.MaxHealth) || ((ActionPointAmount != 0) && (CurrentTarget.curActionPoints < CurrentTarget.maxActionPoints) && CurrentTarget.rechargeActionBarDirectly) || ((ReloadAmount != 0) && (CurrentTarget.curReloadBar < CurrentTarget.maxReloadBar) && !CurrentTarget.rechargeActionBarDirectly)))
+        if (!InRange())
         {
             return;
         }
