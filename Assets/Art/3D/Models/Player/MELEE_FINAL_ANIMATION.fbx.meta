@@ -214,7 +214,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.95173746
+        functionName: SkillHit
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 204a8e9375990624eab9d4c5808fa3bc,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -298,7 +306,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.1891892
+        functionName: SkillHit
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 204a8e9375990624eab9d4c5808fa3bc,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

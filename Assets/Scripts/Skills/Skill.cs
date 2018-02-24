@@ -7,8 +7,9 @@ public class Skill : MonoBehaviour
     [Header(">>>>>>>>>> Skill:")]
 
     public SkillType SkillType;
-    public Character Character;
+    public int SkillNumber;
 
+    [HideInInspector]
     public bool isFiring;
     public Transform SkillSpawn;
     public BuffObject BuffObject;
@@ -24,7 +25,9 @@ public class Skill : MonoBehaviour
     public AnimTypes[] AnimationTypes;
 
     [Header("<<<<<<<<<< Skill:")]
-    public int SkillNumber;
+
+    [HideInInspector]
+    public Character Character;
 
     public virtual void OneShoot()
     {
@@ -42,6 +45,11 @@ public class Skill : MonoBehaviour
     }
 
     public virtual void LateSkillSetup()
+    {
+
+    }
+
+    public virtual void SkillHit()
     {
 
     }

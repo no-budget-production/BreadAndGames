@@ -98,7 +98,7 @@ public class Character : Entity
 
     public List<Buff> ActiveBuffs;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Animator Anim;
 
     public virtual void OnDestroy()
@@ -480,5 +480,11 @@ public class Character : Entity
         {
             ReloadBar.value = curDisplayReloadBar;
         }
+    }
+
+    public virtual void SkillHit(int Skillnumber)
+    {
+        Debug.Log("ARRIVED AnimationHelper Skill_" + Skillnumber);
+        ActiveSkills[Skillnumber].SkillHit();
     }
 }

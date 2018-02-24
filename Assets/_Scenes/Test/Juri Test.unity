@@ -16440,7 +16440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 0
-  Character: {fileID: 0}
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 0}
@@ -16451,7 +16451,7 @@ MonoBehaviour:
   HasAnimation: 0
   AnimationStrings: []
   AnimationTypes: 
-  SkillNumber: 0
+  Character: {fileID: 0}
   Muzzle: {fileID: 622301521}
   Projectile: {fileID: 114397302490237756, guid: f02f7399b72f0de4482dcbedb5028193,
     type: 2}
@@ -21010,12 +21010,12 @@ Prefab:
     - target: {fileID: 224150669759703492, guid: eebda17a53ecf6d43b9561bddf83dcc7,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224150669759703492, guid: eebda17a53ecf6d43b9561bddf83dcc7,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eebda17a53ecf6d43b9561bddf83dcc7, type: 2}

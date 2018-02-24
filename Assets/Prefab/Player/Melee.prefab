@@ -640,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4516403134527630}
   - component: {fileID: 95209346617654616}
+  - component: {fileID: 114628933966912592}
   m_Layer: 0
   m_Name: MELEE_FINAL_ANIMATION
   m_TagString: Untagged
@@ -1483,17 +1484,8 @@ MonoBehaviour:
   DestroyOnDeath: 0
   maxActionPoints: 100
   curActionPoints: 100
-  OverChargeBar: {fileID: 0}
-  UseOverChargeBar: 1
-  maxOverCharge: 100
-  curOverCharge: 100
-  ReloadBar: {fileID: 0}
-  UseReloadBar: 0
   maxReloadBar: 0
   curReloadBar: 0
-  curDisplaySteps: 0
-  curDisplayReloadBar: 0
-  rechargeActionBarDirectly: 1
   ActionPointRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
@@ -1518,6 +1510,15 @@ MonoBehaviour:
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
   UseHUDActionPointsBar: 1
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 1
+  maxOverCharge: 100
+  curOverCharge: 100
+  ReloadBar: {fileID: 0}
+  UseReloadBar: 0
+  curDisplaySteps: 0
+  curDisplayReloadBar: 0
+  rechargeActionBarDirectly: 1
   MultiSoundPlayer: {fileID: 114062045482434310}
   ActiveBuffObjects: []
   SBetweenSounds: 1
@@ -1587,6 +1588,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114628933966912592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948657137727218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204a8e9375990624eab9d4c5808fa3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character: {fileID: 114422117127842328}
 --- !u!114 &114656760850051692
 MonoBehaviour:
   m_ObjectHideFlags: 1

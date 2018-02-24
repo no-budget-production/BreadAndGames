@@ -237,4 +237,31 @@ public class Punch : Skill
         curChargeTime = 0;
         curDamageBonus = 0;
     }
+
+    public override void SkillHit()
+    {
+        Debug.Log("Skill Hit: " + gameObject.name);
+
+        for (int i = 0; i < HitBox.Enemies.Count; i++)
+        {
+            if (HitBox.Enemies[i] == null)
+            {
+                HitBox.Enemies.Remove(HitBox.Enemies[i]);
+                i--;
+                continue;
+            }
+
+            if (Debuff != null)
+            {
+                var temp = HitBox.Enemies[i].GetComponent<Character>();
+                if (temp != null)
+                {
+                    temp.AddBuff(Debuff, 1, Character);
+                }
+            }
+
+            HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+        }
+    }
+
 }
