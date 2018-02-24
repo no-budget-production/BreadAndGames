@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 114422117127842328}
   - component: {fileID: 114062045482434310}
   - component: {fileID: 208512701987303408}
-  - component: {fileID: 65451259942637242}
+  - component: {fileID: 136571544001099200}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Melee
@@ -1218,26 +1218,14 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143050206337656}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0.5
-  m_AngularDrag: 100000
+  m_Mass: 300
+  m_Drag: 0
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65451259942637242
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1143050206337656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &82047039485331390
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1569,8 +1557,8 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114008890782351200, guid: aed2844c20d82a248be291988f7c176b, type: 2}
   Deadzone: 0.19
-  acceleration: 1100
-  deceleration: 1200
+  acceleration: 2500
+  deceleration: 1000
   moveSpeedMax: 5
   TurnSpeed: 8
   rotatable: 1
@@ -1683,6 +1671,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!136 &136571544001099200
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143050206337656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &137248561331954474
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
