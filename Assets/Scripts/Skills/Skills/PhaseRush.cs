@@ -48,7 +48,7 @@ public class PhaseRush : Skill
         Character.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
         Character.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-        controller.myController.AddForce(controller.transform.forward * speed);
+        controller.rb.AddForce(controller.transform.forward * speed);
 
         if (curCharges == 0) {
             checkToNextChargeTest.Add(Time.time + rechargeTime);
@@ -62,7 +62,7 @@ public class PhaseRush : Skill
     public void phaseRushStop()
     {
         Destroy(curThunder.gameObject);
-        controller.myController.velocity = Vector3.zero;
+        controller.rb.velocity = Vector3.zero;
         controller.canUseSkills = true;
         controller.rotatable = true;
         controller.moveable = true;

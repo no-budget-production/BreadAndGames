@@ -60,7 +60,8 @@ public class PlayerController : Character
     public Vector3 moveVector;
     public Vector3 lookVector;
 
-    public Rigidbody myController;
+    [HideInInspector]
+    public Rigidbody rb;
 
     private Vector3 currentMovement;
     public float acceleration;
@@ -69,6 +70,11 @@ public class PlayerController : Character
     public float TurnSpeed;
     public bool rotatable = true;
     public bool moveable = true;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     public override void Start()
     {
@@ -181,7 +187,7 @@ public class PlayerController : Character
         if (isUsingRightStick && rotatable)
         {
             Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(lookVector, transform.up), TurnSpeed * Time.deltaTime);
-            myController.rotation = newLookDirection;
+            rb.rotation = newLookDirection;
         }
 
         if (canWalk)
@@ -200,20 +206,20 @@ public class PlayerController : Character
                 if (!isUsingRightStick && rotatable)
                 {
                     Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(moveVector, transform.up), TurnSpeed * Time.deltaTime);
-                    myController.rotation = newLookDirection;
+                    rb.rotation = newLookDirection;
                 }
                 Walk();
             }
             else
             {
                 currentMovement = Vector3.zero;
-                if (myController.velocity.magnitude > 0.2f)
+                if (rb.velocity.magnitude > 0.2f)
                 {
-                    myController.AddForce(-myController.velocity * deceleration * Time.deltaTime);
+                    rb.AddForce(-rb.velocity * deceleration * Time.deltaTime, ForceMode.Acceleration);
                 }
                 else
                 {
-                    myController.velocity = Vector3.zero;
+                    rb.velocity = Vector3.zero;
                 }
             }
         }
@@ -273,6 +279,11 @@ public class PlayerController : Character
         }
     }
 
+    //void FixedUpdate()
+    //{
+    //    Move();
+    //}
+
     public override void Update()
     {
         CheckButtonInput();
@@ -284,8 +295,8 @@ public class PlayerController : Character
     {
         if (!moveable)
             return;
-        myController.AddForce(moveVector * acceleration * Time.deltaTime);
-        myController.velocity = Vector3.ClampMagnitude(myController.velocity, moveSpeedMax * MoveSpeedMultiplicator);
+        rb.AddForce(moveVector * acceleration * Time.deltaTime, ForceMode.Acceleration);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeedMax * MoveSpeedMultiplicator);
     }
 
     public override void TakeDamage(float damage, DamageType damageType)

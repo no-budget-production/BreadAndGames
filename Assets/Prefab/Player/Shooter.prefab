@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 136286705433390594}
   - component: {fileID: 114799034168502476}
   - component: {fileID: 114303827818326802}
+  - component: {fileID: 208169104012267150}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Shooter
@@ -3250,7 +3251,7 @@ MonoBehaviour:
   VerticalLook_PX: 0
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
-  myController: {fileID: 54093522444489436}
+  rb: {fileID: 0}
   acceleration: 3500
   deceleration: 120
   moveSpeedMax: 6
@@ -3445,6 +3446,21 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00008883397, y: 0.009746353, z: 0.00052807364}
     m_Extent: {x: 0.0072633857, y: 0.010642148, z: 0.0058072377}
   m_DirtyAABB: 0
+--- !u!208 &208169104012267150
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584756593326210}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222031644433737874
 CanvasRenderer:
   m_ObjectHideFlags: 1

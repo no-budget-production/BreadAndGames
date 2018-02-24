@@ -162,9 +162,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4613099269740536}
   - component: {fileID: 54792642140107436}
-  - component: {fileID: 136724789527746718}
   - component: {fileID: 114422117127842328}
   - component: {fileID: 114062045482434310}
+  - component: {fileID: 208512701987303408}
+  - component: {fileID: 65451259942637242}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Melee
@@ -1225,6 +1226,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &65451259942637242
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143050206337656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &82047039485331390
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1470,8 +1483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisUnityTypeFlags: 1
-  CurrentHealth: 1500
-  MaxHealth: 1500
+  CurrentHealth: 3000
+  MaxHealth: 3000
   HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
@@ -1569,7 +1582,7 @@ MonoBehaviour:
   VerticalLook_PX: 0
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
-  myController: {fileID: 54792642140107436}
+  rb: {fileID: 0}
   acceleration: 1100
   deceleration: 1200
   moveSpeedMax: 5
@@ -1681,19 +1694,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!136 &136724789527746718
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1143050206337656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &137248561331954474
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1759,6 +1759,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.0144691635, z: 0.0010396121}
     m_Extent: {x: 0.026548974, y: 0.016029002, z: 0.0086095}
   m_DirtyAABB: 0
+--- !u!208 &208512701987303408
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143050206337656}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222113195791850482
 CanvasRenderer:
   m_ObjectHideFlags: 1

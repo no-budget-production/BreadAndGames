@@ -102,7 +102,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             for (int i = 0; i < spawner.Length; i++)
             {
                 spawner[i].SpawnRate = Random.Range(0.0f, 2.0f);
-                spawner[i].AmountToSpawn = AmountOfEnemys / spawner.Length;
+                spawner[i].AmountToSpawn = AmountOfEnemys / spawner.Length %+ AmountOfEnemys;
                 spawner[i].StartSpawn();
                 this.WaveStatus[WaveArrayNumber] = WaveStatusReport.ready;
             }

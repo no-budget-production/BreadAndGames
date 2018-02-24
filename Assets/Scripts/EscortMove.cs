@@ -5,6 +5,12 @@ using UnityEngine.AI;
 
 public class EscortMove : MonoBehaviour
 {
+    public bool startEscortEvent;
+
+    public float energyMax;
+    [Range(0f, 100f)]
+    public float energy;
+
     public int firstStopWaypoint;
     public float firstStopWaitTime;
     public GameObject FirstBlockade;
@@ -16,13 +22,14 @@ public class EscortMove : MonoBehaviour
     public int thirdStopBlockWaypoint;
     public float thirdStopWaittime;
     public GameObject thirdBlockade;
-
-    public bool startEscortEvent;
+    
     public Transform[] points;
 
 
     private int destPoint = 0;
     private NavMeshAgent agent;
+    private float AgentLeechSpeed;
+    private float AgentSpeedStep;
 
     private bool FirstPhaseFinished;
     private bool SecondPhaseFinished;
@@ -38,6 +45,8 @@ public class EscortMove : MonoBehaviour
         FirstPhaseFinished = false;
         SecondPhaseFinished = false;
         ThirdPhaseFinished = false;
+
+        AgentSpeedStep = agent.speed / energyMax;         // 
     }
 
 
@@ -61,6 +70,9 @@ public class EscortMove : MonoBehaviour
 
     void Update()
     {
+        AgentLeechSpeed = energy * AgentSpeedStep;
+        agent.speed = AgentLeechSpeed;
+
         if (startEscortEvent)
         {
             if (!FirstPhaseFinished)

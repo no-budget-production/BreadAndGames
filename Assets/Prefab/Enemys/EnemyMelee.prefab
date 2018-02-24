@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 82262388361476194}
   - component: {fileID: 114989625834042308}
   - component: {fileID: 54458973079174632}
-  - component: {fileID: 65892178683052854}
+  - component: {fileID: 136128243448344202}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -1300,23 +1300,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65892178683052854
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724353408865596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 2, z: 0.6}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &82262388361476194
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1626,6 +1614,19 @@ MonoBehaviour:
   EveryXFramesFind: 60
   FrameCounterFind: 0
   NavAgentSpeed: 0
+--- !u!136 &136128243448344202
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724353408865596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!137 &137982940135223188
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1709,17 +1710,17 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 8
-  m_Acceleration: 8
+  m_Acceleration: 1000
   avoidancePriority: 50
   m_AngularSpeed: 128
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 4
 --- !u!222 &222661677454500220
 CanvasRenderer:
   m_ObjectHideFlags: 1
