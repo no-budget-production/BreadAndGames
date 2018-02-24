@@ -90,6 +90,10 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0.02
   cantStack: 0
+  HasAnimation: 0
+  AnimationStrings: []
+  AnimationTypes: 
+  SkillNumber: 0
   LineRenderer: {fileID: 120803723628524548}
   CurrentTarget: {fileID: 0}
   CurrentTargetTransform: {fileID: 0}
@@ -99,6 +103,8 @@ MonoBehaviour:
   SkillRequired: {fileID: 114940261459285084, guid: a094c9a21824ee74ea1ff86bb556bd62,
     type: 2}
   HealAmount: 20
+  ActionPointAmount: 20
+  ReloadAmount: 20
   MaxRange: 13
 --- !u!120 &120803723628524548
 LineRenderer:

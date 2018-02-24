@@ -25,21 +25,8 @@ public class Character : Entity
     public float maxActionPoints;
     public float curActionPoints;
 
-    [HideInInspector]
-    public Slider OverChargeBar;
-    public bool UseOverChargeBar;
-    public float maxOverCharge;
-    public float curOverCharge;
-
-    [HideInInspector]
-    public Slider ReloadBar;
-    public bool UseReloadBar;
     public float maxReloadBar;
     public float curReloadBar;
-    public float curDisplaySteps;
-    public int curDisplayReloadBar;
-
-    public bool rechargeActionBarDirectly;
 
     public float ActionPointRegeneration;
 
@@ -64,12 +51,12 @@ public class Character : Entity
     public bool canCurUseRightStick = true;
     public bool canUseSkills = true;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Transform SkillSpawn;
-    [HideInInspector]
+    //[HideInInspector]
     public Transform TakeHitPoint;
 
-    [HideInInspector]
+    //[HideInInspector]
     public RectTransform HealthBar;
     public bool UseHealthbar;
 
@@ -77,7 +64,7 @@ public class Character : Entity
     public Slider HUDHealthBarSlider;
     public bool UseHUDHealthbarSlider;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Slider ActionPointsBar;
     public bool UseActionPointsBar;
 
@@ -86,6 +73,20 @@ public class Character : Entity
     public bool UseHUDActionPointsBar;
 
     [HideInInspector]
+    public Slider OverChargeBar;
+    public bool UseOverChargeBar;
+    public float maxOverCharge;
+    public float curOverCharge;
+
+    [HideInInspector]
+    public Slider ReloadBar;
+    public bool UseReloadBar;
+    public float curDisplaySteps;
+    public int curDisplayReloadBar;
+
+    public bool rechargeActionBarDirectly;
+
+    //[HideInInspector]
     public MultiSoundPlayer MultiSoundPlayer;
 
     public List<ActiveBuffObject> ActiveBuffObjects;
@@ -437,40 +438,6 @@ public class Character : Entity
     {
         curDisplayReloadBar = Mathf.RoundToInt(curReloadBar / curDisplaySteps);
     }
-
-    //public void SpendActionPoints(float costs)
-    //{
-    //    curActionPoints = Mathf.Max(curActionPoints - (Time.deltaTime * costs), 0);
-
-    //    if (UseActionPointsBar)
-    //    {
-    //        OnActionBarChange();
-    //    }
-
-    //    if (UseHUDActionPointsBar)
-    //    {
-    //        OnHUDActionBarChange();
-    //    }
-    //}
-
-    //public float RestoreActionPoints(float restore)
-    //{
-    //    var tempActionPoints = Mathf.Min(curActionPoints + (Time.deltaTime * restore), maxActionPoints);
-    //    var dif = tempActionPoints - curActionPoints;
-    //    curActionPoints = tempActionPoints;
-
-    //    if (UseActionPointsBar)
-    //    {
-    //        OnActionBarChange();
-    //    }
-
-    //    if (UseHUDActionPointsBar)
-    //    {
-    //        OnHUDActionBarChange();
-    //    }
-
-    //    return dif;
-    //}
 
     public void EmptySound()
     {

@@ -14,9 +14,14 @@ public class Healing : Skill
     public Skill SkillRequired;
 
     public float HealAmount = 2.0f;
+    public float ActionPointAmount = 2.0f;
+    public float ReloadAmount = 2.0f;
+
     public float MaxRange;
 
     private float healProcentage;
+    private float actionProcentage;
+    private float reloadProcentage;
 
     Vector3 direction;
 
@@ -30,6 +35,8 @@ public class Healing : Skill
         CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
         CurrentTargetTransform = CurrentTarget.TakeHitPoint;
         healProcentage = CurrentTarget.MaxHealth * 0.01f * HealAmount;
+        actionProcentage = CurrentTarget.maxActionPoints * 0.01f * ActionPointAmount;
+        reloadProcentage = CurrentTarget.maxReloadBar * 0.01f * ReloadAmount;
     }
 
     public void FindDrone()
@@ -148,8 +155,23 @@ public class Healing : Skill
         Entity healableObject = hit.collider.GetComponent<Entity>();
         if (healableObject != null)
         {
+            var tempCharacter = healableObject.GetComponent<Character>();
+
             if (BuffObject.HasEffectWith(Character.ActiveBuffObjects))
             {
+
+                if (tempCharacter != null)
+                {
+                    if (!tempCharacter.rechargeActionBarDirectly)
+                    {
+                        tempCharacter.RestoreReloadPoints(reloadProcentage * 0.5f * Time.deltaTime);
+                    }
+                    else
+                    {
+                        tempCharacter.RestoreActionPoints(actionProcentage * 0.5f * Time.deltaTime);
+                    }
+                }
+
                 healableObject.GetHealth(healProcentage * 0.5f * Time.deltaTime);
 
                 if (!isHalfWidthLineRenderer)
@@ -160,6 +182,18 @@ public class Healing : Skill
             }
             else
             {
+                if (tempCharacter != null)
+                {
+                    if (!tempCharacter.rechargeActionBarDirectly)
+                    {
+                        tempCharacter.RestoreReloadPoints(reloadProcentage * Time.deltaTime);
+                    }
+                    else
+                    {
+                        tempCharacter.RestoreActionPoints(actionProcentage * Time.deltaTime);
+                    }
+                }
+
                 healableObject.GetHealth(healProcentage * Time.deltaTime);
 
                 if (isHalfWidthLineRenderer)
