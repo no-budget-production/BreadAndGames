@@ -3162,23 +3162,15 @@ MonoBehaviour:
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
-  HealthRegenerationMultiplicator: 0
+  HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
   DestroyOnDeath: 0
   maxActionPoints: 100
   curActionPoints: 100
-  OverChargeBar: {fileID: 0}
-  UseOverChargeBar: 1
-  maxOverCharge: 100
-  curOverCharge: 30
-  ReloadBar: {fileID: 0}
-  UseReloadBar: 1
   maxReloadBar: 100
   curReloadBar: 100
-  curDisplaySteps: 20
-  curDisplayReloadBar: 100
-  rechargeActionBarDirectly: 0
   ActionPointRegeneration: 0
+  ReloadRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -3188,6 +3180,8 @@ MonoBehaviour:
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
   ActionPointMultiplicator: 1
+  ActionPointRegenerationMultiplicator: 1
+  ReloadRegenerationMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canCurUseRightStick: 1
@@ -3202,6 +3196,15 @@ MonoBehaviour:
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
   UseHUDActionPointsBar: 1
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 1
+  maxOverCharge: 100
+  curOverCharge: 30
+  ReloadBar: {fileID: 0}
+  UseReloadBar: 1
+  curDisplaySteps: 20
+  curDisplayReloadBar: 100
+  rechargeActionBarDirectly: 0
   MultiSoundPlayer: {fileID: 114303827818326802}
   ActiveBuffObjects: []
   SBetweenSounds: 1

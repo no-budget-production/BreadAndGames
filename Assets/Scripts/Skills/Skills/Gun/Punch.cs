@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Punch : Skill
 {
+    public float energyCosts;
+
     public DamageType DamageType;
     public PunchCollider HitBox;
 
@@ -15,7 +17,7 @@ public class Punch : Skill
     public float ChargeTime;
     public float curChargeTime;
     public float BonusDamagePerSec;
-    public float energyCosts;
+
 
     public int punchCount;
 

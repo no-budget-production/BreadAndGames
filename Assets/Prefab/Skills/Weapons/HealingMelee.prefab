@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 17
-  Character: {fileID: 0}
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: bd0fe2175fbc4884092d1b5b8b0e0f7f, type: 2}
@@ -93,16 +93,17 @@ MonoBehaviour:
   HasAnimation: 0
   AnimationStrings: []
   AnimationTypes: 
-  SkillNumber: 0
+  Character: {fileID: 0}
+  energyCosts: 0.6
   LineRenderer: {fileID: 120803723628524548}
   CurrentTarget: {fileID: 0}
   CurrentTargetTransform: {fileID: 0}
   BeamOrigin: {fileID: 4598409900153212}
   TargetType: 0
-  CurrentHeal: {fileID: 0}
+  IsHealing: {fileID: 11400000, guid: ca0459b4860543f409cbd847567676b1, type: 2}
   HealAmount: 0
-  ActionPointAmount: 20
-  ReloadAmount: 20
+  ActionPointAmount: 3
+  ReloadAmount: 3
   MaxRange: 13
 --- !u!120 &120803723628524548
 LineRenderer:

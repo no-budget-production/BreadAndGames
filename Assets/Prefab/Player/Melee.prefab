@@ -1479,7 +1479,7 @@ MonoBehaviour:
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
-  HealthRegenerationMultiplicator: 0
+  HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
   DestroyOnDeath: 0
   maxActionPoints: 100
@@ -1487,6 +1487,7 @@ MonoBehaviour:
   maxReloadBar: 0
   curReloadBar: 0
   ActionPointRegeneration: 0
+  ReloadRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1496,6 +1497,8 @@ MonoBehaviour:
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
   ActionPointMultiplicator: 1
+  ActionPointRegenerationMultiplicator: 1
+  ReloadRegenerationMultiplicator: 1
   canWalk: 1
   canUseRightStick: 0
   canCurUseRightStick: 0

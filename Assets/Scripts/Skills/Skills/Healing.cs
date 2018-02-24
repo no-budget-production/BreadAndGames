@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Healing : Skill
 {
+    public float energyCosts;
+
     public LineRenderer LineRenderer;
     public PlayerController CurrentTarget;
     public Transform CurrentTargetTransform;
@@ -11,7 +13,7 @@ public class Healing : Skill
     //public Transform DroneOrigin;
     public PlayerType TargetType;
 
-    public BuffObject CurrentHeal;
+    public BuffObject IsHealing;
 
     //public Skill SkillRequired;
 
@@ -73,6 +75,10 @@ public class Healing : Skill
         //{
         //    FindDrone();
         //}
+        if (Character.curActionPoints - energyCosts < 0)
+        {
+            return;
+        }
 
         if (!BuffObject.isStackable)
         {
@@ -87,11 +93,19 @@ public class Healing : Skill
             return;
         }
 
+        if (true)
+        {
+
+        }
+
+        Character.curActionPoints -= energyCosts * Time.deltaTime;
+
         Character.AddBuff(BuffObject, 1, Character);
 
         LineRenderer.enabled = false;
 
-        if (!InRange())
+
+        if (!((HealAmount != 0) && (CurrentTarget.CurrentHealth < CurrentTarget.MaxHealth) || ((ActionPointAmount != 0) && (CurrentTarget.curActionPoints < CurrentTarget.maxActionPoints) && CurrentTarget.rechargeActionBarDirectly) || ((ReloadAmount != 0) && (CurrentTarget.curReloadBar < CurrentTarget.maxReloadBar) && !CurrentTarget.rechargeActionBarDirectly)))
         {
             return;
         }
@@ -159,8 +173,11 @@ public class Healing : Skill
         {
             var tempCharacter = healableObject.GetComponent<Character>();
 
-            if (BuffObject.HasEffectWith(Character.ActiveBuffObjects))
+            Character.AddBuff(IsHealing, 1, Character);
+
+            if (IsHealing.HasEffectWith(Character.ActiveBuffObjects))
             {
+                Debug.Log("HasEffectWith");
 
                 if (tempCharacter != null)
                 {
@@ -184,6 +201,8 @@ public class Healing : Skill
             }
             else
             {
+                Debug.Log("!HasEffectWith");
+
                 if (tempCharacter != null)
                 {
                     if (!tempCharacter.rechargeActionBarDirectly)

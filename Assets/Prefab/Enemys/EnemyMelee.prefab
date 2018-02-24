@@ -1541,23 +1541,15 @@ MonoBehaviour:
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
-  HealthRegenerationMultiplicator: 0
+  HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100
-  OverChargeBar: {fileID: 0}
-  UseOverChargeBar: 0
-  maxOverCharge: 0
-  curOverCharge: 0
-  ReloadBar: {fileID: 0}
-  UseReloadBar: 0
   maxReloadBar: 0
   curReloadBar: 0
-  curDisplaySteps: 0
-  curDisplayReloadBar: 0
-  rechargeActionBarDirectly: 0
   ActionPointRegeneration: 0
+  ReloadRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
@@ -1567,6 +1559,8 @@ MonoBehaviour:
   AccuracyMultiplicator: 1
   MoveSpeedMultiplicator: 1
   ActionPointMultiplicator: 1
+  ActionPointRegenerationMultiplicator: 1
+  ReloadRegenerationMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
   canCurUseRightStick: 1
@@ -1581,18 +1575,26 @@ MonoBehaviour:
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
   UseHUDActionPointsBar: 0
+  OverChargeBar: {fileID: 0}
+  UseOverChargeBar: 0
+  maxOverCharge: 0
+  curOverCharge: 0
+  ReloadBar: {fileID: 0}
+  UseReloadBar: 0
+  curDisplaySteps: 0
+  curDisplayReloadBar: 0
+  rechargeActionBarDirectly: 0
   MultiSoundPlayer: {fileID: 114650950170363120}
   ActiveBuffObjects: []
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
-  AnimationStrings:
-  - MovX
-  AnimationAreBools: 
   Anim: {fileID: 95145110562039168}
   PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
+  UsedSkills:
+  - {fileID: 114777490603000294, guid: 7ac1bcc7ad1207b448e8faffe357f1d2, type: 2}
   isGameOver: 0
   isAlive: 0
   isInRange: 0
@@ -1601,8 +1603,6 @@ MonoBehaviour:
   MaxShootingRange: 5
   StopRange: 3
   LookDamping: 100
-  UsedSkills:
-  - {fileID: 114777490603000294, guid: 7ac1bcc7ad1207b448e8faffe357f1d2, type: 2}
   EveryXFramesAliveCheck: 1
   FrameCounterAliveCheck: 0
   EveryXFramesDistanceCheck: 2

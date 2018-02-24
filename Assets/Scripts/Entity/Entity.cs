@@ -35,7 +35,7 @@ public class Entity : MonoBehaviour
     public float MeleeArmorMultiplicator;
     [HideInInspector]
     public float RangeArmorMultiplicator;
-    [HideInInspector]
+    //[HideInInspector]
     public float HealthRegenerationMultiplicator;
 
     public bool isDeadTrigger;

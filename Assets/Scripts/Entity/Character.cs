@@ -29,6 +29,7 @@ public class Character : Entity
     public float curReloadBar;
 
     public float ActionPointRegeneration;
+    public float ReloadRegeneration;
 
     public float MeleeDamage = 1f;
     public float RangeDamage = 1f;
@@ -45,6 +46,10 @@ public class Character : Entity
     public float MoveSpeedMultiplicator = 1f;
     [HideInInspector]
     public float ActionPointMultiplicator = 1f;
+    //[HideInInspector]
+    public float ActionPointRegenerationMultiplicator = 1f;
+    //[HideInInspector]
+    public float ReloadRegenerationMultiplicator = 1f;
 
     public bool canWalk = true;
     public bool canUseRightStick = true;
@@ -200,8 +205,9 @@ public class Character : Entity
 
     void Regenerate()
     {
-        GetHealth(HealthRegeneration * Time.deltaTime);
-        RestoreActionPoints(ActionPointRegeneration * Time.deltaTime);
+        GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
+        RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
+        RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
     }
 
     public void AddBuff(BuffObject buff, int multi, Character character)
