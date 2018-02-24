@@ -6,13 +6,15 @@ using UnityEngine.AI;
 public class Enemy : Character
 {
     [Header(">>>>>>>>>> Enemy:")]
-    private NavMeshAgent NavMeshAgent;
+
 
     public List<Transform> PlayerInRadius = new List<Transform>();
 
     public List<Transform> PlayersInRange = new List<Transform>();
 
     public Transform Target;
+
+    public Skill[] UsedSkills;
 
     public bool isGameOver;
     public bool isAlive;
@@ -23,8 +25,6 @@ public class Enemy : Character
     public float MaxShootingRange;
     public float StopRange;
     public float LookDamping;
-
-    public Skill[] UsedSkills;
 
     private Vector3 direction;
 
@@ -39,9 +39,11 @@ public class Enemy : Character
     public int EveryXFramesFind;
     public int FrameCounterFind;
 
-    int animMovX = Animator.StringToHash("MovX");
-
     public float NavAgentSpeed;
+
+    private int animMovX = Animator.StringToHash("MovX");
+
+    private NavMeshAgent NavMeshAgent;
 
     public override void Start()
     {
