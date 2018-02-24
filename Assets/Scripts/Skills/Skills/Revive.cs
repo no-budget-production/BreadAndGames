@@ -47,6 +47,12 @@ public class Revive : Skill
                 GameManager.Instance.Players[i].GetHealth(GameManager.Instance.Players[i].MaxHealth * ReviveHealthMulti);
 
                 GameManager.Instance.Players[i].MaxHealth -= GameManager.Instance.Players[i].MaxHealth - (GameManager.Instance.Players[i].MaxHealth * ReviveHealthMulti);
+
+                GameManager.Instance.Players[i].canWalk = true;
+
+                GameManager.Instance.Players[i].canUseRightStick = true;
+
+                GameManager.Instance.Players[i].canUseSkills = true;
             }
         }
 
