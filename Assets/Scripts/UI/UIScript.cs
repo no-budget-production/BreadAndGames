@@ -14,7 +14,7 @@ public class UIScript : MonoBehaviour
 
     public GameObject HelpMenu;
 
-    private CheatHelp CheatHelp;
+    public CheatHelp CheatHelp;
 
     private bool escapeButton;
     private bool escapeButtonXbox;
@@ -44,8 +44,6 @@ public class UIScript : MonoBehaviour
         sceneindex = SceneManager.GetActiveScene().buildIndex;
         escapeButton = Input.GetButtonDown("Cancel"); //from Escape to Cancel
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
-
-        CheatHelp = HelpMenu.GetComponent<CheatHelp>();
     }
 
     private void Update()

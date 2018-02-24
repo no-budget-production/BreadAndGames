@@ -10,7 +10,7 @@ public class CheatHelp : MonoBehaviour
     public string CheatsName = "Cheats";
     public Cheats Cheat;
     public List<CheatConfig> CheatsArray;
-    public string[] PlayerNames = { "Melee", "Shooter" };
+    public string[] PlayerNames;
     public PlayerController PlayerController;
     public List<ButtonConfig> ButtonConfigArray;
     //public List<CheatConfig> SortedList;
@@ -41,6 +41,13 @@ public class CheatHelp : MonoBehaviour
 
     public void UpdatePlayerButtons()
     {
+        PlayerNames = new string[GameManager.Instance.Players.Count];
+
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        {
+            PlayerNames[i] = GameManager.Instance.Players[i].name;
+        }
+
         int PlayerNumber = 1;
 
         for (int i = 0; i < PlayerNames.Length; i++)
@@ -54,15 +61,15 @@ public class CheatHelp : MonoBehaviour
                 ButtonConfigArray.Add(PlayerController.PlayerSkills[j]);
             }
 
-            string tempString = null;
-
             for (int k = 0; k < ButtonConfigArray.Count; k++)
             {
+                string tempString = null;
+
                 for (int h = 0; h < ButtonConfigArray[k].ButtonStringBC.Length; h++)
                 {
                     tempString += ButtonConfigArray[k].ButtonStringBC[h].name + ", ";
                 }
-                Cheats[PlayerNumber].text += tempString + ": " + CheatsArray[k].Cheat.GetComponent<Cheat>().name + "\n";
+                Cheats[PlayerNumber].text += tempString + ": " + ButtonConfigArray[k].SkillBC.GetComponent<Skill>().name + "\n";
             }
 
             PlayerNumber++;
