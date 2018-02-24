@@ -33,9 +33,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457693711131984}
-  m_LocalRotation: {x: 0.0015499294, y: -0.5305904, z: -0.004462242, w: -0.84761524}
-  m_LocalPosition: {x: -0.19577248, y: 1.1886978, z: -0.053680778}
-  m_LocalScale: {x: 0.10000011, y: 0.09999998, z: 0.100000024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,13 +56,14 @@ MonoBehaviour:
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 8d0c72a330baa7c42958c29869422cfd, type: 2}
-  UsedBuff: {fileID: 0}
+  UsedBuff: {fileID: 114800675396750386, guid: 42b24bb9f71f4df458552c0ec40ac27f, type: 2}
   curBuff: {fileID: 0}
-  BuffDuration: 0
+  BuffDuration: 3
   cantStack: 0
-  SkillNumber: 0
   HasAnimation: 0
   AnimationStrings: []
   AnimationTypes: 
+  SkillNumber: 0
   ReviveRange: 3
   ReviveHealthMulti: 0.9
+  ReviveCoolDownBuff: {fileID: 11400000, guid: 7dabe0023d35e7d43990df155efcb636, type: 2}

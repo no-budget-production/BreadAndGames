@@ -58,8 +58,12 @@ MonoBehaviour:
   BuffObject: {fileID: 11400000, guid: e1d68f3e0fded7d4f945f62a2d0b541e, type: 2}
   UsedBuff: {fileID: 0}
   curBuff: {fileID: 0}
-  BuffDuration: 0.1
+  BuffDuration: 0.25
   cantStack: 1
+  HasAnimation: 0
+  AnimationStrings: []
+  AnimationTypes: 
+  SkillNumber: 0
   maxCharges: 3
   rechargeTime: 5
   duration: 0.25

@@ -76,7 +76,7 @@ public class Entity : MonoBehaviour
 
     public virtual void OnDestroy()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     public virtual void GetHealth(float healing)

@@ -23,9 +23,6 @@ public class Revive : Skill
             return;
         }
 
-        Character.AddBuff(BuffObject, 1, Character);
-        Character.AddBuff(ReviveCoolDownBuff, 1, Character);
-
         var tempPlayer = Character.GetComponent<PlayerController>();
         if (tempPlayer == null)
         {
@@ -55,6 +52,17 @@ public class Revive : Skill
                 GameManager.Instance.Players[i].canUseRightStick = true;
 
                 GameManager.Instance.Players[i].canUseSkills = true;
+
+                Character.AddBuff(BuffObject, 1, Character);
+                Character.AddBuff(ReviveCoolDownBuff, 1, Character);
+                SpawnBuff();
+
+                Character.canWalk = false;
+                Character.canUseRightStick = false;
+                Character.canUseSkills = false;
+
+
+                break;
             }
         }
 

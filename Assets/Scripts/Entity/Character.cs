@@ -102,6 +102,23 @@ public class Character : Entity
 
     public virtual void OnDestroy()
     {
+        if (isDeadTrigger)
+        {
+            for (int i = 0; i < ActiveBuffObjects.Count; i++)
+            {
+                AddBuff(ActiveBuffObjects[i].BuffObject, -1, GetComponent<Character>());
+            }
+            canWalk = false;
+            canUseRightStick = false;
+            canUseSkills = false;
+
+            for (int i = 0; i < ActiveBuffs.Count; i++)
+            {
+                Destroy(ActiveBuffs[i].GetComponent<GameObject>());
+            }
+            ActiveBuffs.Clear();
+        }
+
         base.OnDestroy();
     }
 
@@ -141,20 +158,6 @@ public class Character : Entity
     public override void TakeDamage(float damage, DamageType damageType)
     {
         base.TakeDamage(damage, damageType);
-
-        if (isDeadTrigger)
-        {
-            if (!DestroyOnDeath)
-            {
-                for (int i = 0; i < ActiveBuffObjects.Count; i++)
-                {
-                    AddBuff(ActiveBuffObjects[i].BuffObject, -1, GetComponent<Character>());
-                }
-                canWalk = false;
-                canUseRightStick = false;
-                canUseSkills = false;
-            }
-        }
 
         if (UseHealthbar)
         {
@@ -305,33 +308,34 @@ public class Character : Entity
                 }
                 //
 
-                if (ActiveBuffObjects[i].BuffObject.disableWalking)
-                {
-                    canWalkAgainCount++;
-                }
-
-                if (ActiveBuffObjects[i].BuffObject.disableRightStick)
-                {
-                    canUseRightStickAgainCount++;
-                }
-
-                if (ActiveBuffObjects[i].BuffObject.disableSkills)
-                {
-                    canUseSkillsAgainCount++;
-                }
-
                 if (!ActiveBuffObjects[i].BuffObject.isPermanent)
                 {
                     ActiveBuffObjects[i].BuffCurTime += Time.deltaTime;
 
                     if (ActiveBuffObjects[i].BuffObject.maxTime < ActiveBuffObjects[i].BuffCurTime)
                     {
+                        if (ActiveBuffObjects[i].BuffObject.disableWalking)
+                        {
+                            canWalkAgainCount++;
+                        }
+
+                        if (ActiveBuffObjects[i].BuffObject.disableRightStick)
+                        {
+                            canUseRightStickAgainCount++;
+                        }
+
+                        if (ActiveBuffObjects[i].BuffObject.disableSkills)
+                        {
+                            canUseSkillsAgainCount++;
+                        }
+
                         BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
                         BuffEnd(ActiveBuffObjects[i].BuffObject, ActiveBuffObjects[i].Character);
                         ActiveBuffObjects.RemoveAt(i);
                         i--;
 
                         expired = true;
+
                         //Debug.Log("RemovingBuff");
                         continue;
                     }
@@ -342,7 +346,7 @@ public class Character : Entity
             {
                 if (!canWalk)
                 {
-                    if (canWalkAgainCount <= 0)
+                    if (canWalkAgainCount <= 1)
                     {
                         canWalk = true;
                     }
@@ -351,7 +355,7 @@ public class Character : Entity
                 {
                     if (!canCurUseRightStick)
                     {
-                        if (canUseRightStickAgainCount <= 0)
+                        if (canUseRightStickAgainCount <= 1)
                         {
                             canUseRightStick = true;
                         }
@@ -359,7 +363,7 @@ public class Character : Entity
                 }
                 if (!canUseSkills)
                 {
-                    if (canUseSkillsAgainCount <= 0)
+                    if (canUseSkillsAgainCount <= 1)
                     {
                         canUseSkills = true;
                     }
