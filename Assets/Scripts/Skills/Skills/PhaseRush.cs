@@ -20,7 +20,11 @@ public class PhaseRush : Skill
 
     public void Start()
     {
-        controller = GetComponentInParent<PlayerController>();
+        var tempController = Character.GetComponent<PlayerController>();
+        if (tempController != null)
+        {
+            controller = tempController;
+        }
     }
 
     public override void OneShoot()
@@ -36,8 +40,10 @@ public class PhaseRush : Skill
             }
         }
 
-        if (!controller.canUseSkills) return;
-        if (curCharges >= maxCharges) return;
+        if (!controller.canUseSkills)
+            return;
+        if (curCharges >= maxCharges)
+            return;
 
         curThunder = Instantiate(thunder, controller.transform.position, controller.transform.rotation).transform;
         curThunder.GetComponent<ParticleSystem>().Play();
@@ -50,9 +56,12 @@ public class PhaseRush : Skill
 
         controller.rb.AddForce(controller.transform.forward * speed);
 
-        if (curCharges == 0) {
+        if (curCharges == 0)
+        {
             checkToNextChargeTest.Add(Time.time + rechargeTime);
-        } else {
+        }
+        else
+        {
             checkToNextChargeTest.Add(checkToNextChargeTest[curCharges - 1] + rechargeTime);
         }
         curCharges++;

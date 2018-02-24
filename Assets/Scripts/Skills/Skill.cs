@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
+    [Header(">>>>>>>>>> Skill:")]
+
     public SkillType SkillType;
 
     public Character Character;
@@ -19,11 +21,14 @@ public class Skill : MonoBehaviour
 
     public bool cantStack;
 
-    public int SkillNumber;
+
 
     public bool HasAnimation;
     public string[] AnimationStrings;
     public AnimTypes[] AnimationTypes;
+
+    [Header("<<<<<<<<<< Skill:")]
+    public int SkillNumber;
 
     public virtual void OneShoot()
     {

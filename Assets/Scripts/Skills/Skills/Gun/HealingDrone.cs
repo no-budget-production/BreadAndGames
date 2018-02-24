@@ -122,64 +122,64 @@ public class HealingDrone : Skill
     //}
 
 
-    void Update()
-    {
-        HorizontalLook_PX = Input.GetAxis(PlayerController.thisPlayerString[2]);
-        VerticalLook_PX = Input.GetAxis(PlayerController.thisPlayerString[3]);
+    //void Update()
+    //{
+    //    HorizontalLook_PX = Input.GetAxis(PlayerController.thisPlayerString[2]);
+    //    VerticalLook_PX = Input.GetAxis(PlayerController.thisPlayerString[3]);
 
-        Vector3 lookVector = new Vector3(HorizontalLook_PX, 0, VerticalLook_PX);
+    //    Vector3 lookVector = new Vector3(HorizontalLook_PX, 0, VerticalLook_PX);
 
-        movement = new Vector3(VerticalLook_PX, 0.0f, HorizontalLook_PX).normalized;
+    //    movement = new Vector3(VerticalLook_PX, 0.0f, HorizontalLook_PX).normalized;
 
-        if (lookVector.magnitude < PlayerController.deadZones[0])
-        {
-            if (controller.velocity.magnitude > 0.2f)
-                controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
-            else
-            {
-                startMarker = controller.transform.position;
-                endMarker = new Vector3(Character.transform.position.x, startMarker.y, Character.transform.position.z);
-                Vector3 newSpot = Vector3.MoveTowards(startMarker, endMarker, Leeway);
-                journeyLength = Vector3.Distance(startMarker, endMarker);
-                if (true)
-                {
-                    if (!isReturning)
-                    {
-                        startTime = Time.time;
-                    }
+    //    if (lookVector.magnitude < PlayerController.deadZones[0])
+    //    {
+    //        if (controller.velocity.magnitude > 0.2f)
+    //            controller.AddForce(-controller.velocity * deceleration * Time.deltaTime);
+    //        else
+    //        {
+    //            startMarker = controller.transform.position;
+    //            endMarker = new Vector3(Character.transform.position.x, startMarker.y, Character.transform.position.z);
+    //            Vector3 newSpot = Vector3.MoveTowards(startMarker, endMarker, Leeway);
+    //            journeyLength = Vector3.Distance(startMarker, endMarker);
+    //            if (true)
+    //            {
+    //                if (!isReturning)
+    //                {
+    //                    startTime = Time.time;
+    //                }
 
 
-                    {
-                        Smoothing += SmoothingStep;
-                        Smoothing += Random.Range(SmoothingMin, SmoothinMax);
+    //                {
+    //                    Smoothing += SmoothingStep;
+    //                    Smoothing += Random.Range(SmoothingMin, SmoothinMax);
 
-                        controller.transform.position = Vector3.Lerp(controller.transform.position, newSpot, Smoothing * Time.deltaTime);
-                    }
+    //                    controller.transform.position = Vector3.Lerp(controller.transform.position, newSpot, Smoothing * Time.deltaTime);
+    //                }
 
-                    isReturning = true;
-                    //float distCovered = (Time.time - startTime) * speed;
-                    //float fracJourney = distCovered / journeyLength;
-                    //controller.transform.position = new Vector3(Mathf.SmoothStep(0, journeyLength, distCovered), startMarker.y, Mathf.SmoothStep(0, journeyLength, distCovered));
-                }
-                //else
-                //{
+    //                isReturning = true;
+    //                //float distCovered = (Time.time - startTime) * speed;
+    //                //float fracJourney = distCovered / journeyLength;
+    //                //controller.transform.position = new Vector3(Mathf.SmoothStep(0, journeyLength, distCovered), startMarker.y, Mathf.SmoothStep(0, journeyLength, distCovered));
+    //            }
+    //            //else
+    //            //{
 
-                //    if (isReturning)
-                //    {
-                //        isReturning = false;
-                //    }
-                //    controller.velocity = Vector3.zero;
-                //}
-            }
+    //            //    if (isReturning)
+    //            //    {
+    //            //        isReturning = false;
+    //            //    }
+    //            //    controller.velocity = Vector3.zero;
+    //            //}
+    //        }
 
-        }
-        else
-        {
-            controller.AddForce(movement * acceleration * Time.deltaTime);
-        }
-        controller.velocity = Vector3.ClampMagnitude(controller.velocity, maxSpeed);
-        //Debug.Log(controller.velocity.magnitude);
-        //}
+    //    }
+    //    else
+    //    {
+    //        controller.AddForce(movement * acceleration * Time.deltaTime);
+    //    }
+    //    controller.velocity = Vector3.ClampMagnitude(controller.velocity, maxSpeed);
+    //    //Debug.Log(controller.velocity.magnitude);
+    //    //}
 
-    }
+    //}
 }

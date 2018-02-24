@@ -14,8 +14,6 @@ public class ButtonConfig
 
 public class PlayerController : Character
 {
-    public PlayerType Type;
-
     [SerializeField]
     public bool HasFlag(PlayerTypeFlags flags)
     {
@@ -23,53 +21,58 @@ public class PlayerController : Character
         return (typeflag & (int)flags) != 0;
     }
 
-    public int usedButtonsCount;
-    public int[] usedButtons;
-    public bool[] areButtons;
-    public float[] deadZones;
-    public string[] thisPlayerString;
+    [Header(">>>>>>>>>> PlayerController:")]
 
+    public PlayerType Type;
     public string PlayerNumber;
 
-    public bool isUsingRightStick;
-    public bool isInAction;
-
     public ButtonConfig[] PlayerSkills;
-
     public float Deadzone;
 
-    private float angle;
-
-    int animMovX = Animator.StringToHash("MovX");
-    int animMovY = Animator.StringToHash("MovY");
-    int animIsAiming = Animator.StringToHash("isAiming");
-    int animIsRunning = Animator.StringToHash("isRunning");
-    int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
-    int animIsAttacking = Animator.StringToHash("isAttacking");
-    int animIsDead = Animator.StringToHash("isDead");
-    int animGetUp = Animator.StringToHash("GetUp");
-
-    private Quaternion inputRotation;
-
-    public float Horizontal_PX;
-    public float Vertical_PX;
-    public float HorizontalLook_PX;
-    public float VerticalLook_PX;
-
-    //Movement
-    public Vector3 moveVector;
-    public Vector3 lookVector;
-
-    [HideInInspector]
-    public Rigidbody rb;
-
-    private Vector3 currentMovement;
     public float acceleration;
     public float deceleration;
     public float moveSpeedMax;
     public float TurnSpeed;
+
+    private float angle;
+    private Quaternion inputRotation;
+
+    private Vector3 currentMovement;
+
+    private int animMovX = Animator.StringToHash("MovX");
+    private int animMovY = Animator.StringToHash("MovY");
+    private int animIsAiming = Animator.StringToHash("isAiming");
+    private int animIsRunning = Animator.StringToHash("isRunning");
+    private int animIsAim_Amount = Animator.StringToHash("Aim_Amount");
+    private int animIsAttacking = Animator.StringToHash("isAttacking");
+    private int animIsDead = Animator.StringToHash("isDead");
+    private int animGetUp = Animator.StringToHash("GetUp");
+
+    private int usedButtonsCount;
+    private int[] usedButtons;
+    private bool[] areButtons;
+    private float[] deadZones;
+    private string[] thisPlayerString;
+
+    private bool isUsingRightStick;
+    private bool isInAction;
+
+    [HideInInspector]
     public bool rotatable = true;
+    [HideInInspector]
     public bool moveable = true;
+
+    [HideInInspector]
+    public Rigidbody rb;
+    [HideInInspector]
+    public Vector3 moveVector;
+    [HideInInspector]
+    public Vector3 lookVector;
+
+    private float Horizontal_PX;
+    private float Vertical_PX;
+    private float HorizontalLook_PX;
+    private float VerticalLook_PX;
 
     void Awake()
     {

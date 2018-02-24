@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
+    [Header(">>>>>>>>>> Enemy:")]
     private NavMeshAgent NavMeshAgent;
 
     public List<Transform> PlayerInRadius = new List<Transform>();

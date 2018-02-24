@@ -20,14 +20,18 @@ public class ActiveBuffObject
 
 public class Character : Entity
 {
+    [Header(">>>>>>>>>> Character:")]
+
     public float maxActionPoints;
     public float curActionPoints;
 
+    [HideInInspector]
     public Slider OverChargeBar;
     public bool UseOverChargeBar;
     public float maxOverCharge;
     public float curOverCharge;
 
+    [HideInInspector]
     public Slider ReloadBar;
     public bool UseReloadBar;
     public float maxReloadBar;
@@ -44,10 +48,15 @@ public class Character : Entity
     public float Accuracy = 1f;
     public float MoveSpeed;
 
+    [HideInInspector]
     public float MeleeDamageMultiplicator = 1f;
+    [HideInInspector]
     public float RangeDamageMultiplicator = 1f;
+    [HideInInspector]
     public float AccuracyMultiplicator = 1f;
+    [HideInInspector]
     public float MoveSpeedMultiplicator = 1f;
+    [HideInInspector]
     public float ActionPointMultiplicator = 1f;
 
     public bool canWalk = true;
@@ -55,21 +64,28 @@ public class Character : Entity
     public bool canCurUseRightStick = true;
     public bool canUseSkills = true;
 
+    [HideInInspector]
     public Transform SkillSpawn;
+    [HideInInspector]
     public Transform TakeHitPoint;
 
+    [HideInInspector]
     public RectTransform HealthBar;
     public bool UseHealthbar;
 
+    [HideInInspector]
     public Slider HUDHealthBarSlider;
     public bool UseHUDHealthbarSlider;
 
+    [HideInInspector]
     public Slider ActionPointsBar;
     public bool UseActionPointsBar;
 
+    [HideInInspector]
     public Slider HUDActionPointsBar;
     public bool UseHUDActionPointsBar;
 
+    [HideInInspector]
     public MultiSoundPlayer MultiSoundPlayer;
 
     public List<ActiveBuffObject> ActiveBuffObjects;
@@ -81,9 +97,7 @@ public class Character : Entity
 
     public List<Buff> ActiveBuffs;
 
-    public string[] AnimationStrings;
-    public bool[] AnimationAreBools;
-
+    [HideInInspector]
     public Animator Anim;
 
     public virtual void OnDestroy()

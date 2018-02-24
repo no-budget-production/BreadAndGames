@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-
     public List<int> ReturnSelectedElements()
     {
         List<int> selectedElements = new List<int>();
@@ -19,6 +18,8 @@ public class Entity : MonoBehaviour
         return selectedElements;
     }
 
+    [Header(">>>>>>>>>> ENTITY:")]
+
     [EnumFlagsAttribute]
     public UnitTypesFlags ThisUnityTypeFlags;
 
@@ -30,14 +31,16 @@ public class Entity : MonoBehaviour
     public float MeleeArmor;
     public float RangedArmor;
 
+    [HideInInspector]
     public float MeleeArmorMultiplicator;
+    [HideInInspector]
     public float RangeArmorMultiplicator;
+    [HideInInspector]
     public float HealthRegenerationMultiplicator;
 
     public bool isDeadTrigger;
-
     public bool DestroyOnDeath;
-    //public float Decay;
+
 
     public virtual void TakeDamage(float damage, DamageType damageType)
     {
