@@ -30,6 +30,8 @@ public enum BuffTypes
     EnemyMeleeWeapon,
     EnemyRangedWeapon,
 
+    Revive,
+
     _Length,
     _Invalid = -1
 

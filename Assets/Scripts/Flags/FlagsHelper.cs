@@ -105,6 +105,7 @@ public enum SkillType
     HealingDroneReturn,
     EnemyMeleeWeapon,
     EnemyRangedWeapon,
+    Revive,
     _Length,
     _Invalid = -1
 }
@@ -134,7 +135,8 @@ public enum SkillTypeFlags
     HealingDrone = 1 << SkillType.HealingDrone,
     HealingDroneReturn = 1 << SkillType.HealingDroneReturn,
     EnemyMeleeWeapon = 1 << SkillType.HealingDrone,
-    EnemyRangedWeapon = 1 << SkillType.EnemyRangedWeapon
+    EnemyRangedWeapon = 1 << SkillType.EnemyRangedWeapon,
+    Revive = 1 << SkillType.Revive
 }
 
 public enum BuffType
