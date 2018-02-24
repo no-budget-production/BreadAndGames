@@ -98,17 +98,18 @@ public class Healing : Skill
 
         }
 
-        Character.curActionPoints -= energyCosts * Time.deltaTime;
-
-        Character.AddBuff(BuffObject, 1, Character);
-
-        LineRenderer.enabled = false;
-
 
         if (!((HealAmount != 0) && (CurrentTarget.CurrentHealth < CurrentTarget.MaxHealth) || ((ActionPointAmount != 0) && (CurrentTarget.curActionPoints < CurrentTarget.maxActionPoints) && CurrentTarget.rechargeActionBarDirectly) || ((ReloadAmount != 0) && (CurrentTarget.curReloadBar < CurrentTarget.maxReloadBar) && !CurrentTarget.rechargeActionBarDirectly)))
         {
             return;
         }
+
+        Character.AddBuff(BuffObject, 1, Character);
+
+        LineRenderer.enabled = false;
+
+        Character.curActionPoints -= energyCosts * Time.deltaTime;
+
 
         LockOn();
 
