@@ -29,6 +29,7 @@ public class PlayerController : Character
 
     public float acceleration;
     public float deceleration;
+    private float DecelerationHelp;
     public float moveSpeedMax;
     public float TurnSpeed;
 
@@ -216,7 +217,7 @@ public class PlayerController : Character
                 currentMovement = Vector3.zero;
                 if (rb.velocity.magnitude > 0.2f)
                 {
-                    rb.AddForce(-rb.velocity * deceleration * Time.deltaTime, ForceMode.Acceleration);
+                    rb.AddForce(-rb.velocity * DecelerationHelp * Time.deltaTime, ForceMode.Acceleration);
                 }
                 else
                 {
@@ -280,16 +281,29 @@ public class PlayerController : Character
         }
     }
 
-    //void FixedUpdate()
-    //{
-    //    Move();
-    //}
+    void FixedUpdate()
+    {
+        //Move();
+    }
 
     public override void Update()
     {
         CheckButtonInput();
         base.Update();
         Move();
+        Grounded();
+    }
+
+    void Grounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, 0.5f) == false)
+        {
+            DecelerationHelp = 0;
+        }
+        else
+        {
+            DecelerationHelp = deceleration;
+        }
     }
 
     public void Walk()
