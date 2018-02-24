@@ -51,7 +51,6 @@ public class Entity : MonoBehaviour
 
         float editedDamage = damage;
 
-
         if (damageType == DamageType.Melee)
         {
             editedDamage = Mathf.Max(editedDamage - MeleeArmor - (MeleeArmor * MeleeArmorMultiplicator), 0);
@@ -82,17 +81,21 @@ public class Entity : MonoBehaviour
     public virtual void GetHealth(float healing)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
+
+        if (CurrentHealth > 0)
+        {
+            isDeadTrigger = false;
+        }
     }
 
     public virtual bool RestoreHealth(float healing)
     {
         if (CurrentHealth == MaxHealth)
-            return false;
-        CurrentHealth = Mathf.Min(CurrentHealth + healing, MaxHealth);
-        if (CurrentHealth > 0)
         {
-            isDeadTrigger = false;
+            return false;
         }
+        GetHealth(healing);
+
         return true;
     }
 }

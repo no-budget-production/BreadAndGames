@@ -106,23 +106,38 @@ public class Character : Entity
     //[HideInInspector]
     public Animator Anim;
 
+    public virtual void Disable()
+    {
+        for (int i = 0; i < ActiveBuffObjects.Count; i++)
+        {
+            AddBuff(ActiveBuffObjects[i].BuffObject, -1, GetComponent<Character>());
+        }
+
+        canWalk = false;
+        canUseRightStick = false;
+        canUseSkills = false;
+
+        for (int i = 0; i < ActiveBuffs.Count; i++)
+        {
+            Destroy(ActiveBuffs[i].GetComponent<GameObject>());
+        }
+
+        ActiveBuffs.Clear();
+    }
+
+
+    public virtual void Enable()
+    {
+        canWalk = true;
+        canUseRightStick = true;
+        canUseSkills = true;
+    }
+
     public virtual void OnDestroy()
     {
         if (isDeadTrigger)
         {
-            for (int i = 0; i < ActiveBuffObjects.Count; i++)
-            {
-                AddBuff(ActiveBuffObjects[i].BuffObject, -1, GetComponent<Character>());
-            }
-            canWalk = false;
-            canUseRightStick = false;
-            canUseSkills = false;
-
-            for (int i = 0; i < ActiveBuffs.Count; i++)
-            {
-                Destroy(ActiveBuffs[i].GetComponent<GameObject>());
-            }
-            ActiveBuffs.Clear();
+            Disable();
         }
 
         base.OnDestroy();
@@ -165,6 +180,11 @@ public class Character : Entity
     {
         base.TakeDamage(damage, damageType);
 
+        if (isDeadTrigger)
+        {
+            Disable();
+        }
+
         if (UseHealthbar)
         {
             OnChangeHealth(CurrentHealth);
@@ -188,6 +208,11 @@ public class Character : Entity
         if (UseHUDHealthbarSlider)
         {
             OnHUDChangeHealthSlider();
+        }
+
+        if (!isDeadTrigger)
+        {
+            Enable();
         }
     }
 

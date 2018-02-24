@@ -316,6 +316,7 @@ public class PlayerController : Character
 
     public override void TakeDamage(float damage, DamageType damageType)
     {
+
         base.TakeDamage(damage, damageType);
 
         if (isDeadTrigger)
