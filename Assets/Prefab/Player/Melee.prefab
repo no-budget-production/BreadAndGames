@@ -1327,7 +1327,7 @@ Animator:
   m_GameObject: {fileID: 1948657137727218}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9d47010099c14954faf9daf601033735, type: 3}
-  m_Controller: {fileID: 22100000, guid: 9fcbadedee87a8644bc066329c603c8b, type: 2}
+  m_Controller: {fileID: 9100000, guid: dd26964ff2f32a24bb7a3bef907ef8a7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1535,20 +1535,9 @@ MonoBehaviour:
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
-  AnimationStrings:
-  - Skill_0
-  - Skill_Bool_0
-  AnimationAreBools: 0001
   Anim: {fileID: 95209346617654616}
   Type: 0
-  usedButtonsCount: 0
-  usedButtons: 
-  areButtons: 
-  deadZones: []
-  thisPlayerString: []
   PlayerNumber: 1
-  isUsingRightStick: 0
-  isInAction: 0
   PlayerSkills:
   - SkillBC: {fileID: 114777490603000294, guid: 3917ab2fd0e2b5b41a2d1515af06b043,
       type: 2}
@@ -1580,19 +1569,15 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114008890782351200, guid: aed2844c20d82a248be291988f7c176b, type: 2}
   Deadzone: 0.19
-  Horizontal_PX: 0
-  Vertical_PX: 0
-  HorizontalLook_PX: 0
-  VerticalLook_PX: 0
-  moveVector: {x: 0, y: 0, z: 0}
-  lookVector: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
   acceleration: 1100
   deceleration: 1200
   moveSpeedMax: 5
   TurnSpeed: 8
   rotatable: 1
   moveable: 1
+  rb: {fileID: 0}
+  moveVector: {x: 0, y: 0, z: 0}
+  lookVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1

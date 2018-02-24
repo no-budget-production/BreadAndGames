@@ -9,11 +9,20 @@ public class CheatHelp : MonoBehaviour
     public Text[] Cheats;
     public string CheatsName = "Cheats";
     public Cheats Cheat;
-
     public List<CheatConfig> CheatsArray;
-    public List<CheatConfig> SortedList;
+    public string[] PlayerNames = { "Melee", "Shooter" };
+    public PlayerController PlayerController;
+    public List<ButtonConfig> ButtonConfigArray;
+    //public List<CheatConfig> SortedList;
+
+
 
     void Start()
+    {
+        UpdateCheatButtons();
+    }
+
+    public void UpdateCheatButtons()
     {
         Cheat = GameObject.Find(CheatsName).GetComponent<Cheats>();
 
@@ -24,13 +33,39 @@ public class CheatHelp : MonoBehaviour
             CheatsArray.Add(Cheat.UsedCheats[i]);
         }
 
-        //SortedList = new List<CheatConfig>(CheatsArray.Count);
-        //SortedList = CheatsArray.OrderBy(o => o.ButtonStringBC).ToList();
-
         for (int i = 0; i < CheatsArray.Count; i++)
         {
             Cheats[0].text += CheatsArray[i].ButtonStringBC.name + ": " + CheatsArray[i].Cheat.GetComponent<Cheat>().name + "\n";
         }
     }
 
+    public void UpdatePlayerButtons()
+    {
+        int PlayerNumber = 1;
+
+        for (int i = 0; i < PlayerNames.Length; i++)
+        {
+            PlayerController = GameObject.Find(PlayerNames[i]).GetComponent<PlayerController>();
+
+            ButtonConfigArray = new List<ButtonConfig>(PlayerController.PlayerSkills.Length);
+
+            for (int j = 0; j < PlayerController.PlayerSkills.Length; j++)
+            {
+                ButtonConfigArray.Add(PlayerController.PlayerSkills[j]);
+            }
+
+            string tempString = null;
+
+            for (int k = 0; k < ButtonConfigArray.Count; k++)
+            {
+                for (int h = 0; h < ButtonConfigArray[k].ButtonStringBC.Length; h++)
+                {
+                    tempString += ButtonConfigArray[k].ButtonStringBC[h].name + ", ";
+                }
+                Cheats[PlayerNumber].text += tempString + ": " + CheatsArray[k].Cheat.GetComponent<Cheat>().name + "\n";
+            }
+
+            PlayerNumber++;
+        }
+    }
 }
