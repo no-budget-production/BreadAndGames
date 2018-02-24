@@ -7,12 +7,10 @@ public class Skill : MonoBehaviour
     [Header(">>>>>>>>>> Skill:")]
 
     public SkillType SkillType;
-
     public Character Character;
 
     public bool isFiring;
     public Transform SkillSpawn;
-
     public BuffObject BuffObject;
 
     public Buff UsedBuff;
@@ -20,8 +18,6 @@ public class Skill : MonoBehaviour
     public float BuffDuration;
 
     public bool cantStack;
-
-
 
     public bool HasAnimation;
     public string[] AnimationStrings;
