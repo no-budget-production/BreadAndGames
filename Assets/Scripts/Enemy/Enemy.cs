@@ -22,7 +22,7 @@ public class Enemy : Character
     public bool isTargetInView;
     public bool isSooting;
 
-    public float MaxShootingRange;
+    public float MaxShootingRange;  
     public float StopRange;
     public float LookDamping;
 
