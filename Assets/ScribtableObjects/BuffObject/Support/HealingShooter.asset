@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: HealingShooter
   m_EditorClassIdentifier: 
   name: HealingShooter
-  BuffType: 16
+  BuffType: 17
   ID: 302
   isPermanent: 0
-  maxTime: 0.1
+  maxTime: 0
   curTime: 0
   isStackable: 0
   cantTriggerWith: 
-  effectWith: 0f000000
+  effectWith: 10000000
   disableWalking: 0
   disableRightStick: 0
   disableSkills: 0

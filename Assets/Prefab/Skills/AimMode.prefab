@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c069c1b5eb8b7b478701e438d6e553f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 13
-  PlayerController: {fileID: 0}
+  SkillType: 14
+  Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: e9e8886768e82e648b6ed8f88409de44, type: 2}
@@ -60,3 +60,7 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  HasAnimation: 0
+  AnimationStrings: []
+  AnimationTypes: 
+  SkillNumber: 0

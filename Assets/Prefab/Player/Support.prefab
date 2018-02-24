@@ -697,13 +697,10 @@ MonoBehaviour:
   ActiveSkills: []
   ActiveBuffs: []
   Anim: {fileID: 0}
-  PlayerInRadius:
-  - {fileID: 0}
-  - {fileID: 0}
+  PlayerInRadius: []
   PlayersInRange: []
   Target: {fileID: 0}
   UsedSkills:
-  - {fileID: 114940261459285084, guid: a094c9a21824ee74ea1ff86bb556bd62, type: 2}
   - {fileID: 114628303344535940, guid: df5e391c20b477d4c8a0c8fbb02f2e25, type: 2}
   - {fileID: 114628303344535940, guid: bbe29969de7c17c43a47034d6bbff2fa, type: 2}
   isGameOver: 0
@@ -715,9 +712,9 @@ MonoBehaviour:
   LookDamping: 100
   EveryXFramesAliveCheck: 1
   FrameCounterAliveCheck: 0
-  EveryXFramesDistanceCheck: 2
+  EveryXFramesDistanceCheck: 1
   FrameCounterDistanceCheck: 0
-  EveryXFramesRayCheck: 2
+  EveryXFramesRayCheck: 1
   FrameCounterRayCheck: 0
   EveryXFramesShoot: 1
   FrameCounterShoot: 0

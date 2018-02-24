@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: AimMode
   m_EditorClassIdentifier: 
   name: AimMode
-  BuffType: 12
+  BuffType: 13
   ID: 206
   isPermanent: 0
   maxTime: 0.1
@@ -29,9 +29,11 @@ MonoBehaviour:
   MoveSpeedMultiplicator: -0.5
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
+  ActionPointRegeneration: 0
   GainHealth: 0
   LoseHealth: 0
   DamageType: -1
   GainActionPoints: 0
-  LoseGainActionPoints: 0
+  LoseActionPoints: 0
   BuffEndScript: {fileID: 0}

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4053dd513a815b64d9e693bfb3dfe66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 0
+  SkillType: -1
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
@@ -60,6 +60,10 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  HasAnimation: 0
+  AnimationStrings: []
+  AnimationTypes: 
+  SkillNumber: 0
   energyRestorationPoints:
   - {fileID: 0}
   drainRate: 5

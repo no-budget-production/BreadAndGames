@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d0ae1412db5f943870a8d582246b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 21
+  SkillType: 22
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
@@ -386,11 +386,11 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  SkillNumber: 0
   HasAnimation: 0
   AnimationStrings:
   - Skill_0
   AnimationTypes: 00000000
+  SkillNumber: 0
   SkillRequired: {fileID: 0}
   Muzzle: {fileID: 4663339666616010}
   ShellEjection: {fileID: 4690313827456778}

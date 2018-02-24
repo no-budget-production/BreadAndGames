@@ -8,10 +8,12 @@ public class Healing : Skill
     public PlayerController CurrentTarget;
     public Transform CurrentTargetTransform;
     public Transform BeamOrigin;
-    public Transform DroneOrigin;
+    //public Transform DroneOrigin;
     public PlayerType TargetType;
 
-    public Skill SkillRequired;
+    public BuffObject CurrentHeal;
+
+    //public Skill SkillRequired;
 
     public float HealAmount = 2.0f;
     public float ActionPointAmount = 2.0f;
@@ -31,7 +33,7 @@ public class Healing : Skill
 
     public override void LateSkillSetup()
     {
-        DroneOrigin = BeamOrigin;
+        //DroneOrigin = BeamOrigin;
         CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
         CurrentTargetTransform = CurrentTarget.TakeHitPoint;
         healProcentage = CurrentTarget.MaxHealth * 0.01f * HealAmount;
@@ -39,38 +41,38 @@ public class Healing : Skill
         reloadProcentage = CurrentTarget.maxReloadBar * 0.01f * ReloadAmount;
     }
 
-    public void FindDrone()
-    {
-        int atI = 0;
+    //public void FindDrone()
+    //{
+    //    int atI = 0;
 
-        for (int i = 0; i < Character.ActiveSkills.Length; i++)
-        {
-            if (Character.ActiveSkills[i].SkillType == SkillRequired.SkillType)
-            {
-                isDroneSkillFound = true;
-                atI = i;
-                break;
-            }
-        }
+    //    for (int i = 0; i < Character.ActiveSkills.Length; i++)
+    //    {
+    //        if (Character.ActiveSkills[i].SkillType == SkillRequired.SkillType)
+    //        {
+    //            isDroneSkillFound = true;
+    //            atI = i;
+    //            break;
+    //        }
+    //    }
 
-        if (isDroneSkillFound)
-        {
-            var temp = Character.ActiveSkills[atI].GetComponent<HealingDrone>();
+    //    if (isDroneSkillFound)
+    //    {
+    //        var temp = Character.ActiveSkills[atI].GetComponent<HealingDrone>();
 
-            if (temp == null)
-            {
-                return;
-            }
-            DroneOrigin = temp.BeamOrigin.transform;
-        }
-    }
+    //        if (temp == null)
+    //        {
+    //            return;
+    //        }
+    //        DroneOrigin = temp.BeamOrigin.transform;
+    //    }
+    //}
 
     public override void Shoot()
     {
-        if (!isDroneSkillFound)
-        {
-            FindDrone();
-        }
+        //if (!isDroneSkillFound)
+        //{
+        //    FindDrone();
+        //}
 
         if (!BuffObject.isStackable)
         {
@@ -98,12 +100,12 @@ public class Healing : Skill
 
         RaycastHit hit;
 
-        if (Physics.Raycast(DroneOrigin.position, direction, out hit))
+        if (Physics.Raycast(BeamOrigin.position, direction, out hit))
         {
             var temp = hit.collider.GetComponent<PlayerController>();
             if (temp == CurrentTarget)
             {
-                LineRenderer.SetPosition(0, DroneOrigin.position);
+                LineRenderer.SetPosition(0, BeamOrigin.position);
                 LineRenderer.SetPosition(1, CurrentTargetTransform.position);
 
                 OnHealObject(hit);
@@ -112,7 +114,7 @@ public class Healing : Skill
             }
             else
             {
-                LineRenderer.SetPosition(0, DroneOrigin.position);
+                LineRenderer.SetPosition(0, BeamOrigin.position);
                 LineRenderer.SetPosition(1, transform.position);
 
                 LineRenderer.enabled = false;
@@ -124,7 +126,7 @@ public class Healing : Skill
     {
         if (!isFiring)
         {
-            LineRenderer.SetPosition(0, DroneOrigin.position);
+            LineRenderer.SetPosition(0, BeamOrigin.position);
             LineRenderer.SetPosition(1, transform.position);
             LineRenderer.enabled = false;
         }
@@ -132,15 +134,15 @@ public class Healing : Skill
 
     void LockOn()
     {
-        direction = CurrentTargetTransform.position - DroneOrigin.position;
+        direction = CurrentTargetTransform.position - BeamOrigin.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(DroneOrigin.rotation, lookRotation, Time.deltaTime * 100000000).eulerAngles;
-        DroneOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        Vector3 rotation = Quaternion.Lerp(BeamOrigin.rotation, lookRotation, Time.deltaTime * 100000000).eulerAngles;
+        BeamOrigin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     bool InRange()
     {
-        if (Vector3.Distance(CurrentTargetTransform.position, DroneOrigin.position) > MaxRange)
+        if (Vector3.Distance(CurrentTargetTransform.position, BeamOrigin.position) > MaxRange)
         {
             return false;
         }

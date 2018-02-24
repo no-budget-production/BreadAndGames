@@ -18,7 +18,7 @@ MonoBehaviour:
   maxTime: 0.4
   curTime: 0
   isStackable: 0
-  cantTriggerWith: 07000000090000000a000000
+  cantTriggerWith: 080000000a0000000b000000
   effectWith: 
   disableWalking: 0
   disableRightStick: 0
@@ -29,9 +29,11 @@ MonoBehaviour:
   MoveSpeedMultiplicator: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
+  HealthRegenerationMultiplicator: 0
+  ActionPointRegeneration: 0
   GainHealth: 0
   LoseHealth: 0
   DamageType: -1
   GainActionPoints: 0
-  LoseGainActionPoints: 0
+  LoseActionPoints: 0
   BuffEndScript: {fileID: 0}

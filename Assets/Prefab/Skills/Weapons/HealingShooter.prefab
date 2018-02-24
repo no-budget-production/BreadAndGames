@@ -50,7 +50,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1505768711247024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4736424980638126}
@@ -81,14 +81,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de22b2197f936d4bb70ef6eedcda7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 17
+  SkillType: 18
   Character: {fileID: 0}
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 2abd30f6f01a60f42bb9c0ef78e8305b, type: 2}
   UsedBuff: {fileID: 0}
   curBuff: {fileID: 0}
-  BuffDuration: 0.02
+  BuffDuration: 0
   cantStack: 0
   HasAnimation: 0
   AnimationStrings: []
@@ -98,11 +98,9 @@ MonoBehaviour:
   CurrentTarget: {fileID: 0}
   CurrentTargetTransform: {fileID: 0}
   BeamOrigin: {fileID: 4598409900153212}
-  DroneOrigin: {fileID: 0}
   TargetType: 1
-  SkillRequired: {fileID: 114940261459285084, guid: a094c9a21824ee74ea1ff86bb556bd62,
-    type: 2}
-  HealAmount: 20
+  CurrentHeal: {fileID: 0}
+  HealAmount: 0
   ActionPointAmount: 20
   ReloadAmount: 20
   MaxRange: 13
