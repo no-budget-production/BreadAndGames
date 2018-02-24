@@ -54,7 +54,7 @@ public class Skill : MonoBehaviour
 
     }
 
-    public void SpawnBuff()
+    public virtual void SpawnBuff()
     {
         if (UsedBuff == null)
         {
@@ -81,6 +81,7 @@ public class Skill : MonoBehaviour
         curBuff.transform.SetParent(transform);
         curBuff.Character = Character;
         curBuff.Lifetime = BuffDuration;
+        curBuff.Skill = this;
         Character.ActiveBuffs.Add(curBuff);
     }
 }

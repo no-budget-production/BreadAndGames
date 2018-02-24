@@ -12,7 +12,11 @@ public class Buff : MonoBehaviour
     [HideInInspector]
     public float duration;
 
+    [HideInInspector]
     public Character Character;
+
+    [HideInInspector]
+    public Skill Skill;
 
     //public BuffType[] ThisBuffTypes;
 

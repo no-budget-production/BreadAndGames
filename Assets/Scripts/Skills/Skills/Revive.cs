@@ -8,6 +8,8 @@ public class Revive : Skill
     public float ReviveHealthMulti;
     public BuffObject ReviveCoolDownBuff;
 
+    public PlayerController ReviveTarget;
+
     public override void Shoot()
     {
         if (!BuffObject.isStackable)
@@ -41,26 +43,22 @@ public class Revive : Skill
                 continue;
             }
 
+            ReviveTarget = GameManager.Instance.Players[i];
+
             if (Vector3.Distance(Character.transform.position, GameManager.Instance.Players[i].transform.position) <= ReviveRange)
             {
-                GameManager.Instance.Players[i].GetHealth(GameManager.Instance.Players[i].MaxHealth * ReviveHealthMulti);
-
-                GameManager.Instance.Players[i].MaxHealth -= GameManager.Instance.Players[i].MaxHealth - (GameManager.Instance.Players[i].MaxHealth * ReviveHealthMulti);
-
-                GameManager.Instance.Players[i].canWalk = true;
-
-                GameManager.Instance.Players[i].canUseRightStick = true;
-
-                GameManager.Instance.Players[i].canUseSkills = true;
-
                 Character.AddBuff(BuffObject, 1, Character);
-                Character.AddBuff(ReviveCoolDownBuff, 1, Character);
                 SpawnBuff();
+
+                var tempChargeBarBuff = curBuff.GetComponent<ChargeBarBuff>();
+                if (tempChargeBarBuff != null)
+                {
+                    tempChargeBarBuff.ReviveTarget = ReviveTarget;
+                }
 
                 Character.canWalk = false;
                 Character.canUseRightStick = false;
                 Character.canUseSkills = false;
-
 
                 break;
             }
@@ -68,9 +66,19 @@ public class Revive : Skill
 
     }
 
-    public override void StopShoot()
+    public void OnComplete()
     {
+        ReviveTarget.GetHealth(ReviveTarget.MaxHealth * ReviveHealthMulti);
 
+        ReviveTarget.MaxHealth -= ReviveTarget.MaxHealth - (ReviveTarget.MaxHealth * ReviveHealthMulti);
+
+        //ReviveTarget.canWalk = true;
+
+        //ReviveTarget.canUseRightStick = true;
+
+        //ReviveTarget.canUseSkills = true;
+
+        Character.AddBuff(ReviveCoolDownBuff, 1, Character);
     }
 
 }
