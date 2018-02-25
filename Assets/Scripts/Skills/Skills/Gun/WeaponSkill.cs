@@ -107,6 +107,8 @@ public class WeaponSkill : Skill
 
     void SpawnProjectiles()
     {
+        //Debug.Log("ShotFired " + Character.name + " " + Time.realtimeSinceStartup);
+
         float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);
 
         float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
