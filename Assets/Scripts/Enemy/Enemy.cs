@@ -89,6 +89,7 @@ public class Enemy : Character
             curSkill.transform.SetParent(transform);
             curSkill.Character = this;
             curSkill.SkillSpawn = SkillSpawn;
+            curSkill.transform.rotation = SkillSpawn.rotation;
             ActiveSkills[i] = curSkill;
         }
 

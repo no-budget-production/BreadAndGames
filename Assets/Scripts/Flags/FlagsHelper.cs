@@ -105,6 +105,7 @@ public enum SkillType
     IsHealingShooter,
     EnemyMeleeWeapon,
     EnemyRangedWeapon,
+    EnemyRangedWeaponR,
     Revive,
     ReviveCooldown,
     _Length,
@@ -137,6 +138,7 @@ public enum SkillTypeFlags
     IsHealingShooter = 1 << SkillType.IsHealingShooter,
     EnemyMeleeWeapon = 1 << SkillType.EnemyMeleeWeapon,
     EnemyRangedWeapon = 1 << SkillType.EnemyRangedWeapon,
+    EnemyRangedWeaponR = 1 << SkillType.EnemyRangedWeaponR,
     Revive = 1 << SkillType.Revive,
     ReviveCooldown = 1 << SkillType.ReviveCooldown
 }

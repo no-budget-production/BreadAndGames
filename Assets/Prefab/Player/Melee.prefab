@@ -1219,13 +1219,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143050206337656}
   serializedVersion: 2
-  m_Mass: 300
-  m_Drag: 0
-  m_AngularDrag: 0.1
+  m_Mass: 1
+  m_Drag: 0.5
+  m_AngularDrag: 100000
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!82 &82047039485331390
 AudioSource:
@@ -1481,6 +1481,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
+  hasDied: 0
   DestroyOnDeath: 0
   maxActionPoints: 100
   curActionPoints: 100
@@ -1561,12 +1562,13 @@ MonoBehaviour:
     ButtonStringBC:
     - {fileID: 114008890782351200, guid: aed2844c20d82a248be291988f7c176b, type: 2}
   Deadzone: 0.19
-  acceleration: 2500
-  deceleration: 1000
+  acceleration: 1100
+  deceleration: 1200
   moveSpeedMax: 5
   TurnSpeed: 8
   rotatable: 1
   moveable: 1
+  isWalking: 0
   rb: {fileID: 0}
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
@@ -1771,7 +1773,7 @@ NavMeshObstacle:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143050206337656}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 1, y: 1, z: 1}
