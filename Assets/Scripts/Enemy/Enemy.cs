@@ -66,17 +66,17 @@ public class Enemy : Character
 
     public override void OnCustomDestroy()
     {
+        GameManager.Instance.Enemies.Remove(this);
         base.OnCustomDestroy();
-        if (GameManager.Instance.HealthPickUpsSpawn)
+        if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
         {
             Debug.Log(gameObject.name + Time.realtimeSinceStartup);
             float randomNumber = (Random.Range(0, 100.0f));
             if (randomNumber <= ChanceToSpawnHPPickUps)
             {
-                GameManager.Instance.GetPickUpSpawner.SpawnPickUps(transform.position);
+                GameManager.Instance.PickUpSpawner.SpawnPickUps(transform.position);
             }
         }
-        GameManager.Instance.Enemies.Remove(this);
     }
 
     public void SkillSetup()

@@ -92,6 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPPickUps: {fileID: 114627626524168010, guid: d9bca23b626bda84cb0ca62edcf6d716,
     type: 2}
+  HealthPickUpsRequested: 0
+  HealthPickUpThreshold: 50
+  HealthPickUpsSpawn: 0
+  maxHealthPickUps: 3
 --- !u!114 &114985182359234422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,8 +127,5 @@ MonoBehaviour:
   HUDActionPointsBar: []
   HUDOverChargeBar: []
   HUDReloadBar: []
-  GetPickUpSpawner: {fileID: 114962980690546624}
-  HealthPickUpThreshold: 0
-  HealthPickUpsSpawn: 1
-  maxHealthPickUps: 3
+  PickUpSpawner: {fileID: 114962980690546624}
   HealthPickUps: []

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Punch : Skill
 {
     public float energyCosts;
+    public float energyChargeCosts;
 
     public DamageType DamageType;
     public PunchCollider HitBox;
@@ -83,7 +84,6 @@ public class Punch : Skill
             return;
         }
 
-        Character.AddBuff(BuffObject, 1, Character);
 
         if (canCharge)
         {
@@ -101,13 +101,13 @@ public class Punch : Skill
                 }
             }
 
-            if (Character.curActionPoints - energyCosts > 0)
+            if (Character.curActionPoints - energyChargeCosts > 0)
             {
                 //Debug.Log("Character.AddBuff");
 
                 curChargeTime += Time.deltaTime;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
-                Character.SpendActionPoints(energyCosts * Time.deltaTime);
+                Character.SpendActionPoints(energyChargeCosts * Time.deltaTime);
                 //Debug.Log("BonusDamagePerSec * Time.deltaTime:" + BonusDamagePerSec * Time.deltaTime);
                 //Debug.Log("TimeDeltaTime:" + curChargeTime);
 
@@ -135,7 +135,6 @@ public class Punch : Skill
                     Character.Anim.SetTrigger(AnimationStrings[0]);
                 }
             }
-
             Character.SpendActionPoints(energyCosts);
             DeadlDamage();
         }
@@ -166,13 +165,17 @@ public class Punch : Skill
         }
         else
         {
-            if (!BuffObject.isStackable)
+            if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
             {
-                if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                if (!BuffObject.isStackable)
                 {
-                    return;
+                    if (BuffObject.HasBuff(Character.ActiveBuffObjects))
+                    {
+                        return;
+                    }
                 }
             }
+
         }
 
         if (BuffObject.HasCanTriggerWith(Character.ActiveBuffObjects))
@@ -180,8 +183,14 @@ public class Punch : Skill
             return;
         }
 
-        Character.AddBuff(BuffObject, 1, Character);
+        if (canCharge)
+        {
+            Character.Anim.SetBool(AnimationStrings[0], false);
+            //Debug.Log("ResetBool");
 
+        }
+
+        Character.AddBuff(BuffObject, 1, Character);
 
         DeadlDamage();
 
@@ -203,6 +212,7 @@ public class Punch : Skill
             //SoundPlayer.Play();
         }
 
+        Character.AddBuff(BuffObject, 1, Character);
 
         Character.curOverCharge = Character.curActionPoints;
         Character.OnChangeOverchargeSlider();

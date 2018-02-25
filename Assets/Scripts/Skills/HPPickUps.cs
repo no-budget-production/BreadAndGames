@@ -13,7 +13,8 @@ public class HPPickUps : MonoBehaviour
         {
             return;
         }
-        var used = temp.RestoreHealth(temp.MaxHealth/100 * healthAmountInPercent);
+        GameManager.Instance.HealthPickUps.Remove(this);
+        var used = temp.RestoreHealth(temp.MaxHealth / 100 * healthAmountInPercent);
         if (used)
         {
             Destroy(this.gameObject);

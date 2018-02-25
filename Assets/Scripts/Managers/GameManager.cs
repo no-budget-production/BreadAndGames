@@ -53,10 +53,7 @@ public class GameManager : MonoBehaviour
     public Slider[] HUDOverChargeBar;
     public Slider[] HUDReloadBar;
 
-    public PickUpSpawner GetPickUpSpawner;
-    public float HealthPickUpThreshold;
-    public bool HealthPickUpsSpawn;
-    public int maxHealthPickUps;
+    public PickUpSpawner PickUpSpawner;
     public List<HPPickUps> HealthPickUps;
 
     void Awake()
