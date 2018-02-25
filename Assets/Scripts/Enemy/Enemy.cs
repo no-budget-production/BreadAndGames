@@ -70,7 +70,7 @@ public class Enemy : Character
         base.OnCustomDestroy();
         if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
         {
-            Debug.Log(gameObject.name + Time.realtimeSinceStartup);
+            //Debug.Log(gameObject.name + Time.realtimeSinceStartup);
             float randomNumber = (Random.Range(0, 100.0f));
             if (randomNumber <= ChanceToSpawnHPPickUps)
             {

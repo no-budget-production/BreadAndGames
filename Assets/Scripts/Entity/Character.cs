@@ -200,7 +200,13 @@ public class Character : Entity
                 OnHUDChangeHealthSlider();
             }
         }
-        else
+    }
+
+    public override void GetHealth(float healing)
+    {
+        base.GetHealth(healing);
+
+        if (!hasDied)
         {
             if (UseHealthbar)
             {
@@ -211,27 +217,13 @@ public class Character : Entity
             {
                 OnHUDChangeHealthSlider();
             }
-        }
-    }
 
-    public override void GetHealth(float healing)
-    {
-        base.GetHealth(healing);
-
-        if (UseHealthbar)
-        {
-            OnChangeHealth(CurrentHealth);
+            if (!isDeadTrigger)
+            {
+                Enable();
+            }
         }
 
-        if (UseHUDHealthbarSlider)
-        {
-            OnHUDChangeHealthSlider();
-        }
-
-        if (!isDeadTrigger)
-        {
-            Enable();
-        }
     }
 
     void OnChangeHealth(float currentHealth)
@@ -248,9 +240,13 @@ public class Character : Entity
 
     void Regenerate()
     {
-        GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
-        RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
-        RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
+        if (!isDeadTrigger)
+        {
+            GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
+            RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
+            RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
+
+        }
     }
 
     public void AddBuff(BuffObject buff, int multi, Character character)
