@@ -35,6 +35,11 @@ public class PhaseOneLevelScript : MonoBehaviour
     public int phase2TriggerCount;
 
     public GameObject roadblock;
+    public GameObject explosionPrefab1;
+    public GameObject explosionPrefab2;
+    public Transform point1;
+    public Transform point2;
+    public Transform point3;
 
     public ArenaSpawner[] spawner;
 
@@ -75,6 +80,20 @@ public class PhaseOneLevelScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             startArenaEvent = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GameObject TempObjectHolder;
+            TempObjectHolder = Instantiate(explosionPrefab1, point1.position, point1.rotation) as GameObject;
+            GameObject TempObjectHolder2;
+            TempObjectHolder2 = Instantiate(explosionPrefab2, point2.position, point2.rotation) as GameObject;
+            TempObjectHolder2 = Instantiate(explosionPrefab2, point3.position, point3.rotation) as GameObject;
+
+            GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
+            GameManager.Instance.ActiveCamera.TargetPlayer[2] = point1;
+            GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
+            GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[0].GetComponent<Transform>();
         }
 
         if (startArenaEvent)
@@ -147,7 +166,8 @@ public class PhaseOneLevelScript : MonoBehaviour
             {
                 if (AmountOfSpawnedEnemysInCurrentWave >= phase2TriggerCount)       // Begin of Phase 2
                 {
-
+                    GameObject TempObjectHolder;
+                    TempObjectHolder = Instantiate(explosionPrefab1, point1.position, point1.rotation) as GameObject;
                 }
             }
             else if(GameManager.Instance.Enemies.Count == 0)

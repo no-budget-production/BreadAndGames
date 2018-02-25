@@ -61,40 +61,40 @@ public class DetonatorHeatwave : DetonatorComponent {
 	
 	override public void Explode()
 	{
-        //try to early out if we can't draw this (not sure if this also gets us out of Unity Indie)
-        if (SystemInfo.supportsImageEffects)
-        {
-            if ((detailThreshold > detail) || !on) return;
+    //    //try to early out if we can't draw this (not sure if this also gets us out of Unity Indie)
+    //    if (SystemInfo.supportsImageEffects)
+    //    {
+    //        if ((detailThreshold > detail) || !on) return;
 
-            if (!_delayedExplosionStarted)
-            {
-                _explodeDelay = explodeDelayMin + (Random.value * (explodeDelayMax - explodeDelayMin));
-            }
-            if (_explodeDelay <= 0)
-            {
-                //incoming size is based on 1, so we multiply here
-                _startSize = 0f;
-                _maxSize = size * 10f;
+    //        if (!_delayedExplosionStarted)
+    //        {
+    //            _explodeDelay = explodeDelayMin + (Random.value * (explodeDelayMax - explodeDelayMin));
+    //        }
+    //        if (_explodeDelay <= 0)
+    //        {
+    //            //incoming size is based on 1, so we multiply here
+    //            _startSize = 0f;
+    //            _maxSize = size * 10f;
 
-                _material = new Material(Shader.Find("HeatDistort"));
-                _heatwave = GameObject.CreatePrimitive(PrimitiveType.Plane);
-				_heatwave.name = "Heatwave";
-				_heatwave.transform.parent = this.transform;
-				Destroy(_heatwave.GetComponent(typeof(MeshCollider)));
+    //            _material = new Material(Shader.Find("HeatDistort"));
+    //            _heatwave = GameObject.CreatePrimitive(PrimitiveType.Plane);
+				//_heatwave.name = "Heatwave";
+				//_heatwave.transform.parent = this.transform;
+				//Destroy(_heatwave.GetComponent(typeof(MeshCollider)));
 
-                if (!heatwaveMaterial) heatwaveMaterial = MyDetonator().heatwaveMaterial;
-                _material.CopyPropertiesFromMaterial(heatwaveMaterial);
-                _heatwave.GetComponent<Renderer>().material = _material;
-                _heatwave.transform.parent = this.transform;
+    //            if (!heatwaveMaterial) heatwaveMaterial = MyDetonator().heatwaveMaterial;
+    //            _material.CopyPropertiesFromMaterial(heatwaveMaterial);
+    //            _heatwave.GetComponent<Renderer>().material = _material;
+    //            _heatwave.transform.parent = this.transform;
 
-                _delayedExplosionStarted = false;
-                _explodeDelay = 0f;
-            }
-            else
-            {
-                _delayedExplosionStarted = true;
-            }
-        }
+    //            _delayedExplosionStarted = false;
+    //            _explodeDelay = 0f;
+    //        }
+    //        else
+    //        {
+    //            _delayedExplosionStarted = true;
+    //        }
+    //    }
 	}
 	
 	public void Reset()
