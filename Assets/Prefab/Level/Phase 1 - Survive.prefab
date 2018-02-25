@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 65518469459158598}
   - component: {fileID: 23944324277686216}
   - component: {fileID: 208161420470552354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,6 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4446111363898254}
   - component: {fileID: 114965497453559480}
+  - component: {fileID: 82774279964606586}
   m_Layer: 0
   m_Name: Phase 1 - Survive
   m_TagString: Untagged
@@ -743,6 +744,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82774279964606586
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771092245338546}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114020408794647516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -859,7 +940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17480ff500aa2d54882e4c265ee5b3ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startArenaEvent: 0
   PauseBetweenWaves: 5
   Wave1AmountOfEnemys: 16
   Wave2AmountOfEnemys: 24
@@ -869,6 +949,8 @@ MonoBehaviour:
   phase2TriggerCount: 50
   roadblock: {fileID: 1973391611170714}
   explosionPrefab: {fileID: 1839290902615248, guid: 0c10b833a7059af4788dc1ba35bab5df,
+    type: 2}
+  explosionPrefab2: {fileID: 1048692918664698, guid: 4b235afc292bf8c49828dd888703a4b4,
     type: 2}
   explosionPoint: {fileID: 4976089385120786}
   pointCamera: {fileID: 4478095312171548}
@@ -881,6 +963,13 @@ MonoBehaviour:
   - {fileID: 114020408794647516}
   - {fileID: 114463640816969404}
   - {fileID: 114992214714757720}
+  firstCountdown: {fileID: 8300000, guid: ede65c016ea3f8c45a9fff7ae471f69f, type: 3}
+  countdownClips:
+  - {fileID: 8300000, guid: 40ef47493541dbb45bdf498039245a59, type: 3}
+  - {fileID: 8300000, guid: 25f6d4079b0e9b34d90c6a9a56bb46f4, type: 3}
+  - {fileID: 8300000, guid: 19eb020c20bf112439db5785c3bc4b07, type: 3}
+  - {fileID: 8300000, guid: 137c02808be18cc41acbaddb60ffef9a, type: 3}
+  horn: {fileID: 8300000, guid: b03937ad54a06c44a83cf59aceaaf803, type: 3}
 --- !u!114 &114992214714757720
 MonoBehaviour:
   m_ObjectHideFlags: 1

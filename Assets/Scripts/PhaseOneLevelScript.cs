@@ -28,18 +28,23 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     public GameObject roadblock;
     public GameObject explosionPrefab;
+    public GameObject explosionPrefab2;
     public Transform explosionPoint;
     public Transform pointCamera;
 
     public ArenaSpawner[] spawner;
-    public AudioClip[] audioClips;
+
+    private AudioSource AudioSource_Comp;
+    public AudioClip firstCountdown;
+    public AudioClip[] countdownClips;
+    public AudioClip horn;
+    private bool PlaySound;
 
     private WaveStatusReport[] WaveStatus = new WaveStatusReport[5];
     private int WaveCounter;
 
     private float MinSpawnInterval;
     private float MaxSpawnInterval;
-    private AudioSource AudioSource_Comp;
     private bool StartCountdown;
 
     private bool EndOfPhase;
@@ -55,6 +60,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     void Start()
     {
+        PlaySound = true;
         EndOfPhase = false;
         startArenaEvent = false;
         StartCountdown = true;
@@ -89,7 +95,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         if (startArenaEvent)
         {
-            AudioSource_Comp.clip = audioClips[0];
+            AudioSource_Comp.clip = firstCountdown;
             AudioSource_Comp.Play();
             StartCoroutine(StartEvent(AudioSource_Comp.clip.length));            
             startArenaEvent = false;
@@ -127,7 +133,7 @@ public class PhaseOneLevelScript : MonoBehaviour
     IEnumerator StartEvent(float clipLength)
     {
         yield return new WaitForSeconds(clipLength);
-        AudioSource_Comp.clip = audioClips[1];
+        AudioSource_Comp.clip = horn;
         AudioSource_Comp.Play();
         WaveStatus[0] = WaveStatusReport.begin;
     }
@@ -185,13 +191,25 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     private IEnumerator EndOfWave(float waitTime, int WaveArrayNumber)
     {
-        yield return new WaitForSeconds(waitTime);
-        WaveEnd(WaveArrayNumber);
+        if (PlaySound && !(WaveArrayNumber > countdownClips.Length))
+        {
+            AudioSource_Comp.clip = countdownClips[WaveArrayNumber];
+            AudioSource_Comp.Play();
+            PlaySound = false;
+        }
 
+        yield return new WaitForSeconds(AudioSource_Comp.clip.length);
+        WaveEnd(WaveArrayNumber);
+        PlaySound = true;
     }
 
     private IEnumerator BreakoutSequenz(float waitTime)
     {
+        GameObject TempObjectHolder1;
+        TempObjectHolder1 = Instantiate(explosionPrefab2, explosionPoint.position, explosionPoint.rotation) as GameObject;
+
+        yield return new WaitForSeconds(0.5f);
+
         GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
         GameManager.Instance.ActiveCamera.TargetPlayer[2] = pointCamera;
         GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
@@ -223,6 +241,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             if (!(WaveArrayNumber + 1 >= WaveStatus.Length))
             {
                 WaveStatus[WaveArrayNumber + 1] = WaveStatusReport.begin;   // Start of Nextwave
+                AudioSource_Comp.clip = horn;
                 AudioSource_Comp.Play();
             }
 
