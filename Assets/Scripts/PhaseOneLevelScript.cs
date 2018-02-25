@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[System.Serializable]
-//public class WaveArray
-//{
-//    public WaveStatusReport WaveStatus;
-//    public int waveNumber;
-//}
-
 [SerializeField]
 public enum WaveStatusReport
 {
@@ -19,11 +12,10 @@ public enum WaveStatusReport
     end, _length, _invalid = -1
 }
 
-//[ExecuteInEditMode]
 public class PhaseOneLevelScript : MonoBehaviour
 {
-    //public int amountOfWaves;
-    public bool startArenaEvent;
+
+    private bool startArenaEvent;
 
     public int PauseBetweenWaves;
 
@@ -40,28 +32,32 @@ public class PhaseOneLevelScript : MonoBehaviour
     public Transform pointCamera;
 
     public ArenaSpawner[] spawner;
-
+    public AudioClip[] audioClips;
 
     private WaveStatusReport[] WaveStatus = new WaveStatusReport[5];
     private int WaveCounter;
 
     private float MinSpawnInterval;
     private float MaxSpawnInterval;
+    private AudioSource AudioSource_Comp;
+    private bool StartCountdown;
 
     private bool EndOfPhase;
 
     private int AmountOfSpawnedEnemysInCurrentWave;
     public int _AmountOfSpawnedEnemysInCurrentWave { get { return AmountOfSpawnedEnemysInCurrentWave; } set { AmountOfSpawnedEnemysInCurrentWave = value; } }
 
-    //public WaveArray[] currentWave;
 
-    //private string[] WaveNames;
-
+    void Awake()
+    {
+        AudioSource_Comp = GetComponent<AudioSource>();
+    }
 
     void Start()
     {
         EndOfPhase = false;
         startArenaEvent = false;
+        StartCountdown = true;
         for (int i = 0; i < WaveStatus.Length; i++)
         {
             WaveStatus[i] = WaveStatusReport.off;
@@ -74,16 +70,6 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     void Update ()
     {
-        //if (!Application.isPlaying)
-        //{
-        //    WaveNames = new string[amountOfWaves];
-
-        //    for (int i = 0; i < WaveNames.Length; i++)
-        //    {
-        //        WaveNames[i] = "Wave" + (i + 1);
-        //    }
-        //}
-
         // Debug
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -97,22 +83,18 @@ public class PhaseOneLevelScript : MonoBehaviour
             WaveStatus[2] = WaveStatusReport.end;
             WaveStatus[3] = WaveStatusReport.end;
             WaveStatus[4] = WaveStatusReport.begin;
-            //GameObject TempObjectHolder2;
-            //TempObjectHolder2 = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation) as GameObject;
-
-            //GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
-            //GameManager.Instance.ActiveCamera.TargetPlayer[2] = pointCamera;
-            //GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
-            //GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[0].GetComponent<Transform>();
         }
+        // End Debug
+
 
         if (startArenaEvent)
         {
-            WaveStatus[0] = WaveStatusReport.begin;
+            AudioSource_Comp.clip = audioClips[0];
+            AudioSource_Comp.Play();
+            StartCoroutine(StartEvent(AudioSource_Comp.clip.length));            
             startArenaEvent = false;
         }
-
-        if (!EndOfPhase)
+        else if (!EndOfPhase)
         {
             // Start of the Wave1
             if (!(WaveStatus[0] == WaveStatusReport.end) && !(WaveStatus[0] == WaveStatusReport.off))
@@ -140,6 +122,14 @@ public class PhaseOneLevelScript : MonoBehaviour
                 StartWave(WaveFinalAmountOfEnemys, 4, true);
             }
         }
+    }
+
+    IEnumerator StartEvent(float clipLength)
+    {
+        yield return new WaitForSeconds(clipLength);
+        AudioSource_Comp.clip = audioClips[1];
+        AudioSource_Comp.Play();
+        WaveStatus[0] = WaveStatusReport.begin;
     }
 
     void StartWave(int AmountOfEnemys, int WaveArrayNumber, bool isFinalWave)
@@ -233,6 +223,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             if (!(WaveArrayNumber + 1 >= WaveStatus.Length))
             {
                 WaveStatus[WaveArrayNumber + 1] = WaveStatusReport.begin;   // Start of Nextwave
+                AudioSource_Comp.Play();
             }
 
         }
