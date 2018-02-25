@@ -385,6 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4674246884365388}
   - component: {fileID: 95145110562039168}
+  - component: {fileID: 114581974937053822}
   m_Layer: 0
   m_Name: ENEMY_MELEE_FINAL_ANIMATION
   m_TagString: Untagged
@@ -1429,6 +1430,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114581974937053822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542881348221030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204a8e9375990624eab9d4c5808fa3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character: {fileID: 114989625834042308}
 --- !u!114 &114650950170363120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1543,6 +1556,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
+  hasDied: 0
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100

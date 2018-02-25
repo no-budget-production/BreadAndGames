@@ -62,6 +62,7 @@ public class Enemy : Character
 
     public override void OnCustomDestroy()
     {
+        base.OnCustomDestroy();
         if (GameManager.Instance.HealthPickUpsSpawn)
         {
             Debug.Log(gameObject.name + Time.realtimeSinceStartup);
@@ -72,7 +73,6 @@ public class Enemy : Character
             }
         }
         GameManager.Instance.Enemies.Remove(this);
-        base.OnCustomDestroy();
     }
 
     public void SkillSetup()
@@ -107,7 +107,7 @@ public class Enemy : Character
     {
         Anim.SetFloat(animMovX, NavMeshAgent.velocity.magnitude / NavAgentSpeed);
 
-        if (!isGameOver)
+        //if (!isGameOver)
         {
             base.Update();
 

@@ -8,7 +8,7 @@ public class PickUpSpawner : MonoBehaviour
 
     public void SpawnPickUps(Vector3 location)
     {
-        Debug.Log(location);
+        //Debug.Log(location);
         if (GameManager.Instance.HealthPickUps.Count < GameManager.Instance.maxHealthPickUps)
         {
             HPPickUps curHpPickUps = Instantiate(HPPickUps, location + HPPickUps.transform.position, Quaternion.identity);

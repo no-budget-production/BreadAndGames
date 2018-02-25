@@ -11,11 +11,11 @@ public class Effect : MonoBehaviour
 
     public virtual IEnumerator Fade()
     {
-        Debug.Log("StartKilling!");
+        //Debug.Log("StartKilling!");
 
         yield return new WaitForSeconds(Lifetime);
 
-        Debug.Log("KillIt!");
+        //Debug.Log("KillIt!");
 
         if (Renderer != null)
         {

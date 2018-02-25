@@ -6,7 +6,7 @@ public class FadeAfterSpawn : Effect
 {
     void Awake()
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
         StartCoroutine(Fade());
     }
 }

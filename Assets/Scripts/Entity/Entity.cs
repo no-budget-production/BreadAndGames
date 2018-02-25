@@ -39,6 +39,7 @@ public class Entity : MonoBehaviour
     public float HealthRegenerationMultiplicator;
 
     public bool isDeadTrigger;
+    public bool hasDied;
     public bool DestroyOnDeath;
 
 
@@ -68,13 +69,21 @@ public class Entity : MonoBehaviour
 
             if (DestroyOnDeath)
             {
-                this.OnCustomDestroy();
+                if (!hasDied)
+                {
+                    OnCustomDestroy();
+                }
             }
         }
     }
 
+    //int DiedAmount;
+
     public virtual void OnCustomDestroy()
     {
+        //DiedAmount++;
+        hasDied = true;
+        //Debug.Log(DiedAmount);
         Destroy(gameObject);
     }
 
