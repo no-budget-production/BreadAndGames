@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 22
-  Character: {fileID: 0}
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 14c7b8f5b9470e84fbac6be8bffb45c5, type: 2}
@@ -390,13 +390,13 @@ MonoBehaviour:
   AnimationStrings:
   - Skill_0
   AnimationTypes: 00000000
-  SkillNumber: 0
+  Character: {fileID: 0}
   SkillRequired: {fileID: 0}
   Muzzle: {fileID: 4663339666616010}
   ShellEjection: {fileID: 4690313827456778}
   Projectile: {fileID: 114397302490237756, guid: 9ed8cc12cbc481c419d4b3ce0224660f,
     type: 2}
-  Shell: {fileID: 4618930595482000, guid: 3aae16d9c48a312489323d005d10fd96, type: 2}
+  Shell: {fileID: 4618930595482000, guid: 9478b7ecdc35c56428ec2ecbad5fc28b, type: 2}
   MuzzleVelocity: 35
   AccuracyHorizontal: 3
   AccuracyVertical: 3

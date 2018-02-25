@@ -5,11 +5,18 @@ using UnityEngine;
 public class HPPickUps : MonoBehaviour
 {
     public float healthAmount;
+
     void OnTriggerEnter(Collider other)
     {
         var temp = other.GetComponent<PlayerController>();
-        if (temp == null) return;
+        if (temp == null)
+        {
+            return;
+        }
         var used = temp.RestoreHealth(healthAmount);
-        if (used) Destroy(this.gameObject);
+        if (used)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

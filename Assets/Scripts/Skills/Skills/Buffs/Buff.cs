@@ -32,7 +32,7 @@ public class Buff : MonoBehaviour
 
         Character.ActiveBuffs.Remove(this);
 
-        Destroy(gameObject);
+        Destroy(this.gameObject);
 
         //for (int i = 0; i < ThisBuffTypes.Length; i++)
         //{

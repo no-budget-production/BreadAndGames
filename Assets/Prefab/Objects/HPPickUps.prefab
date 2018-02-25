@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4254522074130378}
   - component: {fileID: 65971071662354762}
   - component: {fileID: 114627626524168010}
+  - component: {fileID: 114942090936912510}
+  - component: {fileID: 114753785544517142}
   m_Layer: 0
   m_Name: HPPickUps
   m_TagString: Untagged
@@ -66,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471449579269510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.2586317, y: 1.61, z: 4.3168263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4167020617870386}
@@ -87,7 +89,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 618fdf463fe982b4b9ad6a3ce3b4d725, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,3 +152,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 20
+--- !u!114 &114753785544517142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471449579269510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8236036208eb043bedcb8ffccba65b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifetime: 1
+  Fadetime: 1000
+  Renderer: {fileID: 23939814787209052}
+  TargetMaterial: {fileID: 2100000, guid: 001e20de2dfd30648bd4752466121650, type: 2}
+--- !u!114 &114942090936912510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471449579269510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dcfff5994e1f44084a60d079885a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: {x: 0, y: 10, z: 0}
