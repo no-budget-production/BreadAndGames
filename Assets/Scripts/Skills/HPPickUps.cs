@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HPPickUps : MonoBehaviour
 {
-    public float healthAmount;
+    public float healthAmountInPercent;
 
     void OnTriggerEnter(Collider other)
     {
@@ -13,7 +13,7 @@ public class HPPickUps : MonoBehaviour
         {
             return;
         }
-        var used = temp.RestoreHealth(healthAmount);
+        var used = temp.RestoreHealth(temp.MaxHealth/100 * healthAmountInPercent);
         if (used)
         {
             Destroy(this.gameObject);
