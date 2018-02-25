@@ -31,7 +31,10 @@ public class PhaseOneLevelScript : MonoBehaviour
     public int Wave2AmountOfEnemys;
     public int Wave3AmountOfEnemys;
     public int Wave4AmountOfEnemys;
-    public int Wave5AmountOfEnemys;
+    public int WaveFinalAmountOfEnemys;
+    public int phase2TriggerCount;
+
+    public GameObject roadblock;
 
     public ArenaSpawner[] spawner;
 
@@ -105,7 +108,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             // Start of final Wave (transition to phase 2)
             if (!(WaveStatus[4] == WaveStatusReport.end) && !(WaveStatus[4] == WaveStatusReport.off))
             {
-                StartWave(Wave5AmountOfEnemys, 4, true);
+                StartWave(WaveFinalAmountOfEnemys, 4, true);
             }
         }
     }
@@ -120,12 +123,13 @@ public class PhaseOneLevelScript : MonoBehaviour
                 spawner[i]._AmountOfEnemys = amountOfEnemysHelper;
                 if (isFinalWave)
                 {
-                    spawner[i]._Interval = Random.Range(2f, 15f);
+                    spawner[i]._Interval = Random.Range(4f, 6f);
                 }
                 else
                 {
                     spawner[i]._Interval = Random.Range(2f, 5f);
                 }
+
                 spawner[i].enabled = true;
                 spawner[i]._StartSpawning = true;
             }
@@ -139,7 +143,14 @@ public class PhaseOneLevelScript : MonoBehaviour
         }
         if ((AmountOfSpawnedEnemysInCurrentWave >= AmountOfEnemys) && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
         {
-            if (GameManager.Instance.Enemies.Count == 0)
+            if (isFinalWave)
+            {
+                if (AmountOfSpawnedEnemysInCurrentWave >= phase2TriggerCount)       // Begin of Phase 2
+                {
+
+                }
+            }
+            else if(GameManager.Instance.Enemies.Count == 0)
             {
                 StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
             }
@@ -159,12 +170,6 @@ public class PhaseOneLevelScript : MonoBehaviour
     {
         if (WaveStatus[WaveArrayNumber] == WaveStatusReport.running)
         {
-            for (int i = 0; i < spawner.Length; i++)
-            {
-                spawner[i].enabled = false;
-                spawner[i]._StartSpawning = false;
-                spawner[i]._SpawnedEnemys = 0;
-            }
             AmountOfSpawnedEnemysInCurrentWave = 0;
             WaveStatus[WaveArrayNumber] = WaveStatusReport.end;     // End of Wave
 
