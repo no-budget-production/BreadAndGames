@@ -5,16 +5,16 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     [HideInInspector]
-    public static Vector3 _SouthVector;
+    public static Vector3 SouthVector;
 
-    private void Start()
+    private void Awake()
     {
-        _SouthVector = new Vector3(0, 0, 10000);
+        SouthVector = GameManager._SouthVector;
     }
 
     void Update()
     {
-        Vector3 relativePos = _SouthVector - transform.position;
+        Vector3 relativePos = SouthVector - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
         transform.rotation = rotation;
     }

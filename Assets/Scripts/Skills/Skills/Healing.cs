@@ -113,29 +113,36 @@ public class Healing : Skill
 
         LockOn();
 
-        RaycastHit hit;
+        LineRenderer.SetPosition(0, BeamOrigin.position);
+        LineRenderer.SetPosition(1, CurrentTargetTransform.position);
 
-        if (Physics.Raycast(BeamOrigin.position, direction, out hit))
-        {
-            var temp = hit.collider.GetComponent<PlayerController>();
-            if (temp == CurrentTarget)
-            {
-                LineRenderer.SetPosition(0, BeamOrigin.position);
-                LineRenderer.SetPosition(1, CurrentTargetTransform.position);
+        OnHealObject(CurrentTarget);
 
-                OnHealObject(hit);
+        LineRenderer.enabled = true;
 
-                LineRenderer.enabled = true;
-            }
-            else
-            {
-                LineRenderer.SetPosition(0, BeamOrigin.position);
-                LineRenderer.SetPosition(1, transform.position);
+        //RaycastHit hit;
 
-                LineRenderer.enabled = false;
-            }
-        }
+        //if (Physics.Raycast(BeamOrigin.position, direction, out hit))
+        //{
+        //    var temp = hit.collider.GetComponent<PlayerController>();
+        //    if (temp == CurrentTarget)
+        //    {
+        //        LineRenderer.SetPosition(0, BeamOrigin.position);
+        //        LineRenderer.SetPosition(1, CurrentTargetTransform.position);
+
+        //        OnHealObject(hit);
+
+        //        LineRenderer.enabled = true;
+        //    }
+        //    else
+        //    {
+        //        LineRenderer.SetPosition(0, BeamOrigin.position);
+        //        LineRenderer.SetPosition(1, transform.position);
+
+        //        LineRenderer.enabled = false;
+        //    }
     }
+
 
     private void FixedUpdate()
     {
@@ -167,12 +174,14 @@ public class Healing : Skill
         }
     }
 
-    void OnHealObject(RaycastHit hit)
+
+    //void OnHealObject(RaycastHit hit)
+    void OnHealObject(PlayerController PlayerController)
     {
-        Entity healableObject = hit.collider.GetComponent<Entity>();
-        if (healableObject != null)
+        //Entity healableObject = hit.collider.GetComponent<Entity>();
+        //if (PlayerController != null)
         {
-            var tempCharacter = healableObject.GetComponent<Character>();
+            //var tempCharacter = PlayerController.GetComponent<Character>();
 
             Character.AddBuff(IsHealing, 1, Character);
 
@@ -180,19 +189,19 @@ public class Healing : Skill
             {
                 Debug.Log("HasEffectWith");
 
-                if (tempCharacter != null)
+                //if (PlayerController != null)
                 {
-                    if (!tempCharacter.rechargeActionBarDirectly)
+                    if (!PlayerController.rechargeActionBarDirectly)
                     {
-                        tempCharacter.RestoreReloadPoints(reloadProcentage * 0.5f * Time.deltaTime);
+                        PlayerController.RestoreReloadPoints(reloadProcentage * 0.5f * Time.deltaTime);
                     }
                     else
                     {
-                        tempCharacter.RestoreActionPoints(actionProcentage * 0.5f * Time.deltaTime);
+                        PlayerController.RestoreActionPoints(actionProcentage * 0.5f * Time.deltaTime);
                     }
                 }
 
-                healableObject.GetHealth(healProcentage * 0.5f * Time.deltaTime);
+                PlayerController.GetHealth(healProcentage * 0.5f * Time.deltaTime);
 
                 if (!isHalfWidthLineRenderer)
                 {
@@ -204,19 +213,19 @@ public class Healing : Skill
             {
                 Debug.Log("!HasEffectWith");
 
-                if (tempCharacter != null)
+                //if (PlayerController != null)
                 {
-                    if (!tempCharacter.rechargeActionBarDirectly)
+                    if (!PlayerController.rechargeActionBarDirectly)
                     {
-                        tempCharacter.RestoreReloadPoints(reloadProcentage * Time.deltaTime);
+                        PlayerController.RestoreReloadPoints(reloadProcentage * Time.deltaTime);
                     }
                     else
                     {
-                        tempCharacter.RestoreActionPoints(actionProcentage * Time.deltaTime);
+                        PlayerController.RestoreActionPoints(actionProcentage * Time.deltaTime);
                     }
                 }
 
-                healableObject.GetHealth(healProcentage * Time.deltaTime);
+                PlayerController.GetHealth(healProcentage * Time.deltaTime);
 
                 if (isHalfWidthLineRenderer)
                 {

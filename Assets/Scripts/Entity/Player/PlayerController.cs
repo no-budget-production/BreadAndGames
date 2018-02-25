@@ -76,6 +76,8 @@ public class PlayerController : Character
 
     void Awake()
     {
+        Anim.SetBool(animIsAiming, true);
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -171,16 +173,21 @@ public class PlayerController : Character
                 Anim.SetBool(animIsRunning, false);
                 Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
                 Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
+                Anim.SetFloat(animMovX, moveVector.magnitude);
             }
             else
             {
                 isUsingRightStick = false;
 
+                Anim.SetBool(animIsAiming, false);
                 Anim.SetBool(animIsRunning, true);
+                Anim.SetFloat(animMovX, moveVector.magnitude);
             }
         }
-
-        Anim.SetFloat(animMovX, rb.velocity.normalized.magnitude);
+        else
+        {
+            Anim.SetFloat(animMovX, moveVector.magnitude);
+        }
 
         Quaternion newLookDirection;
         if (isUsingRightStick && rotatable)
