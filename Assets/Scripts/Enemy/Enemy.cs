@@ -39,6 +39,10 @@ public class Enemy : Character
     public int EveryXFramesFind;
     public int FrameCounterFind;
 
+    [HideInInspector]
+    public float TempSpeed;
+    //[HideInInspector]
+    //public Vector3 TurnSpeed;
     public float NavAgentSpeed;
 
     private int animMovX = Animator.StringToHash("MovX");
@@ -105,7 +109,10 @@ public class Enemy : Character
 
     public override void Update()
     {
-        Anim.SetFloat(animMovX, NavMeshAgent.velocity.magnitude / NavAgentSpeed);
+        //TurnSpeed = NavMeshAgent.transform.InverseTransformDirection(NavMeshAgent.velocity).normalized;
+        TempSpeed = NavMeshAgent.velocity.magnitude / NavAgentSpeed;
+        //Anim.SetFloat(animMovX, TempSpeed + TurnSpeed.magnitude / NavMeshAgent.angularSpeed);
+        Anim.SetFloat(animMovX, TempSpeed);
 
         //if (!isGameOver)
         {
