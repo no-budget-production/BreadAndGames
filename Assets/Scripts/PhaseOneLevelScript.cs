@@ -35,15 +35,20 @@ public class PhaseOneLevelScript : MonoBehaviour
     public int phase2TriggerCount;
 
     public GameObject roadblock;
-    public GameObject explosionPrefab1;
-    public GameObject explosionPrefab2;
-    public Transform point1;
-    public Transform point2;
-    public Transform point3;
+    public GameObject explosionPrefab;
+    public Transform explosionPoint;
+    public Transform pointCamera;
 
     public ArenaSpawner[] spawner;
 
+
     private WaveStatusReport[] WaveStatus = new WaveStatusReport[5];
+    private int WaveCounter;
+
+    private float MinSpawnInterval;
+    private float MaxSpawnInterval;
+
+    private bool EndOfPhase;
 
     private int AmountOfSpawnedEnemysInCurrentWave;
     public int _AmountOfSpawnedEnemysInCurrentWave { get { return AmountOfSpawnedEnemysInCurrentWave; } set { AmountOfSpawnedEnemysInCurrentWave = value; } }
@@ -55,13 +60,16 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     void Start()
     {
+        EndOfPhase = false;
         startArenaEvent = false;
         for (int i = 0; i < WaveStatus.Length; i++)
         {
             WaveStatus[i] = WaveStatusReport.off;
         }
 
-
+        WaveCounter = 0;
+        MinSpawnInterval = 5;
+        MaxSpawnInterval = 7;
     }
 
     void Update ()
@@ -84,16 +92,18 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            GameObject TempObjectHolder;
-            TempObjectHolder = Instantiate(explosionPrefab1, point1.position, point1.rotation) as GameObject;
-            GameObject TempObjectHolder2;
-            TempObjectHolder2 = Instantiate(explosionPrefab2, point2.position, point2.rotation) as GameObject;
-            TempObjectHolder2 = Instantiate(explosionPrefab2, point3.position, point3.rotation) as GameObject;
+            WaveStatus[0] = WaveStatusReport.end;
+            WaveStatus[1] = WaveStatusReport.end;
+            WaveStatus[2] = WaveStatusReport.end;
+            WaveStatus[3] = WaveStatusReport.end;
+            WaveStatus[4] = WaveStatusReport.begin;
+            //GameObject TempObjectHolder2;
+            //TempObjectHolder2 = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation) as GameObject;
 
-            GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
-            GameManager.Instance.ActiveCamera.TargetPlayer[2] = point1;
-            GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
-            GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[0].GetComponent<Transform>();
+            //GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
+            //GameManager.Instance.ActiveCamera.TargetPlayer[2] = pointCamera;
+            //GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
+            //GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[0].GetComponent<Transform>();
         }
 
         if (startArenaEvent)
@@ -102,7 +112,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             startArenaEvent = false;
         }
 
-        if (Application.isPlaying)
+        if (!EndOfPhase)
         {
             // Start of the Wave1
             if (!(WaveStatus[0] == WaveStatusReport.end) && !(WaveStatus[0] == WaveStatusReport.off))
@@ -137,21 +147,26 @@ public class PhaseOneLevelScript : MonoBehaviour
         float amountOfEnemysHelper = AmountOfEnemys / spawner.Length;
         if (!(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.ready) && !(this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
         {
+            if (WaveCounter <= 3 && WaveCounter >= 0)
+            {
+                MinSpawnInterval--;
+                MaxSpawnInterval--;
+            }
             for (int i = 0; i < spawner.Length; i++)
             {
                 spawner[i]._AmountOfEnemys = amountOfEnemysHelper;
                 if (isFinalWave)
                 {
-                    spawner[i]._Interval = Random.Range(4f, 6f);
+                    spawner[i]._Interval = Random.Range(2f, 3f);
                 }
                 else
                 {
-                    spawner[i]._Interval = Random.Range(2f, 5f);
+                    spawner[i]._Interval = Random.Range(MinSpawnInterval, MaxSpawnInterval);
                 }
-
                 spawner[i].enabled = true;
                 spawner[i]._StartSpawning = true;
             }
+            WaveCounter++;
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.ready;
         }
 
@@ -160,17 +175,17 @@ public class PhaseOneLevelScript : MonoBehaviour
         {
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.running;
         }
-        if ((AmountOfSpawnedEnemysInCurrentWave >= AmountOfEnemys) && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running))
+        if (isFinalWave)
         {
-            if (isFinalWave)
+            if (AmountOfSpawnedEnemysInCurrentWave >= phase2TriggerCount)       // Begin of end phase1
             {
-                if (AmountOfSpawnedEnemysInCurrentWave >= phase2TriggerCount)       // Begin of Phase 2
-                {
-                    GameObject TempObjectHolder;
-                    TempObjectHolder = Instantiate(explosionPrefab1, point1.position, point1.rotation) as GameObject;
-                }
+                EndOfPhase = true;
+                StartCoroutine(BreakoutSequenz(3f));        // Parameter = time between change camera and explosion
             }
-            else if(GameManager.Instance.Enemies.Count == 0)
+        }
+        if ((AmountOfSpawnedEnemysInCurrentWave >= AmountOfEnemys) && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running) && !isFinalWave)
+        {
+            if(GameManager.Instance.Enemies.Count == 0)
             {
                 StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
             }
@@ -185,6 +200,28 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     }
 
+    private IEnumerator BreakoutSequenz(float waitTime)
+    {
+        GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
+        GameManager.Instance.ActiveCamera.TargetPlayer[2] = pointCamera;
+        GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
+        GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[1].GetComponent<Transform>();
+
+        yield return new WaitForSeconds(waitTime);
+
+        GameObject TempObjectHolder2;
+        TempObjectHolder2 = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation) as GameObject;
+
+        StartCoroutine(CamerBackToNormal(5f));      // Parameter = time till camera gets back to normal
+    }
+    private IEnumerator CamerBackToNormal(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[2];
+        GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
+        GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[1].GetComponent<Transform>();
+
+    }
 
     void WaveEnd(int WaveArrayNumber)
     {
