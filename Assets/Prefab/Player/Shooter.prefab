@@ -3164,6 +3164,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
+  hasDied: 0
   DestroyOnDeath: 0
   maxActionPoints: 100
   curActionPoints: 100
@@ -3249,6 +3250,7 @@ MonoBehaviour:
   TurnSpeed: 25
   rotatable: 1
   moveable: 1
+  isWalking: 0
   rb: {fileID: 0}
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}

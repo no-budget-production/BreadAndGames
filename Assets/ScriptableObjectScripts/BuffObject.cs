@@ -29,6 +29,7 @@ public enum BuffTypes
 
     EnemyMeleeWeapon,
     EnemyRangedWeapon,
+    EnemyRangedWeaponR,
 
     Revive,
     ReviveCooldown,

@@ -28,6 +28,10 @@ public class WeaponSkill : Skill
 
     public bool isGunFound;
 
+    public bool WaitForDelay;
+    public float Delay;
+    public bool WaitForShotAnim;
+
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
@@ -82,36 +86,68 @@ public class WeaponSkill : Skill
                 }
             }
 
-            float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);
-
-            float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
-            float tempAccuracyVertical = Mathf.Max(AccuracyVertical * AccuracyBonus, 0);
-            tempAccuracyHorizontal = Mathf.Min(tempAccuracyHorizontal, 180);
-            tempAccuracyVertical = Mathf.Min(tempAccuracyVertical, 180);
-
-            for (int i = 0; i < VolleySize; i++)
+            if (!WaitForDelay)
             {
-                Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
-
-                Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
-                newProjectile.Shooter = Character;
-                newProjectile.SetSpeed(MuzzleVelocity);
-                newProjectile.transform.SetParent(GameManager.Instance.ProjectileHolder);
+                if (!WaitForShotAnim)
+                {
+                    SpawnProjectiles();
+                }
             }
-
-            if (Shell != null)
+            else
             {
-                Transform newShell = Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
-                newShell.transform.SetParent(GameManager.Instance.VisualsHolder);
+                StopCoroutine("DelayWait");
+                StartCoroutine(DelayWait());
             }
-
-            MuzzleFlash.Activate();
-
-            Character.SpendActionPoints(ActionPointsCost);
         }
         else if (Character.curActionPoints <= 0)
         {
             Character.EmptySound();
         }
+    }
+
+    void SpawnProjectiles()
+    {
+        float AccuracyBonus = Mathf.Max(Character.AccuracyMultiplicator, 0.0001f);
+
+        float tempAccuracyHorizontal = Mathf.Max(AccuracyHorizontal * AccuracyBonus, 0);
+        float tempAccuracyVertical = Mathf.Max(AccuracyVertical * AccuracyBonus, 0);
+        tempAccuracyHorizontal = Mathf.Min(tempAccuracyHorizontal, 180);
+        tempAccuracyVertical = Mathf.Min(tempAccuracyVertical, 180);
+
+        for (int i = 0; i < VolleySize; i++)
+        {
+            Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
+
+            Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
+            newProjectile.Shooter = Character;
+            newProjectile.SetSpeed(MuzzleVelocity);
+            newProjectile.transform.SetParent(GameManager.Instance.ProjectileHolder);
+        }
+
+        if (Shell != null)
+        {
+            Transform newShell = Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
+            newShell.transform.SetParent(GameManager.Instance.VisualsHolder);
+        }
+
+        MuzzleFlash.Activate();
+
+        Character.SpendActionPoints(ActionPointsCost);
+    }
+
+    public override void SkillHit()
+    {
+        SpawnProjectiles();
+    }
+
+    public virtual IEnumerator DelayWait()
+    {
+
+        yield return new WaitForSeconds(Delay);
+
+        SpawnProjectiles();
+
+        yield return null;
+
     }
 }
