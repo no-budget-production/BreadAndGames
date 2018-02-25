@@ -97,10 +97,10 @@ public class Enemy : Character
         {
             NavMeshAgent.destination = Target.position;
         }
-        else
-        {
-            NavMeshAgent.enabled = false;
-        }
+        //else
+        //{
+        //    //NavMeshAgent.enabled = false;
+        //}
     }
 
     public override void Update()

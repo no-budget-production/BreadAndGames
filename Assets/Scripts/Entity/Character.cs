@@ -128,19 +128,19 @@ public class Character : Entity
 
     public virtual void Enable()
     {
-        //canWalk = true;
-        //canUseRightStick = true;
-        //canUseSkills = true;
+        canWalk = true;
+        canUseRightStick = true;
+        canUseSkills = true;
     }
 
     public override void OnCustomDestroy()
     {
+        base.OnCustomDestroy();
+
         if (isDeadTrigger)
         {
             Disable();
         }
-
-        base.OnCustomDestroy();
     }
 
     public virtual void Start()
@@ -185,14 +185,29 @@ public class Character : Entity
             Disable();
         }
 
-        if (UseHealthbar)
+        if (!hasDied && DestroyOnDeath)
         {
-            OnChangeHealth(CurrentHealth);
-        }
+            if (UseHealthbar)
+            {
+                OnChangeHealth(CurrentHealth);
+            }
 
-        if (UseHUDHealthbarSlider)
+            if (UseHUDHealthbarSlider)
+            {
+                OnHUDChangeHealthSlider();
+            }
+        }
+        else
         {
-            OnHUDChangeHealthSlider();
+            if (UseHealthbar)
+            {
+                OnChangeHealth(CurrentHealth);
+            }
+
+            if (UseHUDHealthbarSlider)
+            {
+                OnHUDChangeHealthSlider();
+            }
         }
     }
 

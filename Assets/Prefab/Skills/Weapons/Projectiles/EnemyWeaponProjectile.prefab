@@ -84,10 +84,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.5
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.3
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -140,7 +140,7 @@ TrailRenderer:
     alignment: 0
     textureMode: 0
     generateLightingData: 1
-  m_MinVertexDistance: 0.25
+  m_MinVertexDistance: 1
   m_Autodestruct: 1
 --- !u!114 &114397302490237756
 MonoBehaviour:
