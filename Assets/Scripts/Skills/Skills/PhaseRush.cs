@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PhaseRush : Skill
 {
-
     public int maxCharges;
     private int curCharges = 0;
+
+    private float nextSoundTime;
+    public float SBetweenSounds;
 
     public float rechargeTime;
     private List<float> checkToNextChargeTest = new List<float>();
@@ -17,6 +19,12 @@ public class PhaseRush : Skill
     public Transform thunder;
     private Transform curThunder;
     private PlayerController controller;
+    private AudioSource _AudioSource;
+
+    void Awake()
+    {
+        _AudioSource = GetComponent<AudioSource>();
+    }
 
     public void Start()
     {
@@ -51,10 +59,12 @@ public class PhaseRush : Skill
         controller.rotatable = false;
         controller.moveable = false;
 
+        _AudioSource.Play();
+
         Character.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
         Character.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-        controller.rb.AddForce(controller.transform.forward * speed);
+        controller.rb.AddForce(controller.transform.forward * speed, ForceMode.Impulse);
 
         if (curCharges == 0)
         {
