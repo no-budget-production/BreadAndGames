@@ -68,12 +68,12 @@ public class Entity : MonoBehaviour
 
             if (DestroyOnDeath)
             {
-                OnDestroy();
+                this.OnCustomDestroy();
             }
         }
     }
 
-    public virtual void OnDestroy()
+    public virtual void OnCustomDestroy()
     {
         Destroy(gameObject);
     }

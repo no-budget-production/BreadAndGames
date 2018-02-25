@@ -60,18 +60,19 @@ public class Enemy : Character
         SkillSetup();
     }
 
-    public virtual void OnDestroy()
+    public override void OnCustomDestroy()
     {
         if (GameManager.Instance.HealthPickUpsSpawn)
         {
-            float randomNumber = (Random.Range(-0, 100.0f));
-            if (randomNumber > ChanceToSpawnHPPickUps)
+            Debug.Log(gameObject.name + Time.realtimeSinceStartup);
+            float randomNumber = (Random.Range(0, 100.0f));
+            if (randomNumber <= ChanceToSpawnHPPickUps)
             {
                 GameManager.Instance.GetPickUpSpawner.SpawnPickUps(transform.position);
             }
         }
         GameManager.Instance.Enemies.Remove(this);
-        base.OnDestroy();
+        base.OnCustomDestroy();
     }
 
     public void SkillSetup()

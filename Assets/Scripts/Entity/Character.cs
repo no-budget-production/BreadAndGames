@@ -133,14 +133,14 @@ public class Character : Entity
         //canUseSkills = true;
     }
 
-    public virtual void OnDestroy()
+    public override void OnCustomDestroy()
     {
         if (isDeadTrigger)
         {
             Disable();
         }
 
-        base.OnDestroy();
+        base.OnCustomDestroy();
     }
 
     public virtual void Start()
