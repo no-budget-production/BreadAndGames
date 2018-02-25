@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1002 &100001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2b0ca7171ed55c4eaaf9aba39d05e87, type: 3}
   m_Name: 
@@ -546,9 +546,9 @@ MonoBehaviour:
   detailThreshold: 0
   nearSounds: []
   farSounds:
-  - {fileID: 8300000, guid: 91dfec252f7fff341b3efefc404b6510, type: 3}
+  - {fileID: 8300000, guid: ae8e6c5829617f54b8a267ad1b58cd79, type: 3}
   distanceThreshold: 1
-  minVolume: 0.4
+  minVolume: 0.8
   maxVolume: 1
   rolloffFactor: 0.5
 --- !u!114 &114908603546153658
@@ -567,7 +567,7 @@ MonoBehaviour:
   startSize: 1
   size: 1
   explodeDelayMin: 0.8
-  explodeDelayMax: 0
+  explodeDelayMax: 0.8
   startDuration: 2
   duration: 2
   timeScale: 1
@@ -584,7 +584,7 @@ MonoBehaviour:
   detailThreshold: 0
   nearSounds: []
   farSounds:
-  - {fileID: 8300000, guid: ae8e6c5829617f54b8a267ad1b58cd79, type: 3}
+  - {fileID: 8300000, guid: 91dfec252f7fff341b3efefc404b6510, type: 3}
   distanceThreshold: 1
   minVolume: 0.8
   maxVolume: 1
