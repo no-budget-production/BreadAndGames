@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     public Transform[] ReinforcmentPoints;
 
     public Quaternion InputRotation;
+    public static Vector3 _SouthVector = new Vector3(0, 0, 10000);
+
 
     public PlayerController GetMelee() { return GetPlayerByType(PlayerType.Melee); }
     public PlayerController GetShooter() { return GetPlayerByType(PlayerType.Shooter); }
