@@ -14,9 +14,9 @@ public class ChargeBarBuff : Buff
 
     private void Start()
     {
-        ChargeBarStep = Lifetime;
+        ChargeBarStep = Lifetime2;
         Fade();
-        ChargeBar.maxValue = Lifetime;
+        ChargeBar.maxValue = Lifetime2;
         StartCoroutine(Fade());
     }
 
@@ -27,7 +27,7 @@ public class ChargeBarBuff : Buff
 
     public override IEnumerator Fade()
     {
-        float duration = Time.time + Lifetime;
+        float duration = Time.time + Lifetime2;
 
         var tempRevive = Skill.GetComponent<Revive>();
 

@@ -7,10 +7,10 @@ public class Buff : MonoBehaviour
     public SkillType BuffSkillType;
 
     [HideInInspector]
-    public float Lifetime;
+    public float Lifetime2;
 
     [HideInInspector]
-    public float duration;
+    public float duration2;
 
     [HideInInspector]
     public Character Character;
@@ -22,11 +22,11 @@ public class Buff : MonoBehaviour
 
     public virtual IEnumerator Fade()
     {
-        float duration = Time.time + Lifetime;
+        float duration2 = Time.time + Lifetime2;
 
-        while (Time.time < duration)
+        while (Time.time < duration2)
         {
-            Debug.Log(duration - Time.time);
+            Debug.Log(duration2 - Time.time);
             yield return null;
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IFade : MonoBehaviour
+public class Effect : MonoBehaviour
 {
     public float Lifetime = 4f;
     public float Fadetime = 0.01f;

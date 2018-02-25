@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FadeAfterSpawn : IFade
+public class FadeAfterSpawn : Effect
 {
     void Awake()
     {

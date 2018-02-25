@@ -36,15 +36,15 @@ public class Character : Entity
     public float Accuracy = 1f;
     public float MoveSpeed;
 
-    [HideInInspector]
+    //[HideInInspector]
     public float MeleeDamageMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float RangeDamageMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float AccuracyMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float MoveSpeedMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float ActionPointMultiplicator = 1f;
     //[HideInInspector]
     public float ActionPointRegenerationMultiplicator = 1f;

@@ -22,7 +22,7 @@ public class Enemy : Character
     public bool isTargetInView;
     public bool isSooting;
 
-    public float MaxShootingRange;  
+    public float MaxShootingRange;
     public float StopRange;
     public float LookDamping;
 
@@ -45,6 +45,8 @@ public class Enemy : Character
 
     private NavMeshAgent NavMeshAgent;
 
+    public float ChanceToSpawnHPPickUps;
+
     public override void Start()
     {
         base.Start();
@@ -60,6 +62,14 @@ public class Enemy : Character
 
     public virtual void OnDestroy()
     {
+        if (GameManager.Instance.HealthPickUpsSpawn)
+        {
+            float randomNumber = (Random.Range(-0, 100.0f));
+            if (randomNumber > ChanceToSpawnHPPickUps)
+            {
+                GameManager.Instance.GetPickUpSpawner.SpawnPickUps(transform.position);
+            }
+        }
         GameManager.Instance.Enemies.Remove(this);
         base.OnDestroy();
     }

@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce94b1c91c66b04e9c561e68b3de02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lifetime: 4
+  Fadetime: 0.5
+  Renderer: {fileID: 23534934470688684}
+  TargetMaterial: {fileID: 2100000, guid: 001e20de2dfd30648bd4752466121650, type: 2}
   ShellRigidbody: {fileID: 54080357741151552}
   ForceMin: 100
   ForceMax: 150

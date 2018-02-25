@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : IFade
+public class Projectile : Effect
 {
     public LayerMask collisionMask;
 

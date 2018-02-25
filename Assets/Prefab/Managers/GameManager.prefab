@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4935204609010890}
   - component: {fileID: 114985182359234422}
   - component: {fileID: 114022938730064722}
+  - component: {fileID: 114962980690546624}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -78,6 +79,19 @@ MonoBehaviour:
   - Button_Back_PX
   - Button_RightStick_PX
   - Button_LeftStick_PX
+--- !u!114 &114962980690546624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779886140405524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a731f833e9d44649a3f991e0043a64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPPickUps: {fileID: 114627626524168010, guid: d9bca23b626bda84cb0ca62edcf6d716,
+    type: 2}
 --- !u!114 &114985182359234422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,7 +108,7 @@ MonoBehaviour:
   Players: []
   ActiveCamera: {fileID: 0}
   PlayerSpawns: []
-  SwarmController: []
+  Enemies: []
   EnemyHolder: {fileID: 0}
   SpawnHolder: {fileID: 0}
   ClusterHolder: {fileID: 0}
@@ -105,3 +119,12 @@ MonoBehaviour:
   Triggers: []
   ReinforcmentPoints: []
   InputRotation: {x: 0, y: 0, z: 0, w: 0}
+  HUDHealthBarSlider: []
+  HUDActionPointsBar: []
+  HUDOverChargeBar: []
+  HUDReloadBar: []
+  GetPickUpSpawner: {fileID: 114962980690546624}
+  HealthPickUpThreshold: 0
+  HealthPickUpsSpawn: 1
+  maxHealthPickUps: 20
+  HealthPickUps: []
