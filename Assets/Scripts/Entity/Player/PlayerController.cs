@@ -60,7 +60,8 @@ public class PlayerController : Character
     public bool rotatable = true;
     [HideInInspector]
     public bool moveable = true;
-
+    [HideInInspector]
+    public bool isWalking;
     [HideInInspector]
     public Rigidbody rb;
     [HideInInspector]
@@ -137,7 +138,6 @@ public class PlayerController : Character
 
     private void Move()
     {
-        //Debug.Log(myController.velocity.magnitude);
         Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
         Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
@@ -145,17 +145,18 @@ public class PlayerController : Character
         moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
 
         Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
-        //myController.angularVelocity = Vector3.zero;
-
         if (temporaryLookVector.magnitude > Deadzone)
         {
             temporaryLookVector = inputRotation * temporaryLookVector;
             lookVector = temporaryLookVector;
         }
-        else
-        {
-            //lookVector = transform.forward;
-        }
+
+        //Vector3 temporaryMoveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
+        //if (temporaryMoveVector.magnitude > Deadzone)
+        //{
+        //    temporaryMoveVector = inputRotation * temporaryMoveVector;
+        //    moveVector = temporaryMoveVector;
+        //}
 
         if (canUseRightStick)
         {
@@ -170,25 +171,21 @@ public class PlayerController : Character
                 Anim.SetBool(animIsRunning, false);
                 Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
                 Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
-                Anim.SetFloat(animMovX, moveVector.x);
             }
             else
             {
                 isUsingRightStick = false;
 
                 Anim.SetBool(animIsRunning, true);
-                Anim.SetFloat(animMovX, moveVector.magnitude);
             }
         }
-        else
-        {
-            isUsingRightStick = false;
-            Anim.SetFloat(animMovX, moveVector.magnitude);
-        }
 
+        Anim.SetFloat(animMovX, rb.velocity.normalized.magnitude);
+
+        Quaternion newLookDirection;
         if (isUsingRightStick && rotatable)
         {
-            Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(lookVector, transform.up), TurnSpeed * Time.deltaTime);
+            newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(lookVector, transform.up), TurnSpeed * Time.deltaTime);
             rb.rotation = newLookDirection;
         }
 
@@ -196,18 +193,10 @@ public class PlayerController : Character
         {
             if (moveVector.magnitude > Deadzone)
             {
-                //moveVector = inputRotation * moveVector;
-                /*
-                currentMovement += moveVector * accelerationBase;
-                float speed = currentMovement.magnitude;
-                if (speed > (MoveSpeed * MoveSpeedMultiplicator))
-                {
-                    currentMovement *= (MoveSpeed * MoveSpeedMultiplicator) / speed;
-                }
-                */
+                isWalking = true;
                 if (!isUsingRightStick && rotatable)
                 {
-                    Quaternion newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(moveVector, transform.up), TurnSpeed * Time.deltaTime);
+                    newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(moveVector, transform.up), TurnSpeed * Time.deltaTime);
                     rb.rotation = newLookDirection;
                 }
                 Walk();
@@ -222,6 +211,7 @@ public class PlayerController : Character
                 else
                 {
                     rb.velocity = Vector3.zero;
+                    isWalking = false;
                 }
             }
         }
