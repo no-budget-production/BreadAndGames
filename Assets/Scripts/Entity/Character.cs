@@ -129,7 +129,10 @@ public class Character : Entity
     public virtual void Enable()
     {
         canWalk = true;
-        canUseRightStick = true;
+        if (canUseRightStick)
+        {
+            canCurUseRightStick = true;
+        }
         canUseSkills = true;
     }
 
