@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 82515971745730904}
   - component: {fileID: 114486814065191174}
   - component: {fileID: 54509426557924298}
-  - component: {fileID: 65386740566680650}
+  - component: {fileID: 136213245776287134}
   m_Layer: 0
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -878,7 +878,7 @@ Transform:
   m_GameObject: {fileID: 1108993549362490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4848080406014162}
   m_Father: {fileID: 4203593449528948}
@@ -899,18 +899,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65386740566680650
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1460884189814422}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 2, z: 0.6}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!82 &82515971745730904
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1097,8 +1085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisUnityTypeFlags: 2
-  CurrentHealth: 100
-  MaxHealth: 100
+  CurrentHealth: 300
+  MaxHealth: 300
   HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
@@ -1106,6 +1094,7 @@ MonoBehaviour:
   RangeArmorMultiplicator: 0
   HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
+  hasDied: 0
   DestroyOnDeath: 1
   maxActionPoints: 100
   curActionPoints: 100
@@ -1177,6 +1166,7 @@ MonoBehaviour:
   EveryXFramesFind: 60
   FrameCounterFind: 0
   NavAgentSpeed: 0
+  ChanceToSpawnHPPickUps: 100
 --- !u!114 &114873590198389922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1220,6 +1210,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!136 &136213245776287134
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460884189814422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.6
+  m_Height: 3.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.9, z: 0}
 --- !u!137 &137952866039635354
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1290,7 +1293,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1460884189814422}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 2
   m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1299,7 +1302,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 4
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1

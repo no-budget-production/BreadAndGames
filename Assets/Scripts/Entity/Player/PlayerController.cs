@@ -278,10 +278,10 @@ public class PlayerController : Character
         }
     }
 
-    void FixedUpdate()
-    {
-        //Move();
-    }
+    //void FixedUpdate()
+    //{
+    //    Move();
+    //}
 
     public override void Update()
     {

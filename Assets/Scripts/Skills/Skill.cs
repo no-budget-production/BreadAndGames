@@ -80,7 +80,7 @@ public class Skill : MonoBehaviour
         curBuff = Instantiate(UsedBuff, transform.position + UsedBuff.transform.position, Quaternion.identity);
         curBuff.transform.SetParent(transform);
         curBuff.Character = Character;
-        curBuff.Lifetime = BuffDuration;
+        curBuff.Lifetime2 = BuffDuration;
         curBuff.Skill = this;
         Character.ActiveBuffs.Add(curBuff);
     }

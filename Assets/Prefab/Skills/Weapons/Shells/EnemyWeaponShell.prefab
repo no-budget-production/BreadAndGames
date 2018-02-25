@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54080357741151552}
   - component: {fileID: 114628139110011502}
   m_Layer: 10
-  m_Name: Shell
+  m_Name: EnemyWeaponShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041633813282412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.681, y: 1.248, z: 0.759}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05076266, y: 0.050762657, z: 0.11307796}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: fcc5dd6408d2a344f9b1671f2fbdcf6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce94b1c91c66b04e9c561e68b3de02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lifetime: 4
+  Fadetime: 0.5
+  Renderer: {fileID: 23534934470688684}
+  TargetMaterial: {fileID: 2100000, guid: 001e20de2dfd30648bd4752466121650, type: 2}
   ShellRigidbody: {fileID: 54080357741151552}
   ForceMin: 100
   ForceMax: 150

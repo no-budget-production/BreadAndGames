@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 21
-  Character: {fileID: 0}
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 046852c0ab9b8bc4aa798c8b047af67c, type: 2}
@@ -230,11 +230,12 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  SkillNumber: 0
   HasAnimation: 0
   AnimationStrings:
   - Skill_0
   AnimationTypes: 00000000
+  Character: {fileID: 0}
+  energyCosts: 0
   DamageType: 0
   HitBox: {fileID: 114534373570059676}
   Damage: 30
@@ -244,7 +245,6 @@ MonoBehaviour:
   ChargeTime: 0
   curChargeTime: 0
   BonusDamagePerSec: 0
-  energyCosts: 0
   punchCount: 0
   SoundPlayer: {fileID: 114568817090117510}
   SBetweenSounds: 0

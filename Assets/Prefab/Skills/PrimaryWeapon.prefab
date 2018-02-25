@@ -183,8 +183,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457693711131984}
-  m_LocalRotation: {x: 0.0015499294, y: -0.5305904, z: -0.004462242, w: -0.84761524}
-  m_LocalPosition: {x: -0.19577248, y: 1.1886978, z: -0.053680778}
+  m_LocalRotation: {x: 0.00000008940696, y: 0.000000059604634, z: 0.000000009046013,
+    w: 1}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0}
   m_LocalScale: {x: 0.10000011, y: 0.09999998, z: 0.100000024}
   m_Children:
   - {fileID: 4690313827456778}
@@ -377,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 9
-  Character: {fileID: 0}
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 5e17b196f94d5564193623bb656d256e, type: 2}
@@ -389,7 +390,7 @@ MonoBehaviour:
   AnimationStrings:
   - Skill_0
   AnimationTypes: 00000000
-  SkillNumber: 0
+  Character: {fileID: 0}
   SkillRequired: {fileID: 0}
   Muzzle: {fileID: 4663339666616010}
   ShellEjection: {fileID: 4690313827456778}

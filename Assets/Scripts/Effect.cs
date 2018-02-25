@@ -5,26 +5,42 @@ using UnityEngine;
 public class Effect : MonoBehaviour
 {
     public float Lifetime = 4f;
-    public float Fadetime = 0.25f;
+    public float Fadetime = 0.01f;
+    public Renderer Renderer;
+    public Material TargetMaterial;
 
-    protected virtual IEnumerator Fade()
+    public virtual IEnumerator Fade()
     {
+        //Debug.Log("StartKilling!");
+
         yield return new WaitForSeconds(Lifetime);
 
-        float fadePercent = 0;
-        float fadeSpeed = Fadetime;
+        //Debug.Log("KillIt!");
 
-        Material mat = GetComponent<Renderer>().material;
-        Color initialColor = mat.color;
-
-        while (fadePercent < 1)
+        if (Renderer != null)
         {
-            fadePercent += Time.deltaTime * fadeSpeed;
-            mat.color = Color.Lerp(initialColor, Color.clear, fadePercent);
-            yield return null;
+            if (TargetMaterial != null)
+            {
+
+            }
+
+            var mat = Renderer.material;
+
+            float fadePercent = 0.0f;
+            float fadeSpeed = Fadetime;
+            while (fadePercent < fadeSpeed)
+            {
+                fadePercent += Time.deltaTime;
+                Renderer.material.Lerp(mat, TargetMaterial, fadePercent / Fadetime);
+                yield return null;
+            }
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
     }
 }
 

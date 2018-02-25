@@ -50,9 +50,9 @@ public class EnergyBattery : Character
         GetNearestTargetWithNavMesh();
     }
 
-    public virtual void OnDestroy()
+    public virtual void OnCustomDestroy()
     {
-        base.OnDestroy();
+        base.OnCustomDestroy();
     }
 
     public void SkillSetup()

@@ -36,15 +36,15 @@ public class Character : Entity
     public float Accuracy = 1f;
     public float MoveSpeed;
 
-    [HideInInspector]
+    //[HideInInspector]
     public float MeleeDamageMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float RangeDamageMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float AccuracyMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float MoveSpeedMultiplicator = 1f;
-    [HideInInspector]
+    //[HideInInspector]
     public float ActionPointMultiplicator = 1f;
     //[HideInInspector]
     public float ActionPointRegenerationMultiplicator = 1f;
@@ -128,19 +128,19 @@ public class Character : Entity
 
     public virtual void Enable()
     {
-        //canWalk = true;
-        //canUseRightStick = true;
-        //canUseSkills = true;
+        canWalk = true;
+        canUseRightStick = true;
+        canUseSkills = true;
     }
 
-    public virtual void OnDestroy()
+    public override void OnCustomDestroy()
     {
+        base.OnCustomDestroy();
+
         if (isDeadTrigger)
         {
             Disable();
         }
-
-        base.OnDestroy();
     }
 
     public virtual void Start()
@@ -185,14 +185,29 @@ public class Character : Entity
             Disable();
         }
 
-        if (UseHealthbar)
+        if (!hasDied && DestroyOnDeath)
         {
-            OnChangeHealth(CurrentHealth);
-        }
+            if (UseHealthbar)
+            {
+                OnChangeHealth(CurrentHealth);
+            }
 
-        if (UseHUDHealthbarSlider)
+            if (UseHUDHealthbarSlider)
+            {
+                OnHUDChangeHealthSlider();
+            }
+        }
+        else
         {
-            OnHUDChangeHealthSlider();
+            if (UseHealthbar)
+            {
+                OnChangeHealth(CurrentHealth);
+            }
+
+            if (UseHUDHealthbarSlider)
+            {
+                OnHUDChangeHealthSlider();
+            }
         }
     }
 

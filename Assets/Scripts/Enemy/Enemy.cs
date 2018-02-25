@@ -22,7 +22,7 @@ public class Enemy : Character
     public bool isTargetInView;
     public bool isSooting;
 
-    public float MaxShootingRange;  
+    public float MaxShootingRange;
     public float StopRange;
     public float LookDamping;
 
@@ -45,6 +45,8 @@ public class Enemy : Character
 
     private NavMeshAgent NavMeshAgent;
 
+    public float ChanceToSpawnHPPickUps;
+
     public override void Start()
     {
         base.Start();
@@ -58,10 +60,19 @@ public class Enemy : Character
         SkillSetup();
     }
 
-    public virtual void OnDestroy()
+    public override void OnCustomDestroy()
     {
+        base.OnCustomDestroy();
+        if (GameManager.Instance.HealthPickUpsSpawn)
+        {
+            Debug.Log(gameObject.name + Time.realtimeSinceStartup);
+            float randomNumber = (Random.Range(0, 100.0f));
+            if (randomNumber <= ChanceToSpawnHPPickUps)
+            {
+                GameManager.Instance.GetPickUpSpawner.SpawnPickUps(transform.position);
+            }
+        }
         GameManager.Instance.Enemies.Remove(this);
-        base.OnDestroy();
     }
 
     public void SkillSetup()
@@ -86,17 +97,17 @@ public class Enemy : Character
         {
             NavMeshAgent.destination = Target.position;
         }
-        else
-        {
-            NavMeshAgent.enabled = false;
-        }
+        //else
+        //{
+        //    //NavMeshAgent.enabled = false;
+        //}
     }
 
     public override void Update()
     {
         Anim.SetFloat(animMovX, NavMeshAgent.velocity.magnitude / NavAgentSpeed);
 
-        if (!isGameOver)
+        //if (!isGameOver)
         {
             base.Update();
 
