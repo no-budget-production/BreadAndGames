@@ -34,7 +34,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     public ArenaSpawner[] spawner;
 
-    private AudioSource AudioSource_Comp;
+    private AudioSource _AudioSource;
     public AudioClip firstCountdown;
     public AudioClip[] countdownClips;
     public AudioClip horn;
@@ -52,10 +52,11 @@ public class PhaseOneLevelScript : MonoBehaviour
     private int AmountOfSpawnedEnemysInCurrentWave;
     public int _AmountOfSpawnedEnemysInCurrentWave { get { return AmountOfSpawnedEnemysInCurrentWave; } set { AmountOfSpawnedEnemysInCurrentWave = value; } }
 
+    public PhaseTwoLevelScript _PhaseTwoLevelScript;
 
     void Awake()
     {
-        AudioSource_Comp = GetComponent<AudioSource>();
+        _AudioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -95,9 +96,9 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         if (startArenaEvent)
         {
-            AudioSource_Comp.clip = firstCountdown;
-            AudioSource_Comp.Play();
-            StartCoroutine(StartEvent(AudioSource_Comp.clip.length));            
+            _AudioSource.clip = firstCountdown;
+            _AudioSource.Play();
+            StartCoroutine(StartEvent(_AudioSource.clip.length));            
             startArenaEvent = false;
         }
         else if (!EndOfPhase)
@@ -133,8 +134,8 @@ public class PhaseOneLevelScript : MonoBehaviour
     IEnumerator StartEvent(float clipLength)
     {
         yield return new WaitForSeconds(clipLength);
-        AudioSource_Comp.clip = horn;
-        AudioSource_Comp.Play();
+        _AudioSource.clip = horn;
+        _AudioSource.Play();
         WaveStatus[0] = WaveStatusReport.begin;
     }
 
@@ -193,12 +194,12 @@ public class PhaseOneLevelScript : MonoBehaviour
     {
         if (PlaySound && !(WaveArrayNumber > countdownClips.Length))
         {
-            AudioSource_Comp.clip = countdownClips[WaveArrayNumber];
-            AudioSource_Comp.Play();
+            _AudioSource.clip = countdownClips[WaveArrayNumber];
+            _AudioSource.Play();
             PlaySound = false;
         }
 
-        yield return new WaitForSeconds(AudioSource_Comp.clip.length);
+        yield return new WaitForSeconds(_AudioSource.clip.length);
         WaveEnd(WaveArrayNumber);
         PlaySound = true;
     }
@@ -225,6 +226,7 @@ public class PhaseOneLevelScript : MonoBehaviour
     private IEnumerator CamerBackToNormal(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        _PhaseTwoLevelScript.PlayAlarm();
         GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[2];
         GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
         GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[1].GetComponent<Transform>();
@@ -241,8 +243,8 @@ public class PhaseOneLevelScript : MonoBehaviour
             if (!(WaveArrayNumber + 1 >= WaveStatus.Length))
             {
                 WaveStatus[WaveArrayNumber + 1] = WaveStatusReport.begin;   // Start of Nextwave
-                AudioSource_Comp.clip = horn;
-                AudioSource_Comp.Play();
+                _AudioSource.clip = horn;
+                _AudioSource.Play();
             }
 
         }
