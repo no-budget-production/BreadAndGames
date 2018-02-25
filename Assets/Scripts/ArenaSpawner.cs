@@ -57,8 +57,13 @@ public class ArenaSpawner : MonoBehaviour
                 }
 
             }
-        }
 
+            if (SpawnedEnemys >= AmountToSpawn)
+            {
+                DisableSpawn();
+            }
+
+        }
     }
 
     public void SpawnEnemy()
@@ -69,6 +74,13 @@ public class ArenaSpawner : MonoBehaviour
         PhaseOneLevelScript._AmountOfSpawnedEnemysInCurrentWave++;
         curPrefab.transform.parent = EnemyHolder.transform;
 
+    }
+
+    public void DisableSpawn()
+    {
+        this.enabled = false;
+        StartSpawning = false;
+        SpawnedEnemys = 0;
     }
 
 }
