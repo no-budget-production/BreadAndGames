@@ -222,7 +222,7 @@ public class Punch : Skill
 
     public override void SkillHit()
     {
-        Debug.Log("Skill Hit: " + gameObject.name);
+        //Debug.Log("Skill Hit: " + gameObject.name);
 
         for (int i = 0; i < HitBox.Enemies.Count; i++)
         {

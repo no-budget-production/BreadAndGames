@@ -9,7 +9,7 @@ public class AnimationHelper : MonoBehaviour
 
     public void SkillHit(int Skillnumber)
     {
-        Debug.Log("AnimationHelper Skill_" + Skillnumber);
+        //Debug.Log("AnimationHelper Skill_" + Skillnumber);
         Character.SkillHit(Skillnumber);
     }
 }

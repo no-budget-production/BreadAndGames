@@ -533,7 +533,7 @@ public class Character : Entity
 
     public virtual void SkillHit(int Skillnumber)
     {
-        Debug.Log("ARRIVED AnimationHelper Skill_" + Skillnumber);
+        //Debug.Log("ARRIVED AnimationHelper Skill_" + Skillnumber);
         ActiveSkills[Skillnumber].SkillHit();
     }
 }

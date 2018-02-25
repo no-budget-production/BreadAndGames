@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1653627091785898
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,8 +145,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1412027524977900}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 3.65}
-  m_LocalScale: {x: 2.9612975, y: 8.189742, z: 7.2799563}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4875727083469676}
   m_RootOrder: 0
@@ -184,8 +184,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457693711131984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.3740265, z: 2.2953997}
-  m_LocalScale: {x: 0.099999994, y: 0.09999997, z: 0.09999997}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4690313827456778}
   - {fileID: 4663339666616010}
@@ -227,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1254999391375776}
   m_LocalRotation: {x: -0, y: -0, z: 1.2705494e-21, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0015191651, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4101634928331108}
@@ -243,8 +243,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056646485231392}
   m_LocalRotation: {x: 0.4999993, y: -0.5000007, z: 0.4999993, w: 0.5000007}
-  m_LocalPosition: {x: 0, y: 0.49999988, z: 3.65}
-  m_LocalScale: {x: 2.9612975, y: 8.189742, z: 7.2799563}
+  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4875727083469676}
   m_RootOrder: 1
@@ -385,7 +385,7 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  HasAnimation: 0
+  HasAnimation: 1
   AnimationStrings:
   - Skill_0
   AnimationTypes: 00000000
@@ -405,6 +405,8 @@ MonoBehaviour:
   SoundPlayer: {fileID: 114462241467524710}
   SBetweenSounds: 1
   isGunFound: 0
+  WaitForDelay: 1
+  Delay: 0.4
   WaitForShotAnim: 0
 --- !u!114 &114314021590639172
 MonoBehaviour:
