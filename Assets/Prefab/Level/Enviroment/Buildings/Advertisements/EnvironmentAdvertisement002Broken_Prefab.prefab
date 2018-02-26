@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 4661993875225754}
   - component: {fileID: 33244672684268940}
   - component: {fileID: 23064137444467054}
+  - component: {fileID: 65358691176165234}
+  - component: {fileID: 65070716233938094}
   m_Layer: 0
   m_Name: EnvironmentAdvertisement002Broken_Mesh
   m_TagString: Untagged
@@ -140,3 +142,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611842291650652}
   m_Mesh: {fileID: 4300000, guid: 8a4ab5260f53de242b105e9acdf332aa, type: 3}
+--- !u!65 &65070716233938094
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611842291650652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0065608, y: 2.8649127, z: 0.135321}
+  m_Center: {x: 2.5760443, y: 0.87191, z: 0.000000022351744}
+--- !u!65 &65358691176165234
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611842291650652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5793247, y: 0.8527367, z: 0.135321}
+  m_Center: {x: 1.7896624, y: 1.877998, z: 0.00000002235174}

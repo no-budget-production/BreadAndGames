@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4985188128027158}
   - component: {fileID: 33239616435847500}
   - component: {fileID: 23217950811490600}
+  - component: {fileID: 65124851004068134}
   m_Layer: 0
   m_Name: EnvironmentAdvertisement006_Mesh
   m_TagString: Untagged
@@ -140,3 +141,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099578175530640}
   m_Mesh: {fileID: 4300000, guid: 7c62815fe0a126c419a8b799e4dbc825, type: 3}
+--- !u!65 &65124851004068134
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099578175530640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.6419992, y: 5.5952783, z: 1}
+  m_Center: {x: 0.00000047683716, y: 2.7976391, z: 0}
