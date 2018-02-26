@@ -104,7 +104,8 @@ public class Character : Entity
     public List<Buff> ActiveBuffs;
 
     //[HideInInspector]
-    public Animator Anim;
+    public Animator _Animtor;
+
 
     public virtual void Disable()
     {

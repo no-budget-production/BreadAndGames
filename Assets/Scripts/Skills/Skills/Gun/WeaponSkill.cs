@@ -82,7 +82,7 @@ public class WeaponSkill : Skill
             {
                 if (AnimationTypes[0] == AnimTypes.Trigger)
                 {
-                    Character.Anim.SetTrigger(AnimationStrings[0]);
+                    Character._Animtor.SetTrigger(AnimationStrings[0]);
                 }
             }
 

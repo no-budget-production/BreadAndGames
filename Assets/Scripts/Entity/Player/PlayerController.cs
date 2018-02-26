@@ -78,8 +78,8 @@ public class PlayerController : Character
 
     void Awake()
     {
-        Anim.SetBool(animIsAiming, true);
-        Anim.SetBool(animIsRunning, false);
+        _Animtor.SetBool(animIsAiming, true);
+        _Animtor.SetBool(animIsRunning, false);
 
         rb = GetComponent<Rigidbody>();
     }
@@ -172,24 +172,24 @@ public class PlayerController : Character
                 temporaryLookVector = inputRotation * temporaryLookVector;
                 lookVector = temporaryLookVector;
 
-                Anim.SetBool(animIsAiming, true);
-                Anim.SetBool(animIsRunning, false);
-                Anim.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
-                Anim.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
-                Anim.SetFloat(animMovX, moveVector.magnitude);
+                _Animtor.SetBool(animIsAiming, true);
+                _Animtor.SetBool(animIsRunning, false);
+                _Animtor.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
+                _Animtor.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
+                _Animtor.SetFloat(animMovX, moveVector.magnitude);
             }
             else
             {
                 isUsingRightStick = false;
 
-                Anim.SetBool(animIsAiming, false);
-                Anim.SetBool(animIsRunning, true);
-                Anim.SetFloat(animMovX, moveVector.magnitude);
+                _Animtor.SetBool(animIsAiming, false);
+                _Animtor.SetBool(animIsRunning, true);
+                _Animtor.SetFloat(animMovX, moveVector.magnitude);
             }
         }
         else
         {
-            Anim.SetFloat(animMovX, moveVector.magnitude);
+            _Animtor.SetFloat(animMovX, moveVector.magnitude);
         }
 
         Quaternion newLookDirection;
@@ -321,7 +321,7 @@ public class PlayerController : Character
 
         if (isDeadTrigger)
         {
-            Anim.SetBool(animIsDead, true);
+            _Animtor.SetBool(animIsDead, true);
         }
 
         RequestHealthPickUps();
@@ -333,8 +333,8 @@ public class PlayerController : Character
 
         if (!isDeadTrigger)
         {
-            Anim.SetBool(animIsDead, false);
-            Anim.SetTrigger(animGetUp);
+            _Animtor.SetBool(animIsDead, false);
+            _Animtor.SetTrigger(animGetUp);
         }
 
         RequestHealthPickUps();

@@ -114,7 +114,7 @@ public class Enemy : Character
         //TurnSpeed = NavMeshAgent.transform.InverseTransformDirection(NavMeshAgent.velocity).normalized;
         TempSpeed = NavMeshAgent.velocity.magnitude / NavAgentSpeed;
         //Anim.SetFloat(animMovX, TempSpeed + TurnSpeed.magnitude / NavMeshAgent.angularSpeed);
-        Anim.SetFloat(animMovX, TempSpeed);
+        _Animtor.SetFloat(animMovX, TempSpeed);
 
         //if (!isGameOver)
         {
