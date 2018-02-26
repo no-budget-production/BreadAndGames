@@ -297,6 +297,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4169699721828974}
   - component: {fileID: 114699055402114610}
+  - component: {fileID: 136824548895935708}
+  - component: {fileID: 208641313455313484}
   m_Layer: 2
   m_Name: EnergyBattery
   m_TagString: Support
@@ -342,7 +344,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1985318274357308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.167007, y: -0.0036621094, z: -51.057312}
+  m_LocalPosition: {x: -32.167007, y: 0, z: -51.057312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4344649876784554}
@@ -373,7 +375,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701875278047528}
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.81, z: 0}
+  m_LocalPosition: {x: 0, y: -4.62, z: 0}
   m_LocalScale: {x: 3.5241668, y: 3.5241702, z: 3.5241702}
   m_Children:
   - {fileID: 4819383552129910}
@@ -1072,7 +1074,35 @@ MonoBehaviour:
   FrameCounterFind: 1
   NavAgentSpeed: 0
   Battery: {fileID: 4505193387242966}
-  tweak: 0.02
+  tweak: 0.04
+--- !u!136 &136824548895935708
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985318274357308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.2
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!208 &208641313455313484
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985318274357308}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.2, y: 2, z: 1.2}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &222060250008456036
 CanvasRenderer:
   m_ObjectHideFlags: 1
