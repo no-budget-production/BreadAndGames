@@ -97,7 +97,7 @@ public class Punch : Skill
             {
                 if (AnimationTypes[0] == AnimTypes.Bool)
                 {
-                    Character.Anim.SetBool(AnimationStrings[0], true);
+                    Character._Animtor.SetBool(AnimationStrings[0], true);
                 }
             }
 
@@ -132,7 +132,7 @@ public class Punch : Skill
             {
                 if (AnimationTypes[0] == AnimTypes.Trigger)
                 {
-                    Character.Anim.SetTrigger(AnimationStrings[0]);
+                    Character._Animtor.SetTrigger(AnimationStrings[0]);
                 }
             }
             Character.SpendActionPoints(energyCosts);
@@ -182,7 +182,7 @@ public class Punch : Skill
 
         if (canCharge)
         {
-            Character.Anim.SetBool(AnimationStrings[0], false);
+            Character._Animtor.SetBool(AnimationStrings[0], false);
             //Debug.Log("ResetBool");
 
         }
@@ -218,7 +218,7 @@ public class Punch : Skill
 
         if (canCharge)
         {
-            Character.Anim.SetBool(AnimationStrings[0], false);
+            Character._Animtor.SetBool(AnimationStrings[0], false);
             //Debug.Log("ResetBool");
 
         }

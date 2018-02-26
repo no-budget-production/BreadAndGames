@@ -398,14 +398,17 @@ MonoBehaviour:
     type: 2}
   Shell: {fileID: 4618930595482000, guid: 3aae16d9c48a312489323d005d10fd96, type: 2}
   MuzzleVelocity: 35
-  AccuracyHorizontal: 10
-  AccuracyVertical: 10
+  AccuracyHorizontal: 0
+  AccuracyVertical: 0
   ActionPointsCost: 2
   VolleySize: 1
   MuzzleFlash: {fileID: 114314021590639172}
   SoundPlayer: {fileID: 114462241467524710}
   SBetweenSounds: 1
   isGunFound: 0
+  WaitForDelay: 0
+  Delay: 0
+  WaitForShotAnim: 0
 --- !u!114 &114314021590639172
 MonoBehaviour:
   m_ObjectHideFlags: 1
