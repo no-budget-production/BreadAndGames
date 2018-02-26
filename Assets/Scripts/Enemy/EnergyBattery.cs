@@ -100,7 +100,7 @@ public class EnergyBattery : Character
 
             if (isAlive)
             {
-                LockOn();
+                //LockOn();
 
                 FrameCounterDistanceCheck++;
                 if ((FrameCounterDistanceCheck % EveryXFramesDistanceCheck) == 0)
@@ -259,16 +259,16 @@ public class EnergyBattery : Character
         }
     }
 
-    void LockOn()
-    {
-        var lookPos = new Vector3(Target.position.x, 0, Target.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-        lookPos.y = 0;
-        if (lookPos != Vector3.zero)
-        {
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
-        }
-    }
+    //void LockOn()
+    //{
+    //    var lookPos = new Vector3(Target.position.x, 0, Target.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
+    //    lookPos.y = 0;
+    //    if (lookPos != Vector3.zero)
+    //    {
+    //        var rotation = Quaternion.LookRotation(lookPos);
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
+    //    }
+    //}
 
     bool CheckIsAlive(Transform transformArg)
     {
@@ -303,8 +303,6 @@ public class EnergyBattery : Character
     {
         float temp = base.RestoreActionPoints(restore);
         float help = Battery.position.y;
-        Debug.Log(Battery.position.y);
-        //Debug.Log(help - curActionPoints * -(0.007f));
 
         Battery.position = new Vector3(Battery.position.x, curActionPoints * tweak, Battery.position.z);
 
