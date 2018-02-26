@@ -9,7 +9,8 @@ public class MeleeShieldActive : Skill
     public override void Shoot()
     {
         var handler = Character.GetComponentInChildren<MeleeShieldHandler>();
-        if (handler == null) return;
+        if (handler == null)
+            return;
         handler.Active();
     }
 }

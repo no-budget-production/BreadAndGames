@@ -14,6 +14,8 @@ public class Punch : Skill
     public BuffObject ChargingBuff;
     public BuffObject Debuff;
 
+    public BuffObject ArmorBreaking;
+
     public bool canCharge;
     public float ChargeTime;
     public float curChargeTime;

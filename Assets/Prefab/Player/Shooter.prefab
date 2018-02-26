@@ -3159,7 +3159,7 @@ MonoBehaviour:
   MaxHealth: 1000
   HealthRegeneration: 0
   MeleeArmor: 0
-  RangedArmor: 0
+  RangedArmor: 1
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
   HealthRegenerationMultiplicator: 1
@@ -3254,6 +3254,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
+  RequestedHealthPickUps: 0
 --- !u!114 &114832977513628040
 MonoBehaviour:
   m_ObjectHideFlags: 1

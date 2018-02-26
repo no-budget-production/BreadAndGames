@@ -40,16 +40,20 @@ public class MeleeShieldHandler : MonoBehaviour
 
     public void Active()
     {
-        if (Character.curActionPoints <= 0) return;
-        if (IsActive()) return;
+        if (Character.curActionPoints <= 0)
+            return;
+        if (IsActive())
+            return;
 
         meleeShieldLevel1.gameObject.SetActive(true);
     }
 
     public void Overcharge()
     {
-        if (Character.curActionPoints <= 0) return;
-        if (!IsActive()) return;
+        if (Character.curActionPoints <= 0)
+            return;
+        if (!IsActive())
+            return;
 
         if (!IsOvercharge())
         {
@@ -65,7 +69,8 @@ public class MeleeShieldHandler : MonoBehaviour
 
     public void Deactive()
     {
-        if (!IsActive()) return;
+        if (!IsActive())
+            return;
 
         meleeShieldLevel1.gameObject.SetActive(false);
         meleeShieldLevel2.gameObject.SetActive(false);
@@ -83,11 +88,12 @@ public class MeleeShieldHandler : MonoBehaviour
 
     void Update()
     {
-        if (!IsActive()) return;
+        if (!IsActive())
+            return;
 
         meleeShieldLevel1.forward = Character.lookVector;
         meleeShieldLevel2.forward = Character.lookVector;
-        
+
         Character.curActionPoints -= Time.deltaTime * energyCosts;
         if (Character.curActionPoints <= 0)
         {

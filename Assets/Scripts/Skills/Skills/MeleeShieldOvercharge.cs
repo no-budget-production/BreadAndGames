@@ -8,10 +8,12 @@ public class MeleeShieldOvercharge : Skill
 
     public override void Shoot()
     {
-        if (active) return;
+        if (active)
+            return;
         active = true;
         var handler = Character.GetComponentInChildren<MeleeShieldHandler>();
-        if (handler == null) return;
+        if (handler == null)
+            return;
         handler.Overcharge();
     }
     public override void StopShoot()
