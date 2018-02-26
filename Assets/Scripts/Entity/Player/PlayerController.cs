@@ -74,6 +74,8 @@ public class PlayerController : Character
     private float HorizontalLook_PX;
     private float VerticalLook_PX;
 
+    public bool RequestedHealthPickUps;
+
     void Awake()
     {
         Anim.SetBool(animIsAiming, true);
@@ -318,7 +320,42 @@ public class PlayerController : Character
 
         if (isDeadTrigger)
         {
-            Anim.SetTrigger(animIsDead);
+            Anim.SetBool(animIsDead, true);
+        }
+
+        RequestHealthPickUps();
+    }
+
+    public override void GetHealth(float healing)
+    {
+        base.GetHealth(healing);
+
+        if (!isDeadTrigger)
+        {
+            Anim.SetBool(animIsDead, false);
+            Anim.SetTrigger(animGetUp);
+        }
+
+        RequestHealthPickUps();
+    }
+
+    public void RequestHealthPickUps()
+    {
+        if (CurrentHealth / MaxHealth < GameManager.Instance.PickUpSpawner.HealthPickUpThreshold * 0.01)
+        {
+            if (!RequestedHealthPickUps)
+            {
+                GameManager.Instance.PickUpSpawner.HealthRequestAdding(true);
+                RequestedHealthPickUps = true;
+            }
+        }
+        else
+        {
+            if (RequestedHealthPickUps)
+            {
+                GameManager.Instance.PickUpSpawner.HealthRequestAdding(false);
+                RequestedHealthPickUps = false;
+            }
         }
     }
 }

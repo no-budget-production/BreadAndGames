@@ -188,19 +188,7 @@ public class Character : Entity
             Disable();
         }
 
-        if (!hasDied && DestroyOnDeath)
-        {
-            if (UseHealthbar)
-            {
-                OnChangeHealth(CurrentHealth);
-            }
-
-            if (UseHUDHealthbarSlider)
-            {
-                OnHUDChangeHealthSlider();
-            }
-        }
-        else
+        if (!(hasDied && DestroyOnDeath))
         {
             if (UseHealthbar)
             {
@@ -218,20 +206,24 @@ public class Character : Entity
     {
         base.GetHealth(healing);
 
-        if (UseHealthbar)
+        if (!(hasDied && DestroyOnDeath))
         {
-            OnChangeHealth(CurrentHealth);
-        }
+            if (UseHealthbar)
+            {
+                OnChangeHealth(CurrentHealth);
+            }
 
-        if (UseHUDHealthbarSlider)
-        {
-            OnHUDChangeHealthSlider();
+            if (UseHUDHealthbarSlider)
+            {
+                OnHUDChangeHealthSlider();
+            }
         }
 
         if (!isDeadTrigger)
         {
             Enable();
         }
+
     }
 
     void OnChangeHealth(float currentHealth)
@@ -248,9 +240,13 @@ public class Character : Entity
 
     void Regenerate()
     {
-        GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
-        RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
-        RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
+        if (!isDeadTrigger)
+        {
+            GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
+            RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
+            RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
+
+        }
     }
 
     public void AddBuff(BuffObject buff, int multi, Character character)
