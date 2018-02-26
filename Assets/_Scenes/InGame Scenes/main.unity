@@ -3044,7 +3044,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4822066567590140, guid: cd2ad9064b323ec459e72ff4586236ee, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.659996
+      value: -90.55999
       objectReference: {fileID: 0}
     - target: {fileID: 4822066567590140, guid: cd2ad9064b323ec459e72ff4586236ee, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3052,7 +3052,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4822066567590140, guid: cd2ad9064b323ec459e72ff4586236ee, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -30.473
+      value: -154.073
       objectReference: {fileID: 0}
     - target: {fileID: 4822066567590140, guid: cd2ad9064b323ec459e72ff4586236ee, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3951,7 +3951,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4577197151573604, guid: 2280e626deff1794b839a30d4c28f2c6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.8
+      value: -89.7
       objectReference: {fileID: 0}
     - target: {fileID: 4577197151573604, guid: 2280e626deff1794b839a30d4c28f2c6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3959,7 +3959,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4577197151573604, guid: 2280e626deff1794b839a30d4c28f2c6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -16.4
+      value: -140
       objectReference: {fileID: 0}
     - target: {fileID: 4577197151573604, guid: 2280e626deff1794b839a30d4c28f2c6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12225,6 +12225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1127593762}
   - component: {fileID: 1127593763}
+  - component: {fileID: 1127593764}
   m_Layer: 0
   m_Name: Game Over Trigger
   m_TagString: Untagged
@@ -12239,8 +12240,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1127593761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65.4, y: 0, z: -184.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -43, y: 0, z: -184.3}
+  m_LocalScale: {x: 3.598744, y: 3.5987432, z: 3.5987432}
   m_Children: []
   m_Father: {fileID: 1495013623}
   m_RootOrder: 4
@@ -12252,11 +12253,23 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1127593761}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 8.79
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1127593764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1127593761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75734aa6a18045e43bf865c9ea85f30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredPlayerCount: 2
 --- !u!1001 &1130706289
 Prefab:
   m_ObjectHideFlags: 0
