@@ -879,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 1108993549362490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4424262, y: 1.4424263, z: 1.4424263}
   m_Children:
   - {fileID: 4848080406014162}
   m_Father: {fileID: 4203593449528948}
@@ -1086,8 +1086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisUnityTypeFlags: 2
-  CurrentHealth: 300
-  MaxHealth: 300
+  CurrentHealth: 100
+  MaxHealth: 100
   HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 1
@@ -1233,10 +1233,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 1.9
+  m_Radius: 1.09
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!137 &137952866039635354
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
