@@ -421,6 +421,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1527702386988776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4188336239480494}
+  - component: {fileID: 33280254772984638}
+  - component: {fileID: 23882462575340236}
+  m_Layer: 0
+  m_Name: UI Circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1568200751291490
 GameObject:
   m_ObjectHideFlags: 1
@@ -656,7 +673,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575352139550200}
-  - component: {fileID: 114448882067645382}
+  - component: {fileID: 114715430036726954}
   m_Layer: 0
   m_Name: MeleeHandler
   m_TagString: Untagged
@@ -790,6 +807,19 @@ Transform:
   m_Father: {fileID: 4655043352678240}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4188336239480494
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527702386988776}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.5944114, y: 0.5944114, z: 0.5944114}
+  m_Children: []
+  m_Father: {fileID: 4613099269740536}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4189115602284792
 Transform:
   m_ObjectHideFlags: 1
@@ -999,6 +1029,7 @@ Transform:
   - {fileID: 4252319834093624}
   - {fileID: 4360849759146206}
   - {fileID: 4575352139550200}
+  - {fileID: 4188336239480494}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1212,6 +1243,47 @@ Transform:
   m_Father: {fileID: 4193163747684456}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23882462575340236
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527702386988776}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 18e52c42fdcf1664e969ff2aa2ab1984, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33280254772984638
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527702386988776}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54792642140107436
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1351,8 +1423,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0952629399d5fb54a80f8ff3cf5842d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VoiceSource: {fileID: 0}
-  AudioClipsArray: []
+  VoiceSource: {fileID: 82047039485331390}
+  AudioClipsArray:
+  - AudioClips:
+    - {fileID: 8300000, guid: 2572c380eec0a794a9c64268e39b23e3, type: 3}
+  - AudioClips:
+    - {fileID: 8300000, guid: 383ca8b1f2cd6e641bbe783a80d4dacf, type: 3}
   _lastSound: 
 --- !u!114 &114101222704165328
 MonoBehaviour:
@@ -1467,28 +1543,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1323efd318e6be4495a87f6abc5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisUnityTypeFlags: 0
-  CurrentHealth: 0
-  MaxHealth: 0
+  ThisUnityTypeFlags: 1
+  CurrentHealth: 3000
+  MaxHealth: 3000
   HealthRegeneration: 0
   MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
-  HealthRegenerationMultiplicator: 0
+  HealthRegenerationMultiplicator: 1
   isDeadTrigger: 0
   hasDied: 0
   DestroyOnDeath: 0
-  maxActionPoints: 0
-  curActionPoints: 0
+  maxActionPoints: 100
+  curActionPoints: 100
   maxReloadBar: 0
   curReloadBar: 0
-  ActionPointRegeneration: 0
+  ActionPointRegeneration: 1
   ReloadRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
-  MoveSpeed: 0
+  MoveSpeed: 6
   MeleeDamageMultiplicator: 1
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
@@ -1497,42 +1573,67 @@ MonoBehaviour:
   ActionPointRegenerationMultiplicator: 1
   ReloadRegenerationMultiplicator: 1
   canWalk: 1
-  canUseRightStick: 1
-  canCurUseRightStick: 1
+  canUseRightStick: 0
+  canCurUseRightStick: 0
   canUseSkills: 1
-  SkillSpawn: {fileID: 0}
-  TakeHitPoint: {fileID: 0}
-  HealthBar: {fileID: 0}
-  UseHealthbar: 0
+  SkillSpawn: {fileID: 4884654481988200}
+  TakeHitPoint: {fileID: 4022339163266460}
+  HealthBar: {fileID: 224660065565190754}
+  UseHealthbar: 1
   HUDHealthBarSlider: {fileID: 0}
-  UseHUDHealthbarSlider: 0
-  ActionPointsBar: {fileID: 0}
+  UseHUDHealthbarSlider: 1
+  ActionPointsBar: {fileID: 114101222704165328}
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
-  UseHUDActionPointsBar: 0
+  UseHUDActionPointsBar: 1
   OverChargeBar: {fileID: 0}
-  UseOverChargeBar: 0
-  maxOverCharge: 0
-  curOverCharge: 0
+  UseOverChargeBar: 1
+  maxOverCharge: 100
+  curOverCharge: 100
   ReloadBar: {fileID: 0}
   UseReloadBar: 0
   curDisplaySteps: 0
   curDisplayReloadBar: 0
-  rechargeActionBarDirectly: 0
-  MultiSoundPlayer: {fileID: 0}
+  rechargeActionBarDirectly: 1
+  MultiSoundPlayer: {fileID: 114062045482434310}
   ActiveBuffObjects: []
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
-  _Animtor: {fileID: 0}
+  _Animtor: {fileID: 95209346617654616}
   Type: 0
-  PlayerNumber: 
-  PlayerSkills: []
-  Deadzone: 0
-  acceleration: 0
-  deceleration: 0
-  moveSpeedMax: 0
-  TurnSpeed: 0
+  PlayerNumber: 1
+  PlayerSkills:
+  - SkillBC: {fileID: 114777490603000294, guid: 3917ab2fd0e2b5b41a2d1515af06b043,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6, type: 2}
+  - SkillBC: {fileID: 114601730004366300, guid: cc1f707e21f7d3b4fb1e744c07c215ae,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49, type: 2}
+  - SkillBC: {fileID: 114197014149919486, guid: 74e9e3b5510c7134e84fafc47642e8f1,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
+    - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
+  - SkillBC: {fileID: 114952456575416912, guid: 5fb50a5f6e53e92408dfb4461d65f29d,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114979931433249424, guid: 7c1ea391b0357a84a8ea106abdbdf5d3, type: 2}
+  - SkillBC: {fileID: 114859711054061678, guid: d2b1a5457ef0b6041bbcd5fda09fbd78,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114008890782351200, guid: aed2844c20d82a248be291988f7c176b, type: 2}
+  - SkillBC: {fileID: 114859711054061678, guid: d2b1a5457ef0b6041bbcd5fda09fbd78,
+      type: 2}
+    ButtonStringBC:
+    - {fileID: 114008890782351200, guid: aed2844c20d82a248be291988f7c176b, type: 2}
+  Deadzone: 0.19
+  acceleration: 1100
+  deceleration: 1200
+  moveSpeedMax: 5
+  TurnSpeed: 8
   rotatable: 1
   moveable: 1
   isWalking: 0
@@ -1540,23 +1641,6 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
   RequestedHealthPickUps: 0
---- !u!114 &114448882067645382
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952418328043746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeShield_Prefabs: {fileID: 4789576024763420, guid: 031757b06f683664c892350419b96829,
-    type: 2}
-  SecBetweenShot: 0
-  damageMulti: 1
-  damageMultiIncrease: 0.1
-  energyCosts: 0
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1589,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204a8e9375990624eab9d4c5808fa3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 0}
+  Character: {fileID: 114422117127842328}
 --- !u!114 &114656760850051692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1617,6 +1701,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114715430036726954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952418328043746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeShield_Prefabs: {fileID: 4789576024763420, guid: 031757b06f683664c892350419b96829,
+    type: 2}
+  SecBetweenShot: 0
+  damageMulti: 1
+  damageMultiIncrease: 0.1
+  energyCosts: 0
 --- !u!114 &114828686618201432
 MonoBehaviour:
   m_ObjectHideFlags: 1
