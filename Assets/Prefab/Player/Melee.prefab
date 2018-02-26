@@ -658,6 +658,8 @@ GameObject:
   - component: {fileID: 4516403134527630}
   - component: {fileID: 95209346617654616}
   - component: {fileID: 114628933966912592}
+  - component: {fileID: 114934815168121292}
+  - component: {fileID: 82777574116814170}
   m_Layer: 0
   m_Name: MELEE_FINAL_ANIMATION
   m_TagString: Untagged
@@ -1379,6 +1381,87 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82777574116814170
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948657137727218}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243789975375533126, guid: d6f902f986bc93f47972c6f7c68b6663,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95209346617654616
 Animator:
   serializedVersion: 3
@@ -1555,6 +1638,7 @@ MonoBehaviour:
   isDeadTrigger: 0
   hasDied: 0
   DestroyOnDeath: 0
+  NPC: 1
   maxActionPoints: 100
   curActionPoints: 100
   maxReloadBar: 0
@@ -1574,7 +1658,7 @@ MonoBehaviour:
   ReloadRegenerationMultiplicator: 1
   canWalk: 1
   canUseRightStick: 0
-  canCurUseRightStick: 0
+  canNeverUseRightStick: 1
   canUseSkills: 1
   SkillSpawn: {fileID: 4884654481988200}
   TakeHitPoint: {fileID: 4022339163266460}
@@ -1756,6 +1840,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114934815168121292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948657137727218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe94a185359fd84dbe462eb761a48a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkClips:
+  - {fileID: 8300000, guid: 197e36291a2e4f049a633f2f3f5e2775, type: 3}
+  - {fileID: 8300000, guid: c94d8276f8c7405448616284c8d05da2, type: 3}
+  highPitch: 1
+  lowPitch: 0.8
+  _AudioSource: {fileID: 82777574116814170}
 --- !u!136 &136571544001099200
 CapsuleCollider:
   m_ObjectHideFlags: 1
