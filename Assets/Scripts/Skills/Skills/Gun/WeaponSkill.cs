@@ -124,6 +124,12 @@ public class WeaponSkill : Skill
             newProjectile.WeaponHolder = Character;
             newProjectile.SetSpeed(MuzzleVelocity);
             newProjectile.transform.SetParent(GameManager.Instance.ProjectileHolder);
+
+            var trailRenderer = newProjectile.GetComponent<TrailRenderer>();
+            if (trailRenderer != null)
+            {
+                trailRenderer.startWidth *= Character.RangeDamageMultiplicator;
+            }
         }
 
         if (Shell != null)

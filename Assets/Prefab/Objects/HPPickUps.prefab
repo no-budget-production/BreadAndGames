@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114627626524168010}
   - component: {fileID: 114753785544517142}
   - component: {fileID: 135621295642145156}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HPPickUps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33278068665476388}
   - component: {fileID: 23939814787209052}
   - component: {fileID: 114164459373643034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HPPickUps_gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471449579269510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.61, z: 0}
+  m_LocalPosition: {x: 8.45, y: 1.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4167020617870386}
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8236036208eb043bedcb8ffccba65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifetime: 20
-  Fadetime: 1000
+  Lifetime: 3
+  Fadetime: 10
   Renderer: {fileID: 23939814787209052}
   TargetMaterial: {fileID: 2100000, guid: 001e20de2dfd30648bd4752466121650, type: 2}
 --- !u!135 &135621295642145156
