@@ -24,6 +24,9 @@ public class Skill : MonoBehaviour
     public string[] AnimationStrings;
     public AnimTypes[] AnimationTypes;
 
+    public bool FireOnStart;
+    public bool FireOnDeath;
+
     [Header("<<<<<<<<<< Skill:")]
 
     [HideInInspector]
