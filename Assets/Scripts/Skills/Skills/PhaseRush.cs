@@ -16,8 +16,8 @@ public class PhaseRush : Skill
     public float duration;
     public float speed;
 
-    public Transform thunder;
-    private Transform curThunder;
+    public Transform thunder_Prefabs;
+    private Transform thunder;
     private PlayerController controller;
     private AudioSource _AudioSource;
 
@@ -36,6 +36,8 @@ public class PhaseRush : Skill
         {
             controller = tempController;
         }
+        thunder = Instantiate(thunder_Prefabs, controller.transform.position + thunder_Prefabs.position, thunder_Prefabs.rotation).transform;
+        thunder.parent = transform;
     }
 
     public override void OneShoot()
@@ -50,8 +52,8 @@ public class PhaseRush : Skill
             return;
         }
 
-        curThunder = Instantiate(thunder, controller.transform.position, controller.transform.rotation).transform;
-        curThunder.GetComponent<ParticleSystem>().Play();
+
+        thunder.GetComponent<ParticleSystem>().Play();
         controller.canUseSkills = false;
         controller.rotatable = false;
         controller.moveable = false;
@@ -61,7 +63,7 @@ public class PhaseRush : Skill
         Character.ThisUnityTypeFlags = UnitTypesFlags.Invurnable;
         Character.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-        controller.rb.AddForce(controller.transform.forward * speed, ForceMode.Impulse);
+        controller.rb.AddForce(controller.moveVector * speed, ForceMode.Impulse);
 
         curCharges--;
 
