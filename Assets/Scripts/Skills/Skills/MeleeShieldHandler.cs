@@ -85,7 +85,7 @@ public class MeleeShieldHandler : MonoBehaviour
         {
             p.transform.forward = transform.forward;
             damageMulti += damageMultiIncrease;
-            return true;
+            return false;
         }
     }
 }
