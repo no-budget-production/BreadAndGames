@@ -8,7 +8,7 @@ public class SoundPlayer : MonoBehaviour
     public AudioClip[] AudioClipsArray;
 
     private int _currentSoundInt;
-    public int _lastSound;
+    private int _lastSound;
 
     public void Play()
     {
