@@ -79,6 +79,7 @@ public class PlayerController : Character
     void Awake()
     {
         Anim.SetBool(animIsAiming, true);
+        Anim.SetBool(animIsRunning, false);
 
         rb = GetComponent<Rigidbody>();
     }
