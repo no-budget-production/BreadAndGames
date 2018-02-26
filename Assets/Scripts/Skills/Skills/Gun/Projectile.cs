@@ -76,7 +76,8 @@ public class Projectile : Effect
         if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames * MutliRayLength, collisionMask, QueryTriggerInteraction.Collide))
         {
             if (OnHitObject(hit))
-                Destroy(this.gameObject);
+                this.enabled = false;
+                Destroy(this.gameObject, 5f);
         }
     }
 
