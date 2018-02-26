@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillType: 12
-  Character: {fileID: 0}
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 537a2e64dda2fea489eb36c6ea0a09dc, type: 2}
@@ -171,11 +171,18 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
+  HasAnimation: 0
+  AnimationStrings: []
+  AnimationTypes: 
+  FireOnStart: 0
+  FireOnDeath: 0
+  Character: {fileID: 0}
   SoundPlayer: {fileID: 114536509537192034}
   SBetweenSounds: 1
   ReloadActionPointsAmount: 100
   SpendReloadAmount: 20
   isReloadingFully: 1
+  enableIfOverCharged: 1
 --- !u!114 &114536509537192034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,4 +197,3 @@ MonoBehaviour:
   AudioSource: {fileID: 82615310749270370}
   AudioClipsArray:
   - {fileID: 8300000, guid: 0b3cdf34ee96f434eac40c6d342cef6b, type: 3}
-  _lastSound: 0

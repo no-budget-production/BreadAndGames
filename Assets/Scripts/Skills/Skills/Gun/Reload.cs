@@ -14,6 +14,9 @@ public class Reload : Skill
 
     public bool isReloadingFully;
 
+    public bool enableIfOverCharged;
+
+
     public override void Shoot()
     {
         if (!BuffObject.isStackable)
@@ -37,6 +40,15 @@ public class Reload : Skill
         if (!Character.rechargeActionBarDirectly)
         {
             if (Character.curReloadBar < SpendReloadAmount)
+            {
+                return;
+            }
+        }
+
+
+        if (enableIfOverCharged)
+        {
+            if (Character.curActionPoints > Character.curOverCharge)
             {
                 return;
             }
