@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhaseRush : Skill
 {
     public int maxCharges;
-    private int curCharges = 0;
+    public int curCharges = 3;
 
     private float nextSoundTime;
     public float SBetweenSounds;
@@ -20,6 +20,9 @@ public class PhaseRush : Skill
     private Transform curThunder;
     private PlayerController controller;
     private AudioSource _AudioSource;
+
+    private bool isPhaseRushing;
+    private bool isRecharging;
 
     void Awake()
     {
@@ -37,21 +40,15 @@ public class PhaseRush : Skill
 
     public override void OneShoot()
     {
-        for (var i = 0; i < checkToNextChargeTest.Count; i++)
-        {
-            var timeStemp = checkToNextChargeTest[i];
-            if (timeStemp <= Time.time && timeStemp != 0)
-            {
-                curCharges--;
-                curCharges = Mathf.Max(curCharges, 0);
-                checkToNextChargeTest.Remove(timeStemp);
-            }
-        }
-
         if (!controller.canUseSkills)
             return;
-        if (curCharges >= maxCharges)
+        if (curCharges <= 0)
             return;
+
+        if (isPhaseRushing)
+        {
+            return;
+        }
 
         curThunder = Instantiate(thunder, controller.transform.position, controller.transform.rotation).transform;
         curThunder.GetComponent<ParticleSystem>().Play();
@@ -66,21 +63,20 @@ public class PhaseRush : Skill
 
         controller.rb.AddForce(controller.transform.forward * speed, ForceMode.Impulse);
 
-        if (curCharges == 0)
-        {
-            checkToNextChargeTest.Add(Time.time + rechargeTime);
-        }
-        else
-        {
-            checkToNextChargeTest.Add(checkToNextChargeTest[curCharges - 1] + rechargeTime);
-        }
-        curCharges++;
-        Invoke("phaseRushStop", duration);
+        curCharges--;
+
+        StopCoroutine("DurationTimer");
+        StartCoroutine(DurationTimer());
     }
 
-    public void phaseRushStop()
+    public IEnumerator DurationTimer()
     {
-        Destroy(curThunder.gameObject);
+        isPhaseRushing = true;
+
+        yield return new WaitForSeconds(duration);
+
+        isPhaseRushing = false;
+
         controller.rb.velocity = Vector3.zero;
         controller.canUseSkills = true;
         controller.rotatable = true;
@@ -88,5 +84,18 @@ public class PhaseRush : Skill
 
         Character.ThisUnityTypeFlags = UnitTypesFlags.Player;
         Character.gameObject.layer = LayerMask.NameToLayer("Default");
+
+        if (!isRecharging)
+        {
+            isRecharging = true;
+            while (curCharges < maxCharges)
+            {
+                yield return new WaitForSeconds(rechargeTime);
+                curCharges++;
+                curCharges = Mathf.Min(curCharges, maxCharges);
+            }
+            isRecharging = false;
+        }
+
     }
 }
