@@ -86,6 +86,7 @@ public class PlayerController : Character
 
     public override void Start()
     {
+        NPC = false;
         base.Start();
         ButtonSetup();
     }

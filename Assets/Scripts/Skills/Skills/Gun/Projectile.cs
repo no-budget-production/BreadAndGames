@@ -30,7 +30,7 @@ public class Projectile : Effect
 
     public DamageType DamageType;
 
-    public Character Shooter;
+    public Character WeaponHolder;
 
     public float Speed = 10;
     public float Damage = 1;
@@ -83,24 +83,23 @@ public class Projectile : Effect
 
     bool OnHitObject(RaycastHit hit)
     {
-        ////Debug.Log(hit.collider.gameObject.name);
-        Entity damageableObject = hit.collider.GetComponent<Entity>();
-        if (damageableObject != null)
-        {
-            if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
-            {
-                damageableObject.TakeDamage(Shooter.RangeDamage * Shooter.RangeDamageMultiplicator * Damage, DamageType);
-                //Debug.Log(damageableObject.name + "TakeDamage" + Shooter.RangeDamage * Shooter.RangeDamageMultiplicator * Damage);
-                return true;
-            }
-        }
-
         MeleeShieldHandler MeleeShield = hit.collider.GetComponentInParent<MeleeShieldHandler>();
-        if (MeleeShield != null && !shieldImmunity)
-        {
-            return MeleeShield.AddProjectile(this);
+        if (MeleeShield != null && !shieldImmunity) return MeleeShield.AddProjectile(this);
+        
+        Entity damageableObject = hit.collider.GetComponent<Entity>();
+        if (damageableObject == null) return true;
 
+        var AllyOfWeaponHolder = WeaponHolder.NPC;
+        var AllyOfVictim = hit.collider.GetComponent<Character>().NPC;
+
+        if (AllyOfWeaponHolder == AllyOfVictim) return false;
+
+        if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
+        {
+            damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+            return true;
         }
+        
         return true;
     }
 }
