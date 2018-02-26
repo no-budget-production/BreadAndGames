@@ -8,7 +8,6 @@ public class SoundSpawner : MonoBehaviour
     public AudioClip[] AudioClipsArray;
     public float highPitch;
     public float lowPitch;
-    public float destroyTime;
 
     public AudioSource _AudioSource;
 
@@ -25,7 +24,6 @@ public class SoundSpawner : MonoBehaviour
         {
 
             SoundRandomizer.RandomizeSfx(lowPitch, highPitch, _AudioSource, AudioClipsArray);
-            Destroy(gameObject, destroyTime);
             PlayOnce = false;
         }
     }
