@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575352139550200}
-  - component: {fileID: 114715430036726954}
+  - component: {fileID: 114448882067645382}
   m_Layer: 0
   m_Name: MeleeHandler
   m_TagString: Untagged
@@ -1351,12 +1351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0952629399d5fb54a80f8ff3cf5842d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VoiceSource: {fileID: 82047039485331390}
-  AudioClipsArray:
-  - AudioClips:
-    - {fileID: 8300000, guid: 2572c380eec0a794a9c64268e39b23e3, type: 3}
-  - AudioClips:
-    - {fileID: 8300000, guid: 383ca8b1f2cd6e641bbe783a80d4dacf, type: 3}
+  VoiceSource: {fileID: 0}
+  AudioClipsArray: []
   _lastSound: 
 --- !u!114 &114101222704165328
 MonoBehaviour:
@@ -1471,28 +1467,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1323efd318e6be4495a87f6abc5da34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisUnityTypeFlags: 1
-  CurrentHealth: 3000
-  MaxHealth: 3000
+  ThisUnityTypeFlags: 0
+  CurrentHealth: 0
+  MaxHealth: 0
   HealthRegeneration: 0
-  MeleeArmor: 1
+  MeleeArmor: 0
   RangedArmor: 0
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
-  HealthRegenerationMultiplicator: 1
+  HealthRegenerationMultiplicator: 0
   isDeadTrigger: 0
   hasDied: 0
   DestroyOnDeath: 0
-  maxActionPoints: 100
-  curActionPoints: 100
+  maxActionPoints: 0
+  curActionPoints: 0
   maxReloadBar: 0
   curReloadBar: 0
-  ActionPointRegeneration: 1
+  ActionPointRegeneration: 0
   ReloadRegeneration: 0
   MeleeDamage: 1
   RangeDamage: 1
   Accuracy: 1
-  MoveSpeed: 6
+  MoveSpeed: 0
   MeleeDamageMultiplicator: 1
   RangeDamageMultiplicator: 1
   AccuracyMultiplicator: 1
@@ -1501,71 +1497,42 @@ MonoBehaviour:
   ActionPointRegenerationMultiplicator: 1
   ReloadRegenerationMultiplicator: 1
   canWalk: 1
-  canUseRightStick: 0
-  canCurUseRightStick: 0
+  canUseRightStick: 1
+  canCurUseRightStick: 1
   canUseSkills: 1
-  SkillSpawn: {fileID: 4884654481988200}
-  TakeHitPoint: {fileID: 4022339163266460}
-  HealthBar: {fileID: 224660065565190754}
-  UseHealthbar: 1
+  SkillSpawn: {fileID: 0}
+  TakeHitPoint: {fileID: 0}
+  HealthBar: {fileID: 0}
+  UseHealthbar: 0
   HUDHealthBarSlider: {fileID: 0}
-  UseHUDHealthbarSlider: 1
-  ActionPointsBar: {fileID: 114101222704165328}
+  UseHUDHealthbarSlider: 0
+  ActionPointsBar: {fileID: 0}
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
-  UseHUDActionPointsBar: 1
+  UseHUDActionPointsBar: 0
   OverChargeBar: {fileID: 0}
-  UseOverChargeBar: 1
-  maxOverCharge: 100
-  curOverCharge: 100
+  UseOverChargeBar: 0
+  maxOverCharge: 0
+  curOverCharge: 0
   ReloadBar: {fileID: 0}
   UseReloadBar: 0
   curDisplaySteps: 0
   curDisplayReloadBar: 0
-  rechargeActionBarDirectly: 1
-  MultiSoundPlayer: {fileID: 114062045482434310}
+  rechargeActionBarDirectly: 0
+  MultiSoundPlayer: {fileID: 0}
   ActiveBuffObjects: []
   SBetweenSounds: 1
   ActiveSkills: []
   ActiveBuffs: []
-  _Animtor: {fileID: 95209346617654616}
+  _Animtor: {fileID: 0}
   Type: 0
-  PlayerNumber: 1
-  PlayerSkills:
-  - SkillBC: {fileID: 114777490603000294, guid: 3917ab2fd0e2b5b41a2d1515af06b043,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114623924717632030, guid: ced779f6af869e948820efc572971b46, type: 2}
-  - SkillBC: {fileID: 114601730004366300, guid: cc1f707e21f7d3b4fb1e744c07c215ae,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114699667673163188, guid: daa924789377d964d854a18ed9d6f75d, type: 2}
-  - SkillBC: {fileID: 114197014149919486, guid: 74e9e3b5510c7134e84fafc47642e8f1,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114842703753094460, guid: da39883bcb0491149b818ff85d93bdbc, type: 2}
-    - {fileID: 114227095960293066, guid: d33b107aaedeed847adaf5948d2199a9, type: 2}
-  - SkillBC: {fileID: 114952456575416912, guid: 5fb50a5f6e53e92408dfb4461d65f29d,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114979931433249424, guid: 7c1ea391b0357a84a8ea106abdbdf5d3, type: 2}
-  - SkillBC: {fileID: 114346892580708106, guid: 1afa81eae4cc680438f939ba15e90f48,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6, type: 2}
-  - SkillBC: {fileID: 114326420794420148, guid: 489b11e713aeba041ae8b3cffa6e7b48,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114420333716285962, guid: eebd0386d3fb02c4bb2ba3b0a719ba49, type: 2}
-  - SkillBC: {fileID: 114859711054061678, guid: d2b1a5457ef0b6041bbcd5fda09fbd78,
-      type: 2}
-    ButtonStringBC:
-    - {fileID: 114008890782351200, guid: aed2844c20d82a248be291988f7c176b, type: 2}
-  Deadzone: 0.19
-  acceleration: 1100
-  deceleration: 1200
-  moveSpeedMax: 5
-  TurnSpeed: 8
+  PlayerNumber: 
+  PlayerSkills: []
+  Deadzone: 0
+  acceleration: 0
+  deceleration: 0
+  moveSpeedMax: 0
+  TurnSpeed: 0
   rotatable: 1
   moveable: 1
   isWalking: 0
@@ -1573,6 +1540,23 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
   RequestedHealthPickUps: 0
+--- !u!114 &114448882067645382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952418328043746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeShield_Prefabs: {fileID: 4789576024763420, guid: 031757b06f683664c892350419b96829,
+    type: 2}
+  SecBetweenShot: 0
+  damageMulti: 1
+  damageMultiIncrease: 0.1
+  energyCosts: 0
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1605,7 +1589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204a8e9375990624eab9d4c5808fa3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 114422117127842328}
+  Character: {fileID: 0}
 --- !u!114 &114656760850051692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1633,25 +1617,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114715430036726954
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952418328043746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f51ca4efcd16a40b8130c746ae000a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeShieldLevel1_Prefabs: {fileID: 4444241441346452, guid: 14517b405dcb83348961d4e94b4ec0ff,
-    type: 2}
-  meleeShieldLevel2_Prefabs: {fileID: 4789576024763420, guid: 031757b06f683664c892350419b96829,
-    type: 2}
-  SecBetweenShot: 0
-  damageMulti: 1
-  damageMultiIncrease: 0.1
-  energyCosts: 0
 --- !u!114 &114828686618201432
 MonoBehaviour:
   m_ObjectHideFlags: 1
