@@ -188,7 +188,7 @@ public class Character : Entity
             Disable();
         }
 
-        if (!hasDied && DestroyOnDeath)
+        if (!(hasDied && DestroyOnDeath))
         {
             if (UseHealthbar)
             {
@@ -206,7 +206,7 @@ public class Character : Entity
     {
         base.GetHealth(healing);
 
-        if (!hasDied)
+        if (!(hasDied && DestroyOnDeath))
         {
             if (UseHealthbar)
             {
@@ -217,11 +217,11 @@ public class Character : Entity
             {
                 OnHUDChangeHealthSlider();
             }
+        }
 
-            if (!isDeadTrigger)
-            {
-                Enable();
-            }
+        if (!isDeadTrigger)
+        {
+            Enable();
         }
 
     }

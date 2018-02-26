@@ -165,14 +165,11 @@ public class Punch : Skill
         }
         else
         {
-            if (!ChargingBuff.HasBuff(Character.ActiveBuffObjects))
+            if (!BuffObject.isStackable)
             {
-                if (!BuffObject.isStackable)
+                if (BuffObject.HasBuff(Character.ActiveBuffObjects))
                 {
-                    if (BuffObject.HasBuff(Character.ActiveBuffObjects))
-                    {
-                        return;
-                    }
+                    return;
                 }
             }
 

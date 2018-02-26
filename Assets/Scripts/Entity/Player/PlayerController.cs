@@ -320,7 +320,7 @@ public class PlayerController : Character
 
         if (isDeadTrigger)
         {
-            Anim.SetTrigger(animIsDead);
+            Anim.SetBool(animIsDead, true);
         }
 
         RequestHealthPickUps();
@@ -332,6 +332,7 @@ public class PlayerController : Character
 
         if (!isDeadTrigger)
         {
+            Anim.SetBool(animIsDead, false);
             Anim.SetTrigger(animGetUp);
         }
 
