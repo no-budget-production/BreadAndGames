@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4449549727641228}
   - component: {fileID: 33542883662548370}
   - component: {fileID: 64914111280477758}
+  - component: {fileID: 114134278750395886}
+  - component: {fileID: 114990302972832234}
   m_Layer: 0
   m_Name: MeleeShield_gfx
   m_TagString: Untagged
@@ -193,6 +195,19 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 37f102aba325d5f48b5a05b8930b1221, type: 3}
+--- !u!114 &114134278750395886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122203875241890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d7aab60a3acb74a98dacdbade379df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies: []
+  ThisUnityTypeFlags: 2
 --- !u!114 &114832519891331634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,3 +219,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e01405f76ba034a93657e2ad8ce053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114990302972832234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122203875241890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba88ee12fb8f01848822526341c78d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
+  DamageType: 0
+  HitBox: {fileID: 114134278750395886}

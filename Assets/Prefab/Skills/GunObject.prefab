@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075399540784632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.59, z: 5.6}
+  m_LocalPosition: {x: 0, y: 0, z: 5.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4485280870489048}
@@ -168,9 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97846fa7c004b674da3e9799f5a415bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineRenderer: {fileID: 120827320021759742}
-  MaxDistance: 2000
-  EveryXFrames: 2
 --- !u!120 &120827320021759742
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -216,13 +213,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0.29592133
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.9958496
-        value: 0.14692688
+        value: 0.06771088
         inSlope: 0
         outSlope: 0
         tangentMode: 0

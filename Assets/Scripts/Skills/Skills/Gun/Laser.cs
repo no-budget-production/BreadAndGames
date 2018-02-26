@@ -5,33 +5,27 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
 
-    public LineRenderer LineRenderer;
+    private LineRenderer lineRenderer;
 
-    public int MaxDistance;
-
-    public int EveryXFrames;
-    private int FrameCounter;
+    void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
 
     void Update()
     {
-        FrameCounter++;
-        if ((FrameCounter % EveryXFrames) == 0)
+        RaycastHit Hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out Hit))
         {
-            RaycastHit Hit;
-
-            if (Physics.Raycast(transform.position, transform.forward, out Hit))
+            if (Hit.collider)
             {
-                if (Hit.collider)
-                {
-                    LineRenderer.SetPosition(1, new Vector3(0, 0, Hit.distance));
-                }
+                lineRenderer.SetPosition(1, new Vector3(0, 0, Hit.distance));
             }
-            else
-            {
-                LineRenderer.SetPosition(1, new Vector3(0, 0, MaxDistance));
-            }
-
-            FrameCounter = 0;
+        }
+        else
+        {
+            lineRenderer.SetPosition(1, new Vector3(0, 0, 15));
         }
     }
 }
