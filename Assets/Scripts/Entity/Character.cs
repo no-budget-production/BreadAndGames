@@ -55,7 +55,7 @@ public class Character : Entity
 
     public bool canWalk = true;
     public bool canUseRightStick = true;
-    public bool canCurUseRightStick = true;
+    public bool canNeverUseRightStick = true;
     public bool canUseSkills = true;
 
     //[HideInInspector]
@@ -132,9 +132,9 @@ public class Character : Entity
     public virtual void Enable()
     {
         canWalk = true;
-        if (canUseRightStick)
+        if (canNeverUseRightStick)
         {
-            canCurUseRightStick = true;
+            canUseRightStick = true;
         }
         canUseSkills = true;
     }
@@ -145,6 +145,13 @@ public class Character : Entity
 
         if (isDeadTrigger)
         {
+            for (int i = 0; i < ActiveSkills.Length; i++)
+            {
+                if (ActiveSkills[i].FireOnDeath)
+                {
+                    ActiveSkills[i].Shoot();
+                }
+            }
             Disable();
         }
     }
@@ -402,7 +409,7 @@ public class Character : Entity
                 }
                 if (canUseRightStick)
                 {
-                    if (!canCurUseRightStick)
+                    if (!canNeverUseRightStick)
                     {
                         if (canUseRightStickAgainCount <= 0)
                         {
