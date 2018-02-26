@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4613216568479016}
   - component: {fileID: 33656992522737132}
-  - component: {fileID: 23268980382602156}
   - component: {fileID: 64679957272597388}
   m_Layer: 0
   m_Name: MeleeShield_gfx
@@ -43,7 +42,24 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!1 &1232180414107172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4370508264372578}
+  - component: {fileID: 33475436754784730}
+  - component: {fileID: 23104995635325734}
+  m_Layer: 0
+  m_Name: Shield2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1322570606182850
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,6 +76,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4370508264372578
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232180414107172}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 120, y: 120, z: 120}
+  m_Children: []
+  m_Father: {fileID: 4789576024763420}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4613216568479016
 Transform:
   m_ObjectHideFlags: 1
@@ -84,6 +113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4613216568479016}
+  - {fileID: 4370508264372578}
   - {fileID: 4920683447197530}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,14 +129,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4789576024763420}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23268980382602156
+--- !u!23 &23104995635325734
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071931215698492}
+  m_GameObject: {fileID: 1232180414107172}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -115,7 +145,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e7af129da963d8c489e697d0bd6fe371, type: 3}
+  - {fileID: 2100000, guid: 8825d61e01024c046b618535ce38540f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +165,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!33 &33475436754784730
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232180414107172}
+  m_Mesh: {fileID: 4300000, guid: 8825d61e01024c046b618535ce38540f, type: 3}
 --- !u!33 &33656992522737132
 MeshFilter:
   m_ObjectHideFlags: 1
