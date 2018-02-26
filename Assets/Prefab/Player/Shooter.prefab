@@ -2395,7 +2395,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280451549652284}
-  m_LocalRotation: {x: -0.1025467, y: 0.59512615, z: -0.28813636, w: 0.7431599}
+  m_LocalRotation: {x: -0.10254669, y: 0.59512615, z: -0.28813636, w: 0.7431599}
   m_LocalPosition: {x: 1.8626451e-11, y: 0.0017988919, z: 3.1897798e-10}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.9999998}
   m_Children:
@@ -3358,7 +3358,7 @@ MonoBehaviour:
   ReloadRegenerationMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
-  canCurUseRightStick: 1
+  canNeverUseRightStick: 1
   canUseSkills: 1
   SkillSpawn: {fileID: 4294922838755054}
   TakeHitPoint: {fileID: 4834803545969750}
@@ -3396,7 +3396,7 @@ MonoBehaviour:
       type: 2}
     ButtonStringBC:
     - {fileID: 114959627532093094, guid: a559480ac2cbc45469932c87a9c414f6, type: 2}
-  - SkillBC: {fileID: 114132905055807542, guid: 1b26ceeb2376f26468b2b7bf68bc013c,
+  - SkillBC: {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc,
       type: 2}
     ButtonStringBC:
     - {fileID: 114441161642664474, guid: 9475b5706eb59dc4caf0e9139828070b, type: 2}
@@ -3409,9 +3409,6 @@ MonoBehaviour:
       type: 2}
     ButtonStringBC:
     - {fileID: 114623924717632030, guid: ced779f6af869e948820efc572971b46, type: 2}
-  - SkillBC: {fileID: 114222517438844754, guid: bbbec9077667716488a425dd6adfcdcc,
-      type: 2}
-    ButtonStringBC: []
   - SkillBC: {fileID: 114859711054061678, guid: d2b1a5457ef0b6041bbcd5fda09fbd78,
       type: 2}
     ButtonStringBC:

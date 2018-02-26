@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunObject : Skill
 {
+    [Header(">>>>>>>>>> GunObject:")]
+
     public Transform Muzzle;
     public Transform ShellEjection;
 
@@ -58,7 +60,9 @@ public class GunObject : Skill
         }
     }
 
+    [Header(">>>>>>>>>> Reload:")]
     //Reload->
+
 
     public SoundPlayer SoundPlayer;
     private float nextSoundTime;
