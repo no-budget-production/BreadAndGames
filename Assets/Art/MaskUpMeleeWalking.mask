@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MaskUpMeleeWalking
+  m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Melee
+    m_Weight: 1
+  - m_Path: Melee_arm
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.L
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.L/Elbow.L
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.L/Elbow.L/Hand.L
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.L/Elbow.L/Hand.L/Hand.L_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.R
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.R/Elbow.R
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.R/Elbow.R/Hand.R
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Arm.R/Elbow.R/Hand.R/Hand.R_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/HEAD
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/HEAD/HEAD_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Leg.L
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Leg.L/Leg.L_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Leg.R
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Leg.R/Leg.R_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Pipe.L
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Pipe.L/Pipe.L_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Pipe.R
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Pipe.R/Pipe.R_end
+    m_Weight: 0
+  - m_Path: Melee_arm/ROOT/Body/Thigh.L
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.L/Knee.L
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.L/Knee.L/Foot.L
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.L/Knee.L/Foot.L/Foot.L_end
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.R
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.R/Knee.R
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.R/Knee.R/Foot.R
+    m_Weight: 1
+  - m_Path: Melee_arm/ROOT/Body/Thigh.R/Knee.R/Foot.R/Foot.R_end
+    m_Weight: 1
