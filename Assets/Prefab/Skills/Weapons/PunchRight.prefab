@@ -241,7 +241,6 @@ MonoBehaviour:
   Damage: 52
   ChargingBuff: {fileID: 11400000, guid: 44204a33ac7511b41aa15cb751f650db, type: 2}
   Debuff: {fileID: 0}
-  ArmorBreaking: {fileID: 0}
   canCharge: 1
   ChargeTime: 2
   curChargeTime: 0
@@ -250,6 +249,7 @@ MonoBehaviour:
   SoundPlayer: {fileID: 114659931926392164}
   SBetweenSounds: 0
   curDamageBonus: 0
+  minEnergyCost: 3
 --- !u!114 &114659931926392164
 MonoBehaviour:
   m_ObjectHideFlags: 1
