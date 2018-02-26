@@ -83,10 +83,11 @@ public class MeleeShieldHandler : MonoBehaviour
         }
         else
         {
+            damageMulti += damageMultiIncrease;
             p.WeaponHolder = Character;
             p.transform.forward = Character.lookVector;
             p.transform.position = shootFrom.position;
-            damageMulti += damageMultiIncrease;
+            p.Damage *= damageMulti;
             return false;
         }
     }
