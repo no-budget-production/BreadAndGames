@@ -221,6 +221,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         GameObject TempObjectHolder2;
         TempObjectHolder2 = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation) as GameObject;
+        Destroy(roadblock);
 
         StartCoroutine(CamerBackToNormal(5f));      // Parameter = time till camera gets back to normal
     }
