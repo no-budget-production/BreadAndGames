@@ -157,6 +157,9 @@ MonoBehaviour:
   ShellEjection: {fileID: 4946918575210454}
   LaserScript: {fileID: 114369133484019264}
   ActionPointsPerSec: 5
+  OverChargeThreshhold: 0
+  OverChargeDamageMultiplier: 2
+  isOverChargeDamageApplied: 0
 --- !u!114 &114369133484019264
 MonoBehaviour:
   m_ObjectHideFlags: 1
