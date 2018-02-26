@@ -72,7 +72,7 @@ public class MeleeShieldHandler : MonoBehaviour
     //ShieldLogic
     public bool AddProjectile(Projectile p)
     {
-        bool friendly = (p.Shooter as PlayerController) != null;
+        bool friendly = (p.WeaponHolder as PlayerController) != null;
         if (friendly)
         {
             p.Damage *= damageMulti;
@@ -83,9 +83,11 @@ public class MeleeShieldHandler : MonoBehaviour
         }
         else
         {
-            p.transform.forward = transform.forward;
+            p.WeaponHolder = Character;
+            p.transform.forward = Character.lookVector;
+            p.transform.position = shootFrom.position;
             damageMulti += damageMultiIncrease;
-            return true;
+            return false;
         }
     }
 }

@@ -62,7 +62,7 @@ public class Gun : Skill
                 Quaternion accuracy = Quaternion.Euler(Random.Range(-tempAccuracyHorizontal, tempAccuracyHorizontal), Random.Range(-tempAccuracyVertical, tempAccuracyVertical), 0);
 
                 Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
-                newProjectile.Shooter = Character;
+                newProjectile.WeaponHolder = Character;
                 newProjectile.SetSpeed(MuzzleVelocity);
             }
 

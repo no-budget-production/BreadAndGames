@@ -86,6 +86,7 @@ public class PlayerController : Character
 
     public override void Start()
     {
+        NPC = false;
         base.Start();
         ButtonSetup();
     }
@@ -147,9 +148,10 @@ public class PlayerController : Character
         Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
         VerticalLook_PX = Input.GetAxis(thisPlayerString[3]);
-        moveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
+        Vector3 temporaryMoveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
 
         Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
+
         if (temporaryLookVector.magnitude > Deadzone)
         {
             temporaryLookVector = inputRotation * temporaryLookVector;
@@ -175,8 +177,8 @@ public class PlayerController : Character
                 _Animtor.SetBool(animIsAiming, true);
                 _Animtor.SetBool(animIsRunning, false);
                 _Animtor.SetFloat(animIsAim_Amount, temporaryLookVector.magnitude);
-                _Animtor.SetFloat(animMovY, Mathf.Clamp(moveVector.y, -1, 0.5f));
-                _Animtor.SetFloat(animMovX, moveVector.magnitude);
+                _Animtor.SetFloat(animMovY, Mathf.Clamp(temporaryMoveVector.y, -1, 0.5f));
+                _Animtor.SetFloat(animMovX, temporaryMoveVector.magnitude);
             }
             else
             {
@@ -184,12 +186,12 @@ public class PlayerController : Character
 
                 _Animtor.SetBool(animIsAiming, false);
                 _Animtor.SetBool(animIsRunning, true);
-                _Animtor.SetFloat(animMovX, moveVector.magnitude);
+                _Animtor.SetFloat(animMovX, temporaryMoveVector.magnitude);
             }
         }
         else
         {
-            _Animtor.SetFloat(animMovX, moveVector.magnitude);
+            _Animtor.SetFloat(animMovX, temporaryMoveVector.magnitude);
         }
 
         Quaternion newLookDirection;
@@ -201,14 +203,15 @@ public class PlayerController : Character
 
         if (canWalk)
         {
-            if (moveVector.magnitude > Deadzone)
+            if (temporaryMoveVector.magnitude > Deadzone)
             {
                 isWalking = true;
                 if (!isUsingRightStick && rotatable)
                 {
-                    newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(moveVector, transform.up), TurnSpeed * Time.deltaTime);
+                    newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(temporaryMoveVector, transform.up), TurnSpeed * Time.deltaTime);
                     rb.rotation = newLookDirection;
                 }
+                moveVector = temporaryMoveVector;
                 Walk();
             }
             else

@@ -22,6 +22,8 @@ public class Character : Entity
 {
     [Header(">>>>>>>>>> Character:")]
 
+    public bool NPC = true;
+
     public float maxActionPoints;
     public float curActionPoints;
 

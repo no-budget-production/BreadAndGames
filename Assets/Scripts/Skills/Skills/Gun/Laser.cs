@@ -20,12 +20,12 @@ public class Laser : MonoBehaviour
         {
             if (Hit.collider)
             {
-                lineRenderer.SetPosition(1, new Vector3(0, 0, Hit.distance));
+                lineRenderer.SetPosition(1, new Vector3(0, 0, Vector3.Distance(lineRenderer.transform.position, Hit.transform.position)) * 10);
             }
         }
         else
         {
-            lineRenderer.SetPosition(1, new Vector3(0, 0, 15));
+            lineRenderer.SetPosition(1, new Vector3(0, 0, 1500));
         }
     }
 }

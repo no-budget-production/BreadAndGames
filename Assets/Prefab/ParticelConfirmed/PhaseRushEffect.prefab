@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4339336245496788}
   - component: {fileID: 199668441979424996}
   - component: {fileID: 198482660579113824}
-  - component: {fileID: 114099549767863238}
   m_Layer: 0
   m_Name: PhaseRushEffect
   m_TagString: Untagged
@@ -78,7 +77,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1981988324644906
 GameObject:
   m_ObjectHideFlags: 1
@@ -143,15 +142,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213348688196156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.79, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.62, z: 2.804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4006447694842592}
   - {fileID: 4045828471580454}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4430745018273496
 Transform:
   m_ObjectHideFlags: 1
@@ -201,21 +200,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114099549767863238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1213348688196156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a77ff80f7d6b8458a3601a2b227384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Lifetime: 1
-  Fadetime: 0.25
-  Renderer: {fileID: 0}
-  TargetMaterial: {fileID: 0}
 --- !u!198 &198482660579113824
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -276,7 +260,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -236238883
+  randomSeed: 546284080
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3637,7 +3621,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 56131230
+  randomSeed: -133078883
   InitialModule:
     serializedVersion: 3
     enabled: 1

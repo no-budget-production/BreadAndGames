@@ -28,6 +28,9 @@ public class Punch : Skill
 
     public float curDamageBonus;
 
+    public float minEnergyCost;
+    private float currentEneryCost;
+
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
@@ -106,8 +109,13 @@ public class Punch : Skill
                 //Debug.Log("Character.AddBuff");
 
                 curChargeTime += Time.deltaTime;
+                float thisFrameEnergyCosts = energyChargeCosts * Time.deltaTime;
+                currentEneryCost += thisFrameEnergyCosts;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
-                Character.SpendActionPoints(energyChargeCosts * Time.deltaTime);
+                if (currentEneryCost >= minEnergyCost)
+                {
+                    Character.SpendActionPoints(thisFrameEnergyCosts);
+                }
                 //Debug.Log("BonusDamagePerSec * Time.deltaTime:" + BonusDamagePerSec * Time.deltaTime);
                 //Debug.Log("TimeDeltaTime:" + curChargeTime);
 
@@ -225,6 +233,7 @@ public class Punch : Skill
 
         curChargeTime = 0;
         curDamageBonus = 0;
+        currentEneryCost = 0;
     }
 
     public override void SkillHit()
