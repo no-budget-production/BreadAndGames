@@ -41,6 +41,10 @@ public class EnergyBattery : Character
 
     public float NavAgentSpeed;
 
+    public Transform Battery;
+
+    public float tweak;
+
     public override void Start()
     {
         base.Start();
@@ -76,6 +80,8 @@ public class EnergyBattery : Character
 
     public override void Update()
     {
+
+
         if (!isGameOver)
         {
             base.Update();
@@ -291,5 +297,17 @@ public class EnergyBattery : Character
                 PlayerInRadius.Add(tempPlayer);
             }
         }
+    }
+
+    public override float RestoreActionPoints(float restore)
+    {
+        float temp = base.RestoreActionPoints(restore);
+        float help = Battery.position.y;
+        Debug.Log(Battery.position.y);
+        //Debug.Log(help - curActionPoints * -(0.007f));
+
+        Battery.position = new Vector3(Battery.position.x, curActionPoints * tweak, Battery.position.z);
+
+        return temp;
     }
 }

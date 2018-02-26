@@ -437,7 +437,7 @@ public class Character : Entity
         }
     }
 
-    public float RestoreActionPoints(float restore)
+    public virtual float RestoreActionPoints(float restore)
     {
 
         float tempActionPoints = Mathf.Min(curActionPoints + (restore), maxActionPoints);
@@ -458,7 +458,7 @@ public class Character : Entity
 
     }
 
-    public float RestoreReloadPoints(float restore)
+    public virtual float RestoreReloadPoints(float restore)
     {
 
         float tempReloadPoints = Mathf.Min(curReloadBar + (restore), maxReloadBar);
