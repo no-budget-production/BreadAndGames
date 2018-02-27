@@ -47,7 +47,7 @@ public class GunObject : Skill
                 isOverChargeDamageApplied = true;
             }
 
-            Debug.Log("ExtraDamage");
+            //Debug.Log("ExtraDamage");
 
         }
         else
@@ -58,7 +58,7 @@ public class GunObject : Skill
                 isOverChargeDamageApplied = false;
             }
 
-            Debug.Log("NoExtraDamage");
+            //Debug.Log("NoExtraDamage");
         }
     }
 
