@@ -284,7 +284,8 @@ MonoBehaviour:
   ShellEjection: {fileID: 4946918575210454}
   LaserScript: {fileID: 114369133484019264}
   ActionPointsPerSec: 5
-  OverChargeThreshhold: 0
+  MinRechargeThreshold: 5
+  OverChargeThreshold: 0
   OverChargeDamageMultiplier: 5
   isOverChargeDamageApplied: 0
   SoundPlayer: {fileID: 114061400529863940}

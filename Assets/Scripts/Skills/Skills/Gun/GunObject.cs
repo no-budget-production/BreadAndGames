@@ -33,7 +33,7 @@ public class GunObject : Skill
     {
         if (Character.UseOverChargeBar)
         {
-            if (Character.curActionPoints >= Character.curOverCharge)
+            if (Character.curActionPoints >= MinRechargeThreshold)
             {
                 Character.RestoreActionPoints(ActionPointsPerSec * Time.deltaTime);
             }
@@ -108,7 +108,7 @@ public class GunObject : Skill
 
         if (enableIfOverCharged)
         {
-            if (Character.curActionPoints > OverChargeThreshold)
+            if (Character.curActionPoints > MinRechargeThreshold)
             {
                 return;
             }

@@ -250,6 +250,7 @@ MonoBehaviour:
   WeaponHolder: {fileID: 0}
   Speed: 8
   Damage: 8
+  ProjectileMultiScaleFactor: 0
 --- !u!114 &114498625199040552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,5 +268,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e825a1b898d7d6d4ebee9503a964d91d, type: 3}
   highPitch: 1
   lowPitch: 0.6
-  destroyTime: 5
   _AudioSource: {fileID: 82837619135292818}
