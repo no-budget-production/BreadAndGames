@@ -37,7 +37,6 @@ public class PhaseRush : Skill
             controller = tempController;
         }
         thunder = Instantiate(thunder_Prefabs, controller.transform.position + thunder_Prefabs.position, thunder_Prefabs.rotation).transform;
-        thunder.parent = transform;
     }
 
     public override void OneShoot()
@@ -53,6 +52,8 @@ public class PhaseRush : Skill
         }
 
 
+        thunder.position = controller.transform.position + thunder_Prefabs.position;
+        thunder.rotation = controller.transform.rotation * thunder_Prefabs.rotation;
         thunder.GetComponent<ParticleSystem>().Play();
         controller.canUseSkills = false;
         controller.rotatable = false;

@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7549e15c04290a44a98872e9704b649f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillType: 23
-  Character: {fileID: 0}
+  SkillType: 24
+  SkillNumber: 0
   isFiring: 0
   SkillSpawn: {fileID: 0}
   BuffObject: {fileID: 11400000, guid: 8d0c72a330baa7c42958c29869422cfd, type: 2}
@@ -63,7 +63,11 @@ MonoBehaviour:
   HasAnimation: 0
   AnimationStrings: []
   AnimationTypes: 
-  SkillNumber: 0
+  FireOnStart: 0
+  FireOnDeath: 0
+  WhileDead: 0
+  Character: {fileID: 0}
   ReviveRange: 3
   ReviveHealthMulti: 0.9
   ReviveCoolDownBuff: {fileID: 11400000, guid: 7dabe0023d35e7d43990df155efcb636, type: 2}
+  ReviveTarget: {fileID: 0}
