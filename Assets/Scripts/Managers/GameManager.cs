@@ -65,8 +65,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //Destroy(this);
         enabled = false;
+        Destroy(this);
     }
 
     void InitGame()

@@ -57,6 +57,7 @@ public class UIScript : MonoBehaviour
     {
         Time.timeScale = 1;
         MainMenu.SetActive(false);
+        Cursor.visible = false;
         _isPause = false;
     }
 
@@ -73,20 +74,21 @@ public class UIScript : MonoBehaviour
 
         //Time.timeScale = 1;
         MainMenu.SetActive(false);
+        Cursor.visible = false;
 
         //PlaySound(0);
     }
 
     public void RestartButton()
     {
-        //GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+        GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
 
-        //Destroy(GameManager.Instance.GameManagerFolder.gameObject);
+        Destroy(GameManager.Instance.InstanceRef.gameObject);
 
         MainMenu.SetActive(false);
 
         AreYouSure_Restart();
-
+        Cursor.visible = false;
         //PlaySound(1);
     }
 
@@ -95,7 +97,7 @@ public class UIScript : MonoBehaviour
         //SceneManager.UnloadSceneAsync(sceneindex);
 
         SceneManager.LoadScene(sceneindex, LoadSceneMode.Single);
-
+        Cursor.visible = false;
         //PlaySound(1);
     }
 

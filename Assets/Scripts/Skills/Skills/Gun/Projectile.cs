@@ -85,7 +85,7 @@ public class Projectile : Effect
 
         PastFrameTransforms[FrameCounter] = transform.position;
 
-        Debug.Log("FrameCounter" + FrameCounter);
+        //Debug.Log("FrameCounter" + FrameCounter);
 
 
     }
@@ -98,7 +98,7 @@ public class Projectile : Effect
             LastFrame = FrameCounter - curPastFramesCounter;
         }
 
-        Debug.Log("LastFrame" + LastFrame);
+        //Debug.Log("LastFrame" + LastFrame);
 
         Ray ray = new Ray(PastFrameTransforms[LastFrame], transform.forward);
         RaycastHit hit;

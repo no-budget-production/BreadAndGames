@@ -41,6 +41,8 @@ public class CheatHelp : MonoBehaviour
 
     public void UpdatePlayerButtons()
     {
+
+
         PlayerNames = new string[GameManager.Instance.Players.Count];
 
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
@@ -58,6 +60,8 @@ public class CheatHelp : MonoBehaviour
 
             for (int j = 0; j < PlayerController.PlayerSkills.Length; j++)
             {
+                Cheats[PlayerNumber].text = null;
+
                 ButtonConfigArray.Add(PlayerController.PlayerSkills[j]);
             }
 
