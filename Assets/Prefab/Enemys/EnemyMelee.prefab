@@ -1314,7 +1314,8 @@ AudioSource:
   m_GameObject: {fileID: 1724353408865596}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243784549026882638, guid: d6f902f986bc93f47972c6f7c68b6663,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1615,6 +1616,7 @@ MonoBehaviour:
   isInRange: 0
   isTargetInView: 0
   isSooting: 0
+  deadExplosionPrefab: {fileID: 100000, guid: 7205e6461ee81a64d93d35438b918831, type: 2}
   MaxShootingRange: 5
   StopRange: 3
   LookDamping: 100
