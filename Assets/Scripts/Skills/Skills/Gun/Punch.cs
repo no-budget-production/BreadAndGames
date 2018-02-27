@@ -96,23 +96,23 @@ public class Punch : Skill
 
             Character.AddBuff(ChargingBuff, 1, Character);
 
-            if (AnimationStrings[0] != null)
+            if (Character.curActionPoints - energyChargeCosts * Time.deltaTime > 0)
             {
-                if (AnimationTypes[0] == AnimTypes.Bool)
+                if (AnimationStrings[0] != null)
                 {
-                    Character._Animtor.SetBool(AnimationStrings[0], true);
+                    if (AnimationTypes[0] == AnimTypes.Bool)
+                    {
+                        Character._Animtor.SetBool(AnimationStrings[0], true);
+                    }
                 }
-            }
 
-            if (Character.curActionPoints - energyChargeCosts > 0)
-            {
                 //Debug.Log("Character.AddBuff");
 
                 curChargeTime += Time.deltaTime;
                 float thisFrameEnergyCosts = energyChargeCosts * Time.deltaTime;
                 currentEneryCost += thisFrameEnergyCosts;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
-                Debug.Log(curDamageBonus);
+                //Debug.Log(curDamageBonus);
                 if (currentEneryCost >= minEnergyCost)
                 {
                     Character.SpendActionPoints(thisFrameEnergyCosts);
@@ -130,6 +130,13 @@ public class Punch : Skill
             }
             else
             {
+                if (AnimationStrings[1] != null)
+                {
+                    if (AnimationTypes[1] == AnimTypes.Trigger)
+                    {
+                        Character._Animtor.SetTrigger(AnimationStrings[1]);
+                    }
+                }
                 //Debug.Log("###############################################################NoEnerhyPuncch ");
                 DeadlDamage();
                 Character.AddBuff(ChargingBuff, -1, Character);
