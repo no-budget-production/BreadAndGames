@@ -12,14 +12,15 @@ public class DetonatorSound : DetonatorComponent {
 	public float minVolume = .4f;
 	public float maxVolume = 1f;
 	public float rolloffFactor = 0.5f;
-	
-	private AudioSource _soundComponent;
+
+    //private AudioSource _soundComponent;
+    public AudioSource _soundComponent;
 	private bool _delayedExplosionStarted = false;
 	private float _explodeDelay;
 	
 	override public void Init()
 	{
-		_soundComponent = (AudioSource)gameObject.AddComponent <AudioSource>();
+		//_soundComponent = (AudioSource)gameObject.AddComponent <AudioSource>();
 	}
 
 	void Update()
