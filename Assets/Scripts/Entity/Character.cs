@@ -191,8 +191,6 @@ public class Character : Entity
         {
             Disable();
 
-            GameManager.Instance.ReviveWheel.Activate();
-
             for (int i = 0; i < ActiveSkills.Length; i++)
             {
                 if (ActiveSkills[i].FireOnDeath)

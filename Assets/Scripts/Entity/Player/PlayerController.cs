@@ -282,7 +282,7 @@ public class PlayerController : Character
                 }
             }
         }
-        else 
+        else
         {
             int tempIJ = 0;
             for (int i = 0; i < PlayerSkills.Length; i++)
@@ -356,6 +356,8 @@ public class PlayerController : Character
 
         if (!isDeadTrigger)
         {
+            GameManager.Instance.ReviveWheel.Activate();
+
             _Animtor.SetBool(animIsDead, false);
             _Animtor.SetTrigger(animGetUp);
         }
