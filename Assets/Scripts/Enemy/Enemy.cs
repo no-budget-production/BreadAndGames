@@ -68,6 +68,13 @@ public class Enemy : Character
 
     public override void OnCustomDestroy()
     {
+        if (deadExplosionPrefab != null)
+        {
+            GameObject TempObjectHolder;
+            TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation) as GameObject;
+        }
+
+        
         GameManager.Instance.Enemies.Remove(this);
 
         base.OnCustomDestroy();
