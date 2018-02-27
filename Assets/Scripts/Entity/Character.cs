@@ -145,13 +145,7 @@ public class Character : Entity
 
         if (isDeadTrigger)
         {
-            for (int i = 0; i < ActiveSkills.Length; i++)
-            {
-                if (ActiveSkills[i].FireOnDeath)
-                {
-                    ActiveSkills[i].Shoot();
-                }
-            }
+
             Disable();
         }
     }
@@ -196,6 +190,16 @@ public class Character : Entity
         if (isDeadTrigger)
         {
             Disable();
+
+            GameManager.Instance.ReviveWheel.Activate();
+
+            for (int i = 0; i < ActiveSkills.Length; i++)
+            {
+                if (ActiveSkills[i].FireOnDeath)
+                {
+                    ActiveSkills[i].Shoot();
+                }
+            }
         }
 
         if (!(hasDied && DestroyOnDeath))

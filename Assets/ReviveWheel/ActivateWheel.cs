@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateWheel : MonoBehaviour {
+public class ActivateWheel : MonoBehaviour
+{
 
     public GameObject Wheel;
     public GameObject Colllider;
@@ -18,6 +19,6 @@ public class ActivateWheel : MonoBehaviour {
     {
         Wheel.SetActive(false);
         Colllider.SetActive(false);
-        Heart.SetActive(true);
+        Heart.SetActive(false);
     }
 }

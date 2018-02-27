@@ -20,4 +20,6 @@ public class InstanceRef : MonoBehaviour
     public Slider[] HUDActionPointsBar;
     public Slider[] HUDOverChargeBar;
     public Slider[] HUDReloadBar;
+
+    public ActivateWheel ReviveWheel;
 }
