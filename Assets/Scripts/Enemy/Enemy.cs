@@ -22,6 +22,8 @@ public class Enemy : Character
     public bool isTargetInView;
     public bool isSooting;
 
+    public GameObject deadExplosionPrefab;
+
     public float MaxShootingRange;
     public float StopRange;
     public float LookDamping;
@@ -67,6 +69,7 @@ public class Enemy : Character
     public override void OnCustomDestroy()
     {
         GameManager.Instance.Enemies.Remove(this);
+
         base.OnCustomDestroy();
         if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
         {

@@ -233,18 +233,21 @@ MonoBehaviour:
   AnimationStrings:
   - Skill_Bool_0
   AnimationTypes: 01000000
+  FireOnStart: 0
+  FireOnDeath: 0
+  WhileDead: 0
   Character: {fileID: 0}
   energyCosts: 0
-  energyChargeCosts: 10
+  energyChargeCosts: 20
   DamageType: 0
   HitBox: {fileID: 114255274258433542}
-  Damage: 52
+  Damage: 34
   ChargingBuff: {fileID: 11400000, guid: 44204a33ac7511b41aa15cb751f650db, type: 2}
   Debuff: {fileID: 0}
   canCharge: 1
   ChargeTime: 2
   curChargeTime: 0
-  BonusDamagePerSec: 52
+  BonusDamagePerSec: 34
   punchCount: 0
   SoundPlayer: {fileID: 114659931926392164}
   SBetweenSounds: 0
@@ -264,4 +267,3 @@ MonoBehaviour:
   AudioSource: {fileID: 82663863930095766}
   AudioClipsArray:
   - {fileID: 8300000, guid: c8e76a68e94ce65468ba6f427009ee82, type: 3}
-  _lastSound: 0
