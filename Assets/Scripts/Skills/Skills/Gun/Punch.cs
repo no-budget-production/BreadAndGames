@@ -112,6 +112,7 @@ public class Punch : Skill
                 float thisFrameEnergyCosts = energyChargeCosts * Time.deltaTime;
                 currentEneryCost += thisFrameEnergyCosts;
                 curDamageBonus += BonusDamagePerSec * Time.deltaTime;
+                Debug.Log(curDamageBonus);
                 if (currentEneryCost >= minEnergyCost)
                 {
                     Character.SpendActionPoints(thisFrameEnergyCosts);
@@ -232,7 +233,7 @@ public class Punch : Skill
         }
 
         curChargeTime = 0;
-        curDamageBonus = 0;
+
         currentEneryCost = 0;
     }
 
@@ -259,12 +260,15 @@ public class Punch : Skill
             }
 
             HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+
         }
 
         if (canCharge)
         {
             Character.AddBuff(ChargingBuff, -1, Character);
         }
+
+        curDamageBonus = 0;
     }
 
 }
