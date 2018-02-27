@@ -240,7 +240,7 @@ public class UIScript : MonoBehaviour
         _aboutToUnpause = false; // Added
     }
 
-    private void TimeScaleOff()
+    public void TimeScaleOff()
     {
         Time.timeScale = 0f;
         MainMenu.SetActive(true);
@@ -248,7 +248,7 @@ public class UIScript : MonoBehaviour
 
         CheatHelp.UpdatePlayerButtons();
 
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
         _aboutToPause = false; // Added

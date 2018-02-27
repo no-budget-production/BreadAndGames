@@ -21,6 +21,8 @@ public class InstanceRef : MonoBehaviour
     public Slider[] HUDOverChargeBar;
     public Slider[] HUDReloadBar;
 
+    public UIScript UIScript;
+
     public ActivateWheel_Melee ReviveWheel_Melee;
     public ActivateWheel_Shooter ReviveWheel_Shooter;
 }
