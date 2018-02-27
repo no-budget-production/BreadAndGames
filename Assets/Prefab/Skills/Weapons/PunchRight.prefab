@@ -232,7 +232,11 @@ MonoBehaviour:
   HasAnimation: 1
   AnimationStrings:
   - Skill_Bool_0
-  AnimationTypes: 01000000
+  - Skill_1
+  AnimationTypes: 0100000000000000
+  FireOnStart: 0
+  FireOnDeath: 0
+  WhileDead: 0
   Character: {fileID: 0}
   energyCosts: 0
   energyChargeCosts: 10
@@ -264,4 +268,3 @@ MonoBehaviour:
   AudioSource: {fileID: 82663863930095766}
   AudioClipsArray:
   - {fileID: 8300000, guid: c8e76a68e94ce65468ba6f427009ee82, type: 3}
-  _lastSound: 0
