@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 456408}
   - component: {fileID: 199842634619083596}
   - component: {fileID: 198925601391754146}
-  - component: {fileID: 114755824633879172}
   - component: {fileID: 82634586834846476}
   m_Layer: 0
   m_Name: Judgement 1
@@ -40820,18 +40819,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114755824633879172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24d99ccd31e0e234394cb3f2ff5d4ce9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 5
 --- !u!198 &198925601391754146
 ParticleSystem:
   m_ObjectHideFlags: 1
