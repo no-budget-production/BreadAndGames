@@ -23,6 +23,7 @@ public class Enemy : Character
     public bool isSooting;
 
     public GameObject deadExplosionPrefab;
+    public GameObject gameOverEffect;
 
     public float MaxShootingRange;
     public float StopRange;
@@ -126,8 +127,9 @@ public class Enemy : Character
         //Anim.SetFloat(animMovX, TempSpeed + TurnSpeed.magnitude / NavMeshAgent.angularSpeed);
         _Animtor.SetFloat(animMovX, TempSpeed);
 
-        //if (!isGameOver)
+        if (!isGameOver)
         {
+
             base.Update();
 
             FrameCounterAliveCheck++;
@@ -233,6 +235,14 @@ public class Enemy : Character
                 }
 
             }
+        }
+        else
+        {
+            if (gameOverEffect != null)
+            {
+                gameOverEffect.SetActive(true);
+            }
+
         }
     }
 
