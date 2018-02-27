@@ -9,6 +9,9 @@ public class Projectile : Effect
     public int EveryXFrames;
     private int FrameCounter;
 
+    private int curPastFramesCounter;
+    private Vector3[] PastFrameTransforms;
+
     public float MutliRayLength;
 
     public List<int> ReturnSelectedElements()
@@ -39,8 +42,20 @@ public class Projectile : Effect
 
     private bool shieldImmunity = false;
 
+    public ParticleSystem OnHit;
+
     //float lifetime = 2;
     //float fadetime = 2;
+
+    private void Start()
+    {
+        PastFrameTransforms = new Vector3[EveryXFrames];
+
+        for (int i = 0; i < PastFrameTransforms.Length; i++)
+        {
+            PastFrameTransforms[i] = transform.position;
+        }
+    }
 
     public void shieldImmunize()
     {
@@ -61,17 +76,31 @@ public class Projectile : Effect
         FrameCounter++;
         if ((FrameCounter % EveryXFrames) == 0)
         {
-            CheckCollisions(moveDistance);
             FrameCounter = 0;
+
+            CheckCollisions(moveDistance);
         }
 
         transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+
+        PastFrameTransforms[FrameCounter] = transform.position;
+
+        Debug.Log("FrameCounter" + FrameCounter);
+
+
     }
 
     void CheckCollisions(float moveDistance)
     {
-        ////Debug.Log("Check");
-        Ray ray = new Ray(transform.position, transform.forward);
+        int LastFrame = 0;
+        if (curPastFramesCounter - FrameCounter <= 0)
+        {
+            LastFrame = FrameCounter - curPastFramesCounter;
+        }
+
+        Debug.Log("LastFrame" + LastFrame);
+
+        Ray ray = new Ray(PastFrameTransforms[LastFrame], transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames * MutliRayLength, collisionMask, QueryTriggerInteraction.Collide))
@@ -101,6 +130,15 @@ public class Projectile : Effect
         if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
         {
             damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+
+            if (OnHit != null)
+            {
+                ParticleSystem tempOnHit = Instantiate(OnHit, hit.transform.position, hit.transform.rotation);
+                tempOnHit.transform.position = transform.position;
+                tempOnHit.transform.rotation = transform.rotation;
+                tempOnHit.Play();
+                Destroy(tempOnHit.gameObject, 0.5f);
+            }
             return true;
         }
 

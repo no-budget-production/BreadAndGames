@@ -344,6 +344,7 @@ public class PlayerController : Character
 
         if (isDeadTrigger)
         {
+            GameManager.Instance.ReviveWheel.Activate();
             _Animtor.SetBool(animIsDead, true);
         }
 
@@ -356,7 +357,7 @@ public class PlayerController : Character
 
         if (!isDeadTrigger)
         {
-            GameManager.Instance.ReviveWheel.Activate();
+
 
             _Animtor.SetBool(animIsDead, false);
             _Animtor.SetTrigger(animGetUp);
