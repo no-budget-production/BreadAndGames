@@ -61,7 +61,10 @@ public class ChargeBarBuff : Buff
 
         Character.canWalk = true;
 
-        Character.canUseRightStick = true;
+        if (!Character.canNeverUseRightStick)
+        {
+            Character.canUseRightStick = true;
+        }
 
         Character.canUseSkills = true;
 

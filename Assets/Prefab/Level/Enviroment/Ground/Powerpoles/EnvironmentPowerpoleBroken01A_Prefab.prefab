@@ -21,8 +21,6 @@ GameObject:
   - component: {fileID: 4613619637153954}
   - component: {fileID: 33049521354401306}
   - component: {fileID: 23300278840762576}
-  - component: {fileID: 136638025287902308}
-  - component: {fileID: 65364083185089588}
   m_Layer: 0
   m_Name: EnvironmentPowerpoleBroken01A_Mesh
   m_TagString: Untagged
@@ -113,28 +111,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1115136879900446}
   m_Mesh: {fileID: 4300000, guid: 1cdfce9553eaac2458531dbf935ef051, type: 3}
---- !u!65 &65364083185089588
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1115136879900446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6549778, y: 2.239135, z: 0.50863594}
-  m_Center: {x: -5.737898, y: -0.23504378, z: 0.25052398}
---- !u!136 &136638025287902308
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1115136879900446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 7.33
-  m_Direction: 0
-  m_Center: {x: -3.47, y: -0.03, z: 0.19}
