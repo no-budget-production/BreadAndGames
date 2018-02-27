@@ -68,6 +68,7 @@ public class Revive : Skill
 
     public void OnComplete()
     {
+        ReviveTarget.GetComponentInChildren<ReviveSelf>().Deactivate();
         ReviveTarget.GetHealth(ReviveTarget.MaxHealth * ReviveHealthMulti);
 
         //ReviveTarget.canWalk = true;
