@@ -93,8 +93,10 @@ MonoBehaviour:
   HasAnimation: 0
   AnimationStrings: []
   AnimationTypes: 
+  FireOnStart: 0
+  FireOnDeath: 0
   Character: {fileID: 0}
-  energyCosts: 3
+  energyCosts: 10
   LineRenderer: {fileID: 120803723628524548}
   CurrentTarget: {fileID: 0}
   CurrentTargetTransform: {fileID: 0}
@@ -102,9 +104,9 @@ MonoBehaviour:
   TargetType: 1
   IsHealing: {fileID: 11400000, guid: 138674b488be6a94f9e9f1bfde71d0d3, type: 2}
   HealAmount: 0
-  ActionPointAmount: 3
-  ReloadAmount: 3
-  MaxRange: 4
+  ActionPointAmount: 10
+  ReloadAmount: 10
+  MaxRange: 10
 --- !u!120 &120803723628524548
 LineRenderer:
   m_ObjectHideFlags: 1
