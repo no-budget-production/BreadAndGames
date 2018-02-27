@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     public List<Transform> PlayerSpawns;
     public List<Enemy> Enemies;
 
-
     public Transform EnemyHolder;
     public Transform SpawnHolder;
     public Transform ClusterHolder;
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
     public Quaternion InputRotation;
     public static Vector3 _SouthVector = new Vector3(0, 0, 10000);
 
-
     public PlayerController GetMelee() { return GetPlayerByType(PlayerType.Melee); }
     public PlayerController GetShooter() { return GetPlayerByType(PlayerType.Shooter); }
     public PlayerController GetSupport() { return GetPlayerByType(PlayerType.Support); }
@@ -56,6 +54,7 @@ public class GameManager : MonoBehaviour
     public PickUpSpawner PickUpSpawner;
     public List<HPPickUps> HealthPickUps;
 
+    public UIScript UIScript;
     public ActivateWheel_Melee ReviveWheel_Melee;
     public ActivateWheel_Shooter ReviveWheel_Shooter;
 
@@ -103,6 +102,8 @@ public class GameManager : MonoBehaviour
         HUDActionPointsBar = InstanceRef.HUDActionPointsBar;
         HUDOverChargeBar = InstanceRef.HUDOverChargeBar;
         HUDReloadBar = InstanceRef.HUDReloadBar;
+
+        UIScript = InstanceRef.UIScript;
 
         ReviveWheel_Melee = InstanceRef.ReviveWheel_Melee;
         ReviveWheel_Shooter = InstanceRef.ReviveWheel_Shooter;

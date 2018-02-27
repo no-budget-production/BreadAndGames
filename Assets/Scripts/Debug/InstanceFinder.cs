@@ -141,5 +141,26 @@ public class InstanceFinder : MonoBehaviour
 
             instanceRef.VisualsHolder = GameObject.Find("VisualsHolder").transform;
         }
+
+        ////if (instanceRef.VisualsHolder == null)
+        //{
+        //    Debug.Log("UIScript - Find it");
+
+        //    instanceRef.UIScript = UIScript.FindObjectOfType(UIScript).transform;
+        //}
+
+        ////if (instanceRef.VisualsHolder == null)
+        //{
+        //    Debug.Log("ReviveWheel_Melee - Find it");
+
+        //    instanceRef.ReviveWheel_Melee = ActivateWheel_Melee.FindObjectOfType(ActivateWheel_Melee).transform;
+        //}
+
+        ////if (instanceRef.VisualsHolder == null)
+        //{
+        //    Debug.Log("ReviveWheel_Shooter - Find it");
+
+        //    instanceRef.ReviveWheel_Shooter = ActivateWheel_Shooter.FindObjectOfType(ActivateWheel_Shooter).transform;
+        //}
     }
 }

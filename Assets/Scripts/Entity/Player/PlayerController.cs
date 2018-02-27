@@ -344,8 +344,26 @@ public class PlayerController : Character
 
         if (isDeadTrigger)
         {
-            if(Type == PlayerType.Melee) GameManager.Instance.ReviveWheel_Melee.Activate();
-            if(Type == PlayerType.Shooter) GameManager.Instance.ReviveWheel_Shooter.Activate();
+            int areBothPlayersDead = 0;
+            for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+            {
+                if (GameManager.Instance.Players[i].isDeadTrigger == true)
+                {
+                    areBothPlayersDead++;
+                }
+            }
+
+            if (areBothPlayersDead == GameManager.Instance.Players.Count)
+            {
+                GameManager.Instance.UIScript.TimeScaleOff();
+            }
+            else
+            {
+                if (Type == PlayerType.Melee)
+                    GameManager.Instance.ReviveWheel_Melee.Activate();
+                if (Type == PlayerType.Shooter)
+                    GameManager.Instance.ReviveWheel_Shooter.Activate();
+            }
             _Animtor.SetBool(animIsDead, true);
         }
 
