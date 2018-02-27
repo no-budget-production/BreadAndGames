@@ -7,35 +7,52 @@ public class ReviveWheelSpin : MonoBehaviour {
 
     public float spinSpeed;
     public int spawnBlock = 4;
+    public float size;
     public RectTransform block_Prefab;
+    private int direction = 1;
 
     private void OnEnable()
     {
         float[] rotations = new float[spawnBlock];
-        /*
         for (var i = 0; i < spawnBlock; i++)
         {
             var repeat = true;
             if (i == 0) repeat = false;
             do
             {
-                rotations[i] = Random.Range(0f, 360f);
+                rotations[i] = Random.Range(0, 359);
+                var check = 0;
                 for (var j = 1; j <= i; j++)
                 {
-                    if (rotations[i - j] - 25 > rotations[i] && rotations[i] > rotations[i - j] + 25 || rotations[i - j] - 25 < rotations[i] && rotations[i] < rotations[i - j] + 25) repeat = false;
+                    if (!((rotations[i - j] - size) < rotations[i] && rotations[i] < (rotations[i - j] + size))) check++;
                 }
+                if (check == i) repeat = false;
             } while (repeat);
         }
-        */
+
         for (var i = 0; i < spawnBlock; i++)
         {
-            var spawnedBlocks = Instantiate(block_Prefab, Vector3.zero, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
+            var spawnedBlocks = Instantiate(block_Prefab, Vector3.zero, Quaternion.Euler(0f, 0f, rotations[i]));
             spawnedBlocks.SetParent(transform, false);
         }
     }
     
     void Update ()
     {
-        transform.rotation *= Quaternion.Euler(0, 0, (spinSpeed * Time.deltaTime));
+        transform.rotation *= Quaternion.Euler(0, 0, (spinSpeed * Time.deltaTime) * direction);
 	}
+
+    public void changeDirection ()
+    {
+        if (direction == 1)
+        {
+            direction = -1;
+            return;
+        }
+        if (direction == -1)
+        {
+            direction = 1;
+            return;
+        }
+    }
 }
