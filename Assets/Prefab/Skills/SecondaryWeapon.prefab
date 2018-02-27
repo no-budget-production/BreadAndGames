@@ -390,6 +390,8 @@ MonoBehaviour:
   AnimationStrings:
   - Skill_1
   AnimationTypes: 00000000
+  FireOnStart: 0
+  FireOnDeath: 0
   Character: {fileID: 0}
   SkillRequired: {fileID: 0}
   Muzzle: {fileID: 4945970889388452}
@@ -406,6 +408,10 @@ MonoBehaviour:
   SoundPlayer: {fileID: 114451613164914302}
   SBetweenSounds: 1
   isGunFound: 0
+  WaitForDelay: 0
+  Delay: 0
+  WaitForShotAnim: 0
+  ProjectileMultiScaleFactor: 0.33
 --- !u!114 &114451613164914302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,7 +426,6 @@ MonoBehaviour:
   AudioSource: {fileID: 82814889269377506}
   AudioClipsArray:
   - {fileID: 8300000, guid: 3f486b5d63ef84e4cbb61ee8f243317d, type: 3}
-  _lastSound: 0
 --- !u!114 &114583221866313932
 MonoBehaviour:
   m_ObjectHideFlags: 1

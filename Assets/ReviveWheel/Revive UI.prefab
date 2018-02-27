@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4225112920023010}
-  - component: {fileID: 114635047788880302}
   - component: {fileID: 114324457832260330}
   m_Layer: 0
   m_Name: Revive UI
@@ -79,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4225112920023010
 Transform:
   m_ObjectHideFlags: 1
@@ -87,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118771686932170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 813.7, y: -389.9, z: 0}
+  m_LocalPosition: {x: 0, y: -323, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224807331317470872}
@@ -109,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wheel: {fileID: 1394820799111060}
   Colllider: {fileID: 1615021055521526}
+  Heart: {fileID: 1812320169495706}
 --- !u!114 &114326265238223216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,7 +128,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ba074927975676441b9fb0871f4b5025, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fac89c12d463a81469bab5cbe41f0eb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812320169495706}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -155,7 +155,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b7ba52a465947ac409873cb728d25b3e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -163,17 +163,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114635047788880302
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118771686932170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8a3b19a752efc4aae3fa02d996fa20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114752264721587690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 92060c14ca28cae4fa569b7a9d5a9d96, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0300cba6a2d1e33459a991e1208b3dff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -214,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSpeed: 50
   spawnBlock: 4
+  size: 45
   block_Prefab: {fileID: 224529261591160036, guid: a1925f63bcb047543944431b60f29d9b,
     type: 2}
 --- !u!222 &222097824302048496
@@ -250,7 +240,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224533902773029540
 RectTransform:

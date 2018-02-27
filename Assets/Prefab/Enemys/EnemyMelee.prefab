@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1711920885143066
 GameObject:
   m_ObjectHideFlags: 1
@@ -1558,6 +1558,7 @@ MonoBehaviour:
   isDeadTrigger: 0
   hasDied: 0
   DestroyOnDeath: 1
+  NPC: 1
   maxActionPoints: 100
   curActionPoints: 100
   maxReloadBar: 0
@@ -1577,12 +1578,12 @@ MonoBehaviour:
   ReloadRegenerationMultiplicator: 1
   canWalk: 1
   canUseRightStick: 1
-  canCurUseRightStick: 1
+  canNeverUseRightStick: 1
   canUseSkills: 1
   SkillSpawn: {fileID: 4647850868697872}
   TakeHitPoint: {fileID: 4657473989523668}
   HealthBar: {fileID: 224901219119261124}
-  UseHealthbar: 1
+  UseHealthbar: 0
   HUDHealthBarSlider: {fileID: 0}
   UseHUDHealthbarSlider: 0
   ActionPointsBar: {fileID: 0}

@@ -26,6 +26,7 @@ public class Skill : MonoBehaviour
 
     public bool FireOnStart;
     public bool FireOnDeath;
+    public bool WhileDead;
 
     [Header("<<<<<<<<<< Skill:")]
 

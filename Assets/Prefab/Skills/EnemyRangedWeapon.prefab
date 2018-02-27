@@ -389,6 +389,8 @@ MonoBehaviour:
   AnimationStrings:
   - Skill_0
   AnimationTypes: 00000000
+  FireOnStart: 0
+  FireOnDeath: 0
   Character: {fileID: 0}
   SkillRequired: {fileID: 0}
   Muzzle: {fileID: 4663339666616010}
@@ -408,6 +410,7 @@ MonoBehaviour:
   WaitForDelay: 1
   Delay: 0.4
   WaitForShotAnim: 0
+  ProjectileMultiScaleFactor: 0.33
 --- !u!114 &114314021590639172
 MonoBehaviour:
   m_ObjectHideFlags: 1

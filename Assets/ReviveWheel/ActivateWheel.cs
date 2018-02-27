@@ -6,19 +6,18 @@ public class ActivateWheel : MonoBehaviour {
 
     public GameObject Wheel;
     public GameObject Colllider;
-	
-	// Update is called once per frame
-	void Update () {
+    public GameObject Heart;
 
-        if (Input.GetKeyUp("a"))
-        {
-            Wheel.SetActive(true);
-            Colllider.SetActive(true);
-        }
-        if (Input.GetKeyUp("b"))
-        {
-            Wheel.SetActive(false);
-            Colllider.SetActive(true);
-        }
+    public void Activate()
+    {
+        Wheel.SetActive(true);
+        Colllider.SetActive(true);
+        Heart.SetActive(true);
+    }
+    public void Deactivate()
+    {
+        Wheel.SetActive(false);
+        Colllider.SetActive(false);
+        Heart.SetActive(true);
     }
 }

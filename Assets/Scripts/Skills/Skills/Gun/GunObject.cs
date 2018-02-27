@@ -13,13 +13,15 @@ public class GunObject : Skill
 
     public float ActionPointsPerSec;
 
-    public float OverChargeThreshhold;
+    public float MinRechargeThreshold;
+
+    public float OverChargeThreshold;
     public float OverChargeDamageMultiplier;
     public bool isOverChargeDamageApplied;
 
     public override void LateSkillSetup()
     {
-        OverChargeThreshhold = Character.curOverCharge;
+        OverChargeThreshold = Character.curOverCharge;
         transform.SetParent(SkillSpawn);
         if (Character.UseOverChargeBar)
         {
@@ -31,13 +33,13 @@ public class GunObject : Skill
     {
         if (Character.UseOverChargeBar)
         {
-            if (Character.curActionPoints >= Character.curOverCharge)
+            if (Character.curActionPoints >= MinRechargeThreshold)
             {
                 Character.RestoreActionPoints(ActionPointsPerSec * Time.deltaTime);
             }
         }
 
-        if (Character.curActionPoints < OverChargeThreshhold)
+        if (Character.curActionPoints < OverChargeThreshold)
         {
             if (!isOverChargeDamageApplied)
             {
@@ -106,7 +108,7 @@ public class GunObject : Skill
 
         if (enableIfOverCharged)
         {
-            if (Character.curActionPoints > OverChargeThreshhold)
+            if (Character.curActionPoints > MinRechargeThreshold)
             {
                 return;
             }

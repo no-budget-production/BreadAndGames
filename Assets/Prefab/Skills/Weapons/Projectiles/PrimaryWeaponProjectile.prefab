@@ -240,7 +240,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34a609930eccbc94ab93c6d90bea040b, type: 3}
   highPitch: 1
   lowPitch: 0.5
-  destroyTime: 5
   _AudioSource: {fileID: 82007224771634034}
 --- !u!114 &114397302490237756
 MonoBehaviour:
@@ -267,3 +266,4 @@ MonoBehaviour:
   WeaponHolder: {fileID: 0}
   Speed: 10
   Damage: 10
+  ProjectileMultiScaleFactor: 0

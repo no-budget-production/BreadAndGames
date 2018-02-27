@@ -70,8 +70,6 @@ public class Revive : Skill
     {
         ReviveTarget.GetHealth(ReviveTarget.MaxHealth * ReviveHealthMulti);
 
-        ReviveTarget.MaxHealth -= ReviveTarget.MaxHealth - (ReviveTarget.MaxHealth * ReviveHealthMulti);
-
         //ReviveTarget.canWalk = true;
 
         //ReviveTarget.canUseRightStick = true;

@@ -35,6 +35,7 @@ public class Projectile : Effect
     public float Speed = 10;
     public float Damage = 1;
 
+    public float ProjectileMultiScaleFactor;
 
     private bool shieldImmunity = false;
 
@@ -77,29 +78,32 @@ public class Projectile : Effect
         {
             if (OnHitObject(hit))
                 this.enabled = false;
-                Destroy(this.gameObject, 5f);
+            Destroy(this.gameObject, 5f);
         }
     }
 
     bool OnHitObject(RaycastHit hit)
     {
         MeleeShieldHandler MeleeShield = hit.collider.GetComponentInParent<MeleeShieldHandler>();
-        if (MeleeShield != null && !shieldImmunity) return MeleeShield.AddProjectile(this);
-        
+        if (MeleeShield != null && !shieldImmunity)
+            return MeleeShield.AddProjectile(this);
+
         Entity damageableObject = hit.collider.GetComponent<Entity>();
-        if (damageableObject == null) return true;
+        if (damageableObject == null)
+            return true;
 
         var AllyOfWeaponHolder = WeaponHolder.NPC;
         var AllyOfVictim = hit.collider.GetComponent<Character>().NPC;
 
-        if (AllyOfWeaponHolder == AllyOfVictim) return false;
+        if (AllyOfWeaponHolder == AllyOfVictim)
+            return false;
 
         if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
         {
             damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
             return true;
         }
-        
+
         return true;
     }
 }

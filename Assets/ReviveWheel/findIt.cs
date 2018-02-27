@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelfRevive : MonoBehaviour {
+public class findIt : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

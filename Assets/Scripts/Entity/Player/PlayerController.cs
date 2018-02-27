@@ -242,7 +242,7 @@ public class PlayerController : Character
                 {
                     if (areButtons[tempIJ])
                     {
-                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]))
+                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]) && !ActiveSkills[i].WhileDead)
                         {
                             ActiveSkills[i].OneShoot();
                             ActiveSkills[i].isFiring = true;
@@ -279,6 +279,26 @@ public class PlayerController : Character
                 if (!tempIsShooting)
                 {
                     ActiveSkills[i].isFiring = false;
+                }
+            }
+        }
+        else 
+        {
+            int tempIJ = 0;
+            for (int i = 0; i < PlayerSkills.Length; i++)
+            {
+                for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
+                {
+                    if (areButtons[tempIJ])
+                    {
+                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]) && ActiveSkills[i].WhileDead)
+                        {
+                            ActiveSkills[i].OneShoot();
+                            ActiveSkills[i].isFiring = true;
+                            //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                        }
+                    }
+                    tempIJ++;
                 }
             }
         }

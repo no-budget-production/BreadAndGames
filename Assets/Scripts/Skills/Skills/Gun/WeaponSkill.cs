@@ -32,6 +32,9 @@ public class WeaponSkill : Skill
     public float Delay;
     public bool WaitForShotAnim;
 
+
+    public float ProjectileMultiScaleFactor;
+
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
@@ -125,11 +128,16 @@ public class WeaponSkill : Skill
             newProjectile.SetSpeed(MuzzleVelocity);
             newProjectile.transform.SetParent(GameManager.Instance.ProjectileHolder);
 
-            var trailRenderer = newProjectile.GetComponent<TrailRenderer>();
-            if (trailRenderer != null)
+            if (Character.RangeDamageMultiplicator != 1f)
             {
-                trailRenderer.startWidth *= Character.RangeDamageMultiplicator;
+                var trailRenderer = newProjectile.GetComponent<TrailRenderer>();
+                if (trailRenderer != null)
+                {
+
+                    trailRenderer.startWidth *= (Character.RangeDamageMultiplicator * ProjectileMultiScaleFactor);
+                }
             }
+
         }
 
         if (Shell != null)
