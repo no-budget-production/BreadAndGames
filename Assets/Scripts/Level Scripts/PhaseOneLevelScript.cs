@@ -91,6 +91,10 @@ public class PhaseOneLevelScript : MonoBehaviour
             WaveStatus[3] = WaveStatusReport.end;
             WaveStatus[4] = WaveStatusReport.begin;
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            WaveStatus[0] = WaveStatusReport.begin;
+        }
         // End Debug
 
 
