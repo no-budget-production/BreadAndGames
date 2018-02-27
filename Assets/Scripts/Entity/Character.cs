@@ -248,7 +248,7 @@ public class Character : Entity
         UpdateBuffs();
     }
 
-    void Regenerate()
+    public void Regenerate()
     {
         if (!isDeadTrigger)
         {

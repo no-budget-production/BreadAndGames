@@ -35,6 +35,7 @@ public class Healing : Skill
 
     public override void LateSkillSetup()
     {
+        BeamOrigin = SkillSpawn;
         //DroneOrigin = BeamOrigin;
         CurrentTarget = GameManager.Instance.GetPlayerByType(TargetType);
         CurrentTargetTransform = CurrentTarget.TakeHitPoint;
@@ -75,7 +76,7 @@ public class Healing : Skill
         //{
         //    FindDrone();
         //}
-        if (Character.curActionPoints - energyCosts < 0)
+        if (Character.curActionPoints - energyCosts * Time.deltaTime < 0)
         {
             return;
         }
