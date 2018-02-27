@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
     public PickUpSpawner PickUpSpawner;
     public List<HPPickUps> HealthPickUps;
 
-    public ActivateWheel ReviveWheel;
+    public ActivateWheel_Melee ReviveWheel_Melee;
+    public ActivateWheel_Shooter ReviveWheel_Shooter;
 
     void Awake()
     {
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
         HUDOverChargeBar = InstanceRef.HUDOverChargeBar;
         HUDReloadBar = InstanceRef.HUDReloadBar;
 
-        ReviveWheel = InstanceRef.ReviveWheel;
+        ReviveWheel_Melee = InstanceRef.ReviveWheel_Melee;
+        ReviveWheel_Shooter = InstanceRef.ReviveWheel_Shooter;
     }
 }

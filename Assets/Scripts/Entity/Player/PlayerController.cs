@@ -344,7 +344,8 @@ public class PlayerController : Character
 
         if (isDeadTrigger)
         {
-            GameManager.Instance.ReviveWheel.Activate();
+            if(Type == PlayerType.Melee) GameManager.Instance.ReviveWheel_Melee.Activate();
+            if(Type == PlayerType.Shooter) GameManager.Instance.ReviveWheel_Shooter.Activate();
             _Animtor.SetBool(animIsDead, true);
         }
 

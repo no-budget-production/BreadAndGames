@@ -59,7 +59,7 @@ public class ReviveWheelSpin : MonoBehaviour {
 
     public void increaseSpeed()
     {
-        speedMultiplier += 0.3f;
+        speedMultiplier += 1f;
     }
 
     public void resetSpeed()
