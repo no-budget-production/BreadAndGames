@@ -75,7 +75,7 @@ public class Enemy : Character
             TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation) as GameObject;
         }
 
-        
+
         GameManager.Instance.Enemies.Remove(this);
 
         base.OnCustomDestroy();
@@ -236,14 +236,12 @@ public class Enemy : Character
 
             }
         }
-        else
-        {
-            if (gameOverEffect != null)
-            {
-                gameOverEffect.SetActive(true);
-            }
+    }
 
-        }
+    public void Ebomb()
+    {
+        gameOverEffect.SetActive(true);
+
     }
 
     bool GetNearestTargetWithNavMesh()

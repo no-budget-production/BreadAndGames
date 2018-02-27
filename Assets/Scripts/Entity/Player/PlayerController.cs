@@ -357,8 +357,6 @@ public class PlayerController : Character
 
         if (!isDeadTrigger)
         {
-
-
             _Animtor.SetBool(animIsDead, false);
             _Animtor.SetTrigger(animGetUp);
         }
