@@ -25,6 +25,8 @@ public class Projectile : Effect
         return selectedElements;
     }
 
+    public ParticleSystem OnHit;
+
     [EnumFlagsAttribute]
     public UnitTypesFlags ThisUnityTypeFlags;
 
@@ -84,6 +86,14 @@ public class Projectile : Effect
 
     bool OnHitObject(RaycastHit hit)
     {
+        if (OnHit != null)
+        {
+            ParticleSystem tempOnHit = Instantiate(OnHit, hit.transform.position, hit.transform.rotation);
+            tempOnHit.transform.position = hit.transform.position;
+            tempOnHit.transform.rotation = hit.transform.rotation;
+            tempOnHit.Play();
+            Destroy(tempOnHit.gameObject, tempOnHit.main.duration);
+        }
         MeleeShieldHandler MeleeShield = hit.collider.GetComponentInParent<MeleeShieldHandler>();
         if (MeleeShield != null && !shieldImmunity)
             return MeleeShield.AddProjectile(this);
