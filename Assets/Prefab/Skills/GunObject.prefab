@@ -275,10 +275,12 @@ MonoBehaviour:
   BuffDuration: 0
   cantStack: 0
   HasAnimation: 0
-  AnimationStrings: []
-  AnimationTypes: 
+  AnimationStrings:
+  - Skill_2
+  AnimationTypes: 00000000
   FireOnStart: 0
   FireOnDeath: 0
+  WhileDead: 0
   Character: {fileID: 0}
   Muzzle: {fileID: 4489257948597936}
   ShellEjection: {fileID: 4946918575210454}
