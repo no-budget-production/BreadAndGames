@@ -8,31 +8,33 @@ public class ReviveSelf : Skill
 {
     public int howMutchToGet;
     public float ReviveHealthMulti;
-    public int workRadius;
+    public float workRadius;
 
     private ActivateWheel UI;
-    private ReviveWheelSpin wheel;
     private findIt[] block;
-    private int youGetIt;
+    private int youGetIt = 0;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         WhileDead = true;
         UI = FindObjectOfType<ActivateWheel>();
-        wheel = FindObjectOfType<ReviveWheelSpin>();
     }
-	
-	// Update is called once per frame
 
-	public override void OneShoot() {
+    // Update is called once per frame
+
+    public override void OneShoot()
+    {
         block = FindObjectsOfType<findIt>();
+        var wheel = UI.GetComponentInChildren<ReviveWheelSpin>();
         foreach (findIt b in block)
         {
-            var check = wheel.GetComponent<RectTransform>().rotation.z - b.GetComponent<RectTransform>().rotation.z;
-            check = Mathf.Abs(check);
-            if (check <= workRadius)
+            var check = Mathf.Abs(b.GetComponent<RectTransform>().eulerAngles.z);
+            if (check <= workRadius || check >= (360 - workRadius))
             {
+                Debug.Log("check: " + check);
                 youGetIt++;
+                Destroy(b.gameObject);
                 wheel.changeDirection();
             }
         }
@@ -40,12 +42,12 @@ public class ReviveSelf : Skill
         {
 
             Character.GetHealth(Character.MaxHealth * ReviveHealthMulti);
-            
+            youGetIt = 0;
             foreach (findIt b in block)
             {
                 Destroy(b.gameObject);
             }
             UI.Deactivate();
         }
-	}
+    }
 }
