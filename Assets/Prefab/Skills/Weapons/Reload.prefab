@@ -171,11 +171,13 @@ MonoBehaviour:
   curBuff: {fileID: 0}
   BuffDuration: 0
   cantStack: 0
-  HasAnimation: 0
-  AnimationStrings: []
-  AnimationTypes: 
+  HasAnimation: 1
+  AnimationStrings:
+  - Skill_2
+  AnimationTypes: 00000000
   FireOnStart: 0
   FireOnDeath: 0
+  WhileDead: 0
   Character: {fileID: 0}
   SoundPlayer: {fileID: 114536509537192034}
   SBetweenSounds: 1

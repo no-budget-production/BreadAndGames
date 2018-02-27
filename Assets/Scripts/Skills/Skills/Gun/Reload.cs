@@ -60,6 +60,14 @@ public class Reload : Skill
             SoundPlayer.Play();
         }
 
+        if (AnimationStrings[0] != null)
+        {
+            if (AnimationTypes[0] == AnimTypes.Trigger)
+            {
+                Character._Animtor.SetTrigger(AnimationStrings[0]);
+            }
+        }
+
         Character.AddBuff(BuffObject, 1, Character);
 
         if (isReloadingFully)
