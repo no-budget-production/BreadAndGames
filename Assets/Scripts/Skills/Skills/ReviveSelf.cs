@@ -40,14 +40,19 @@ public class ReviveSelf : Skill
         }
         if (howMutchToGet <= youGetIt)
         {
-
-            Character.GetHealth(Character.MaxHealth * ReviveHealthMulti);
-            youGetIt = 0;
-            foreach (findIt b in block)
-            {
-                Destroy(b.gameObject);
-            }
-            UI.Deactivate();
+            Deactivate();
         }
+    }
+
+    public void Deactivate()
+    {
+        block = FindObjectsOfType<findIt>();
+        foreach (findIt b in block)
+        {
+            Destroy(b.gameObject);
+        }
+        Character.GetHealth(Character.MaxHealth * ReviveHealthMulti);
+        youGetIt = 0;
+        UI.Deactivate();
     }
 }
