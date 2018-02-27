@@ -13,6 +13,7 @@ public class ReviveSelf : Skill
     private ActivateWheel UI;
     private findIt[] block;
     private int youGetIt = 0;
+    private int youGetItNot = 0;
 
     // Use this for initialization
     void Start()
@@ -34,10 +35,28 @@ public class ReviveSelf : Skill
             {
                 Debug.Log("check: " + check);
                 youGetIt++;
+                wheel.increaseSpeed();
                 Destroy(b.gameObject);
                 wheel.changeDirection();
             }
+            else
+            {
+                youGetItNot++;
+            }
         }
+        block = FindObjectsOfType<findIt>();
+        if (block.Length <= youGetItNot)
+        {
+            wheel.resetSpeed();
+            youGetIt = 0;
+            foreach (findIt b in block)
+            {
+                Destroy(b.gameObject);
+            }
+            UI.Deactivate();
+            UI.Activate();
+        }
+        youGetItNot = 0;
         if (howMutchToGet <= youGetIt)
         {
             Deactivate();

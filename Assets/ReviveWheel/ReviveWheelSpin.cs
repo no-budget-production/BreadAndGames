@@ -10,6 +10,7 @@ public class ReviveWheelSpin : MonoBehaviour {
     public float size;
     public RectTransform block_Prefab;
     private int direction = 1;
+    private float speedMultiplier = 1;
 
     private void OnEnable()
     {
@@ -39,7 +40,7 @@ public class ReviveWheelSpin : MonoBehaviour {
     
     void Update ()
     {
-        transform.rotation *= Quaternion.Euler(0, 0, (spinSpeed * Time.deltaTime) * direction);
+        transform.rotation *= Quaternion.Euler(0, 0, ((spinSpeed * speedMultiplier) * Time.deltaTime) * direction);
 	}
 
     public void changeDirection ()
@@ -54,5 +55,15 @@ public class ReviveWheelSpin : MonoBehaviour {
             direction = 1;
             return;
         }
+    }
+
+    public void increaseSpeed()
+    {
+        speedMultiplier += 0.3f;
+    }
+
+    public void resetSpeed()
+    {
+        speedMultiplier = 1f;
     }
 }
