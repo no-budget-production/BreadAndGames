@@ -285,7 +285,7 @@ MonoBehaviour:
   Muzzle: {fileID: 4489257948597936}
   ShellEjection: {fileID: 4946918575210454}
   LaserScript: {fileID: 114369133484019264}
-  ActionPointsPerSec: 5
+  ActionPointsPerSec: 10
   MinRechargeThreshold: 5
   OverChargeThreshold: 0
   OverChargeDamageMultiplier: 5
@@ -293,9 +293,9 @@ MonoBehaviour:
   SoundPlayer: {fileID: 114061400529863940}
   SBetweenSounds: 1
   ReloadActionPointsAmount: 100
-  SpendReloadAmount: 20
+  SpendReloadAmount: 33.333
   isReloadingFully: 1
-  enableIfOverCharged: 1
+  enableIfOverCharged: 0
 --- !u!114 &114369133484019264
 MonoBehaviour:
   m_ObjectHideFlags: 1
