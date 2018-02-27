@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23534934470688684}
   - component: {fileID: 54080357741151552}
   - component: {fileID: 114628139110011502}
+  - component: {fileID: 136487693723071492}
   m_Layer: 10
   m_Name: PrimaryWeaponShell
   m_TagString: Untagged
@@ -110,12 +111,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce94b1c91c66b04e9c561e68b3de02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifetime: 4
+  Lifetime: 10
   Fadetime: 0.5
   Renderer: {fileID: 23534934470688684}
   TargetMaterial: {fileID: 2100000, guid: 001e20de2dfd30648bd4752466121650, type: 2}
   ShellRigidbody: {fileID: 54080357741151552}
   ForceMin: 100
   ForceMax: 150
-  Lifetime: 4
-  Fadetime: 0.5
+--- !u!136 &136487693723071492
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041633813282412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.46
+  m_Height: 0.85
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}

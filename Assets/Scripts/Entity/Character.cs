@@ -246,8 +246,11 @@ public class Character : Entity
 
     public virtual void Update()
     {
-        Regenerate();
-        UpdateBuffs();
+        if (!isDeadTrigger)
+        {
+            Regenerate();
+            UpdateBuffs();
+        }
     }
 
     public void Regenerate()
@@ -409,9 +412,9 @@ public class Character : Entity
                         canWalk = true;
                     }
                 }
-                if (canUseRightStick)
+                if (!canNeverUseRightStick)
                 {
-                    if (!canNeverUseRightStick)
+                    if (!canUseRightStick)
                     {
                         if (canUseRightStickAgainCount <= 0)
                         {

@@ -178,7 +178,7 @@ public class PhaseOneLevelScript : MonoBehaviour
         }
         if (isFinalWave)
         {
-            if (AmountOfSpawnedEnemysInCurrentWave >= phase2TriggerCount)       // Begin of end phase1
+            if (AmountOfSpawnedEnemysInCurrentWave >= phase2TriggerCount)       // begin the end  of phase1 (transition to phase2)
             {
                 _PhaseTwoLevelScript.gameObject.SetActive(true);
                 EndOfPhase = true;
@@ -211,10 +211,21 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     private IEnumerator BreakoutSequenz(float waitTime)
     {
+        for (int i = 0; i < spawner.Length; i++)
+        {
+            spawner[i].enabled = false;
+        }
+
         GameObject TempObjectHolder1;
         TempObjectHolder1 = Instantiate(explosionPrefab2, explosionPoint.position, explosionPoint.rotation) as GameObject;
 
+
         yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i < GameManager.Instance.Enemies.Count; i++)
+        {
+            GameManager.Instance.Enemies[i].isGameOver = true;
+        }
 
         GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
         GameManager.Instance.ActiveCamera.TargetPlayer[2] = pointCamera;
