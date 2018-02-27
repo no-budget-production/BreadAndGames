@@ -49,7 +49,8 @@ AudioSource:
   m_GameObject: {fileID: 1548036827154654}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243039794635575698, guid: d6f902f986bc93f47972c6f7c68b6663,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1fcf86b38adc9e846a6c553b554cb871, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -144,6 +145,9 @@ MonoBehaviour:
   HasAnimation: 0
   AnimationStrings: []
   AnimationTypes: 
+  FireOnStart: 0
+  FireOnDeath: 0
+  WhileDead: 0
   Character: {fileID: 0}
   maxCharges: 3
   curCharges: 3
