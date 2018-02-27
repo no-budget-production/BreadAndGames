@@ -15,6 +15,8 @@ public class FPSDisplay : MonoBehaviour
     float time;
     float min;
     float sec;
+    int objectCount;
+    int objectsInView;
 
     private void Awake()
     {
@@ -27,6 +29,8 @@ public class FPSDisplay : MonoBehaviour
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
         enemies = GameManager.Instance.Enemies.Count;
+
+
     }
 
     void OnGUI()
@@ -39,7 +43,21 @@ public class FPSDisplay : MonoBehaviour
 
         time = Time.realtimeSinceStartup;
 
-        text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies {3:0.00} RT", msec, fps, enemies, time);
+        GameObject[] allGameobjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        objectCount = allGameobjects.Length;
+        for (int i = 0; i < objectCount; i++)
+        {
+            var tempObject = allGameobjects[i].GetComponent<Renderer>();
+            if (tempObject != null)
+            {
+                if (allGameobjects[i].GetComponent<Renderer>().isVisible)
+                {
+                    objectsInView++;
+                }
+            }
+        }
+
+        text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies {3:0.00} RT objects {4} in view {5}", msec, fps, enemies, time, objectCount, objectsInView);
 
         style.fontSize = h * 2 / 100;
         GUI.Label(rect, text, style);
