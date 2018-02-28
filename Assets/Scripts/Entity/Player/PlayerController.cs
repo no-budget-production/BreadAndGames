@@ -165,7 +165,7 @@ public class PlayerController : Character
         //    moveVector = temporaryMoveVector;
         //}
 
-        if (canUseRightStick)
+        if (canUseRightStick && !canNeverUseRightStick)
         {
             if (temporaryLookVector.magnitude > Deadzone)
             {
