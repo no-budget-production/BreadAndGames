@@ -226,7 +226,7 @@ public class UIScript : MonoBehaviour
 
     }
 
-    private void TimeScaleOn()
+    public void TimeScaleOn()
     {
         //unpaused.TransitionTo(0.5f);
 
