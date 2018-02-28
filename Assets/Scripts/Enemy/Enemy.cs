@@ -54,6 +54,9 @@ public class Enemy : Character
 
     public float ChanceToSpawnHPPickUps;
 
+    public bool Stunned;
+    public float SBetweenUnStun;
+    private float nextStunTime;
     public override void Start()
     {
         base.Start();
@@ -122,80 +125,97 @@ public class Enemy : Character
 
     public override void Update()
     {
-        //TurnSpeed = NavMeshAgent.transform.InverseTransformDirection(NavMeshAgent.velocity).normalized;
-        TempSpeed = NavMeshAgent.velocity.magnitude / NavAgentSpeed;
-        //Anim.SetFloat(animMovX, TempSpeed + TurnSpeed.magnitude / NavMeshAgent.angularSpeed);
         _Animtor.SetFloat(animMovX, TempSpeed);
-
-        if (!isGameOver)
+        if (!Stunned)
         {
+            //TurnSpeed = NavMeshAgent.transform.InverseTransformDirection(NavMeshAgent.velocity).normalized;
+            TempSpeed = NavMeshAgent.velocity.magnitude / NavAgentSpeed;
+            //Anim.SetFloat(animMovX, TempSpeed + TurnSpeed.magnitude / NavMeshAgent.angularSpeed);
 
-            base.Update();
-
-            FrameCounterAliveCheck++;
-            if ((FrameCounterAliveCheck % EveryXFramesAliveCheck) == 0)
+            if (!isGameOver)
             {
-                isAlive = CheckIsAlive(Target);
-                FrameCounterAliveCheck = 0;
-            }
 
-            if (isAlive)
-            {
-                LockOn();
+                base.Update();
 
-                FrameCounterDistanceCheck++;
-                if ((FrameCounterDistanceCheck % EveryXFramesDistanceCheck) == 0)
+                FrameCounterAliveCheck++;
+                if ((FrameCounterAliveCheck % EveryXFramesAliveCheck) == 0)
                 {
-                    isInRange = InRange(Target, MaxShootingRange);
-                    FrameCounterDistanceCheck = 0;
+                    isAlive = CheckIsAlive(Target);
+                    FrameCounterAliveCheck = 0;
                 }
 
-                if (isInRange)
+                if (isAlive)
                 {
-                    FrameCounterRayCheck++;
-                    if ((FrameCounterRayCheck % EveryXFramesRayCheck) == 0)
+                    LockOn();
+
+                    FrameCounterDistanceCheck++;
+                    if ((FrameCounterDistanceCheck % EveryXFramesDistanceCheck) == 0)
                     {
-                        //LockOn();
-                        isTargetInView = CheckView();
-                        FrameCounterRayCheck = 0;
+                        isInRange = InRange(Target, MaxShootingRange);
+                        FrameCounterDistanceCheck = 0;
                     }
 
-                    if (isTargetInView)
+                    if (isInRange)
                     {
-                        FrameCounterShoot++;
-                        if ((FrameCounterShoot % EveryXFramesShoot) == 0)
+                        FrameCounterRayCheck++;
+                        if ((FrameCounterRayCheck % EveryXFramesRayCheck) == 0)
                         {
-                            for (int i = 0; i < ActiveSkills.Length; i++)
-                            {
-                                ActiveSkills[i].Shoot();
-                            }
-                            FrameCounterShoot = 0;
+                            //LockOn();
+                            isTargetInView = CheckView();
+                            FrameCounterRayCheck = 0;
+                        }
 
-                            isSooting = true;
+                        if (isTargetInView)
+                        {
+                            FrameCounterShoot++;
+                            if ((FrameCounterShoot % EveryXFramesShoot) == 0)
+                            {
+                                for (int i = 0; i < ActiveSkills.Length; i++)
+                                {
+                                    ActiveSkills[i].Shoot();
+                                }
+                                FrameCounterShoot = 0;
+
+                                isSooting = true;
+                            }
+                        }
+                        else
+                        {
+                            FrameCounterFind++;
+                            if ((FrameCounterFind % EveryXFramesFind) == 0)
+                            {
+                                GetNearestTargetWithNavMesh();
+                                FrameCounterFind = 0;
+                            }
+
+                            isSooting = false;
                         }
                     }
                     else
                     {
+                        isTargetInView = false;
+                        isSooting = false;
+                    }
+
+                    if (!isSooting)
+                    {
                         FrameCounterFind++;
                         if ((FrameCounterFind % EveryXFramesFind) == 0)
                         {
-                            GetNearestTargetWithNavMesh();
+                            if (GetNearestTargetWithNavMesh())
+                            {
+                                NavMeshAgent.destination = Target.position;
+                            }
+                            else
+                            {
+                                isGameOver = true;
+                            }
                             FrameCounterFind = 0;
                         }
 
-                        isSooting = false;
-                    }
-                }
-                else
-                {
-                    isTargetInView = false;
-                    isSooting = false;
-                }
 
-                if (!isSooting)
-                {
-                    FrameCounterFind++;
-                    if ((FrameCounterFind % EveryXFramesFind) == 0)
+                    }
+                    else
                     {
                         if (GetNearestTargetWithNavMesh())
                         {
@@ -205,9 +225,7 @@ public class Enemy : Character
                         {
                             isGameOver = true;
                         }
-                        FrameCounterFind = 0;
                     }
-
 
                 }
                 else
@@ -220,28 +238,28 @@ public class Enemy : Character
                     {
                         isGameOver = true;
                     }
-                }
 
-            }
-            else
-            {
-                if (GetNearestTargetWithNavMesh())
-                {
-                    NavMeshAgent.destination = Target.position;
                 }
-                else
-                {
-                    isGameOver = true;
-                }
-
             }
         }
+        else
+        {
+            NavMeshAgent.destination = transform.position;
+
+            if (Time.time > nextStunTime)
+            {
+                Stunned = false;
+                gameOverEffect.SetActive(false);
+            }
+        }
+
     }
 
     public void Ebomb()
     {
         gameOverEffect.SetActive(true);
-
+        Stunned = true;
+        nextStunTime = Time.time + SBetweenUnStun;
     }
 
     bool GetNearestTargetWithNavMesh()

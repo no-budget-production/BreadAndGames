@@ -224,7 +224,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.Enemies.Count; i++)
         {
-            GameManager.Instance.Enemies[i].isGameOver = true;
+            GameManager.Instance.Enemies[i].Ebomb();
         }
 
         GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];

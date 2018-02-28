@@ -1913,6 +1913,8 @@ MonoBehaviour:
   TempSpeed: 0
   NavAgentSpeed: 0
   ChanceToSpawnHPPickUps: 10
+  Stunned: 1
+  SBetweenUnStun: 17
 --- !u!136 &136128243448344202
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1940,7 +1942,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 65d00e52314fdfc4ba9328f414cc0a5d, type: 3}
+  - {fileID: 2100000, guid: 1700f44bea91cc84ba9413a9bbbcd94e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
