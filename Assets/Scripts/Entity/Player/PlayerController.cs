@@ -146,6 +146,7 @@ public class PlayerController : Character
 
     private void Move()
     {
+        if (isDeadTrigger) return;
         Horizontal_PX = Input.GetAxis(thisPlayerString[0]);
         Vertical_PX = Input.GetAxis(thisPlayerString[1]);
         HorizontalLook_PX = Input.GetAxis(thisPlayerString[2]);
@@ -153,7 +154,6 @@ public class PlayerController : Character
         Vector3 temporaryMoveVector = new Vector3(Horizontal_PX, 0, Vertical_PX);
 
         Vector3 temporaryLookVector = new Vector3(VerticalLook_PX, 0, HorizontalLook_PX);
-
         if (temporaryLookVector.magnitude > Deadzone)
         {
             temporaryLookVector = inputRotation * temporaryLookVector;

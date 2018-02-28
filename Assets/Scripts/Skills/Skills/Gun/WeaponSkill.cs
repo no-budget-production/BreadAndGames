@@ -30,7 +30,12 @@ public class WeaponSkill : Skill
 
     public bool WaitForDelay;
     public float Delay;
+    public float ReloadTime = 5;
     public bool WaitForShotAnim;
+    public float SpendReloadAmount = 1/3;
+
+    public bool isReloadingFully = true;
+    public float ReloadActionPointsAmount = 100;
 
 
     public float ProjectileMultiScaleFactor;
@@ -102,7 +107,7 @@ public class WeaponSkill : Skill
                 StartCoroutine(DelayWait());
             }
         }
-        else if (Character.curActionPoints <= 0)
+        if (Character.curActionPoints < ActionPointsCost)
         {
             Character.EmptySound();
         }

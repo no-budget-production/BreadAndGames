@@ -57,13 +57,20 @@ public class MeleeShieldHandler : MonoBehaviour
 
     void Update()
     {
-        if (!IsActive())
-            return;
+        if (!Character.isDeadTrigger)
+        {
+            if (!IsActive())
+                return;
 
-        meleeShield.forward = Character.lookVector;
+            meleeShield.forward = Character.lookVector;
 
-        Character.curActionPoints -= Time.deltaTime * energyCosts;
-        if (Character.curActionPoints <= 0)
+            Character.curActionPoints -= Time.deltaTime * energyCosts;
+            if (Character.curActionPoints <= 0)
+            {
+                Deactive();
+            }
+        }
+        else
         {
             Deactive();
         }
