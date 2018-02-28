@@ -15,8 +15,8 @@ public class FPSDisplay : MonoBehaviour
     float time;
     float min;
     float sec;
-    int objectCount;
-    int objectsInView;
+    //int objectCount;
+    //int objectsInView;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class FPSDisplay : MonoBehaviour
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        enemies = GameManager.Instance.Enemies.Count;
+        //enemies = GameManager.Instance.Enemies.Count;
 
 
     }
@@ -41,23 +41,23 @@ public class FPSDisplay : MonoBehaviour
         msec = deltaTime * 1000.0f;
         fps = 1.0f / deltaTime;
 
-        time = Time.realtimeSinceStartup;
+        //time = Time.realtimeSinceStartup;
 
-        GameObject[] allGameobjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
-        objectCount = allGameobjects.Length;
-        for (int i = 0; i < objectCount; i++)
-        {
-            var tempObject = allGameobjects[i].GetComponent<Renderer>();
-            if (tempObject != null)
-            {
-                if (allGameobjects[i].GetComponent<Renderer>().isVisible)
-                {
-                    objectsInView++;
-                }
-            }
-        }
+        //GameObject[] allGameobjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
+        //objectCount = allGameobjects.Length;
+        //for (int i = 0; i < objectCount; i++)
+        //{
+        //    var tempObject = allGameobjects[i].GetComponent<Renderer>();
+        //    if (tempObject != null)
+        //    {
+        //        if (allGameobjects[i].GetComponent<Renderer>().isVisible)
+        //        {
+        //            objectsInView++;
+        //        }
+        //    }
+        //}
 
-        text = string.Format("{0:0.0} ms ({1:0.} fps) {2} enemies {3:0.00} RT objects {4} in view {5}", msec, fps, enemies, time, objectCount, objectsInView);
+        text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps/*, enemies, time, objectCount, objectsInView*/);
 
         style.fontSize = h * 2 / 100;
         GUI.Label(rect, text, style);
