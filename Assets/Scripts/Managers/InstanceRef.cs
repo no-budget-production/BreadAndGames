@@ -25,4 +25,6 @@ public class InstanceRef : MonoBehaviour
 
     public ActivateWheel_Melee ReviveWheel_Melee;
     public ActivateWheel_Shooter ReviveWheel_Shooter;
+
+    public GameObject[] HUDCanvas;
 }

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4499561405310906}
   - component: {fileID: 33467824892718510}
   - component: {fileID: 23465309272346272}
-  - component: {fileID: 114073928176349196}
   m_Layer: 0
   m_Name: EnvironmentHealthPickup_Mesh
   m_TagString: Untagged
@@ -40,6 +39,7 @@ GameObject:
   - component: {fileID: 114627626524168010}
   - component: {fileID: 114753785544517142}
   - component: {fileID: 135621295642145156}
+  - component: {fileID: 114705885206457630}
   m_Layer: 2
   m_Name: HPPickUps
   m_TagString: Untagged
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471449579269510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4499561405310906}
@@ -67,13 +67,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461146885380266}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4254522074130378}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!23 &23465309272346272
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -115,18 +115,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461146885380266}
   m_Mesh: {fileID: 4300002, guid: 4ff4f44f7ee604840b186f537f7cf9ad, type: 3}
---- !u!114 &114073928176349196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461146885380266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40dcfff5994e1f44084a60d079885a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: {x: 0, y: 3, z: 0}
 --- !u!114 &114627626524168010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +127,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmountInPercent: 33
+--- !u!114 &114705885206457630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471449579269510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40dcfff5994e1f44084a60d079885a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: {x: 0, y: 3, z: 0}
 --- !u!114 &114753785544517142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8236036208eb043bedcb8ffccba65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifetime: 3
+  Lifetime: 20
   Fadetime: 10
   Renderer: {fileID: 23465309272346272}
   TargetMaterial: {fileID: 2100000, guid: 001e20de2dfd30648bd4752466121650, type: 2}

@@ -14,7 +14,7 @@ public class UIScript : MonoBehaviour
 
     public GameObject HelpMenu;
 
-    public CheatHelp CheatHelp;
+    //public CheatHelp CheatHelp;
 
     private bool escapeButton;
     private bool escapeButtonXbox;
@@ -25,6 +25,10 @@ public class UIScript : MonoBehaviour
     private bool _aboutToUnpause = false;
 
     private int sceneindex;
+
+    public Text GameOverText;
+
+    public Button ResumeButton;
 
     //AudioSetUp
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +48,7 @@ public class UIScript : MonoBehaviour
         sceneindex = SceneManager.GetActiveScene().buildIndex;
         escapeButton = Input.GetButtonDown("Cancel"); //from Escape to Cancel
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
+        GameOverText.text = "";
     }
 
     private void Update()
@@ -87,6 +92,7 @@ public class UIScript : MonoBehaviour
 
         MainMenu.SetActive(false);
 
+        GameOverText.text = "";
         AreYouSure_Restart();
         Cursor.visible = false;
         //PlaySound(1);
@@ -246,7 +252,21 @@ public class UIScript : MonoBehaviour
         MainMenu.SetActive(true);
         _isPause = true;
 
-        CheatHelp.UpdatePlayerButtons();
+        int areBothPlayersDead = 0;
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        {
+            if (GameManager.Instance.Players[i].isDeadTrigger == true)
+            {
+                areBothPlayersDead++;
+            }
+        }
+
+        if (areBothPlayersDead == GameManager.Instance.Players.Count)
+        {
+            ResumeButton.interactable = false;
+        }
+
+        //CheatHelp.UpdatePlayerButtons();
 
         //Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

@@ -30,6 +30,7 @@ public class PhaseOneLevelScript : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject explosionPrefab2;
     public Transform explosionPoint;
+    public GameObject afterExplosionFire;
     public Transform pointCamera;
 
     public ArenaSpawner[] spawner;
@@ -73,6 +74,8 @@ public class PhaseOneLevelScript : MonoBehaviour
         WaveCounter = 0;
         MinSpawnInterval = 5;
         MaxSpawnInterval = 7;
+
+        //startArenaEvent = true;
     }
 
     void Update ()
@@ -237,6 +240,8 @@ public class PhaseOneLevelScript : MonoBehaviour
         GameObject TempObjectHolder2;
         TempObjectHolder2 = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation) as GameObject;
         Destroy(roadblock);
+
+        afterExplosionFire.SetActive(true);
 
         StartCoroutine(CamerBackToNormal(5f));      // Parameter = time till camera gets back to normal
     }

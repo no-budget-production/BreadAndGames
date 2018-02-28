@@ -184,6 +184,8 @@ public class PrefabLoader : MonoBehaviour
             {
                 GameManager.Instance.HUDReloadBar[i].enabled = false;
             }
+
+            GameManager.Instance.Players[i].Canvas = GameManager.Instance.HUDCanvas[i];
         }
     }
 }

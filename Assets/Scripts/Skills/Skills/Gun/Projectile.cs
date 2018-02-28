@@ -127,19 +127,15 @@ public class Projectile : Effect
         if (AllyOfWeaponHolder == AllyOfVictim)
             return false;
 
-        if (FlagsHelper.HasUnitTypes(damageableObject.ThisUnityTypeFlags, ThisUnityTypeFlags))
-        {
-            damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+        damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
 
-            if (OnHit != null)
-            {
-                ParticleSystem tempOnHit = Instantiate(OnHit, hit.transform.position, hit.transform.rotation);
-                tempOnHit.transform.position = transform.position;
-                tempOnHit.transform.rotation = transform.rotation;
-                tempOnHit.Play();
-                Destroy(tempOnHit.gameObject, 0.5f);
-            }
-            return true;
+        if (OnHit != null)
+        {
+            ParticleSystem tempOnHit = Instantiate(OnHit, hit.transform.position, hit.transform.rotation);
+            tempOnHit.transform.position = transform.position;
+            tempOnHit.transform.rotation = transform.rotation;
+            tempOnHit.Play();
+            Destroy(tempOnHit.gameObject, 0.5f);
         }
 
         return true;

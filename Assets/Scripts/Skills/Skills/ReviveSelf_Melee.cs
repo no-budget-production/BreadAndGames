@@ -75,5 +75,10 @@ public class ReviveSelf_Melee : Skill
         Character.GetHealth(Character.MaxHealth * ReviveHealthMulti);
         youGetIt = 0;
         UI.Deactivate();
+        //var PlayerController = Character.GetComponent<PlayerController>();
+        //if (PlayerController != null)
+        //{
+        //    PlayerController.EnableHUD();
+        //}
     }
 }

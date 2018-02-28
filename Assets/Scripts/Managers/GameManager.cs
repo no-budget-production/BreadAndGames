@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     public ActivateWheel_Melee ReviveWheel_Melee;
     public ActivateWheel_Shooter ReviveWheel_Shooter;
 
+    public GameObject[] HUDCanvas;
+
     void Awake()
     {
         InitGame();
@@ -107,5 +109,7 @@ public class GameManager : MonoBehaviour
 
         ReviveWheel_Melee = InstanceRef.ReviveWheel_Melee;
         ReviveWheel_Shooter = InstanceRef.ReviveWheel_Shooter;
+
+        HUDCanvas = InstanceRef.HUDCanvas;
     }
 }

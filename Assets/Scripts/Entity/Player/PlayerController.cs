@@ -76,6 +76,8 @@ public class PlayerController : Character
 
     public bool RequestedHealthPickUps;
 
+    public GameObject Canvas;
+
     void Awake()
     {
         _Animtor.SetBool(animIsAiming, true);
@@ -356,13 +358,22 @@ public class PlayerController : Character
             if (areBothPlayersDead == GameManager.Instance.Players.Count)
             {
                 GameManager.Instance.UIScript.TimeScaleOff();
+                GameManager.Instance.UIScript.GameOverText.text = "Game Over";
             }
             else
             {
                 if (Type == PlayerType.Melee)
+                {
                     GameManager.Instance.ReviveWheel_Melee.Activate();
+                    DisableHUD();
+}
+
                 if (Type == PlayerType.Shooter)
+                {
                     GameManager.Instance.ReviveWheel_Shooter.Activate();
+                    DisableHUD();
+                }
+
             }
             _Animtor.SetBool(animIsDead, true);
         }
@@ -378,6 +389,7 @@ public class PlayerController : Character
         {
             _Animtor.SetBool(animIsDead, false);
             _Animtor.SetTrigger(animGetUp);
+            EnableHUD();
         }
 
         RequestHealthPickUps();
@@ -401,5 +413,21 @@ public class PlayerController : Character
                 RequestedHealthPickUps = false;
             }
         }
+    }
+
+    public void DisableHUD()
+    {
+        Canvas.SetActive(false);
+        UseHUDHealthbarSlider = false;
+        UseHUDActionPointsBar = false;
+        UseOverChargeBar = false;
+    }
+
+    public void EnableHUD()
+    {
+        Canvas.SetActive(true);
+        UseHUDHealthbarSlider = true;
+        UseHUDActionPointsBar = true;
+        UseOverChargeBar = true;
     }
 }

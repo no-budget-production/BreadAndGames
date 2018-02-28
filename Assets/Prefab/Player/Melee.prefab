@@ -284,7 +284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1350751832106046
 GameObject:
   m_ObjectHideFlags: 1
@@ -1663,7 +1663,7 @@ MonoBehaviour:
   SkillSpawn: {fileID: 4884654481988200}
   TakeHitPoint: {fileID: 4022339163266460}
   HealthBar: {fileID: 224660065565190754}
-  UseHealthbar: 1
+  UseHealthbar: 0
   HUDHealthBarSlider: {fileID: 0}
   UseHUDHealthbarSlider: 1
   ActionPointsBar: {fileID: 114101222704165328}
@@ -1888,7 +1888,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9d47010099c14954faf9daf601033735, type: 3}
+  - {fileID: 2100000, guid: f6c8735732eac5a43a9ae6d480ed029b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
