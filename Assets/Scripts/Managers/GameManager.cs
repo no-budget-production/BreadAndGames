@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerSpawns = InstanceRef.PlayerSpawns;
 
-        //Triggers = InstanceRef.SphereTriggers;
+        Triggers = InstanceRef.SphereTriggers;
         //ReinforcmentPoints = InstanceRef.ReinforcementPoints;
 
         SpawnHolder = InstanceRef.SpawnHolder;

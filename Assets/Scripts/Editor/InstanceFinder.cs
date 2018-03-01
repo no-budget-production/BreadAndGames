@@ -53,15 +53,36 @@ public class InstanceFinder : MonoBehaviour
             }
         }
 
-        ////if (instanceRef.SphereTriggers.Length == 0)
+        //if (instanceRef.SphereTriggers.Length == 0)
         //{
-        //    Debug.Log("InstanceFinder SphereTriggers.Length - Find all");
+        //    Debug.Log("InstanceFinder Enemy Melee Spawner.Length - Find all");
 
         //    tempGameObjectList.Clear();
 
         //    foreach (GameObject go in GameObject.FindObjectsOfType<GameObject>())
         //    {
-        //        if (go.name.IndexOf("SphereTrigger") != -1)
+        //        if (go.name.IndexOf("Enemy Melee Spawner") != -1)
+        //        {
+        //            tempGameObjectList.Add(go);
+        //        }
+        //    }
+
+        //    instanceRef.SphereTriggers = new GameObject[tempGameObjectList.Count];
+
+        //    for (int j = 0; j < tempGameObjectList.Count; j++)
+        //    {
+        //        instanceRef.SphereTriggers[j] = tempGameObjectList[j];
+        //    }
+        //}
+
+        //{
+        //    Debug.Log("Enemy Melee Arena Spawner.Length - Find all");
+
+        //    tempGameObjectList.Clear();
+
+        //    foreach (GameObject go in GameObject.FindObjectsOfType<GameObject>())
+        //    {
+        //        if (go.name.IndexOf("Enemy Melee Arena Spawner") != -1)
         //        {
         //            tempGameObjectList.Add(go);
         //        }

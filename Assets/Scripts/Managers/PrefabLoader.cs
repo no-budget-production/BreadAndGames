@@ -117,12 +117,12 @@ public class PrefabLoader : MonoBehaviour
 
     //        for (int j = 0; j < tempTrigger.EnabledWithPlayer.Length; j++)
     //        {
-    //            var tempSwarmSpawn = tempTrigger.EnabledWithPlayer[j].GetComponent<SwarmSpawn>();
+    //            var tempSwarmSpawn = tempTrigger.EnabledWithPlayer[j].GetComponent<EnemySpawn>();
     //            if (tempSwarmSpawn == null)
     //            {
     //                continue;
     //            }
-    //            tempSwarmSpawn.SwarmHandler = GameManager.Instance.SpawnHolder;
+    //            tempSwarmSpawn.EnemyHolder = GameManager.Instance.SpawnHolder;
     //            tempSwarmSpawn.ReinforcmentPoints = GameManager.Instance.ReinforcmentPoints;
     //        }
     //    }

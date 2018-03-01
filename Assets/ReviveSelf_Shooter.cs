@@ -33,7 +33,7 @@ public class ReviveSelf_Shooter : Skill
             var check = Mathf.Abs(b.GetComponent<RectTransform>().eulerAngles.z);
             if (check <= workRadius || check >= (360 - workRadius))
             {
-                Debug.Log("check: " + check);
+                //Debug.Log("check: " + check);
                 youGetIt++;
                 wheel.increaseSpeed();
                 Destroy(b.gameObject);

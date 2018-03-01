@@ -11,7 +11,7 @@ public class ArenaSpawner : MonoBehaviour
     public PhaseOneLevelScript PhaseOneLevelScript;
 
     private Transform EnemyHolder;
-    
+
     private float Timer;
 
     private bool StartSpawning;
@@ -34,8 +34,9 @@ public class ArenaSpawner : MonoBehaviour
         StartSpawning = false;
     }
 
-    void Start()
+    private void Start()
     {
+
         EnemyHolder = GameManager.Instance.EnemyHolder;
     }
 
@@ -73,7 +74,6 @@ public class ArenaSpawner : MonoBehaviour
         SpawnedEnemys++;
         PhaseOneLevelScript._AmountOfSpawnedEnemysInCurrentWave++;
         curPrefab.transform.parent = EnemyHolder.transform;
-
     }
 
     public void DisableSpawn()

@@ -35,7 +35,7 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     public ArenaSpawner[] spawner;
 
-    private AudioSource _AudioSource;
+    public AudioSource AudioSource_Announcer;
     public AudioClip firstCountdown;
     public AudioClip[] countdownClips;
     public AudioClip horn;
@@ -55,11 +55,6 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     public PhaseTwoLevelScript _PhaseTwoLevelScript;
 
-    void Awake()
-    {
-        _AudioSource = GetComponent<AudioSource>();
-    }
-
     void Start()
     {
         PlaySound = true;
@@ -78,7 +73,7 @@ public class PhaseOneLevelScript : MonoBehaviour
         startArenaEvent = true;
     }
 
-    void Update ()
+    void Update()
     {
         // Debug
         if (Input.GetKeyDown(KeyCode.S))
@@ -103,9 +98,9 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         if (startArenaEvent)
         {
-            _AudioSource.clip = firstCountdown;
-            _AudioSource.Play();
-            StartCoroutine(StartEvent(_AudioSource.clip.length));            
+            AudioSource_Announcer.clip = firstCountdown;
+            AudioSource_Announcer.Play();
+            StartCoroutine(StartEvent(AudioSource_Announcer.clip.length));
             startArenaEvent = false;
         }
         else if (!EndOfPhase)
@@ -141,8 +136,8 @@ public class PhaseOneLevelScript : MonoBehaviour
     IEnumerator StartEvent(float clipLength)
     {
         yield return new WaitForSeconds(clipLength);
-        _AudioSource.clip = horn;
-        _AudioSource.Play();
+        AudioSource_Announcer.clip = horn;
+        AudioSource_Announcer.Play();
         WaveStatus[0] = WaveStatusReport.begin;
     }
 
@@ -174,7 +169,7 @@ public class PhaseOneLevelScript : MonoBehaviour
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.ready;
         }
 
-        
+
         if (GameManager.Instance.Enemies.Count > 0)
         {
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.running;
@@ -190,7 +185,7 @@ public class PhaseOneLevelScript : MonoBehaviour
         }
         if ((AmountOfSpawnedEnemysInCurrentWave >= AmountOfEnemys) && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running) && !isFinalWave)
         {
-            if(GameManager.Instance.Enemies.Count == 0)
+            if (GameManager.Instance.Enemies.Count == 0)
             {
                 StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
             }
@@ -202,12 +197,12 @@ public class PhaseOneLevelScript : MonoBehaviour
     {
         if (PlaySound && !(WaveArrayNumber > countdownClips.Length))
         {
-            _AudioSource.clip = countdownClips[WaveArrayNumber];
-            _AudioSource.Play();
+            AudioSource_Announcer.clip = countdownClips[WaveArrayNumber];
+            AudioSource_Announcer.Play();
             PlaySound = false;
         }
 
-        yield return new WaitForSeconds(_AudioSource.clip.length);
+        yield return new WaitForSeconds(AudioSource_Announcer.clip.length);
         WaveEnd(WaveArrayNumber);
         PlaySound = true;
     }
@@ -265,8 +260,8 @@ public class PhaseOneLevelScript : MonoBehaviour
             if (!(WaveArrayNumber + 1 >= WaveStatus.Length))
             {
                 WaveStatus[WaveArrayNumber + 1] = WaveStatusReport.begin;   // Start of Nextwave
-                _AudioSource.clip = horn;
-                _AudioSource.Play();
+                AudioSource_Announcer.clip = horn;
+                AudioSource_Announcer.Play();
             }
 
         }

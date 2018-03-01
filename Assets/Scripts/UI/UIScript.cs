@@ -32,6 +32,8 @@ public class UIScript : MonoBehaviour
 
     public bool isGameOver;
 
+    public AudioSource Announcer;
+
     //AudioSetUp
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -267,6 +269,8 @@ public class UIScript : MonoBehaviour
     {
         //unpaused.TransitionTo(0.5f);
 
+        Announcer.UnPause();
+
         Time.timeScale = 1;
         MainMenu.SetActive(false);
         _isPause = false;
@@ -292,11 +296,12 @@ public class UIScript : MonoBehaviour
         {
             ResumeButton.interactable = false;
         }
+
+        Announcer.Pause();
+
         Time.timeScale = 0f;
         MainMenu.SetActive(true);
         _isPause = true;
-
-
 
         //CheatHelp.UpdatePlayerButtons();
 

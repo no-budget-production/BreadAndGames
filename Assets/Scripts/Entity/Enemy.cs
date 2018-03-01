@@ -71,8 +71,7 @@ public class Enemy : Character
     {
         if (deadExplosionPrefab != null)
         {
-            GameObject TempObjectHolder;
-            TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation) as GameObject;
+            GameObject TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation) as GameObject;
         }
 
 
