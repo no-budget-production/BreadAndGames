@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class DebugDestroy : MonoBehaviour
 {
-
     private void Awake()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

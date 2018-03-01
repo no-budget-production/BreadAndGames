@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class StartMenu : MonoBehaviour {
-
-
+public class StartMenu : MonoBehaviour
+{
     void Update()
     {
         if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("CancelXbox"))
@@ -18,7 +17,6 @@ public class StartMenu : MonoBehaviour {
         {
             ChangeToScene_Controller(1);
         }
-
     }
 
     public void ChangeToScene_Controller(int ChangetoStartScene)

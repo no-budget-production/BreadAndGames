@@ -95,6 +95,7 @@ MonoBehaviour:
   AnimationTypes: 
   FireOnStart: 0
   FireOnDeath: 0
+  WhileDead: 0
   Character: {fileID: 0}
   energyCosts: 10
   LineRenderer: {fileID: 120803723628524548}
@@ -121,7 +122,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: dfdaf181ea92369458a2feccdeabfd87, type: 2}
+  - {fileID: 2100000, guid: 86184aa5e8c2f254088847c101fa07ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

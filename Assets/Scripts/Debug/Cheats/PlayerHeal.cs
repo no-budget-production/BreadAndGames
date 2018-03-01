@@ -27,7 +27,6 @@ public class PlayerHeal : Cheat
                 GameManager.Instance.Enemies[i].isGameOver = false;
             }
         }
-
-        Debug.Log("PlayersHealed: " + HealAmount);
+        //Debug.Log("PlayersHealed: " + HealAmount);
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cheat : MonoBehaviour
 {
-
     public bool isFiring;
 
     public virtual void Shoot()

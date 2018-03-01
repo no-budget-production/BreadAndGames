@@ -30,6 +30,8 @@ public class UIScript : MonoBehaviour
 
     public Button ResumeButton;
 
+    public bool isGameOver;
+
     //AudioSetUp
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -56,6 +58,11 @@ public class UIScript : MonoBehaviour
         PauseMenu();
         RestartGame();
         QuitGame();
+
+        if (isGameOver)
+        {
+            DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
     }
 
     private void Start()
@@ -64,6 +71,30 @@ public class UIScript : MonoBehaviour
         MainMenu.SetActive(false);
         Cursor.visible = false;
         _isPause = false;
+
+    }
+
+    //GameOver
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public float GameOverDelay;
+    public Image DamageImage;
+    public float flashSpeed = 5f;
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        DamageImage.color = flashColour;
+        StopCoroutine(GameOverMenu());
+        StartCoroutine(GameOverMenu());
+    }
+
+    public virtual IEnumerator GameOverMenu()
+    {
+        yield return new WaitForSeconds(GameOverDelay);
+
+        TimeScaleOff();
     }
 
     //ClickableUIButtons
@@ -248,10 +279,6 @@ public class UIScript : MonoBehaviour
 
     public void TimeScaleOff()
     {
-        Time.timeScale = 0f;
-        MainMenu.SetActive(true);
-        _isPause = true;
-
         int areBothPlayersDead = 0;
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
@@ -265,6 +292,11 @@ public class UIScript : MonoBehaviour
         {
             ResumeButton.interactable = false;
         }
+        Time.timeScale = 0f;
+        MainMenu.SetActive(true);
+        _isPause = true;
+
+
 
         //CheatHelp.UpdatePlayerButtons();
 

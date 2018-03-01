@@ -12,6 +12,5 @@ public class KillAllEnemies : Cheat
         {
             GameManager.Instance.Enemies[i].TakeDamage(TakeDamage, DamageType.Melee);
         }
-        //GameManager.Instance.Enemies.Clear();
     }
 }

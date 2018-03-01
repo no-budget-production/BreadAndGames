@@ -14,7 +14,6 @@ public class PlayerActionPoints : Cheat
 
             curPlayer.RestoreActionPoints(ActionPointsAmount);
         }
-
-        Debug.Log("PlayersHealed: " + ActionPointsAmount);
+        //Debug.Log("PlayersHealed: " + ActionPointsAmount);
     }
 }

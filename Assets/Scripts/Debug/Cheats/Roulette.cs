@@ -10,29 +10,40 @@ public class Roulette : Cheat
 
     public float KillDamage;
 
-
     public override void Shoot()
     {
         if (KillPlayer != 0)
         {
             if (KillPlayer - 1 <= GameManager.Instance.Players.Count)
             {
-                GameManager.Instance.Players[KillPlayer - 1].TakeDamage(KillDamage, DamageType.Melee);
+                if (GameManager.Instance.Players[KillPlayer - 1].CurrentHealth > 0)
+                {
+                    GameManager.Instance.Players[KillPlayer - 1].TakeDamage(KillDamage, DamageType.Melee);
+                }
+                else
+                {
+                    RandomPlayerKill();
+                }
             }
         }
         else
         {
-            for (int i = 0; i < GameManager.Instance.Players.Count; i++)
-            {
-                if (GameManager.Instance.Players[i].CurrentHealth >= 0)
-                {
-                    alivePlayers.Add(i);
-                }
-            }
-
-            randomPlayerNumber = Random.Range(0, alivePlayers.Count);
-
-            GameManager.Instance.Players[alivePlayers[randomPlayerNumber]].TakeDamage(KillDamage, DamageType.Melee);
+            RandomPlayerKill();
         }
+    }
+
+    public void RandomPlayerKill()
+    {
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        {
+            if (GameManager.Instance.Players[i].CurrentHealth > 0)
+            {
+                alivePlayers.Add(i);
+            }
+        }
+
+        randomPlayerNumber = Random.Range(0, alivePlayers.Count);
+
+        GameManager.Instance.Players[alivePlayers[randomPlayerNumber]].TakeDamage(KillDamage, DamageType.Melee);
     }
 }

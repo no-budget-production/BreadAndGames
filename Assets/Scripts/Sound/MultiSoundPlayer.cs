@@ -58,14 +58,14 @@ public class MultiSoundPlayer : MonoBehaviour
 
     public void PlayRandomSound()
     {
-        for (int i = 0; i < _voicesInt; i++)
-        {
-            int a = i;
-            for (int j = 0; j < AudioClipsArray[a].AudioClips.Length; j++)
-            {
-                Debug.Log("List " + a + "Sound " + j + "Var " + AudioClipsArray[a].AudioClips[j].name);
-            }
-        }
+        //for (int i = 0; i < _voicesInt; i++)
+        //{
+        //    int a = i;
+        //    for (int j = 0; j < AudioClipsArray[a].AudioClips.Length; j++)
+        //    {
+        //        Debug.Log("List " + a + "Sound " + j + "Var " + AudioClipsArray[a].AudioClips[j].name);
+        //    }
+        //}
         Stop();
 
         PlaySound();

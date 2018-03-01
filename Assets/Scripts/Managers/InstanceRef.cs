@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class InstanceRef : MonoBehaviour
 {
     public List<Transform> PlayerSpawns;
-    //public Transform[] SpawnTriggerSpawns;
-    public GameObject[] SphereTriggers;
-    public Transform[] ReinforcementPoints;
+    //public GameObject[] SphereTriggers;
+    //public Transform[] ReinforcementPoints;
     public Transform EnemyHolder;
     public Transform SpawnHolder;
     public Transform ClusterHolder;

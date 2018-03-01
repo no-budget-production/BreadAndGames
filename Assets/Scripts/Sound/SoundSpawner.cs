@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoundSpawner : MonoBehaviour
 {
-
     public AudioClip[] AudioClipsArray;
     public float highPitch;
     public float lowPitch;

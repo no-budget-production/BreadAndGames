@@ -11,14 +11,12 @@ public class CheatConfig
 
 public class Cheats : MonoBehaviour
 {
-
     public CheatConfig[] UsedCheats;
     public Cheat[] ActiveCheats;
     public int usedButtonsCount;
     public int[] usedButtons;
     public bool[] areButtons;
     public float[] deadZones;
-
 
     public string[] ButtonStrings = new string[]
     {
@@ -68,7 +66,6 @@ public class Cheats : MonoBehaviour
                 {
                     ActiveCheats[i].Shoot();
                     ActiveCheats[i].isFiring = true;
-                    //Debug.Log("ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                 }
                 else
                 {
@@ -81,7 +78,6 @@ public class Cheats : MonoBehaviour
                 {
                     ActiveCheats[i].Shoot();
                     ActiveCheats[i].isFiring = true;
-                    //Debug.Log("ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
                 }
                 else
                 {

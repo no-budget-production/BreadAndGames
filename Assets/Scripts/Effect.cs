@@ -21,20 +21,22 @@ public class Effect : MonoBehaviour
         {
             if (TargetMaterial != null)
             {
+                var mat = Renderer.material;
 
+                float fadePercent = 0.0f;
+                float fadeSpeed = Fadetime;
+                while (fadePercent < fadeSpeed)
+                {
+                    fadePercent += Time.deltaTime;
+                    Renderer.material.Lerp(mat, TargetMaterial, fadePercent / Fadetime);
+                    yield return null;
+                }
+                Destroy(gameObject);
             }
-
-            var mat = Renderer.material;
-
-            float fadePercent = 0.0f;
-            float fadeSpeed = Fadetime;
-            while (fadePercent < fadeSpeed)
+            else
             {
-                fadePercent += Time.deltaTime;
-                Renderer.material.Lerp(mat, TargetMaterial, fadePercent / Fadetime);
-                yield return null;
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
         else
         {

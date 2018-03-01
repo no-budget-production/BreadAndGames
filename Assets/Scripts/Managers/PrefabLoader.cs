@@ -41,13 +41,13 @@ public class PrefabLoader : MonoBehaviour
 
         SetupCamera();
 
-        LinkInstances();
+        //LinkInstances();
     }
 
-    void LinkInstances()
-    {
-        SpawnSphereTriggerSetup();
-    }
+    //void LinkInstances()
+    //{
+    //    SpawnSphereTriggerSetup();
+    //}
 
     List<T> SpawnPreFabs<T>(GameObject[] prefabArray, List<Transform> spawnList, string holder)
     {
@@ -108,25 +108,25 @@ public class PrefabLoader : MonoBehaviour
         return curHolder.transform;
     }
 
-    void SpawnSphereTriggerSetup()
-    {
-        int tempLength = GameManager.Instance.Triggers.Length;
-        for (int i = 0; i < tempLength; i++)
-        {
-            Trigger tempTrigger = GameManager.Instance.Triggers[i].GetComponent<Trigger>();
+    //void SpawnSphereTriggerSetup()
+    //{
+    //    int tempLength = GameManager.Instance.Triggers.Length;
+    //    for (int i = 0; i < tempLength; i++)
+    //    {
+    //        Trigger tempTrigger = GameManager.Instance.Triggers[i].GetComponent<Trigger>();
 
-            for (int j = 0; j < tempTrigger.EnabledWithPlayer.Length; j++)
-            {
-                var tempSwarmSpawn = tempTrigger.EnabledWithPlayer[j].GetComponent<SwarmSpawn>();
-                if (tempSwarmSpawn == null)
-                {
-                    continue;
-                }
-                tempSwarmSpawn.SwarmHandler = GameManager.Instance.SpawnHolder;
-                tempSwarmSpawn.ReinforcmentPoints = GameManager.Instance.ReinforcmentPoints;
-            }
-        }
-    }
+    //        for (int j = 0; j < tempTrigger.EnabledWithPlayer.Length; j++)
+    //        {
+    //            var tempSwarmSpawn = tempTrigger.EnabledWithPlayer[j].GetComponent<SwarmSpawn>();
+    //            if (tempSwarmSpawn == null)
+    //            {
+    //                continue;
+    //            }
+    //            tempSwarmSpawn.SwarmHandler = GameManager.Instance.SpawnHolder;
+    //            tempSwarmSpawn.ReinforcmentPoints = GameManager.Instance.ReinforcmentPoints;
+    //        }
+    //    }
+    //}
 
     void PlayerSetup()
     {

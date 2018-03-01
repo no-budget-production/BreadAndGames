@@ -24,6 +24,5 @@ public class PlayerInvurnable : Cheat
             }
             areInvurnable = false;
         }
-
     }
 }

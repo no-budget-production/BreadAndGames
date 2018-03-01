@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CapturePoint : BehaviourWithBool
 {
@@ -17,7 +15,7 @@ public class CapturePoint : BehaviourWithBool
     // Update is called once per frame
     void Update()
     {
-        if (base.setBool)
+        if (setBool)
         {
             IncreaseProgress();
         }

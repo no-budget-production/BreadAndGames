@@ -12,9 +12,9 @@ public class ActiveBuffObject
 
     public ActiveBuffObject(float buffCurTime, BuffObject buffObject, Character character)
     {
-        this.BuffCurTime = buffCurTime;
-        this.BuffObject = buffObject;
-        this.Character = character;
+        BuffCurTime = buffCurTime;
+        BuffObject = buffObject;
+        Character = character;
     }
 }
 
@@ -145,7 +145,6 @@ public class Character : Entity
 
         if (isDeadTrigger)
         {
-
             Disable();
         }
     }
@@ -343,7 +342,7 @@ public class Character : Entity
             int canWalkAgainCount = 0;
             int canUseRightStickAgainCount = 0;
             int canUseSkillsAgainCount = 0;
-            bool expired = false;
+            //bool expired = false;
 
             for (int i = 0; i < ActiveBuffObjects.Count; i++)
             {
@@ -395,7 +394,7 @@ public class Character : Entity
                         ActiveBuffObjects.RemoveAt(i);
                         i--;
 
-                        expired = true;
+                        //expired = true;
 
                         //Debug.Log("RemovingBuff");
                         continue;
@@ -466,7 +465,6 @@ public class Character : Entity
         }
 
         return dif;
-
     }
 
     public virtual float RestoreReloadPoints(float restore)
@@ -482,7 +480,6 @@ public class Character : Entity
             OnChangeReloadSlider();
         }
         return dif;
-
     }
 
     public void SpendReloads(float costs)
@@ -544,7 +541,6 @@ public class Character : Entity
 
     public virtual void SkillHit(int Skillnumber)
     {
-        //Debug.Log("ARRIVED AnimationHelper Skill_" + Skillnumber);
         ActiveSkills[Skillnumber].SkillHit();
     }
 }
