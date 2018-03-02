@@ -75,10 +75,10 @@ public class ReviveSelf_Shooter : Skill
         Character.GetHealth(Character.MaxHealth * ReviveHealthMulti);
         youGetIt = 0;
         UI.Deactivate();
-        //var PlayerController = Character.GetComponent<PlayerController>();
-        //if (PlayerController != null)
-        //{
-        //    PlayerController.EnableHUD();
-        //}
+        var PlayerController = Character.GetComponent<PlayerController>();
+        if (PlayerController != null)
+        {
+            StatsTracker.Instance.RevivedSelf[PlayerController.InternalPlayerNumber]++;
+        }
     }
 }

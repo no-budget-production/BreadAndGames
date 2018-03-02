@@ -11,22 +11,18 @@ public class StatsScreen : MonoBehaviour
     public PlayerController PlayerController;
     public List<ButtonConfig> ButtonConfigArray;
 
-    void Start()
+
+    private void Start()
     {
-        UpdateCheatButtons();
+        UpdateStats();
     }
 
-    public void UpdateCheatButtons()
+    public void UpdateStats()
     {
-
+        Stats[0].text = null;
         Stats[0].text += "Game Over: " + StatsTracker.Instance.GameOvers + " - ";
         Stats[0].text += "Wins: " + StatsTracker.Instance.Wins + " - ";
         Stats[0].text += "Time needed: " + StatsTracker.Instance.Time;
-    }
-
-    public void UpdatePlayerButtons()
-    {
-
 
         PlayerNames = new string[GameManager.Instance.Players.Count];
 
@@ -34,11 +30,14 @@ public class StatsScreen : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
+            Stats[PlayerNumber].text = "Player " + PlayerNumber + "\n\n";
             Stats[PlayerNumber].text += "Kills: " + StatsTracker.Instance.Kills[i] + "\n";
             Stats[PlayerNumber].text += "Damage Dealt: " + StatsTracker.Instance.DamageDealt[i] + "\n\n";
+
+            Stats[PlayerNumber].text += "Downed: " + StatsTracker.Instance.Downed[i] + "\n";
             Stats[PlayerNumber].text += "Revived Teammate: " + StatsTracker.Instance.RevivedTeamMate[i] + "\n";
             Stats[PlayerNumber].text += "Revived Self: " + StatsTracker.Instance.RevivedSelf[i] + "\n\n";
-            Stats[PlayerNumber].text += "Downed: " + StatsTracker.Instance.Downed[i] + "\n";
+
             Stats[PlayerNumber].text += "HealthPacks: " + StatsTracker.Instance.HealthPacks[i] + "\n";
             Stats[PlayerNumber].text += "Healed: " + StatsTracker.Instance.Healed[i] + "\n";
 

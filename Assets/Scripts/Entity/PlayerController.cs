@@ -368,6 +368,8 @@ public class PlayerController : Character
 
             if (areBothPlayersDead == GameManager.Instance.Players.Count)
             {
+                StatsTracker.Instance.GameOvers++;
+
                 GameManager.Instance.UIScript.GameOverText.text = "Game Over";
                 GameManager.Instance.UIScript.GameOver();
             }

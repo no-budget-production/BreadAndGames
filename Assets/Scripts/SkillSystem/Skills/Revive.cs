@@ -75,6 +75,11 @@ public class Revive : Skill
         ReviveTarget.GetHealth(ReviveTarget.MaxHealth * ReviveHealthMulti);
 
         Character.AddBuff(ReviveCoolDownBuff, 1, Character);
-    }
 
+        var PlayerController = Character.GetComponent<PlayerController>();
+        if (PlayerController != null)
+        {
+            StatsTracker.Instance.RevivedTeamMate[PlayerController.InternalPlayerNumber]++;
+        }
+    }
 }

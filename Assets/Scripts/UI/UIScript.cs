@@ -91,6 +91,7 @@ public class UIScript : MonoBehaviour
 
     public void GameOver()
     {
+        StatsScreen.UpdateStats();
         isGameOver = true;
         DamageImage.color = flashColour;
         StopCoroutine(GameOverMenu());
@@ -290,6 +291,9 @@ public class UIScript : MonoBehaviour
 
     public void TimeScaleOff()
     {
+        StatsMenu.SetActive(true);
+        StatsScreen.UpdateStats();
+
         int areBothPlayersDead = 0;
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
@@ -311,9 +315,6 @@ public class UIScript : MonoBehaviour
         _isPause = true;
 
         //CheatHelp.UpdatePlayerButtons();
-
-        StatsMenu.SetActive(true);
-        StatsScreen.UpdatePlayerButtons();
 
         //Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
