@@ -22,6 +22,7 @@ public class PlayerController : Character
     [Header(">>>>>>>>>> PlayerController:")]
 
     public PlayerType Type;
+    public int InternalPlayerNumber;
     public string PlayerNumber;
 
     public ButtonConfig[] PlayerSkills;
@@ -85,6 +86,8 @@ public class PlayerController : Character
 
     public bool wasDead;
     public bool wasRevived;
+
+    //public PlayerStats PlayerStats;
 
     void Awake()
     {
@@ -386,12 +389,14 @@ public class PlayerController : Character
 
             wasRevived = false;
             wasDead = true;
-            
+
             DamageImage.color = DamageFlashColour;
             StopCoroutine(ColorFlash());
             StartCoroutine(ColorFlash());
 
             _Animtor.SetBool(animIsDead, true);
+
+            StatsTracker.Instance.Downed[InternalPlayerNumber]++;
         }
 
         RequestHealthPickUps();

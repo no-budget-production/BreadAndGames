@@ -14,7 +14,11 @@ public class UIScript : MonoBehaviour
 
     public GameObject HelpMenu;
 
+    public GameObject StatsMenu;
+
     //public CheatHelp CheatHelp;
+
+    public StatsScreen StatsScreen;
 
     private bool escapeButton;
     private bool escapeButtonXbox;
@@ -71,6 +75,7 @@ public class UIScript : MonoBehaviour
     {
         Time.timeScale = 1;
         MainMenu.SetActive(false);
+        StatsMenu.SetActive(false);
         Cursor.visible = false;
         _isPause = false;
 
@@ -275,6 +280,8 @@ public class UIScript : MonoBehaviour
         MainMenu.SetActive(false);
         _isPause = false;
 
+        StatsMenu.SetActive(false);
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -304,6 +311,9 @@ public class UIScript : MonoBehaviour
         _isPause = true;
 
         //CheatHelp.UpdatePlayerButtons();
+
+        StatsMenu.SetActive(true);
+        StatsScreen.UpdatePlayerButtons();
 
         //Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

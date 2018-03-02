@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] HUDCanvas;
     public Image[] DamageImage;
 
+    public StatsTracker StatsTracker;
+
     void Awake()
     {
         InitGame();

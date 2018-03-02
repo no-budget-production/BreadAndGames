@@ -11,6 +11,8 @@ public class PrefabLoader : MonoBehaviour
 
     private Transform curHolder;
 
+    public StatsTracker StatsTracker;
+
     public string[] ButtonStrings = new string[]
     {
             "Horizontal_PX",
@@ -41,6 +43,7 @@ public class PrefabLoader : MonoBehaviour
 
         SetupCamera();
 
+        LoadStatsTracker();
         //LinkInstances();
     }
 
@@ -188,6 +191,32 @@ public class PrefabLoader : MonoBehaviour
             GameManager.Instance.Players[i].Canvas = GameManager.Instance.HUDCanvas[i];
 
             GameManager.Instance.Players[i].DamageImage = GameManager.Instance.DamageImage[i];
+
+            GameManager.Instance.Players[i].InternalPlayerNumber = i;
         }
+    }
+
+    public void LoadStatsTracker()
+    {
+        if (StatsTracker.Instance == null)
+        {
+            StatsTracker curStatsTracker = Instantiate(StatsTracker);
+
+            GameManager.Instance.StatsTracker = curStatsTracker;
+        }
+        else
+        {
+            GameManager.Instance.StatsTracker = StatsTracker.Instance;
+        }
+
+        StatsTracker.Instance.Kills = new int[GameManager.Instance.Players.Count];
+        StatsTracker.Instance.DamageDealt = new float[GameManager.Instance.Players.Count];
+
+        StatsTracker.Instance.RevivedTeamMate = new int[GameManager.Instance.Players.Count];
+        StatsTracker.Instance.RevivedSelf = new int[GameManager.Instance.Players.Count];
+
+        StatsTracker.Instance.Downed = new int[GameManager.Instance.Players.Count];
+        StatsTracker.Instance.HealthPacks = new int[GameManager.Instance.Players.Count];
+        StatsTracker.Instance.Healed = new float[GameManager.Instance.Players.Count];
     }
 }

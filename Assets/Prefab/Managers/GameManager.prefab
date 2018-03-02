@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 1584756593326210, guid: e031fa54d8b45fb4bac7ab2e19cd0ba0, type: 2}
   CameraPrefab: {fileID: 1150056905474014, guid: 0a18cabcf86b31f459fc159a13b66dfe,
     type: 2}
+  StatsTracker: {fileID: 114911881797861364, guid: d2f25062207ac4144b114b4111f7654b,
+    type: 2}
   ButtonStrings:
   - Horizontal_PX
   - Vertical_PX
@@ -129,3 +131,10 @@ MonoBehaviour:
   HUDReloadBar: []
   PickUpSpawner: {fileID: 114962980690546624}
   HealthPickUps: []
+  UIScript: {fileID: 0}
+  ReviveWheel_Melee: {fileID: 0}
+  ReviveWheel_Shooter: {fileID: 0}
+  HUDCanvas: []
+  DamageImage: []
+  StatsTracker: {fileID: 114911881797861364, guid: d2f25062207ac4144b114b4111f7654b,
+    type: 2}
