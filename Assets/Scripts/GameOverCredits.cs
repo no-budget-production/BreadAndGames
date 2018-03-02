@@ -7,11 +7,20 @@ public class GameOverCredits : MonoBehaviour
     public Transform creditsObj;
     public float multi;
 
-    
+    public UIScript UIScript;
 
-	void Update ()
+    private void Start()
     {
-        creditsObj.Translate(Vector3.up * multi * Time.deltaTime);
+        Invoke("DelayedStatsMenu", 0f);
+    }
 
+    void Update()
+    {
+        creditsObj.Translate(Vector3.up * multi * Time.unscaledDeltaTime);
+    }
+
+    void DelayedStatsMenu()
+    {
+        UIScript.TimeScaleOff();
     }
 }

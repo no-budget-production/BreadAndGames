@@ -355,7 +355,7 @@ public class PlayerController : Character
     {
         base.TakeDamage(damage, damageType);
 
-        if (isDeadTrigger)
+        if (isDeadTrigger && DiedAmount == 1)
         {
             int areBothPlayersDead = 0;
             for (int i = 0; i < GameManager.Instance.Players.Count; i++)

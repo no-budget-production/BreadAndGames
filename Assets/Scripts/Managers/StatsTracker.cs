@@ -20,6 +20,8 @@ public class StatsTracker : MonoBehaviour
     public int Wins;
 
     public float Time;
+    public float SessionBestTime;
+    public float BestTime;
 
     public int[] Kills;
     public float[] DamageDealt;
@@ -34,6 +36,10 @@ public class StatsTracker : MonoBehaviour
     void Awake()
     {
         InitGame();
+
+        ResetStats();
+
+        ResetSession();
     }
 
     void InitGame()
@@ -48,5 +54,52 @@ public class StatsTracker : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void ResetStats()
+    {
+        Time = 0;
+
+        for (int i = 0; i < Kills.Length; i++)
+        {
+            Kills[i] = 0;
+            DamageDealt[i] = 0;
+
+            RevivedTeamMate[i] = 0;
+            RevivedSelf[i] = 0;
+            HealthPacks[i] = 0;
+            Healed[i] = 0;
+        }
+    }
+
+    public void ResetSession()
+    {
+        GameOvers = 0;
+        Wins = 0;
+
+        SessionBestTime = 0;
+    }
+
+    public void CalculateBestTimes()
+    {
+        if (SessionBestTime == 0)
+        {
+            SessionBestTime = Time;
+        }
+
+        if (BestTime == 0)
+        {
+            BestTime = SessionBestTime;
+        }
+
+        if (Time < SessionBestTime)
+        {
+            SessionBestTime = Time;
+
+            if (SessionBestTime < BestTime)
+            {
+                BestTime = SessionBestTime;
+            }
+        }
     }
 }

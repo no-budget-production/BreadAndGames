@@ -70,7 +70,13 @@ public class PhaseOneLevelScript : MonoBehaviour
         MinSpawnInterval = 5;
         MaxSpawnInterval = 7;
 
+        Invoke("DelayedArenaEvent", 5f);
         //startArenaEvent = true;
+    }
+
+    void DelayedArenaEvent()
+    {
+        startArenaEvent = true;
     }
 
     void Update()

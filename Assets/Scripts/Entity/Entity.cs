@@ -39,12 +39,18 @@ public class Entity : MonoBehaviour
     public float HealthRegenerationMultiplicator;
 
     public bool isDeadTrigger;
-    public bool hasDied;
     public bool DestroyOnDeath;
 
+    public int DiedAmount;
 
     public virtual void TakeDamage(float damage, DamageType damageType)
     {
+        if (isDeadTrigger)
+        {
+            DiedAmount++;
+            return;
+        }
+
         if (FlagsHelper.HasUnitTypes(ThisUnityTypeFlags, UnitTypes.Invurnable))
         {
             return;
@@ -67,23 +73,20 @@ public class Entity : MonoBehaviour
         {
             isDeadTrigger = true;
 
+            DiedAmount++;
+
+            Debug.Log(gameObject.name + " " + DiedAmount);
+
             if (DestroyOnDeath)
             {
-                if (!hasDied)
-                {
-                    OnCustomDestroy();
-                }
+                OnCustomDestroy();
             }
         }
-    }
 
-    //int DiedAmount;
+    }
 
     public virtual void OnCustomDestroy()
     {
-        //DiedAmount++;
-        hasDied = true;
-        //Debug.Log(DiedAmount);
         Destroy(gameObject);
     }
 
@@ -94,6 +97,8 @@ public class Entity : MonoBehaviour
         if (CurrentHealth > 0)
         {
             isDeadTrigger = false;
+
+            DiedAmount = 0;
         }
     }
 
@@ -103,6 +108,7 @@ public class Entity : MonoBehaviour
         {
             return false;
         }
+
         GetHealth(healing);
 
         return true;

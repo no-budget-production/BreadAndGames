@@ -8,16 +8,17 @@ public class HPPickUps : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        var temp = other.GetComponent<PlayerController>();
-        if (temp == null)
+        var PlayerController = other.GetComponent<PlayerController>();
+        if (PlayerController == null)
         {
             return;
         }
         GameManager.Instance.HealthPickUps.Remove(this);
-        var used = temp.RestoreHealth(temp.MaxHealth / 100 * healthAmountInPercent);
+        var used = PlayerController.RestoreHealth(PlayerController.MaxHealth / 100 * healthAmountInPercent);
         if (used)
         {
             Destroy(this.gameObject);
+            StatsTracker.Instance.HealthPacks[PlayerController.InternalPlayerNumber]++;
         }
     }
 }

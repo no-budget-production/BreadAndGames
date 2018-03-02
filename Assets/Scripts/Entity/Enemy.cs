@@ -74,16 +74,19 @@ public class Enemy : Character
             GameObject TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation) as GameObject;
         }
 
-
         GameManager.Instance.Enemies.Remove(this);
 
         base.OnCustomDestroy();
-        if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
+
+        if (DiedAmount == 1)
         {
-            float randomNumber = (Random.Range(0, 100.0f));
-            if (randomNumber <= ChanceToSpawnHPPickUps)
+            if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
             {
-                GameManager.Instance.PickUpSpawner.SpawnPickUps(transform.position);
+                float randomNumber = (Random.Range(0, 100.0f));
+                if (randomNumber <= ChanceToSpawnHPPickUps)
+                {
+                    GameManager.Instance.PickUpSpawner.SpawnPickUps(transform.position);
+                }
             }
         }
     }

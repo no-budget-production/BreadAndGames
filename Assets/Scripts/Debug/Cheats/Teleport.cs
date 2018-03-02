@@ -11,5 +11,8 @@ public class Teleport : Cheat
     {
         GameManager.Instance.Players[0].GetComponent<Transform>().transform.position = GameObject.Find(MeleePort).transform.position;
         GameManager.Instance.Players[1].GetComponent<Transform>().transform.position = GameObject.Find(ShooterPort).transform.position;
+
+        GameManager.Instance.Players[0].rb.velocity = Vector3.zero;
+        GameManager.Instance.Players[1].rb.velocity = Vector3.zero;
     }
 }

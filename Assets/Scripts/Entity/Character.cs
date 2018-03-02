@@ -186,7 +186,7 @@ public class Character : Entity
     {
         base.TakeDamage(damage, damageType);
 
-        if (isDeadTrigger)
+        if (isDeadTrigger && DiedAmount == 1)
         {
             Disable();
 
@@ -199,7 +199,7 @@ public class Character : Entity
             }
         }
 
-        if (!(hasDied && DestroyOnDeath))
+        if (!DestroyOnDeath)
         {
             if (UseHealthbar)
             {
@@ -217,18 +217,16 @@ public class Character : Entity
     {
         base.GetHealth(healing);
 
-        if (!(hasDied && DestroyOnDeath))
+        if (UseHealthbar)
         {
-            if (UseHealthbar)
-            {
-                OnChangeHealth(CurrentHealth);
-            }
-
-            if (UseHUDHealthbarSlider)
-            {
-                OnHUDChangeHealthSlider();
-            }
+            OnChangeHealth(CurrentHealth);
         }
+
+        if (UseHUDHealthbarSlider)
+        {
+            OnHUDChangeHealthSlider();
+        }
+
 
         if (!isDeadTrigger)
         {
@@ -254,13 +252,9 @@ public class Character : Entity
 
     public void Regenerate()
     {
-        if (!isDeadTrigger)
-        {
-            GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
-            RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
-            RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
-
-        }
+        GetHealth(HealthRegeneration * HealthRegenerationMultiplicator * Time.deltaTime);
+        RestoreActionPoints(ActionPointRegeneration * ActionPointRegenerationMultiplicator * Time.deltaTime);
+        RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
     }
 
     public void AddBuff(BuffObject buff, int multi, Character character)

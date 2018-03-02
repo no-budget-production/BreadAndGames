@@ -89,6 +89,12 @@ public class UIScript : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    public void FinalStats()
+    {
+        StatsScreen.UpdateStats();
+        TimeScaleOff();
+    }
+
     public void GameOver()
     {
         StatsScreen.UpdateStats();
@@ -128,6 +134,8 @@ public class UIScript : MonoBehaviour
         GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
 
         Destroy(GameManager.Instance.InstanceRef.gameObject);
+
+        StatsTracker.Instance.ResetStats();
 
         MainMenu.SetActive(false);
 
@@ -275,7 +283,10 @@ public class UIScript : MonoBehaviour
     {
         //unpaused.TransitionTo(0.5f);
 
-        Announcer.UnPause();
+        if (Announcer != null)
+        {
+            Announcer.UnPause();
+        }
 
         Time.timeScale = 1;
         MainMenu.SetActive(false);
@@ -305,10 +316,16 @@ public class UIScript : MonoBehaviour
 
         if (areBothPlayersDead == GameManager.Instance.Players.Count)
         {
-            ResumeButton.interactable = false;
+            if (ResumeButton != null)
+            {
+                ResumeButton.interactable = false;
+            }
         }
 
-        Announcer.Pause();
+        if (Announcer != null)
+        {
+            Announcer.Pause();
+        }
 
         Time.timeScale = 0f;
         MainMenu.SetActive(true);
@@ -320,7 +337,6 @@ public class UIScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         _aboutToPause = false; // Added
-
     }
 
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
