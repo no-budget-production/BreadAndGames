@@ -186,6 +186,8 @@ public class PrefabLoader : MonoBehaviour
             }
 
             GameManager.Instance.Players[i].Canvas = GameManager.Instance.HUDCanvas[i];
+
+            GameManager.Instance.Players[i].DamageImage = GameManager.Instance.DamageImage[i];
         }
     }
 }

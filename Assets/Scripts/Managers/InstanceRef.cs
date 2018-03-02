@@ -26,4 +26,5 @@ public class InstanceRef : MonoBehaviour
     public ActivateWheel_Shooter ReviveWheel_Shooter;
 
     public GameObject[] HUDCanvas;
+    public Image[] DamageImage;
 }

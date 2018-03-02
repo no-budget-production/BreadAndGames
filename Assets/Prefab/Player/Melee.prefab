@@ -1729,6 +1729,13 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   lookVector: {x: 0, y: 0, z: 0}
   RequestedHealthPickUps: 0
+  Canvas: {fileID: 0}
+  DamageImage: {fileID: 0}
+  FlashSpeed: 1
+  DamageFlashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  ReviveFlashColour: {r: 1, g: 1, b: 1, a: 0.1}
+  wasDead: 0
+  wasRevived: 0
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1

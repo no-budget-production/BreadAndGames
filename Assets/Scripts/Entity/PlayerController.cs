@@ -78,6 +78,14 @@ public class PlayerController : Character
 
     public GameObject Canvas;
 
+    public Image DamageImage;
+    public float FlashSpeed = 1f;
+    public Color DamageFlashColour = new Color(1f, 0f, 0f, 0.1f);
+    public Color ReviveFlashColour = new Color(1f, 1f, 1f, 0.2f);
+
+    public bool wasDead;
+    public bool wasRevived;
+
     void Awake()
     {
         _Animtor.SetBool(animIsAiming, true);
@@ -375,6 +383,14 @@ public class PlayerController : Character
                 }
 
             }
+
+            wasRevived = false;
+            wasDead = true;
+
+            DamageImage.color = DamageFlashColour;
+            StopCoroutine(ColorFlash());
+            StartCoroutine(ColorFlash());
+
             _Animtor.SetBool(animIsDead, true);
         }
 
@@ -389,7 +405,17 @@ public class PlayerController : Character
         {
             _Animtor.SetBool(animIsDead, false);
             _Animtor.SetTrigger(animGetUp);
-            EnableHUD();
+
+            if (wasDead)
+            {
+                EnableHUD();
+                wasRevived = true;
+                wasDead = false;
+
+                DamageImage.color = ReviveFlashColour;
+                StopCoroutine(ColorFlash());
+                StartCoroutine(ColorFlash());
+            }
         }
 
         RequestHealthPickUps();
@@ -429,5 +455,16 @@ public class PlayerController : Character
         UseHUDHealthbarSlider = true;
         UseHUDActionPointsBar = true;
         UseOverChargeBar = true;
+    }
+
+
+
+    public virtual IEnumerator ColorFlash()
+    {
+        while (DamageImage.color != Color.clear)
+        {
+            DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 }

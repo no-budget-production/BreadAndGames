@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public ActivateWheel_Shooter ReviveWheel_Shooter;
 
     public GameObject[] HUDCanvas;
+    public Image[] DamageImage;
 
     void Awake()
     {
@@ -110,5 +111,6 @@ public class GameManager : MonoBehaviour
         ReviveWheel_Shooter = InstanceRef.ReviveWheel_Shooter;
 
         HUDCanvas = InstanceRef.HUDCanvas;
+        DamageImage = InstanceRef.DamageImage;
     }
 }
