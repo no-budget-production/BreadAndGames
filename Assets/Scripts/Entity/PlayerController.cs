@@ -386,7 +386,7 @@ public class PlayerController : Character
 
             wasRevived = false;
             wasDead = true;
-
+            
             DamageImage.color = DamageFlashColour;
             StopCoroutine(ColorFlash());
             StartCoroutine(ColorFlash());

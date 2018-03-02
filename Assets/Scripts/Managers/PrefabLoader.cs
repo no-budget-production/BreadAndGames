@@ -176,7 +176,7 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseReloadBar)
             {
                 GameManager.Instance.Players[i].ReloadBar = GameManager.Instance.HUDReloadBar[i];
-                GameManager.Instance.HUDReloadBar[i].maxValue = GameManager.Instance.Players[i].maxReloadBar / GameManager.Instance.Players[i].curDisplaySteps;
+                GameManager.Instance.HUDReloadBar[i].maxValue = (int)(GameManager.Instance.Players[i].maxReloadBar / GameManager.Instance.Players[i].curDisplaySteps);
                 GameManager.Instance.Players[i].OnChangeReloadSlider();
 
             }

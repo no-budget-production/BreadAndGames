@@ -171,7 +171,7 @@ public class Character : Entity
         {
             if (curDisplaySteps != 0)
             {
-                curDisplayReloadBar = Mathf.RoundToInt(maxReloadBar / curDisplaySteps);
+                curDisplayReloadBar = (Mathf.FloorToInt(maxReloadBar / curDisplaySteps));
             }
             OnChangeReloadSlider();
         }
@@ -493,7 +493,7 @@ public class Character : Entity
 
     void RoundDisplayBar()
     {
-        curDisplayReloadBar = Mathf.RoundToInt(curReloadBar / curDisplaySteps);
+        curDisplayReloadBar = Mathf.FloorToInt(curReloadBar / curDisplaySteps);
     }
 
     public void EmptySound()
