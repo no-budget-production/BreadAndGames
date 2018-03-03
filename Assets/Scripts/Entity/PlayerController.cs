@@ -357,37 +357,9 @@ public class PlayerController : Character
 
         if (isDeadTrigger && DiedAmount == 1)
         {
-            int areBothPlayersDead = 0;
-            for (int i = 0; i < GameManager.Instance.Players.Count; i++)
-            {
-                if (GameManager.Instance.Players[i].isDeadTrigger == true)
-                {
-                    areBothPlayersDead++;
-                }
-            }
+            CheckGameOver();
 
-            if (areBothPlayersDead == GameManager.Instance.Players.Count)
-            {
-                StatsTracker.Instance.GameOvers++;
-
-                GameManager.Instance.UIScript.GameOverText.text = "Game Over";
-                GameManager.Instance.UIScript.GameOver();
-            }
-            //else
-            {
-                if (Type == PlayerType.Melee)
-                {
-                    GameManager.Instance.ReviveWheel_Melee.Activate();
-                    DisableHUD();
-                }
-
-                if (Type == PlayerType.Shooter)
-                {
-                    GameManager.Instance.ReviveWheel_Shooter.Activate();
-                    DisableHUD();
-                }
-
-            }
+            ActiviateReviveWheel();
 
             wasRevived = false;
             wasDead = true;
@@ -398,7 +370,7 @@ public class PlayerController : Character
 
             _Animtor.SetBool(animIsDead, true);
 
-            StatsTracker.Instance.Downed[InternalPlayerNumber]++;
+            AddStatsDowned();
         }
 
         RequestHealthPickUps();
@@ -472,6 +444,46 @@ public class PlayerController : Character
         {
             DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
             yield return null;
+        }
+    }
+
+    public void AddStatsDowned()
+    {
+        StatsTracker.Instance.Downed[InternalPlayerNumber]++;
+    }
+
+    public void CheckGameOver()
+    {
+        int areBothPlayersDead = 0;
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        {
+            if (GameManager.Instance.Players[i].isDeadTrigger == true)
+            {
+                areBothPlayersDead++;
+            }
+        }
+
+        if (areBothPlayersDead == GameManager.Instance.Players.Count)
+        {
+            StatsTracker.Instance.GameOvers++;
+
+            GameManager.Instance.UIScript.GameOverText.text = "Game Over";
+            GameManager.Instance.UIScript.GameOver();
+        }
+    }
+
+    public void ActiviateReviveWheel()
+    {
+        if (Type == PlayerType.Melee)
+        {
+            GameManager.Instance.ReviveWheel_Melee.Activate();
+            DisableHUD();
+        }
+
+        if (Type == PlayerType.Shooter)
+        {
+            GameManager.Instance.ReviveWheel_Shooter.Activate();
+            DisableHUD();
         }
     }
 }

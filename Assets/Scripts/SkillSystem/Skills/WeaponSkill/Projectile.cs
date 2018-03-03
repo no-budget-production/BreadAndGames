@@ -118,7 +118,38 @@ public class Projectile : Effect
         if (AllyOfWeaponHolder == AllyOfVictim)
             return false;
 
-        damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+        if (damageableObject.DiedAmount <= 0)
+        {
+            if (WeaponHolder != null)
+            {
+                var PlayerController = WeaponHolder.GetComponent<PlayerController>();
+                if (PlayerController != null)
+                {
+                    float damageableObjectInitialHealth = damageableObject.CurrentHealth;
+
+                    damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+
+                    if (damageableObject.CurrentHealth <= 0f)
+                    {
+                        StatsTracker.Instance.Kills[PlayerController.InternalPlayerNumber]++;
+
+                        StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth;
+                    }
+                    else
+                    {
+                        StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth - damageableObject.CurrentHealth;
+                    }
+                }
+                else
+                {
+                    damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+                }
+            }
+            else
+            {
+                damageableObject.TakeDamage(WeaponHolder.RangeDamage * WeaponHolder.RangeDamageMultiplicator * Damage, DamageType);
+            }
+        }
 
         if (OnHit != null)
         {

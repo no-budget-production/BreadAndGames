@@ -223,8 +223,44 @@ public class Punch : Skill
                     temp.AddBuff(Debuff, 1, Character);
                 }
             }
+            if (HitBox.Enemies[i].DiedAmount <= 0)
+            {
+                if (Character != null)
+                {
+                    var PlayerController = Character.GetComponent<PlayerController>();
+                    if (PlayerController != null)
+                    {
+                        float damageableObjectInitialHealth = HitBox.Enemies[i].CurrentHealth;
 
-            HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+                        HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+
+                        if (HitBox.Enemies[i].CurrentHealth <= 0f)
+                        {
+                            StatsTracker.Instance.Kills[PlayerController.InternalPlayerNumber]++;
+
+                            StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth;
+                        }
+                        else
+                        {
+                            StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth - HitBox.Enemies[i].CurrentHealth;
+
+                        }
+                    }
+                    else
+                    {
+                        HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+                    }
+                }
+                //else
+                //{
+                //    HitBox.Enemies[i].TakeDamage(Character.MeleeDamage * Character.MeleeDamageMultiplicator * (Damage + (curDamageBonus)), DamageType);
+                //}
+            }
+
+            if (HitBox.Enemies[i].CurrentHealth <= 0)
+            {
+                AddStats();
+            }
         }
 
         if (canCharge)
@@ -233,5 +269,14 @@ public class Punch : Skill
         }
 
         curDamageBonus = 0;
+    }
+
+    public void AddStats()
+    {
+        var PlayerController = Character.GetComponent<PlayerController>();
+        if (PlayerController != null)
+        {
+            StatsTracker.Instance.Kills[PlayerController.InternalPlayerNumber]++;
+        }
     }
 }
