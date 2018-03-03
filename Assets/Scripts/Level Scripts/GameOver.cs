@@ -34,6 +34,16 @@ public class GameOver : MonoBehaviour
         {
             AddStats();
 
+            if (GameManager.Instance != null)
+            {
+                if (GameManager.Instance.InstanceRef != null)
+                {
+                    GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+
+                    Destroy(GameManager.Instance.InstanceRef.gameObject);
+                }
+            }
+
             SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
         }
     }

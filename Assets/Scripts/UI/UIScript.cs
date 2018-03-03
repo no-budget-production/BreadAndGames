@@ -30,6 +30,8 @@ public class UIScript : MonoBehaviour
 
     private int sceneindex;
 
+    public int CreditsBuildIndex;
+
     public Text GameOverText;
 
     public Button ResumeButton;
@@ -53,7 +55,9 @@ public class UIScript : MonoBehaviour
 
     private void Awake() // Moved from Update to Awake function
     {
-        sceneindex = SceneManager.GetActiveScene().buildIndex;
+        CreditsBuildIndex = SceneManager.sceneCountInBuildSettings - 1;
+
+
         escapeButton = Input.GetButtonDown("Cancel"); //from Escape to Cancel
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
         GameOverText.text = "";
@@ -73,11 +77,20 @@ public class UIScript : MonoBehaviour
 
     private void Start()
     {
+        sceneindex = SceneManager.GetActiveScene().buildIndex;
+
         Time.timeScale = 1;
         MainMenu.SetActive(false);
         StatsMenu.SetActive(false);
         Cursor.visible = false;
         _isPause = false;
+
+
+    }
+
+    public void UpDateTime()
+    {
+
 
     }
 
@@ -131,9 +144,15 @@ public class UIScript : MonoBehaviour
 
     public void RestartButton()
     {
-        GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.InstanceRef != null)
+            {
+                GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
 
-        Destroy(GameManager.Instance.InstanceRef.gameObject);
+                Destroy(GameManager.Instance.InstanceRef.gameObject);
+            }
+        }
 
         StatsTracker.Instance.ResetStats();
 
@@ -149,7 +168,16 @@ public class UIScript : MonoBehaviour
     {
         //SceneManager.UnloadSceneAsync(sceneindex);
 
-        SceneManager.LoadScene(sceneindex, LoadSceneMode.Single);
+        if (!(CreditsBuildIndex == sceneindex))
+        {
+            SceneManager.LoadScene(sceneindex, LoadSceneMode.Single);
+        }
+        else
+        {
+            //SceneManager.UnloadSceneAsync(sceneindex);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
+
         Cursor.visible = false;
         //PlaySound(1);
     }
