@@ -69,6 +69,9 @@ public class Character : Entity
 
     [HideInInspector]
     public Slider HUDHealthBarSlider;
+    public Image HUDHealthBarDelay;
+    public Color HealthBarDelayColor_Add;
+    public Color HealthBarDelayColor_Sub;
     public bool UseHUDHealthbarSlider;
 
     //[HideInInspector]
@@ -77,16 +80,25 @@ public class Character : Entity
 
     [HideInInspector]
     public Slider HUDActionPointsBar;
+    public Image HUDActionPointsBarDelay;
+    public Color ActionPointsBarDelayColor_Add;
+    public Color ActionPointsBarDelayColor_Sub;
     public bool UseHUDActionPointsBar;
 
     [HideInInspector]
     public Slider OverChargeBar;
+    public Image HUDOverChargeBarDelay;
+    public Color OverChargeBarDelayColor_Add;
+    public Color OverChargeBarDelayColor_Sub;
     public bool UseOverChargeBar;
     public float maxOverCharge;
     public float curOverCharge;
 
     [HideInInspector]
     public Slider ReloadBar;
+    public Image HUDReloadBarDelay;
+    public Color ReloadDelayColor_Add;
+    public Color ReloadDelayColor_Sub;
     public bool UseReloadBar;
     public float curDisplaySteps;
     public int curDisplayReloadBar;
@@ -248,6 +260,8 @@ public class Character : Entity
             Regenerate();
             UpdateBuffs();
         }
+
+        HUDDelay();
     }
 
     public void Regenerate()
@@ -480,9 +494,12 @@ public class Character : Entity
     {
         curReloadBar = Mathf.Max(curReloadBar - (costs), 0);
 
-        RoundDisplayBar();
+        if (UseReloadBar)
+        {
+            RoundDisplayBar();
 
-        OnChangeReloadSlider();
+            OnChangeReloadSlider();
+        }
     }
 
     void RoundDisplayBar()
@@ -502,6 +519,93 @@ public class Character : Entity
         }
     }
 
+    public virtual void FixedUpdate()
+    {
+        //HUDDelay();
+    }
+
+    public void HUDDelay()
+    {
+        if (UseHUDHealthbarSlider)
+        {
+            if ((HUDHealthBarDelay.fillAmount - (CurrentHealth / MaxHealth)) > Time.fixedDeltaTime)
+            {
+                HUDHealthBarDelay.color = HealthBarDelayColor_Sub;
+                HUDHealthBarDelay.fillAmount -= Time.fixedDeltaTime;
+            }
+            else if (((CurrentHealth / MaxHealth) - HUDHealthBarDelay.fillAmount) > Time.fixedDeltaTime)
+            {
+                HUDHealthBarDelay.color = HealthBarDelayColor_Add;
+                HUDHealthBarDelay.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                HUDHealthBarDelay.color = Color.clear;
+                HUDHealthBarDelay.fillAmount = CurrentHealth / MaxHealth;
+            }
+        }
+
+        if (UseHUDActionPointsBar)
+        {
+            if ((HUDActionPointsBarDelay.fillAmount - (curActionPoints / maxActionPoints)) > Time.fixedDeltaTime)
+            {
+                HUDActionPointsBarDelay.color = ActionPointsBarDelayColor_Sub;
+                HUDActionPointsBarDelay.fillAmount -= Time.fixedDeltaTime;
+            }
+            else if (((curActionPoints / maxActionPoints) - HUDActionPointsBarDelay.fillAmount) > Time.fixedDeltaTime)
+            {
+                HUDActionPointsBarDelay.color = ActionPointsBarDelayColor_Add;
+                HUDActionPointsBarDelay.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                HUDActionPointsBarDelay.color = Color.clear;
+                HUDActionPointsBarDelay.fillAmount = curActionPoints / maxActionPoints;
+            }
+        }
+
+        if (UseOverChargeBar)
+        {
+            if ((HUDOverChargeBarDelay.fillAmount - (curOverCharge / maxOverCharge)) > Time.fixedDeltaTime)
+            {
+                HUDOverChargeBarDelay.color = OverChargeBarDelayColor_Sub;
+                HUDOverChargeBarDelay.fillAmount -= Time.fixedDeltaTime;
+            }
+            else if (((curOverCharge / maxOverCharge) - HUDOverChargeBarDelay.fillAmount) > Time.fixedDeltaTime)
+            {
+                HUDOverChargeBarDelay.color = OverChargeBarDelayColor_Add;
+                HUDOverChargeBarDelay.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                HUDOverChargeBarDelay.color = Color.clear;
+                HUDOverChargeBarDelay.fillAmount = curOverCharge / maxOverCharge;
+            }
+        }
+
+        if (UseReloadBar)
+        {
+            if ((HUDReloadBarDelay.fillAmount - (curReloadBar / maxReloadBar)) > Time.fixedDeltaTime)
+            {
+                Debug.Log("Sub" + HUDReloadBarDelay.fillAmount + " - " + curReloadBar / maxReloadBar + " > " + Time.fixedDeltaTime);
+                HUDReloadBarDelay.color = ReloadDelayColor_Sub;
+                HUDReloadBarDelay.fillAmount -= Time.fixedDeltaTime;
+            }
+            else if (((curReloadBar / maxReloadBar) - HUDReloadBarDelay.fillAmount) > Time.fixedDeltaTime)
+            {
+                Debug.Log("Add" + curReloadBar / maxReloadBar + " - " + HUDReloadBarDelay.fillAmount + " > " + Time.fixedDeltaTime);
+                HUDReloadBarDelay.color = ReloadDelayColor_Add;
+                HUDReloadBarDelay.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                Debug.Log("==" + curReloadBar / maxReloadBar + " == " + HUDReloadBarDelay.fillAmount);
+                HUDReloadBarDelay.color = Color.clear;
+                HUDReloadBarDelay.fillAmount = (curReloadBar / maxReloadBar);
+            }
+        }
+    }
+
     public void OnActionBarChange()
     {
         ActionPointsBar.value = curActionPoints;
@@ -509,12 +613,18 @@ public class Character : Entity
 
     public void OnHUDActionBarChange()
     {
-        HUDActionPointsBar.value = curActionPoints;
+        //if (UseHUDActionPointsBar)
+        {
+            HUDActionPointsBar.value = curActionPoints;
+        }
     }
 
     public void OnHUDChangeHealthSlider()
     {
-        HUDHealthBarSlider.value = CurrentHealth;
+        //if (UseHUDHealthbarSlider)
+        {
+            HUDHealthBarSlider.value = CurrentHealth;
+        }
     }
 
     public void OnChangeOverchargeSlider()

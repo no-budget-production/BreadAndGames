@@ -20,6 +20,11 @@ public class InstanceRef : MonoBehaviour
     public Slider[] HUDOverChargeBar;
     public Slider[] HUDReloadBar;
 
+    public Image[] HUDHealthBarDelay;
+    public Image[] HUDActionPointsBarDelay;
+    public Image[] HUDOverChargeBarDelay;
+    public Image[] HUDReloadBarDelay;
+
     public UIScript UIScript;
 
     public ActivateWheel_Melee ReviveWheel_Melee;

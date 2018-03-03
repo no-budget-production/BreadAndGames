@@ -3433,16 +3433,28 @@ MonoBehaviour:
   HealthBar: {fileID: 224228349348698198}
   UseHealthbar: 0
   HUDHealthBarSlider: {fileID: 0}
+  HUDHealthBarDelay: {fileID: 0}
+  HealthBarDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  HealthBarDelayColor_Sub: {r: 1, g: 0, b: 0, a: 1}
   UseHUDHealthbarSlider: 1
   ActionPointsBar: {fileID: 114639886533559848}
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
+  HUDActionPointsBarDelay: {fileID: 0}
+  ActionPointsBarDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  ActionPointsBarDelayColor_Sub: {r: 1, g: 0.45882353, b: 0, a: 1}
   UseHUDActionPointsBar: 1
   OverChargeBar: {fileID: 0}
+  HUDOverChargeBarDelay: {fileID: 0}
+  OverChargeBarDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  OverChargeBarDelayColor_Sub: {r: 0.34901962, g: 1, b: 0, a: 1}
   UseOverChargeBar: 1
   maxOverCharge: 100
   curOverCharge: 40
   ReloadBar: {fileID: 0}
+  HUDReloadBarDelay: {fileID: 0}
+  ReloadDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  ReloadDelayColor_Sub: {r: 0.14509805, g: 0.5686275, b: 1, a: 1}
   UseReloadBar: 1
   curDisplaySteps: 33
   curDisplayReloadBar: 100

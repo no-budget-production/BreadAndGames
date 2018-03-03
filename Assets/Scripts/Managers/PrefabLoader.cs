@@ -146,6 +146,7 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseHUDHealthbarSlider)
             {
                 GameManager.Instance.Players[i].HUDHealthBarSlider = GameManager.Instance.HUDHealthBarSlider[i];
+                GameManager.Instance.Players[i].HUDHealthBarDelay = GameManager.Instance.HUDHealthBarDelay[i];
                 GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth;
                 GameManager.Instance.Players[i].OnHUDChangeHealthSlider();
             }
@@ -157,6 +158,7 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
             {
                 GameManager.Instance.Players[i].HUDActionPointsBar = GameManager.Instance.HUDActionPointsBar[i];
+                GameManager.Instance.Players[i].HUDActionPointsBarDelay = GameManager.Instance.HUDActionPointsBarDelay[i];
                 GameManager.Instance.HUDActionPointsBar[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
                 GameManager.Instance.Players[i].OnActionBarChange();
             }
@@ -168,6 +170,7 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
             {
                 GameManager.Instance.Players[i].OverChargeBar = GameManager.Instance.HUDOverChargeBar[i];
+                GameManager.Instance.Players[i].HUDOverChargeBarDelay = GameManager.Instance.HUDOverChargeBarDelay[i];
                 GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxOverCharge;
                 GameManager.Instance.Players[i].OnChangeOverchargeSlider();
             }
@@ -179,6 +182,7 @@ public class PrefabLoader : MonoBehaviour
             if (GameManager.Instance.Players[i].UseReloadBar)
             {
                 GameManager.Instance.Players[i].ReloadBar = GameManager.Instance.HUDReloadBar[i];
+                GameManager.Instance.Players[i].HUDReloadBarDelay = GameManager.Instance.HUDReloadBarDelay[i];
                 GameManager.Instance.HUDReloadBar[i].maxValue = (int)(GameManager.Instance.Players[i].maxReloadBar / GameManager.Instance.Players[i].curDisplaySteps);
                 GameManager.Instance.Players[i].OnChangeReloadSlider();
 

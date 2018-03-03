@@ -318,17 +318,19 @@ public class PlayerController : Character
         }
     }
 
-    //void FixedUpdate()
-    //{
-    //    Move();
-    //}
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        CheckButtonInput();
+        Move();
+        Grounded();
+    }
 
     public override void Update()
     {
-        CheckButtonInput();
         base.Update();
-        Move();
-        Grounded();
+        //Move();
+        //Grounded();
     }
 
     void Grounded()
@@ -435,8 +437,6 @@ public class PlayerController : Character
         UseHUDActionPointsBar = true;
         UseOverChargeBar = true;
     }
-
-
 
     public virtual IEnumerator ColorFlash()
     {

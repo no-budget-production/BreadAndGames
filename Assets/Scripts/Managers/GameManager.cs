@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
     public Slider[] HUDOverChargeBar;
     public Slider[] HUDReloadBar;
 
+    public Image[] HUDHealthBarDelay;
+    public Image[] HUDActionPointsBarDelay;
+    public Image[] HUDOverChargeBarDelay;
+    public Image[] HUDReloadBarDelay;
+
     public PickUpSpawner PickUpSpawner;
     public List<HPPickUps> HealthPickUps;
 
@@ -106,6 +111,11 @@ public class GameManager : MonoBehaviour
         HUDActionPointsBar = InstanceRef.HUDActionPointsBar;
         HUDOverChargeBar = InstanceRef.HUDOverChargeBar;
         HUDReloadBar = InstanceRef.HUDReloadBar;
+
+        HUDHealthBarDelay = InstanceRef.HUDHealthBarDelay;
+        HUDActionPointsBarDelay = InstanceRef.HUDActionPointsBarDelay;
+        HUDOverChargeBarDelay = InstanceRef.HUDOverChargeBarDelay;
+        HUDReloadBarDelay = InstanceRef.HUDReloadBarDelay;
 
         UIScript = InstanceRef.UIScript;
 
