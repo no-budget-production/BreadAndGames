@@ -196,7 +196,16 @@ public class Character : Entity
 
     public override void TakeDamage(float damage, DamageType damageType)
     {
+        float before = CurrentHealth;
+
         base.TakeDamage(damage, damageType);
+
+        HPBarFlashDamage(before);
+
+        if (before != CurrentHealth)
+        {
+            HUDHealthBarDelay.color = HealthBarDelayColor_Sub;
+        }
 
         if (isDeadTrigger && DiedAmount == 1)
         {
@@ -458,6 +467,7 @@ public class Character : Entity
     public virtual float RestoreActionPoints(float restore)
     {
 
+
         float tempActionPoints = Mathf.Min(curActionPoints + (restore), maxActionPoints);
         float dif = tempActionPoints - curActionPoints;
         curActionPoints = tempActionPoints;
@@ -522,6 +532,14 @@ public class Character : Entity
     public virtual void FixedUpdate()
     {
 
+    }
+
+    void HPBarFlashDamage(float beforeArg)
+    {
+        if (beforeArg != CurrentHealth)
+        {
+            HUDHealthBarDelay.color = HealthBarDelayColor_Sub;
+        }
     }
 
     public void HUDDelay()
