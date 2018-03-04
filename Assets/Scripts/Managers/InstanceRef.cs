@@ -19,11 +19,13 @@ public class InstanceRef : MonoBehaviour
     public Slider[] HUDActionPointsBar;
     public Slider[] HUDOverChargeBar;
     public Slider[] HUDReloadBar;
+    public Slider[] HUDRealReloadBar;
 
     public Image[] HUDHealthBarDelay;
     public Image[] HUDActionPointsBarDelay;
     public Image[] HUDOverChargeBarDelay;
     public Image[] HUDReloadBarDelay;
+    public Image[] HUDRealReloadBarDelay;
 
     public UIScript UIScript;
 

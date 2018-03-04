@@ -103,6 +103,12 @@ public class Character : Entity
     public float curDisplaySteps;
     public int curDisplayReloadBar;
 
+    public bool UseRealReloadBar;
+    public Slider HUDRealReloadBar;
+    public Image HUDRealReloadBarDelay;
+    public Color RealReloadDelayColor_Add;
+    public Color RealReloadDelayColor_Sub;
+
     public bool rechargeActionBarDirectly;
 
     //[HideInInspector]
@@ -201,11 +207,6 @@ public class Character : Entity
         base.TakeDamage(damage, damageType);
 
         HPBarFlashDamage(before);
-
-        if (before != CurrentHealth)
-        {
-            HUDHealthBarDelay.color = HealthBarDelayColor_Sub;
-        }
 
         if (isDeadTrigger && DiedAmount == 1)
         {
@@ -497,6 +498,12 @@ public class Character : Entity
             RoundDisplayBar();
             OnChangeReloadSlider();
         }
+
+        if (UseRealReloadBar)
+        {
+            OnChangeRealReloadSlider();
+        }
+
         return dif;
     }
 
@@ -509,6 +516,11 @@ public class Character : Entity
             RoundDisplayBar();
 
             OnChangeReloadSlider();
+        }
+
+        if (UseRealReloadBar)
+        {
+            OnChangeRealReloadSlider();
         }
     }
 
@@ -622,6 +634,25 @@ public class Character : Entity
                 HUDReloadBarDelay.fillAmount = (curReloadBar / maxReloadBar);
             }
         }
+
+        if (UseRealReloadBar)
+        {
+            if ((HUDRealReloadBarDelay.fillAmount - (curReloadBar / maxReloadBar)) > Time.fixedDeltaTime)
+            {
+                HUDRealReloadBarDelay.color = RealReloadDelayColor_Sub;
+                HUDRealReloadBarDelay.fillAmount -= Time.fixedDeltaTime;
+            }
+            else if (((curReloadBar / maxReloadBar) - HUDReloadBarDelay.fillAmount) > Time.fixedDeltaTime)
+            {
+                HUDRealReloadBarDelay.color = RealReloadDelayColor_Add;
+                HUDRealReloadBarDelay.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                HUDRealReloadBarDelay.color = Color.clear;
+                HUDRealReloadBarDelay.fillAmount = (curReloadBar / maxReloadBar);
+            }
+        }
     }
 
     public void OnActionBarChange()
@@ -658,6 +689,14 @@ public class Character : Entity
         if (UseReloadBar)
         {
             ReloadBar.value = curDisplayReloadBar;
+        }
+    }
+
+    public void OnChangeRealReloadSlider()
+    {
+        if (UseRealReloadBar)
+        {
+            HUDRealReloadBar.value = curReloadBar;
         }
     }
 

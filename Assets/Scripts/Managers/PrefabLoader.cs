@@ -192,6 +192,19 @@ public class PrefabLoader : MonoBehaviour
                 GameManager.Instance.HUDReloadBar[i].enabled = false;
             }
 
+            if (GameManager.Instance.Players[i].UseRealReloadBar)
+            {
+                GameManager.Instance.Players[i].HUDRealReloadBar = GameManager.Instance.HUDRealReloadBar[i];
+                GameManager.Instance.Players[i].HUDRealReloadBarDelay = GameManager.Instance.HUDRealReloadBarDelay[i];
+                GameManager.Instance.HUDRealReloadBar[i].maxValue = GameManager.Instance.Players[i].maxReloadBar;
+                GameManager.Instance.Players[i].OnChangeRealReloadSlider();
+
+            }
+            else
+            {
+                GameManager.Instance.HUDRealReloadBar[i].enabled = false;
+            }
+
             GameManager.Instance.Players[i].Canvas = GameManager.Instance.HUDCanvas[i];
 
             GameManager.Instance.Players[i].DamageImage = GameManager.Instance.DamageImage[i];

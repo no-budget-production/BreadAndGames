@@ -10,7 +10,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Plane001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_115115115
+    second: {fileID: 2100000, guid: ca5cc0ab22ff28b449136d729033a507, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
