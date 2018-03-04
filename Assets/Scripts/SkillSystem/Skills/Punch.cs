@@ -80,7 +80,7 @@ public class Punch : Skill
 
         if (canCharge)
         {
-            Character.canWalk = false;
+            //Character.canWalk = false;
 
             Character.AddBuff(ChargingBuff, 1, Character);
 

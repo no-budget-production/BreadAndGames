@@ -536,9 +536,12 @@ public class Character : Entity
 
     void HPBarFlashDamage(float beforeArg)
     {
-        if (beforeArg != CurrentHealth)
+        if (UseHUDHealthbarSlider)
         {
-            HUDHealthBarDelay.color = HealthBarDelayColor_Sub;
+            if (beforeArg != CurrentHealth)
+            {
+                HUDHealthBarDelay.color = HealthBarDelayColor_Sub;
+            }
         }
     }
 
