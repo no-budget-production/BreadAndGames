@@ -23,6 +23,8 @@ public class EnergyBattery : Character
     public float startRecharge;
     public float stopRecharge;
 
+    public float startRayBlocking;
+
     public override void Start()
     {
         base.Start();
@@ -53,9 +55,9 @@ public class EnergyBattery : Character
 
     public override void Update()
     {
-        BatteryFunction();
-
         base.Update();
+
+        BatteryFunction();
 
         if (canRegenerateEnergy)
         {
@@ -80,6 +82,15 @@ public class EnergyBattery : Character
 
     public void BatteryFunction()
     {
+        if (curActionPoints >= startRayBlocking)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+
         if (curActionPoints >= startRecharge)
         {
             canRegenerateEnergy = true;

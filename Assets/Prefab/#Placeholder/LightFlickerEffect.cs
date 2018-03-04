@@ -14,6 +14,7 @@ public class LightFlickerEffect : MonoBehaviour
 
     public void Reset()
     {
+        Debug.Log(gameObject.name);
         smoothQueue.Clear();
         lastSum = 0;
     }

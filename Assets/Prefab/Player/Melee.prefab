@@ -1340,7 +1340,8 @@ AudioSource:
   m_GameObject: {fileID: 1129760772671468}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243180064377834662, guid: d6f902f986bc93f47972c6f7c68b6663,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1519,8 +1520,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.9338235, g: 0.65916955, b: 0.5355753, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.9025623, g: 0.97794116, b: 0.841317, a: 1}
+  m_Intensity: 3
   m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1828,9 +1829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 108143725182898362}
-  minIntensity: 0.5
-  maxIntensity: 1
-  smoothing: 1
+  minIntensity: 2
+  maxIntensity: 3
+  smoothing: 20
 --- !u!114 &114591369529423888
 MonoBehaviour:
   m_ObjectHideFlags: 1

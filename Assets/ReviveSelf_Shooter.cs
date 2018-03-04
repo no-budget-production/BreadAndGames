@@ -15,14 +15,11 @@ public class ReviveSelf_Shooter : Skill
     private int youGetIt = 0;
     private int youGetItNot = 0;
 
-    // Use this for initialization
     void Start()
     {
         WhileDead = true;
         UI = FindObjectOfType<ActivateWheel_Shooter>();
     }
-
-    // Update is called once per frame
 
     public override void OneShoot()
     {

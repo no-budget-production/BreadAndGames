@@ -75,7 +75,7 @@ public class Entity : MonoBehaviour
 
             DiedAmount++;
 
-            Debug.Log(gameObject.name + " " + DiedAmount);
+            //Debug.Log(gameObject.name + " " + DiedAmount);
 
             if (DestroyOnDeath)
             {

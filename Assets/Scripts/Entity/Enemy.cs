@@ -54,6 +54,7 @@ public class Enemy : Character
     public bool Stunned;
     public float SBetweenUnStun;
     private float nextStunTime;
+
     public override void Start()
     {
         base.Start();
@@ -76,8 +77,6 @@ public class Enemy : Character
 
         GameManager.Instance.Enemies.Remove(this);
 
-        base.OnCustomDestroy();
-
         if (DiedAmount == 1)
         {
             if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
@@ -89,6 +88,8 @@ public class Enemy : Character
                 }
             }
         }
+
+        base.OnCustomDestroy();
     }
 
     public void SkillSetup()
@@ -123,6 +124,19 @@ public class Enemy : Character
 
     public override void Update()
     {
+        if (!Stunned)
+        {
+            if (!isGameOver)
+            {
+
+                base.Update();
+            }
+        }
+    }
+
+
+    public override void FixedUpdate()
+    {
         _Animtor.SetFloat(animMovX, TempSpeed);
         if (!Stunned)
         {
@@ -133,7 +147,7 @@ public class Enemy : Character
             if (!isGameOver)
             {
 
-                base.Update();
+                base.FixedUpdate();
 
                 FrameCounterAliveCheck++;
                 if ((FrameCounterAliveCheck % EveryXFramesAliveCheck) == 0)

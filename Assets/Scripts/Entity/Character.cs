@@ -153,12 +153,12 @@ public class Character : Entity
 
     public override void OnCustomDestroy()
     {
-        base.OnCustomDestroy();
-
         if (isDeadTrigger)
         {
             Disable();
         }
+
+        base.OnCustomDestroy();
     }
 
     public virtual void Start()
@@ -521,7 +521,7 @@ public class Character : Entity
 
     public virtual void FixedUpdate()
     {
-        //HUDDelay();
+
     }
 
     public void HUDDelay()
@@ -587,19 +587,16 @@ public class Character : Entity
         {
             if ((HUDReloadBarDelay.fillAmount - (curReloadBar / maxReloadBar)) > Time.fixedDeltaTime)
             {
-                Debug.Log("Sub" + HUDReloadBarDelay.fillAmount + " - " + curReloadBar / maxReloadBar + " > " + Time.fixedDeltaTime);
                 HUDReloadBarDelay.color = ReloadDelayColor_Sub;
                 HUDReloadBarDelay.fillAmount -= Time.fixedDeltaTime;
             }
             else if (((curReloadBar / maxReloadBar) - HUDReloadBarDelay.fillAmount) > Time.fixedDeltaTime)
             {
-                Debug.Log("Add" + curReloadBar / maxReloadBar + " - " + HUDReloadBarDelay.fillAmount + " > " + Time.fixedDeltaTime);
                 HUDReloadBarDelay.color = ReloadDelayColor_Add;
                 HUDReloadBarDelay.fillAmount += Time.fixedDeltaTime;
             }
             else
             {
-                Debug.Log("==" + curReloadBar / maxReloadBar + " == " + HUDReloadBarDelay.fillAmount);
                 HUDReloadBarDelay.color = Color.clear;
                 HUDReloadBarDelay.fillAmount = (curReloadBar / maxReloadBar);
             }

@@ -33,6 +33,13 @@ public class FPSDisplay : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        style = new GUIStyle();
+        style.alignment = TextAnchor.UpperLeft;
+        style.normal.textColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    }
+
     void OnGUI()
     {
         w = Screen.width;

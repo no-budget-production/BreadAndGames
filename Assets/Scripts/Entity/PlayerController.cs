@@ -321,7 +321,6 @@ public class PlayerController : Character
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        CheckButtonInput();
         Move();
         Grounded();
     }
@@ -329,6 +328,7 @@ public class PlayerController : Character
     public override void Update()
     {
         base.Update();
+        CheckButtonInput();
         //Move();
         //Grounded();
     }

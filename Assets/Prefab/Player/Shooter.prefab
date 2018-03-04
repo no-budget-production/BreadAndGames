@@ -1982,7 +1982,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657697601366786}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.629, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: -0}
   m_LocalScale: {x: 0.019089999, y: 0.019090021, z: 0.019090021}
   m_Children: []
   m_Father: {fileID: 4982861297404492}
@@ -3172,8 +3172,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.9338235, g: 0.65916955, b: 0.5355753, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.9019608, g: 0.9764706, b: 0.84313726, a: 1}
+  m_Intensity: 3
   m_Range: 8
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3441,19 +3441,19 @@ MonoBehaviour:
   UseActionPointsBar: 0
   HUDActionPointsBar: {fileID: 0}
   HUDActionPointsBarDelay: {fileID: 0}
-  ActionPointsBarDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  ActionPointsBarDelayColor_Add: {r: 0.91764706, g: 0.9843137, b: 1, a: 1}
   ActionPointsBarDelayColor_Sub: {r: 1, g: 0.45882353, b: 0, a: 1}
   UseHUDActionPointsBar: 1
   OverChargeBar: {fileID: 0}
   HUDOverChargeBarDelay: {fileID: 0}
-  OverChargeBarDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  OverChargeBarDelayColor_Add: {r: 1, g: 0.91764706, b: 1, a: 1}
   OverChargeBarDelayColor_Sub: {r: 0.34901962, g: 1, b: 0, a: 1}
   UseOverChargeBar: 1
   maxOverCharge: 100
   curOverCharge: 40
   ReloadBar: {fileID: 0}
   HUDReloadBarDelay: {fileID: 0}
-  ReloadDelayColor_Add: {r: 1, g: 1, b: 0.9764706, a: 1}
+  ReloadDelayColor_Add: {r: 1, g: 0.85490197, b: 0.6156863, a: 1}
   ReloadDelayColor_Sub: {r: 0.14509805, g: 0.5686275, b: 1, a: 1}
   UseReloadBar: 1
   curDisplaySteps: 33
@@ -3568,9 +3568,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 108749041546254418}
-  minIntensity: 0.5
-  maxIntensity: 1
-  smoothing: 1
+  minIntensity: 1
+  maxIntensity: 3
+  smoothing: 20
 --- !u!114 &114907211994347574
 MonoBehaviour:
   m_ObjectHideFlags: 1

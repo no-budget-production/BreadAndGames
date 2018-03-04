@@ -9,17 +9,55 @@ public class LightSwitch : Cheat
     public Vector3 DayLight = new Vector3(-35.58f, 0, 0);
     public bool isLightOn;
 
+    public float DaylightIntensity;
+    public float NightlightIntensity;
+
+    private void Awake()
+    {
+        isLightOn = false;
+        var LightObject = GameObject.Find("Directional Light");
+        if (LightObject != null)
+        {
+            NightLight = LightObject.transform.rotation.eulerAngles;
+            var Light = LightObject.GetComponent<Light>();
+            if (Light != null)
+            {
+                Light.intensity = NightlightIntensity;
+            }
+        }
+    }
+
     public override void Shoot()
     {
         if (isLightOn)
         {
             isLightOn = false;
-            GameObject.Find("Directional Light").transform.rotation = Quaternion.Euler(35.58f, 0, 0);
+            var LightObject = GameObject.Find("Directional Light");
+            if (LightObject != null)
+            {
+                LightObject.transform.rotation = Quaternion.Euler(NightLight);
+                var Light = LightObject.GetComponent<Light>();
+                if (Light != null)
+                {
+                    Light.intensity = NightlightIntensity;
+                    //Light.lightmapBakeType = LightmapBakeType.Mixed;
+                }
+            }
         }
         else
         {
             isLightOn = true;
-            GameObject.Find("Directional Light").transform.rotation = Quaternion.Euler(-10, -25, -180);
+            var LightObject = GameObject.Find("Directional Light");
+            if (LightObject != null)
+            {
+                LightObject.transform.rotation = Quaternion.Euler(DayLight);
+                var Light = LightObject.GetComponent<Light>();
+                if (Light != null)
+                {
+                    Light.intensity = DaylightIntensity;
+                    //Light.lightmapBakeType = LightmapBakeType.Realtime;
+                }
+            }
         }
     }
 }

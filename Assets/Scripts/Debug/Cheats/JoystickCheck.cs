@@ -6,20 +6,51 @@ public class JoystickCheck : Cheat
 {
     public string Joysticks;
 
+    public bool isOn;
+
+    public FPSDisplay FPSDisplay;
+
+    public FPSDisplay FPSDisplayInstance;
+
     public override void Shoot()
     {
-        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        if (!isOn)
         {
-            if (Input.GetJoystickNames()[i] == null)
+            isOn = true;
+
+            for (int i = 0; i < Input.GetJoystickNames().Length; i++)
             {
-                Joysticks += " " + i + ": null";
+                if (Input.GetJoystickNames()[i] == null)
+                {
+                    Joysticks += " " + i + ": null";
+                }
+                else
+                {
+                    Joysticks += " " + i + ": " + Input.GetJoystickNames()[i].ToString();
+                }
             }
-            else
+            //Debug.Log(Input.GetJoystickNames().Length + Joysticks);
+            DebugConsole.Log(Input.GetJoystickNames().Length + Joysticks);
+
+            if (FPSDisplayInstance == null)
             {
-                Joysticks += " " + i + ": " + Input.GetJoystickNames()[i].ToString();
+                FPSDisplayInstance = Instantiate(FPSDisplay, Vector3.zero, Quaternion.identity);
+                FPSDisplayInstance.transform.parent = gameObject.transform;
+            }
+
+            FPSDisplayInstance.enabled = true;
+        }
+        else
+        {
+            isOn = false;
+
+            DebugConsole.Clear();
+
+            if (FPSDisplayInstance != null)
+            {
+                FPSDisplayInstance.enabled = false;
             }
         }
-        //Debug.Log(Input.GetJoystickNames().Length + Joysticks);
-        DebugConsole.Log(Input.GetJoystickNames().Length + Joysticks);
+
     }
 }
