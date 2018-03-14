@@ -16,6 +16,8 @@ public class UIScript : MonoBehaviour
 
     public GameObject StatsMenu;
 
+    //public GameObject STOMTWidget;
+
     //public CheatHelp CheatHelp;
 
     public StatsScreen StatsScreen;
@@ -158,6 +160,8 @@ public class UIScript : MonoBehaviour
 
         MainMenu.SetActive(false);
 
+        //STOMTWidget.SetActive(false);
+
         GameOverText.text = "";
         AreYouSure_Restart();
         Cursor.visible = false;
@@ -185,6 +189,8 @@ public class UIScript : MonoBehaviour
     public void ExitButton()
     {
         MainMenu.SetActive(false);
+
+        //STOMTWidget.SetActive(false);
 
         AreYouSure_Exit();
 
@@ -318,6 +324,7 @@ public class UIScript : MonoBehaviour
 
         Time.timeScale = 1;
         MainMenu.SetActive(false);
+        //STOMTWidget.SetActive(false);
         _isPause = false;
 
         StatsMenu.SetActive(false);
