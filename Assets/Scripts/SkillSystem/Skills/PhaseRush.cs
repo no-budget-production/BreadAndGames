@@ -37,6 +37,7 @@ public class PhaseRush : Skill
             controller = tempController;
         }
         thunder = Instantiate(thunder_Prefabs, controller.transform.position + thunder_Prefabs.position, thunder_Prefabs.rotation).transform;
+        thunder.transform.parent = GameManager.Instance.VisualsHolder.transform;
     }
 
     public override void OneShoot()
