@@ -20,6 +20,13 @@ public class Buff : MonoBehaviour
 
     //public BuffType[] ThisBuffTypes;
 
+    private GameObject thisGameObject;
+
+    private void Awake()
+    {
+        thisGameObject = GetComponent<GameObject>();
+    }
+
     public virtual IEnumerator Fade()
     {
         float duration2 = Time.time + Lifetime2;
@@ -72,5 +79,10 @@ public class Buff : MonoBehaviour
         //        }
         //    }
         //}
+    }
+
+    public GameObject GetGameObject()
+    {
+        return thisGameObject;
     }
 }

@@ -11,12 +11,19 @@ public class ChargeBarBuff : Buff
 
     public PlayerController ReviveTarget;
 
+    public Transform[] PlayerControllerTransforms;
+
     private void Start()
     {
         ChargeBarStep = Lifetime2;
         Fade();
         ChargeBar.maxValue = Lifetime2;
         StartCoroutine(Fade());
+
+        PlayerControllerTransforms = new Transform[2];
+
+        PlayerControllerTransforms[0] = Character.GetTransform();
+        PlayerControllerTransforms[1] = ReviveTarget.GetTransform();
     }
 
     public void OnActionBarChange()
@@ -39,7 +46,7 @@ public class ChargeBarBuff : Buff
                 failed = true;
             }
 
-            if (Vector3.Distance(Character.transform.position, ReviveTarget.transform.position) > tempRevive.ReviveRange)
+            if (Vector3.Distance(PlayerControllerTransforms[0].position, PlayerControllerTransforms[1].position) > tempRevive.ReviveRange)
             {
                 failed = true;
             }

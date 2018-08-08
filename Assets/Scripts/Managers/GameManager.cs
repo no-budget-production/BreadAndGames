@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public List<Transform> PlayerSpawns;
     public List<Enemy> Enemies;
 
+#if UNITY_EDITOR
     public Transform EnemyHolder;
     public Transform SpawnHolder;
     public Transform ClusterHolder;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public Transform _DynamicHolder;
     public Transform ProjectileHolder;
     public Transform VisualsHolder;
+#endif
 
     public GameObject[] Triggers;
     public Transform[] ReinforcmentPoints;
@@ -102,12 +104,14 @@ public class GameManager : MonoBehaviour
         Triggers = InstanceRef.SphereTriggers;
         //ReinforcmentPoints = InstanceRef.ReinforcementPoints;
 
+#if UNITY_EDITOR
         SpawnHolder = InstanceRef.SpawnHolder;
         EnemyHolder = InstanceRef.EnemyHolder;
         ClusterHolder = InstanceRef.ClusterHolder;
         _DynamicHolder = InstanceRef._DynamicHolder;
         ProjectileHolder = InstanceRef.ProjectileHolder;
         VisualsHolder = InstanceRef.VisualsHolder;
+#endif
 
         HUDHealthBarSlider = InstanceRef.HUDHealthBarSlider;
         HUDActionPointsBar = InstanceRef.HUDActionPointsBar;

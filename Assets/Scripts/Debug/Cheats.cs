@@ -51,7 +51,9 @@ public class Cheats : MonoBehaviour
             deadZones[i] = UsedCheats[i].ButtonStringBC.DeadZone;
 
             Cheat curSkill = Instantiate(UsedCheats[i].Cheat, transform.position, Quaternion.identity);
+#if UNITY_EDITOR
             curSkill.transform.SetParent(transform);
+#endif
             ActiveCheats[i] = curSkill;
         }
     }

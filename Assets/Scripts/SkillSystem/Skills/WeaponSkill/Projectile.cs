@@ -13,6 +13,13 @@ public class Projectile : Effect
 
     public float MutliRayLength;
 
+    private Transform thisTransform;
+
+    private void Awake()
+    {
+        thisTransform = GetComponent<Transform>();
+    }
+
     public List<int> ReturnSelectedElements()
     {
         List<int> selectedElements = new List<int>();
@@ -49,7 +56,7 @@ public class Projectile : Effect
 
         for (int i = 0; i < PastFrameTransforms.Length; i++)
         {
-            PastFrameTransforms[i] = transform.position;
+            PastFrameTransforms[i] = thisTransform.position;
         }
     }
 
@@ -77,9 +84,9 @@ public class Projectile : Effect
             CheckCollisions(moveDistance);
         }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+        thisTransform.Translate(Vector3.forward * Time.deltaTime * Speed);
 
-        PastFrameTransforms[FrameCounter] = transform.position;
+        PastFrameTransforms[FrameCounter] = thisTransform.position;
 
     }
 
@@ -91,7 +98,7 @@ public class Projectile : Effect
             LastFrame = FrameCounter - curPastFramesCounter;
         }
 
-        Ray ray = new Ray(PastFrameTransforms[LastFrame], transform.forward);
+        Ray ray = new Ray(PastFrameTransforms[LastFrame], thisTransform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, moveDistance * EveryXFrames * MutliRayLength, collisionMask, QueryTriggerInteraction.Collide))
@@ -153,9 +160,11 @@ public class Projectile : Effect
 
         if (OnHit != null)
         {
-            ParticleSystem tempOnHit = Instantiate(OnHit, hit.transform.position, hit.transform.rotation);
-            tempOnHit.transform.position = transform.position;
-            tempOnHit.transform.rotation = transform.rotation;
+            Transform hitTransform = hit.transform;
+            ParticleSystem tempOnHit = Instantiate(OnHit, hitTransform.position, hitTransform.rotation);
+            Transform tempOnHitTransform = tempOnHit.transform;
+            tempOnHitTransform.position = thisTransform.position;
+            tempOnHitTransform.rotation = thisTransform.rotation;
             tempOnHit.Play();
             Destroy(tempOnHit.gameObject, 0.5f);
         }

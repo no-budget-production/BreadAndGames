@@ -26,19 +26,23 @@ public class ArenaSpawner : MonoBehaviour
     private int SpawnedEnemys;
     public int _SpawnedEnemys { get { return SpawnedEnemys; } set { SpawnedEnemys = value; } }
 
+    private Transform thisTransform;
+
     void Awake()
     {
         Timer = 0;
         Interval = 0;
         AmountToSpawn = 0;
         StartSpawning = false;
+        thisTransform = GetComponent<Transform>();
     }
 
+#if UNITY_EDITOR
     private void Start()
     {
-
         EnemyHolder = GameManager.Instance.EnemyHolder;
     }
+#endif
 
     void Update()
     {
@@ -49,7 +53,6 @@ public class ArenaSpawner : MonoBehaviour
                 if (Timer < Interval)
                 {
                     Timer += Time.deltaTime;
-
                 }
                 else
                 {
@@ -69,11 +72,12 @@ public class ArenaSpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        GameObject curPrefab;
-        curPrefab = Instantiate(PrefabToSpawn, transform.position, transform.rotation) as GameObject;
+        GameObject curPrefab = Instantiate(PrefabToSpawn, thisTransform.position, thisTransform.rotation);
         SpawnedEnemys++;
         PhaseOneLevelScript._AmountOfSpawnedEnemysInCurrentWave++;
+#if UNITY_EDITOR
         curPrefab.transform.parent = EnemyHolder.transform;
+#endif
     }
 
     public void DisableSpawn()

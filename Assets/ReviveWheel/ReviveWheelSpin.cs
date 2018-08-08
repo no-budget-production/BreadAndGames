@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ReviveWheelSpin : MonoBehaviour {
-
+public class ReviveWheelSpin : MonoBehaviour
+{
     public float spinSpeed;
     public int spawnBlock = 4;
     public float size;
@@ -33,17 +33,17 @@ public class ReviveWheelSpin : MonoBehaviour {
 
         for (var i = 0; i < spawnBlock; i++)
         {
-            var spawnedBlocks = Instantiate(block_Prefab, Vector3.zero, Quaternion.Euler(0f, 0f, rotations[i]));
+            var spawnedBlocks = Instantiate(block_Prefab, Vector3.zero, Quaternion.Euler(0f, 0f, rotations[i])/*, transform*/);
             spawnedBlocks.SetParent(transform, false);
         }
     }
-    
-    void Update ()
+
+    void Update()
     {
         transform.rotation *= Quaternion.Euler(0, 0, ((spinSpeed * speedMultiplier) * Time.deltaTime) * direction);
-	}
+    }
 
-    public void changeDirection ()
+    public void changeDirection()
     {
         if (direction == 1)
         {

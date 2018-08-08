@@ -6,6 +6,18 @@ public class HPPickUps : MonoBehaviour
 {
     public float healthAmountInPercent;
 
+    private Transform thisTransform;
+
+    private void Awake()
+    {
+        thisTransform = GetComponent<Transform>();
+    }
+
+    public Transform GetTransform()
+    {
+        return thisTransform;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         var PlayerController = other.GetComponent<PlayerController>();

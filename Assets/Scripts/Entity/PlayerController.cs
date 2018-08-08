@@ -89,8 +89,9 @@ public class PlayerController : Character
 
     //public PlayerStats PlayerStats;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         _Animtor.SetBool(animIsAiming, true);
         _Animtor.SetBool(animIsRunning, false);
 
@@ -131,8 +132,8 @@ public class PlayerController : Character
         int tempIJ = 0;
         for (int i = 0; i < PlayerSkills.Length; i++)
         {
-            Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, transform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity);
-            curSkill.transform.SetParent(transform);
+            Skill curSkill = Instantiate(PlayerSkills[i].SkillBC, thisTransform.position + PlayerSkills[i].SkillBC.transform.position, Quaternion.identity, thisTransform);
+            //curSkill.transform.SetParent(transform);
             curSkill.transform.position = SkillSpawn.position;
             curSkill.transform.rotation = SkillSpawn.rotation;
             curSkill.Character = this;
@@ -211,7 +212,7 @@ public class PlayerController : Character
         Quaternion newLookDirection;
         if (isUsingRightStick && rotatable)
         {
-            newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(lookVector, transform.up), TurnSpeed * Time.deltaTime);
+            newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(thisTransform.forward, thisTransform.up), Quaternion.LookRotation(lookVector, thisTransform.up), TurnSpeed * Time.deltaTime);
             rb.rotation = newLookDirection;
         }
 
@@ -222,7 +223,7 @@ public class PlayerController : Character
                 isWalking = true;
                 if (!isUsingRightStick && rotatable)
                 {
-                    newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(transform.forward, transform.up), Quaternion.LookRotation(temporaryMoveVector, transform.up), TurnSpeed * Time.deltaTime);
+                    newLookDirection = Quaternion.Slerp(Quaternion.LookRotation(thisTransform.forward, thisTransform.up), Quaternion.LookRotation(temporaryMoveVector, thisTransform.up), TurnSpeed * Time.deltaTime);
                     rb.rotation = newLookDirection;
                 }
                 moveVector = temporaryMoveVector;
@@ -335,7 +336,7 @@ public class PlayerController : Character
 
     void Grounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 0.5f) == false)
+        if (Physics.Raycast(thisTransform.position, Vector3.down, 0.5f) == false)
         {
             DecelerationHelp = 0;
         }

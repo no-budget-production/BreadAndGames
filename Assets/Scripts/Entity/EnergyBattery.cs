@@ -25,6 +25,10 @@ public class EnergyBattery : Character
 
     public float startRayBlocking;
 
+    [SerializeField] private LayerMask _default;
+    [SerializeField] private LayerMask _ignoreRayCast;
+
+
     public override void Start()
     {
         base.Start();
@@ -40,8 +44,8 @@ public class EnergyBattery : Character
 
         for (int i = 0; i < UsedSkills.Length; i++)
         {
-            Skill curSkill = Instantiate(UsedSkills[i], transform.position + UsedSkills[i].transform.position, Quaternion.identity);
-            curSkill.transform.SetParent(transform);
+            Skill curSkill = Instantiate(UsedSkills[i], thisTransform.position + UsedSkills[i].transform.position, Quaternion.identity, thisTransform);
+            //curSkill.transform.SetParent(transform);
             curSkill.Character = this;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
@@ -70,7 +74,7 @@ public class EnergyBattery : Character
 
     bool InRange(Transform transformTarget, float MaxRange)
     {
-        if (Vector3.Distance(transformTarget.position, transform.position) > MaxRange)
+        if (Vector3.Distance(transformTarget.position, thisTransform.position) > MaxRange)
         {
             return false;
         }
@@ -84,11 +88,11 @@ public class EnergyBattery : Character
     {
         if (curActionPoints >= startRayBlocking)
         {
-            gameObject.layer = LayerMask.NameToLayer("Default");
+            gameObject.layer = _default;
         }
         else
         {
-            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+            gameObject.layer = _ignoreRayCast;
         }
 
         if (curActionPoints >= startRecharge)
@@ -106,8 +110,8 @@ public class EnergyBattery : Character
             {
                 batteryMeshRenderers[i].material = EmptyMaterial;
             }
-
         }
+
         Battery.position = new Vector3(Battery.position.x, curActionPoints * tweak, Battery.position.z);
     }
 }

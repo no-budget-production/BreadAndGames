@@ -20,8 +20,9 @@ public class EnemySpawn : MonoBehaviour
     {
         WaitAndSpawnCoroutine = WaitAndSpawn(SpawnRate);
         StartCoroutine(WaitAndSpawnCoroutine);
-
+#if UNITY_EDITOR
         EnemyHolder = GameManager.Instance.EnemyHolder;
+#endif
     }
 
     void SpawnEnemy()
@@ -29,7 +30,9 @@ public class EnemySpawn : MonoBehaviour
         // Spawn one enemy
         GameObject curPrefab;
         curPrefab = Instantiate(PrefabToSpawn, SpawnPoint.position, SpawnPoint.rotation) as GameObject;
+#if UNITY_EDITOR
         curPrefab.transform.parent = EnemyHolder.transform;
+#endif
 
 
         // Let the spawned enemy move to the Holding Point

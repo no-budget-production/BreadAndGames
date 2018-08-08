@@ -8,12 +8,15 @@ public class InstanceRef : MonoBehaviour
     public List<Transform> PlayerSpawns;
     public GameObject[] SphereTriggers;
     //public Transform[] ReinforcementPoints;
+
+#if UNITY_EDITOR
     public Transform EnemyHolder;
     public Transform SpawnHolder;
     public Transform ClusterHolder;
     public Transform _DynamicHolder;
     public Transform ProjectileHolder;
     public Transform VisualsHolder;
+#endif
 
     public Slider[] HUDHealthBarSlider;
     public Slider[] HUDActionPointsBar;
