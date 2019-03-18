@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -19,7 +17,7 @@ public class CameraController : MonoBehaviour
 
     private float ZoomSpeed;
 
-    private Vector3 moveVelocity;
+    public Vector3 moveVelocity;
     public Vector3 desiredPosition;
 
     public float FogStarAdd;
