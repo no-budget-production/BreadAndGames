@@ -1,11 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
+using UnityEngine.UI;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 public class UIScript : MonoBehaviour
@@ -144,15 +141,15 @@ public class UIScript : MonoBehaviour
 
     public void RestartButton()
     {
-        if (GameManager.Instance != null)
-        {
-            if (GameManager.Instance.InstanceRef != null)
-            {
-                GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+        //if (GameManager.Instance != null)
+        //{
+        //    if (GameManager.Instance.InstanceRef != null)
+        //    {
+        //        GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
 
-                Destroy(GameManager.Instance.InstanceRef.gameObject);
-            }
-        }
+        //        Destroy(GameManager.Instance.InstanceRef.gameObject);
+        //    }
+        //}
 
         StatsTracker.Instance.ResetStats();
 
