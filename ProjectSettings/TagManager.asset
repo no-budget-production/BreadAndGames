@@ -4,11 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SwarmCluster
-  - Melee
-  - Shooter
-  - Support
-  - InstanceRef
+  - Shootable
   layers:
   - Default
   - TransparentFX
@@ -18,11 +14,11 @@ TagManager:
   - UI
   - 
   - 
-  - Character
-  - Enemys
-  - Environment
-  - Objects
-  - Collision
+  - Lighting
+  - Ground
+  - Postprocessing
+  - 
+  - 
   - 
   - 
   - 
@@ -43,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
