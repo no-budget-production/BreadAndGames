@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
@@ -81,8 +79,8 @@ public class Skill : MonoBehaviour
             }
         }
 
-        curBuff = Instantiate(UsedBuff, transform.position + UsedBuff.transform.position, Quaternion.identity);
-        curBuff.transform.SetParent(transform);
+        curBuff = Instantiate(UsedBuff, transform.position + UsedBuff.transform.position, Quaternion.identity, transform);
+        //curBuff.transform.SetParent(transform);
         curBuff.Character = Character;
         curBuff.Lifetime2 = BuffDuration;
         curBuff.Skill = this;

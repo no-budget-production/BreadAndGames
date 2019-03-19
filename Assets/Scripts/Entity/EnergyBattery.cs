@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class EnergyBattery : Character
 {
@@ -40,8 +37,8 @@ public class EnergyBattery : Character
 
         for (int i = 0; i < UsedSkills.Length; i++)
         {
-            Skill curSkill = Instantiate(UsedSkills[i], transform.position + UsedSkills[i].transform.position, Quaternion.identity);
-            curSkill.transform.SetParent(transform);
+            Skill curSkill = Instantiate(UsedSkills[i], thisTransform.position + UsedSkills[i].transform.position, Quaternion.identity, thisTransform);
+            //curSkill.transform.SetParent(transform);
             curSkill.Character = this;
             curSkill.SkillSpawn = SkillSpawn;
             ActiveSkills[i] = curSkill;
@@ -70,7 +67,7 @@ public class EnergyBattery : Character
 
     bool InRange(Transform transformTarget, float MaxRange)
     {
-        if (Vector3.Distance(transformTarget.position, transform.position) > MaxRange)
+        if (Vector3.Distance(transformTarget.position, thisTransform.position) > MaxRange)
         {
             return false;
         }

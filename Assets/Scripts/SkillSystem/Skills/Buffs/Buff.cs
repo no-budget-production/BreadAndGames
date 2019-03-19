@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Buff : MonoBehaviour
@@ -19,6 +18,21 @@ public class Buff : MonoBehaviour
     public Skill Skill;
 
     //public BuffType[] ThisBuffTypes;
+
+    private Transform thisTransform;
+    private GameObject thisGameObject;
+
+
+    private void Awake()
+    {
+        thisTransform = GetComponent<Transform>();
+        thisGameObject = GetComponent<GameObject>();
+    }
+
+    public Transform GetTransform()
+    {
+        return thisTransform;
+    }
 
     public virtual IEnumerator Fade()
     {
@@ -72,5 +86,10 @@ public class Buff : MonoBehaviour
         //        }
         //    }
         //}
+    }
+
+    public GameObject GetGameObject()
+    {
+        return thisGameObject;
     }
 }

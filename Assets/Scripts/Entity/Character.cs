@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -126,12 +125,18 @@ public class Character : Entity
     //[HideInInspector]
     public Animator _Animtor;
 
+    protected Transform thisTransform;
+
+    public virtual void Awake()
+    {
+        thisTransform = GetComponent<Transform>();
+    }
 
     public virtual void Disable()
     {
         for (int i = 0; i < ActiveBuffObjects.Count; i++)
         {
-            AddBuff(ActiveBuffObjects[i].BuffObject, -1, GetComponent<Character>());
+            AddBuff(ActiveBuffObjects[i].BuffObject, -1, this);
         }
 
         canWalk = false;
@@ -140,7 +145,8 @@ public class Character : Entity
 
         for (int i = 0; i < ActiveBuffs.Count; i++)
         {
-            Destroy(ActiveBuffs[i].GetComponent<GameObject>());
+            //Destroy(ActiveBuffs[i].GetComponent<GameObject>());
+            Destroy(ActiveBuffs[i].GetGameObject());
         }
 
         ActiveBuffs.Clear();
@@ -345,8 +351,8 @@ public class Character : Entity
     {
         if (buff.BuffEndScript != null)
         {
-            BuffEndScript curBuffEndScript = Instantiate(buff.BuffEndScript, transform.position, Quaternion.identity);
-            curBuffEndScript.transform.SetParent(transform);
+            BuffEndScript curBuffEndScript = Instantiate(buff.BuffEndScript, thisTransform.position, Quaternion.identity, thisTransform);
+            //curBuffEndScript.transform.SetParent(transform);
             curBuffEndScript.Origion = character;
             curBuffEndScript.Parent = this;
             curBuffEndScript.EndScript();
@@ -703,5 +709,10 @@ public class Character : Entity
     public virtual void SkillHit(int Skillnumber)
     {
         ActiveSkills[Skillnumber].SkillHit();
+    }
+
+    public Transform GetTransform()
+    {
+        return thisTransform;
     }
 }

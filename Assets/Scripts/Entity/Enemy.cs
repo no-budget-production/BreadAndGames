@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -72,7 +71,7 @@ public class Enemy : Character
     {
         if (deadExplosionPrefab != null)
         {
-            GameObject TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation) as GameObject;
+            GameObject TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(thisTransform.position.x, 1f, thisTransform.position.z), thisTransform.rotation) as GameObject;
         }
 
         GameManager.Instance.Enemies.Remove(this);
@@ -84,7 +83,7 @@ public class Enemy : Character
                 float randomNumber = (Random.Range(0, 100.0f));
                 if (randomNumber <= ChanceToSpawnHPPickUps)
                 {
-                    GameManager.Instance.PickUpSpawner.SpawnPickUps(transform.position);
+                    GameManager.Instance.PickUpSpawner.SpawnPickUps(thisTransform.position);
                 }
             }
         }
@@ -98,8 +97,8 @@ public class Enemy : Character
 
         for (int i = 0; i < UsedSkills.Length; i++)
         {
-            Skill curSkill = Instantiate(UsedSkills[i], transform.position + UsedSkills[i].transform.position, Quaternion.identity);
-            curSkill.transform.SetParent(transform);
+            Skill curSkill = Instantiate(UsedSkills[i], thisTransform.position + UsedSkills[i].transform.position, Quaternion.identity, thisTransform);
+            //curSkill.transform.SetParent(transform);
             curSkill.Character = this;
             curSkill.SkillSpawn = SkillSpawn;
             curSkill.transform.position = SkillSpawn.position;
@@ -256,7 +255,7 @@ public class Enemy : Character
         }
         else
         {
-            NavMeshAgent.destination = transform.position;
+            NavMeshAgent.destination = thisTransform.position;
 
             if (Time.time > nextStunTime)
             {
@@ -280,7 +279,8 @@ public class Enemy : Character
 
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
-            Transform tempPlayer = GameManager.Instance.Players[i].GetComponent<Transform>();
+            //Transform tempPlayer = GameManager.Instance.Players[i].GetComponent<Transform>();
+            Transform tempPlayer = GameManager.Instance.Players[i].GetTransform();
 
             if (CheckIsAlive(tempPlayer))
             {
@@ -302,7 +302,7 @@ public class Enemy : Character
                 if (PlayerInRadius[i] != null)
                 {
                     //PlayersInRange = true;
-                    NavMeshAgent.CalculatePath(PlayerInRadius[i].transform.position, Path);
+                    NavMeshAgent.CalculatePath(PlayerInRadius[i].position, Path);
 
                     for (int i2 = 0; i2 < Path.corners.Length; i2++)
                     {
@@ -338,7 +338,7 @@ public class Enemy : Character
 
     bool InRange(Transform transformTarget, float MaxRange)
     {
-        if (Vector3.Distance(transformTarget.position, transform.position) > MaxRange)
+        if (Vector3.Distance(transformTarget.position, thisTransform.position) > MaxRange)
         {
             return false;
         }
@@ -352,12 +352,12 @@ public class Enemy : Character
     {
         //transform.LookAt(Target.position);
 
-        var lookPos = new Vector3(Target.position.x, 0, Target.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
+        var lookPos = new Vector3(Target.position.x, 0, Target.position.z) - new Vector3(thisTransform.position.x, 0, thisTransform.position.z);
         lookPos.y = 0;
         if (lookPos != Vector3.zero)
         {
             var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookDamping);
+            transform.rotation = Quaternion.Slerp(thisTransform.rotation, rotation, Time.deltaTime * LookDamping);
         }
         //direction = Target.position - transform.position;
         //Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -396,7 +396,7 @@ public class Enemy : Character
     {
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
-            Transform tempPlayer = GameManager.Instance.Players[i].GetComponent<Transform>();
+            Transform tempPlayer = GameManager.Instance.Players[i].GetTransform();
 
             if (CheckIsAlive(tempPlayer))
             {
