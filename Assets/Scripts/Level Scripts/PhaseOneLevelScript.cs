@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [SerializeField]
@@ -54,6 +53,13 @@ public class PhaseOneLevelScript : MonoBehaviour
     public int _AmountOfSpawnedEnemysInCurrentWave { get { return AmountOfSpawnedEnemysInCurrentWave; } set { AmountOfSpawnedEnemysInCurrentWave = value; } }
 
     public PhaseTwoLevelScript _PhaseTwoLevelScript;
+
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     void Start()
     {
@@ -176,7 +182,7 @@ public class PhaseOneLevelScript : MonoBehaviour
         }
 
 
-        if (GameManager.Instance.Enemies.Count > 0)
+        if (gameManager.Enemies.Count > 0)
         {
             this.WaveStatus[WaveArrayNumber] = WaveStatusReport.running;
         }
@@ -191,7 +197,7 @@ public class PhaseOneLevelScript : MonoBehaviour
         }
         if ((AmountOfSpawnedEnemysInCurrentWave >= AmountOfEnemys) && (this.WaveStatus[WaveArrayNumber] == WaveStatusReport.running) && !isFinalWave)
         {
-            if (GameManager.Instance.Enemies.Count == 0)
+            if (gameManager.Enemies.Count == 0)
             {
                 StartCoroutine(EndOfWave(PauseBetweenWaves, WaveArrayNumber));
             }
@@ -228,13 +234,13 @@ public class PhaseOneLevelScript : MonoBehaviour
 
         for (int i = 0; i < GameManager.Instance.Enemies.Count; i++)
         {
-            GameManager.Instance.Enemies[i].Ebomb();
+            gameManager.Enemies[i].Ebomb();
         }
 
-        GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[3];
-        GameManager.Instance.ActiveCamera.TargetPlayer[2] = pointCamera;
-        GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
-        GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[1].GetComponent<Transform>();
+        gameManager.ActiveCamera.TargetPlayer = new Transform[3];
+        gameManager.ActiveCamera.TargetPlayer[2] = pointCamera;
+        gameManager.ActiveCamera.TargetPlayer[0] = gameManager.Players[0].GetTransform();
+        gameManager.ActiveCamera.TargetPlayer[1] = gameManager.Players[1].GetTransform();
 
         yield return new WaitForSeconds(waitTime);
 
@@ -250,9 +256,9 @@ public class PhaseOneLevelScript : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         _PhaseTwoLevelScript.PlayAlarm();
-        GameManager.Instance.ActiveCamera.TargetPlayer = new Transform[2];
-        GameManager.Instance.ActiveCamera.TargetPlayer[0] = GameManager.Instance.Players[0].GetComponent<Transform>();
-        GameManager.Instance.ActiveCamera.TargetPlayer[1] = GameManager.Instance.Players[1].GetComponent<Transform>();
+        gameManager.ActiveCamera.TargetPlayer = new Transform[2];
+        gameManager.ActiveCamera.TargetPlayer[0] = gameManager.Players[0].GetTransform();
+        gameManager.ActiveCamera.TargetPlayer[1] = gameManager.Players[1].GetTransform();
 
     }
 

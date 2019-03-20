@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PrefabLoader : MonoBehaviour
 {
@@ -12,6 +9,15 @@ public class PrefabLoader : MonoBehaviour
     private Transform curHolder;
 
     public StatsTracker StatsTracker;
+
+    private GameManager gameManager;
+    private StatsTracker statsTracker;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
+    }
 
     public string[] ButtonStrings = new string[]
     {
@@ -90,18 +96,18 @@ public class PrefabLoader : MonoBehaviour
 
     void SetupCamera()
     {
-        GameManager.Instance.ActiveCamera.transform.rotation = CameraPrefab.transform.rotation;
+        gameManager.ActiveCamera.transform.rotation = CameraPrefab.transform.rotation;
 
-        Transform[] transformPlayers = new Transform[GameManager.Instance.Players.Count];
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        Transform[] transformPlayers = new Transform[gameManager.Players.Count];
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            transformPlayers[i] = GameManager.Instance.Players[i].transform;
+            transformPlayers[i] = gameManager.Players[i].transform;
         }
 
-        CameraController cameraController = GameManager.Instance.ActiveCamera.GetComponent<CameraController>();
+        CameraController cameraController = gameManager.ActiveCamera.GetComponent<CameraController>();
         cameraController.Setup(transformPlayers);
 
-        GameManager.Instance.InputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(GameManager.Instance.ActiveCamera.transform.forward, Vector3.up));
+        gameManager.InputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(gameManager.ActiveCamera.transform.forward, Vector3.up));
         LatePlayerSetup();
     }
 
@@ -133,107 +139,112 @@ public class PrefabLoader : MonoBehaviour
 
     void PlayerSetup()
     {
-        GameManager.Instance.Players = SpawnPreFabs<PlayerController>(PlayerPrefabs, GameManager.Instance.PlayerSpawns, "PlayerHolder");
-        GameManager.Instance.ActiveCamera = SpawnPreFab<CameraController>(CameraPrefab, CameraPrefab.transform, null);
+        gameManager.Players = SpawnPreFabs<PlayerController>(PlayerPrefabs, gameManager.PlayerSpawns, "PlayerHolder");
+        gameManager.ActiveCamera = SpawnPreFab<CameraController>(CameraPrefab, CameraPrefab.transform, null);
     }
 
     void LatePlayerSetup()
     {
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            GameManager.Instance.Players[i].GetComponent<PlayerController>().Setup(GameManager.Instance.InputRotation, ButtonStrings);
+            gameManager.Players[i].GetComponent<PlayerController>().Setup(gameManager.InputRotation, ButtonStrings);
 
-            if (GameManager.Instance.Players[i].UseHUDHealthbarSlider)
+            if (gameManager.Players[i].UseHUDHealthbarSlider)
             {
-                GameManager.Instance.Players[i].HUDHealthBarSlider = GameManager.Instance.HUDHealthBarSlider[i];
-                GameManager.Instance.Players[i].HUDHealthBarDelay = GameManager.Instance.HUDHealthBarDelay[i];
-                GameManager.Instance.HUDHealthBarSlider[i].maxValue = GameManager.Instance.Players[i].MaxHealth;
-                GameManager.Instance.Players[i].OnHUDChangeHealthSlider();
+                gameManager.Players[i].HUDHealthBarSlider = gameManager.HUDHealthBarSlider[i];
+                gameManager.Players[i].HUDHealthBarDelay = gameManager.HUDHealthBarDelay[i];
+                gameManager.HUDHealthBarSlider[i].maxValue = gameManager.Players[i].MaxHealth;
+                gameManager.Players[i].OnHUDChangeHealthSlider();
             }
             else
             {
-                GameManager.Instance.HUDHealthBarSlider[i].enabled = false;
+                gameManager.HUDHealthBarSlider[i].enabled = false;
             }
 
-            if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
+            if (gameManager.Players[i].UseHUDActionPointsBar)
             {
-                GameManager.Instance.Players[i].HUDActionPointsBar = GameManager.Instance.HUDActionPointsBar[i];
-                GameManager.Instance.Players[i].HUDActionPointsBarDelay = GameManager.Instance.HUDActionPointsBarDelay[i];
-                GameManager.Instance.HUDActionPointsBar[i].maxValue = GameManager.Instance.Players[i].maxActionPoints;
-                GameManager.Instance.Players[i].OnActionBarChange();
+                gameManager.Players[i].HUDActionPointsBar = gameManager.HUDActionPointsBar[i];
+                gameManager.Players[i].HUDActionPointsBarDelay = gameManager.HUDActionPointsBarDelay[i];
+                gameManager.HUDActionPointsBar[i].maxValue = gameManager.Players[i].maxActionPoints;
+                gameManager.Players[i].OnActionBarChange();
             }
             else
             {
-                GameManager.Instance.HUDActionPointsBar[i].enabled = false;
+                gameManager.HUDActionPointsBar[i].enabled = false;
             }
 
-            if (GameManager.Instance.Players[i].UseHUDActionPointsBar)
+            if (gameManager.Players[i].UseHUDActionPointsBar)
             {
-                GameManager.Instance.Players[i].OverChargeBar = GameManager.Instance.HUDOverChargeBar[i];
-                GameManager.Instance.Players[i].HUDOverChargeBarDelay = GameManager.Instance.HUDOverChargeBarDelay[i];
-                GameManager.Instance.HUDOverChargeBar[i].maxValue = GameManager.Instance.Players[i].maxOverCharge;
-                GameManager.Instance.Players[i].OnChangeOverchargeSlider();
+                gameManager.Players[i].OverChargeBar = gameManager.HUDOverChargeBar[i];
+                gameManager.Players[i].HUDOverChargeBarDelay = gameManager.HUDOverChargeBarDelay[i];
+                gameManager.HUDOverChargeBar[i].maxValue = gameManager.Players[i].maxOverCharge;
+                gameManager.Players[i].OnChangeOverchargeSlider();
             }
             else
             {
-                GameManager.Instance.HUDOverChargeBar[i].enabled = false;
+                gameManager.HUDOverChargeBar[i].enabled = false;
             }
 
-            if (GameManager.Instance.Players[i].UseReloadBar)
+            if (gameManager.Players[i].UseReloadBar)
             {
-                GameManager.Instance.Players[i].ReloadBar = GameManager.Instance.HUDReloadBar[i];
-                GameManager.Instance.Players[i].HUDReloadBarDelay = GameManager.Instance.HUDReloadBarDelay[i];
-                GameManager.Instance.HUDReloadBar[i].maxValue = (int)(GameManager.Instance.Players[i].maxReloadBar / GameManager.Instance.Players[i].curDisplaySteps);
-                GameManager.Instance.Players[i].OnChangeReloadSlider();
-
-            }
-            else
-            {
-                GameManager.Instance.HUDReloadBar[i].enabled = false;
-            }
-
-            if (GameManager.Instance.Players[i].UseRealReloadBar)
-            {
-                GameManager.Instance.Players[i].HUDRealReloadBar = GameManager.Instance.HUDRealReloadBar[i];
-                GameManager.Instance.Players[i].HUDRealReloadBarDelay = GameManager.Instance.HUDRealReloadBarDelay[i];
-                GameManager.Instance.HUDRealReloadBar[i].maxValue = GameManager.Instance.Players[i].maxReloadBar;
-                GameManager.Instance.Players[i].OnChangeRealReloadSlider();
+                gameManager.Players[i].ReloadBar = gameManager.HUDReloadBar[i];
+                gameManager.Players[i].HUDReloadBarDelay = gameManager.HUDReloadBarDelay[i];
+                gameManager.HUDReloadBar[i].maxValue = (int)(gameManager.Players[i].maxReloadBar / gameManager.Players[i].curDisplaySteps);
+                gameManager.Players[i].OnChangeReloadSlider();
 
             }
             else
             {
-                GameManager.Instance.HUDRealReloadBar[i].enabled = false;
+                gameManager.HUDReloadBar[i].enabled = false;
             }
 
-            GameManager.Instance.Players[i].Canvas = GameManager.Instance.HUDCanvas[i];
+            if (gameManager.Players[i].UseRealReloadBar)
+            {
+                gameManager.Players[i].HUDRealReloadBar = gameManager.HUDRealReloadBar[i];
+                gameManager.Players[i].HUDRealReloadBarDelay = gameManager.HUDRealReloadBarDelay[i];
+                gameManager.HUDRealReloadBar[i].maxValue = gameManager.Players[i].maxReloadBar;
+                gameManager.Players[i].OnChangeRealReloadSlider();
 
-            GameManager.Instance.Players[i].DamageImage = GameManager.Instance.DamageImage[i];
+            }
+            else
+            {
+                gameManager.HUDRealReloadBar[i].enabled = false;
+            }
 
-            GameManager.Instance.Players[i].InternalPlayerNumber = i;
+            gameManager.Players[i].Canvas = gameManager.HUDCanvas[i];
+
+            gameManager.Players[i].DamageImage = gameManager.DamageImage[i];
+
+            gameManager.Players[i].InternalPlayerNumber = i;
         }
     }
 
     public void LoadStatsTracker()
     {
-        if (StatsTracker.Instance == null)
+        if (statsTracker == null)
         {
             StatsTracker curStatsTracker = Instantiate(StatsTracker);
 
-            GameManager.Instance.StatsTracker = curStatsTracker;
+            gameManager.StatsTracker = curStatsTracker;
         }
         else
         {
-            GameManager.Instance.StatsTracker = StatsTracker.Instance;
+            gameManager.StatsTracker = StatsTracker.Instance;
         }
 
-        StatsTracker.Instance.Kills = new int[GameManager.Instance.Players.Count];
-        StatsTracker.Instance.DamageDealt = new float[GameManager.Instance.Players.Count];
+        if (!statsTracker)
+        {
+            Awake();
+        }
 
-        StatsTracker.Instance.RevivedTeamMate = new int[GameManager.Instance.Players.Count];
-        StatsTracker.Instance.RevivedSelf = new int[GameManager.Instance.Players.Count];
+        statsTracker.Kills = new int[gameManager.Players.Count];
+        statsTracker.DamageDealt = new float[gameManager.Players.Count];
 
-        StatsTracker.Instance.Downed = new int[GameManager.Instance.Players.Count];
-        StatsTracker.Instance.HealthPacks = new int[GameManager.Instance.Players.Count];
-        StatsTracker.Instance.Healed = new float[GameManager.Instance.Players.Count];
+        statsTracker.RevivedTeamMate = new int[gameManager.Players.Count];
+        statsTracker.RevivedSelf = new int[gameManager.Players.Count];
+
+        statsTracker.Downed = new int[gameManager.Players.Count];
+        statsTracker.HealthPacks = new int[gameManager.Players.Count];
+        statsTracker.Healed = new float[gameManager.Players.Count];
     }
 }

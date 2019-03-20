@@ -26,6 +26,13 @@ public class Punch : Skill
     public float minEnergyCost;
     private float currentEneryCost;
 
+    private StatsTracker statsTracker;
+
+    private void Awake()
+    {
+        statsTracker = StatsTracker.Instance;
+    }
+
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
@@ -236,13 +243,13 @@ public class Punch : Skill
 
                         if (HitBox.Enemies[i].CurrentHealth <= 0f)
                         {
-                            StatsTracker.Instance.Kills[PlayerController.InternalPlayerNumber]++;
+                            statsTracker.Kills[PlayerController.InternalPlayerNumber]++;
 
-                            StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth;
+                            statsTracker.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth;
                         }
                         else
                         {
-                            StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth - HitBox.Enemies[i].CurrentHealth;
+                            statsTracker.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth - HitBox.Enemies[i].CurrentHealth;
 
                         }
                     }
@@ -276,7 +283,7 @@ public class Punch : Skill
         var PlayerController = Character.GetComponent<PlayerController>();
         if (PlayerController != null)
         {
-            StatsTracker.Instance.Kills[PlayerController.InternalPlayerNumber]++;
+            statsTracker.Kills[PlayerController.InternalPlayerNumber]++;
         }
     }
 }

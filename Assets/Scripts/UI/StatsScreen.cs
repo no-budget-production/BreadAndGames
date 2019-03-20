@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StatsScreen : MonoBehaviour
 {
@@ -12,6 +9,13 @@ public class StatsScreen : MonoBehaviour
     public int CreditsBuildIndex;
 
     Scene currentScene;
+
+    private StatsTracker statsTracker;
+
+    private void Awake()
+    {
+        statsTracker = StatsTracker.Instance;
+    }
 
     private void Start()
     {
@@ -26,7 +30,7 @@ public class StatsScreen : MonoBehaviour
     {
         if (!(CreditsBuildIndex == currentScene.buildIndex))
         {
-            StatsTracker.Instance.Time = Mathf.Round(Time.timeSinceLevelLoad * 10.0f) / 10.0f;
+            statsTracker.Time = Mathf.Round(Time.timeSinceLevelLoad * 10.0f) / 10.0f;
         }
     }
 
@@ -34,30 +38,36 @@ public class StatsScreen : MonoBehaviour
     {
         UpDateTime();
         Stats[0].text = null;
-        Stats[0].text += "Game Over: " + StatsTracker.Instance.GameOvers + " - ";
-        Stats[0].text += "Wins: " + StatsTracker.Instance.Wins + " - ";
+        Stats[0].text += "Game Over: " + statsTracker.GameOvers + " - ";
+        Stats[0].text += "Wins: " + statsTracker.Wins + " - ";
 
 
 
-        Stats[0].text += "Time: " + TimeConversion(StatsTracker.Instance.Time) + " - ";
+        Stats[0].text += "Time: " + TimeConversion(statsTracker.Time) + " - ";
 
-        Stats[0].text += "Session Best Time: " + TimeConversion(StatsTracker.Instance.SessionBestTime);
+        Stats[0].text += "Session Best Time: " + TimeConversion(statsTracker.SessionBestTime);
         //Stats[0].text += "Best Time: " + TimeConversion(StatsTracker.Instance.BestTime)+ "\n\n";
 
         int PlayerNumber = 1;
 
+        if (!statsTracker)
+        {
+            Awake();
+        }
+
+
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {
             Stats[PlayerNumber].text = "Player " + PlayerNumber + "\n\n";
-            Stats[PlayerNumber].text += "Kills: " + StatsTracker.Instance.Kills[i] + "\n";
-            Stats[PlayerNumber].text += "Damage Dealt: " + StatsTracker.Instance.DamageDealt[i] + "\n\n";
+            Stats[PlayerNumber].text += "Kills: " + statsTracker.Kills[i] + "\n";
+            Stats[PlayerNumber].text += "Damage Dealt: " + statsTracker.DamageDealt[i] + "\n\n";
 
-            Stats[PlayerNumber].text += "Downed: " + StatsTracker.Instance.Downed[i] + "\n";
-            Stats[PlayerNumber].text += "Revived Teammate: " + StatsTracker.Instance.RevivedTeamMate[i] + "\n";
-            Stats[PlayerNumber].text += "Revived Self: " + StatsTracker.Instance.RevivedSelf[i] + "\n\n";
+            Stats[PlayerNumber].text += "Downed: " + statsTracker.Downed[i] + "\n";
+            Stats[PlayerNumber].text += "Revived Teammate: " + statsTracker.RevivedTeamMate[i] + "\n";
+            Stats[PlayerNumber].text += "Revived Self: " + statsTracker.RevivedSelf[i] + "\n\n";
 
-            Stats[PlayerNumber].text += "HealthPacks: " + StatsTracker.Instance.HealthPacks[i] + "\n";
-            Stats[PlayerNumber].text += "Healed: " + StatsTracker.Instance.Healed[i] + "\n";
+            Stats[PlayerNumber].text += "HealthPacks: " + statsTracker.HealthPacks[i] + "\n";
+            Stats[PlayerNumber].text += "Healed: " + statsTracker.Healed[i] + "\n";
 
             PlayerNumber++;
         }

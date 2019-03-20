@@ -8,6 +8,15 @@ public class Revive : Skill
 
     public PlayerController ReviveTarget;
 
+    private GameManager gameManager;
+    private StatsTracker statsTracker;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
+    }
+
     public override void Shoot()
     {
         if (!BuffObject.isStackable)
@@ -29,21 +38,21 @@ public class Revive : Skill
             return;
         }
 
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            if (GameManager.Instance.Players[i] == tempPlayer)
+            if (gameManager.Players[i] == tempPlayer)
             {
                 continue;
             }
 
-            if (!GameManager.Instance.Players[i].isDeadTrigger)
+            if (!gameManager.Players[i].isDeadTrigger)
             {
                 continue;
             }
 
-            ReviveTarget = GameManager.Instance.Players[i];
+            ReviveTarget = gameManager.Players[i];
 
-            if (Vector3.Distance(Character.transform.position, GameManager.Instance.Players[i].transform.position) <= ReviveRange)
+            if (Vector3.Distance(Character.transform.position, gameManager.Players[i].transform.position) <= ReviveRange)
             {
                 Character.AddBuff(BuffObject, 1, Character);
                 SpawnBuff();
@@ -79,7 +88,7 @@ public class Revive : Skill
         var PlayerController = Character.GetComponent<PlayerController>();
         if (PlayerController != null)
         {
-            StatsTracker.Instance.RevivedTeamMate[PlayerController.InternalPlayerNumber]++;
+            statsTracker.RevivedTeamMate[PlayerController.InternalPlayerNumber]++;
         }
     }
 }

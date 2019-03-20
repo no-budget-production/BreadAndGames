@@ -39,6 +39,13 @@ public class WeaponSkill : Skill
 
     public float ProjectileMultiScaleFactor;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     public override void LateSkillSetup()
     {
         transform.SetParent(SkillSpawn);
@@ -130,7 +137,7 @@ public class WeaponSkill : Skill
             Projectile newProjectile = Instantiate(Projectile, Muzzle.position, Muzzle.rotation * accuracy) as Projectile;
             newProjectile.WeaponHolder = Character;
             newProjectile.SetSpeed(MuzzleVelocity);
-            newProjectile.transform.SetParent(GameManager.Instance.ProjectileHolder);
+            newProjectile.transform.SetParent(gameManager.ProjectileHolder);
 
             if (Character.RangeDamageMultiplicator != 1f)
             {
@@ -147,7 +154,7 @@ public class WeaponSkill : Skill
         if (Shell != null)
         {
             Transform newShell = Instantiate(Shell, ShellEjection.position, ShellEjection.rotation);
-            newShell.transform.SetParent(GameManager.Instance.VisualsHolder);
+            newShell.transform.SetParent(gameManager.VisualsHolder);
         }
 
         MuzzleFlash.Activate();

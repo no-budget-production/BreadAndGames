@@ -37,6 +37,8 @@ public class UIScript : MonoBehaviour
 
     public AudioSource Announcer;
 
+    private StatsTracker statsTracker;
+
     //AudioSetUp
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -50,6 +52,8 @@ public class UIScript : MonoBehaviour
     //public float curLaughingCD;
     //public float LaughingCD;
 
+    private GameManager gameManager;
+
     private void Awake() // Moved from Update to Awake function
     {
         CreditsBuildIndex = SceneManager.sceneCountInBuildSettings - 1;
@@ -58,6 +62,9 @@ public class UIScript : MonoBehaviour
         escapeButton = Input.GetButtonDown("Cancel"); //from Escape to Cancel
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
         GameOverText.text = "";
+
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
     }
 
     private void Update()
@@ -151,7 +158,7 @@ public class UIScript : MonoBehaviour
         //    }
         //}
 
-        StatsTracker.Instance.ResetStats();
+        statsTracker.ResetStats();
 
         MainMenu.SetActive(false);
 
@@ -331,15 +338,15 @@ public class UIScript : MonoBehaviour
         StatsScreen.UpdateStats();
 
         int areBothPlayersDead = 0;
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            if (GameManager.Instance.Players[i].isDeadTrigger == true)
+            if (gameManager.Players[i].isDeadTrigger == true)
             {
                 areBothPlayersDead++;
             }
         }
 
-        if (areBothPlayersDead == GameManager.Instance.Players.Count)
+        if (areBothPlayersDead == gameManager.Players.Count)
         {
             if (ResumeButton != null)
             {

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +21,7 @@ public class EscortMove : MonoBehaviour
     public int thirdStopBlockWaypoint;
     public float thirdStopWaittime;
     public GameObject thirdBlockade;
-    
+
     public Transform[] points;
 
 
@@ -36,7 +35,6 @@ public class EscortMove : MonoBehaviour
     private bool ThirdPhaseFinished;
 
     private Coroutine PhaseTimer;
-
 
     void Start()
     {

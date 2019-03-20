@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Roulette : Cheat
@@ -10,15 +9,22 @@ public class Roulette : Cheat
 
     public float KillDamage;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     public override void Shoot()
     {
         if (KillPlayer != 0)
         {
-            if (KillPlayer - 1 <= GameManager.Instance.Players.Count)
+            if (KillPlayer - 1 <= gameManager.Players.Count)
             {
-                if (GameManager.Instance.Players[KillPlayer - 1].CurrentHealth > 0)
+                if (gameManager.Players[KillPlayer - 1].CurrentHealth > 0)
                 {
-                    GameManager.Instance.Players[KillPlayer - 1].TakeDamage(KillDamage, DamageType.Melee);
+                    gameManager.Players[KillPlayer - 1].TakeDamage(KillDamage, DamageType.Melee);
                 }
                 else
                 {
@@ -34,9 +40,9 @@ public class Roulette : Cheat
 
     public void RandomPlayerKill()
     {
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            if (GameManager.Instance.Players[i].CurrentHealth > 0)
+            if (gameManager.Players[i].CurrentHealth > 0)
             {
                 alivePlayers.Add(i);
             }
@@ -44,6 +50,6 @@ public class Roulette : Cheat
 
         randomPlayerNumber = Random.Range(0, alivePlayers.Count);
 
-        GameManager.Instance.Players[alivePlayers[randomPlayerNumber]].TakeDamage(KillDamage, DamageType.Melee);
+        gameManager.Players[alivePlayers[randomPlayerNumber]].TakeDamage(KillDamage, DamageType.Melee);
     }
 }

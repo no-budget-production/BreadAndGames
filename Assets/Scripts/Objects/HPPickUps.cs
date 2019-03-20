@@ -6,9 +6,14 @@ public class HPPickUps : MonoBehaviour
 
     private Transform thisTransform;
 
+    private GameManager gameManager;
+    private StatsTracker statsTracker;
+
     private void Awake()
     {
         thisTransform = GetComponent<Transform>();
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
     }
 
     public Transform GetTransform()
@@ -28,10 +33,10 @@ public class HPPickUps : MonoBehaviour
         var used = PlayerController.RestoreHealth(PlayerController.MaxHealth / 100 * healthAmountInPercent);
         if (used)
         {
-            GameManager.Instance.HealthPickUps.Remove(this);
+            gameManager.HealthPickUps.Remove(this);
             Destroy(this.gameObject);
-            StatsTracker.Instance.HealthPacks[PlayerController.InternalPlayerNumber]++;
-            StatsTracker.Instance.Healed[PlayerController.InternalPlayerNumber] += PlayerController.CurrentHealth - playerControllerInitialHealth;
+            statsTracker.HealthPacks[PlayerController.InternalPlayerNumber]++;
+            statsTracker.Healed[PlayerController.InternalPlayerNumber] += PlayerController.CurrentHealth - playerControllerInitialHealth;
         }
     }
 }

@@ -78,12 +78,12 @@ public class Enemy : Character
 
         if (DiedAmount == 1)
         {
-            if (GameManager.Instance.PickUpSpawner.HealthPickUpsSpawn)
+            if (gameManager.PickUpSpawner.HealthPickUpsSpawn)
             {
                 float randomNumber = (Random.Range(0, 100.0f));
                 if (randomNumber <= ChanceToSpawnHPPickUps)
                 {
-                    GameManager.Instance.PickUpSpawner.SpawnPickUps(thisTransform.position);
+                    gameManager.PickUpSpawner.SpawnPickUps(thisTransform.position);
                 }
             }
         }
@@ -277,10 +277,10 @@ public class Enemy : Character
     {
         PlayerInRadius.Clear();
 
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
             //Transform tempPlayer = GameManager.Instance.Players[i].GetComponent<Transform>();
-            Transform tempPlayer = GameManager.Instance.Players[i].GetTransform();
+            Transform tempPlayer = gameManager.Players[i].GetTransform();
 
             if (CheckIsAlive(tempPlayer))
             {
@@ -394,9 +394,9 @@ public class Enemy : Character
 
     void FindAlivePlayer()
     {
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            Transform tempPlayer = GameManager.Instance.Players[i].GetTransform();
+            Transform tempPlayer = gameManager.Players[i].GetTransform();
 
             if (CheckIsAlive(tempPlayer))
             {

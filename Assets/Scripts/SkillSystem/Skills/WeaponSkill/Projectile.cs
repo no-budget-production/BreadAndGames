@@ -18,6 +18,7 @@ public class Projectile : Effect
     private void Awake()
     {
         thisTransform = GetComponent<Transform>();
+        statsTracker = StatsTracker.Instance;
     }
 
     public List<int> ReturnSelectedElements()
@@ -49,6 +50,8 @@ public class Projectile : Effect
     private bool shieldImmunity = false;
 
     public ParticleSystem OnHit;
+
+    private StatsTracker statsTracker;
 
     private void Start()
     {
@@ -138,13 +141,13 @@ public class Projectile : Effect
 
                     if (damageableObject.CurrentHealth <= 0f)
                     {
-                        StatsTracker.Instance.Kills[PlayerController.InternalPlayerNumber]++;
+                        statsTracker.Kills[PlayerController.InternalPlayerNumber]++;
 
-                        StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth;
+                        statsTracker.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth;
                     }
                     else
                     {
-                        StatsTracker.Instance.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth - damageableObject.CurrentHealth;
+                        statsTracker.DamageDealt[PlayerController.InternalPlayerNumber] += damageableObjectInitialHealth - damageableObject.CurrentHealth;
                     }
                 }
                 else

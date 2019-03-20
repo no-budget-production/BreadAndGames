@@ -1,17 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerHeal : Cheat
+﻿public class PlayerHeal : Cheat
 {
     public float HealAmount;
+
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     public override void Shoot()
     {
         int areRevived = 0;
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            PlayerController curPlayer = GameManager.Instance.Players[i].GetComponent<PlayerController>();
+            PlayerController curPlayer = gameManager.Players[i].GetComponent<PlayerController>();
 
             curPlayer.GetHealth(HealAmount);
             if (curPlayer.CurrentHealth > 0)
@@ -20,11 +23,11 @@ public class PlayerHeal : Cheat
             }
         }
 
-        if (areRevived == GameManager.Instance.Players.Count)
+        if (areRevived == gameManager.Players.Count)
         {
-            for (int i = 0; i < GameManager.Instance.Enemies.Count; i++)
+            for (int i = 0; i < gameManager.Enemies.Count; i++)
             {
-                GameManager.Instance.Enemies[i].isGameOver = false;
+                gameManager.Enemies[i].isGameOver = false;
             }
         }
         //Debug.Log("PlayersHealed: " + HealAmount);

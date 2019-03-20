@@ -24,9 +24,12 @@ public class PhaseRush : Skill
     private bool isPhaseRushing;
     private bool isRecharging;
 
-    void Awake()
+    private GameManager gameManager;
+
+    private void Awake()
     {
         _AudioSource = GetComponent<AudioSource>();
+        gameManager = GameManager.Instance;
     }
 
     public void Start()
@@ -38,7 +41,7 @@ public class PhaseRush : Skill
         }
         thunder = Instantiate(thunder_Prefabs, controller.transform.position + thunder_Prefabs.position, thunder_Prefabs.rotation).transform;
 #if UNITY_EDITOR
-        thunder.transform.parent = GameManager.Instance.VisualsHolder.transform;
+        thunder.transform.parent = gameManager.VisualsHolder.transform;
 #endif
     }
 

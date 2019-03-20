@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PlayerActionPoints : Cheat
+﻿public class PlayerActionPoints : Cheat
 {
     public float ActionPointsAmount;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     public override void Shoot()
     {
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            PlayerController curPlayer = GameManager.Instance.Players[i].GetComponent<PlayerController>();
+            PlayerController curPlayer = gameManager.Players[i].GetComponent<PlayerController>();
 
             curPlayer.RestoreActionPoints(ActionPointsAmount);
         }

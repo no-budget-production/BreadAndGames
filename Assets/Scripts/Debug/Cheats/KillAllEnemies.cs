@@ -1,10 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class KillAllEnemies : Cheat
+﻿public class KillAllEnemies : Cheat
 {
     public float TakeDamage;
+
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
 
     public override void Shoot()
     {

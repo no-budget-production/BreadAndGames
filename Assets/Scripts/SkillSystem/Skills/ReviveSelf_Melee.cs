@@ -11,6 +11,13 @@ public class ReviveSelf_Melee : Skill
     private int youGetIt = 0;
     private int youGetItNot = 0;
 
+    private StatsTracker statsTracker;
+
+    private void Awake()
+    {
+        statsTracker = StatsTracker.Instance;
+    }
+
     void Start()
     {
         WhileDead = true;
@@ -76,7 +83,7 @@ public class ReviveSelf_Melee : Skill
         var PlayerController = Character.GetComponent<PlayerController>();
         if (PlayerController != null)
         {
-            StatsTracker.Instance.RevivedSelf[PlayerController.InternalPlayerNumber]++;
+            statsTracker.RevivedSelf[PlayerController.InternalPlayerNumber]++;
         }
     }
 }

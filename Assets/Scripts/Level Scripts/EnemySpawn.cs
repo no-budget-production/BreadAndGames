@@ -15,12 +15,19 @@ public class EnemySpawn : MonoBehaviour
     private IEnumerator WaitAndSpawnCoroutine;
     private int SpawnedEnemys;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     void Start()
     {
         WaitAndSpawnCoroutine = WaitAndSpawn(SpawnRate);
         StartCoroutine(WaitAndSpawnCoroutine);
 #if UNITY_EDITOR
-        EnemyHolder = GameManager.Instance.EnemyHolder;
+        EnemyHolder = gameManager.EnemyHolder;
 #endif
     }
 
@@ -37,7 +44,7 @@ public class EnemySpawn : MonoBehaviour
         var curEnemy = curPrefab.GetComponent<Enemy>();
         if (curEnemy != null)
         {
-            GameManager.Instance.Enemies.Add(curEnemy);
+            gameManager.Enemies.Add(curEnemy);
             //    curEnemy.NavMeshAgent.SetDestination(HoldingPoint.transform.position);
             //    curEnemy.ReinforcmentPoints = ReinforcmentPoints;
         }

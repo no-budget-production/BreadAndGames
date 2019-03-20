@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
@@ -8,6 +6,15 @@ public class GameOver : MonoBehaviour
 
     private int playerCount;
     public int requiredPlayerCount;
+
+    private GameManager gameManager;
+    private StatsTracker statsTracker;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,13 +41,13 @@ public class GameOver : MonoBehaviour
         {
             AddStats();
 
-            if (GameManager.Instance != null)
+            if (gameManager != null)
             {
-                if (GameManager.Instance.InstanceRef != null)
+                if (gameManager.InstanceRef != null)
                 {
-                    GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+                    gameManager.transform.parent = gameManager.InstanceRef.transform;
 
-                    Destroy(GameManager.Instance.InstanceRef.gameObject);
+                    Destroy(gameManager.InstanceRef.gameObject);
                 }
             }
 
@@ -50,10 +57,10 @@ public class GameOver : MonoBehaviour
 
     void AddStats()
     {
-        StatsTracker.Instance.Wins++;
+        statsTracker.Wins++;
 
-        StatsTracker.Instance.Time = Mathf.Round(Time.timeSinceLevelLoad * 10.0f) / 10.0f;
+        statsTracker.Time = Mathf.Round(Time.timeSinceLevelLoad * 10.0f) / 10.0f;
 
-        StatsTracker.Instance.CalculateBestTimes();
+        statsTracker.CalculateBestTimes();
     }
 }

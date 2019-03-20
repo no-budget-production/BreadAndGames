@@ -26,6 +26,8 @@ public class ArenaSpawner : MonoBehaviour
 
     private Transform thisTransform;
 
+    private GameManager gameManager;
+
     void Awake()
     {
         Timer = 0;
@@ -34,12 +36,14 @@ public class ArenaSpawner : MonoBehaviour
         StartSpawning = false;
 
         thisTransform = GetComponent<Transform>();
+
+        gameManager = GameManager.Instance;
     }
 
 #if UNITY_EDITOR
     private void Start()
     {
-        EnemyHolder = GameManager.Instance.EnemyHolder;
+        EnemyHolder = gameManager.EnemyHolder;
     }
 #endif
 

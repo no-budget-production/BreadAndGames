@@ -40,8 +40,8 @@
  * =========================================================================*/
 
 
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 
 public class DebugConsole : MonoBehaviour
@@ -60,6 +60,7 @@ public class DebugConsole : MonoBehaviour
     public bool draggable = true;                  // Can the output be dragged around at runtime by default? 
     public bool visible = true;                    // Does output show on screen by default or do we have to enable it with code? 
     public bool pixelCorrect = false; // set to be pixel Correct linespacing
+
     public static bool isVisible
     {
         get

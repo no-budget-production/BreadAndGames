@@ -1,8 +1,6 @@
 ﻿#if UNITY_EDITOR
-using UnityEngine;
-using System.Collections;
-using System;
 using UnityEditor;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(EnumFlagsAttribute))]
 public class EnumFlagsAttributeDrawer : PropertyDrawer

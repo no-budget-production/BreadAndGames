@@ -1,11 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GlueMiddlePointOfThePlayers : MonoBehaviour
 {
+    private Transform thisTransform;
+
+    private void Awake()
+    {
+        thisTransform = GetComponent<Transform>();
+    }
+
     void Update()
     {
-        transform.position = GameManager.Instance.ActiveCamera.desiredPosition;
+        thisTransform.position = GameManager.Instance.ActiveCamera.desiredPosition;
     }
 }

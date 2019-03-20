@@ -404,11 +404,11 @@ public class PlayerController : Character
 
     public void RequestHealthPickUps()
     {
-        if (CurrentHealth / MaxHealth < GameManager.Instance.PickUpSpawner.HealthPickUpThreshold * 0.01)
+        if (CurrentHealth / MaxHealth < gameManager.PickUpSpawner.HealthPickUpThreshold * 0.01)
         {
             if (!RequestedHealthPickUps)
             {
-                GameManager.Instance.PickUpSpawner.HealthRequestAdding(true);
+                gameManager.PickUpSpawner.HealthRequestAdding(true);
                 RequestedHealthPickUps = true;
             }
         }
@@ -416,7 +416,7 @@ public class PlayerController : Character
         {
             if (RequestedHealthPickUps)
             {
-                GameManager.Instance.PickUpSpawner.HealthRequestAdding(false);
+                gameManager.PickUpSpawner.HealthRequestAdding(false);
                 RequestedHealthPickUps = false;
             }
         }
@@ -455,20 +455,20 @@ public class PlayerController : Character
     public void CheckGameOver()
     {
         int areBothPlayersDead = 0;
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
+        for (int i = 0; i < gameManager.Players.Count; i++)
         {
-            if (GameManager.Instance.Players[i].isDeadTrigger == true)
+            if (gameManager.Players[i].isDeadTrigger == true)
             {
                 areBothPlayersDead++;
             }
         }
 
-        if (areBothPlayersDead == GameManager.Instance.Players.Count)
+        if (areBothPlayersDead == gameManager.Players.Count)
         {
             StatsTracker.Instance.GameOvers++;
 
-            GameManager.Instance.UIScript.GameOverText.text = "Game Over";
-            GameManager.Instance.UIScript.GameOver();
+            gameManager.UIScript.GameOverText.text = "Game Over";
+            gameManager.UIScript.GameOver();
         }
     }
 
@@ -476,13 +476,13 @@ public class PlayerController : Character
     {
         if (Type == PlayerType.Melee)
         {
-            GameManager.Instance.ReviveWheel_Melee.Activate();
+            gameManager.ReviveWheel_Melee.Activate();
             DisableHUD();
         }
 
         if (Type == PlayerType.Shooter)
         {
-            GameManager.Instance.ReviveWheel_Shooter.Activate();
+            gameManager.ReviveWheel_Shooter.Activate();
             DisableHUD();
         }
     }
