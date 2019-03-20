@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,7 +77,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         enabled = false;
-        Destroy(this);
+        //Destroy(this);
     }
 
     void InitGame()
@@ -92,7 +91,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void LoadInstancesRef()

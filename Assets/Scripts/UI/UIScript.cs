@@ -58,13 +58,14 @@ public class UIScript : MonoBehaviour
     {
         CreditsBuildIndex = SceneManager.sceneCountInBuildSettings - 1;
 
-
         escapeButton = Input.GetButtonDown("Cancel"); //from Escape to Cancel
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
         GameOverText.text = "";
 
         gameManager = GameManager.Instance;
         statsTracker = StatsTracker.Instance;
+
+        System.GC.Collect();
     }
 
     private void Update()
@@ -148,13 +149,13 @@ public class UIScript : MonoBehaviour
 
     public void RestartButton()
     {
-        //if (GameManager.Instance != null)
+        //if (gameManager != null)
         //{
-        //    if (GameManager.Instance.InstanceRef != null)
+        //    if (gameManager.InstanceRef != null)
         //    {
-        //        GameManager.Instance.transform.parent = GameManager.Instance.InstanceRef.transform;
+        //        gameManager.transform.parent = gameManager.InstanceRef.transform;
 
-        //        Destroy(GameManager.Instance.InstanceRef.gameObject);
+        //        Destroy(gameManager.InstanceRef.gameObject);
         //    }
         //}
 
@@ -172,14 +173,16 @@ public class UIScript : MonoBehaviour
     {
         //SceneManager.UnloadSceneAsync(sceneindex);
 
+        TimeScaleToggle();
+
         if (!(CreditsBuildIndex == sceneindex))
         {
-            SceneManager.LoadScene(sceneindex, LoadSceneMode.Single);
+            SceneManager.LoadScene(0);
         }
         else
         {
             //SceneManager.UnloadSceneAsync(sceneindex);
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            SceneManager.LoadScene(0);
         }
 
         Cursor.visible = false;
