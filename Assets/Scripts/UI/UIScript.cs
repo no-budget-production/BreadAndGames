@@ -2,8 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-#endif
 
 public class UIScript : MonoBehaviour
 {
@@ -61,8 +59,6 @@ public class UIScript : MonoBehaviour
         escapeButton = Input.GetButtonDown("Cancel"); //from Escape to Cancel
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
         GameOverText.text = "";
-
-        System.GC.Collect();
     }
 
     private void Update()

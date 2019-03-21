@@ -13,13 +13,9 @@ public class ReviveSelf_Melee : Skill
 
     private StatsTracker statsTracker;
 
-    private void Awake()
-    {
-        statsTracker = StatsTracker.Instance;
-    }
-
     void Start()
     {
+        statsTracker = StatsTracker.Instance;
         WhileDead = true;
         UI = FindObjectOfType<ActivateWheel_Melee>();
     }

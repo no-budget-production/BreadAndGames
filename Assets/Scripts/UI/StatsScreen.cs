@@ -12,13 +12,10 @@ public class StatsScreen : MonoBehaviour
 
     private StatsTracker statsTracker;
 
-    private void Awake()
-    {
-        statsTracker = StatsTracker.Instance;
-    }
-
     private void Start()
     {
+        statsTracker = StatsTracker.Instance;
+
         currentScene = SceneManager.GetActiveScene();
 
         CreditsBuildIndex = SceneManager.sceneCountInBuildSettings - 1;
@@ -52,9 +49,8 @@ public class StatsScreen : MonoBehaviour
 
         if (!statsTracker)
         {
-            Awake();
+            statsTracker = StatsTracker.Instance;
         }
-
 
         for (int i = 0; i < GameManager.Instance.Players.Count; i++)
         {

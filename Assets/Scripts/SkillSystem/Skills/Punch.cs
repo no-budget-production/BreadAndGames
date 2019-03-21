@@ -28,7 +28,7 @@ public class Punch : Skill
 
     private StatsTracker statsTracker;
 
-    private void Awake()
+    private void Start()
     {
         statsTracker = StatsTracker.Instance;
     }
