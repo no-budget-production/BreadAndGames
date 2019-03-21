@@ -30,6 +30,7 @@ public class PhaseOneLevelScript : MonoBehaviour
     public GameObject explosionPrefab2;
     public Transform explosionPoint;
     public GameObject afterExplosionFire;
+    public GameObject lureLight;
     public Transform pointCamera;
 
     public ArenaSpawner[] spawner;
@@ -73,13 +74,18 @@ public class PhaseOneLevelScript : MonoBehaviour
         MinSpawnInterval = 5;
         MaxSpawnInterval = 7;
 
-        Invoke("DelayedArenaEvent", 5f);
+        //Invoke("DelayedArenaEvent", 5f);
         //startArenaEvent = true;
     }
 
     void DelayedArenaEvent()
     {
         startArenaEvent = true;
+    }
+
+    void ActivateLureLight()
+    {
+        lureLight.SetActive(true);
     }
 
     void Update()
@@ -248,6 +254,7 @@ public class PhaseOneLevelScript : MonoBehaviour
         Destroy(roadblock);
 
         afterExplosionFire.SetActive(true);
+        Invoke("ActivateLureLight", 5f);
 
         StartCoroutine(CamerBackToNormal(5f));      // Parameter = time till camera gets back to normal
     }
