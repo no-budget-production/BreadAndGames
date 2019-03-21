@@ -1481,7 +1481,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1758,6 +1758,11 @@ MonoBehaviour:
   UseReloadBar: 0
   curDisplaySteps: 0
   curDisplayReloadBar: 0
+  UseRealReloadBar: 0
+  HUDRealReloadBar: {fileID: 0}
+  HUDRealReloadBarDelay: {fileID: 0}
+  RealReloadDelayColor_Add: {r: 0, g: 0, b: 0, a: 0}
+  RealReloadDelayColor_Sub: {r: 0, g: 0, b: 0, a: 0}
   rechargeActionBarDirectly: 1
   MultiSoundPlayer: {fileID: 114062045482434310}
   ActiveBuffObjects: []
@@ -1991,7 +1996,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f6c8735732eac5a43a9ae6d480ed029b, type: 2}
+  - {fileID: 2100000, guid: 5da7d1784964c6e4dad351021de8e6e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

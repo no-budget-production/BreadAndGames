@@ -15,15 +15,15 @@ public class ChargeBarBuff : Buff
 
     private void Start()
     {
-        ChargeBarStep = Lifetime2;
-        Fade();
-        ChargeBar.maxValue = Lifetime2;
-        StartCoroutine(Fade());
-
         PLayerControllerTransforms = new Transform[2];
 
         PLayerControllerTransforms[0] = Character.GetTransform();
         PLayerControllerTransforms[1] = ReviveTarget.GetTransform();
+
+        ChargeBarStep = Lifetime2;
+        Fade();
+        ChargeBar.maxValue = Lifetime2;
+        StartCoroutine(Fade());
     }
 
     public void OnActionBarChange()

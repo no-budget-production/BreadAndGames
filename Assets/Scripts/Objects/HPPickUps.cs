@@ -30,6 +30,12 @@ public class HPPickUps : MonoBehaviour
         }
 
         float playerControllerInitialHealth = PlayerController.CurrentHealth;
+
+        if (playerControllerInitialHealth <= 0)
+        {
+            return;
+        }
+
         var used = PlayerController.RestoreHealth(PlayerController.MaxHealth / 100 * healthAmountInPercent);
         if (used)
         {

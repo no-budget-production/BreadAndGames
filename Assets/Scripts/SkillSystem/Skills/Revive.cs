@@ -50,7 +50,14 @@ public class Revive : Skill
                 continue;
             }
 
-            ReviveTarget = gameManager.Players[i];
+            if (tempPlayer.InternalPlayerNumber == 0)
+            {
+                ReviveTarget = gameManager.Players[1];
+            }
+            else
+            {
+                ReviveTarget = gameManager.Players[0];
+            }
 
             if (Vector3.Distance(Character.transform.position, gameManager.Players[i].transform.position) <= ReviveRange)
             {

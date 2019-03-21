@@ -1,0 +1,339 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d41887b1546f5c44ab54e7e65aad3bc, type: 3}
+  m_Name: K_Building049
+  m_EditorClassIdentifier: 
+  version: 3252
+  materialsAndUVRects:
+  - material: {fileID: 2100000, guid: 9de53b7711486f54cbdc0daae8c99b87, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.00024414062
+      y: 0.00024414062
+      width: 0.25
+      height: 0.25
+    srcObjName: EnvironmentBuildingA_Mesh
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: b5f1d03ee8ef553438b0d7ea305f0394, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.626709
+      y: 0.25073242
+      width: 0.125
+      height: 0.125
+    srcObjName: EnvironmentRoofAb3_Mesh
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: c78d729dfd7c6514abbba8ae0968fd2d, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.751709
+      y: 0.00024414062
+      width: 0.125
+      height: 0.125
+    srcObjName: EnvironmentRoofAb2_Mesh
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: e8e66a1924403de4cbe9a6ac29f6a6c3, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.25073242
+      y: 0.25073242
+      width: 0.25
+      height: 0.25
+    srcObjName: EnvironmentBalcony001_Mesh (8)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 0fdb02ccdab2c4e47bea15fc41fc5e18, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.00024414062
+      y: 0.25073242
+      width: 0.25
+      height: 0.25
+    srcObjName: EnvironmentBalcony002_Mesh (3)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 6d4a5b80bf4aef445a799a43888bfd89, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.5012207
+      y: 0.00024414062
+      width: 0.25
+      height: 0.25
+    srcObjName: EnvironmentAwning002_Mesh (1)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 18f81f9a08446f348b0ee136346b83b6, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.87719727
+      y: 0.00024414062
+      width: 0.0625
+      height: 0.0625
+    srcObjName: EnvironmentDoor001_Mesh (2)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 6027cfbf7409f0c4c90f9dc685ba8917, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.00024414062
+      y: 0.751709
+      width: 0.125
+      height: 0.125
+    srcObjName: EnvironmentWindowClosedBoardBroken_Mesh (24)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 3b39222097efd4b4183e9224f3bd9c58, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.5012207
+      y: 0.25073242
+      width: 0.125
+      height: 0.125
+    srcObjName: EnvironmentWindowClosed_Mesh (27)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 227c0b702cf97e947922cbcd89596ebc, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.25073242
+      y: 0.00024414062
+      width: 0.25
+      height: 0.25
+    srcObjName: EnvironmentAirConditioner002_Mesh (4)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  - material: {fileID: 2100000, guid: 0bed1fd6e01948548ab1d2740ce5bdb8, type: 2}
+    atlasRect:
+      serializedVersion: 2
+      x: 0.00024414062
+      y: 0.5012207
+      width: 0.25
+      height: 0.25
+    srcObjName: EnvironmentAirConditioner001_Mesh (14)
+    allPropsUseSameTiling: 1
+    allPropsUseSameTiling_sourceMaterialTiling:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    allPropsUseSameTiling_samplingEncapsulatinRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+    propsUseDifferntTiling_srcUVsamplingRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    tilingTreatment: 0
+  resultMaterials:
+  - combinedMaterial: {fileID: 2100000, guid: 2e61ae5e8f546d745a054957c0a14ff7, type: 2}
+    considerMeshUVs: 0
+    sourceMaterials:
+    - {fileID: 2100000, guid: 9de53b7711486f54cbdc0daae8c99b87, type: 2}
+    - {fileID: 2100000, guid: b5f1d03ee8ef553438b0d7ea305f0394, type: 2}
+    - {fileID: 2100000, guid: c78d729dfd7c6514abbba8ae0968fd2d, type: 2}
+    - {fileID: 2100000, guid: e8e66a1924403de4cbe9a6ac29f6a6c3, type: 2}
+    - {fileID: 2100000, guid: 0fdb02ccdab2c4e47bea15fc41fc5e18, type: 2}
+    - {fileID: 2100000, guid: 6d4a5b80bf4aef445a799a43888bfd89, type: 2}
+    - {fileID: 2100000, guid: 18f81f9a08446f348b0ee136346b83b6, type: 2}
+    - {fileID: 2100000, guid: 6027cfbf7409f0c4c90f9dc685ba8917, type: 2}
+    - {fileID: 2100000, guid: 3b39222097efd4b4183e9224f3bd9c58, type: 2}
+    - {fileID: 2100000, guid: 227c0b702cf97e947922cbcd89596ebc, type: 2}
+    - {fileID: 2100000, guid: 0bed1fd6e01948548ab1d2740ce5bdb8, type: 2}
+  doMultiMaterial: 0
