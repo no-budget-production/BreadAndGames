@@ -29,11 +29,12 @@ public class PhaseRush : Skill
     private void Awake()
     {
         _AudioSource = GetComponent<AudioSource>();
-        gameManager = GameManager.Instance;
     }
 
     public void Start()
     {
+        gameManager = GameManager.Instance;
+
         var tempController = Character.GetComponent<PlayerController>();
         if (tempController != null)
         {

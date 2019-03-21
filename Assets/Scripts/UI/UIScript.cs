@@ -62,9 +62,6 @@ public class UIScript : MonoBehaviour
         escapeButtonXbox = Input.GetButtonDown("CancelXbox"); //from Escape to Cancel
         GameOverText.text = "";
 
-        gameManager = GameManager.Instance;
-        statsTracker = StatsTracker.Instance;
-
         System.GC.Collect();
     }
 
@@ -82,6 +79,9 @@ public class UIScript : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
+
         sceneindex = SceneManager.GetActiveScene().buildIndex;
 
         Time.timeScale = 1;
@@ -89,8 +89,6 @@ public class UIScript : MonoBehaviour
         StatsMenu.SetActive(false);
         Cursor.visible = false;
         _isPause = false;
-
-
     }
 
     public void UpDateTime()

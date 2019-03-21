@@ -56,13 +56,10 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     private GameManager gameManager;
 
-    private void Awake()
-    {
-        gameManager = GameManager.Instance;
-    }
-
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         PlaySound = true;
         EndOfPhase = false;
         startArenaEvent = false;
@@ -165,6 +162,8 @@ public class PhaseOneLevelScript : MonoBehaviour
             }
             for (int i = 0; i < spawner.Length; i++)
             {
+                spawner[i].enabled = true;
+
                 spawner[i]._AmountOfEnemys = amountOfEnemysHelper;
                 if (isFinalWave)
                 {
@@ -174,7 +173,7 @@ public class PhaseOneLevelScript : MonoBehaviour
                 {
                     spawner[i]._Interval = Random.Range(MinSpawnInterval, MaxSpawnInterval);
                 }
-                spawner[i].enabled = true;
+
                 spawner[i]._StartSpawning = true;
             }
             WaveCounter++;

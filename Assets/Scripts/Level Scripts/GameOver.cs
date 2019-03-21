@@ -10,7 +10,7 @@ public class GameOver : MonoBehaviour
     private GameManager gameManager;
     private StatsTracker statsTracker;
 
-    private void Awake()
+    private void Start()
     {
         gameManager = GameManager.Instance;
         statsTracker = StatsTracker.Instance;

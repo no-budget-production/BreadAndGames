@@ -13,12 +13,6 @@ public class PrefabLoader : MonoBehaviour
     private GameManager gameManager;
     private StatsTracker statsTracker;
 
-    private void Awake()
-    {
-        gameManager = GameManager.Instance;
-        statsTracker = StatsTracker.Instance;
-    }
-
     public string[] ButtonStrings = new string[]
     {
             "Horizontal_PX",
@@ -45,6 +39,9 @@ public class PrefabLoader : MonoBehaviour
 
     public void LoadPrefabs()
     {
+        gameManager = GameManager.Instance;
+        statsTracker = StatsTracker.Instance;
+
         PlayerSetup();
 
         SetupCamera();
@@ -221,21 +218,27 @@ public class PrefabLoader : MonoBehaviour
 
     public void LoadStatsTracker()
     {
+        if (gameManager == null)
+        {
+            gameManager = GameManager.Instance;
+        }
+
         if (statsTracker == null)
         {
+            statsTracker = StatsTracker.Instance;
+
             StatsTracker curStatsTracker = Instantiate(StatsTracker);
 
             gameManager.StatsTracker = curStatsTracker;
+            statsTracker = curStatsTracker;
         }
         else
         {
-            gameManager.StatsTracker = StatsTracker.Instance;
+            StatsTracker curStatsTracker = StatsTracker.Instance;
+            gameManager.StatsTracker = curStatsTracker;
+            statsTracker = curStatsTracker;
         }
 
-        if (!statsTracker)
-        {
-            Awake();
-        }
 
         statsTracker.Kills = new int[gameManager.Players.Count];
         statsTracker.DamageDealt = new float[gameManager.Players.Count];

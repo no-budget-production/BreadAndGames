@@ -41,7 +41,7 @@ public class WeaponSkill : Skill
 
     private GameManager gameManager;
 
-    private void Awake()
+    private void Start()
     {
         gameManager = GameManager.Instance;
     }

@@ -131,7 +131,6 @@ public class Character : Entity
     public virtual void Awake()
     {
         thisTransform = GetComponent<Transform>();
-        gameManager = GameManager.Instance;
     }
 
     public virtual void Disable()
@@ -177,6 +176,8 @@ public class Character : Entity
 
     public virtual void Start()
     {
+        gameManager = GameManager.Instance;
+
         CurrentHealth = MaxHealth;
         curActionPoints = maxActionPoints;
 

@@ -17,13 +17,10 @@ public class EnemySpawn : MonoBehaviour
 
     private GameManager gameManager;
 
-    private void Awake()
-    {
-        gameManager = GameManager.Instance;
-    }
-
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         WaitAndSpawnCoroutine = WaitAndSpawn(SpawnRate);
         StartCoroutine(WaitAndSpawnCoroutine);
 #if UNITY_EDITOR

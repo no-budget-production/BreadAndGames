@@ -12,6 +12,10 @@ public class HPPickUps : MonoBehaviour
     private void Awake()
     {
         thisTransform = GetComponent<Transform>();
+    }
+
+    private void Start()
+    {
         gameManager = GameManager.Instance;
         statsTracker = StatsTracker.Instance;
     }

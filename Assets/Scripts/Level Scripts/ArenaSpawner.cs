@@ -28,7 +28,7 @@ public class ArenaSpawner : MonoBehaviour
 
     private GameManager gameManager;
 
-    void Awake()
+    private void Awake()
     {
         Timer = 0;
         Interval = 0;
@@ -36,18 +36,15 @@ public class ArenaSpawner : MonoBehaviour
         StartSpawning = false;
 
         thisTransform = GetComponent<Transform>();
-
-        gameManager = GameManager.Instance;
     }
 
-#if UNITY_EDITOR
     private void Start()
     {
+        gameManager = GameManager.Instance;
         EnemyHolder = gameManager.EnemyHolder;
     }
-#endif
 
-    void Update()
+    private void Update()
     {
         if (StartSpawning)
         {
@@ -80,9 +77,7 @@ public class ArenaSpawner : MonoBehaviour
         curPrefab = Instantiate(PrefabToSpawn, thisTransform.position, thisTransform.rotation) as GameObject;
         SpawnedEnemys++;
         PhaseOneLevelScript._AmountOfSpawnedEnemysInCurrentWave++;
-#if UNITY_EDITOR
         curPrefab.transform.parent = EnemyHolder.transform;
-#endif
     }
 
     public void DisableSpawn()
@@ -91,6 +86,5 @@ public class ArenaSpawner : MonoBehaviour
         StartSpawning = false;
         SpawnedEnemys = 0;
     }
-
 }
 
