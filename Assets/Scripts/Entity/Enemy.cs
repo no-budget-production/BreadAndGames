@@ -71,7 +71,7 @@ public class Enemy : Character
     {
         if (deadExplosionPrefab != null)
         {
-            GameObject TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(thisTransform.position.x, 1f, thisTransform.position.z), thisTransform.rotation) as GameObject;
+            GameObject TempObjectHolder = Instantiate(deadExplosionPrefab, new Vector3(thisTransform.position.x, 1f, thisTransform.position.z), thisTransform.rotation);
         }
 
         GameManager.Instance.Enemies.Remove(this);

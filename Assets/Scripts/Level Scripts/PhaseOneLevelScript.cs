@@ -57,7 +57,9 @@ public class PhaseOneLevelScript : MonoBehaviour
 
     private GameManager gameManager;
 
-    void Start()
+    [SerializeField] private float delayedArenaStartEvent = 5f;
+
+    private IEnumerator Start()
     {
         gameManager = GameManager.Instance;
 
@@ -74,8 +76,14 @@ public class PhaseOneLevelScript : MonoBehaviour
         MinSpawnInterval = 5;
         MaxSpawnInterval = 7;
 
+        yield return new WaitForSecondsRealtime(delayedArenaStartEvent);
+
+        DelayedArenaEvent();
+
         //Invoke("DelayedArenaEvent", 5f);
         //startArenaEvent = true;
+
+        yield return null;
     }
 
     void DelayedArenaEvent()
