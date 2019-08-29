@@ -3,7 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public GameObject loadingScreen; 
+    public GameObject loadingScreen;
+
+    [SerializeField] GameObject pressAScreen;
 
     void Update()
     {
@@ -20,6 +22,7 @@ public class StartMenu : MonoBehaviour
 
     public void ChangeToScene_Controller(int ChangetoStartScene)
     {
+        pressAScreen.SetActive(false);
         loadingScreen.SetActive(enabled);
         SceneManager.LoadScene(ChangetoStartScene);
     }
