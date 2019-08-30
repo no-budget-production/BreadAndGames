@@ -3041,7 +3041,7 @@ MonoBehaviour:
   HelpMenu: {fileID: 2052700097}
   StatsMenu: {fileID: 851542132}
   StatsScreen: {fileID: 340845850}
-  CreditsBuildIndex: 0
+  CreditsBuildIndex: 3
   GameOverText: {fileID: 687438294}
   ResumeButton: {fileID: 352598484}
   isGameOver: 0
@@ -3050,6 +3050,9 @@ MonoBehaviour:
   DamageImage: {fileID: 850665700}
   flashSpeed: 1
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  optionsMenu: {fileID: 0}
+  resumeButton: {fileID: 0}
+  backButton: {fileID: 0}
 --- !u!224 &1868388588
 RectTransform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class StartMenu : MonoBehaviour
 
         if (Input.GetButtonDown("Submit"))
         {
-            ChangeToScene_Controller(1);
+            ChangeToScene_Controller(2);
         }
     }
 

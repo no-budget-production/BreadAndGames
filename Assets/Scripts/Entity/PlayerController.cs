@@ -246,73 +246,77 @@ public class PlayerController : Character
 
     private void CheckButtonInput()
     {
-        if (canUseSkills)
+        if (Time.timeScale > 0f)
         {
-            int tempIJ = 0;
-            for (int i = 0; i < PlayerSkills.Length; i++)
+
+            if (canUseSkills)
             {
-                bool tempIsShooting = false;
-                for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
+                int tempIJ = 0;
+                for (int i = 0; i < PlayerSkills.Length; i++)
                 {
-                    if (areButtons[tempIJ])
+                    bool tempIsShooting = false;
+                    for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
                     {
-                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]) && !ActiveSkills[i].WhileDead)
+                        if (areButtons[tempIJ])
                         {
-                            ActiveSkills[i].OneShoot();
-                            ActiveSkills[i].isFiring = true;
-                            tempIsShooting = true;
-                            //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]) && !ActiveSkills[i].WhileDead)
+                            {
+                                ActiveSkills[i].OneShoot();
+                                ActiveSkills[i].isFiring = true;
+                                tempIsShooting = true;
+                                //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            }
+                            else if (Input.GetButton(thisPlayerString[usedButtons[tempIJ]]))
+                            {
+                                ActiveSkills[i].Shoot();
+                                ActiveSkills[i].isFiring = true;
+                                tempIsShooting = true;
+                                //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            }
+                            else if ((Input.GetButtonUp(thisPlayerString[usedButtons[tempIJ]])) && PlayerSkills[i].ButtonStringBC.Length == 1)
+                            {
+                                ActiveSkills[i].isFiring = false;
+                                ActiveSkills[i].StopShoot();
+                                //Debug.Log("StopFire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                                tempIsShooting = true;
+                            }
                         }
-                        else if (Input.GetButton(thisPlayerString[usedButtons[tempIJ]]))
+                        else
                         {
-                            ActiveSkills[i].Shoot();
-                            ActiveSkills[i].isFiring = true;
-                            tempIsShooting = true;
-                            //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            if (Mathf.Abs(Input.GetAxis(thisPlayerString[usedButtons[tempIJ]])) > deadZones[tempIJ])
+                            {
+                                ActiveSkills[i].Shoot();
+                                ActiveSkills[i].isFiring = true;
+                                tempIsShooting = true;
+                                //DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            }
                         }
-                        else if ((Input.GetButtonUp(thisPlayerString[usedButtons[tempIJ]])) && PlayerSkills[i].ButtonStringBC.Length == 1)
-                        {
-                            ActiveSkills[i].isFiring = false;
-                            ActiveSkills[i].StopShoot();
-                            //Debug.Log("StopFire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
-                            tempIsShooting = true;
-                        }
+                        tempIJ++;
                     }
-                    else
+                    if (!tempIsShooting)
                     {
-                        if (Mathf.Abs(Input.GetAxis(thisPlayerString[usedButtons[tempIJ]])) > deadZones[tempIJ])
-                        {
-                            ActiveSkills[i].Shoot();
-                            ActiveSkills[i].isFiring = true;
-                            tempIsShooting = true;
-                            //DebugConsole.Log(this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootTriggern" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
-                        }
+                        ActiveSkills[i].isFiring = false;
                     }
-                    tempIJ++;
-                }
-                if (!tempIsShooting)
-                {
-                    ActiveSkills[i].isFiring = false;
                 }
             }
-        }
-        else
-        {
-            int tempIJ = 0;
-            for (int i = 0; i < PlayerSkills.Length; i++)
+            else
             {
-                for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
+                int tempIJ = 0;
+                for (int i = 0; i < PlayerSkills.Length; i++)
                 {
-                    if (areButtons[tempIJ])
+                    for (int j = 0; j < PlayerSkills[i].ButtonStringBC.Length; j++)
                     {
-                        if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]) && ActiveSkills[i].WhileDead)
+                        if (areButtons[tempIJ])
                         {
-                            ActiveSkills[i].OneShoot();
-                            ActiveSkills[i].isFiring = true;
-                            //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            if (Input.GetButtonDown(thisPlayerString[usedButtons[tempIJ]]) && ActiveSkills[i].WhileDead)
+                            {
+                                ActiveSkills[i].OneShoot();
+                                ActiveSkills[i].isFiring = true;
+                                //Debug.Log("Fire " + this.gameObject.name + " " + PlayerNumber + " Joystick " + Input.GetJoystickNames() + " ShootButton" + " isButton" + areButtons[i] + " PlayerString" + thisPlayerString[usedButtons[i]]);
+                            }
                         }
+                        tempIJ++;
                     }
-                    tempIJ++;
                 }
             }
         }

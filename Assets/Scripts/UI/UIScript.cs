@@ -171,12 +171,12 @@ public class UIScript : MonoBehaviour
 
         if (!(CreditsBuildIndex == sceneindex))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         else
         {
             //SceneManager.UnloadSceneAsync(sceneindex);
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         //Cursor.visible = false;
@@ -357,8 +357,11 @@ public class UIScript : MonoBehaviour
         }
 
         Time.timeScale = 0f;
+
         MainMenu.SetActive(true);
         _isPause = true;
+
+        ResumeButton.Select();
 
         //CheatHelp.UpdatePlayerButtons();
 
@@ -366,6 +369,24 @@ public class UIScript : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None;
 
         _aboutToPause = false; // Added
+    }
+
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button backButton;
+
+    public void FlipOptionsMenu()
+    {
+        optionsMenu.SetActive(!optionsMenu.activeSelf);
+
+        if (optionsMenu.activeSelf)
+        {
+            backButton.Select();
+        }
+        else
+        {
+            resumeButton.Select();
+        }
     }
 
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////
