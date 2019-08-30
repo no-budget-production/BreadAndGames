@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Settings:
       method: 0
       fxaaSettings:
-        preset: 3
+        preset: 2
       taaSettings:
         jitterSpread: 0.75
         sharpen: 0.3
@@ -83,7 +83,7 @@ MonoBehaviour:
       sampleCount: 10
       frameBlending: 0
   eyeAdaptation:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       lowPercent: 45
       highPercent: 95
@@ -293,7 +293,7 @@ MonoBehaviour:
       size: 1
       luminanceContribution: 1
   vignette:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
