@@ -37,6 +37,8 @@ GameObject:
   - component: {fileID: 33475436754784730}
   - component: {fileID: 23104995635325734}
   - component: {fileID: 64698654354062274}
+  - component: {fileID: 114153835342649374}
+  - component: {fileID: 114980479392578548}
   m_Layer: 0
   m_Name: MeleeShield_gfx
   m_TagString: Untagged
@@ -167,3 +169,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e01405f76ba034a93657e2ad8ce053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114153835342649374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232180414107172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d7aab60a3acb74a98dacdbade379df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies: []
+  ThisUnityTypeFlags: 2
+--- !u!114 &114980479392578548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232180414107172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba88ee12fb8f01848822526341c78d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 3
+  DamageType: 2
+  HitBox: {fileID: 114153835342649374}

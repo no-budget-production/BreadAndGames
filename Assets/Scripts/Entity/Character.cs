@@ -290,6 +290,18 @@ public class Character : Entity
         RestoreReloadPoints(ReloadRegeneration * ReloadRegenerationMultiplicator * Time.deltaTime);
     }
 
+    public void RemoveBuff(BuffObject buff)
+    {
+        for (int i = 0; i < ActiveBuffObjects.Count; i++)
+        {
+            if (ActiveBuffObjects[i].BuffObject == buff)
+            {
+                BuffBuff(ActiveBuffObjects[i].BuffObject, -1);
+                ActiveBuffObjects.Remove(ActiveBuffObjects[i]);
+            }
+        }
+    }
+
     public void AddBuff(BuffObject buff, int multi, Character character)
     {
         bool hasBuff = false;
@@ -346,7 +358,6 @@ public class Character : Entity
 
         HealthRegenerationMultiplicator += (buff.HealthRegenerationMultiplicator * multi);
         ActionPointRegeneration += (buff.ActionPointRegeneration * multi);
-
         MoveSpeedMultiplicator += (buff.MoveSpeedMultiplicator * multi);
     }
 
@@ -478,9 +489,12 @@ public class Character : Entity
     {
 
 
-        float tempActionPoints = Mathf.Min(curActionPoints + (restore), maxActionPoints);
+        float tempActionPoints = Mathf.Max(0f, (Mathf.Min(curActionPoints + (restore), maxActionPoints)));
         float dif = tempActionPoints - curActionPoints;
         curActionPoints = tempActionPoints;
+
+        curOverCharge = Mathf.Max(0f, (Mathf.Min(curOverCharge + (restore), maxOverCharge))); ;
+        OnChangeOverchargeSlider();
 
         if (UseActionPointsBar)
         {

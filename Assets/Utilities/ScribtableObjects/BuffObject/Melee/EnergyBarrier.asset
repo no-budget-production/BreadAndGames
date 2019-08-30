@@ -14,8 +14,8 @@ MonoBehaviour:
   name: EnergyBarrier
   BuffType: 2
   ID: 103
-  isPermanent: 0
-  maxTime: 0.3
+  isPermanent: 1
+  maxTime: 999
   curTime: 0
   isStackable: 0
   cantTriggerWith: 
@@ -30,7 +30,7 @@ MonoBehaviour:
   MeleeArmorMultiplicator: 0
   RangeArmorMultiplicator: 0
   HealthRegenerationMultiplicator: 0
-  ActionPointRegeneration: 0
+  ActionPointRegeneration: -1
   GainHealth: 0
   LoseHealth: 0
   DamageType: 0

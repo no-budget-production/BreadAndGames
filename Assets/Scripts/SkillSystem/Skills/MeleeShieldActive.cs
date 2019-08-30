@@ -8,5 +8,9 @@
         if (handler == null)
             return;
         handler.Active();
+
+        Character.AddBuff(BuffObject, 1, Character);
     }
+
+
 }

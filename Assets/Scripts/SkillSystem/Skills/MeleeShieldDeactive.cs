@@ -1,6 +1,6 @@
 ﻿public class MeleeShieldDeactive : Skill
 {
-
+    public BuffObject BuffObjectToRemove;
     private bool active = false;
 
     public override void Shoot()
@@ -12,6 +12,8 @@
         if (handler == null)
             return;
         handler.Deactive();
+
+        Character.RemoveBuff(BuffObjectToRemove);
     }
     public override void StopShoot()
     {
