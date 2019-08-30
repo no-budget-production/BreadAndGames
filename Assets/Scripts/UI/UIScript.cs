@@ -83,7 +83,7 @@ public class UIScript : MonoBehaviour
         Time.timeScale = 1;
         MainMenu.SetActive(false);
         StatsMenu.SetActive(false);
-        Cursor.visible = false;
+        //Cursor.visible = false;
         _isPause = false;
     }
 
@@ -136,7 +136,7 @@ public class UIScript : MonoBehaviour
 
         //Time.timeScale = 1;
         MainMenu.SetActive(false);
-        Cursor.visible = false;
+        //Cursor.visible = false;
 
         //PlaySound(0);
     }
@@ -159,7 +159,7 @@ public class UIScript : MonoBehaviour
 
         GameOverText.text = "";
         AreYouSure_Restart();
-        Cursor.visible = false;
+        //Cursor.visible = false;
         //PlaySound(1);
     }
 
@@ -179,7 +179,7 @@ public class UIScript : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        Cursor.visible = false;
+        //Cursor.visible = false;
         //PlaySound(1);
     }
 
@@ -323,8 +323,8 @@ public class UIScript : MonoBehaviour
 
         StatsMenu.SetActive(false);
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         _aboutToUnpause = false; // Added
     }
@@ -363,7 +363,7 @@ public class UIScript : MonoBehaviour
         //CheatHelp.UpdatePlayerButtons();
 
         //Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
 
         _aboutToPause = false; // Added
     }
