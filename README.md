@@ -12,4 +12,4 @@ Players: 2
 
 https://nobudgetproductions.itch.io/bread-and-games
 
-![alt text](http://www.juriknauth.com/Images/Cover2bng (2).png)
+![alt text](http://www.juriknauth.com/Images/Cover2bng.png)
